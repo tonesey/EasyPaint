@@ -105,8 +105,16 @@ namespace EasyPaint.Helpers
             }
 
             MemoryStream ms = new MemoryStream(streamData);
-            BitmapImage bmpImage = new BitmapImage();
-            bmpImage.SetSource(ms);
+            BitmapImage bmpImage = null;
+            try
+            {
+                 bmpImage = new BitmapImage();
+                bmpImage.SetSource(ms);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
             return bmpImage;
         }

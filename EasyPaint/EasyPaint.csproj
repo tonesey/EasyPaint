@@ -107,17 +107,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\img_equal_shape_andColor_but1pixel.png" />
     <EmbeddedResource Include="Assets\img_equal_shape_andColor_but10pixel.png" />
+    <Resource Include="Assets\bkg\1.jpg" />
+    <Resource Include="Assets\bkg\2.jpg" />
+    <Resource Include="Assets\bkg\3.jpg" />
+    <Resource Include="Assets\bkg\2_1.jpg" />
+    <Resource Include="Assets\bkg\quadro.png" />
     <Content Include="Assets\buttons\done.png" />
     <Content Include="Assets\buttons\Edit.png" />
     <Content Include="Assets\buttons\eraser2.png" />
     <Content Include="Assets\buttons\pencil.png" />
     <Content Include="Assets\buttons\pencil_tr.png" />
-    <EmbeddedResource Include="Assets\Packages\cfg.xml" />
+    <EmbeddedResource Include="Assets\Packages\cfg.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Assets\buttons\pencil_tr1.png" />
+    <Content Include="Assets\Packages\MickeyMouse\disegno-di-baby-minnie-colorato-300x300.png" />
+    <Content Include="Assets\Packages\MickeyMouse\disegno-faccia-di-minnie-colorato-300x300.png" />
+    <Content Include="Assets\Packages\MickeyMouse\disegno-faccia-di-minnie-disney-colorato-300x300.png" />
+    <Content Include="Assets\Packages\MickeyMouse\disegno-minnie-disney-colorato-300x300.png" />
     <Content Include="Assets\Packages\PeppaPig\pig.png" />
     <Content Include="Assets\Packages\Pimpa\01.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Packages\WinnieThePooh\disegno-di-hi-hi-winnie-the-pooh-pasqua-colorato-300x300.bmp" />
+    <Content Include="Assets\Packages\WinnieThePooh\disegno-di-winnie-pooh-cuore-amore-colorato-300x300.bmp" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

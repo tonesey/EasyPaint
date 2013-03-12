@@ -30,17 +30,21 @@ namespace DrawingBoard_Sample
         public MainPage()
         {
             InitializeComponent();
-            Tester.CheckImagesTester();
+            //Tester.CheckImagesTester();
             _myBoard = new SimzzDev.DrawingBoard(ink);
         }
 
         private void PhoneApplicationPage_Loaded_1(object sender, RoutedEventArgs e)
         {
+            ImagesHelper.WriteContentImageToIsoStore("Assets/Packages/MickeyMouse/disegno-faccia-di-minnie-colorato-300x300.png", tmpFName);
 
-            ImagesHelper.WriteContentImageToIsoStore("Assets/Packages/Pimpa/01.PNG", tmpFName);
-            WriteableBitmap origPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
+            _origPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
+            mainImg.Source = _origPicture;
 
-            List<Color> c1 = ImagesHelper.GetColors(origPicture);
+            ink.Height = _origPicture.PixelHeight;
+            ink.Width = _origPicture.PixelWidth;
+
+            List<Color> c1 = ImagesHelper.GetColors(_origPicture);
             int count = 1;
             foreach (var color in c1)
             {
