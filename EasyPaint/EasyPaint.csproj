@@ -112,6 +112,7 @@
     <Resource Include="Assets\bkg\3.jpg" />
     <Resource Include="Assets\bkg\2_1.jpg" />
     <Resource Include="Assets\bkg\quadro.png" />
+    <Content Include="Assets\bkg\quadro_appeso.png" />
     <Content Include="Assets\buttons\done.png" />
     <Content Include="Assets\buttons\Edit.png" />
     <Content Include="Assets\buttons\eraser2.png" />

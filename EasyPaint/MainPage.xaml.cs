@@ -114,17 +114,30 @@ namespace DrawingBoard_Sample
         {
             _myBoard.InkMode = SimzzDev.DrawingBoard.PenMode.pen;
             Color selectedColor = ((sender as Button).Background as SolidColorBrush).Color;
-
-            _myBoard.MainColor = selectedColor;
-            _myBoard.OutlineColor = selectedColor;
+            _myBoard.OutlineColor =_myBoard.MainColor = selectedColor;
         }
 
-        private void pensizeBtn_Click(object sender, RoutedEventArgs e)
+        private void pensizeBtnUp_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            int curSize = _myBoard.BrushWidth;
+            curSize++;
+            if (curSize <= 10) {
+                _myBoard.BrushWidth = curSize;
+                _myBoard.BrushHeight = curSize;
+            }
         }
 
-  
+        private void pensizeBtnDown_Click(object sender, RoutedEventArgs e)
+        {
+            int curSize = _myBoard.BrushWidth;
+            curSize--;
+            if (curSize >= 2)
+            {
+                _myBoard.BrushWidth = curSize;
+                _myBoard.BrushHeight = curSize;
+            }
+        }
+
 
     }
 }
