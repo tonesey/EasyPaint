@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <characters>
+    <item id="Pimpa" availableInTrial="false">
+      <cultures>it-IT,fr-FR,de-DE,en-GB</cultures>
+    </item>
+    <item id="PeppaPig">
+      <cultures>it-IT,fr-FR,de-DE,en-GB</cultures>
+    </item>
+    <item id="Pingu">
+      <cultures>it-IT,fr-FR,de-DE,en-GB,fi-FI</cultures>
+    </item>
+    <item id="Puffi">
+      <cultures>it-IT,fr-FR,de-DE</cultures>
+    </item>
+  </characters>
+</root>
