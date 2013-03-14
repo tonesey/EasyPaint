@@ -7,6 +7,14 @@
 
     <!--Application Resources-->
     <Application.Resources>
+        <!--Storyboard animation for fading out a UI element-->
+        <Storyboard x:Key="FadeOutAnimation">
+            <DoubleAnimation From="1" To="0"
+                     Duration="0:0:2"
+                     Storyboard.TargetProperty="Opacity"
+                     RepeatBehavior="Forever"
+                     AutoReverse="True" />
+        </Storyboard>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

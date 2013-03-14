@@ -14,6 +14,8 @@
     Loaded="PhoneApplicationPage_Loaded_1"
     shell:SystemTray.IsVisible="True">
 
+  
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" >
 
@@ -35,29 +37,67 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,-20,12,0">
 
             <!--<Image Name="bckImg" Width="400" Height="500"  Stretch="Uniform" Source="/Assets/Packages/bkg/quadro.png"  HorizontalAlignment="Center" VerticalAlignment="Top"></Image>-->
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="550"/>
-                <RowDefinition Height="90"/>
-                <RowDefinition Height="90"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="10" BorderThickness="2" Grid.Row="0" Margin="0,10,0,0" VerticalAlignment="Center">
+            <Border CornerRadius="10" BorderThickness="2" Grid.Row="0" Margin="0,-20,0,0" 
+                    VerticalAlignment="Stretch">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
                         <GradientStop Color="Orange" Offset="0.1"/>
                         <GradientStop Color="Firebrick" Offset="0.8"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Stretch">
                     <!--<Image Name="bckImg" Width="400" Height="34"  Stretch="Fill" Source="/Assets/bkg/quadro_appeso.png"></Image>-->
-                    <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20">
-                        <Grid Margin="0">
-                            <Rectangle Name="mainImgBck" Fill="White"  Width="400" Height="500"  HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>
-                            <Image Name="mainImg" Width="400" Height="500"  Stretch="Uniform" Source="/Assets/Packages/Pimpa/01.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.1"></Image>
-                            <InkPresenter  Name="ink" Width="400" Height="500" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" />
-                        </Grid>
-                    </Border>
+                    <StackPanel>
+                        <StackPanel>
+                            <Canvas Name="timerCanvas" Width="400" Height="30" Margin="0,10,0,10">
+                                <Canvas.Background>
+                                    <LinearGradientBrush EndPoint="0,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFFF0606" Offset="1"/>
+                                        <GradientStop Color="#FF46FF00"/>
+                                        <GradientStop Color="#FFEEE300" Offset="0.279"/>
+                                    </LinearGradientBrush>
+                                </Canvas.Background>
+                                <Ellipse Name="timerEllipse"
+                                         Margin="380,5,0,0" 
+                                         Width="20" Height="20">
+                                    <Ellipse.Fill>
+                                        <RadialGradientBrush>
+                                            <GradientStop Color="#FFCBCBCB" Offset="0"/>
+                                            <GradientStop Color="#FF636363" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Canvas>
+                            <!--<ProgressBar Margin="25,0,25,0" 
+                                     Height="45" 
+                                     HorizontalAlignment="Stretch"
+                                     Value="50" IsIndeterminate="False" 
+                                     SmallChange="1">
+                                <ProgressBar.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF05F547" Offset="0"/>
+                                        <GradientStop Color="#FFF90000" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ProgressBar.Foreground>
+                            </ProgressBar>-->
+                        </StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="2" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Margin="0,0">
+                            <Grid Margin="0">
+                                <Rectangle Name="mainImgBck" Fill="White"  Width="400" Height="500"  HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>
+                                <Image Name="mainImg" Width="400" Height="500"  Stretch="Uniform" Source="/Assets/Packages/Pimpa/01.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.1"></Image>
+                                <InkPresenter  Name="ink" Width="400" Height="500" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" />
+                            </Grid>
+                        </Border>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
@@ -98,23 +138,42 @@
                     <Button Name="eraserBtn" HorizontalAlignment="Left" Width="140" Height="80" BorderThickness="4"  Click="eraseBtn_Click" Padding="0">
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
-                                <GradientStop Color="Brown" Offset="0.1"/>
-                                <GradientStop Color="Wheat" Offset="0.8"/>
+                                <GradientStop Color="LawnGreen" Offset="0.1"/>
+                                <GradientStop Color="Green" Offset="0.8"/>
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid >
-                            <Image Source="Assets/buttons/eraser2.png"  Margin="0" Stretch="Uniform"/>
+                            <Image Source="Assets/buttons/eraser2.png"  Margin="0" Stretch="Uniform" HorizontalAlignment="Left" Width="48"/>
+                        </Grid>
+                    </Button>
+                    <Button Name="penSizeChange"   VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="140" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderThickness="4">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="LawnGreen" Offset="0.1"/>
+                                <GradientStop Color="Green" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Grid>
+                            <Ellipse Name="ellipseStrokeSize" Width="30" Height="30">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FF09F0E5" Offset="0.542"/>
+                                        <GradientStop Color="#FF1F75CB" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
                         </Grid>
                     </Button>
 
-                    <Button Name="penSizeDown" Content="-"  HorizontalAlignment="Left" Width="70" Height="80"  Click="pensizeBtnDown_Click" Padding="0" BorderThickness="4">
-                    </Button>
-                    <Button Name="penSizeUp"  Content="+" HorizontalAlignment="Left" Width="70" Height="80"  Click="pensizeBtnUp_Click" Padding="0" BorderThickness="4">
-                    </Button>
-
-                    <Button Name="doneBtn" HorizontalAlignment="Left" Width="140" Height="80"  Click="doneBtn_Click" Padding="0" BorderThickness="4">
+                    <Button Name="startOrStopBtn" HorizontalAlignment="Left" Width="140" Height="80"  Click="startOrStopBtn_Click" Padding="0" BorderThickness="4">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                                <GradientStop Color="LawnGreen" Offset="0.1"/>
+                                <GradientStop Color="Green" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
                         <Grid>
-                            <Image Source="Assets/buttons/done.png"  Stretch="Uniform"/>
+                            <Image Source="Assets/buttons/done.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="48"/>
                         </Grid>
                     </Button>
                 </StackPanel>
