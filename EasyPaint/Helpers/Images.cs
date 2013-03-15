@@ -16,9 +16,9 @@ namespace EasyPaint.Helpers
     class ImagesHelper
     {
 
-        public static WriteableBitmap GetImgFromEmbeddedResource(string resName)
+        public static WriteableBitmap GetTestImage(string resName)
         {
-            return GetImgFromEmbeddedResource("EasyPaint.Assets", resName);
+            return GetImgFromEmbeddedResource("EasyPaint.Assets.testImages", resName);
         }
 
         public static WriteableBitmap GetImgFromEmbeddedResource(string basePath, string resName)

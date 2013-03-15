@@ -12,7 +12,7 @@ using Telerik.Windows.Controls;
 
 namespace EasyPaint.ViewModels
 {
-   public class DataItemViewModel : ViewModelBase
+   public class PicsViewModel : ViewModelBase
     {
         private Uri imageSource;
         private Uri imageThumbnailSource;
@@ -136,7 +136,7 @@ namespace EasyPaint.ViewModels
         /// </returns> 
         public override bool Equals(object obj) 
         { 
-            DataItemViewModel typedObject = obj as DataItemViewModel; 
+            PicsViewModel typedObject = obj as PicsViewModel; 
             if (typedObject == null) 
             { 
                 return false; 
