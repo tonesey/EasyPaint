@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <characters>
+    <item id="Pimpa" availableInTrial="false">
+      <cultures>it-IT</cultures>
+      <pics>
+        <item source="01.PNG"/>
+      </pics>
+    </item>
+    <item id="PeppaPig">
+      <cultures>*</cultures>
+      <pics>
+        <item source="pig.png"/>
+      </pics>
+    </item>
+    <item id="MickeyMouse">
+      <cultures>it-IT,fr-FR,de-DE,en-US</cultures>
+      <pics>
+        <item source="disegno-di-baby-minnie-colorato-300x300.png"/>
+        <item source="disegno-faccia-di-minnie-colorato-300x300.png"/>
+        <item source="disegno-faccia-di-minnie-disney-colorato-300x300.png"/>
+        <item source="disegno-minnie-disney-colorato-300x300.png"/>
+      </pics>
+    </item>
+    <item id="Pingu">
+      <cultures>*</cultures>
+    </item>
+    <item id="Puffi">
+      <cultures>it-IT,fr-FR,de-DE</cultures>
+    </item>
+    <item id="WinnieThePooh">
+      <cultures>*</cultures>
+    </item>
+  </characters>
+</root>

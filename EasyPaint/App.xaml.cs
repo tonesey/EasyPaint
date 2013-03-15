@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using EasyPaint.ViewModels;
 
 namespace EasyPaint
 {
@@ -22,6 +23,21 @@ namespace EasyPaint
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+
+        public static new App Current
+        {
+            get { return Application.Current as App; }
+        }
+
+        private static MainViewModel _viewModel;
+        public static MainViewModel ViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                return _viewModel ?? (_viewModel = new MainViewModel());
+            }
+        }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -63,12 +79,21 @@ namespace EasyPaint
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            if (!App.ViewModel.IsDataLoaded)
+            {
+                App.ViewModel.LoadData();
+            }
+
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            if (!App.ViewModel.IsDataLoaded)
+            {
+                App.ViewModel.LoadData();
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)

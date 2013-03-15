@@ -18,6 +18,8 @@ using System.Windows.Resources;
 using System.IO;
 using System.Windows.Threading;
 using EasyPaint;
+using System.Globalization;
+using System.Threading;
 
 namespace DrawingBoard_Sample
 {
@@ -44,6 +46,10 @@ namespace DrawingBoard_Sample
             _myBoard = new SimzzDev.DrawingBoard(ink);
             _dt.Interval = TimeSpan.FromSeconds(1);
             _dt.Tick += dt_Tick;
+
+            CultureInfo cc, cuic;
+            cc = Thread.CurrentThread.CurrentCulture;
+            cuic = Thread.CurrentThread.CurrentUICulture;
 
             _sb = (Storyboard)App.Current.Resources["FadeOutAnimation"];
             Storyboard.SetTarget(_sb.Children.ElementAt(0) as DoubleAnimation, timerEllipse);
