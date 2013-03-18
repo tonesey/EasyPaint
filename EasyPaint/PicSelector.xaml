@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="EasyPaint.RadControlsItem1"
+    x:Class="EasyPaint.PicSelector"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -16,10 +16,16 @@
     shell:SystemTray.IsVisible="False">
     
     <UserControl.DataContext>
-        <viewModels:HierarchicalDataViewModel/>
+        <viewModels:MainViewModel/>
     </UserControl.DataContext>
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+        
+        <Grid.Background>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/flowers_480_800.png" Opacity="0.5"/>
+        </Grid.Background>
+
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -31,14 +37,14 @@
         </StackPanel>
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <telerikPrimitives:RadDataBoundListBox ItemsSource="{Binding Items}" Margin="11,3">
+            <telerikPrimitives:RadDataBoundListBox ItemsSource="{Binding Characters}" Margin="11,3">
                 <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                     <DataTemplate>
-                        <telerikPrimitives:RadExpanderControl BorderThickness="0, 2, 0, 0" BorderBrush="{StaticResource PhoneSubtleBrush}">
+                        <telerikPrimitives:RadExpanderControl BorderThickness="0, 2, 0, 0" BorderBrush="{StaticResource PhoneSubtleBrush}" IsExpanded="True">
                             <telerikPrimitives:RadExpanderControl.ContentTemplate>
                                 <DataTemplate>
                                     <Grid Margin="0,4,0,12">
-                                        <TextBlock Grid.Row="1" Text="{Binding Title}" TextWrapping="Wrap" FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="Segoe WP SemiLight" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                                        <TextBlock Grid.Row="1" Text="{Binding Id}" TextWrapping="Wrap" FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="Segoe WP SemiLight" Foreground="{StaticResource PhoneForegroundBrush}"/>
                                     </Grid>
                                 </DataTemplate>
                             </telerikPrimitives:RadExpanderControl.ContentTemplate>
@@ -49,11 +55,11 @@
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Text="{Binding Information}" Foreground="{StaticResource PhoneForegroundBrush}" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="{StaticResource PhoneFontSizeNormal}"/>
-                                        <telerikPrimitives:RadDataBoundListBox HorizontalAlignment="Left" Margin="-6,6,-6,0" Grid.Row="1" ItemsSource="{Binding Items}" IsHitTestVisible="False">
+                                        <TextBlock Text="{Binding Id}" Foreground="{StaticResource PhoneForegroundBrush}" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                                        <telerikPrimitives:RadDataBoundListBox HorizontalAlignment="Left" Margin="-6,6,-6,0" Grid.Row="1" ItemsSource="{Binding Pics}" IsHitTestVisible="False">
                                             <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Image Margin="6" Width="62" Height="62" Source="{Binding ImageThumbnailSource}"/>
+                                                    <Image Margin="6" Width="100" Height="100" Source="{Binding ImageThumbnailSource}"/>
                                                 </DataTemplate>
                                             </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                                             <telerikPrimitives:RadDataBoundListBox.VirtualizationStrategyDefinition>
