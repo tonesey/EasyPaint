@@ -104,8 +104,8 @@ namespace DrawingBoard_Sample
             _origPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
             mainImg.Source = _origPicture;
 
-            ink.Height = _origPicture.PixelHeight;
-            ink.Width = _origPicture.PixelWidth;
+            //ink.Height = _origPicture.PixelHeight;
+            //ink.Width = _origPicture.PixelWidth;
 
             List<Color> c1 = ImagesHelper.GetColors(_origPicture);
             int count = 1;
@@ -232,6 +232,37 @@ namespace DrawingBoard_Sample
         private void SetEllipseSize(int strokeWidth)
         {
             ellipseStrokeSize.Width = ellipseStrokeSize.Height = strokeWidth * 5;
+        }
+
+       
+
+        private void SaveAndDisablePen()
+        {
+        }
+
+     
+
+        private void RestorePen()
+        {
+
+        }
+
+        private void Grid_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Grid_MouseMove_1(object sender, MouseEventArgs e)
+        {
+
+           // var pos = e.GetPosition(sender as UIElement);
+
+            //if (pos.X < 0 || pos.Y < 0)
+            //{
+
+
+            //}
+
         }
 
 

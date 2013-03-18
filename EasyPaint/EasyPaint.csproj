@@ -122,21 +122,28 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor_but1pixel.png" />
     <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor_but10pixel.png" />
-    <Resource Include="Assets\bkg\1.jpg" />
-    <Resource Include="Assets\bkg\2.jpg" />
-    <Resource Include="Assets\bkg\3.jpg" />
     <Resource Include="Assets\bkg\2_1.jpg" />
-    <Resource Include="Assets\bkg\quadro.png" />
-    <Content Include="Assets\bkg\quadro_appeso.png" />
+    <Resource Include="Assets\bkg\bgcolor.jpg" />
+    <Resource Include="Assets\bkg\dots_480_800.png" />
+    <Resource Include="Assets\bkg\flowers_480_800.png" />
+    <Resource Include="Assets\bkg\hearts2_480_800.png" />
+    <Resource Include="Assets\bkg\hearts_480_800.png" />
+    <Content Include="Assets\buttons\bullet_ball_blue.png" />
     <Content Include="Assets\buttons\done.png" />
     <Content Include="Assets\buttons\Edit.png" />
+    <Content Include="Assets\buttons\eraser-.png" />
+    <Content Include="Assets\buttons\eraser.png" />
     <Content Include="Assets\buttons\eraser2.png" />
+    <Content Include="Assets\buttons\finish.png" />
+    <Content Include="Assets\buttons\media_play_green.png" />
     <Content Include="Assets\buttons\pencil.png" />
     <Content Include="Assets\buttons\pencil_tr.png" />
     <EmbeddedResource Include="Assets\cfg.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Assets\buttons\pencil_tr1.png" />
+    <Content Include="Assets\buttons\pencil_tr2.png" />
+    <Content Include="Assets\buttons\sign_stop.png" />
     <Content Include="Assets\packages\MickeyMouse\disegno-di-baby-minnie-colorato-300x300.png" />
     <Content Include="Assets\packages\MickeyMouse\disegno-faccia-di-minnie-colorato-300x300.png" />
     <Content Include="Assets\packages\MickeyMouse\disegno-faccia-di-minnie-disney-colorato-300x300.png" />

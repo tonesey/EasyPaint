@@ -20,7 +20,7 @@
     <Grid x:Name="LayoutRoot" >
 
         <Grid.Background>
-            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/2_1.jpg"/>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/bgcolor.jpg"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,-20,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="4,-20,0,0">
 
             <!--<Image Name="bckImg" Width="400" Height="500"  Stretch="Uniform" Source="/Assets/Packages/bkg/quadro.png"  HorizontalAlignment="Center" VerticalAlignment="Top"></Image>-->
             <Grid.RowDefinitions>
@@ -47,7 +47,7 @@
                     VerticalAlignment="Stretch">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
-                        <GradientStop Color="Orange" Offset="0.1"/>
+                        <GradientStop Color="Orange" Offset="0.5"/>
                         <GradientStop Color="Firebrick" Offset="0.8"/>
                     </LinearGradientBrush>
                 </Border.Background>
@@ -87,14 +87,14 @@
                                 </ProgressBar.Foreground>
                             </ProgressBar>-->
                         </StackPanel>
-                        <Border BorderBrush="Black" BorderThickness="2" 
+                        <Border BorderBrush="DarkGray" BorderThickness="2" 
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 
                                 Margin="0,0">
-                            <Grid Margin="0">
-                                <Rectangle Name="mainImgBck" Fill="White"  Width="400" Height="500"  HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>
-                                <Image Name="mainImg" Width="400" Height="500"  Stretch="Uniform" Source="/Assets/Packages/Pimpa/01.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.1"></Image>
-                                <InkPresenter  Name="ink" Width="400" Height="500" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" />
+                            <Grid Margin="0" MouseLeave="Grid_MouseLeave_1" MouseMove="Grid_MouseMove_1">
+                                <Rectangle Name="mainImgBck" Width="440" Height="500" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>
+                                <Image Name="mainImg" Width="440" Height="500"  Stretch="Fill" Source="/Assets/Packages/Pimpa/01.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.1"></Image>
+                                <InkPresenter  Name="ink" Width="440" Height="500" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" />
                             </Grid>
                         </Border>
                     </StackPanel>
@@ -109,20 +109,20 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
-                    <Button Name="pc1" HorizontalAlignment="Left"  Width="70" Height="80" Click="pc1_Click" Padding="0" Background="Red" BorderThickness="4">
+                    <Button Name="pc1" HorizontalAlignment="Left"  Width="70" Height="80" Click="pc1_Click" Padding="0" Background="Red" BorderThickness="2" BorderBrush="DarkGray">
                         <!--<Grid>
                         <Image Source="Assets/buttons/pencil_tr1.png" Margin="-10" Stretch="Fill"/>
                     </Grid>-->
                     </Button>
-                    <Button Name="pc2" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Green" BorderThickness="4">
+                    <Button Name="pc2" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Green" BorderThickness="2" BorderBrush="DarkGray">
                     </Button>
-                    <Button Name="pc3" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Blue" BorderThickness="4">
+                    <Button Name="pc3" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Blue" BorderThickness="2" BorderBrush="DarkGray">
                     </Button>
-                    <Button Name="pc4" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red" BorderThickness="4">
+                    <Button Name="pc4" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray">
                     </Button>
-                    <Button Name="pc5" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red" BorderThickness="4">
+                    <Button Name="pc5" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray">
                     </Button>
-                    <Button Name="pc6" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red" BorderThickness="4">
+                    <Button Name="pc6" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray">
                     </Button>
                 </StackPanel>
             </Border>
@@ -135,22 +135,22 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Name="eraserBtn" HorizontalAlignment="Left" Width="140" Height="80" BorderThickness="4"  Click="eraseBtn_Click" Padding="0">
+                    <Button Name="eraserBtn" HorizontalAlignment="Left" Width="140" Height="80" BorderBrush="DarkGray" BorderThickness="2"  Click="eraseBtn_Click" Padding="0">
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
-                                <GradientStop Color="LawnGreen" Offset="0.1"/>
-                                <GradientStop Color="Green" Offset="0.8"/>
+                                <GradientStop Color="Gainsboro" Offset="0.1"/>
+                                <GradientStop Color="White" Offset="0.8"/>
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid >
-                            <Image Source="Assets/buttons/eraser2.png"  Margin="0" Stretch="Uniform" HorizontalAlignment="Left" Width="48"/>
+                            <Image Source="Assets/buttons/eraser.png"  Margin="0" Stretch="Uniform" HorizontalAlignment="Left" Width="48"/>
                         </Grid>
                     </Button>
-                    <Button Name="penSizeChange"   VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="140" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderThickness="4">
+                    <Button Name="penSizeChange"   VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="140" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                <GradientStop Color="LawnGreen" Offset="0.1"/>
-                                <GradientStop Color="Green" Offset="1"/>
+                                <GradientStop Color="Gainsboro" Offset="0.1"/>
+                                <GradientStop Color="White" Offset="0.8"/>
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid>
@@ -165,15 +165,15 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="startOrStopBtn" HorizontalAlignment="Left" Width="140" Height="80"  Click="startOrStopBtn_Click" Padding="0" BorderThickness="4">
+                    <Button Name="startOrStopBtn" HorizontalAlignment="Left" Width="140" Height="80"  Click="startOrStopBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2">
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
-                                <GradientStop Color="LawnGreen" Offset="0.1"/>
-                                <GradientStop Color="Green" Offset="0.8"/>
+                                <GradientStop Color="Gainsboro" Offset="0.1"/>
+                                <GradientStop Color="White" Offset="0.8"/>
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid>
-                            <Image Source="Assets/buttons/done.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="48"/>
+                            <Image Source="Assets/buttons/media_play_green.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="42"/>
                         </Grid>
                     </Button>
                 </StackPanel>

@@ -42,31 +42,42 @@ namespace SimzzDev
             _presenter.MouseLeftButtonUp += new MouseButtonEventHandler(ink_MouseLeftButtonUp);
             _presenter.MouseMove += new MouseEventHandler(ink_MouseMove);
             _presenter.MouseLeave += new MouseEventHandler(ink_MouseLeave);
+           
             //defaults some properties so drawing will work
             InkMode = PenMode.Pen;
             MainColor = Colors.Black;
             OutlineColor = Colors.Black;
             BrushWidth = 2;
             BrushHeight = 2;
-
         }
 
 
 
         void ink_MouseLeave(object sender, MouseEventArgs e)
         {
+            ResetPen();
+        }
+
+        private void ResetPen()
+        {
             _stroke = null;
             _presenter.ReleaseMouseCapture();
         }
 
 
-
-
         void ink_MouseMove(object sender, MouseEventArgs e)
         {
+            var pos = e.GetPosition(sender as UIElement);
+            if (pos.X < 0 || pos.Y < 0 || pos.X > _presenter.Width || pos.Y > _presenter.Height)
+            {
+                ResetPen();
+                return;
+            }
+
             if (InkMode == PenMode.Pen && _stroke != null)
             {
-                _stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(_presenter));
+                var sp = e.StylusDevice.GetStylusPoints(_presenter);
+                _stroke.StylusPoints.Add(sp);
             }
             //orig
             //if (InkMode == PenMode.erase && _erasePoints != null)
