@@ -8,6 +8,7 @@ namespace EasyPaint.Model
     public class Character
     {
         public string Id { get; set; }
+        public string FriendlyName { get; set; }
         public List<string> Cultures { get; set; }
         public List<MyPicture> Pics { get; set; }
 
@@ -21,5 +22,7 @@ namespace EasyPaint.Model
         {
             return Id;
         }
+
+      
     }
 }

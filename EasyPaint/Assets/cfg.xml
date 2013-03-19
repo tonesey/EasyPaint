@@ -10,6 +10,7 @@
     <item id="PeppaPig">
       <cultures>*</cultures>
       <pics>
+        <item source="Peppa-Laughing_PP821-copy.jpg"/>
         <item source="pig.png"/>
       </pics>
     </item>
@@ -30,6 +31,9 @@
     </item>
     <item id="WinnieThePooh">
       <cultures>*</cultures>
+    </item>
+    <item id="Pocoyo">
+      <cultures>es-ES</cultures>
     </item>
   </characters>
 </root>

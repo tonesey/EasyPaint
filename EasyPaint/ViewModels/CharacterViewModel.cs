@@ -39,6 +39,23 @@ namespace EasyPaint.ViewModels
             }
         }
 
+        public string FriendlyName
+        {
+            get
+            {
+                return LocalizedResources.ResourceManager.GetString(_character.Id);
+            }
+        }
+
+        public Uri CharThumbnailSource
+        {
+            get
+            {
+                return new Uri(string.Format("Assets/Packages/{0}/thumb.png", _character.Id), UriKind.RelativeOrAbsolute);
+            }
+        }
+
+
         public List<string> Cultures
         {
             get

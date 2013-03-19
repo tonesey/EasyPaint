@@ -64,18 +64,28 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LocalizedResources.it-IT.Designer.cs">
+      <DependentUpon>LocalizedResources.it-IT.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Helpers\EditableImage.cs" />
     <Compile Include="Helpers\Images.cs" />
     <Compile Include="Helpers\PngEncoder.cs" />
     <Compile Include="Helpers\MyVisualTreeHelper.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="LocalizedResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PainterPage.xaml.cs">
+      <DependentUpon>PainterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Character.cs" />
     <Compile Include="Model\MyPicture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PicSelector.xaml.cs">
-      <DependentUpon>PicSelector.xaml</DependentUpon>
+    <Compile Include="PicSelectorPage.xaml.cs">
+      <DependentUpon>PicSelectorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tests\Assert.cs" />
     <Compile Include="Tests\Tester.cs" />
@@ -89,11 +99,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="PainterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PicSelector.xaml">
+    <Page Include="PicSelectorPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -123,12 +133,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor_but1pixel.png" />
     <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor_but10pixel.png" />
+    <EmbeddedResource Include="LocalizedResources.it-IT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizedResources.it-IT.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizedResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <Resource Include="Assets\bkg\2_1.jpg" />
     <Resource Include="Assets\bkg\bgcolor.jpg" />
     <Resource Include="Assets\bkg\dots_480_800.png" />
     <Resource Include="Assets\bkg\flowers_480_800.png" />
     <Resource Include="Assets\bkg\hearts2_480_800.png" />
     <Resource Include="Assets\bkg\hearts_480_800.png" />
+    <Resource Include="Assets\bkg\pastel2.png" />
+    <Content Include="Assets\bkg\tumblr_m7my7b4pDL1r836v5.jpg" />
     <Content Include="Assets\buttons\bullet_ball_blue.png" />
     <Content Include="Assets\buttons\done.png" />
     <Content Include="Assets\buttons\Edit.png" />
@@ -149,12 +169,17 @@
     <Content Include="Assets\packages\MickeyMouse\disegno-faccia-di-minnie-colorato-300x300.png" />
     <Content Include="Assets\packages\MickeyMouse\disegno-faccia-di-minnie-disney-colorato-300x300.png" />
     <Content Include="Assets\packages\MickeyMouse\disegno-minnie-disney-colorato-300x300.png" />
+    <Content Include="Assets\packages\MickeyMouse\thumb.png" />
+    <Content Include="Assets\packages\PeppaPig\Peppa-Laughing_PP821-copy.jpg" />
     <Content Include="Assets\packages\PeppaPig\pig.png" />
+    <Content Include="Assets\packages\PeppaPig\thumb.png" />
     <Content Include="Assets\packages\Pimpa\01.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\packages\Pimpa\thumb.png" />
     <Content Include="Assets\packages\WinnieThePooh\01.bmp" />
     <Content Include="Assets\packages\WinnieThePooh\02.bmp" />
+    <Content Include="Assets\packages\WinnieThePooh\thumb.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

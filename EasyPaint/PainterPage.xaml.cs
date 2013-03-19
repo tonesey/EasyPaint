@@ -23,7 +23,7 @@ using System.Threading;
 
 namespace DrawingBoard_Sample
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class PainterPage : PhoneApplicationPage
     {
 
         const int TotalTime = 60;
@@ -39,7 +39,7 @@ namespace DrawingBoard_Sample
 
         Storyboard _sb = null;
 
-        public MainPage()
+        public PainterPage()
         {
             InitializeComponent();
             //Tester.CheckImagesTester();
