@@ -58,6 +58,9 @@ namespace EasyPaint.ViewModels
             }
         }
 
-       
+
+        public string CharacterId { get; set; }
+
+        public string FileName { get; set; }
     }
 }

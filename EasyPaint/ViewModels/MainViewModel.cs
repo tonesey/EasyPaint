@@ -69,8 +69,8 @@ namespace EasyPaint.ViewModels
         public bool IsDataLoaded { get; set; }
 
 
-        private Uri _selectedPicture;
-        public Uri SelectedPicture
+        private PicViewModel _selectedPicture;
+        public PicViewModel SelectedPicture
         {
             get
             {
@@ -132,7 +132,7 @@ namespace EasyPaint.ViewModels
             }
 
             InitializeCharacters(chars);
-            SelectedPicture = CurrentCultureKnownCharacters.FirstOrDefault(c => c.Pics.Count > 0).Pics.First().ImageSource;
+           // SelectedPicture = CurrentCultureKnownCharacters.FirstOrDefault(c => c.Pics.Count > 0).Pics.First().ImageSource;
             IsDataLoaded = true;
         }
     }

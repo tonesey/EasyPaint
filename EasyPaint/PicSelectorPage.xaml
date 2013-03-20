@@ -64,6 +64,7 @@
                                         <telerikPrimitives:RadDataBoundListBox HorizontalAlignment="Left" Margin="-6,6,-6,0" 
                                                                                Grid.Row="0" 
                                                                                ItemsSource="{Binding Pics}" 
+                                                                               ItemTap="RadDataBoundListBox_ItemTap_1"
                                                                                IsHitTestVisible="True">
                                             <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                                                 <DataTemplate>

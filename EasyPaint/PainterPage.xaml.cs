@@ -25,7 +25,6 @@ namespace DrawingBoard_Sample
 {
     public partial class PainterPage : PhoneApplicationPage
     {
-
         const int TotalTime = 60;
 
         // Constructor
@@ -58,7 +57,6 @@ namespace DrawingBoard_Sample
         #region timer
         void dt_Tick(object sender, EventArgs e)
         {
-
             if (_availableTimeValue - 1 > 0)
             {
                 _availableTimeValue--;
@@ -84,6 +82,7 @@ namespace DrawingBoard_Sample
             _gameInProgress = true;
             _availableTimeValue = TotalTime;
             _dt.Start();
+            _sb.Begin();
         }
 
         private void StopTimer()
@@ -91,6 +90,7 @@ namespace DrawingBoard_Sample
             _gameInProgress = false;
             _availableTimeValue = 0;
             _dt.Stop();
+            _sb.Stop();
         }
         #endregion
 
@@ -99,7 +99,9 @@ namespace DrawingBoard_Sample
 
             SetEllipseSize(_myBoard.BrushWidth);
 
-            ImagesHelper.WriteContentImageToIsoStore("Assets/Packages/MickeyMouse/disegno-faccia-di-minnie-colorato-300x300.png", tmpFName);
+            var selectedImage = App.ViewModel.SelectedPicture;
+            var resName = string.Format("Assets/Packages/{0}/{1}", selectedImage.CharacterId, selectedImage.FileName);
+            ImagesHelper.WriteContentImageToIsoStore(resName, tmpFName);
 
             _origPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
             mainImg.Source = _origPicture;
@@ -126,6 +128,17 @@ namespace DrawingBoard_Sample
 
 
 
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            //MessageBoxResult mb = MessageBox.Show("Sei sicuro di voler uscire?", "Attenzione", MessageBoxButton.OKCancel);
+            //if (mb != MessageBoxResult.OK)
+            //{
+            //    e.Cancel = true;
+            //}
+
+            StopTimer();
         }
 
         //private void redBtn_Click(object sender, RoutedEventArgs e)
@@ -159,20 +172,19 @@ namespace DrawingBoard_Sample
 
         private void startOrStopBtn_Click(object sender, RoutedEventArgs e)
         {
-
             if (_gameInProgress)
             {
                 //started: now stop
                 StopTimer();
                 CheckDrawnPicture();
-                _sb.Stop();
+                
             }
             else
             {
                 //stopped: now started
                 _myBoard.Clear();
                 StartTimer();
-                _sb.Begin();
+                
             }
         }
 

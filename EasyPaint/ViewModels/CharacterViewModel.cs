@@ -72,6 +72,8 @@ namespace EasyPaint.ViewModels
             {
                 this._charPics.Add(new PicViewModel()
                 {
+                    CharacterId = _character.Id,
+                    FileName = pic.FileName,
                     ImageSource = new Uri(string.Format("Assets/Packages/{0}/{1}", _character.Id, pic.FileName), UriKind.RelativeOrAbsolute),
                     ImageThumbnailSource = new Uri(string.Format("Assets/Packages/{0}/{1}", _character.Id, pic.FileName), UriKind.RelativeOrAbsolute)
                     //ImageThumbnailSource = new Uri("Images/FrameThumbnail.png", UriKind.RelativeOrAbsolute),
