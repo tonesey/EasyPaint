@@ -51,7 +51,8 @@ namespace EasyPaint.ViewModels
         {
             get
             {
-                return new Uri(string.Format("Assets/Packages/{0}/thumb.png", _character.Id), UriKind.RelativeOrAbsolute);
+                //return new Uri(string.Format("Assets/Packages/{0}/thumb.png", _character.Id), UriKind.RelativeOrAbsolute);
+                return new Uri(string.Format("Assets/Packages/{0}/c1.png", _character.Id), UriKind.RelativeOrAbsolute);
             }
         }
 

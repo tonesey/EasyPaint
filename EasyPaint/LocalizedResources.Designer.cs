@@ -61,56 +61,65 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mickey Mouse.
+        ///   Looks up a localized string similar to Baby Looney toones.
         /// </summary>
-        internal static string MickeyMouse {
+        internal static string baby_looney_toones {
             get {
-                return ResourceManager.GetString("MickeyMouse", resourceCulture);
+                return ResourceManager.GetString("baby_looney_toones", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Peppa Pig.
+        ///   Looks up a localized string similar to The Beauty and the Beast.
         /// </summary>
-        internal static string PeppaPig {
+        internal static string beauty_beast {
             get {
-                return ResourceManager.GetString("PeppaPig", resourceCulture);
+                return ResourceManager.GetString("beauty_beast", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La Pimpa.
+        ///   Looks up a localized string similar to Snow White.
         /// </summary>
-        internal static string Pimpa {
+        internal static string biancaneve {
             get {
-                return ResourceManager.GetString("Pimpa", resourceCulture);
+                return ResourceManager.GetString("biancaneve", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pingu.
+        ///   Looks up a localized string similar to Caillou.
         /// </summary>
-        internal static string Pingu {
+        internal static string caillou {
             get {
-                return ResourceManager.GetString("Pingu", resourceCulture);
+                return ResourceManager.GetString("caillou", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Puffi.
+        ///   Looks up a localized string similar to Cars.
         /// </summary>
-        internal static string Puffi {
+        internal static string cars {
             get {
-                return ResourceManager.GetString("Puffi", resourceCulture);
+                return ResourceManager.GetString("cars", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Winnie The Pooh.
+        ///   Looks up a localized string similar to Tom And Jerry.
         /// </summary>
-        internal static string WinnieThePooh {
+        internal static string tom_and_jerry {
             get {
-                return ResourceManager.GetString("WinnieThePooh", resourceCulture);
+                return ResourceManager.GetString("tom_and_jerry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toy Story.
+        /// </summary>
+        internal static string toy_story {
+            get {
+                return ResourceManager.GetString("toy_story", resourceCulture);
             }
         }
     }

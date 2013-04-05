@@ -117,22 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MickeyMouse" xml:space="preserve">
-    <value>Mickey Mouse</value>
+  <data name="baby_looney_toones" xml:space="preserve">
+    <value>Baby Looney toones</value>
   </data>
-  <data name="PeppaPig" xml:space="preserve">
-    <value>Peppa Pig</value>
+  <data name="beauty_beast" xml:space="preserve">
+    <value>The Beauty and the Beast</value>
   </data>
-  <data name="Pimpa" xml:space="preserve">
-    <value>La Pimpa</value>
+  <data name="biancaneve" xml:space="preserve">
+    <value>Snow White</value>
   </data>
-  <data name="Pingu" xml:space="preserve">
-    <value>Pingu</value>
+  <data name="caillou" xml:space="preserve">
+    <value>Caillou</value>
   </data>
-  <data name="Puffi" xml:space="preserve">
-    <value>Puffi</value>
+  <data name="cars" xml:space="preserve">
+    <value>Cars</value>
   </data>
-  <data name="WinnieThePooh" xml:space="preserve">
-    <value>Winnie The Pooh</value>
+  <data name="tom_and_jerry" xml:space="preserve">
+    <value>Tom And Jerry</value>
+  </data>
+  <data name="toy_story" xml:space="preserve">
+    <value>Toy Story</value>
   </data>
 </root>

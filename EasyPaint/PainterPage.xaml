@@ -93,7 +93,7 @@
                                 Margin="0,0">
                             <Grid Margin="0" MouseLeave="Grid_MouseLeave_1" MouseMove="Grid_MouseMove_1">
                                 <Rectangle Name="mainImgBck" Width="440" Height="500" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>
-                                <Image Name="mainImg" Width="440" Height="500"  Stretch="Fill" Source="/Assets/Packages/Pimpa/01.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.1"></Image>
+                                <Image Name="mainImg" Width="440" Height="500"  Stretch="Fill" Source="/Assets/packages/baby_looney_toones/c1.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.1"></Image>
                                 <InkPresenter  Name="ink" Width="440" Height="500" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" />
                             </Grid>
                         </Border>
