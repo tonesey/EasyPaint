@@ -1,75 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
   <characters>
-    <item id="baby_looney_toones" availableInTrial="false">
+    <item id="test" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
-        <item source="c1.PNG"/>
-        <item source="c2.PNG"/>
-        <item source="c3.PNG"/>
-        <item source="c4.PNG"/>
-        <item source="c5.PNG"/>
+        <item source="c1.png"/>
+      </pics>
+    </item>
+    <!--<item id="baby_looney_toones" availableInTrial="false">
+      <cultures>*</cultures>
+      <pics>
+        <item source="c1.png"/>
+        <item source="c2.png"/>
+        <item source="c3.png"/>
+        <item source="c4.png"/>
+        <item source="c5.png"/>
       </pics>
     </item>
     <item id="beauty_beast" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
-        <item source="c1.PNG"/>
-        <item source="c2.PNG"/>
-        <item source="c3.PNG"/>
-        <item source="c4.PNG"/>
-        <item source="c5.PNG"/>
+        <item source="c1.png"/>
+        <item source="c2.png"/>
+        <item source="c3.png"/>
+        <item source="c4.png"/>
+        <item source="c5.png"/>
       </pics>
     </item>
     <item id="biancaneve" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
-        <item source="c1.PNG"/>
-        <item source="c2.PNG"/>
-        <item source="c3.PNG"/>
-        <item source="c4.PNG"/>
-        <item source="c5.PNG"/>
+        <item source="c1.png"/>
+        <item source="c2.png"/>
+        <item source="c3.png"/>
+        <item source="c4.png"/>
+        <item source="c5.png"/>
       </pics>
     </item>
     <item id="caillou" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
-        <item source="c1.PNG"/>
-        <item source="c2.PNG"/>
-        <item source="c3.PNG"/>
-        <item source="c4.PNG"/>
-        <item source="c5.PNG"/>
+        <item source="c1.png"/>
+        <item source="c2.png"/>
+        <item source="c3.png"/>
+        <item source="c4.png"/>
+        <item source="c5.png"/>
       </pics>
     </item>
     <item id="cars" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
-        <item source="c1.PNG"/>
-        <item source="c2.PNG"/>
-        <item source="c3.PNG"/>
-        <item source="c4.PNG"/>
-        <item source="c5.PNG"/>
+        <item source="c1.png"/>
+        <item source="c2.png"/>
+        <item source="c3.png"/>
+        <item source="c4.png"/>
+        <item source="c5.png"/>
       </pics>
     </item>
     <item id="tom_and_jerry" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
-        <item source="c1.PNG"/>
-        <item source="c2.PNG"/>
-        <item source="c3.PNG"/>
-        <item source="c4.PNG"/>
-        <item source="c5.PNG"/>
+        <item source="c1.png"/>
+        <item source="c2.png"/>
+        <item source="c3.png"/>
+        <item source="c4.png"/>
+        <item source="c5.png"/>
       </pics>
     </item>
     <item id="toy_story" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
-        <item source="c1.PNG"/>
-        <item source="c2.PNG"/>
-        <item source="c3.PNG"/>
-        <item source="c4.PNG"/>
-        <item source="c5.PNG"/>
+        <item source="c1.png"/>
+        <item source="c2.png"/>
+        <item source="c3.png"/>
+        <item source="c4.png"/>
+        <item source="c5.png"/>
       </pics>
-    </item>
+    </item>-->
   </characters>
 </root>

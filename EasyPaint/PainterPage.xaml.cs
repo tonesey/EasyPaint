@@ -100,7 +100,9 @@ namespace DrawingBoard_Sample
             SetEllipseSize(_myBoard.BrushWidth);
 
             var selectedImage = App.ViewModel.SelectedPicture;
-            var resName = string.Format("Assets/Packages/{0}/{1}", selectedImage.CharacterId, selectedImage.FileName);
+            //var resName = string.Format("Assets/packages/{0}/{1}", selectedImage.CharacterId, selectedImage.FileName);
+
+            var resName = "Assets/packages/test/c1_orig.png";
             ImagesHelper.WriteContentImageToIsoStore(resName, tmpFName);
 
             _origPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
@@ -120,14 +122,15 @@ namespace DrawingBoard_Sample
                 }
                 count++;
             }
+
+#if DEBUG
+            MessageBox.Show("colors detected : " + count);
+#endif
             for (int i = count; i <= 6; i++)
             {
                 var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
                 btn.Visibility = Visibility.Collapsed;
             }
-
-
-
         }
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)

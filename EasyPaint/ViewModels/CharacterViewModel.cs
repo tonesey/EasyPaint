@@ -52,7 +52,7 @@ namespace EasyPaint.ViewModels
             get
             {
                 //return new Uri(string.Format("Assets/Packages/{0}/thumb.png", _character.Id), UriKind.RelativeOrAbsolute);
-                return new Uri(string.Format("Assets/Packages/{0}/c1.png", _character.Id), UriKind.RelativeOrAbsolute);
+                return new Uri(string.Format("Assets/packages/{0}/c1.png", _character.Id), UriKind.RelativeOrAbsolute);
             }
         }
 
@@ -75,14 +75,15 @@ namespace EasyPaint.ViewModels
                 {
                     CharacterId = _character.Id,
                     FileName = pic.FileName,
-                    ImageSource = new Uri(string.Format("Assets/Packages/{0}/{1}", _character.Id, pic.FileName), UriKind.RelativeOrAbsolute),
-                    ImageThumbnailSource = new Uri(string.Format("Assets/Packages/{0}/{1}", _character.Id, pic.FileName), UriKind.RelativeOrAbsolute)
+                    ImageSource = new Uri(string.Format("Assets/packages/{0}/{1}", _character.Id, pic.FileName), UriKind.RelativeOrAbsolute),
+                    ImageThumbnailSource = new Uri(string.Format("Assets/packages/{0}/{1}", _character.Id, pic.FileName), UriKind.RelativeOrAbsolute)
                     //ImageThumbnailSource = new Uri("Images/FrameThumbnail.png", UriKind.RelativeOrAbsolute),
                     //Title = "Title " + i,
                     //Information = "Information " + i,
                     //Group = (i % 2 == 0) ? "EVEN" : "ODD"
                 });
             }
+            OnPropertyChanged("Pics");
         }
     }
 }

@@ -37,25 +37,32 @@ namespace EasyPaint.ViewModels
 
                 ObservableCollection<CharacterViewModel> c = new ObservableCollection<CharacterViewModel>() {
                 
-                    new CharacterViewModel(new Character() { Id = "Pimpa", 
+                    new CharacterViewModel(new Character() { Id = "baby_looney_toones", 
+                                                             FriendlyName = "Baby looney toons",
                                                              Pics = new List<MyPicture>() { 
-                                                                 new MyPicture() { FileName = "01.PNG"} 
+                                                                new MyPicture() { FileName = "c1.PNG"}, 
+                                                                new MyPicture() { FileName = "c2.PNG"},
+                                                                new MyPicture() { FileName = "c3.PNG"}
                                                              } } ),
-                    new CharacterViewModel(new Character() { Id = "MickeyMouse", 
+                    new CharacterViewModel(new Character() { Id = "beauty_beast", 
+                                                             FriendlyName = "Beauty and Beast",
                                                              Pics = new List<MyPicture>() { 
-                                                                 new MyPicture() { FileName = "disegno-di-baby-minnie-colorato-300x300.png"} ,
-                                                                 new MyPicture() { FileName = "disegno-faccia-di-minnie-colorato-300x300.png"},
-                                                                 new MyPicture() { FileName = "disegno-faccia-di-minnie-disney-colorato-300x300.png"},
-                                                                 new MyPicture() { FileName = "disegno-minnie-disney-colorato-300x300.png"} 
+                                                                new MyPicture() { FileName = "c1.PNG"}, 
+                                                                new MyPicture() { FileName = "c2.PNG"},
+                                                                new MyPicture() { FileName = "c3.PNG"}
                                                              } } ),
-                    new CharacterViewModel(new Character() { Id = "PeppaPig", 
+                    new CharacterViewModel(new Character() { Id = "cars", 
                                                              Pics = new List<MyPicture>() { 
-                                                                 new MyPicture() { FileName = "pig.PNG"} 
-                                                             } } )
+                                                                new MyPicture() { FileName = "c1.PNG"}, 
+                                                                new MyPicture() { FileName = "c2.PNG"},
+                                                                new MyPicture() { FileName = "c3.PNG"}     
+                                                             
+                                                                                                                     } } )
                 };
 
                 _characters = c;
             }
+
         }
 
         public ObservableCollection<CharacterViewModel> CurrentCultureKnownCharacters
@@ -132,7 +139,8 @@ namespace EasyPaint.ViewModels
             }
 
             InitializeCharacters(chars);
-           // SelectedPicture = CurrentCultureKnownCharacters.FirstOrDefault(c => c.Pics.Count > 0).Pics.First().ImageSource;
+            SelectedPicture = Characters.First().Pics.Last();
+            OnPropertyChanged("Characters");
             IsDataLoaded = true;
         }
     }
