@@ -1,0 +1,95 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="EasyPaint.View.Homepage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP71" 
+    mc:Ignorable="d" d:DesignWidth="768" d:DesignHeight="480"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    Loaded="PhoneApplicationPage_Loaded"
+    shell:SystemTray.IsVisible="False">
+
+
+    <phone:PhoneApplicationPage.Resources>
+
+    </phone:PhoneApplicationPage.Resources>
+
+
+    <UserControl.DataContext>
+        <Binding Path="HomepageViewModel" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
+
+
+    <Grid x:Name="LayoutRoot" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/painter_bck.jpg"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource ButtonStyle1}" >
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="2.284"/>
+            </Button.RenderTransform>
+            <Button.Content>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Stretch="Fill" Source="/Assets/buttons/bullet_ball_blue.png"/>
+                    <TextBlock Name="ButtonStartText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}">$start game</TextBlock>
+                </Grid>
+            </Button.Content>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="StartGameClicked" Command="{Binding StartGameCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource ButtonStyle1}" >
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="-4.646"/>
+            </Button.RenderTransform>
+            <Button.Content>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Stretch="Fill" Source="/Assets/buttons/bullet_ball_blue.png"/>
+                    <TextBlock Name="ButtonCreditsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}">credits</TextBlock>
+                </Grid>
+            </Button.Content>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="StartCreditsClicked" Command="{Binding StartGameCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
+    

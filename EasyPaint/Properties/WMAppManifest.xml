@@ -20,7 +20,7 @@
     </Capabilities>
     <Tasks>
       <!--<DefaultTask Name="_default" NavigationPage="PicSelectorPage.xaml" />-->
-      <DefaultTask Name="_default" NavigationPage="PainterPage.xaml" />
+      <DefaultTask Name="_default" NavigationPage="/View/Homepage.xaml" />
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="EasyPaintToken" TaskName="_default">
