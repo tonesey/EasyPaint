@@ -12,14 +12,14 @@ namespace EasyPaint.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class HomepageViewModel : ViewModelBase
+    public class HomePageViewModel : ViewModelBase
     {
         public RelayCommand StartGameCommand { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the HomepageViewModel class.
         /// </summary>
-        public HomepageViewModel()
+        public HomePageViewModel()
         {
             StartGameCommand = new RelayCommand(() => ExecStartGameCommand());
         }
@@ -34,7 +34,7 @@ namespace EasyPaint.ViewModel
             //    ((App)Application.Current).IsTrial.ToString()}
             //   );
 
-            var msg = new GoToPageMessage() { PageName = Constants.View_Game };
+            var msg = new GoToPageMessage() { PageName = Constants.View_GroupSeletor };
             Messenger.Default.Send<GoToPageMessage>(msg);
             return null;
         }

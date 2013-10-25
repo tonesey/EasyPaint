@@ -1,13 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
-  <characters>
-    <item id="test" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-      </pics>
-    </item>
-    <!--<item id="baby_looney_toones" availableInTrial="false">
+  <group id="0" key="group.Africa" imgname="0.png">
+    <items>
+      <item imgname="lion.png" key="item.lion"/>
+      <item imgname="tiger.png" key="item.lion"/>
+      <item imgname="lion.zebra" key="item.lion"/>
+    </items>
+  </group>
+  <group id="1" key="group.Europe" imgname="1.png">
+    <items>
+      <item imgname="tiger.png" key="item.lion"/>
+      <item imgname="lion.zebra" key="item.lion"/>
+      <item imgname="lion.png" key="item.lion"/>
+    </items>
+  </group>
+  <group id="2" key="group.America" imgname="2.png">
+    <items>
+      <item imgname="lion.png" key="item.lion"/>
+      <item imgname="tiger.png" key="item.lion"/>
+      <item imgname="lion.zebra" key="item.lion"/>
+    </items>
+  </group>
+
+  <!--ù<item id="baby_looney_toones" availableInTrial="false">
       <cultures>*</cultures>
       <pics>
         <item source="c1.png"/>
@@ -77,5 +92,4 @@
         <item source="c5.png"/>
       </pics>
     </item>-->
-  </characters>
 </root>

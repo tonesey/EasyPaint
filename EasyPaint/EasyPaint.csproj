@@ -61,6 +61,7 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.4.1.27.1\lib\sl4-wp71\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -74,13 +75,21 @@
     <Reference Include="Telerik.Windows.Controls.Input, Version=2013.2.612.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Primitives, Version=2013.2.612.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Core, Version=2013.2.612.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="WriteableBitmapExWinPhone">
+      <HintPath>..\packages\WriteableBitmapEx.1.0.8.0\lib\sl4-wp71\WriteableBitmapExWinPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="WriteableBitmapExWinPhoneXnaDependant">
+      <HintPath>..\packages\WriteableBitmapEx.1.0.8.0\lib\sl4-wp71\WriteableBitmapExWinPhoneXnaDependant.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\GenericHelper.cs" />
+    <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="LocalizedResources.it-IT.Designer.cs">
       <DependentUpon>LocalizedResources.it-IT.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -98,27 +107,33 @@
     <Compile Include="Messages\BaseMessage.cs" />
     <Compile Include="Messages\RateAppMessage.cs" />
     <Compile Include="Messages\GoToPageMessage.cs" />
-    <Compile Include="ViewModel\CharacterViewModel.cs">
+    <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\AppData.cs" />
+    <Compile Include="Model\IDataService.cs" />
+    <Compile Include="Model\UI\PictureLoopingItem.cs" />
+    <Compile Include="ViewModel\ItemSelectorViewModel.cs" />
+    <Compile Include="ViewModel\GroupSelectorViewModel.cs" />
+    <Compile Include="ViewModel\GroupViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\HomepageViewModel.cs" />
-    <Compile Include="View\Homepage.xaml.cs">
-      <DependentUpon>Homepage.xaml</DependentUpon>
+    <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="View\GroupSelectorPage.xaml.cs">
+      <DependentUpon>GroupSelectorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PainterPage.xaml.cs">
       <DependentUpon>PainterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Character.cs" />
-    <Compile Include="Model\MyPicture.cs" />
+    <Compile Include="Model\Group.cs" />
+    <Compile Include="Model\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\PicSelectorPage.xaml.cs">
-      <DependentUpon>PicSelectorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Tests\Assert.cs" />
     <Compile Include="Tests\Tester.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="ViewModel\PicViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ItemViewModel.cs" />
+    <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\MyViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,20 +141,37 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="View\Homepage.xaml">
-      <SubType>Form</SubType>
+    <Page Include="View\GroupSelectorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\HomePage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PainterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PicSelectorPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\bkg\explorer.png" />
+    <Resource Include="Assets\groups\0.png" />
+    <Resource Include="Assets\groups\1.png" />
+    <Resource Include="Assets\groups\2.png" />
+    <Resource Include="Assets\groups\3.png" />
+    <Resource Include="Assets\groups\4.png" />
+    <Resource Include="Assets\groups\5.png" />
+    <Resource Include="Assets\groups\0\lion.png" />
+    <Resource Include="Assets\groups\0\tiger.png" />
+    <Resource Include="Assets\groups\0\zebra.png" />
+    <Resource Include="Assets\groups\3\diavolo.png" />
+    <Resource Include="Assets\groups\3\canguro colore.png" />
+    <Resource Include="Assets\groups\3\canguro lineart.png" />
+    <Resource Include="Assets\groups\3\coccodrillo colore.png" />
+    <Resource Include="Assets\groups\3\coccodrillo lineart.png" />
+    <Resource Include="Assets\groups\3\koala colore.png" />
+    <Resource Include="Assets\groups\3\koala lineart.png" />
     <Content Include="Fonts\DK Crayon Crumble.ttf" />
     <Content Include="Fonts\LINDS.TTF" />
     <Content Include="Fonts\PERIC.TTF" />
@@ -198,64 +230,14 @@
     <Content Include="Assets\buttons\eraser2.png" />
     <Content Include="Assets\buttons\finish.png" />
     <Content Include="Assets\buttons\media_play_green.png" />
-    <Content Include="Assets\buttons\pencil.png" />
+    <Resource Include="Assets\buttons\pencil.png" />
     <Content Include="Assets\buttons\pencil_tr.png" />
-    <EmbeddedResource Include="Assets\cfg.xml">
+    <EmbeddedResource Include="cfg.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Assets\buttons\pencil_tr1.png" />
     <Content Include="Assets\buttons\pencil_tr2.png" />
     <Content Include="Assets\buttons\sign_stop.png" />
-    <Content Include="Assets\packages\animals\clamidosauro.png" />
-    <Content Include="Assets\packages\animals\clamidosauro_lineart.png" />
-    <Content Include="Assets\packages\baby_looney_toones\c1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\packages\baby_looney_toones\c2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\packages\baby_looney_toones\c3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\packages\baby_looney_toones\c4.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\packages\baby_looney_toones\c5.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\packages\beauty_beast\c1.png" />
-    <Content Include="Assets\packages\beauty_beast\c2.png" />
-    <Content Include="Assets\packages\beauty_beast\c3.png" />
-    <Content Include="Assets\packages\beauty_beast\c4.png" />
-    <Content Include="Assets\packages\beauty_beast\c5.png" />
-    <Content Include="Assets\packages\biancaneve\c1.png" />
-    <Content Include="Assets\packages\biancaneve\c2.png" />
-    <Content Include="Assets\packages\biancaneve\c3.png" />
-    <Content Include="Assets\packages\biancaneve\c4.png" />
-    <Content Include="Assets\packages\biancaneve\c5.png" />
-    <Content Include="Assets\packages\caillou\c1.png" />
-    <Content Include="Assets\packages\caillou\c2.png" />
-    <Content Include="Assets\packages\caillou\c3.png" />
-    <Content Include="Assets\packages\caillou\c4.png" />
-    <Content Include="Assets\packages\caillou\c5.png" />
-    <Content Include="Assets\packages\cars\c1.png" />
-    <Content Include="Assets\packages\cars\c2.png" />
-    <Content Include="Assets\packages\cars\c3.png" />
-    <Content Include="Assets\packages\cars\c4.png" />
-    <Content Include="Assets\packages\cars\c5.png" />
-    <Content Include="Assets\packages\test\c1.png" />
-    <Content Include="Assets\packages\test\c1_orig.png" />
-    <Content Include="Assets\packages\test\angeliraffaello_tr.png" />
-    <Content Include="Assets\packages\tom_and_jerry\c1.png" />
-    <Content Include="Assets\packages\tom_and_jerry\c2.png" />
-    <Content Include="Assets\packages\tom_and_jerry\c3.png" />
-    <Content Include="Assets\packages\tom_and_jerry\c4.png" />
-    <Content Include="Assets\packages\tom_and_jerry\c5.png" />
-    <Content Include="Assets\packages\toy_story\c1.png" />
-    <Content Include="Assets\packages\toy_story\c2.png" />
-    <Content Include="Assets\packages\toy_story\c3.png" />
-    <Content Include="Assets\packages\toy_story\c4.png" />
-    <Content Include="Assets\packages\toy_story\c5.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -272,7 +254,12 @@
       <Name>DrawingBoard</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\groups\1\" />
+    <Folder Include="Assets\groups\2\" />
+    <Folder Include="Assets\groups\4\" />
+    <Folder Include="Assets\groups\5\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

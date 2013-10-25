@@ -20,6 +20,7 @@ using System.Windows.Threading;
 using EasyPaint;
 using System.Globalization;
 using System.Threading;
+using EasyPaint.ViewModel;
 
 namespace EasyPaint.View
 {
@@ -99,7 +100,7 @@ namespace EasyPaint.View
 
             SetEllipseSize(_myBoard.BrushWidth);
 
-            var selectedImage = App.ViewModel.SelectedPicture;
+            var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
             //var resName = string.Format("Assets/packages/{0}/{1}", selectedImage.CharacterId, selectedImage.FileName);
 
             var resName = "Assets/packages/animals/clamidosauro.png";

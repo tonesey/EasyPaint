@@ -5,17 +5,20 @@ using System.Text;
 
 namespace EasyPaint.Model
 {
-    public class Character
+    public class Group
     {
         public string Id { get; set; }
-        public string FriendlyName { get; set; }
-        public List<string> Cultures { get; set; }
-        public List<MyPicture> Pics { get; set; }
+        public string Key { get; set; }
+        public string ImgFilename { get; set; }
 
-        public Character() {
+        //public string FriendlyName { get; set; }
+
+        public List<Item> Items { get; set; }
+
+        public Group()
+        {
             Id = string.Empty;
-            Cultures = new List<string>();
-            Pics = new List<MyPicture>();
+            Items = new List<Item>();
         }
 
         public override string ToString()
@@ -23,6 +26,5 @@ namespace EasyPaint.Model
             return Id;
         }
 
-      
     }
 }

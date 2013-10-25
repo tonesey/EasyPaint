@@ -9,7 +9,11 @@ namespace EasyPaint.Helpers
     {
 
         #region views
-        public const string View_Game = "PainterPage";
+        public const string View_Painter = "PainterPage";
+        public const string View_Homepage = "Homepage";
+        public const string View_GroupSeletor = "GroupSelectorPage";
+        public const string View_ItemSeletor = "ItemSelectorPage";
+        public const string View_Credits = "CreditsPage";
         #endregion
     }
 }

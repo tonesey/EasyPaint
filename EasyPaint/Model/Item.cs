@@ -5,13 +5,14 @@ using System.Text;
 
 namespace EasyPaint.Model
 {
-    public class MyPicture
+    public class Item
     {
-        public string FileName { get; set; }
+        public string Key { get; set; }
+        public string ImgFilename { get; set; }
 
         public override string ToString()
         {
-            return FileName;
+            return Key;
         }
     }
 }

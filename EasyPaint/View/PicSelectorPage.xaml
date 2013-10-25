@@ -16,7 +16,7 @@
     shell:SystemTray.IsVisible="False">
     
     <UserControl.DataContext>
-        <viewModels:MainViewModel/>
+        <viewModels:AppViewModel/>
     </UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot">

@@ -27,16 +27,13 @@ namespace EasyPaint
         public PicSelectorPage()
         {
             InitializeComponent();
-
-            this.DataContext = App.ViewModel;
+            //this.DataContext = App.ViewModel;
         }
 
         private void RadDataBoundListBox_ItemTap_1(object sender, Telerik.Windows.Controls.ListBoxItemTapEventArgs e)
         {
-            PicViewModel selectedItem = (PicViewModel)(sender as RadDataBoundListBox).SelectedItem;
-
-            App.ViewModel.SelectedPicture = selectedItem;
-
+            ItemViewModel selectedItem = (ItemViewModel)(sender as RadDataBoundListBox).SelectedItem;
+            //App.ViewModel.SelectedPicture = selectedItem;
             NavigationService.Navigate(new Uri("/PainterPage.xaml", UriKind.RelativeOrAbsolute));
         }
     }

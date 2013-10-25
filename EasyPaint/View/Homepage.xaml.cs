@@ -12,12 +12,12 @@ namespace EasyPaint.View
     /// <summary>
     /// Description for Homepage.
     /// </summary>
-    public partial class Homepage : PhoneApplicationPage
+    public partial class HomePage : PhoneApplicationPage
     {
         /// <summary>
         /// Initializes a new instance of the Homepage class.
         /// </summary>
-        public Homepage()
+        public HomePage()
         {
             InitializeComponent();
         }
