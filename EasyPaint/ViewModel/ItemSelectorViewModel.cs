@@ -1,4 +1,8 @@
-﻿using EasyPaint.Model;
+﻿using EasyPaint.Helpers;
+using EasyPaint.Messages;
+using EasyPaint.Model;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,8 +28,8 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        private Item _SelectedItem = null;
-        public Item SelectedItem
+        private ItemViewModel _SelectedItem = null;
+        public ItemViewModel SelectedItem
         {
             get
             {
@@ -38,8 +42,19 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        public ItemSelectorViewModel() { 
-        
+
+        public RelayCommand ItemSelectedCommand { get; private set; }
+
+        public ItemSelectorViewModel() {
+
+            ItemSelectedCommand = new RelayCommand(() => NavigateToSelectedItemCommand());
+        }
+
+        private object NavigateToSelectedItemCommand()
+        {
+            var msg = new GoToPageMessage() { PageName = Constants.View_Painter };
+            Messenger.Default.Send<GoToPageMessage>(msg);
+            return null;
         }
 
         //public ItemSelectorViewModel(IDataService dataService)

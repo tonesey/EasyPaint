@@ -61,7 +61,7 @@
             ItemStyle="{StaticResource loopingListItemStyle}">
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>
-                    <Image Width="600" Height="400" Source="{Binding Picture}" Stretch="Fill" Margin="50,10,50,10"/>
+                    <Image Width="600" Height="400" Source="{Binding Picture}" Stretch="Fill" Margin="50,10,50,10" Tap="Image_Tap"/>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>
         </telerikPrimitives:RadLoopingList>

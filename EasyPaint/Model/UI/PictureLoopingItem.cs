@@ -8,6 +8,9 @@ namespace EasyPaint.Model.UI
 {
     public class PictureLoopingItem : LoopingListDataItem
     {
+
+        public object DataContext { get; set; }
+
         private Uri pictureSource;
         public Uri Picture
         {
@@ -24,5 +27,8 @@ namespace EasyPaint.Model.UI
                 }
             }
         }
+
+
+
     }
 }

@@ -111,12 +111,16 @@
     <Compile Include="Model\AppData.cs" />
     <Compile Include="Model\IDataService.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
+    <Compile Include="ViewModel\ImageAndTextItem.cs" />
     <Compile Include="ViewModel\ItemSelectorViewModel.cs" />
     <Compile Include="ViewModel\GroupSelectorViewModel.cs" />
     <Compile Include="ViewModel\GroupViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="View\ItemSelectorPage.xaml.cs">
+      <DependentUpon>ItemSelectorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GroupSelectorPage.xaml.cs">
       <DependentUpon>GroupSelectorPage.xaml</DependentUpon>
     </Compile>
@@ -141,6 +145,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="View\ItemSelectorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\GroupSelectorPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,13 +173,14 @@
     <Resource Include="Assets\groups\0\lion.png" />
     <Resource Include="Assets\groups\0\tiger.png" />
     <Resource Include="Assets\groups\0\zebra.png" />
-    <Resource Include="Assets\groups\3\diavolo.png" />
     <Resource Include="Assets\groups\3\canguro colore.png" />
     <Resource Include="Assets\groups\3\canguro lineart.png" />
     <Resource Include="Assets\groups\3\coccodrillo colore.png" />
     <Resource Include="Assets\groups\3\coccodrillo lineart.png" />
     <Resource Include="Assets\groups\3\koala colore.png" />
     <Resource Include="Assets\groups\3\koala lineart.png" />
+    <Content Include="Assets\groups\3\diavolo tsm colore lineart.png" />
+    <Content Include="Assets\groups\3\diavolo tsm colore.png" />
     <Content Include="Fonts\DK Crayon Crumble.ttf" />
     <Content Include="Fonts\LINDS.TTF" />
     <Content Include="Fonts\PERIC.TTF" />

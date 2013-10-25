@@ -40,6 +40,7 @@ namespace EasyPaint.View
             if (newEl != null)
             {
                 (e.Item as PictureLoopingItem).Picture = (newEl as ItemViewModel).ImageSource;
+                (e.Item as PictureLoopingItem).DataContext = (newEl as ItemViewModel);
             }
         }
 
@@ -50,11 +51,11 @@ namespace EasyPaint.View
                 e.Item = null;
                 return;
             }
-            
+
             var newEl = _vm.Items.ElementAt(e.Index);
             if (newEl != null)
             {
-                e.Item = new PictureLoopingItem() { Picture = (newEl as ItemViewModel).ImageSource };
+                e.Item = new PictureLoopingItem() { Picture = (newEl as ItemViewModel).ImageSource, DataContext = (newEl as ItemViewModel) };
             }
         }
 
@@ -86,6 +87,12 @@ namespace EasyPaint.View
             //}
 
             RegisterMessages();
+        }
+
+        private void Image_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            _vm.SelectedItem = (((sender as Image).DataContext as PictureLoopingItem).DataContext as ItemViewModel);
+            _vm.ItemSelectedCommand.Execute(null);
         }
 
     }

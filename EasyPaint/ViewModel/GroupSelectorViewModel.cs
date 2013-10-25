@@ -1,4 +1,8 @@
-﻿using EasyPaint.Model;
+﻿using EasyPaint.Helpers;
+using EasyPaint.Messages;
+using EasyPaint.Model;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,8 +28,8 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        private Group _SelectedGroup = null;
-        public Group SelectedGroup
+        private GroupViewModel _SelectedGroup = null;
+        public GroupViewModel SelectedGroup
         {
             get
             {
@@ -37,6 +41,8 @@ namespace EasyPaint.ViewModel
                 OnPropertyChanged("SelectedGroup");
             }
         }
+
+        public RelayCommand GroupSelectedCommand { get; private set; }
 
         public GroupSelectorViewModel(IDataService dataService)
         {
@@ -51,7 +57,14 @@ namespace EasyPaint.ViewModel
                     InitGroups(item.Groups);
                 });
 
-            //GotoMainPageCommand = new RelayCommand(() => NavigateToMainPageCommand());
+           GroupSelectedCommand = new RelayCommand(() => NavigateToSelectedGroupCommand());
+        }
+
+        private object NavigateToSelectedGroupCommand()
+        {
+            var msg = new GoToPageMessage() { PageName = Constants.View_ItemSeletor };
+            Messenger.Default.Send<GoToPageMessage>(msg);
+            return null;
         }
 
         private void InitGroups(List<Group> groups)

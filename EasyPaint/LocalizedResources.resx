@@ -117,25 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="baby_looney_toones" xml:space="preserve">
-    <value>Baby Looney toones</value>
+  <data name="group_Africa" xml:space="preserve">
+    <value>Africa</value>
   </data>
-  <data name="beauty_beast" xml:space="preserve">
-    <value>The Beauty and the Beast</value>
+  <data name="group_America" xml:space="preserve">
+    <value>America</value>
   </data>
-  <data name="biancaneve" xml:space="preserve">
-    <value>Snow White</value>
+  <data name="group_Europe" xml:space="preserve">
+    <value>Europa</value>
   </data>
-  <data name="caillou" xml:space="preserve">
-    <value>Caillou</value>
+  <data name="group_Oceania" xml:space="preserve">
+    <value>Oceania</value>
   </data>
-  <data name="cars" xml:space="preserve">
-    <value>Cars</value>
+  <data name="item_canguro" xml:space="preserve">
+    <value>canguro</value>
   </data>
-  <data name="tom_and_jerry" xml:space="preserve">
-    <value>Tom And Jerry</value>
+  <data name="item_coccodrillo" xml:space="preserve">
+    <value>coccodrillo</value>
   </data>
-  <data name="toy_story" xml:space="preserve">
-    <value>Toy Story</value>
+  <data name="item_diavolo" xml:space="preserve">
+    <value>diavolo della Tasmania</value>
+  </data>
+  <data name="item_koala" xml:space="preserve">
+    <value>koala</value>
+  </data>
+  <data name="item_lion" xml:space="preserve">
+    <value>leone</value>
+  </data>
+  <data name="item_tiger" xml:space="preserve">
+    <value>tigre</value>
+  </data>
+  <data name="item_zebra" xml:space="preserve">
+    <value>zebra</value>
   </data>
 </root>

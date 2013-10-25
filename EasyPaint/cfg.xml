@@ -1,95 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
-  <group id="0" key="group.Africa" imgname="0.png">
+  <group id="0" key="group_Africa" imgname="0.png">
     <items>
-      <item imgname="lion.png" key="item.lion"/>
-      <item imgname="tiger.png" key="item.lion"/>
-      <item imgname="lion.zebra" key="item.lion"/>
+      <item imgname="lion.png" key="item_lion"/>
+      <item imgname="tiger.png" key="item_tiger"/>
+      <item imgname="zebra.png" key="item_zebra"/>
     </items>
   </group>
-  <group id="1" key="group.Europe" imgname="1.png">
+  <group id="1" key="group_Europe" imgname="1.png">
     <items>
-      <item imgname="tiger.png" key="item.lion"/>
-      <item imgname="lion.zebra" key="item.lion"/>
-      <item imgname="lion.png" key="item.lion"/>
+      <item imgname="lion.png" key="item_lion"/>
+      <item imgname="tiger.png" key="item_tiger"/>
+      <item imgname="zebra.png" key="item_zebra"/>
     </items>
   </group>
-  <group id="2" key="group.America" imgname="2.png">
+  <group id="2" key="group_America" imgname="2.png">
     <items>
-      <item imgname="lion.png" key="item.lion"/>
-      <item imgname="tiger.png" key="item.lion"/>
-      <item imgname="lion.zebra" key="item.lion"/>
+      <item imgname="lion.png" key="item_lion"/>
+      <item imgname="tiger.png" key="item_tiger"/>
+      <item imgname="zebra.png" key="item_zebra"/>
     </items>
   </group>
-
-  <!--ù<item id="baby_looney_toones" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-        <item source="c2.png"/>
-        <item source="c3.png"/>
-        <item source="c4.png"/>
-        <item source="c5.png"/>
-      </pics>
-    </item>
-    <item id="beauty_beast" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-        <item source="c2.png"/>
-        <item source="c3.png"/>
-        <item source="c4.png"/>
-        <item source="c5.png"/>
-      </pics>
-    </item>
-    <item id="biancaneve" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-        <item source="c2.png"/>
-        <item source="c3.png"/>
-        <item source="c4.png"/>
-        <item source="c5.png"/>
-      </pics>
-    </item>
-    <item id="caillou" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-        <item source="c2.png"/>
-        <item source="c3.png"/>
-        <item source="c4.png"/>
-        <item source="c5.png"/>
-      </pics>
-    </item>
-    <item id="cars" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-        <item source="c2.png"/>
-        <item source="c3.png"/>
-        <item source="c4.png"/>
-        <item source="c5.png"/>
-      </pics>
-    </item>
-    <item id="tom_and_jerry" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-        <item source="c2.png"/>
-        <item source="c3.png"/>
-        <item source="c4.png"/>
-        <item source="c5.png"/>
-      </pics>
-    </item>
-    <item id="toy_story" availableInTrial="false">
-      <cultures>*</cultures>
-      <pics>
-        <item source="c1.png"/>
-        <item source="c2.png"/>
-        <item source="c3.png"/>
-        <item source="c4.png"/>
-        <item source="c5.png"/>
-      </pics>
-    </item>-->
+  <group id="3" key="group_Oceania" imgname="3.png">
+    <items>
+      <item imgname="canguro colore.png" key="item_canguro"/>
+      <item imgname="coccodrillo colore.png" key="item_coccodrillo"/>
+      <item imgname="diavolo tsm colore.png" key="item_diavolo"/>
+      <item imgname="koala colore.png" key="item_koala"/>
+    </items>
+  </group>
 </root>
