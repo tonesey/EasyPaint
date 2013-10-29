@@ -97,14 +97,12 @@ namespace EasyPaint.View
 
         private void PhoneApplicationPage_Loaded_1(object sender, RoutedEventArgs e)
         {
-
             SetEllipseSize(_myBoard.BrushWidth);
 
             var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
             //var resName = string.Format("Assets/packages/{0}/{1}", selectedImage.CharacterId, selectedImage.FileName);
-
-            var resName = "Assets/packages/animals/clamidosauro.png";
-            ImagesHelper.WriteContentImageToIsoStore(resName, tmpFName);
+            //var resName = "Assets/packages/animals/clamidosauro.png";
+            ImagesHelper.WriteContentImageToIsoStore(selectedImage.ImageSource, tmpFName);
 
             _origPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
             mainImg.Source = _origPicture;
@@ -123,7 +121,6 @@ namespace EasyPaint.View
                 }
                 count++;
             }
-
 #if DEBUG
             MessageBox.Show("colors detected : " + count);
 #endif

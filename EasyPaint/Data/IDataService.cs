@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EasyPaint.Model
+namespace EasyPaint.Data
 {
     public interface IDataService
     {

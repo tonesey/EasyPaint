@@ -9,6 +9,7 @@
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 */
 
+using EasyPaint.Data;
 using EasyPaint.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;

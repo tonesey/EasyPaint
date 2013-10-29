@@ -72,9 +72,13 @@ namespace EasyPaint.Helpers
         }
        
 
-        public static void WriteContentImageToIsoStore(string contentPath, string isoStoreFileName) {
+        //public static void WriteContentImageToIsoStore(string contentPath, string isoStoreFileName) {
 
-            var pngStream = Application.GetResourceStream(new Uri(contentPath, UriKind.RelativeOrAbsolute)).Stream;
+        public static void WriteContentImageToIsoStore(Uri imgUri, string isoStoreFileName)
+        {
+
+           // var pngStream = Application.GetResourceStream(new Uri(contentPath, UriKind.RelativeOrAbsolute)).Stream;
+            var pngStream = Application.GetResourceStream(imgUri).Stream;
             int counter;
             byte[] buffer = new byte[1024];
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())

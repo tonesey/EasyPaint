@@ -21,7 +21,7 @@
         <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitivesLoopingList:LoopingListItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="telerikPrimitivesLoopingList:LoopingListItem">

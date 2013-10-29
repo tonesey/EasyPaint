@@ -16,6 +16,13 @@ namespace EasyPaint.View
     {
         private GroupSelectorViewModel _vm;
 
+        LoopingListDataSource _listDs = new LoopingListDataSource(0);
+
+        public LoopingListDataSource ListDs
+        {
+            get { return _listDs; }
+        } 
+
         /// <summary>
         /// Initializes a new instance of the Homepage class.
         /// </summary>
@@ -23,23 +30,20 @@ namespace EasyPaint.View
         {
             InitializeComponent();
             _vm = ViewModelLocator.GroupSelectorViewModelStatic;
-            LoopingListDataSource ds = new LoopingListDataSource(_vm.Groups.Count());
-            ds.ItemNeeded += this.OnDs_ItemNeeded;
-            ds.ItemUpdated += this.OnDs_ItemUpdated;
-            this.loopingList.DataSource = ds;
+            _listDs = new LoopingListDataSource(_vm.Groups.Count());
+            _listDs.ItemNeeded += this.OnDs_ItemNeeded;
+            _listDs.ItemUpdated += this.OnDs_ItemUpdated;
             this.loopingList.SelectedIndexChanged += this.OnSelectedIndexChanged;
             this.loopingList.SelectedIndex = 0;
         }
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
-            //(e.Item as PictureLoopingItem).Picture = new Uri("../Assets/groups/" + (e.Index + 1) + ".png", UriKind.Relative);
             if (e.Index > _vm.Groups.Count)
             {
                 e.Item = null;
                 return;
             }
-
             var newEl = _vm.Groups.ElementAt(e.Index);
             if (newEl != null)
             {
@@ -50,18 +54,11 @@ namespace EasyPaint.View
 
         private void OnDs_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
-            //e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/groups/" + (e.Index + 1) + ".png", UriKind.Relative) };
-            //if ((e.Index + 1) >= _vm.Groups.Count) {
-            //    e.Item = null;
-            //    return;
-            //}
-
             if (e.Index > _vm.Groups.Count)
             {
                 e.Item = null;
                 return;
             }
-
             var newEl = _vm.Groups.ElementAt(e.Index);
             if (newEl != null)
             {

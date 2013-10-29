@@ -1,6 +1,7 @@
-﻿using System;
+﻿using EasyPaint.Data;
+using System;
 
-namespace EasyPaint.Model
+namespace EasyPaint.Data
 {
     public class DataService : IDataService
     {

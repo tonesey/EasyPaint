@@ -22,7 +22,7 @@ namespace EasyPaint.ViewModel
             _id = gr.Id;
             _key = gr.Key;
 
-            ImageSource = new Uri(string.Format("../Assets/groups/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
+            ImageSource = new Uri(string.Format("../Assets/groups/lres/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
         }
     }
 }

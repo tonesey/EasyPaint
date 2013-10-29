@@ -1,4 +1,5 @@
-﻿using EasyPaint.Model;
+﻿using EasyPaint.Data;
+using EasyPaint.Model;
 using System;
 
 namespace EasyPaint.Design

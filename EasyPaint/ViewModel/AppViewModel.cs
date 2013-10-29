@@ -9,6 +9,7 @@ using EasyPaint.Model;
 using Telerik.Windows.Controls;
 using System.Threading;
 using System.Collections.ObjectModel;
+using EasyPaint.Data;
 
 namespace EasyPaint.ViewModel
 {

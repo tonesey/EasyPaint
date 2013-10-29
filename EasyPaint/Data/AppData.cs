@@ -1,27 +1,36 @@
 ﻿using EasyPaint.Helpers;
+using EasyPaint.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EasyPaint.Model
+namespace EasyPaint.Data
 {
     public class AppData
     {
         private static AppData _curInstance = null;
 
         private string _tag;
-        private List<Group> _groups;
 
-        public List<Group> Groups
+        private CfgData _cfgData;
+        public CfgData CfgData
         {
-            get { return _groups; }
+            get { return _cfgData; }
         }
 
-        public AppData(string tag, List<Group> groups)
+        private UserData _userData;
+        public UserData UserData
+        {
+            get { return _userData; }
+        }
+
+        public AppData(string tag, CfgData cfgData, UserData userData)
         {
             this._tag = tag;
-            this._groups = groups;
+           //_groups = data.Groups;
+            _cfgData = cfgData;
+            _userData = userData;
 
             if (tag.Contains("design"))
             {
@@ -33,7 +42,7 @@ namespace EasyPaint.Model
         {
             if (_curInstance == null)
             {
-                _curInstance = new AppData(tag, ModelHelper.BuildDataFromCfg());
+                _curInstance = new AppData(tag, ModelHelper.BuildDataFromCfg(), new UserData("TODO"));
             }
             return _curInstance;
         }

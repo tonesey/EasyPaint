@@ -1,4 +1,5 @@
-﻿using EasyPaint.Helpers;
+﻿using EasyPaint.Data;
+using EasyPaint.Helpers;
 using EasyPaint.Messages;
 using EasyPaint.Model;
 using GalaSoft.MvvmLight.Command;
@@ -54,7 +55,7 @@ namespace EasyPaint.ViewModel
                     {
                         throw new Exception("invalid data source: " + error.Message);
                     }
-                    InitGroups(item.Groups);
+                    InitGroups(item.CfgData.Groups);
                 });
 
            GroupSelectedCommand = new RelayCommand(() => NavigateToSelectedGroupCommand());

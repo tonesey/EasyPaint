@@ -1,4 +1,5 @@
-﻿using EasyPaint.Model;
+﻿using EasyPaint.Data;
+using EasyPaint.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,12 +12,16 @@ namespace EasyPaint.Helpers
 {
     public class ModelHelper
     {
-        public static List<Group> BuildDataFromCfg()
+        public static CfgData BuildDataFromCfg()
         {
+            CfgData data = new CfgData();
+
             List<Group> groups = new List<Group>();
             Assembly asm = Assembly.GetExecutingAssembly();
             Stream stream = asm.GetManifestResourceStream("EasyPaint.cfg.xml");
             var doc = XDocument.Load(stream);
+
+            string uiMode = doc.Element("root").Element("ui").Attribute("mode").Value;
 
             groups = new List<Group>();
             foreach (XElement element in doc.Element("root").Elements("group"))
@@ -37,7 +42,11 @@ namespace EasyPaint.Helpers
                     groups.Add(g);
                 }
             }
-            return groups;
+
+            data.Groups = groups;
+            data.UIMode = uiMode;
+
+            return data;
         }
 
     }
