@@ -1,4 +1,5 @@
 ﻿using EasyPaint.Model.UI;
+using EasyPaint.Settings;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -55,24 +56,24 @@ namespace EasyPaint.Design
         #region items
         void _designDataDs_Items_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
-            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/groups/" + CurrentGroupId + "/lres/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute);
+            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/groups/" + CurrentGroupId + "/" + AppSettings.AppRes + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute);
         }
 
         void _designDataDs_Items_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
-            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/groups/" + CurrentGroupId + "/lres/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute) };
+            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/groups/" + CurrentGroupId + "/" + AppSettings.AppRes + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute) };
         }
         #endregion
 
         #region groups
         void ds_ItemUpdated_Groups(object sender, LoopingListDataItemEventArgs e)
         {
-            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/groups/lres/" + e.Index + ".png", UriKind.RelativeOrAbsolute);
+            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/groups/" + AppSettings.AppRes + "/" + e.Index + ".png", UriKind.RelativeOrAbsolute);
         }
 
         void ds_ItemNeeded_Groups(object sender, LoopingListDataItemEventArgs e)
         {
-            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/groups/lres/" + e.Index + ".png", UriKind.RelativeOrAbsolute) };
+            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/groups/" + AppSettings.AppRes + "/" + +e.Index + ".png", UriKind.RelativeOrAbsolute) };
         }
         #endregion
 

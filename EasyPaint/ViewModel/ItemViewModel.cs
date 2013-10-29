@@ -1,4 +1,5 @@
 ﻿using EasyPaint.Model;
+using EasyPaint.Settings;
 using System;
 using System.Net;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace EasyPaint.ViewModel
             _item = item;
             _belongingGroup = g;
             _key = item.Key;
-            ImageSource = new Uri(string.Format("../Assets/groups/{0}/lres/{1}", _belongingGroup.Id, item.ImgFilename), UriKind.RelativeOrAbsolute);
+            ImageSource = new Uri(string.Format("../Assets/groups/{0}/" + AppSettings.AppRes + "/{1}", _belongingGroup.Id, item.ImgFilename), UriKind.RelativeOrAbsolute);
         }
     }
 }

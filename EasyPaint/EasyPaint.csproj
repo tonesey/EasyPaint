@@ -114,6 +114,7 @@
     <Compile Include="Data\AppData.cs" />
     <Compile Include="Data\IDataService.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
+    <Compile Include="Settings\AppSettings.cs" />
     <Compile Include="ViewModel\ImageAndTextItem.cs" />
     <Compile Include="ViewModel\ItemSelectorViewModel.cs" />
     <Compile Include="ViewModel\GroupSelectorViewModel.cs" />

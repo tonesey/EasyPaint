@@ -6,6 +6,7 @@ using System.Text;
 
 namespace EasyPaint.Data
 {
+    //mettere qua il punteggio, livello, ecc relativo all'utente - scritto/letto da isostore
     public class UserData
     {
         private string p;
@@ -15,6 +16,6 @@ namespace EasyPaint.Data
             // TODO: Complete member initialization
             this.p = p;
         }
-        //mettere qua il punteggio, livello, ecc relativo all'utente
+        
     }
 }

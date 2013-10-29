@@ -1,5 +1,6 @@
 ﻿using EasyPaint.Data;
 using EasyPaint.Model;
+using EasyPaint.Settings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,8 @@ namespace EasyPaint.Helpers
             var doc = XDocument.Load(stream);
 
             string uiMode = doc.Element("root").Element("ui").Attribute("mode").Value;
+            
+            AppSettings.AppRes = uiMode;
 
             groups = new List<Group>();
             foreach (XElement element in doc.Element("root").Elements("group"))
