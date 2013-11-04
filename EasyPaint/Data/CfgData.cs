@@ -8,6 +8,7 @@ namespace EasyPaint.Data
 {
     public class CfgData
     {
+        //static cfg data
         private List<Group> _groups;
         public List<Group> Groups
         {
