@@ -19,23 +19,22 @@ namespace EasyPaint.ViewModel
         private Item _item;
         private Group _belongingGroup;
 
-        protected Uri _resourceUri;
-        public Uri ReducedColorsResourceUri
+        protected string _resourcePath;
+        public string ReducedColorsResourcePath
         {
             get
             {
-                return this._resourceUri;
+                return this._resourcePath;
             }
             set
             {
-                if (this._resourceUri != value)
+                if (this._resourcePath != value)
                 {
-                    this._resourceUri = value;
-                    this.OnPropertyChanged("ResourceUri");
+                    this._resourcePath = value;
+                    this.OnPropertyChanged("ReducedColorsResourcePath");
                 }
             }
         }
-
 
         protected string _lineArtResourcePath;
         public string LineArtResourcePath
@@ -60,9 +59,10 @@ namespace EasyPaint.ViewModel
             _belongingGroup = g;
             _key = item.Key;
             ImageSource = new Uri(string.Format("../Assets/groups/{0}/" + AppSettings.AppRes + "/{1}", _belongingGroup.Id, item.ImgFilename), UriKind.RelativeOrAbsolute);
-            ReducedColorsResourceUri = new Uri(string.Format("EasyPaint;component/Assets/groups/{0}/" + AppSettings.AppRes + "/reduced/{1}", _belongingGroup.Id, item.ImgFilename), UriKind.RelativeOrAbsolute);
+            //ReducedColorsResourceUri = new Uri(string.Format("EasyPaint;component/Assets/groups/{0}/" + AppSettings.AppRes + "/reduced/{1}", _belongingGroup.Id, item.ImgFilename), UriKind.RelativeOrAbsolute);
             //LineArtResourceUri = new Uri(string.Format("EasyPaint;component/Assets/groups/{0}/" + AppSettings.AppRes + "/{1}", _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart")), UriKind.RelativeOrAbsolute);
             LineArtResourcePath = string.Format("/Assets/groups/{0}/" + AppSettings.AppRes + "/{1}", _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart"));
+            ReducedColorsResourcePath = string.Format("/Assets/groups/{0}/" + AppSettings.AppRes + "/reduced/{1}", _belongingGroup.Id, item.ImgFilename);
         }
     }
 }

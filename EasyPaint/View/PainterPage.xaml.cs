@@ -107,21 +107,20 @@ namespace EasyPaint.View
 
             var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
 
-            ImagesHelper.WriteContentImageToIsoStore(selectedImage.ReducedColorsResourceUri, tmpFName);
-
-            _reducedColorsPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
-
-            _lineArtPicture = BitmapFactory.New(_reducedColorsPicture.PixelWidth, _reducedColorsPicture.PixelHeight).FromResource(selectedImage.LineArtResourcePath);
-            //_lineArtPicture = new WriteableBitmap(new BitmapImage(selectedImage.LineArtResourceUri));
-
             mainImg.Source = new BitmapImage(selectedImage.ImageSource);
+            //ImagesHelper.WriteContentImageToIsoStore(selectedImage.ReducedColorsResourceUri, tmpFName);
+            //_reducedColorsPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
 
+            _reducedColorsPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.ReducedColorsResourcePath);
+            _lineArtPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.LineArtResourcePath);
+
+            //_lineArtPicture = new WriteableBitmap(new BitmapImage(selectedImage.LineArtResourceUri));
             //ink.Height = _origPicture.PixelHeight;
             //ink.Width = _origPicture.PixelWidth;
 
-            List<Color> c1 = ImagesHelper.GetColors(_reducedColorsPicture);
+            List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture);
             int count = 1;
-            foreach (var color in c1)
+            foreach (var color in imageColors)
             {
                 var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
                 if (btn != null)
@@ -205,14 +204,20 @@ namespace EasyPaint.View
 
             //merge con immagine lineart
             userDrawnPicture.Blit(
-                     new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight), 
+                     new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
                      _lineArtPicture,
                      new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
-                     WriteableBitmapExtensions.BlendMode.Alpha);
-
+                     WriteableBitmapExtensions.BlendMode.Additive);
             testImg.Source = userDrawnPicture;
+            
+            //_lineArtPicture.Blit(
+            //     new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
+            //     userDrawnPicture,
+            //     new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
+            //     WriteableBitmapExtensions.BlendMode.Additive);
+            //testImg.Source = _lineArtPicture;
 
-            int test = ImagesHelper.GetNotBlankPixels(userDrawnPicture);
+            //int test = ImagesHelper.GetNotBlankPixels(userDrawnPicture);
 
             //int diffPixels1 = ImagesHelper.GetNumberOfDifferentPixels(drawnPicture1, drawnPicture);
 
@@ -227,7 +232,7 @@ namespace EasyPaint.View
             int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
             // textPrecision.Text = diffPixelsPercentage + "%";
 
-            MessageBox.Show(string.Format("Precisione: {0}%", diffPixelsPercentage));
+            MessageBox.Show(string.Format("Precision: {0}%", diffPixelsPercentage));
         }
 
         private void pc1_Click(object sender, RoutedEventArgs e)

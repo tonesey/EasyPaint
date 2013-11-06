@@ -28,7 +28,6 @@ namespace EasyPaint.View
             this.loopingList.SelectedIndex = 0;
             // this.loopingList.SelectedIndexChanged += this.OnSelectedIndexChanged;
             // this.loopingList.SelectedIndex = 0;
-            RegisterMessages();
         }
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)

@@ -42,7 +42,9 @@ namespace EasyPaint.Helpers
              {
                  var bytes = BitConverter.GetBytes(pixel);
                  Color c = Color.FromArgb(bytes[3], bytes[2], bytes[1], bytes[0]);
-                 if (!cols.Contains(c)) {
+
+                 if (!cols.Contains(c) && (c.A != 0))
+                 {
                      cols.Add(c);
                  }
              }
