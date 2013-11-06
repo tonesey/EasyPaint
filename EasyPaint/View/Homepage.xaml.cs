@@ -2,7 +2,10 @@
 using EasyPaint.Messages;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,12 +17,26 @@ namespace EasyPaint.View
     /// </summary>
     public partial class HomePage : PhoneApplicationPage
     {
+
+        SoundEffect _soundEffect1 = null;
+
         /// <summary>
         /// Initializes a new instance of the Homepage class.
         /// </summary>
         public HomePage()
         {
             InitializeComponent();
+            LoadSounds();
+            RegisterMessages();
+            (Application.Current as App).TryPlayBackgroundMusic();
+        }
+
+        private void LoadSounds()
+        {
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.click2.wav"))
+            {
+                _soundEffect1 =  SoundEffect.FromStream(stream);
+            }
         }
 
         private void RegisterMessages()
@@ -31,6 +48,9 @@ namespace EasyPaint.View
 
         private object ReceiveMessage(BaseMessage action)
         {
+            FrameworkDispatcher.Update();
+            _soundEffect1.Play();
+
             if (action is GoToPageMessage)
             {
                 GenericHelper.Navigate(NavigationService, Dispatcher, (action as GoToPageMessage).PageName);
@@ -47,7 +67,7 @@ namespace EasyPaint.View
             //    NavigationService.RemoveBackEntry();
             //}
 
-            RegisterMessages();
+           
         }
 
         private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)

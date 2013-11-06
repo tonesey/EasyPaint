@@ -28,16 +28,16 @@
     </UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot" >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
         
         <Grid.Background>
-            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/painter_bck.jpg"/>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/hres/bkg1.png"/>
         </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -47,12 +47,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+
         <telerikPrimitives:RadLoopingList 
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
             Grid.Row="1" Grid.Column="1"
             Grid.RowSpan="3" Grid.ColumnSpan="3"
-            ItemSpacing="50"
+            ItemSpacing="20"
             IsCentered="True"
             Orientation="Horizontal" 
             x:Name="loopingList"

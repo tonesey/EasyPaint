@@ -13,6 +13,9 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using EasyPaint.ViewModel;
+using System.Windows.Resources;
+using System.Windows.Media.Imaging;
+using Microsoft.Xna.Framework.Media;
 
 namespace EasyPaint
 {
@@ -44,6 +47,18 @@ namespace EasyPaint
         /// </summary>
         public App()
         {
+
+
+           // var _lineArtWb = BitmapFactory.New(400, 400).FromResource("/Assets/groups/3/lres/coccodrillo lineart.png");
+
+            // StreamResourceInfo streamInfo = App.GetResourceStream(new Uri("/Image;component/Images/123.png", UriKind.Relative));
+
+
+           // For content in external assemblies set the Build Action as "Resource".  
+            //You should then be able to use a Uri format like: "[assemblyname];component/[filename]" to access the resource stream.
+            //StreamResourceInfo streamInfo = App.GetResourceStream(new Uri("EasyPaint;component/Assets/groups/3/lres/diavolo_colore.png", 
+            //    UriKind.RelativeOrAbsolute));
+
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 
@@ -162,6 +177,59 @@ namespace EasyPaint
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
         }
 
+        #endregion
+
+        #region audio
+
+        public static MediaElement GlobalMediaElement
+        {
+            get { return Current.Resources["GlobalMedia"] as MediaElement; }
+        }
+
+        public static bool BackgroundMusicAllowed()
+        {
+            //disabilitata temporaneamente musica
+
+            bool allowed = false;
+
+            //you can check a stored property here and return false if you want to disable all bgm
+            //if (!MediaPlayer.GameHasControl)
+            //{
+            //    //ask user about background music
+            //    MessageBoxResult mbr = MessageBox.Show("press ok if you’d like to use this app’s background music (this will stop your current music playback)", "use app background music?", MessageBoxButton.OKCancel);
+            //    if (mbr != MessageBoxResult.OK)
+            //    {
+            //        allowed = false;
+            //    }
+            //}
+
+            return allowed;
+        }
+
+        public void TryPlayBackgroundMusic()
+        {
+            if (BackgroundMusicAllowed())
+            {
+                MediaPlayer.Stop(); //stop to clear any existing bg music
+
+                GlobalMediaElement.Source = new Uri("Audio/mp3/song.mp3", UriKind.Relative);
+                GlobalMediaElement.MediaOpened += MediaElement_MediaOpened; //wait until Media is ready before calling .Play()
+            }
+        }
+
+        private void MediaElement_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            App.GlobalMediaElement.Play();
+        }
+
+        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            if (GlobalMediaElement.CurrentState != System.Windows.Media.MediaElementState.Playing)
+            {
+                //loop bg music
+                GlobalMediaElement.Play();
+            }
+        }
         #endregion
     }
 }

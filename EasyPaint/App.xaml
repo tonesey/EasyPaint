@@ -9,6 +9,9 @@
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
     <!--Application Resources-->
     <Application.Resources>
+
+        <!-- Backgorund Sound Manager -->
+        <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
         
         <!-- VM Locator -->
         <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:EasyPaint.ViewModel" />

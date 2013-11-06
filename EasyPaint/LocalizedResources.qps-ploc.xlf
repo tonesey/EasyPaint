@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="qps-ploc" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.0" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit translate="yes" id="Resx/group_Africa" xml:space="preserve">
+          <source>Africa</source>
+          <target state="new">Africa</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/group_America" xml:space="preserve">
+          <source>America</source>
+          <target state="new">America</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/group_Europe" xml:space="preserve">
+          <source>Europa</source>
+          <target state="new">Europa</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/group_Oceania" xml:space="preserve">
+          <source>Oceania</source>
+          <target state="new">Oceania</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_canguro" xml:space="preserve">
+          <source>canguro</source>
+          <target state="new">canguro</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_coccodrillo" xml:space="preserve">
+          <source>coccodrillo</source>
+          <target state="new">coccodrillo</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_diavolo" xml:space="preserve">
+          <source>diavolo della Tasmania</source>
+          <target state="new">diavolo della Tasmania</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_koala" xml:space="preserve">
+          <source>koala</source>
+          <target state="new">koala</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_lion" xml:space="preserve">
+          <source>leone</source>
+          <target state="new">leone</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_tiger" xml:space="preserve">
+          <source>tigre</source>
+          <target state="new">tigre</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_zebra" xml:space="preserve">
+          <source>zebra</source>
+          <target state="new">zebra</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

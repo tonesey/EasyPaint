@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Resources;
 using Windows_Phone_Sig_Capture;
 
 namespace EasyPaint.Helpers
@@ -78,6 +79,12 @@ namespace EasyPaint.Helpers
         {
 
            // var pngStream = Application.GetResourceStream(new Uri(contentPath, UriKind.RelativeOrAbsolute)).Stream;
+
+            StreamResourceInfo streamInfo = App.GetResourceStream(imgUri);
+            if (streamInfo != null)
+            {
+            }
+
             var pngStream = Application.GetResourceStream(imgUri).Stream;
             int counter;
             byte[] buffer = new byte[1024];

@@ -19,11 +19,22 @@ namespace EasyPaint.ViewModel
 
         public GroupViewModel(Group gr)
         {
-            _group = gr;
-            _id = gr.Id;
-            _key = gr.Key;
+            try
+            {
+                _group = gr;
+                _id = gr.Id;
+                _key = gr.Key;
 
-            ImageSource = new Uri(string.Format("../Assets/groups/" + AppSettings.AppRes + "/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
+                ImageSource = new Uri(string.Format("../Assets/groups/" + AppSettings.AppRes + "/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
+                //ImageSource = new Uri(string.Format("EasyPaint;component/Assets/groups/" + AppSettings.AppRes + "/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            
         }
     }
 }
+

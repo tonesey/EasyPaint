@@ -30,8 +30,11 @@ namespace EasyPaint.View
 
         // Constructor
         SimzzDev.DrawingBoard _myBoard;
+
+        WriteableBitmap _lineArtPicture = null;
+
         private const string tmpFName = "tmp.png";
-        WriteableBitmap _origPicture = null;
+        WriteableBitmap _reducedColorsPicture = null;
         DispatcherTimer _dt = new DispatcherTimer();
         bool _gameInProgress = false;
    
@@ -44,8 +47,8 @@ namespace EasyPaint.View
             InitializeComponent();
             //Tester.CheckImagesTester();
             _myBoard = new SimzzDev.DrawingBoard(ink);
-            _dt.Interval = TimeSpan.FromSeconds(1);
-            _dt.Tick += dt_Tick;
+            //_dt.Interval = TimeSpan.FromSeconds(1);
+            //_dt.Tick += dt_Tick;
 
             CultureInfo cc, cuic;
             cc = Thread.CurrentThread.CurrentCulture;
@@ -99,18 +102,24 @@ namespace EasyPaint.View
         {
             SetEllipseSize(_myBoard.BrushWidth);
 
-            var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
-            //var resName = string.Format("Assets/packages/{0}/{1}", selectedImage.CharacterId, selectedImage.FileName);
-            //var resName = "Assets/packages/animals/clamidosauro.png";
-            ImagesHelper.WriteContentImageToIsoStore(selectedImage.ImageSource, tmpFName);
+            mainImg.Visibility = System.Windows.Visibility.Visible;
+            testImg.Visibility = System.Windows.Visibility.Collapsed;
 
-            _origPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
-            mainImg.Source = _origPicture;
+            var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
+
+            ImagesHelper.WriteContentImageToIsoStore(selectedImage.ReducedColorsResourceUri, tmpFName);
+
+            _reducedColorsPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
+
+            _lineArtPicture = BitmapFactory.New(_reducedColorsPicture.PixelWidth, _reducedColorsPicture.PixelHeight).FromResource(selectedImage.LineArtResourcePath);
+            //_lineArtPicture = new WriteableBitmap(new BitmapImage(selectedImage.LineArtResourceUri));
+
+            mainImg.Source = new BitmapImage(selectedImage.ImageSource);
 
             //ink.Height = _origPicture.PixelHeight;
             //ink.Width = _origPicture.PixelWidth;
 
-            List<Color> c1 = ImagesHelper.GetColors(_origPicture);
+            List<Color> c1 = ImagesHelper.GetColors(_reducedColorsPicture);
             int count = 1;
             foreach (var color in c1)
             {
@@ -138,7 +147,6 @@ namespace EasyPaint.View
             //{
             //    e.Cancel = true;
             //}
-
             StopTimer();
         }
 
@@ -168,34 +176,43 @@ namespace EasyPaint.View
             _myBoard.InkMode = SimzzDev.DrawingBoard.PenMode.Erase;
         }
 
-
-
-
         private void startOrStopBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (_gameInProgress)
-            {
-                //started: now stop
-                StopTimer();
-                CheckDrawnPicture();
-                
-            }
-            else
-            {
-                //stopped: now started
-                _myBoard.Clear();
-                StartTimer();
-                
-            }
+            CheckDrawnPicture();
+
+            //if (_gameInProgress)
+            //{
+            //    //started: now stop
+            //    StopTimer();
+            //    CheckDrawnPicture();
+            //}
+            //else
+            //{
+            //    //stopped: now started
+            //    _myBoard.Clear();
+            //    StartTimer();
+            //}
         }
 
 
         private void CheckDrawnPicture()
         {
             //WriteableBitmap drawnPicture1 = new WriteableBitmap(myBoard.Ink, null);
-            WriteableBitmap drawnPicture = new WriteableBitmap(ImagesHelper.GetImageFromInkPresenter(_myBoard.Ink));
+            WriteableBitmap userDrawnPicture = new WriteableBitmap(ImagesHelper.GetImageFromInkPresenter(_myBoard.Ink));
 
-            int test = ImagesHelper.GetNotBlankPixels(drawnPicture);
+            mainImg.Visibility = System.Windows.Visibility.Collapsed;
+            testImg.Visibility = System.Windows.Visibility.Visible;
+
+            //merge con immagine lineart
+            userDrawnPicture.Blit(
+                     new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight), 
+                     _lineArtPicture,
+                     new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
+                     WriteableBitmapExtensions.BlendMode.Alpha);
+
+            testImg.Source = userDrawnPicture;
+
+            int test = ImagesHelper.GetNotBlankPixels(userDrawnPicture);
 
             //int diffPixels1 = ImagesHelper.GetNumberOfDifferentPixels(drawnPicture1, drawnPicture);
 
@@ -206,8 +223,8 @@ namespace EasyPaint.View
 
             //List<Color> c2 = ImagesHelper.GetColors(drawnPicture);
 
-            int diffPixels = ImagesHelper.GetNumberOfDifferentPixels(_origPicture, drawnPicture);
-            int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_origPicture, drawnPicture);
+            int diffPixels = ImagesHelper.GetNumberOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
+            int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
             // textPrecision.Text = diffPixelsPercentage + "%";
 
             MessageBox.Show(string.Format("Precisione: {0}%", diffPixelsPercentage));
@@ -247,17 +264,12 @@ namespace EasyPaint.View
             ellipseStrokeSize.Width = ellipseStrokeSize.Height = strokeWidth * 5;
         }
 
-       
-
         private void SaveAndDisablePen()
         {
         }
 
-     
-
         private void RestorePen()
         {
-
         }
 
         private void Grid_MouseLeave_1(object sender, MouseEventArgs e)
@@ -267,13 +279,9 @@ namespace EasyPaint.View
 
         private void Grid_MouseMove_1(object sender, MouseEventArgs e)
         {
-
            // var pos = e.GetPosition(sender as UIElement);
-
             //if (pos.X < 0 || pos.Y < 0)
             //{
-
-
             //}
 
         }

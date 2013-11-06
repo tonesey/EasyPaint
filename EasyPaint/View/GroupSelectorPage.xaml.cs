@@ -21,7 +21,7 @@ namespace EasyPaint.View
         public LoopingListDataSource ListDs
         {
             get { return _listDs; }
-        } 
+        }
 
         /// <summary>
         /// Initializes a new instance of the Homepage class.
@@ -33,9 +33,16 @@ namespace EasyPaint.View
             _listDs = new LoopingListDataSource(_vm.Groups.Count());
             _listDs.ItemNeeded += this.OnDs_ItemNeeded;
             _listDs.ItemUpdated += this.OnDs_ItemUpdated;
-            this.loopingList.SelectedIndexChanged += this.OnSelectedIndexChanged;
+
+            //this.loopingList.DataContext = _vm.Groups;
+            this.loopingList.DataSource = _listDs;
             this.loopingList.SelectedIndex = 0;
+
+            // this.loopingList.SelectedIndexChanged += this.OnSelectedIndexChanged;
+            RegisterMessages();
         }
+
+
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
@@ -63,31 +70,31 @@ namespace EasyPaint.View
             if (newEl != null)
             {
                 e.Item = new PictureLoopingItem() { Picture = (newEl as GroupViewModel).ImageSource, DataContext = (newEl as GroupViewModel) };
-                
+
             }
         }
 
-        private void OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-            //this.UpdateCaption();
-        }
+        //private void OnSelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //this.UpdateCaption();
+        //}
 
         private void RegisterMessages()
         {
-            Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
+            //Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
             //Messenger.Default.Register<RateAppMessage>(this, (action) => ReceiveMessage(action));
             // Messenger.Default.Register<PollCompletedMessage>(this, (action) => ReceiveMessage(action));
         }
 
-        private object ReceiveMessage(BaseMessage action)
-        {
-            if (action is GoToPageMessage)
-            {
-                GenericHelper.Navigate(NavigationService, Dispatcher, (action as GoToPageMessage).PageName);
-                return null;
-            }
-            return null;
-        }
+        //private object ReceiveMessage(BaseMessage action)
+        //{
+        //    if (action is GoToPageMessage)
+        //    {
+        //        GenericHelper.Navigate(NavigationService, Dispatcher, (action as GoToPageMessage).PageName);
+        //        return null;
+        //    }
+        //    return null;
+        //}
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -96,7 +103,9 @@ namespace EasyPaint.View
             //    NavigationService.RemoveBackEntry();
             //}
 
-            RegisterMessages();
+           
+
+      
         }
 
         private void Image_Tap(object sender, System.Windows.Input.GestureEventArgs e)

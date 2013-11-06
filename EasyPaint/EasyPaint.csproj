@@ -16,8 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>
-    </SupportedCultures>
+    <SupportedCultures>it-IT;qps-ploc</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>EasyPaint.xap</XapFilename>
@@ -47,6 +46,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <ToolkitRevision>2</ToolkitRevision>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight.Extras.WP71, Version=4.1.27.22669, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -61,6 +63,7 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.4.1.27.1\lib\sl4-wp71\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -72,9 +75,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Telerik.Windows.Controls.Input, Version=2013.2.612.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Controls.Primitives, Version=2013.2.612.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.Windows.Core, Version=2013.2.612.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2013.3.1016.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Primitives, Version=2013.3.1016.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Core, Version=2013.3.1016.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="WriteableBitmapExWinPhone">
       <HintPath>..\packages\WriteableBitmapEx.1.0.8.0\lib\sl4-wp71\WriteableBitmapExWinPhone.dll</HintPath>
     </Reference>
@@ -89,6 +92,7 @@
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignDataLoopingListsSources.cs" />
+    <Compile Include="Helpers\ResolutionHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\GenericHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
@@ -167,7 +171,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\bkg\explorer.png" />
+    <Resource Include="Assets\bkg\hres\explorer.png" />
     <Resource Include="Assets\groups\hres\0.png" />
     <Resource Include="Assets\groups\hres\1.png" />
     <Resource Include="Assets\groups\hres\2.png" />
@@ -182,29 +186,42 @@
     <Resource Include="Assets\groups\3\hres\coccodrillo colore.png" />
     <Resource Include="Assets\groups\3\hres\coccodrillo lineart.png" />
     <Resource Include="Assets\groups\3\hres\koala colore.png" />
-    <Resource Include="Assets\groups\3\hres\koala lineart.png" />
     <Resource Include="Assets\groups\1\lres\lion.png" />
     <Resource Include="Assets\groups\1\lres\tiger.png" />
     <Resource Include="Assets\groups\1\lres\zebra.png" />
     <Resource Include="Assets\groups\2\lres\lion.png" />
     <Resource Include="Assets\groups\2\lres\tiger.png" />
     <Resource Include="Assets\groups\2\lres\zebra.png" />
-    <Content Include="Assets\groups\3\hres\diavolo tsm colore lineart.png" />
-    <Content Include="Assets\groups\3\hres\diavolo tsm colore.png" />
-    <Content Include="Assets\groups\3\lres\canguro colore.png" />
-    <Content Include="Assets\groups\3\lres\canguro lineart.png" />
-    <Content Include="Assets\groups\3\lres\coccodrillo colore.png" />
-    <Content Include="Assets\groups\3\lres\coccodrillo lineart.png" />
-    <Content Include="Assets\groups\3\lres\diavolo tsm colore lineart.png" />
-    <Content Include="Assets\groups\3\lres\diavolo tsm colore.png" />
-    <Content Include="Assets\groups\3\lres\koala colore.png" />
-    <Content Include="Assets\groups\3\lres\koala lineart.png" />
+    <Resource Include="Assets\bkg\hres\bkg1.png" />
+    <Resource Include="Assets\bkg\hres\bkg2.png" />
+    <Resource Include="Assets\groups\3\hres\clamidosauro colori.png" />
+    <Resource Include="Assets\groups\3\hres\clamidosauroline art.png" />
+    <Resource Include="Assets\groups\3\hres\diavolo_lineart.png" />
+    <Resource Include="Assets\groups\3\hres\diavolo_colore.png" />
+    <Resource Include="Assets\groups\3\lres\canguro colore.png" />
+    <Resource Include="Assets\groups\3\lres\canguro lineart.png" />
+    <Resource Include="Assets\groups\3\lres\clamidosauro colori.png" />
+    <Resource Include="Assets\groups\3\lres\clamidosauroline art.png" />
+    <Resource Include="Assets\groups\3\lres\coccodrillo colore.png" />
+    <Resource Include="Assets\groups\3\lres\coccodrillo lineart.png" />
+    <Resource Include="Assets\groups\3\lres\diavolo_lineart.png" />
+    <Resource Include="Assets\groups\3\lres\diavolo_colore.png" />
+    <Resource Include="Assets\groups\3\lres\koala colore.png" />
+    <Resource Include="Assets\groups\3\lres\koala lineart.png" />
     <Resource Include="Assets\groups\lres\0.png" />
     <Resource Include="Assets\groups\lres\1.png" />
     <Resource Include="Assets\groups\lres\2.png" />
     <Resource Include="Assets\groups\lres\3.png" />
     <Resource Include="Assets\groups\lres\4.png" />
     <Resource Include="Assets\groups\lres\5.png" />
+    <Content Include="Assets\groups\3\hres\koala lineart.png" />
+    <Resource Include="Assets\groups\3\lres\reduced\canguro colore.png" />
+    <Resource Include="Assets\groups\3\lres\reduced\clamidosauro colori.png" />
+    <Resource Include="Assets\groups\3\lres\reduced\coccodrillo colore.png" />
+    <Resource Include="Assets\groups\3\lres\reduced\diavolo_colore.png" />
+    <Resource Include="Assets\groups\3\lres\reduced\koala colore.png" />
+    <EmbeddedResource Include="Audio\wav\click2.wav" />
+    <Content Include="Audio\mp3\song.mp3" />
     <Content Include="Fonts\DK Crayon Crumble.ttf" />
     <Content Include="Fonts\LINDS.TTF" />
     <Content Include="Fonts\PERIC.TTF" />
@@ -242,19 +259,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.it-IT.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="LocalizedResources.qps-ploc.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.qps-ploc.xlf</DependentUpon>
+      <culture>qps-ploc</culture>
+    </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\bkg\2_1.jpg" />
-    <Resource Include="Assets\bkg\bgcolor.jpg" />
-    <Resource Include="Assets\bkg\dots_480_800.png" />
-    <Resource Include="Assets\bkg\flowers_480_800.png" />
-    <Resource Include="Assets\bkg\hearts2_480_800.png" />
-    <Resource Include="Assets\bkg\hearts_480_800.png" />
-    <Resource Include="Assets\bkg\pastel2.png" />
-    <Resource Include="Assets\bkg\tumblr_m7my7b4pDL1r836v5.jpg" />
-    <Resource Include="Assets\bkg\painter_bck.jpg" />
+    <Resource Include="Assets\bkg\hres\painter_bck.jpg" />
     <Content Include="Assets\buttons\bullet_ball_blue.png" />
     <Content Include="Assets\buttons\done.png" />
     <Content Include="Assets\buttons\Edit.png" />
@@ -274,7 +289,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\FrameThumbnail.png" />
+    <Content Include="readme.txt" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -291,8 +306,15 @@
     <Folder Include="Assets\groups\4\" />
     <Folder Include="Assets\groups\5\" />
   </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="LocalizedResources.qps-ploc.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>LocalizedResources.qps-ploc.resx</LastGenOutput>
+    </XliffResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.WindowsPhone.targets" Label="MultilingualAppToolkitForWindowsPhone" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
