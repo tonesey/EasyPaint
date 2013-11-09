@@ -11,13 +11,89 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Landscape" Orientation="Landscape"
-    Loaded="PhoneApplicationPage_Loaded_1"
+    Loaded="PhoneApplicationPage_Loaded"
     shell:SystemTray.IsVisible="False">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="StoryboardAnimalFadeout">
+            <DoubleAnimation From="1" To="0.295" Duration="0:0:2" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ImageMain">
+            	<DoubleAnimation.EasingFunction>
+            		<BounceEase EasingMode="EaseIn" Bounces="10"/>
+            	</DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:2" To="-4" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="image" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="StoryboardCountdown">
+            <DoubleAnimation Duration="0:0:0.5" To="400" Storyboard.TargetProperty="(TextBlock.FontSize)" Storyboard.TargetName="TextBlockCountDown"  d:IsOptimized="True" AutoReverse="True">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.5" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TextBlockCountDown" d:IsOptimized="True" AutoReverse="True"/>
+        </Storyboard>
+        <Storyboard x:Name="StoryboardShowPalette">
+        	<DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="pc1" d:IsOptimized="True"/>
+        	<DoubleAnimation Duration="0:0:0.4" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="pc2" d:IsOptimized="True"/>
+        	<DoubleAnimation Duration="0:0:0.6" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="pc3" d:IsOptimized="True"/>
+        	<DoubleAnimation Duration="0:0:0.8" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="pc4" d:IsOptimized="True"/>
+        	<DoubleAnimation Duration="0:0:1" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="pc5" d:IsOptimized="True"/>
+        	<DoubleAnimation Duration="0:0:1.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="pc6" d:IsOptimized="True"/>
+
+        	<DoubleAnimation Duration="0:0:0.2" From="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc1"/>
+        	<DoubleAnimation Duration="0:0:0.4"  From="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc2"/>
+        	<DoubleAnimation Duration="0:0:0.6" From="0"  To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc3"/>
+        	<DoubleAnimation Duration="0:0:0.8" From="0"  To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc4"/>
+        	<DoubleAnimation Duration="0:0:1" From="0"  To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc5"/>
+        	<DoubleAnimation Duration="0:0:1.2"  From="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc6"/>
+        	
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="eraserBtn">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="-220">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<ElasticEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<ElasticEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="penSizeChange">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="-303">
+        			<EasingDoubleKeyFrame.EasingFunction>
+                		<ElasticEase EasingMode="EaseOut"/>
+                	</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0">
+                	<EasingDoubleKeyFrame.EasingFunction>
+                		<ElasticEase EasingMode="EaseOut"/>
+                	</EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="startOrStopBtn">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="-380">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<BackEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<BackEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <MediaElement x:Key="PaintMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="True" />
+        
+    </UserControl.Resources>
 
     <UserControl.DataContext>
         <Binding Path="MainViewModel" Source="{StaticResource Locator}"/>
     </UserControl.DataContext>
 
+    
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" >
 
@@ -52,9 +128,12 @@
             </Grid.ColumnDefinitions>
 
             <Border x:Name="BorderTools" CornerRadius="10" BorderThickness="2"  Grid.Column="2"  Margin="0,10,0,0">
-      
+
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Button Name="eraserBtn" HorizontalAlignment="Left" Width="80" Height="80" BorderBrush="DarkGray" BorderThickness="2"  Click="eraseBtn_Click" Padding="0">
+                    <Button Name="eraserBtn" HorizontalAlignment="Left" Width="80" Height="80" BorderBrush="DarkGray" BorderThickness="2"  Click="eraseBtn_Click" Padding="0" RenderTransformOrigin="0.5,0.5">
+                    	<Button.RenderTransform>
+                    		<CompositeTransform/>
+                    	</Button.RenderTransform>
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
                                 <GradientStop Color="Gainsboro" Offset="0.1"/>
@@ -62,11 +141,18 @@
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid >
-                            <Image Source="../Assets/buttons/eraser.png"  Margin="0" Stretch="Uniform" HorizontalAlignment="Left" Width="48"/>
+                            <Image x:Name="image" Source="../Assets/buttons/eraser.png"  Margin="0" Stretch="Uniform" HorizontalAlignment="Left" Width="48">
+                            	<Image.Projection>
+                            		<PlaneProjection/>
+                            	</Image.Projection>
+                            </Image>
                         </Grid>
                     </Button>
-                    
-                    <Button Name="penSizeChange"  HorizontalAlignment="Left" VerticalContentAlignment="Center"  Width="80" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2">
+
+                    <Button Name="penSizeChange"  HorizontalAlignment="Left" VerticalContentAlignment="Center"  Width="80" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+                    	<Button.RenderTransform>
+                    		<CompositeTransform/>
+                    	</Button.RenderTransform>
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                                 <GradientStop Color="Gainsboro" Offset="0.1"/>
@@ -84,8 +170,11 @@
                             </Ellipse>
                         </Grid>
                     </Button>
-                    
-                    <Button Name="startOrStopBtn" HorizontalAlignment="Left" Width="80" Height="80"  Click="startOrStopBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2">
+
+                    <Button Name="startOrStopBtn" HorizontalAlignment="Left" Width="80" Height="80"  Click="startOrStopBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+                    	<Button.RenderTransform>
+                    		<CompositeTransform/>
+                    	</Button.RenderTransform>
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
                                 <GradientStop Color="Gainsboro" Offset="0.1"/>
@@ -102,27 +191,45 @@
             <Border x:Name="BorderColors"  CornerRadius="10" BorderThickness="2"   Grid.Column="0" Margin="0,10,0,0">
 
                 <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button Name="pc1" HorizontalAlignment="Left"  Width="70" Height="80" Click="pc1_Click" Padding="0" Background="Red" BorderThickness="2" BorderBrush="DarkGray">
+                    <Button Name="pc1" HorizontalAlignment="Left"  Width="70" Height="80" Click="pc1_Click" Padding="0" Background="Red" BorderThickness="2" BorderBrush="DarkGray" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <CompositeTransform TranslateX="-65"/>
+                        </Button.RenderTransform>
                     </Button>
-                    <Button Name="pc2" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Green" BorderThickness="2" BorderBrush="DarkGray">
+                    <Button Name="pc2" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Green" BorderThickness="2" BorderBrush="DarkGray" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <CompositeTransform TranslateX="-65"/>
+                        </Button.RenderTransform>
                     </Button>
-                    <Button Name="pc3" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Blue" BorderThickness="2" BorderBrush="DarkGray">
+                    <Button Name="pc3" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Blue" BorderThickness="2" BorderBrush="DarkGray" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <CompositeTransform TranslateX="-65"/>
+                        </Button.RenderTransform>
                     </Button>
-                    <Button Name="pc4" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray">
+                    <Button Name="pc4" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <CompositeTransform TranslateX="-65"/>
+                        </Button.RenderTransform>
                     </Button>
-                    <Button Name="pc5" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray">
+                    <Button Name="pc5" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <CompositeTransform TranslateX="-65"/>
+                        </Button.RenderTransform>
                     </Button>
-                    <Button Name="pc6" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray">
+                    <Button Name="pc6" HorizontalAlignment="Left" Width="70" Height="80"  Click="pc1_Click" Padding="0" Background="Red"  BorderThickness="2" BorderBrush="DarkGray" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <CompositeTransform TranslateX="-65"/>
+                        </Button.RenderTransform>
                     </Button>
                 </StackPanel>
             </Border>
 
-            <Border x:Name="BorderDrawboard" CornerRadius="1" BorderThickness="2" Grid.Column="1" Margin="0,0,0,0" 
+            <Border x:Name="BorderDrawboard" CornerRadius="1" BorderThickness="0" Grid.Column="1" Margin="0,0,0,0" 
                     VerticalAlignment="Stretch">
                 <StackPanel x:Name="StackPanelDrawboard" 
                             Orientation="Vertical" 
                             VerticalAlignment="Center" 
-                            Margin="0,-50,0,0" 
+                            Margin="0,0,0,0" 
                             HorizontalAlignment="Stretch">
                     <StackPanel x:Name="Timer" Visibility="Collapsed">
                         <Canvas Name="timerCanvas" Width="400" Height="30" Margin="0,10,0,10">
@@ -151,27 +258,16 @@
                                 Margin="0,0">
                         <Grid Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center"  MouseLeave="Grid_MouseLeave_1" MouseMove="Grid_MouseMove_1">
                             <!--<Rectangle Name="mainImgBck" Width="400" Height="400" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>-->
-                            <Image Name="mainImg" Visibility="Visible" Width="400" Height="400"  Stretch="Fill" Source="/Assets/groups/3/lres/reduced/coccodrillo colore.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"></Image>
-                            <Image Name="testImg" Visibility="Collapsed" Width="400" Height="400"  Stretch="Fill"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"></Image>
-                            <InkPresenter  Name="ink" Width="400" Height="400" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" />
+                            <Image Name="ImageMain" Visibility="Visible" Width="480" Height="480"  Stretch="Fill" Source="../Assets/groups/3/lres/reduced/coccodrillo colore.png"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"></Image>
+                            <Image Name="ImageTest" Visibility="Collapsed" Width="480" Height="480"  Stretch="Fill"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"></Image>
+                            <InkPresenter  Name="ink" Width="480" Height="480" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" />
                         </Grid>
                     </Border>
                 </StackPanel>
             </Border>
 
+            <TextBlock x:Name="TextBlockCountDown" FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" Foreground="Lime" Grid.Column="1" Text="1" FontSize="230" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.625"/>
+
         </Grid>
     </Grid>
-
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
-
 </phone:PhoneApplicationPage>

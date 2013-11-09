@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="pt" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.0" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
+          <source>Africa</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">África</target>
+        </trans-unit>
+        <trans-unit id="Resx/group_America" translate="yes" xml:space="preserve">
+          <source>America</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">América</target>
+        </trans-unit>
+        <trans-unit id="Resx/group_Europe" translate="yes" xml:space="preserve">
+          <source>Europe</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Europa</target>
+        </trans-unit>
+        <trans-unit id="Resx/group_Oceania" translate="yes" xml:space="preserve">
+          <source>Oceania</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Oceania</target>
+        </trans-unit>
+        <trans-unit id="Resx/item_canguro" translate="yes" xml:space="preserve">
+          <source>kangaroo</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">canguru</target>
+        </trans-unit>
+        <trans-unit id="Resx/item_coccodrillo" translate="yes" xml:space="preserve">
+          <source>crocodile</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">crocodilo</target>
+        </trans-unit>
+        <trans-unit id="Resx/item_diavolo" translate="yes" xml:space="preserve">
+          <source>Tasmanian devil</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Diabo da Tasmânia</target>
+        </trans-unit>
+        <trans-unit id="Resx/item_koala" translate="yes" xml:space="preserve">
+          <source>koala</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Coala</target>
+        </trans-unit>
+        <trans-unit id="Resx/item_lion" translate="yes" xml:space="preserve">
+          <source>lion</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Leão</target>
+        </trans-unit>
+        <trans-unit id="Resx/item_tiger" translate="yes" xml:space="preserve">
+          <source>tiger</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tigre</target>
+        </trans-unit>
+        <trans-unit id="Resx/item_zebra" translate="yes" xml:space="preserve">
+          <source>zebra</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Zebra</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/water" xml:space="preserve">
+          <source>water</source>
+          <target state="new">water</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

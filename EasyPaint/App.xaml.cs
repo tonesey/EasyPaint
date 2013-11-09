@@ -48,6 +48,7 @@ namespace EasyPaint
         public App()
         {
 
+           // var test = LocalizedResources.water;
 
            // var _lineArtWb = BitmapFactory.New(400, 400).FromResource("/Assets/groups/3/lres/coccodrillo lineart.png");
 
@@ -190,7 +191,7 @@ namespace EasyPaint
         {
             //disabilitata temporaneamente musica
 
-            bool allowed = false;
+            bool allowed = true;
 
             //you can check a stored property here and return false if you want to disable all bgm
             //if (!MediaPlayer.GameHasControl)

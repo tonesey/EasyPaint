@@ -6,20 +6,21 @@
              xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
              xmlns:telerikPrimitivesLoopingList="clr-namespace:Telerik.Windows.Controls.LoopingList;assembly=Telerik.Windows.Controls.Primitives"
              d1p1:Ignorable="d" 
-             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006" >
     <!--Application Resources-->
     <Application.Resources>
 
         <!-- Backgorund Sound Manager -->
         <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
-        
+
         <!-- VM Locator -->
         <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:EasyPaint.ViewModel" />
 
         <!--Storyboard animation for fading out a UI element-->
-        <Storyboard x:Key="FadeOutAnimation">
+        <!--<Storyboard x:Key="FadeOutAnimation">
             <DoubleAnimation From="1" To="0" Duration="0:0:2" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" AutoReverse="True" />
-        </Storyboard>
+        </Storyboard>-->
+
 
         <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitivesLoopingList:LoopingListItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

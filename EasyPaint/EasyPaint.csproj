@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>it-IT;qps-ploc</SupportedCultures>
+    <SupportedCultures>en;es;it;pt;qps-ploc</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>EasyPaint.xap</XapFilename>
@@ -24,6 +24,7 @@
     <SilverlightAppEntry>EasyPaint.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -96,15 +97,11 @@
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\GenericHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
-    <Compile Include="LocalizedResources.it-IT.Designer.cs">
-      <DependentUpon>LocalizedResources.it-IT.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Helpers\EditableImage.cs" />
     <Compile Include="Helpers\Images.cs" />
     <Compile Include="Helpers\PngEncoder.cs" />
     <Compile Include="Helpers\MyVisualTreeHelper.cs" />
+    <Compile Include="Helpers\SoundHelper.cs" />
     <Compile Include="LocalizedResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,12 +138,13 @@
     <Compile Include="Model\Group.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Assert.cs" />
-    <Compile Include="Tests\Tester.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\MyViewModelBase.cs" />
+    <Compile Include="WriteableBitmapTestsPage.xaml.cs">
+      <DependentUpon>WriteableBitmapTestsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -169,23 +167,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WriteableBitmapTestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\bkg\hres\explorer.png" />
-    <Resource Include="Assets\groups\hres\0.png" />
-    <Resource Include="Assets\groups\hres\1.png" />
-    <Resource Include="Assets\groups\hres\2.png" />
-    <Resource Include="Assets\groups\hres\3.png" />
-    <Resource Include="Assets\groups\hres\4.png" />
-    <Resource Include="Assets\groups\hres\5.png" />
     <Resource Include="Assets\groups\0\lres\lion.png" />
     <Resource Include="Assets\groups\0\lres\tiger.png" />
     <Resource Include="Assets\groups\0\lres\zebra.png" />
-    <Resource Include="Assets\groups\3\hres\canguro colore.png" />
-    <Resource Include="Assets\groups\3\hres\canguro lineart.png" />
-    <Resource Include="Assets\groups\3\hres\coccodrillo colore.png" />
-    <Resource Include="Assets\groups\3\hres\coccodrillo lineart.png" />
-    <Resource Include="Assets\groups\3\hres\koala colore.png" />
     <Resource Include="Assets\groups\1\lres\lion.png" />
     <Resource Include="Assets\groups\1\lres\tiger.png" />
     <Resource Include="Assets\groups\1\lres\zebra.png" />
@@ -194,10 +185,6 @@
     <Resource Include="Assets\groups\2\lres\zebra.png" />
     <Resource Include="Assets\bkg\hres\bkg1.png" />
     <Resource Include="Assets\bkg\hres\bkg2.png" />
-    <Resource Include="Assets\groups\3\hres\clamidosauro colori.png" />
-    <Resource Include="Assets\groups\3\hres\clamidosauroline art.png" />
-    <Resource Include="Assets\groups\3\hres\diavolo_lineart.png" />
-    <Resource Include="Assets\groups\3\hres\diavolo_colore.png" />
     <Resource Include="Assets\groups\3\lres\canguro colore.png" />
     <Resource Include="Assets\groups\3\lres\canguro lineart.png" />
     <Resource Include="Assets\groups\3\lres\clamidosauro colori.png" />
@@ -214,50 +201,80 @@
     <Resource Include="Assets\groups\lres\3.png" />
     <Resource Include="Assets\groups\lres\4.png" />
     <Resource Include="Assets\groups\lres\5.png" />
-    <Content Include="Assets\groups\3\hres\koala lineart.png" />
     <Resource Include="Assets\groups\3\lres\reduced\canguro colore.png" />
     <Resource Include="Assets\groups\3\lres\reduced\clamidosauro colori.png" />
     <Resource Include="Assets\groups\3\lres\reduced\coccodrillo colore.png" />
     <Resource Include="Assets\groups\3\lres\reduced\diavolo_colore.png" />
     <Resource Include="Assets\groups\3\lres\reduced\koala colore.png" />
     <EmbeddedResource Include="Audio\wav\click2.wav" />
+    <Resource Include="Assets\testImages\test.png" />
+    <Content Include="Audio\mp3\Alegria.mp3" />
     <Content Include="Audio\mp3\song.mp3" />
-    <Content Include="Fonts\DK Crayon Crumble.ttf" />
-    <Content Include="Fonts\LINDS.TTF" />
-    <Content Include="Fonts\PERIC.TTF" />
-    <Content Include="Fonts\PERICL.TTF" />
-    <Content Include="Fonts\SEGOEMARKER.TTF" />
+    <EmbeddedResource Include="Audio\wav\go.wav" />
+    <EmbeddedResource Include="Audio\wav\one.wav" />
+    <EmbeddedResource Include="Audio\wav\three.wav" />
+    <EmbeddedResource Include="Audio\wav\two.wav" />
     <Content Include="Fonts\CURLZ___.TTF" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <BlendEmbeddedFont Include="Fonts\BuxtonSketch.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\JingJing.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\PAPYRUS.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Assets\testImages\img_orig.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <EmbeddedResource Include="LocalizedResources.en.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.en.xlf</DependentUpon>
+      <culture>en</culture>
     </EmbeddedResource>
-    <EmbeddedResource Include="Assets\testImages\img_empty.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <EmbeddedResource Include="LocalizedResources.es.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.es.xlf</DependentUpon>
+      <culture>es</culture>
     </EmbeddedResource>
-    <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <EmbeddedResource Include="LocalizedResources.it.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.it.xlf</DependentUpon>
+      <culture>it</culture>
     </EmbeddedResource>
-    <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor_NotPosition.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Assets\testImages\img_equal_shape_notColor.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor_but1pixel.png" />
-    <EmbeddedResource Include="Assets\testImages\img_equal_shape_andColor_but10pixel.png" />
-    <EmbeddedResource Include="LocalizedResources.it-IT.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LocalizedResources.it-IT.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="LocalizedResources.pt.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.pt.xlf</DependentUpon>
+      <culture>pt</culture>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources.qps-ploc.resx">
       <AutoGen>True</AutoGen>
@@ -307,6 +324,22 @@
     <Folder Include="Assets\groups\5\" />
   </ItemGroup>
   <ItemGroup>
+    <XliffResource Include="LocalizedResources.en.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>LocalizedResources.en.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="LocalizedResources.es.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>LocalizedResources.es.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="LocalizedResources.it.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>LocalizedResources.it.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="LocalizedResources.pt.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>LocalizedResources.pt.resx</LastGenOutput>
+    </XliffResource>
     <XliffResource Include="LocalizedResources.qps-ploc.xlf">
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>LocalizedResources.qps-ploc.resx</LastGenOutput>
@@ -323,4 +356,5 @@
   </Target>
   -->
   <ProjectExtensions />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\WindowsPhone\v8.0\Microsoft.Expression.Blend.WindowsPhone.targets" />
 </Project>

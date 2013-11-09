@@ -79,7 +79,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Europa.
+        ///   Looks up a localized string similar to Europe.
         /// </summary>
         internal static string group_Europe {
             get {
@@ -97,7 +97,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to canguro.
+        ///   Looks up a localized string similar to kangaroo.
         /// </summary>
         internal static string item_canguro {
             get {
@@ -106,7 +106,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to coccodrillo.
+        ///   Looks up a localized string similar to crocodile.
         /// </summary>
         internal static string item_coccodrillo {
             get {
@@ -115,7 +115,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to diavolo della Tasmania.
+        ///   Looks up a localized string similar to Tasmanian devil.
         /// </summary>
         internal static string item_diavolo {
             get {
@@ -133,7 +133,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to leone.
+        ///   Looks up a localized string similar to lion.
         /// </summary>
         internal static string item_lion {
             get {
@@ -142,7 +142,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to tigre.
+        ///   Looks up a localized string similar to tiger.
         /// </summary>
         internal static string item_tiger {
             get {
@@ -156,6 +156,15 @@ namespace EasyPaint {
         internal static string item_zebra {
             get {
                 return ResourceManager.GetString("item_zebra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to water.
+        /// </summary>
+        internal static string water {
+            get {
+                return ResourceManager.GetString("water", resourceCulture);
             }
         }
     }

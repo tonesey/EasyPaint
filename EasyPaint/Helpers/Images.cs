@@ -35,21 +35,21 @@ namespace EasyPaint.Helpers
         }
 
 
-         public static List<Color> GetColors(WriteableBitmap bmp)
-         {
-             List<Color> cols = new List<Color>();
-             foreach (var pixel in bmp.Pixels)
-             {
-                 var bytes = BitConverter.GetBytes(pixel);
-                 Color c = Color.FromArgb(bytes[3], bytes[2], bytes[1], bytes[0]);
+        public static List<Color> GetColors(WriteableBitmap bmp)
+        {
+            List<Color> cols = new List<Color>();
+            foreach (var pixel in bmp.Pixels)
+            {
+                var bytes = BitConverter.GetBytes(pixel);
+                Color c = Color.FromArgb(bytes[3], bytes[2], bytes[1], bytes[0]);
 
-                 if (!cols.Contains(c) && (c.A != 0))
-                 {
-                     cols.Add(c);
-                 }
-             }
-             return cols;
-         }
+                if (!cols.Contains(c) && (c.A != 0))
+                {
+                    cols.Add(c);
+                }
+            }
+            return cols;
+        }
 
 
 
@@ -73,14 +73,14 @@ namespace EasyPaint.Helpers
             int percentage = 100 - ((diff * 100) / totPixels);
             return percentage;
         }
-       
+
 
         //public static void WriteContentImageToIsoStore(string contentPath, string isoStoreFileName) {
 
         public static void WriteContentImageToIsoStore(Uri imgUri, string isoStoreFileName)
         {
 
-           // var pngStream = Application.GetResourceStream(new Uri(contentPath, UriKind.RelativeOrAbsolute)).Stream;
+            // var pngStream = Application.GetResourceStream(new Uri(contentPath, UriKind.RelativeOrAbsolute)).Stream;
 
             StreamResourceInfo streamInfo = App.GetResourceStream(imgUri);
             if (streamInfo != null)
@@ -121,7 +121,7 @@ namespace EasyPaint.Helpers
             BitmapImage bmpImage = null;
             try
             {
-                 bmpImage = new BitmapImage();
+                bmpImage = new BitmapImage();
                 bmpImage.SetSource(ms);
             }
             catch (Exception ex)
@@ -164,20 +164,25 @@ namespace EasyPaint.Helpers
                 throw new Exception("Cannot print images from other domains");
             }
 
-            // Save it to disk
-            Stream streamPNG = eiImage.GetStream();
-            StreamReader srPNG = new StreamReader(streamPNG);
-            byte[] baBinaryData = new Byte[streamPNG.Length];
-            long bytesRead = streamPNG.Read(baBinaryData, 0, (int)streamPNG.Length);
-            IsolatedStorageFileStream isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Create, IsolatedStorageFile.GetUserStoreForApplication());
-            isfStream.Write(baBinaryData, 0, baBinaryData.Length);
-            isfStream.Close();
-
-            //Show to image
-            isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Open, IsolatedStorageFile.GetUserStoreForApplication());
             BitmapImage biImage = new BitmapImage();
-            biImage.SetSource(isfStream);
-            isfStream.Close();
+
+            // Save it to disk
+            using (Stream streamPNG = eiImage.GetStream())
+            {
+                StreamReader srPNG = new StreamReader(streamPNG);
+                byte[] baBinaryData = new Byte[streamPNG.Length];
+                long bytesRead = streamPNG.Read(baBinaryData, 0, (int)streamPNG.Length);
+
+                using (IsolatedStorageFileStream isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Create, IsolatedStorageFile.GetUserStoreForApplication()))
+                {
+                    isfStream.Write(baBinaryData, 0, baBinaryData.Length);
+                }
+
+                using (IsolatedStorageFileStream isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Open, IsolatedStorageFile.GetUserStoreForApplication()))
+                {
+                    biImage.SetSource(isfStream);
+                }
+            }
 
             return biImage;
         }

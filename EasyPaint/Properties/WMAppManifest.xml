@@ -19,8 +19,9 @@
       <Capability Name="ID_CAP_APPOINTMENTS" />
     </Capabilities>
     <Tasks>
-      <!--<DefaultTask Name="_default" NavigationPage="PicSelectorPage.xaml" />-->
       <DefaultTask Name="_default" NavigationPage="/View/Homepage.xaml" />
+      <!--<DefaultTask Name="_default" NavigationPage="/WriteableBitmapTestsPage.xaml" />-->
+      <!--<DefaultTask Name="_default" NavigationPage="/View/PainterPage.xaml" />-->
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="EasyPaintToken" TaskName="_default">

@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using EasyPaint.Tests;
+//using EasyPaint.Tests;
 using System.Windows.Media.Imaging;
 using EasyPaint.Helpers;
 using System.IO.IsolatedStorage;
@@ -21,6 +21,9 @@ using EasyPaint;
 using System.Globalization;
 using System.Threading;
 using EasyPaint.ViewModel;
+using System.Reflection;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace EasyPaint.View
 {
@@ -36,11 +39,16 @@ namespace EasyPaint.View
         private const string tmpFName = "tmp.png";
         WriteableBitmap _reducedColorsPicture = null;
         DispatcherTimer _dt = new DispatcherTimer();
+        DispatcherTimer _countDownTimer = new DispatcherTimer();
         bool _gameInProgress = false;
-   
+
         int _availableTimeValue = 0;
 
-        Storyboard _sb = null;
+        Storyboard _storyboardAnimalImageFading;
+        Storyboard _storyboardCountDown;
+        Storyboard _storyboardShowPalette;
+
+        private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
 
         public PainterPage()
         {
@@ -49,14 +57,143 @@ namespace EasyPaint.View
             _myBoard = new SimzzDev.DrawingBoard(ink);
             //_dt.Interval = TimeSpan.FromSeconds(1);
             //_dt.Tick += dt_Tick;
-
-            CultureInfo cc, cuic;
-            cc = Thread.CurrentThread.CurrentCulture;
-            cuic = Thread.CurrentThread.CurrentUICulture;
-
-            _sb = (Storyboard)App.Current.Resources["FadeOutAnimation"];
-            Storyboard.SetTarget(_sb.Children.ElementAt(0) as DoubleAnimation, timerEllipse);
+            //CultureInfo cc, cuic;
+            //cc = Thread.CurrentThread.CurrentCulture;
+            //cuic = Thread.CurrentThread.CurrentUICulture;
+            TryPlayBackgroundMusic();
+            LoadSounds();
+            InitAnimations();
+            StartCountDown();
         }
+
+        #region audio
+        public MediaElement PaintMediaElement
+        {
+            get { return Resources["PaintMedia"] as MediaElement; }
+        }
+
+
+        public static bool BackgroundMusicAllowed()
+        {
+            //disabilitata temporaneamente musica
+
+            bool allowed = true;
+
+            //you can check a stored property here and return false if you want to disable all bgm
+            //if (!MediaPlayer.GameHasControl)
+            //{
+            //    //ask user about background music
+            //    MessageBoxResult mbr = MessageBox.Show("press ok if you’d like to use this app’s background music (this will stop your current music playback)", "use app background music?", MessageBoxButton.OKCancel);
+            //    if (mbr != MessageBoxResult.OK)
+            //    {
+            //        allowed = false;
+            //    }
+            //}
+
+            return allowed;
+        }
+
+        public void TryPlayBackgroundMusic()
+        {
+            if (BackgroundMusicAllowed())
+            {
+                MediaPlayer.Stop(); //stop to clear any existing bg music
+
+                PaintMediaElement.Source = new Uri("Audio/mp3/Alegria.mp3", UriKind.Relative);
+                PaintMediaElement.MediaOpened += MediaElement_MediaOpened; //wait until Media is ready before calling .Play()
+            }
+        }
+
+        private void MediaElement_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            PaintMediaElement.Play();
+        }
+
+        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            if (PaintMediaElement.CurrentState != System.Windows.Media.MediaElementState.Playing)
+            {
+                //loop  music
+                PaintMediaElement.Play();
+            }
+        }
+     
+
+        private void LoadSounds()
+        {
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.three.wav"))
+            {
+                _sounds.Add(3, SoundEffect.FromStream(stream));
+            }
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.two.wav"))
+            {
+                _sounds.Add(2, SoundEffect.FromStream(stream));
+            }
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.one.wav"))
+            {
+                _sounds.Add(1, SoundEffect.FromStream(stream));
+            }
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.go.wav"))
+            {
+                _sounds.Add(0, SoundEffect.FromStream(stream));
+            }
+        }
+
+        #endregion
+        private void ShowPalette()
+        {
+            _storyboardShowPalette.Begin();
+        }
+
+        private void InitAnimations()
+        {
+            _storyboardAnimalImageFading = (Storyboard)Resources["StoryboardAnimalFadeout"];
+            _storyboardCountDown = (Storyboard)Resources["StoryboardCountdown"];
+            _storyboardShowPalette = (Storyboard)Resources["StoryboardShowPalette"];
+            //Storyboard.SetTarget(_storyboardImageFading.Children.ElementAt(0) as DoubleAnimation, ImageMain);
+            //Storyboard.SetTarget(_storyboardCountDown.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
+            //Storyboard.SetTarget(_storyboardShowPalette.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
+        }
+
+        private void StartCountDown()
+        {
+            int count = 3;
+            TextBlockCountDown.Text = count.ToString();
+            SoundHelper.PlaySound(_sounds[count]);
+            count--;
+            _storyboardCountDown.Begin();
+            _storyboardCountDown.Completed += (sender, ev) =>
+            {
+                if (count == 0)
+                {
+                    TextBlockCountDown.Text = "go!!!";
+                    SoundHelper.PlaySound(_sounds[count]);
+                    _storyboardAnimalImageFading.Begin();
+                    _storyboardAnimalImageFading.Completed += (sender1, ev1) =>
+                    {
+                        TextBlockCountDown.Visibility = Visibility.Collapsed;
+                        _storyboardCountDown.Stop();
+                        _storyboardShowPalette.Begin();
+                    };
+                }
+                else
+                {
+                    TextBlockCountDown.Text = count.ToString();
+                    SoundHelper.PlaySound(_sounds[count]);
+                    _storyboardCountDown.Begin();
+                    count--;
+                }
+                //Dispatcher.BeginInvoke(() =>
+                //{
+                //    TextBlockCountDown.Text = count.ToString();
+                //    SoundHelper.PlaySound(_sounds[count]);
+                //    _storyboardCountDown.Begin();
+                //    count--;
+                //});
+            };
+        }
+
+
 
         #region timer
         void dt_Tick(object sender, EventArgs e)
@@ -86,7 +223,7 @@ namespace EasyPaint.View
             _gameInProgress = true;
             _availableTimeValue = TotalTime;
             _dt.Start();
-            _sb.Begin();
+            _storyboardAnimalImageFading.Begin();
         }
 
         private void StopTimer()
@@ -94,48 +231,51 @@ namespace EasyPaint.View
             _gameInProgress = false;
             _availableTimeValue = 0;
             _dt.Stop();
-            _sb.Stop();
+            _storyboardAnimalImageFading.Stop();
         }
         #endregion
 
-        private void PhoneApplicationPage_Loaded_1(object sender, RoutedEventArgs e)
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             SetEllipseSize(_myBoard.BrushWidth);
 
-            mainImg.Visibility = System.Windows.Visibility.Visible;
-            testImg.Visibility = System.Windows.Visibility.Collapsed;
+            ImageMain.Visibility = System.Windows.Visibility.Visible;
+            ImageTest.Visibility = System.Windows.Visibility.Collapsed;
 
             var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
 
-            mainImg.Source = new BitmapImage(selectedImage.ImageSource);
-            //ImagesHelper.WriteContentImageToIsoStore(selectedImage.ReducedColorsResourceUri, tmpFName);
-            //_reducedColorsPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
-
-            _reducedColorsPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.ReducedColorsResourcePath);
-            _lineArtPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.LineArtResourcePath);
-
-            //_lineArtPicture = new WriteableBitmap(new BitmapImage(selectedImage.LineArtResourceUri));
-            //ink.Height = _origPicture.PixelHeight;
-            //ink.Width = _origPicture.PixelWidth;
-
-            List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture);
-            int count = 1;
-            foreach (var color in imageColors)
+            if (selectedImage != null)
             {
-                var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
-                if (btn != null)
+                ImageMain.Source = new BitmapImage(selectedImage.ImageSource);
+                //ImagesHelper.WriteContentImageToIsoStore(selectedImage.ReducedColorsResourceUri, tmpFName);
+                //_reducedColorsPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
+
+                _reducedColorsPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.ReducedColorsResourcePath);
+                _lineArtPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.LineArtResourcePath);
+
+                //_lineArtPicture = new WriteableBitmap(new BitmapImage(selectedImage.LineArtResourceUri));
+                //ink.Height = _origPicture.PixelHeight;
+                //ink.Width = _origPicture.PixelWidth;
+
+                List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture);
+                int count = 1;
+                foreach (var color in imageColors)
                 {
-                    btn.Background = new SolidColorBrush(color);
+                    var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
+                    if (btn != null)
+                    {
+                        btn.Background = new SolidColorBrush(color);
+                    }
+                    count++;
                 }
-                count++;
-            }
 #if DEBUG
-            MessageBox.Show("colors detected : " + count);
+                MessageBox.Show("colors detected : " + count);
 #endif
-            for (int i = count; i <= 6; i++)
-            {
-                var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
-                btn.Visibility = Visibility.Collapsed;
+                for (int i = count; i <= 6; i++)
+                {
+                    var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
+                    btn.Visibility = Visibility.Collapsed;
+                }
             }
         }
 
@@ -199,34 +339,24 @@ namespace EasyPaint.View
             //WriteableBitmap drawnPicture1 = new WriteableBitmap(myBoard.Ink, null);
             WriteableBitmap userDrawnPicture = new WriteableBitmap(ImagesHelper.GetImageFromInkPresenter(_myBoard.Ink));
 
-            mainImg.Visibility = System.Windows.Visibility.Collapsed;
-            testImg.Visibility = System.Windows.Visibility.Visible;
+            ImageMain.Visibility = System.Windows.Visibility.Collapsed;
+            ImageTest.Visibility = System.Windows.Visibility.Visible;
+
+            //testImg.Source = userDrawnPicture;
+            //MessageBox.Show("continue");
 
             //merge con immagine lineart
-            userDrawnPicture.Blit(
-                     new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
-                     _lineArtPicture,
-                     new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
-                     WriteableBitmapExtensions.BlendMode.Additive);
-            testImg.Source = userDrawnPicture;
-            
-            //_lineArtPicture.Blit(
-            //     new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
-            //     userDrawnPicture,
-            //     new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
-            //     WriteableBitmapExtensions.BlendMode.Additive);
+            userDrawnPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
+                                  _lineArtPicture,
+                                  new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
+                                  WriteableBitmapExtensions.BlendMode.Alpha);
+            ImageTest.Source = userDrawnPicture;
+
+            //_lineArtPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
+            //                      userDrawnPicture,
+            //                      new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
+            //                      WriteableBitmapExtensions.BlendMode.Alpha);
             //testImg.Source = _lineArtPicture;
-
-            //int test = ImagesHelper.GetNotBlankPixels(userDrawnPicture);
-
-            //int diffPixels1 = ImagesHelper.GetNumberOfDifferentPixels(drawnPicture1, drawnPicture);
-
-            //content
-            //non riesco a caricarlo.... da sempre null
-            //var bmp = new BitmapImage(new Uri("Assets/Packages/Pimpa/01.PNG", UriKind.Relative));
-            //WriteableBitmap origPicture1 = new WriteableBitmap(bmp);
-
-            //List<Color> c2 = ImagesHelper.GetColors(drawnPicture);
 
             int diffPixels = ImagesHelper.GetNumberOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
             int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
@@ -245,13 +375,14 @@ namespace EasyPaint.View
         private void btnPensizeChange_Click(object sender, RoutedEventArgs e)
         {
             int curSize = _myBoard.BrushWidth;
-            curSize+=2;
+            curSize += 2;
             if (curSize <= 6)
             {
                 _myBoard.BrushWidth = curSize;
                 _myBoard.BrushHeight = curSize;
             }
-            else {
+            else
+            {
                 //torna al minimo
                 _myBoard.BrushWidth = 2;
                 _myBoard.BrushHeight = 2;
@@ -263,7 +394,7 @@ namespace EasyPaint.View
 
             SetEllipseSize(_myBoard.BrushWidth);
         }
-      
+
         private void SetEllipseSize(int strokeWidth)
         {
             ellipseStrokeSize.Width = ellipseStrokeSize.Height = strokeWidth * 5;
@@ -284,7 +415,7 @@ namespace EasyPaint.View
 
         private void Grid_MouseMove_1(object sender, MouseEventArgs e)
         {
-           // var pos = e.GetPosition(sender as UIElement);
+            // var pos = e.GetPosition(sender as UIElement);
             //if (pos.X < 0 || pos.Y < 0)
             //{
             //}

@@ -15,40 +15,44 @@
           <target state="new">America</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Europe" xml:space="preserve">
-          <source>Europa</source>
-          <target state="new">Europa</target>
+          <source>Europe</source>
+          <target state="new">Europe</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Oceania" xml:space="preserve">
           <source>Oceania</source>
           <target state="new">Oceania</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_canguro" xml:space="preserve">
-          <source>canguro</source>
-          <target state="new">canguro</target>
+          <source>kangaroo</source>
+          <target state="new">kangaroo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_coccodrillo" xml:space="preserve">
-          <source>coccodrillo</source>
-          <target state="new">coccodrillo</target>
+          <source>crocodile</source>
+          <target state="new">crocodile</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_diavolo" xml:space="preserve">
-          <source>diavolo della Tasmania</source>
-          <target state="new">diavolo della Tasmania</target>
+          <source>Tasmanian devil</source>
+          <target state="new">Tasmanian devil</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_koala" xml:space="preserve">
           <source>koala</source>
           <target state="new">koala</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_lion" xml:space="preserve">
-          <source>leone</source>
-          <target state="new">leone</target>
+          <source>lion</source>
+          <target state="new">lion</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_tiger" xml:space="preserve">
-          <source>tigre</source>
-          <target state="new">tigre</target>
+          <source>tiger</source>
+          <target state="new">tiger</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_zebra" xml:space="preserve">
           <source>zebra</source>
           <target state="new">zebra</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/water" xml:space="preserve">
+          <source>water</source>
+          <target state="new">water</target>
         </trans-unit>
       </group>
     </body>
