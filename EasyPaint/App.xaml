@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
              xmlns:telerikPrimitivesLoopingList="clr-namespace:Telerik.Windows.Controls.LoopingList;assembly=Telerik.Windows.Controls.Primitives"
-             d1p1:Ignorable="d" 
+             d1p1:Ignorable="d"
+             xmlns:SSME="clr-namespace:Microsoft.Web.Media.SmoothStreaming;assembly=Microsoft.Web.Media.SmoothStreaming"
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006" >
     <!--Application Resources-->
     <Application.Resources>
 
         <!-- Backgorund Sound Manager -->
+        <!--<SSME:SmoothStreamingMediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />-->
         <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
 
         <!-- VM Locator -->
@@ -20,7 +22,6 @@
         <!--<Storyboard x:Key="FadeOutAnimation">
             <DoubleAnimation From="1" To="0" Duration="0:0:2" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" AutoReverse="True" />
         </Storyboard>-->
-
 
         <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitivesLoopingList:LoopingListItem">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>

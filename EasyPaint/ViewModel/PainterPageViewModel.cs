@@ -22,6 +22,16 @@ namespace EasyPaint.ViewModel
         {
         }
 
+        public int DrawingboardWidth
+        {
+            get { return 560; }
+        }
+
+        public int DrawingboardHeigth
+        {
+            get { return 460; }
+        }
+
         public int PaletteItemTranslateX
         {
             get

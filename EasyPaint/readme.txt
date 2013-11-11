@@ -23,3 +23,6 @@ http://audiojungle.net/item/level-down-08/5872115
 
 Suono ok:
 http://audiojungle.net/item/level-up-positive-02/5730904
+
+
+http://blogs.msdn.com/b/giuseppeguerrasio/archive/2010/12/06/using-smooth-streaming-media-element-for-windows-phone-7.aspx

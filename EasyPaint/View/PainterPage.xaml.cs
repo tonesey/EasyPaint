@@ -32,11 +32,11 @@ namespace EasyPaint.View
         const int TotalTime = 30;
 
         // Constructor
-        SimzzDev.DrawingBoard _myBoard;
+        SimzzDev.DrawingBoard _drawingboard;
+
+      // private const string tmpFName = "tmp.png";
 
         WriteableBitmap _lineArtPicture = null;
-
-        private const string tmpFName = "tmp.png";
         WriteableBitmap _reducedColorsPicture = null;
         DispatcherTimer _dt = new DispatcherTimer();
         DispatcherTimer _countDownTimer = new DispatcherTimer();
@@ -54,13 +54,53 @@ namespace EasyPaint.View
         {
             InitializeComponent();
             //Tester.CheckImagesTester();
-            _myBoard = new SimzzDev.DrawingBoard(ink);
-            _dt.Interval = TimeSpan.FromSeconds(1);
-            _dt.Tick += dt_Tick;
+            _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
+            //_dt.Interval = TimeSpan.FromSeconds(1);
+            //_dt.Tick += dt_Tick;
             TryPlayBackgroundMusic();
             LoadSounds();
             InitAnimations();
+            AssignEventHandlers();
+        }
 
+        private void AssignEventHandlers()
+        {
+            UnassignEventHandlers();
+            ImageOverlay.MouseLeftButtonDown += ImageOverlay_MouseLeftButtonDown;
+            ImageOverlay.MouseLeftButtonUp += ImageOverlay_MouseLeftButtonUp;
+            ImageOverlay.MouseMove += ImageOverlay_MouseMove;
+            ImageOverlay.MouseLeave += ImageOverlay_MouseLeave;
+        }
+
+        private void UnassignEventHandlers()
+        {
+            ImageOverlay.MouseLeftButtonDown -= ImageOverlay_MouseLeftButtonDown;
+            ImageOverlay.MouseLeftButtonUp -= ImageOverlay_MouseLeftButtonUp;
+            ImageOverlay.MouseMove -= ImageOverlay_MouseMove;
+            ImageOverlay.MouseLeave -= ImageOverlay_MouseLeave;
+        }
+
+
+        void ImageOverlay_MouseLeave(object sender, MouseEventArgs e)
+        {
+            _drawingboard.Ink_MouseLeave(sender, e);
+        }
+
+        void ImageOverlay_MouseMove(object sender, MouseEventArgs e)
+        {
+            _drawingboard.Ink_MouseMove(sender, e);
+        }
+
+        void ImageOverlay_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ImageOverlay.ReleaseMouseCapture();
+            _drawingboard.Ink_MouseLeftButtonUp(sender, e);
+        }
+
+        void ImageOverlay_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ImageOverlay.CaptureMouse();
+            _drawingboard.Ink_MouseLeftButtonDown(sender, e);
         }
 
         #region audio
@@ -138,6 +178,7 @@ namespace EasyPaint.View
         }
 
         #endregion
+
         private void ShowPalette()
         {
             _storyboardShowPalette.Begin();
@@ -188,8 +229,6 @@ namespace EasyPaint.View
             };
         }
 
-
-
         #region timer
         void dt_Tick(object sender, EventArgs e)
         {
@@ -233,7 +272,7 @@ namespace EasyPaint.View
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            SetEllipseSize(_myBoard.BrushWidth);
+            SetEllipseSize(_drawingboard.BrushWidth);
 
             ImageMain.Visibility = System.Windows.Visibility.Visible;
             ImageTest.Visibility = System.Windows.Visibility.Collapsed;
@@ -246,8 +285,10 @@ namespace EasyPaint.View
                 //ImagesHelper.WriteContentImageToIsoStore(selectedImage.ReducedColorsResourceUri, tmpFName);
                 //_reducedColorsPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
 
-                _reducedColorsPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.ReducedColorsResourcePath);
-                _lineArtPicture = BitmapFactory.New(400, 400).FromResource(selectedImage.LineArtResourcePath);
+                _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
+                _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
+
+                ImageOverlay.Source = _lineArtPicture;
 
                 //_lineArtPicture = new WriteableBitmap(new BitmapImage(selectedImage.LineArtResourceUri));
                 //ink.Height = _origPicture.PixelHeight;
@@ -293,36 +334,16 @@ namespace EasyPaint.View
             StopTimer();
         }
 
-        //private void redBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //Change the color to red.
-        //    _myBoard.MainColor = Colors.Red;
-        //    _myBoard.OutlineColor = Colors.Red;
-        //}
-
-        //private void blackBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //Change the color to black.
-        //    _myBoard.MainColor = Colors.Black;
-        //    _myBoard.OutlineColor = Colors.Black;
-        //}
-
-        //private void penBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //Change it to 'draw mode'.
-        //    _myBoard.InkMode = SimzzDev.DrawingBoard.PenMode.pen;
-        //}
-
         private void eraseBtn_Click(object sender, RoutedEventArgs e)
         {
             //Change it to 'erase mode'.
-            _myBoard.InkMode = SimzzDev.DrawingBoard.PenMode.Erase;
+            _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Erase;
         }
 
         private void startOrStopBtn_Click(object sender, RoutedEventArgs e)
         {
            // CheckDrawnPicture();
-
+            
             //if (_gameInProgress)
             //{
             //    //started: now stop
@@ -337,11 +358,65 @@ namespace EasyPaint.View
             //}
         }
 
+        #region palette
+        private void pc1_Click(object sender, RoutedEventArgs e)
+        {
+            _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
+            Color selectedColor = ((sender as Button).Background as SolidColorBrush).Color;
+            _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
+        }
+        #endregion
+
+        #region toolbox
+        private void btnPensizeChange_Click(object sender, RoutedEventArgs e)
+        {
+            int curSize = _drawingboard.BrushWidth;
+            curSize += 8;
+            if (curSize <= 18)
+            {
+                _drawingboard.BrushWidth = curSize;
+                _drawingboard.BrushHeight = curSize;
+            }
+            else
+            {
+                //torna al minimo
+                _drawingboard.BrushWidth = 2;
+                _drawingboard.BrushHeight = 2;
+            }
+
+            //stroke 2 -> width 10
+            //stroke 4 -> width 20
+            //stroke 6 -> width 30
+
+            SetEllipseSize(_drawingboard.BrushWidth);
+        }
+
+        private void SetEllipseSize(int strokeWidth)
+        {
+            //ellipseStrokeSize.Width = ellipseStrokeSize.Height = strokeWidth * 5;
+
+            switch (strokeWidth)
+            {
+                case 2:
+                    ellipseStrokeSize.Width = ellipseStrokeSize.Height = 10;
+                    break;
+                case 10:
+                    ellipseStrokeSize.Width = ellipseStrokeSize.Height = 20;
+                    break;
+                case 18:
+                    ellipseStrokeSize.Width = ellipseStrokeSize.Height = 30;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #endregion
 
         private void CheckDrawnPicture()
         {
             //WriteableBitmap drawnPicture1 = new WriteableBitmap(myBoard.Ink, null);
-            WriteableBitmap userDrawnPicture = new WriteableBitmap(ImagesHelper.GetImageFromInkPresenter(_myBoard.Ink));
+            WriteableBitmap userDrawnPicture = new WriteableBitmap(ImagesHelper.GetImageFromInkPresenter(_drawingboard.Ink));
 
             ImageMain.Visibility = System.Windows.Visibility.Collapsed;
             ImageTest.Visibility = System.Windows.Visibility.Visible;
@@ -368,69 +443,6 @@ namespace EasyPaint.View
 
             MessageBox.Show(string.Format("Precision: {0}%", diffPixelsPercentage));
         }
-
-        private void pc1_Click(object sender, RoutedEventArgs e)
-        {
-            _myBoard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
-            Color selectedColor = ((sender as Button).Background as SolidColorBrush).Color;
-            _myBoard.OutlineColor = _myBoard.MainColor = selectedColor;
-        }
-
-        private void btnPensizeChange_Click(object sender, RoutedEventArgs e)
-        {
-            int curSize = _myBoard.BrushWidth;
-            curSize += 2;
-            if (curSize <= 6)
-            {
-                _myBoard.BrushWidth = curSize;
-                _myBoard.BrushHeight = curSize;
-            }
-            else
-            {
-                //torna al minimo
-                _myBoard.BrushWidth = 2;
-                _myBoard.BrushHeight = 2;
-            }
-
-            //stroke 2 -> width 10
-            //stroke 4 -> width 20
-            //stroke 6 -> width 30
-
-            SetEllipseSize(_myBoard.BrushWidth);
-        }
-
-        private void SetEllipseSize(int strokeWidth)
-        {
-            ellipseStrokeSize.Width = ellipseStrokeSize.Height = strokeWidth * 5;
-        }
-
-        private void SaveAndDisablePen()
-        {
-        }
-
-        private void RestorePen()
-        {
-        }
-
-        private void Grid_MouseLeave_1(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void Grid_MouseMove_1(object sender, MouseEventArgs e)
-        {
-            // var pos = e.GetPosition(sender as UIElement);
-            //if (pos.X < 0 || pos.Y < 0)
-            //{
-            //}
-
-        }
-
-        private void pc1_Tap(object sender, GestureEventArgs e)
-        {
-
-        }
-
 
     }
 }

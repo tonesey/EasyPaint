@@ -13,7 +13,7 @@ namespace SimzzDev
 {
     public class DrawingBoard
     {
-       
+
         Stroke _stroke;
         StylusPointCollection _erasePoints;
         StrokeCollection _allErasedStrokes = new StrokeCollection();
@@ -38,11 +38,12 @@ namespace SimzzDev
         public DrawingBoard(InkPresenter Ink)
         {
             _presenter = Ink;
-            _presenter.MouseLeftButtonDown += new MouseButtonEventHandler(ink_MouseLeftButtonDown);
-            _presenter.MouseLeftButtonUp += new MouseButtonEventHandler(ink_MouseLeftButtonUp);
-            _presenter.MouseMove += new MouseEventHandler(ink_MouseMove);
-            _presenter.MouseLeave += new MouseEventHandler(ink_MouseLeave);
-           
+
+            //_presenter.MouseLeftButtonDown += new MouseButtonEventHandler(ink_MouseLeftButtonDown);
+            //_presenter.MouseLeftButtonUp += new MouseButtonEventHandler(ink_MouseLeftButtonUp);
+            //_presenter.MouseMove += new MouseEventHandler(ink_MouseMove);
+            //_presenter.MouseLeave += new MouseEventHandler(ink_MouseLeave);
+
             //defaults some properties so drawing will work
             InkMode = PenMode.Pen;
             MainColor = Colors.Black;
@@ -51,21 +52,18 @@ namespace SimzzDev
             BrushHeight = 2;
         }
 
-
-
-        void ink_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ResetPen();
-        }
-
         private void ResetPen()
         {
             _stroke = null;
             _presenter.ReleaseMouseCapture();
         }
 
+        public void Ink_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ResetPen();
+        }
 
-        void ink_MouseMove(object sender, MouseEventArgs e)
+        public void Ink_MouseMove(object sender, MouseEventArgs e)
         {
             var pos = e.GetPosition(sender as UIElement);
             if (pos.X < 0 || pos.Y < 0 || pos.X > _presenter.Width || pos.Y > _presenter.Height)
@@ -74,46 +72,64 @@ namespace SimzzDev
                 return;
             }
 
-            if (InkMode == PenMode.Pen && _stroke != null)
+            if (InkMode == PenMode.Pen)
             {
-                var sp = e.StylusDevice.GetStylusPoints(_presenter);
-                _stroke.StylusPoints.Add(sp);
-            }
-            //orig
-            //if (InkMode == PenMode.erase && _erasePoints != null)
-            //{
-            //    _erasePoints.Add(e.StylusDevice.GetStylusPoints(_presenter));
-            //    StrokeCollection hitStrokes = _presenter.Strokes.HitTest(_erasePoints);
-            //    if (hitStrokes.Count > 0)
-            //    {
-            //        foreach (Stroke hitStroke in hitStrokes)
-            //        {
-            //            _allErasedStrokes.Add(hitStroke);
-            //            _presenter.Strokes.Remove(hitStroke);
-            //        }
-            //    }
-            //}
-
-            //test
-            if (InkMode == PenMode.Erase && _lastPoint != null)
-            {
-                StylusPointCollection pointErasePoints = e.StylusDevice.GetStylusPoints(_presenter);
-                pointErasePoints.Insert(0, _lastPoint.Value);
-                //Compare collected stylus points with the ink presenter strokes and store the intersecting strokes.
-                StrokeCollection hitStrokes = _presenter.Strokes.HitTest(pointErasePoints);
-                if (hitStrokes.Count > 0)
+                if (_stroke != null)
                 {
-                    foreach (Stroke hitStroke in hitStrokes)
-                    {
-                        //For each intersecting stroke, split the stroke into two while removing the intersecting points.
-                        ProcessPointErase(hitStroke, pointErasePoints);
-                    }
+                    StylusPointCollection sp = e.StylusDevice.GetStylusPoints(_presenter);
+                    _stroke.StylusPoints.Add(sp);
                 }
-                _lastPoint = pointErasePoints[pointErasePoints.Count - 1];
+                return;
             }
-
+            else if (InkMode == PenMode.Erase)
+            {
+                if (_lastPoint != null)
+                {
+                    StylusPointCollection pointErasePoints = e.StylusDevice.GetStylusPoints(_presenter);
+                    pointErasePoints.Insert(0, _lastPoint.Value);
+                    //Compare collected stylus points with the ink presenter strokes and store the intersecting strokes.
+                    StrokeCollection hitStrokes = _presenter.Strokes.HitTest(pointErasePoints);
+                    if (hitStrokes.Count > 0)
+                    {
+                        foreach (Stroke hitStroke in hitStrokes)
+                        {
+                            //For each intersecting stroke, split the stroke into two while removing the intersecting points.
+                            ProcessPointErase(hitStroke, pointErasePoints);
+                        }
+                    }
+                    _lastPoint = pointErasePoints[pointErasePoints.Count - 1];
+                }
+            }
         }
 
+        public void Ink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            _stroke = null;
+          //  _presenter.ReleaseMouseCapture();
+        }
+
+        public void Ink_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //_presenter.CaptureMouse();
+            if (InkMode == PenMode.Pen)
+            {
+                _stroke = new Stroke();
+                _stroke.DrawingAttributes.Color = MainColor;
+                _stroke.DrawingAttributes.Height = BrushHeight;
+                _stroke.DrawingAttributes.Width = BrushWidth;
+                _stroke.DrawingAttributes.OutlineColor = OutlineColor;
+                _stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(_presenter));
+                _presenter.Strokes.Add(_stroke);
+            }
+            else
+            {
+                //_erasePoints = e.StylusDevice.GetStylusPoints(_presenter);
+
+                StylusPointCollection pointErasePoints = e.StylusDevice.GetStylusPoints(_presenter);
+                //Store the last point in the stylus point collection.
+                _lastPoint = pointErasePoints[pointErasePoints.Count - 1];
+            }
+        }
 
         void ProcessPointErase(Stroke stroke, StylusPointCollection pointErasePoints)
         {
@@ -161,91 +177,7 @@ namespace SimzzDev
             _presenter.Strokes.Remove(stroke);
         }
 
-        void ink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            _stroke = null;
-            _presenter.ReleaseMouseCapture();
-        }
 
-        void ink_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            _presenter.CaptureMouse();
-            if (InkMode == PenMode.Pen)
-            {
-                _stroke = new Stroke();
-                _stroke.DrawingAttributes.Color = MainColor;
-                _stroke.DrawingAttributes.Height = BrushHeight;
-                _stroke.DrawingAttributes.Width = BrushWidth;
-                _stroke.DrawingAttributes.OutlineColor = OutlineColor;
-                _stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(_presenter));
-                _presenter.Strokes.Add(_stroke);
-            }
-            else
-            {
-                //_erasePoints = e.StylusDevice.GetStylusPoints(_presenter);
-
-                StylusPointCollection pointErasePoints = e.StylusDevice.GetStylusPoints(_presenter);
-                //Store the last point in the stylus point collection.
-                _lastPoint = pointErasePoints[pointErasePoints.Count - 1];
-            }
-        }
-
-        #region Crap
-        //public void MouseLeftButtonDown(MouseButtonEventArgs e)
-        //{
-        //    ink.CaptureMouse();
-        //    if (InkMode == PenMode.pen)
-        //    {
-        //        stroke = new Stroke();
-        //        stroke.DrawingAttributes.Color = MainColor;
-        //        stroke.DrawingAttributes.Height = BrushHeight;
-        //        stroke.DrawingAttributes.Width = BrushWidth;
-        //        stroke.DrawingAttributes.OutlineColor = OutlineColor;
-        //        stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(ink));
-        //        ink.Strokes.Add(stroke);
-        //    }
-        //    else
-        //    {
-        //        ErasePoints = e.StylusDevice.GetStylusPoints(ink);
-        //    }
-        //}
-
-        //public void MouseLeftButtonUp()
-        //{
-        //    stroke = null;
-        //    ink.ReleaseMouseCapture();
-        //}
-
-        //public void MouseLeave()
-        //{
-        //    stroke = null;
-        //    ink.ReleaseMouseCapture();
-        //}
-
-        //public void MouseMove(MouseEventArgs e)
-        //{
-        //    if (InkMode == PenMode.pen && stroke != null)
-        //    {
-        //        stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(ink));
-        //    }
-
-        //    if (InkMode == PenMode.erase && ErasePoints != null)
-        //    {
-        //        ErasePoints.Add(e.StylusDevice.GetStylusPoints(ink));
-        //        StrokeCollection hitStrokes = ink.Strokes.HitTest(ErasePoints);
-        //        if (hitStrokes.Count > 0)
-        //        {
-        //            foreach (Stroke hitStroke in hitStrokes)
-        //            {
-        //                allErasedStrokes.Add(hitStroke);
-        //                ink.Strokes.Remove(hitStroke);
-        //            }
-        //        }
-
-        //    }
-        //}
-
-        #endregion
 
         public void UndoLast(PenMode inkMode)
         {

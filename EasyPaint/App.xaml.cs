@@ -16,6 +16,10 @@ using EasyPaint.ViewModel;
 using System.Windows.Resources;
 using System.Windows.Media.Imaging;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Web.Media.SmoothStreaming;
+using System.Reflection;
+using System.IO.IsolatedStorage;
+using System.IO;
 
 namespace EasyPaint
 {
@@ -182,6 +186,11 @@ namespace EasyPaint
 
         #region audio
 
+        //public static SmoothStreamingMediaElement GlobalMediaElement
+        //{
+        //    get { return Current.Resources["GlobalMedia"] as SmoothStreamingMediaElement; }
+        //}
+
         public static MediaElement GlobalMediaElement
         {
             get { return Current.Resources["GlobalMedia"] as MediaElement; }
@@ -190,7 +199,7 @@ namespace EasyPaint
         public static bool BackgroundMusicAllowed()
         {
             //disabilitata temporaneamente musica
-
+              
             bool allowed = true;
 
             //you can check a stored property here and return false if you want to disable all bgm
@@ -207,15 +216,62 @@ namespace EasyPaint
             return allowed;
         }
 
+
+        public void SaveContentImageToIsoStore(Uri uri, string isoStoreFileName)
+        {
+            // var pngStream = Application.GetResourceStream(new Uri(contentPath, UriKind.RelativeOrAbsolute)).Stream;
+
+            StreamResourceInfo streamInfo = App.GetResourceStream(uri);
+            if (streamInfo != null)
+            {
+            }
+
+            var stream = Application.GetResourceStream(uri).Stream;
+            int counter;
+            byte[] buffer = new byte[1024];
+            using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                using (IsolatedStorageFileStream isfs = new IsolatedStorageFileStream(isoStoreFileName, FileMode.Create, isf))
+                {
+                    counter = 0;
+                    while (0 < (counter = stream.Read(buffer, 0, buffer.Length)))
+                    {
+                        isfs.Write(buffer, 0, counter);
+                    }
+                    stream.Close();
+                }
+            }
+        }
+
         public void TryPlayBackgroundMusic()
         {
             if (BackgroundMusicAllowed())
             {
                 MediaPlayer.Stop(); //stop to clear any existing bg music
 
+                //SaveContentImageToIsoStore(new Uri("Audio/mp3/song.mp3", UriKind.RelativeOrAbsolute), "song.mp3");
+                ////GlobalMediaElement.SmoothStreamingSource = new Uri("isostore:/song.mp3", UriKind.Absolute);
+                ////GlobalMediaElement.SmoothStreamingSource = new Uri("appdata:/Audio/mp3/song.mp3", UriKind.Absolute);
+                ////GlobalMediaElement.SmoothStreamingSource = new Uri("http://tinyurl.com/Elephants-Dream"); ;
+                //GlobalMediaElement.SmoothStreamingErrorOccurred += GlobalMediaElement_SmoothStreamingErrorOccurred;
+                ////GlobalMediaElement.SetPlaybackRate(1);
+                //GlobalMediaElement.MediaOpened += MediaElement_MediaOpened; //wait until Media is ready before calling .Play()
+                //GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
+
+
                 GlobalMediaElement.Source = new Uri("Audio/mp3/song.mp3", UriKind.Relative);
-                GlobalMediaElement.MediaOpened += MediaElement_MediaOpened; //wait until Media is ready before calling .Play()
+                GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
+                GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
             }
+        }
+
+        //void GlobalMediaElement_SmoothStreamingErrorOccurred(object sender, SmoothStreamingErrorEventArgs e)
+        //{
+        //}
+
+        void GlobalMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            throw e.ErrorException;
         }
 
         private void MediaElement_MediaOpened(object sender, RoutedEventArgs e)
@@ -225,7 +281,7 @@ namespace EasyPaint
 
         private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
-            if (GlobalMediaElement.CurrentState != System.Windows.Media.MediaElementState.Playing)
+            if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
             {
                 //loop bg music
                 GlobalMediaElement.Play();
