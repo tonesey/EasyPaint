@@ -49,7 +49,7 @@
 
         <!--<TextBlock Foreground="White" Text="{Binding CurrentGroup.Group.Id}" FontSize="50"></TextBlock>-->
 
-        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/bkg/lres/explorer_groups.png" Grid.RowSpan="5"/>
+        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
 
         <telerikPrimitives:RadLoopingList 
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"

@@ -174,45 +174,86 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\bkg\hres\explorer.png" />
-    <Resource Include="Assets\groups\0\lres\lion.png" />
-    <Resource Include="Assets\groups\0\lres\tiger.png" />
-    <Resource Include="Assets\groups\0\lres\zebra.png" />
-    <Resource Include="Assets\groups\1\lres\lion.png" />
-    <Resource Include="Assets\groups\1\lres\tiger.png" />
-    <Resource Include="Assets\groups\1\lres\zebra.png" />
-    <Resource Include="Assets\groups\2\lres\lion.png" />
-    <Resource Include="Assets\groups\2\lres\tiger.png" />
-    <Resource Include="Assets\groups\2\lres\zebra.png" />
-    <Resource Include="Assets\bkg\hres\bkg1.png" />
-    <Resource Include="Assets\bkg\hres\bkg2.png" />
-    <Resource Include="Assets\groups\3\lres\canguro colore.png" />
-    <Resource Include="Assets\groups\3\lres\canguro lineart.png" />
-    <Resource Include="Assets\groups\3\lres\clamidosauro colori.png" />
-    <Resource Include="Assets\groups\3\lres\clamidosauroline art.png" />
-    <Resource Include="Assets\groups\3\lres\coccodrillo colore.png" />
-    <Resource Include="Assets\groups\3\lres\coccodrillo lineart.png" />
-    <Resource Include="Assets\groups\3\lres\diavolo_lineart.png" />
-    <Resource Include="Assets\groups\3\lres\diavolo_colore.png" />
-    <Resource Include="Assets\groups\3\lres\koala colore.png" />
-    <Resource Include="Assets\groups\3\lres\koala lineart.png" />
-    <Resource Include="Assets\groups\lres\0.png" />
-    <Resource Include="Assets\groups\lres\1.png" />
-    <Resource Include="Assets\groups\lres\2.png" />
-    <Resource Include="Assets\groups\lres\3.png" />
-    <Resource Include="Assets\groups\lres\4.png" />
-    <Resource Include="Assets\groups\lres\5.png" />
-    <Resource Include="Assets\groups\3\lres\reduced\canguro colore.png" />
-    <Resource Include="Assets\groups\3\lres\reduced\clamidosauro colori.png" />
-    <Resource Include="Assets\groups\3\lres\reduced\coccodrillo colore.png" />
-    <Resource Include="Assets\groups\3\lres\reduced\diavolo_colore.png" />
-    <Resource Include="Assets\groups\3\lres\reduced\koala colore.png" />
+  <ItemGroup>   
     <EmbeddedResource Include="Audio\wav\click2.wav" />
     <Resource Include="Assets\testImages\test.png" />
-    <Resource Include="Assets\groups\lres\3_bck.png" />
-    <Resource Include="Assets\bkg\lres\explorer_groups.png" />
-    <Resource Include="Assets\bkg\lres\groups_bkg.jpg" />
+    <Content Include="Assets\hres\bkg\bkg1.png" />
+    <Content Include="Assets\hres\bkg\bkg2.png" />
+    <Content Include="Assets\hres\bkg\esploratore.jpg" />
+    <Content Include="Assets\hres\bkg\explorer.png" />
+    <Content Include="Assets\hres\bkg\groups_bkg.jpg" />
+    <Content Include="Assets\hres\bkg\misc\1.jpg" />
+    <Content Include="Assets\hres\bkg\misc\2.jpg" />
+    <Content Include="Assets\hres\bkg\misc\230375908.jpg" />
+    <Content Include="Assets\hres\bkg\misc\230376058.jpg" />
+    <Resource Include="Assets\hres\bkg\misc\2h7ga68.gif" />
+    <Content Include="Assets\hres\bkg\misc\3.jpg" />
+    <Content Include="Assets\hres\bkg\misc\Capture.PNG" />
+    <Content Include="Assets\hres\bkg\misc\color-pencil-box-for-kids-backgrounds-for-powerpoint.jpg" />
+    <Content Include="Assets\hres\bkg\misc\imagesCAY8WLVK.jpg" />
+    <Content Include="Assets\hres\bkg\misc\Kids_Background.jpg" />
+    <Content Include="Assets\hres\bkg\misc\kids_background_40a.jpg" />
+    <Content Include="Assets\hres\bkg\misc\nature-background-art-yamayaoifan-205501.jpg" />
+    <Content Include="Assets\hres\bkg\misc\pastel.png" />
+    <Content Include="Assets\hres\bkg\misc\pastel1.jpg" />
+    <Content Include="Assets\hres\bkg\misc\purple-hearts-kids-draw.jpg" />
+    <Content Include="Assets\hres\bkg\misc\quadro.png" />
+    <Content Include="Assets\hres\bkg\misc\quadro_appeso.png" />
+    <Resource Include="Assets\hres\bkg\misc\tumblr_m0fmyxIUuu1rna8pho2_400.gif" />
+    <Content Include="Assets\hres\bkg\misc\tumblr_m1rrssuiZv1r836v5.jpg" />
+    <Content Include="Assets\hres\bkg\misc\tumblr_m9l40pcscA1qfhjqf.png" />
+    <Content Include="Assets\hres\bkg\misc\vector-kids-background-preview-by-dragonart.jpg" />
+    <Content Include="Assets\hres\bkg\misc\york-wallcoverings-just-kids-kd1705-butterfly-wallpaper-39546148.jpg" />
+    <Content Include="Assets\hres\bkg\painter_bck.jpg" />
+    <Content Include="Assets\hres\groups\0.png" />
+    <Content Include="Assets\hres\groups\1.png" />
+    <Content Include="Assets\hres\groups\2.png" />
+    <Content Include="Assets\hres\groups\3.png" />
+    <Content Include="Assets\hres\groups\3\canguro colore.png" />
+    <Content Include="Assets\hres\groups\3\canguro lineart.png" />
+    <Content Include="Assets\hres\groups\3\clamidosauro colori.png" />
+    <Content Include="Assets\hres\groups\3\clamidosauroline art.png" />
+    <Content Include="Assets\hres\groups\3\coccodrillo colore.png" />
+    <Content Include="Assets\hres\groups\3\coccodrillo lineart.png" />
+    <Content Include="Assets\hres\groups\3\diavolo_colore.png" />
+    <Content Include="Assets\hres\groups\3\diavolo_lineart.png" />
+    <Content Include="Assets\hres\groups\3\koala colore.png" />
+    <Content Include="Assets\hres\groups\3\koala lineart.png" />
+    <Content Include="Assets\hres\groups\4.png" />
+    <Content Include="Assets\hres\groups\5.png" />
+    <Content Include="Assets\lres\bkg\explorer_groups.png" />
+    <Content Include="Assets\lres\bkg\groups_bkg.jpg" />
+    <Content Include="Assets\lres\groups\0.png" />
+    <Content Include="Assets\lres\groups\0\lion.png" />
+    <Content Include="Assets\lres\groups\0\tiger.png" />
+    <Content Include="Assets\lres\groups\0\zebra.png" />
+    <Content Include="Assets\lres\groups\1.png" />
+    <Content Include="Assets\lres\groups\1\lion.png" />
+    <Content Include="Assets\lres\groups\1\tiger.png" />
+    <Content Include="Assets\lres\groups\1\zebra.png" />
+    <Content Include="Assets\lres\groups\2.png" />
+    <Content Include="Assets\lres\groups\2\lion.png" />
+    <Content Include="Assets\lres\groups\2\tiger.png" />
+    <Content Include="Assets\lres\groups\2\zebra.png" />
+    <Content Include="Assets\lres\groups\3.png" />
+    <Content Include="Assets\lres\groups\3\canguro colore.png" />
+    <Content Include="Assets\lres\groups\3\canguro lineart.png" />
+    <Content Include="Assets\lres\groups\3\clamidosauro colori.png" />
+    <Content Include="Assets\lres\groups\3\clamidosauroline art.png" />
+    <Content Include="Assets\lres\groups\3\coccodrillo colore.png" />
+    <Content Include="Assets\lres\groups\3\coccodrillo lineart.png" />
+    <Content Include="Assets\lres\groups\3\diavolo_colore.png" />
+    <Content Include="Assets\lres\groups\3\diavolo_lineart.png" />
+    <Content Include="Assets\lres\groups\3\koala colore.png" />
+    <Content Include="Assets\lres\groups\3\koala lineart.png" />
+    <Content Include="Assets\lres\groups\3\reduced\canguro colore.png" />
+    <Content Include="Assets\lres\groups\3\reduced\clamidosauro colori.png" />
+    <Content Include="Assets\lres\groups\3\reduced\coccodrillo colore.png" />
+    <Content Include="Assets\lres\groups\3\reduced\diavolo_colore.png" />
+    <Content Include="Assets\lres\groups\3\reduced\koala colore.png" />
+    <Content Include="Assets\lres\groups\3_bck.png" />
+    <Content Include="Assets\lres\groups\4.png" />
+    <Content Include="Assets\lres\groups\5.png" />
     <Content Include="Audio\mp3\Alegria.mp3" />
     <Content Include="Audio\mp3\song.mp3" />
     <EmbeddedResource Include="Audio\wav\go.wav" />
@@ -220,6 +261,7 @@
     <EmbeddedResource Include="Audio\wav\three.wav" />
     <EmbeddedResource Include="Audio\wav\two.wav" />
     <Content Include="Fonts\CURLZ___.TTF" />
+    <None Include="Assets\hres\bkg\explorer.pdn" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -291,7 +333,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\bkg\hres\painter_bck.jpg" />
     <Content Include="Assets\buttons\bullet_ball_blue.png" />
     <Content Include="Assets\buttons\done.png" />
     <Content Include="Assets\buttons\Edit.png" />
@@ -327,6 +368,13 @@
   <ItemGroup>
     <Folder Include="Assets\groups\4\" />
     <Folder Include="Assets\groups\5\" />
+    <Folder Include="Assets\hres\groups\0\" />
+    <Folder Include="Assets\hres\groups\1\" />
+    <Folder Include="Assets\hres\groups\2\" />
+    <Folder Include="Assets\hres\groups\4\" />
+    <Folder Include="Assets\hres\groups\5\" />
+    <Folder Include="Assets\lres\groups\4\" />
+    <Folder Include="Assets\lres\groups\5\" />
   </ItemGroup>
   <ItemGroup>
     <XliffResource Include="LocalizedResources.en.xlf">

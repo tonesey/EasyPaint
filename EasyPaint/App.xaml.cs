@@ -16,7 +16,6 @@ using EasyPaint.ViewModel;
 using System.Windows.Resources;
 using System.Windows.Media.Imaging;
 using Microsoft.Xna.Framework.Media;
-using Microsoft.Web.Media.SmoothStreaming;
 using System.Reflection;
 using System.IO.IsolatedStorage;
 using System.IO;

@@ -58,11 +58,9 @@ namespace EasyPaint.ViewModel
             _item = item;
             _belongingGroup = g;
             _key = item.Key;
-            ImageSource = new Uri(string.Format("../Assets/groups/{0}/" + AppSettings.AppRes + "/{1}", _belongingGroup.Id, item.ImgFilename), UriKind.RelativeOrAbsolute);
-            //ReducedColorsResourceUri = new Uri(string.Format("EasyPaint;component/Assets/groups/{0}/" + AppSettings.AppRes + "/reduced/{1}", _belongingGroup.Id, item.ImgFilename), UriKind.RelativeOrAbsolute);
-            //LineArtResourceUri = new Uri(string.Format("EasyPaint;component/Assets/groups/{0}/" + AppSettings.AppRes + "/{1}", _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart")), UriKind.RelativeOrAbsolute);
-            LineArtResourcePath = string.Format("/Assets/groups/{0}/" + AppSettings.AppRes + "/{1}", _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart"));
-            ReducedColorsResourcePath = string.Format("/Assets/groups/{0}/" + AppSettings.AppRes + "/reduced/{1}", _belongingGroup.Id, item.ImgFilename);
+            ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
+            LineArtResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart")});
+            ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename });
         }
     }
 }
