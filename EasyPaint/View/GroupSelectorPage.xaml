@@ -30,7 +30,7 @@
     <Grid x:Name="LayoutRoot" >
 
         <Grid.Background>
-            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/lres/groups_bkg.jpg" Opacity="0.8"/>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/lres/bkg/groups_bkg.jpg" Opacity="0.8"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
@@ -47,7 +47,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/bkg/lres/explorer_groups.png" Grid.RowSpan="5"/>
+        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
 
         <telerikPrimitives:RadLoopingList 
             x:Name="loopingList"

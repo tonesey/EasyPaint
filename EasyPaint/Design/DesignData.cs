@@ -86,12 +86,12 @@ namespace EasyPaint.Design
         #region items
         void _designDataDs_Items_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
-            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/ " + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute);
+            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute);
         }
 
         void _designDataDs_Items_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
-            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/ " + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute) };
+            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute) };
         }
         #endregion
 

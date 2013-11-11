@@ -28,7 +28,7 @@
     </UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot" d:DataContext="{Binding Source={StaticResource DesignDataContext}}">
-        
+
         <Grid.Background>
             <ImageBrush ImageSource="{Binding CurrentGroup.BckImage}"/>
         </Grid.Background>
@@ -50,6 +50,15 @@
         <!--<TextBlock Foreground="White" Text="{Binding CurrentGroup.Group.Id}" FontSize="50"></TextBlock>-->
 
         <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
+
+        <!--<Border  Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Width="70" HorizontalAlignment="Left">
+            <Border.Background>
+                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,0" >
+                    <GradientStop Color="Transparent"/>
+                    <GradientStop Color="#7FFFFFFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>-->
 
         <telerikPrimitives:RadLoopingList 
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
