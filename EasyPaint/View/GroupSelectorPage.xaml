@@ -20,7 +20,7 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <design:DesignDataLoopingListsSources x:Key="DesignDataContext" ListId="Group"/>
+        <design:DesignData x:Key="DesignDataContext" ListId="Group"/>
     </phone:PhoneApplicationPage.Resources>
 
     <UserControl.DataContext>
@@ -30,7 +30,7 @@
     <Grid x:Name="LayoutRoot" >
 
         <Grid.Background>
-            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/hres/bkg1.png"/>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/lres/groups_bkg.jpg" Opacity="0.8"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
@@ -38,17 +38,20 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-       
+
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+
+        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/bkg/lres/explorer_groups.png" Grid.RowSpan="5"/>
 
         <telerikPrimitives:RadLoopingList 
             x:Name="loopingList"
+          
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
             Grid.Row="1" Grid.Column="1"
@@ -57,11 +60,12 @@
             IsCentered="True"
             Orientation="Horizontal" 
             IsLoopingEnabled="False"
-            ItemWidth="280" ItemHeight="280"
+            ItemWidth="400" ItemHeight="350" 
+            VerticalAlignment="Center" VerticalContentAlignment="Center"
             ItemStyle="{StaticResource loopingListItemStyle}">
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Picture}" Stretch="Fill" Tap="Image_Tap"/>
+                    <Image   Source="{Binding Picture}" Stretch="Fill" Tap="Image_Tap"/>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>
         </telerikPrimitives:RadLoopingList>

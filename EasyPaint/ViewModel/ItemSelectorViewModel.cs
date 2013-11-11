@@ -42,6 +42,20 @@ namespace EasyPaint.ViewModel
             }
         }
 
+        private GroupViewModel _CurrentGroup = null;
+        public GroupViewModel CurrentGroup
+        {
+            get
+            {
+                return _CurrentGroup;
+            }
+            set
+            {
+                _CurrentGroup = value;
+                OnPropertyChanged("CurrentGroup");
+            }
+        }
+
 
         public RelayCommand ItemSelectedCommand { get; private set; }
 
@@ -57,29 +71,13 @@ namespace EasyPaint.ViewModel
             return null;
         }
 
-        //public ItemSelectorViewModel(IDataService dataService)
-        //{
-        //    _dataService = dataService;
-        //    _dataService.GetData(
-        //        (item, error) =>
-        //        {
-        //            if (error != null)
-        //            {
-        //                // Report error here
-        //                return;
-        //            }
-        //            //_model = item;
-        //            //InitItems(item.Groups);
-        //        });
-        //    //GotoMainPageCommand = new RelayCommand(() => NavigateToMainPageCommand());
-        //}
-
-        public void SetGroupItems(Group g)
+        public void SetCurrentGroup(GroupViewModel g)
         {
+            _CurrentGroup = g;
             var itemsVm = new ObservableCollection<ItemViewModel>();
-            foreach (var item in g.Items)
+            foreach (var item in g.Group.Items)
             {
-                ItemViewModel itemVm = new ItemViewModel(g, item);
+                ItemViewModel itemVm = new ItemViewModel(g.Group, item);
                 itemsVm.Add(itemVm);
             }
             Items = itemsVm;

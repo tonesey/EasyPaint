@@ -17,6 +17,24 @@ namespace EasyPaint.ViewModel
             get { return _group; }
         }
 
+
+        protected Uri _bckImage;
+        public Uri BckImage
+        {
+            get
+            {
+                return _bckImage;
+            }
+            set
+            {
+                if (_bckImage != value)
+                {
+                    _bckImage = value;
+                    this.OnPropertyChanged("BckImage");
+                }
+            }
+        }
+
         public GroupViewModel(Group gr)
         {
             try
@@ -26,6 +44,8 @@ namespace EasyPaint.ViewModel
                 _key = gr.Key;
 
                 ImageSource = new Uri(string.Format("../Assets/groups/" + AppSettings.AppRes + "/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
+                //BckImage = new Uri(string.Format("EasyPaint;component/Assets/groups/" + AppSettings.AppRes + "/{0}_bck.png", _group.Id), UriKind.RelativeOrAbsolute);
+                BckImage = new Uri(string.Format("../Assets/groups/" + AppSettings.AppRes + "/{0}_bck.png", _group.Id), UriKind.RelativeOrAbsolute);
                 //ImageSource = new Uri(string.Format("EasyPaint;component/Assets/groups/" + AppSettings.AppRes + "/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
             }
             catch (Exception)

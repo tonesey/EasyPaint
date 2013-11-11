@@ -17,7 +17,7 @@ namespace EasyPaint.Model
 
         public Group()
         {
-            Id = string.Empty;
+            Id = "not set";
             Items = new List<Item>();
         }
 

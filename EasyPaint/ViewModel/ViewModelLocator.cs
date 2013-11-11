@@ -42,6 +42,7 @@ namespace EasyPaint.ViewModel
             SimpleIoc.Default.Register<HomePageViewModel>();
             SimpleIoc.Default.Register<GroupSelectorViewModel>();
             SimpleIoc.Default.Register<ItemSelectorViewModel>();
+            SimpleIoc.Default.Register<PainterPageViewModel>();
         }
 
         #region homepage
@@ -99,6 +100,30 @@ namespace EasyPaint.ViewModel
                     return _ItemSelectorViewModelStatic = ServiceLocator.Current.GetInstance<ItemSelectorViewModel>();
                 }
                 return _ItemSelectorViewModelStatic;
+            }
+        }
+        #endregion
+
+        #region painter page
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]
+        public PainterPageViewModel PainterPageViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<PainterPageViewModel>();
+            }
+        }
+
+        private static PainterPageViewModel _PainterPageViewModelStatic;
+        public static PainterPageViewModel PainterPageViewModelStatic
+        {
+            get
+            {
+                if (_PainterPageViewModelStatic == null)
+                {
+                    return _PainterPageViewModelStatic = ServiceLocator.Current.GetInstance<PainterPageViewModel>();
+                }
+                return _PainterPageViewModelStatic;
             }
         }
         #endregion

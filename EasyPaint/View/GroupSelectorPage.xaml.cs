@@ -111,7 +111,7 @@ namespace EasyPaint.View
         private void Image_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             _vm.SelectedGroup = (((sender as Image).DataContext as PictureLoopingItem).DataContext as GroupViewModel);
-            ViewModelLocator.ItemSelectorViewModelStatic.SetGroupItems(_vm.SelectedGroup.Group);
+            ViewModelLocator.ItemSelectorViewModelStatic.SetCurrentGroup(_vm.SelectedGroup);
             _vm.GroupSelectedCommand.Execute(null);
         }
 

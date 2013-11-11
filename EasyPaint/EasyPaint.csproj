@@ -92,7 +92,7 @@
     </Compile>
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Design\DesignDataService.cs" />
-    <Compile Include="Design\DesignDataLoopingListsSources.cs" />
+    <Compile Include="Design\DesignData.cs" />
     <Compile Include="Helpers\ResolutionHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\GenericHelper.cs" />
@@ -116,6 +116,7 @@
     <Compile Include="Data\IDataService.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
     <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="ViewModel\PainterPageViewModel.cs" />
     <Compile Include="ViewModel\ImageAndTextItem.cs" />
     <Compile Include="ViewModel\ItemSelectorViewModel.cs" />
     <Compile Include="ViewModel\GroupSelectorViewModel.cs" />
@@ -208,6 +209,9 @@
     <Resource Include="Assets\groups\3\lres\reduced\koala colore.png" />
     <EmbeddedResource Include="Audio\wav\click2.wav" />
     <Resource Include="Assets\testImages\test.png" />
+    <Resource Include="Assets\groups\lres\3_bck.png" />
+    <Resource Include="Assets\bkg\lres\explorer_groups.png" />
+    <Resource Include="Assets\bkg\lres\groups_bkg.jpg" />
     <Content Include="Audio\mp3\Alegria.mp3" />
     <Content Include="Audio\mp3\song.mp3" />
     <EmbeddedResource Include="Audio\wav\go.wav" />

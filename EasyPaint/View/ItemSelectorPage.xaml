@@ -20,17 +20,17 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <design:DesignDataLoopingListsSources x:Key="DesignDataContext" ListId="Item" CurrentGroupId="3"/>
+        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="3"/>
     </phone:PhoneApplicationPage.Resources>
 
     <UserControl.DataContext>
         <Binding Path="ItemSelectorViewModel" Source="{StaticResource Locator}"/>
     </UserControl.DataContext>
 
-    <Grid x:Name="LayoutRoot" >
+    <Grid x:Name="LayoutRoot" d:DataContext="{Binding Source={StaticResource DesignDataContext}}">
         
         <Grid.Background>
-            <ImageBrush ImageSource="/EasyPaint;component/Assets/bkg/hres/bkg1.png"/>
+            <ImageBrush ImageSource="{Binding CurrentGroup.BckImage}"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
@@ -40,13 +40,16 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <!--<TextBlock Foreground="White" Text="{Binding CurrentGroup.Group.Id}" FontSize="50"></TextBlock>-->
+
+        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/bkg/lres/explorer_groups.png" Grid.RowSpan="5"/>
 
         <telerikPrimitives:RadLoopingList 
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
@@ -58,7 +61,7 @@
             Orientation="Horizontal" 
             x:Name="loopingList"
             IsLoopingEnabled="False"
-            ItemWidth="280" ItemHeight="280"
+            ItemWidth="400" ItemHeight="360"
             ItemStyle="{StaticResource loopingListItemStyle}">
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>

@@ -23,15 +23,18 @@
 
 
         <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitivesLoopingList:LoopingListItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="telerikPrimitivesLoopingList:LoopingListItem">
-                        <ContentControl x:Name="contentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
-                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" DataContext="{TemplateBinding DataContext}"
+                        <ContentControl x:Name="contentPresenter" 
+                                        Content="{TemplateBinding Content}" 
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        VerticalContentAlignment="Center" 
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                        DataContext="{TemplateBinding DataContext}"
                                         Padding="{TemplateBinding Padding}"/>
                     </ControlTemplate>
                 </Setter.Value>

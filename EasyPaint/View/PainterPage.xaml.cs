@@ -29,7 +29,7 @@ namespace EasyPaint.View
 {
     public partial class PainterPage : PhoneApplicationPage
     {
-        const int TotalTime = 60;
+        const int TotalTime = 30;
 
         // Constructor
         SimzzDev.DrawingBoard _myBoard;
@@ -44,7 +44,7 @@ namespace EasyPaint.View
 
         int _availableTimeValue = 0;
 
-        Storyboard _storyboardAnimalImageFading;
+        Storyboard _storyboardSubjectImageFading;
         Storyboard _storyboardCountDown;
         Storyboard _storyboardShowPalette;
 
@@ -55,15 +55,12 @@ namespace EasyPaint.View
             InitializeComponent();
             //Tester.CheckImagesTester();
             _myBoard = new SimzzDev.DrawingBoard(ink);
-            //_dt.Interval = TimeSpan.FromSeconds(1);
-            //_dt.Tick += dt_Tick;
-            //CultureInfo cc, cuic;
-            //cc = Thread.CurrentThread.CurrentCulture;
-            //cuic = Thread.CurrentThread.CurrentUICulture;
+            _dt.Interval = TimeSpan.FromSeconds(1);
+            _dt.Tick += dt_Tick;
             TryPlayBackgroundMusic();
             LoadSounds();
             InitAnimations();
-            StartCountDown();
+
         }
 
         #region audio
@@ -99,7 +96,9 @@ namespace EasyPaint.View
             {
                 MediaPlayer.Stop(); //stop to clear any existing bg music
 
-                PaintMediaElement.Source = new Uri("Audio/mp3/Alegria.mp3", UriKind.Relative);
+                App.GlobalMediaElement.Stop();
+
+                PaintMediaElement.Source = new Uri("../Audio/mp3/Alegria.mp3", UriKind.Relative);
                 PaintMediaElement.MediaOpened += MediaElement_MediaOpened; //wait until Media is ready before calling .Play()
             }
         }
@@ -118,7 +117,6 @@ namespace EasyPaint.View
             }
         }
      
-
         private void LoadSounds()
         {
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.three.wav"))
@@ -147,7 +145,7 @@ namespace EasyPaint.View
 
         private void InitAnimations()
         {
-            _storyboardAnimalImageFading = (Storyboard)Resources["StoryboardAnimalFadeout"];
+            _storyboardSubjectImageFading = (Storyboard)Resources["StoryboardSubjectFadeout"];
             _storyboardCountDown = (Storyboard)Resources["StoryboardCountdown"];
             _storyboardShowPalette = (Storyboard)Resources["StoryboardShowPalette"];
             //Storyboard.SetTarget(_storyboardImageFading.Children.ElementAt(0) as DoubleAnimation, ImageMain);
@@ -161,6 +159,7 @@ namespace EasyPaint.View
             TextBlockCountDown.Text = count.ToString();
             SoundHelper.PlaySound(_sounds[count]);
             count--;
+         
             _storyboardCountDown.Begin();
             _storyboardCountDown.Completed += (sender, ev) =>
             {
@@ -168,28 +167,24 @@ namespace EasyPaint.View
                 {
                     TextBlockCountDown.Text = "go!!!";
                     SoundHelper.PlaySound(_sounds[count]);
-                    _storyboardAnimalImageFading.Begin();
-                    _storyboardAnimalImageFading.Completed += (sender1, ev1) =>
+                    _storyboardSubjectImageFading.Begin();
+                    _storyboardSubjectImageFading.Completed += (sender1, ev1) =>
                     {
                         TextBlockCountDown.Visibility = Visibility.Collapsed;
                         _storyboardCountDown.Stop();
-                        _storyboardShowPalette.Begin();
+                        StartTimer();
                     };
                 }
                 else
                 {
+                    if (count == 1) {
+                        _storyboardShowPalette.Begin();
+                    }
                     TextBlockCountDown.Text = count.ToString();
                     SoundHelper.PlaySound(_sounds[count]);
                     _storyboardCountDown.Begin();
                     count--;
                 }
-                //Dispatcher.BeginInvoke(() =>
-                //{
-                //    TextBlockCountDown.Text = count.ToString();
-                //    SoundHelper.PlaySound(_sounds[count]);
-                //    _storyboardCountDown.Begin();
-                //    count--;
-                //});
             };
         }
 
@@ -215,7 +210,8 @@ namespace EasyPaint.View
             //inizio: _availableTimeValue = totaltime -> timerEllipse.Margin = totMargin
             //fine:   _availableTimeValue = 0         -> timerEllipse.Margin = 0
             int leftMargin = _availableTimeValue * totMargin / TotalTime;
-            timerEllipse.Margin = new Thickness(leftMargin, 5, 0, 0);
+            timerEllipse.Margin = new Thickness(leftMargin, -2, 0, 0);
+
         }
 
         private void StartTimer()
@@ -223,7 +219,7 @@ namespace EasyPaint.View
             _gameInProgress = true;
             _availableTimeValue = TotalTime;
             _dt.Start();
-            _storyboardAnimalImageFading.Begin();
+            //_storyboardSubjectImageFading.Begin();
         }
 
         private void StopTimer()
@@ -231,7 +227,7 @@ namespace EasyPaint.View
             _gameInProgress = false;
             _availableTimeValue = 0;
             _dt.Stop();
-            _storyboardAnimalImageFading.Stop();
+            //_storyboardSubjectImageFading.Stop();
         }
         #endregion
 
@@ -257,25 +253,33 @@ namespace EasyPaint.View
                 //ink.Height = _origPicture.PixelHeight;
                 //ink.Width = _origPicture.PixelWidth;
 
-                List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture);
-                int count = 1;
-                foreach (var color in imageColors)
+                InitPalette();
+
+                StartCountDown();
+
+            }
+        }
+
+        private void InitPalette()
+        {
+            List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture);
+            int count = 1;
+            foreach (var color in imageColors)
+            {
+                var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
+                if (btn != null)
                 {
-                    var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
-                    if (btn != null)
-                    {
-                        btn.Background = new SolidColorBrush(color);
-                    }
-                    count++;
+                    btn.Background = new SolidColorBrush(color);
                 }
-#if DEBUG
-                MessageBox.Show("colors detected : " + count);
-#endif
-                for (int i = count; i <= 6; i++)
-                {
-                    var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
-                    btn.Visibility = Visibility.Collapsed;
-                }
+                count++;
+            }
+            //#if DEBUG
+            //                MessageBox.Show("colors detected : " + count);
+            //#endif
+            for (int i = count; i <= 6; i++)
+            {
+                var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + i);
+                btn.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -317,7 +321,7 @@ namespace EasyPaint.View
 
         private void startOrStopBtn_Click(object sender, RoutedEventArgs e)
         {
-            CheckDrawnPicture();
+           // CheckDrawnPicture();
 
             //if (_gameInProgress)
             //{
@@ -419,6 +423,11 @@ namespace EasyPaint.View
             //if (pos.X < 0 || pos.Y < 0)
             //{
             //}
+
+        }
+
+        private void pc1_Tap(object sender, GestureEventArgs e)
+        {
 
         }
 
