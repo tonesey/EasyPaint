@@ -176,32 +176,13 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Audio\wav\click2.wav" />
+    <Resource Include="Assets\lres\bkg\explorer.png" />
     <Resource Include="Assets\testImages\test.png" />
-    <Resource Include="Assets\hres\bkg\bkg1.png" />
-    <Resource Include="Assets\hres\bkg\bkg2.png" />
-    <Resource Include="Assets\hres\bkg\esploratore.jpg" />
-    <Resource Include="Assets\hres\bkg\explorer.png" />
-    <Resource Include="Assets\hres\bkg\groups_bkg.jpg" />
-    <Resource Include="Assets\hres\bkg\painter_bck.jpg" />
-    <Resource Include="Assets\hres\groups\0.png" />
-    <Resource Include="Assets\hres\groups\1.png" />
-    <Resource Include="Assets\hres\groups\2.png" />
-    <Resource Include="Assets\hres\groups\3.png" />
-    <Resource Include="Assets\hres\groups\3\canguro colore.png" />
-    <Resource Include="Assets\hres\groups\3\canguro lineart.png" />
-    <Resource Include="Assets\hres\groups\3\clamidosauro colori.png" />
-    <Resource Include="Assets\hres\groups\3\clamidosauroline art.png" />
-    <Resource Include="Assets\hres\groups\3\coccodrillo colore.png" />
-    <Resource Include="Assets\hres\groups\3\coccodrillo lineart.png" />
-    <Resource Include="Assets\hres\groups\3\diavolo_colore.png" />
-    <Resource Include="Assets\hres\groups\3\diavolo_lineart.png" />
-    <Resource Include="Assets\hres\groups\3\koala colore.png" />
-    <Resource Include="Assets\hres\groups\3\koala lineart.png" />
-    <Resource Include="Assets\hres\groups\4.png" />
-    <Resource Include="Assets\hres\groups\5.png" />
     <Resource Include="Assets\lres\bkg\explorer_groups.png" />
     <Resource Include="Assets\lres\bkg\groups_bkg.jpg" />
     <Resource Include="Assets\lres\groups\0.png" />
+    <Resource Include="Assets\lres\explorer.png" />
+    <Resource Include="Assets\lres\bkg\painter_bck.jpg" />
     <Content Include="Assets\lres\groups\0\lion.png" />
     <Content Include="Assets\lres\groups\0\tiger.png" />
     <Content Include="Assets\lres\groups\0\zebra.png" />
@@ -232,6 +213,7 @@
     <Resource Include="Assets\lres\groups\3_bck.png" />
     <Resource Include="Assets\lres\groups\4.png" />
     <Resource Include="Assets\lres\groups\5.png" />
+    <Resource Include="Assets\lres\painter_bck.jpg" />
     <Content Include="Audio\mp3\Alegria.mp3" />
     <Content Include="Audio\mp3\song.mp3" />
     <EmbeddedResource Include="Audio\wav\go.wav" />
@@ -345,11 +327,6 @@
   <ItemGroup>
     <Folder Include="Assets\groups\4\" />
     <Folder Include="Assets\groups\5\" />
-    <Folder Include="Assets\hres\groups\0\" />
-    <Folder Include="Assets\hres\groups\1\" />
-    <Folder Include="Assets\hres\groups\2\" />
-    <Folder Include="Assets\hres\groups\4\" />
-    <Folder Include="Assets\hres\groups\5\" />
     <Folder Include="Assets\lres\groups\4\" />
     <Folder Include="Assets\lres\groups\5\" />
   </ItemGroup>

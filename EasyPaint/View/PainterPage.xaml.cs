@@ -29,12 +29,12 @@ namespace EasyPaint.View
 {
     public partial class PainterPage : PhoneApplicationPage
     {
-        const int TotalTime = 30;
+        const int TotalTime = 60;
 
         // Constructor
         SimzzDev.DrawingBoard _drawingboard;
 
-      // private const string tmpFName = "tmp.png";
+        // private const string tmpFName = "tmp.png";
 
         WriteableBitmap _lineArtPicture = null;
         WriteableBitmap _reducedColorsPicture = null;
@@ -55,9 +55,9 @@ namespace EasyPaint.View
             InitializeComponent();
             //Tester.CheckImagesTester();
             _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
-            //_dt.Interval = TimeSpan.FromSeconds(1);
-            //_dt.Tick += dt_Tick;
-            TryPlayBackgroundMusic();
+            _dt.Interval = TimeSpan.FromSeconds(1);
+            _dt.Tick += dt_Tick;
+            //TryPlayBackgroundMusic();
             LoadSounds();
             InitAnimations();
             AssignEventHandlers();
@@ -104,59 +104,16 @@ namespace EasyPaint.View
         }
 
         #region audio
-        public MediaElement PaintMediaElement
-        {
-            get { return Resources["PaintMedia"] as MediaElement; }
-        }
-
-
-        public static bool BackgroundMusicAllowed()
-        {
-            //disabilitata temporaneamente musica
-
-            bool allowed = true;
-
-            //you can check a stored property here and return false if you want to disable all bgm
-            //if (!MediaPlayer.GameHasControl)
-            //{
-            //    //ask user about background music
-            //    MessageBoxResult mbr = MessageBox.Show("press ok if you’d like to use this app’s background music (this will stop your current music playback)", "use app background music?", MessageBoxButton.OKCancel);
-            //    if (mbr != MessageBoxResult.OK)
-            //    {
-            //        allowed = false;
-            //    }
-            //}
-
-            return allowed;
-        }
-
         public void TryPlayBackgroundMusic()
         {
-            if (BackgroundMusicAllowed())
-            {
-                MediaPlayer.Stop(); //stop to clear any existing bg music
 
-                App.GlobalMediaElement.Stop();
+            App.GlobalMediaElement.Stop();
+            App.GlobalMediaElement.Source = new Uri("../Audio/mp3/Alegria.mp3", UriKind.RelativeOrAbsolute);
 
-                PaintMediaElement.Source = new Uri("../Audio/mp3/Alegria.mp3", UriKind.Relative);
-                PaintMediaElement.MediaOpened += MediaElement_MediaOpened; //wait until Media is ready before calling .Play()
-            }
         }
 
-        private void MediaElement_MediaOpened(object sender, RoutedEventArgs e)
-        {
-            PaintMediaElement.Play();
-        }
 
-        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            if (PaintMediaElement.CurrentState != System.Windows.Media.MediaElementState.Playing)
-            {
-                //loop  music
-                PaintMediaElement.Play();
-            }
-        }
-     
+
         private void LoadSounds()
         {
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.three.wav"))
@@ -197,31 +154,32 @@ namespace EasyPaint.View
         private void StartCountDown()
         {
             int count = 3;
-            TextBlockCountDown.Text = count.ToString();
+            TextBlockCountDownBig.Text = count.ToString();
             SoundHelper.PlaySound(_sounds[count]);
             count--;
-         
+
             _storyboardCountDown.Begin();
             _storyboardCountDown.Completed += (sender, ev) =>
             {
                 if (count == 0)
                 {
-                    TextBlockCountDown.Text = "go!!!";
+                    TextBlockCountDownBig.Text = "go!!!";
                     SoundHelper.PlaySound(_sounds[count]);
                     _storyboardSubjectImageFading.Begin();
                     _storyboardSubjectImageFading.Completed += (sender1, ev1) =>
                     {
-                        TextBlockCountDown.Visibility = Visibility.Collapsed;
+                        TextBlockCountDownBig.Visibility = Visibility.Collapsed;
                         _storyboardCountDown.Stop();
                         StartTimer();
                     };
                 }
                 else
                 {
-                    if (count == 1) {
+                    if (count == 1)
+                    {
                         _storyboardShowPalette.Begin();
                     }
-                    TextBlockCountDown.Text = count.ToString();
+                    TextBlockCountDownBig.Text = count.ToString();
                     SoundHelper.PlaySound(_sounds[count]);
                     _storyboardCountDown.Begin();
                     count--;
@@ -243,13 +201,14 @@ namespace EasyPaint.View
                 return;
             }
 
-            //leftMargin / 380 = _curTimeValue / totaltime;
-            int totMargin = (int)timerCanvas.Width - (int)timerEllipse.Width; //ora 380
+            TextBlockCountDownSmall.Text = _availableTimeValue.ToString();
 
-            //inizio: _availableTimeValue = totaltime -> timerEllipse.Margin = totMargin
-            //fine:   _availableTimeValue = 0         -> timerEllipse.Margin = 0
-            int leftMargin = _availableTimeValue * totMargin / TotalTime;
-            timerEllipse.Margin = new Thickness(leftMargin, -2, 0, 0);
+            ////leftMargin / 380 = _curTimeValue / totaltime;
+            //int totMargin = (int)timerCanvas.Width - (int)timerEllipse.Width; //ora 380
+            ////inizio: _availableTimeValue = totaltime -> timerEllipse.Margin = totMargin
+            ////fine:   _availableTimeValue = 0         -> timerEllipse.Margin = 0
+            //int leftMargin = _availableTimeValue * totMargin / TotalTime;
+            //timerEllipse.Margin = new Thickness(leftMargin, -2, 0, 0);
 
         }
 
@@ -307,20 +266,30 @@ namespace EasyPaint.View
             int count = 1;
             foreach (var color in imageColors)
             {
-                var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
-                if (btn != null)
+                //var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
+                //if (btn != null)
+                //{
+                //    btn.Background = new SolidColorBrush(color);
+                //}
+
+                var el1 = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + count);
+                el1.Tag = color;
+
+                //var el = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(Application.Current.RootVisual, "pc" + count + "_path");
+                var el = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(el1, "pc" + count + "_path");
+                if (el != null)
                 {
-                    btn.Background = new SolidColorBrush(color);
+                    el.Fill = new SolidColorBrush(color);
                 }
                 count++;
             }
             //#if DEBUG
             //                MessageBox.Show("colors detected : " + count);
             //#endif
-            for (int i = count; i <= 6; i++)
+            for (int i = count; i <= 5; i++)
             {
-                var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + i);
-                btn.Visibility = Visibility.Collapsed;
+                var el = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + i);
+                el.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -342,8 +311,7 @@ namespace EasyPaint.View
 
         private void startOrStopBtn_Click(object sender, RoutedEventArgs e)
         {
-           // CheckDrawnPicture();
-            
+            // CheckDrawnPicture();
             //if (_gameInProgress)
             //{
             //    //started: now stop
@@ -359,10 +327,19 @@ namespace EasyPaint.View
         }
 
         #region palette
-        private void pc1_Click(object sender, RoutedEventArgs e)
+        //private void pc1_Click(object sender, RoutedEventArgs e)
+        //{
+        //    _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
+        //    Color selectedColor = ((sender as Button).Background as SolidColorBrush).Color;
+        //    _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
+        //}
+
+        private void pc1_Tap(object sender, GestureEventArgs e)
         {
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
-            Color selectedColor = ((sender as Button).Background as SolidColorBrush).Color;
+
+            Viewbox senderViewBox = (sender as Viewbox);
+            Color selectedColor = (Color)senderViewBox.Tag;
             _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
         }
         #endregion
@@ -443,6 +420,8 @@ namespace EasyPaint.View
 
             MessageBox.Show(string.Format("Precision: {0}%", diffPixelsPercentage));
         }
+
+
 
     }
 }

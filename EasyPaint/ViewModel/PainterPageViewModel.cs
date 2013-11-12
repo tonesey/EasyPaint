@@ -15,24 +15,35 @@ namespace EasyPaint.ViewModel
     public class PainterPageViewModel : ViewModelBase
     {
 
-        /// <summary>
-        /// Initializes a new instance of the HomepageViewModel class.
-        /// </summary>
         public PainterPageViewModel()
         {
+            //RaisePropertyChanged("DrawingboardWidth");
         }
 
         public int DrawingboardWidth
         {
-            get { return 560; }
+            get { return 480; }
         }
 
         public int DrawingboardHeigth
         {
-            get { return 460; }
+            get { return 480; }
         }
 
         public int PaletteItemTranslateX
+        {
+            get
+            {
+                //if (ViewModelBase.IsInDesignModeStatic)
+                //{
+                //    return 0;
+                //}
+
+                return -85;
+            }
+        }
+
+        public int CountDownTranslateY
         {
             get
             {
@@ -40,8 +51,7 @@ namespace EasyPaint.ViewModel
                 {
                     return 0;
                 }
-
-                return -65;
+                return -150;
             }
         }
 
@@ -53,7 +63,7 @@ namespace EasyPaint.ViewModel
                 {
                     return 0;
                 }
-                return -220;
+                return -240;
             }
         }
         public int ToolBoxItem2TranslateY
@@ -64,7 +74,7 @@ namespace EasyPaint.ViewModel
                 {
                     return 0;
                 }
-                return -303;
+                return -330;
             }
         }
         public int ToolBoxItem3TranslateY
