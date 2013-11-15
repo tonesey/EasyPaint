@@ -4,9 +4,10 @@
   </ui>
   <group id="0" key="group_Africa" imgname="0.png">
     <items>
-      <item imgname="lion.png" key="item_lion"/>
-      <item imgname="tiger.png" key="item_tiger"/>
-      <item imgname="zebra.png" key="item_zebra"/>
+      <item imgname="canguro colore.png" key="item_canguro"/>
+      <item imgname="coccodrillo colore.png" key="item_coccodrillo"/>
+      <item imgname="diavolo_colore.png" key="item_diavolo"/>
+      <item imgname="koala colore.png" key="item_koala"/>
     </items>
   </group>
   <group id="1" key="group_Europe" imgname="1.png">

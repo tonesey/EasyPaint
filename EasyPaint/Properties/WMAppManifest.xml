@@ -3,10 +3,11 @@
   <App xmlns="" ProductID="{32dec5b2-cb71-4c96-b1d8-b3532900247c}" Title="EasyPaint" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="centapp" Description="" Publisher="centapp">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_GAMERSERVICES" />
+      <!--<Capability Name="ID_CAP_GAMERSERVICES" />-->
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
       <Capability Name="ID_CAP_IDENTITY_USER" />
       <Capability Name="ID_CAP_LOCATION" />
+      <!--
       <Capability Name="ID_CAP_MEDIALIB" />
       <Capability Name="ID_CAP_MICROPHONE" />
       <Capability Name="ID_CAP_NETWORKING" />
@@ -16,11 +17,11 @@
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_ISV_CAMERA" />
       <Capability Name="ID_CAP_CONTACTS" />
-      <Capability Name="ID_CAP_APPOINTMENTS" />
+      <Capability Name="ID_CAP_APPOINTMENTS" />-->
     </Capabilities>
     <Tasks>
-      <DefaultTask Name="_default" NavigationPage="/View/Homepage.xaml" />
-      <!--<DefaultTask Name="_default" NavigationPage="/WriteableBitmapTestsPage.xaml" />-->
+      <!--<DefaultTask Name="_default" NavigationPage="/View/Homepage.xaml" />-->
+      <DefaultTask Name="_default" NavigationPage="/WriteableBitmapTestsPage.xaml" />
       <!--<DefaultTask Name="_default" NavigationPage="/View/PainterPage.xaml" />-->
     </Tasks>
     <Tokens>

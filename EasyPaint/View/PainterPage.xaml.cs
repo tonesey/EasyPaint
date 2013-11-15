@@ -24,6 +24,7 @@ using EasyPaint.ViewModel;
 using System.Reflection;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using System.Windows.Controls.Primitives;
 
 namespace EasyPaint.View
 {
@@ -47,6 +48,8 @@ namespace EasyPaint.View
         Storyboard _storyboardSubjectImageFading;
         Storyboard _storyboardCountDown;
         Storyboard _storyboardShowPalette;
+        Popup _resultPopup = null;
+        ResultPopup _resultPopupChild = null;
 
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
 
@@ -61,6 +64,7 @@ namespace EasyPaint.View
             LoadSounds();
             InitAnimations();
             AssignEventHandlers();
+            InitPopup();
         }
 
         private void AssignEventHandlers()
@@ -79,7 +83,6 @@ namespace EasyPaint.View
             ImageOverlay.MouseMove -= ImageOverlay_MouseMove;
             ImageOverlay.MouseLeave -= ImageOverlay_MouseLeave;
         }
-
 
         void ImageOverlay_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -190,9 +193,12 @@ namespace EasyPaint.View
         #region timer
         void dt_Tick(object sender, EventArgs e)
         {
+
+
             if (_availableTimeValue - 1 > 0)
             {
                 _availableTimeValue--;
+                TextBlockCountDownSmall.Text = _availableTimeValue.ToString();
             }
             else
             {
@@ -200,8 +206,6 @@ namespace EasyPaint.View
                 CheckDrawnPicture();
                 return;
             }
-
-            TextBlockCountDownSmall.Text = _availableTimeValue.ToString();
 
             ////leftMargin / 380 = _curTimeValue / totaltime;
             //int totMargin = (int)timerCanvas.Width - (int)timerEllipse.Width; //ora 380
@@ -233,7 +237,9 @@ namespace EasyPaint.View
         {
             SetEllipseSize(_drawingboard.BrushWidth);
 
+            InkPresenterElement.Visibility = System.Windows.Visibility.Visible;
             ImageMain.Visibility = System.Windows.Visibility.Visible;
+            ImageOverlay.Visibility = System.Windows.Visibility.Visible;
             ImageTest.Visibility = System.Windows.Visibility.Collapsed;
 
             var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
@@ -266,20 +272,12 @@ namespace EasyPaint.View
             int count = 1;
             foreach (var color in imageColors)
             {
-                //var btn = MyVisualTreeHelper.FindChild<Button>(Application.Current.RootVisual, "pc" + count);
-                //if (btn != null)
-                //{
-                //    btn.Background = new SolidColorBrush(color);
-                //}
-
-                var el1 = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + count);
-                el1.Tag = color;
-
-                //var el = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(Application.Current.RootVisual, "pc" + count + "_path");
-                var el = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(el1, "pc" + count + "_path");
-                if (el != null)
+                var parentEl = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + count);
+                parentEl.Tag = color;
+                var childEl = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(parentEl, "pc" + count + "_path");
+                if (childEl != null)
                 {
-                    el.Fill = new SolidColorBrush(color);
+                    childEl.Fill = new SolidColorBrush(color);
                 }
                 count++;
             }
@@ -309,23 +307,6 @@ namespace EasyPaint.View
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Erase;
         }
 
-        private void startOrStopBtn_Click(object sender, RoutedEventArgs e)
-        {
-            // CheckDrawnPicture();
-            //if (_gameInProgress)
-            //{
-            //    //started: now stop
-            //    StopTimer();
-            //    CheckDrawnPicture();
-            //}
-            //else
-            //{
-            //    //stopped: now started
-            //    _myBoard.Clear();
-            //    StartTimer();
-            //}
-        }
-
         #region palette
         //private void pc1_Click(object sender, RoutedEventArgs e)
         //{
@@ -334,7 +315,7 @@ namespace EasyPaint.View
         //    _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
         //}
 
-        private void pc1_Tap(object sender, GestureEventArgs e)
+        private void pc1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
 
@@ -392,33 +373,155 @@ namespace EasyPaint.View
 
         private void CheckDrawnPicture()
         {
-            //WriteableBitmap drawnPicture1 = new WriteableBitmap(myBoard.Ink, null);
-            WriteableBitmap userDrawnPicture = new WriteableBitmap(ImagesHelper.GetImageFromInkPresenter(_drawingboard.Ink));
+            WriteableBitmap userDrawnPicture = null;
 
+            //test1
+            //BitmapImage imgFromInk = ImagesHelper.GetImageFromInkPresenter(_drawingboard.Ink);
+            //userDrawnPicture = new WriteableBitmap(imgFromInk);
+
+            userDrawnPicture = new WriteableBitmap((int)_drawingboard.Ink.Width, (int)_drawingboard.Ink.Height);
+            userDrawnPicture.Render(_drawingboard.Ink, null);
+            userDrawnPicture.Invalidate();
+
+            //2. caricamento da disco
+            //BitmapImage biImage = new BitmapImage();
+            //using (IsolatedStorageFileStream isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Open, IsolatedStorageFile.GetUserStoreForApplication()))
+            //{
+            //    biImage.SetSource(isfStream);
+            //}
+            //userDrawnPicture = new WriteableBitmap(biImage);
+
+            //test2
+           
+            //Test1.Source = userDrawnPicture;
+
+            //test3
+            //WriteableBitmap userDrawnPicture = new WriteableBitmap((int)ImageOverlay.Width, (int)ImageOverlay.Height);
+            //userDrawnPicture.Render(GridPainter, null);
+            //userDrawnPicture.Invalidate();
+            
+            //Test1.Source = userDrawnPicture;
+            //Test2.Source = _lineArtPicture;
+
+            InkPresenterElement.Visibility = System.Windows.Visibility.Collapsed;
+            ImageOverlay.Visibility = System.Windows.Visibility.Collapsed;
             ImageMain.Visibility = System.Windows.Visibility.Collapsed;
             ImageTest.Visibility = System.Windows.Visibility.Visible;
 
-            //testImg.Source = userDrawnPicture;
-            //MessageBox.Show("continue");
+            //////////////////// 
+            // merge 1
+            ////////////////////
+            //Grid g = new Grid();
+            //g.Width = ImageOverlay.Width;
+            //g.Height = ImageOverlay.Height;
 
-            //merge con immagine lineart
+            //Image inkImage1 = new Image();
+            //inkImage1.Source = imgFromInk;
+            ////Test1.Source = imgFromInk;
+
+            //Image lineartImage1 = new Image();
+            //lineartImage1.Source = _lineArtPicture;
+            ////
+
+            //g.Children.Add(lineartImage1);
+            //g.Children.Add(inkImage1);
+
+            //WriteableBitmap resultigImg = new WriteableBitmap((int)ImageOverlay.Width, (int)ImageOverlay.Height);
+            //resultigImg.Render(g, null);
+            //resultigImg.Invalidate();
+            //ImageTest.Source = resultigImg;
+            ////////////////////
+
+            //////////////////// 
+            // merge 2
+            ////////////////////
             userDrawnPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
                                   _lineArtPicture,
                                   new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
-            ImageTest.Source = userDrawnPicture;
+            //ImageTest.Source = userDrawnPicture;
 
-            //_lineArtPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
-            //                      userDrawnPicture,
-            //                      new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
-            //                      WriteableBitmapExtensions.BlendMode.Alpha);
-            //testImg.Source = _lineArtPicture;
+            ////_lineArtPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
+            ////                      userDrawnPicture,
+            ////                      new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
+            ////                      WriteableBitmapExtensions.BlendMode.Alpha);
+            ////testImg.Source = _lineArtPicture;
+
+
+            //////////////////// 
+            // merge 3
+            ////////////////////
+            //for (int y = 0; y < _lineArtPicture.PixelHeight; ++y)
+            //{
+            //    for (int x = 0; x < _lineArtPicture.PixelWidth; ++x)
+            //    {
+            //        userDrawnPicture.SetPixel(x, y, Colors.Red);
+            //    }
+            //}
+            //userDrawnPicture.Invalidate();
+            //ImageTest.Source = userDrawnPicture;
+
 
             int diffPixels = ImagesHelper.GetNumberOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
             int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
-            // textPrecision.Text = diffPixelsPercentage + "%";
 
-            MessageBox.Show(string.Format("Precision: {0}%", diffPixelsPercentage));
+            ShowResultPopup(diffPixelsPercentage);
+            //// textPrecision.Text = diffPixelsPercentage + "%";
+            //MessageBox.Show(string.Format("Precision: {0}%", diffPixelsPercentage));
+        }
+
+        private void ShowResultPopup(int percentage)
+        {
+            
+            //popup.VerticalOffset = 250;
+            DisablePage();
+            _resultPopupChild.Percentage = percentage;
+            _resultPopupChild.PageOrientation = Orientation;
+            _resultPopup.IsOpen = true;
+        }
+
+        private void InitPopup()
+        {
+            _resultPopup = new Popup();
+            _resultPopup.Height = Application.Current.Host.Content.ActualHeight;
+            _resultPopupChild = new ResultPopup(_resultPopup);
+         
+            _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
+            _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
+            _resultPopupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
+            _resultPopupChild.ActionPerformedEvent += exportPopup_ActionPerformedEvent;
+            //exportPopup.Width = Application.Current.Host.Content.ActualWidth;
+            _resultPopup.Child = _resultPopupChild;
+        }
+
+        void exportPopup_ActionPerformedEvent(GameAction action)
+        {
+            //TODO inviare  messaggio 
+            MessageBox.Show("TODO");
+        }
+
+        void exportPopup_PopupClosedEvent()
+        {
+            EnablePage();
+        }
+
+        private void DisablePage()
+        {
+            IsEnabled = false;
+        }
+
+        private void EnablePage()
+        {
+            IsEnabled = true;
+        }
+
+        private void TextBlockCountDownSmall_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+
+#if DEBUG
+            StopTimer();
+            CheckDrawnPicture();
+#endif
         }
 
 

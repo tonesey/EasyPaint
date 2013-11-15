@@ -140,7 +140,6 @@ namespace EasyPaint.Helpers
 
         public static BitmapImage GetImageFromInkPresenter(InkPresenter inkPresenter)
         {
-
             WriteableBitmap wbBitmap = new WriteableBitmap(inkPresenter, new TranslateTransform());
             EditableImage eiImage = new EditableImage(wbBitmap.PixelWidth, wbBitmap.PixelHeight);
 
@@ -154,7 +153,8 @@ namespace EasyPaint.Helpers
                         eiImage.SetPixel(x, y,
                         (byte)((pixel >> 16) & 0xFF),
                         (byte)((pixel >> 8) & 0xFF),
-                        (byte)(pixel & 0xFF), (byte)((pixel >> 24) & 0xFF)
+                        (byte)(pixel & 0xFF), 
+                        (byte)((pixel >> 24) & 0xFF)
                         );
                     }
                 }
@@ -165,14 +165,13 @@ namespace EasyPaint.Helpers
             }
 
             BitmapImage biImage = new BitmapImage();
-
             // Save it to disk
             using (Stream streamPNG = eiImage.GetStream())
             {
                 StreamReader srPNG = new StreamReader(streamPNG);
                 byte[] baBinaryData = new Byte[streamPNG.Length];
                 long bytesRead = streamPNG.Read(baBinaryData, 0, (int)streamPNG.Length);
-
+                
                 using (IsolatedStorageFileStream isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Create, IsolatedStorageFile.GetUserStoreForApplication()))
                 {
                     isfStream.Write(baBinaryData, 0, baBinaryData.Length);

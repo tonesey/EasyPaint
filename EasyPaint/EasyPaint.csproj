@@ -60,13 +60,32 @@
       <HintPath>..\packages\MvvmLightLibs.4.1.27.1\lib\sl4-wp71\GalaSoft.MvvmLight.WP71.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.4.1.27.1\lib\sl4-wp71\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Media.SmoothStreaming, Version=1.1.837.145, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl4-windowsphone71\System.Threading.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -91,6 +110,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\OrientationConverter.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignData.cs" />
@@ -125,6 +145,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="View\ResultPopup.xaml.cs">
+      <DependentUpon>ResultPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ItemSelectorPage.xaml.cs">
       <DependentUpon>ItemSelectorPage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +176,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="View\ResultPopup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\ItemSelectorPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -175,18 +201,44 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
     <EmbeddedResource Include="Audio\wav\click2.wav" />
     <Resource Include="Assets\lres\bkg\explorer.png" />
-    <Resource Include="Assets\testImages\test.png" />
     <Resource Include="Assets\lres\bkg\explorer_groups.png" />
     <Resource Include="Assets\lres\bkg\groups_bkg.jpg" />
     <Resource Include="Assets\lres\groups\0.png" />
     <Resource Include="Assets\lres\explorer.png" />
     <Resource Include="Assets\lres\bkg\painter_bck.jpg" />
-    <Content Include="Assets\lres\groups\0\lion.png" />
-    <Content Include="Assets\lres\groups\0\tiger.png" />
-    <Content Include="Assets\lres\groups\0\zebra.png" />
     <Resource Include="Assets\lres\groups\1.png" />
+    <Resource Include="Assets\lres\groups\0\reduced\canguro colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced\clamidosauro colori.png" />
+    <Resource Include="Assets\lres\groups\0\reduced\coccodrillo colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced\diavolo_colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced\koala colore.png" />
+    <Resource Include="Assets\lres\groups\0\canguro colore.png" />
+    <Resource Include="Assets\lres\groups\0\canguro lineart.png" />
+    <Resource Include="Assets\lres\groups\0\clamidosauro colori.png" />
+    <Resource Include="Assets\lres\groups\0\clamidosauroline art.png" />
+    <Resource Include="Assets\lres\groups\0\coccodrillo colore.png" />
+    <Resource Include="Assets\lres\groups\0\coccodrillo lineart.png" />
+    <Resource Include="Assets\lres\groups\0\diavolo_colore.png" />
+    <Resource Include="Assets\lres\groups\0\diavolo_lineart.png" />
+    <Resource Include="Assets\lres\groups\0\koala colore.png" />
+    <Resource Include="Assets\lres\groups\0\koala lineart.png" />
+    <Content Include="Assets\buttons\btn_avanti.png" />
+    <Content Include="Assets\buttons\btn_left_black.png" />
+    <Content Include="Assets\buttons\btn_menu.png" />
+    <Content Include="Assets\buttons\btn_no.png" />
+    <Content Include="Assets\buttons\btn_refresh.png" />
+    <Content Include="Assets\buttons\btn_right.png" />
+    <Content Include="Assets\buttons\btn_right_black.png" />
+    <Content Include="Assets\buttons\btn_start.png" />
+    <Content Include="Assets\buttons\btn_yes.png" />
     <Content Include="Assets\lres\groups\1\lion.png" />
     <Content Include="Assets\lres\groups\1\tiger.png" />
     <Content Include="Assets\lres\groups\1\zebra.png" />
@@ -214,6 +266,7 @@
     <Resource Include="Assets\lres\groups\4.png" />
     <Resource Include="Assets\lres\groups\5.png" />
     <Resource Include="Assets\lres\painter_bck.jpg" />
+    <Resource Include="Assets\testImages\test.png" />
     <Content Include="Audio\mp3\Alegria.mp3" />
     <Content Include="Audio\mp3\song.mp3" />
     <EmbeddedResource Include="Audio\wav\go.wav" />
@@ -293,21 +346,12 @@
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Assets\buttons\bullet_ball_blue.png" />
-    <Content Include="Assets\buttons\done.png" />
-    <Content Include="Assets\buttons\Edit.png" />
-    <Content Include="Assets\buttons\eraser-.png" />
     <Content Include="Assets\buttons\eraser.png" />
-    <Content Include="Assets\buttons\eraser2.png" />
-    <Content Include="Assets\buttons\finish.png" />
     <Content Include="Assets\buttons\media_play_green.png" />
-    <Resource Include="Assets\buttons\pencil.png" />
-    <Content Include="Assets\buttons\pencil_tr.png" />
+    <Content Include="Assets\buttons\pencil.png" />
     <EmbeddedResource Include="cfg.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="Assets\buttons\pencil_tr1.png" />
-    <Content Include="Assets\buttons\pencil_tr2.png" />
-    <Content Include="Assets\buttons\sign_stop.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -325,8 +369,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\groups\4\" />
-    <Folder Include="Assets\groups\5\" />
     <Folder Include="Assets\lres\groups\4\" />
     <Folder Include="Assets\lres\groups\5\" />
   </ItemGroup>
@@ -367,4 +409,9 @@
   -->
   <ProjectExtensions />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\WindowsPhone\v8.0\Microsoft.Expression.Blend.WindowsPhone.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
 </Project>

@@ -34,10 +34,10 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-                //if (ViewModelBase.IsInDesignModeStatic)
-                //{
-                //    return 0;
-                //}
+                if (ViewModelBase.IsInDesignModeStatic)
+                {
+                    return 0;
+                }
 
                 return -85;
             }
