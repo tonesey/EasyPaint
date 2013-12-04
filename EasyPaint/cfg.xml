@@ -32,4 +32,13 @@
       <item imgname="koala colore.png" key="item_koala"/>
     </items>
   </group>
+  <group id="4" key="group_Asia" imgname="4.png">
+    <items>
+      <item imgname="Cobra.png" key="item_Cobra"/>
+      <item imgname="Elefante.png" key="item_Elefante"/>
+      <item imgname="scimmietta.png" key="item_scimmietta"/>
+      <item imgname="Tigre.png" key="item_Tigre"/>
+      <item imgname="Yak.png" key="item_Yak"/>
+    </items>
+  </group>
 </root>

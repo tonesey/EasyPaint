@@ -110,6 +110,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\PercentageToVisibilityConverter.cs" />
+    <Compile Include="Converters\PercentageToResultConverter.cs" />
+    <Compile Include="Converters\PercentageToStringConverter.cs" />
+    <Compile Include="Converters\PercentageToColorConverter.cs" />
     <Compile Include="Converters\OrientationConverter.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Design\DesignDataService.cs" />
@@ -201,6 +205,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
+    <Content Include="Audio\mp3\HunterThemeFull.mp3" />
+    <Content Include="Audio\mp3\HunterThemeLoop.mp3" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
@@ -267,8 +274,6 @@
     <Resource Include="Assets\lres\groups\5.png" />
     <Resource Include="Assets\lres\painter_bck.jpg" />
     <Resource Include="Assets\testImages\test.png" />
-    <Content Include="Audio\mp3\Alegria.mp3" />
-    <Content Include="Audio\mp3\song.mp3" />
     <EmbeddedResource Include="Audio\wav\go.wav" />
     <EmbeddedResource Include="Audio\wav\one.wav" />
     <EmbeddedResource Include="Audio\wav\three.wav" />

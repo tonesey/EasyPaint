@@ -160,6 +160,24 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to level completed!.
+        /// </summary>
+        internal static string message_level_completed {
+            get {
+                return ResourceManager.GetString("message_level_completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to level failed!.
+        /// </summary>
+        internal static string message_level_failed {
+            get {
+                return ResourceManager.GetString("message_level_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to water.
         /// </summary>
         internal static string water {

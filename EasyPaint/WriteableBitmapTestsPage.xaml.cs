@@ -19,23 +19,17 @@ namespace EasyPaint
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
 
-
         private void ShowResultPopup(int percentage)
-        {
-            _resultPopupChild.Percentage = percentage;
-            _resultPopupChild.PageOrientation = Orientation;
-            _resultPopup.IsOpen = true;
-        }
-
-        private void InitPopup()
         {
             _resultPopup = new Popup();
             ////_resultPopup.Height = Application.Current.Host.Content.ActualHeight;
             ////_resultPopup.Width  = Application.Current.Host.Content.ActualWidth;
 
-            _resultPopup.Height = 500;
-            _resultPopup.Width = 400;
+            //_resultPopup.Height = 500;
+            //_resultPopup.Width = 400;
             _resultPopupChild = new ResultPopup(_resultPopup);
+            _resultPopupChild.Height = 400;
+            _resultPopupChild.Width = 400;
 
             _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
             _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
@@ -43,6 +37,15 @@ namespace EasyPaint
             _resultPopupChild.ActionPerformedEvent += exportPopup_ActionPerformedEvent;
 
             _resultPopup.Child = _resultPopupChild;
+
+            _resultPopupChild.UserPercentage = percentage;
+            _resultPopupChild.PageOrientation = Orientation;
+            _resultPopup.IsOpen = true;
+        }
+
+        private void InitPopup()
+        {
+          
         }
 
         void exportPopup_ActionPerformedEvent(GameAction action)
@@ -63,7 +66,7 @@ namespace EasyPaint
 
             InitPopup();
 
-            ShowResultPopup(65);
+
         }
 
         private void TestWB()
@@ -136,6 +139,11 @@ namespace EasyPaint
             //         new Rect(0, 0, size, size),
             //         WriteableBitmapExtensions.BlendMode.Subtractive);
             //ImageTest7.Source = userpicture7;
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            ShowResultPopup(65);
         }
     }
 }

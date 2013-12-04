@@ -47,16 +47,14 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
-
+       
         <telerikPrimitives:RadLoopingList 
             x:Name="loopingList"
-          
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
-            Grid.Row="1" Grid.Column="1"
-            Grid.RowSpan="3" Grid.ColumnSpan="2"
-            ItemSpacing="20"
+            Grid.Row="1" Grid.Column="0"
+            Grid.RowSpan="3" Grid.ColumnSpan="3"
+            ItemSpacing="60"
             IsCentered="True"
             Orientation="Horizontal" 
             IsLoopingEnabled="False"
@@ -69,6 +67,8 @@
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>
         </telerikPrimitives:RadLoopingList>
+        
+        <Image Grid.Row="0" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
 
     </Grid>
 

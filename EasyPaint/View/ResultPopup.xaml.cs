@@ -5,6 +5,8 @@ using Microsoft.Phone.Tasks;
 using System.Threading.Tasks;
 using System.Threading;
 using System.ComponentModel;
+using EasyPaint.ViewModel;
+using System.Windows.Media.Animation;
 
 
 namespace EasyPaint.View
@@ -12,13 +14,14 @@ namespace EasyPaint.View
 
     public enum GameAction { 
         Undefined,
+        Menu,
         Redo,
         Ahead
     }
 
     public delegate void PopupClosedEventHandler();
     public delegate void ActionPerformedEventHandler(GameAction action);
-    
+
     public partial class ResultPopup
     {
         public static readonly DependencyProperty PageOrientationProperty =
@@ -27,14 +30,27 @@ namespace EasyPaint.View
                                         typeof(ResultPopup),
                                         new PropertyMetadata(PageOrientation.LandscapeLeft));
 
+        public static readonly DependencyProperty PercentageProperty =
+        DependencyProperty.Register("Percentage",
+                                    typeof(int),
+                                    typeof(ResultPopup),
+                                    new PropertyMetadata(0));
+
         BackgroundWorker _bw = new BackgroundWorker();
 
         public event PopupClosedEventHandler PopupClosedEvent;
         public event ActionPerformedEventHandler ActionPerformedEvent;
 
         private readonly Popup _popup;
+        private Storyboard _sbShowTextResult;
 
-        public int Percentage { get; set; }
+        public int UserPercentage { get; set; }
+
+        public int Percentage
+        {
+            set { SetValue(PercentageProperty, value); }
+            get { return (int)GetValue(PercentageProperty); }
+        }   
 
         public PageOrientation PageOrientation
         {
@@ -47,22 +63,33 @@ namespace EasyPaint.View
             InitializeComponent();
             LocalizeUI();
             _popup = popup;
-            TextBlockResult.Text = string.Empty;
-            mainGrid.DataContext = this;
+
+            _sbShowTextResult = (Storyboard)Resources["StoryboardShowTextResult"];
+            
+            DataContext = this;
+            //TextBlockResult.Text = string.Empty;
 
             _bw.DoWork -= _bw_DoWork;
             _bw.DoWork += _bw_DoWork;
             _bw.ProgressChanged -= _bw_ProgressChanged;
             _bw.ProgressChanged += _bw_ProgressChanged;
+            _bw.RunWorkerCompleted -= _bw_RunWorkerCompleted;
+            _bw.RunWorkerCompleted += _bw_RunWorkerCompleted;
             _bw.WorkerReportsProgress = true;
 
-            //ProgressBarResult.
+            //TextBlockResultText.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        void _bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            _sbShowTextResult.Begin();
         }
 
         void _bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            TextBlockResult.Text = string.Format("{0}%", e.ProgressPercentage);
-            MyProgressBarResult.Value = e.ProgressPercentage;
+            Percentage = e.ProgressPercentage;
+            //TextBlockResult.Text = string.Format("{0}%", e.ProgressPercentage);
+            //MyProgressBarResult.Value = e.ProgressPercentage;
         }
 
         void _bw_DoWork(object sender, DoWorkEventArgs e)
@@ -102,6 +129,15 @@ namespace EasyPaint.View
             }
         }
 
+        private void ButtonMenu_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (ActionPerformedEvent != null)
+            {
+                ActionPerformedEvent(GameAction.Menu);
+            }
+            ClosePopup();
+        }
+
         private void ButtonRedo_Tap_1(object sender, System.Windows.Input.GestureEventArgs e)
         {
             if (ActionPerformedEvent != null)
@@ -120,9 +156,10 @@ namespace EasyPaint.View
             ClosePopup();
         }
 
-        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            _bw.RunWorkerAsync(Percentage);
+            //TextBlockResultText.Visibility = System.Windows.Visibility.Collapsed;
+            _bw.RunWorkerAsync(UserPercentage);
 
             //for (int i = 0; i <= Percentage; i++)
             //{

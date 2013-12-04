@@ -472,32 +472,47 @@ namespace EasyPaint.View
 
         private void ShowResultPopup(int percentage)
         {
-            
             //popup.VerticalOffset = 250;
             DisablePage();
-            _resultPopupChild.Percentage = percentage;
-            _resultPopupChild.PageOrientation = Orientation;
-            _resultPopup.IsOpen = true;
-        }
 
-        private void InitPopup()
-        {
+            //TrialMessage trialPopup = new TrialMessage(popup, query.ToString());
+            //trialPopup.Width = Application.Current.Host.Content.ActualWidth;
+            //trialPopup.PageOrientation = Orientation;
+            //popup.Child = trialPopup;
+            //popup.VerticalOffset = 250;
+            //popup.IsOpen = true;
+
+
+            /// private void InitPopup()
             _resultPopup = new Popup();
-            _resultPopup.Height = Application.Current.Host.Content.ActualHeight;
+            //_resultPopup.Height = Application.Current.Host.Content.ActualHeight;
             _resultPopupChild = new ResultPopup(_resultPopup);
-         
+            _resultPopupChild.Height = 400;
+            _resultPopupChild.Width = 400;
+
             _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
             _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
             _resultPopupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
             _resultPopupChild.ActionPerformedEvent += exportPopup_ActionPerformedEvent;
             //exportPopup.Width = Application.Current.Host.Content.ActualWidth;
             _resultPopup.Child = _resultPopupChild;
+            //
+
+
+            _resultPopupChild.UserPercentage = percentage;
+            _resultPopupChild.PageOrientation = Orientation;
+            _resultPopup.IsOpen = true;
+        }
+
+        private void InitPopup()
+        {
+         
         }
 
         void exportPopup_ActionPerformedEvent(GameAction action)
         {
             //TODO inviare  messaggio 
-            MessageBox.Show("TODO");
+            MessageBox.Show("TODO: " + action);
         }
 
         void exportPopup_PopupClosedEvent()

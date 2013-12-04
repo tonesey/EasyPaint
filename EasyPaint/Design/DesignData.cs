@@ -2,6 +2,7 @@
 using EasyPaint.Model.UI;
 using EasyPaint.Settings;
 using EasyPaint.ViewModel;
+using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,19 +20,18 @@ namespace EasyPaint.Design
 
     public class DesignData : MyViewModelBase
     {
+        #region group and items selectors
         //list type
         public ListType ListId { get; set; }
 
         //for item selector only
         private string _CurrentGroupId = null;
-
         public string CurrentGroupId
         {
             get
             {
                 return _CurrentGroupId;
             }
-
             set
             {
                 _CurrentGroupId = value;
@@ -71,18 +71,6 @@ namespace EasyPaint.Design
             }
         }
 
-        public DesignData()
-        {
-            //groups
-            _designDataDs_Groups.ItemNeeded += ds_ItemNeeded_Groups;
-            _designDataDs_Groups.ItemUpdated += ds_ItemUpdated_Groups;
-
-            //items
-            _designDataDs_Items.ItemNeeded += _designDataDs_Items_ItemNeeded;
-            _designDataDs_Items.ItemUpdated += _designDataDs_Items_ItemUpdated;
-
-        }
-
         #region items
         void _designDataDs_Items_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
@@ -98,7 +86,7 @@ namespace EasyPaint.Design
         #region groups
         void ds_ItemUpdated_Groups(object sender, LoopingListDataItemEventArgs e)
         {
-            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes +"/groups/" + e.Index + ".png", UriKind.RelativeOrAbsolute);
+            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + e.Index + ".png", UriKind.RelativeOrAbsolute);
         }
 
         void ds_ItemNeeded_Groups(object sender, LoopingListDataItemEventArgs e)
@@ -106,6 +94,57 @@ namespace EasyPaint.Design
             e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + e.Index + ".png", UriKind.RelativeOrAbsolute) };
         }
         #endregion
+
+        #endregion
+
+        #region result popup
+        private int _percentage = 0;
+        public int Percentage
+        {
+            get
+            {
+                return _percentage;
+            }
+            set
+            {
+                _percentage = value;
+                OnPropertyChanged("Percentage");
+            }
+        }
+
+        private PageOrientation _PageOrientation = PageOrientation.LandscapeLeft;
+        public PageOrientation PageOrientation
+        {
+            get
+            {
+                return _PageOrientation;
+            }
+            set
+            {
+                _PageOrientation = value;
+                OnPropertyChanged("PageOrientation");
+            }
+        }
+        #endregion
+
+        public DesignData()
+        {
+            //groups selector
+            _designDataDs_Groups.ItemNeeded += ds_ItemNeeded_Groups;
+            _designDataDs_Groups.ItemUpdated += ds_ItemUpdated_Groups;
+
+            //items selector
+            _designDataDs_Items.ItemNeeded += _designDataDs_Items_ItemNeeded;
+            _designDataDs_Items.ItemUpdated += _designDataDs_Items_ItemUpdated;
+
+
+            //result popup
+            Percentage = 100;
+            PageOrientation = Microsoft.Phone.Controls.PageOrientation.LandscapeLeft;
+        }
+    
+
+    
 
     }
 

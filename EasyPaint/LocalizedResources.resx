@@ -150,6 +150,12 @@
   <data name="item_zebra" xml:space="preserve">
     <value>zebra</value>
   </data>
+  <data name="message_level_completed" xml:space="preserve">
+    <value>level completed!</value>
+  </data>
+  <data name="message_level_failed" xml:space="preserve">
+    <value>level failed!</value>
+  </data>
   <data name="water" xml:space="preserve">
     <value>water</value>
   </data>

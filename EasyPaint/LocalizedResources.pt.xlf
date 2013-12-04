@@ -50,6 +50,14 @@
           <source>zebra</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Zebra</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/message_level_failed" xml:space="preserve">
+          <source>level failed!</source>
+          <target state="new">level failed!</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/message_level_completed" xml:space="preserve">
+          <source>level completed!</source>
+          <target state="new">level completed!</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/water" xml:space="preserve">
           <source>water</source>
           <target state="new">water</target>

@@ -13,7 +13,11 @@
     <Application.Resources>
 
         <Converters:OrientationConverter x:Key="orientationConverter" />
-        
+        <Converters:PercentageToColorConverter x:Key="percentageToColorConverter" />
+        <Converters:PercentageToStringConverter x:Key="percentageToStringConverter" />
+        <Converters:PercentageToResultConverter x:Key="percentageToResultConverter" />
+        <Converters:PercentageToVisibilityConverter x:Key="percentageToVisibilityConverter" />
+
         <!-- Backgorund Sound Manager -->
         <!--<SSME:SmoothStreamingMediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />-->
         <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />

@@ -258,7 +258,7 @@ namespace EasyPaint
                 //GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
 
 
-                GlobalMediaElement.Source = new Uri("Audio/mp3/song.mp3", UriKind.Relative);
+                GlobalMediaElement.Source = new Uri("Audio/mp3/HunterThemeLoop.mp3", UriKind.Relative);
                 GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
                 GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
             }
