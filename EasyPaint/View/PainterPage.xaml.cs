@@ -268,7 +268,7 @@ namespace EasyPaint.View
 
         private void InitPalette()
         {
-            List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture);
+            List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).Take(4).ToList(); //TODO valutare se portare a 8-10
             int count = 1;
             foreach (var color in imageColors)
             {
