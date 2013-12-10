@@ -45,7 +45,7 @@ namespace EasyPaint.ViewModel
 
                 ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}.png", AppSettings.AppRes, _group.Id), UriKind.RelativeOrAbsolute);
                 //BckImage = new Uri(string.Format("EasyPaint;component/Assets/groups/" + AppSettings.AppRes + "/{0}_bck.png", _group.Id), UriKind.RelativeOrAbsolute);
-                BckImage = new Uri(string.Format("../Assets/{0}/groups/{1}_bck.png", AppSettings.AppRes, _group.Id), UriKind.RelativeOrAbsolute);
+                BckImage = new Uri(string.Format("../Assets/{0}/groups/{1}_bck.jpg", AppSettings.AppRes, _group.Id), UriKind.RelativeOrAbsolute);
                 //ImageSource = new Uri(string.Format("EasyPaint;component/Assets/groups/" + AppSettings.AppRes + "/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
             }
             catch (Exception)

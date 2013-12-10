@@ -51,13 +51,15 @@ namespace EasyPaint.View
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
 
+        bool _useOverlay = false;
+
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
 
         public PainterPage()
         {
             InitializeComponent();
             //Tester.CheckImagesTester();
-            _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
+            _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement, _useOverlay);
             _dt.Interval = TimeSpan.FromSeconds(1);
             _dt.Tick += dt_Tick;
             //TryPlayBackgroundMusic();
@@ -70,18 +72,25 @@ namespace EasyPaint.View
         private void AssignEventHandlers()
         {
             UnassignEventHandlers();
-            ImageOverlay.MouseLeftButtonDown += ImageOverlay_MouseLeftButtonDown;
-            ImageOverlay.MouseLeftButtonUp += ImageOverlay_MouseLeftButtonUp;
-            ImageOverlay.MouseMove += ImageOverlay_MouseMove;
-            ImageOverlay.MouseLeave += ImageOverlay_MouseLeave;
+
+            if (_useOverlay)
+            {
+                ImageOverlay.MouseLeftButtonDown += ImageOverlay_MouseLeftButtonDown;
+                ImageOverlay.MouseLeftButtonUp += ImageOverlay_MouseLeftButtonUp;
+                ImageOverlay.MouseMove += ImageOverlay_MouseMove;
+                ImageOverlay.MouseLeave += ImageOverlay_MouseLeave;
+            }
         }
 
         private void UnassignEventHandlers()
         {
-            ImageOverlay.MouseLeftButtonDown -= ImageOverlay_MouseLeftButtonDown;
-            ImageOverlay.MouseLeftButtonUp -= ImageOverlay_MouseLeftButtonUp;
-            ImageOverlay.MouseMove -= ImageOverlay_MouseMove;
-            ImageOverlay.MouseLeave -= ImageOverlay_MouseLeave;
+            if (_useOverlay)
+            {
+                ImageOverlay.MouseLeftButtonDown -= ImageOverlay_MouseLeftButtonDown;
+                ImageOverlay.MouseLeftButtonUp -= ImageOverlay_MouseLeftButtonUp;
+                ImageOverlay.MouseMove -= ImageOverlay_MouseMove;
+                ImageOverlay.MouseLeave -= ImageOverlay_MouseLeave;
+            }
         }
 
         void ImageOverlay_MouseLeave(object sender, MouseEventArgs e)
@@ -109,13 +118,9 @@ namespace EasyPaint.View
         #region audio
         public void TryPlayBackgroundMusic()
         {
-
-            App.GlobalMediaElement.Stop();
-            App.GlobalMediaElement.Source = new Uri("../Audio/mp3/Alegria.mp3", UriKind.RelativeOrAbsolute);
-
+            //App.GlobalMediaElement.Stop();
+            //App.GlobalMediaElement.Source = new Uri("../Audio/mp3/Alegria.mp3", UriKind.RelativeOrAbsolute);
         }
-
-
 
         private void LoadSounds()
         {
@@ -193,12 +198,14 @@ namespace EasyPaint.View
         #region timer
         void dt_Tick(object sender, EventArgs e)
         {
-
-
             if (_availableTimeValue - 1 > 0)
             {
                 _availableTimeValue--;
-                TextBlockCountDownSmall.Text = _availableTimeValue.ToString();
+
+                Dispatcher.BeginInvoke(() =>
+                {
+                    TextBlockCountDownSmall.Text = _availableTimeValue.ToString();
+                });
             }
             else
             {
@@ -220,8 +227,8 @@ namespace EasyPaint.View
         {
             _gameInProgress = true;
             _availableTimeValue = TotalTime;
+            // MessageBox.Show("disabled timer");
             _dt.Start();
-            //_storyboardSubjectImageFading.Begin();
         }
 
         private void StopTimer()
@@ -229,7 +236,6 @@ namespace EasyPaint.View
             _gameInProgress = false;
             _availableTimeValue = 0;
             _dt.Stop();
-            //_storyboardSubjectImageFading.Stop();
         }
         #endregion
 
@@ -238,8 +244,13 @@ namespace EasyPaint.View
             SetEllipseSize(_drawingboard.BrushWidth);
 
             InkPresenterElement.Visibility = System.Windows.Visibility.Visible;
+            ImageMain.Visibility = System.Windows.Visibility.Collapsed;
             ImageMain.Visibility = System.Windows.Visibility.Visible;
-            ImageOverlay.Visibility = System.Windows.Visibility.Visible;
+
+            if (_useOverlay)
+            {
+                ImageOverlay.Visibility = System.Windows.Visibility.Visible;
+            }
             ImageTest.Visibility = System.Windows.Visibility.Collapsed;
 
             var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
@@ -253,16 +264,15 @@ namespace EasyPaint.View
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
                 _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
 
-                ImageOverlay.Source = _lineArtPicture;
+                _drawingboard.MyImage = _lineArtPicture;
 
-                //_lineArtPicture = new WriteableBitmap(new BitmapImage(selectedImage.LineArtResourceUri));
-                //ink.Height = _origPicture.PixelHeight;
-                //ink.Width = _origPicture.PixelWidth;
+                if (_useOverlay)
+                {
+                    ImageOverlay.Source = _lineArtPicture;
+                }
 
                 InitPalette();
-
                 StartCountDown();
-
             }
         }
 
@@ -392,19 +402,22 @@ namespace EasyPaint.View
             //userDrawnPicture = new WriteableBitmap(biImage);
 
             //test2
-           
+
             //Test1.Source = userDrawnPicture;
 
             //test3
             //WriteableBitmap userDrawnPicture = new WriteableBitmap((int)ImageOverlay.Width, (int)ImageOverlay.Height);
             //userDrawnPicture.Render(GridPainter, null);
             //userDrawnPicture.Invalidate();
-            
+
             //Test1.Source = userDrawnPicture;
             //Test2.Source = _lineArtPicture;
 
             InkPresenterElement.Visibility = System.Windows.Visibility.Collapsed;
-            ImageOverlay.Visibility = System.Windows.Visibility.Collapsed;
+            if (_useOverlay)
+            {
+                ImageOverlay.Visibility = System.Windows.Visibility.Collapsed;
+            }
             ImageMain.Visibility = System.Windows.Visibility.Collapsed;
             ImageTest.Visibility = System.Windows.Visibility.Visible;
 
@@ -506,7 +519,7 @@ namespace EasyPaint.View
 
         private void InitPopup()
         {
-         
+
         }
 
         void exportPopup_ActionPerformedEvent(GameAction action)
