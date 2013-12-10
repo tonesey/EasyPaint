@@ -51,7 +51,7 @@ namespace EasyPaint.View
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
 
-        bool _useOverlay = false;
+        bool _useOverlay = true;
 
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
 
