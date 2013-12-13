@@ -82,6 +82,12 @@ namespace EasyPaint.Helpers
                     cols.First(col => col.Equals(myColor)).Count++;
                 }
             }
+
+
+
+
+
+
             return cols;
         }
 

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using EasyPaint.Helpers;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using ColorMine.ColorSpaces.Comparisons;
+using ColorMine.ColorSpaces;
 
 namespace EasyPaint.Tester
 {
@@ -25,14 +28,20 @@ namespace EasyPaint.Tester
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
 
-            var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "coccodrillo colore.png" });
+            var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "clamidosauro colori.png" });
             //var res = string.Format("Assets/3/{0}", new string[] { "diavolo_colore.png" });
+
+            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Cobra.png" });
+            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Elefante.png" });
+            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "scimmietta.png" });
+            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Tigre.png" });
+            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Yak.png" });
             var _reducedColorsPicture = BitmapFactory.New(400, 400).FromResource(res);
 
             ImageTest.Source = _reducedColorsPicture;
 
-        //    List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).ToList();
-            List<MyColor> imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false);
+            //    List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).ToList();
+            List<MyColor> imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true    );
 
             //imageColors.Sort(delegate(Color left, Color right)
             //{
@@ -72,22 +81,26 @@ namespace EasyPaint.Tester
                 t.Visibility = Visibility.Collapsed;
             }
 
-            //List<MyColor> reducedColor = ReduceColors(imageColors, 4);
-            ////colori ridotti
-            //count = 1;
-            //foreach (var color in reducedColor)
-            //{
-            //    //main color
-            //    Rectangle r = MyVisualTreeHelper.FindChild<Rectangle>(StackPanelReducedColors, "cr" + count);
-            //    if (r != null)
-            //    {
-            //        r.Fill = new SolidColorBrush(color.MainColor);
-            //    }
-            //    TextBlock t = MyVisualTreeHelper.FindChild<TextBlock>(StackPanelReducedColors, "cr" + count + "Name");
-            //    if (t != null)
-            //    {
-            //        t.Text = color.MainColor.ToString();
-            //    }
+
+            List<MyColor> discardedColors = new List<MyColor>();
+            List<MyColor> reducedColor = ReduceColors(imageColors, 4, out discardedColors);
+            //colori ridotti
+            count = 1;
+            foreach (var color in reducedColor)
+            {
+                //main color
+                Rectangle r = MyVisualTreeHelper.FindChild<Rectangle>(StackPanelReducedColors, "cr" + count);
+                if (r != null)
+                {
+                    r.Fill = new SolidColorBrush(color.MainColor);
+                }
+                TextBlock t = MyVisualTreeHelper.FindChild<TextBlock>(StackPanelReducedColors, "cr" + count + "Name");
+                if (t != null)
+                {
+                    t.Text = color.MainColor.ToString();
+                }
+                count++;
+            }
 
             //    //twins
             //    int twCounter = 1;
@@ -110,52 +123,112 @@ namespace EasyPaint.Tester
             //}
         }
 
+        private List<MyColor> ReduceColors(List<MyColor> imageColors, int maxColors, out List<MyColor> discardedColors)
+        {
+            List<MyColor> colors = new List<MyColor>(imageColors);
+            discardedColors = new List<MyColor>();
 
-        //private List<MyColor> ReduceColors(List<Color> imageColors, int maxColors)
-        //{
-        //    List<Color> colors = new List<Color>(imageColors);
-        //    colors.Sort(delegate(Color left, Color right)
-        //    {
-        //        return MyColor.GetBrightness(left).CompareTo(MyColor.GetBrightness(right));
-        //    });
+            List<MyColor> reducedColors = new List<MyColor>();
+            foreach (var item in colors)
+            {
+                reducedColors.Add(item);
+            }
 
-        //    List<MyColor> reducedColors = new List<MyColor>();
-        //    foreach (var item in colors)
-        //    {
-        //        reducedColors.Add(new MyColor(item));
-        //    }
+            int step = 1;
+            do
+            {
+                double minDiff = Double.MaxValue;
+               // Debug.WriteLine(">>>> step " + step + " - threshold = " + threshold);
+                for (int i = 0; i < reducedColors.Count - 1; i++)
+                {
+                    int indexToRemove = -1;
+                    var col1 = reducedColors.ElementAt(i);
+                    Debug.WriteLine("start check with : " + col1);
 
-        //    int step = 0;
-        //    do
-        //    {
-        //        int minDiff = Int16.MaxValue;
-        //        int minDiffIndex = -1;
+                    for (int j = i; j < reducedColors.Count - 1; j++)
+                    {
+                        var nextColIndex = j + 1;
+                        var col2 = reducedColors.ElementAt(nextColIndex);
 
-        //        int[] brightnessDiffs = new int[reducedColors.Count - 1];
-        //        for (int i = 0; i < reducedColors.Count - 1; i++)
-        //        {
-        //            brightnessDiffs[i] = Math.Abs(reducedColors.ElementAt(i + 1).Brightness - reducedColors.ElementAt(i).Brightness);
-        //            if (brightnessDiffs[i] < minDiff)
-        //            {
-        //                minDiff = brightnessDiffs[i];
-        //                minDiffIndex = i;
-        //            }
-        //        }
+                        //tutti KO, viene scartato un colore significativo!!!!!!!!!!!
+                        //var colorDiff = Math.Abs(col1.GrayColor - col2.GrayColor) * 100.0 / 256.0;
+                        //var colorDiff = Math.Abs(col1.Brightness - col2.Brightness) * 100.0 / 256.0;
+                        //var colorDiff = MyColor.CompareColors(col1.MainColor, col2.MainColor);
 
-        //        int twinColorIndex = -1;
-        //        twinColorIndex = minDiffIndex + 1;
+                        //OK!!!!!!!!!!!!!
+                        var a = new Rgb { R = col1.MainColor.R, G = col1.MainColor.G, B = col1.MainColor.B };
+                        var b = new Rgb { R = col2.MainColor.R, G = col2.MainColor.G, B = col2.MainColor.B };
+                        var colorDiff = a.Compare(b, new Cie1976Comparison());
 
-        //        MyColor myColor = reducedColors.ElementAt(minDiffIndex);
-        //        var nextColor = reducedColors.ElementAt(twinColorIndex).MainColor;
-        //        myColor.Twins.Add(nextColor); //imposto come colore gemello il successivo
-        //        reducedColors.RemoveAt(twinColorIndex);
 
-        //        step++;
+                        Debug.WriteLine(j + ": difference between " + col1 + " and " + col2 + " = " + colorDiff);
+                        if (colorDiff < minDiff)
+                        {
+                            minDiff = colorDiff;
+                            indexToRemove = nextColIndex;
+                        }
+                    }
+                    if (indexToRemove != -1)
+                    {
+                        var colorToRemove = reducedColors.ElementAt(indexToRemove);
+                        Debug.WriteLine("color to remove: " + colorToRemove);
+                        discardedColors.Add(new MyColor(colorToRemove.MainColor));
+                        reducedColors.RemoveAt(indexToRemove);
+                    }
+                }
+               // threshold += 1;
+                step++;
+            } while (reducedColors.Count > maxColors);
 
-        //    } while (reducedColors.Count > maxColors);
+            return reducedColors;
+        }
 
-        //    return reducedColors;
-        //}
+
+        private List<MyColor> ReduceColorsOrderByBrightness(List<Color> imageColors, int maxColors)
+        {
+            List<Color> colors = new List<Color>(imageColors);
+            colors.Sort(delegate(Color left, Color right)
+            {
+                return MyColor.GetBrightness(left).CompareTo(MyColor.GetBrightness(right));
+            });
+
+            List<MyColor> reducedColors = new List<MyColor>();
+            foreach (var item in colors)
+            {
+                reducedColors.Add(new MyColor(item));
+            }
+
+            int step = 0;
+            do
+            {
+                int minDiff = Int16.MaxValue;
+                int minDiffIndex = -1;
+
+                int[] brightnessDiffs = new int[reducedColors.Count - 1];
+                for (int i = 0; i < reducedColors.Count - 1; i++)
+                {
+                    brightnessDiffs[i] = Math.Abs(reducedColors.ElementAt(i + 1).Brightness - reducedColors.ElementAt(i).Brightness);
+                    if (brightnessDiffs[i] < minDiff)
+                    {
+                        minDiff = brightnessDiffs[i];
+                        minDiffIndex = i;
+                    }
+                }
+
+                int twinColorIndex = -1;
+                twinColorIndex = minDiffIndex + 1;
+
+                MyColor myColor = reducedColors.ElementAt(minDiffIndex);
+                var nextColor = reducedColors.ElementAt(twinColorIndex).MainColor;
+                myColor.Twins.Add(nextColor); //imposto come colore gemello il successivo
+                reducedColors.RemoveAt(twinColorIndex);
+
+                step++;
+
+            } while (reducedColors.Count > maxColors);
+
+            return reducedColors;
+        }
 
 
         // Sample code for building a localized ApplicationBar

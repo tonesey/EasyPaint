@@ -57,11 +57,9 @@ namespace EasyPaint.View
         List<MyColor> _paletteColors = new List<MyColor>();
         List<MyColor> _ignoredColors = new List<MyColor>();
 
-        bool _useOverlay = true;
+        bool _useOverlay = false;
 
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
-        
-        
 
         public PainterPage()
         {
@@ -287,8 +285,9 @@ namespace EasyPaint.View
         private void InitPalette()
         {
             //List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).Take(4).ToList(); //TODO valutare se portare a 8-10
-            _paletteColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false).Take(MAX_PALETTE_COLORS).ToList();
-            _ignoredColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false).Skip(MAX_PALETTE_COLORS).ToList();
+            var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false);
+            _paletteColors = imageColors.Take(MAX_PALETTE_COLORS).ToList();
+            _ignoredColors = imageColors.Skip(MAX_PALETTE_COLORS).ToList();
 
             int count = 1;
             foreach (var color in _paletteColors)

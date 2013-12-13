@@ -93,6 +93,28 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorSpace.cs" />
+    <Compile Include="ColorSpaces.cs" />
+    <Compile Include="ColorSpaceWithProfile.cs" />
+    <Compile Include="Comparisons\Cie1976Comparison.cs" />
+    <Compile Include="Comparisons\Cie94Comparison.cs" />
+    <Compile Include="Comparisons\CieDe2000Comparison.cs" />
+    <Compile Include="Comparisons\CmcComparison.cs" />
+    <Compile Include="Comparisons\IColorSpaceComparison.cs" />
+    <Compile Include="Conversions\CmyConverter.cs" />
+    <Compile Include="Conversions\CmykConverter.cs" />
+    <Compile Include="Conversions\CmykProfileConverter.cs" />
+    <Compile Include="Conversions\HsbConverter.cs" />
+    <Compile Include="Conversions\HslConverter.cs" />
+    <Compile Include="Conversions\HsvConverter.cs" />
+    <Compile Include="Conversions\HunterLabConverter.cs" />
+    <Compile Include="Conversions\LabConverter.cs" />
+    <Compile Include="Conversions\LchConverter.cs" />
+    <Compile Include="Conversions\LuvConverter.cs" />
+    <Compile Include="Conversions\RgbConverter.cs" />
+    <Compile Include="Conversions\Utility\DoubleExtension.cs" />
+    <Compile Include="Conversions\XyzConverter.cs" />
+    <Compile Include="Conversions\YxyConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="ImagesHelper.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -136,6 +158,11 @@
     <Resource Include="Assets\3\reduced_10\coccodrillo colore.png" />
     <Resource Include="Assets\3\reduced_10\diavolo_colore.png" />
     <Resource Include="Assets\3\reduced_10\koala colore.png" />
+    <Resource Include="Assets\3\reduced_10\Cobra.png" />
+    <Resource Include="Assets\3\reduced_10\Elefante.png" />
+    <Resource Include="Assets\3\reduced_10\scimmietta.png" />
+    <Resource Include="Assets\3\reduced_10\Tigre.png" />
+    <Resource Include="Assets\3\reduced_10\Yak.png" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -186,6 +213,9 @@
     <Reference Include="WriteableBitmapExWinPhoneXnaDependant">
       <HintPath>..\packages\WriteableBitmapEx.1.0.9.0\lib\WindowsPhone8\WriteableBitmapExWinPhoneXnaDependant.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
