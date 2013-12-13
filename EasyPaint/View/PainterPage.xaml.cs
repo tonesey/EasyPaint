@@ -25,6 +25,7 @@ using System.Reflection;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System.Windows.Controls.Primitives;
+using EasyPaint.Model;
 
 namespace EasyPaint.View
 {
@@ -51,9 +52,16 @@ namespace EasyPaint.View
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
 
+        private const int MAX_PALETTE_COLORS = 4;
+        
+        List<MyColor> _paletteColors = new List<MyColor>();
+        List<MyColor> _ignoredColors = new List<MyColor>();
+
         bool _useOverlay = true;
 
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
+        
+        
 
         public PainterPage()
         {
@@ -278,16 +286,19 @@ namespace EasyPaint.View
 
         private void InitPalette()
         {
-            List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).Take(4).ToList(); //TODO valutare se portare a 8-10
+            //List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).Take(4).ToList(); //TODO valutare se portare a 8-10
+            _paletteColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false).Take(MAX_PALETTE_COLORS).ToList();
+            _ignoredColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false).Skip(MAX_PALETTE_COLORS).ToList();
+
             int count = 1;
-            foreach (var color in imageColors)
+            foreach (var color in _paletteColors)
             {
                 var parentEl = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + count);
                 parentEl.Tag = color;
                 var childEl = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(parentEl, "pc" + count + "_path");
                 if (childEl != null)
                 {
-                    childEl.Fill = new SolidColorBrush(color);
+                    childEl.Fill = new SolidColorBrush(color.MainColor);
                 }
                 count++;
             }
