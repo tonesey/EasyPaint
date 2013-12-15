@@ -56,8 +56,11 @@ namespace SimzzDev
             OutlineColor = Colors.Black;
             BrushWidth = 2;
             BrushHeight = 2;
+
+            //SetBoundary();
         }
 
+      
 
         private void AssignHandlers()
         {
@@ -68,7 +71,7 @@ namespace SimzzDev
                 _presenter.MouseLeftButtonDown += new MouseButtonEventHandler(Ink_MouseLeftButtonDown);
                 _presenter.MouseLeftButtonUp += new MouseButtonEventHandler(Ink_MouseLeftButtonUp);
                 _presenter.MouseMove += new MouseEventHandler(Ink_MouseMove);
-                _presenter.MouseLeave += new MouseEventHandler(Ink_MouseLeave);
+                //_presenter.MouseLeave += new MouseEventHandler(Ink_MouseLeave);
             }
             else
             {
@@ -89,7 +92,7 @@ namespace SimzzDev
                 _presenter.MouseLeftButtonDown -= new MouseButtonEventHandler(Ink_MouseLeftButtonDown);
                 _presenter.MouseLeftButtonUp -= new MouseButtonEventHandler(Ink_MouseLeftButtonUp);
                 _presenter.MouseMove -= new MouseEventHandler(Ink_MouseMove);
-                _presenter.MouseLeave -= new MouseEventHandler(Ink_MouseLeave);
+                //_presenter.MouseLeave -= new MouseEventHandler(Ink_MouseLeave);
             }
             else
             {
@@ -142,10 +145,10 @@ namespace SimzzDev
             _presenter.ReleaseMouseCapture();
         }
 
-        public void Ink_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ResetPen();
-        }
+        //public void Ink_MouseLeave(object sender, MouseEventArgs e)
+        //{
+        //   ResetPen();
+        //}
 
         //private void _presenter_MouseMove(object sender, MouseEventArgs e)
         //{
@@ -350,6 +353,13 @@ namespace SimzzDev
         public void Clear()
         {
             _presenter.Strokes.Clear();
+        }
+
+        public void SetBoundary()
+        {
+            RectangleGeometry MyRectangleGeometry = new RectangleGeometry();
+            MyRectangleGeometry.Rect = new Rect(0, 0, _presenter.ActualWidth, _presenter.ActualHeight);
+            _presenter.Clip = MyRectangleGeometry;
         }
     }
 }

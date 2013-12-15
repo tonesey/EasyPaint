@@ -26,6 +26,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System.Windows.Controls.Primitives;
 using EasyPaint.Model;
+using System.Windows.Ink;
 
 namespace EasyPaint.View
 {
@@ -53,7 +54,7 @@ namespace EasyPaint.View
         ResultPopup _resultPopupChild = null;
 
         private const int MAX_PALETTE_COLORS = 4;
-        
+
         List<MyColor> _paletteColors = new List<MyColor>();
         List<MyColor> _ignoredColors = new List<MyColor>();
 
@@ -73,6 +74,7 @@ namespace EasyPaint.View
             InitAnimations();
             AssignEventHandlers();
             InitPopup();
+
         }
 
         private void AssignEventHandlers()
@@ -101,7 +103,7 @@ namespace EasyPaint.View
 
         void ImageOverlay_MouseLeave(object sender, MouseEventArgs e)
         {
-            _drawingboard.Ink_MouseLeave(sender, e);
+            //_drawingboard.Ink_MouseLeave(sender, e);
         }
 
         void ImageOverlay_MouseMove(object sender, MouseEventArgs e)
@@ -247,17 +249,15 @@ namespace EasyPaint.View
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            SetEllipseSize(_drawingboard.BrushWidth);
+            if (_drawingboard != null) SetEllipseSize(_drawingboard.BrushWidth);
 
-            InkPresenterElement.Visibility = System.Windows.Visibility.Visible;
-            ImageMain.Visibility = System.Windows.Visibility.Collapsed;
-            ImageMain.Visibility = System.Windows.Visibility.Visible;
+            _drawingboard.SetBoundary();
 
-            if (_useOverlay)
-            {
-                ImageOverlay.Visibility = System.Windows.Visibility.Visible;
-            }
-            ImageTest.Visibility = System.Windows.Visibility.Collapsed;
+            //InkPresenterElement.Visibility = System.Windows.Visibility.Visible;
+            //ImageMain.Visibility = System.Windows.Visibility.Visible;
+            //ImageOverlay.Visibility = System.Windows.Visibility.Visible;
+
+            //ImageTest.Visibility = System.Windows.Visibility.Collapsed;
 
             var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
 
@@ -270,12 +270,9 @@ namespace EasyPaint.View
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
                 _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
 
-                _drawingboard.MyImage = _lineArtPicture;
+               // _drawingboard.MyImage = _lineArtPicture;
 
-                if (_useOverlay)
-                {
-                    ImageOverlay.Source = _lineArtPicture;
-                }
+                ImageOverlay.Source = _lineArtPicture;
 
                 InitPalette();
                 StartCountDown();
@@ -340,7 +337,7 @@ namespace EasyPaint.View
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
 
             Viewbox senderViewBox = (sender as Viewbox);
-            Color selectedColor = (Color)senderViewBox.Tag;
+            Color selectedColor = ((MyColor)senderViewBox.Tag).MainColor;
             _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
         }
         #endregion
@@ -423,13 +420,11 @@ namespace EasyPaint.View
             //Test1.Source = userDrawnPicture;
             //Test2.Source = _lineArtPicture;
 
-            InkPresenterElement.Visibility = System.Windows.Visibility.Collapsed;
-            if (_useOverlay)
-            {
-                ImageOverlay.Visibility = System.Windows.Visibility.Collapsed;
-            }
+            //InkPresenterElement.Visibility = System.Windows.Visibility.Collapsed;
+
+            ImageOverlay.Visibility = System.Windows.Visibility.Collapsed;
             ImageMain.Visibility = System.Windows.Visibility.Collapsed;
-            ImageTest.Visibility = System.Windows.Visibility.Visible;
+            //ImageTest.Visibility = System.Windows.Visibility.Visible;
 
             //////////////////// 
             // merge 1
