@@ -140,7 +140,6 @@ namespace EasyPaint.Helpers
                         var b = new Rgb { R = col2.MainColor.R, G = col2.MainColor.G, B = col2.MainColor.B };
                         var colorDiff = a.Compare(b, new Cie1976Comparison());
 
-
                         Debug.WriteLine(j + ": difference between " + col1 + " and " + col2 + " = " + colorDiff);
                         if (colorDiff < minDiff)
                         {
@@ -163,22 +162,30 @@ namespace EasyPaint.Helpers
             return reducedColors;
         }
 
-        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2)
+        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore)
         {
             int count = 0;
             for (int i = 0; i < bmp1.Pixels.Count(); i++)
             {
                 if (bmp1.Pixels[i] != bmp2.Pixels[i])
                 {
-                    count++;
+                    byte a = (byte)bmp2.Pixels[3];
+                    byte r = (byte)bmp2.Pixels[2];
+                    byte g = (byte)bmp2.Pixels[1];
+                    byte b = (byte)bmp2.Pixels[0];
+                    Color c = Color.FromArgb(a, r, g, b);
+                    if (colorsToIgnore.FirstOrDefault(c1 => c1.MainColor.Equals(c)) == null) //il colore non è fra quelli da ignorare ed è diverso dall'immagine originale
+                    {
+                        count++;
+                    }
                 }
             }
             return count;
         }
 
-        internal static int GetPercentageOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2)
+        internal static int GetPercentageOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore)
         {
-            int diff = GetNumberOfDifferentPixels(bmp1, bmp2);
+            int diff = GetNumberOfDifferentPixels(bmp1, bmp2, colorsToIgnore);
             int totPixels = bmp1.Pixels.Count();
             int percentage = 100 - ((diff * 100) / totPixels);
             return percentage;

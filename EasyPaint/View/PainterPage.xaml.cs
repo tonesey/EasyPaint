@@ -285,7 +285,7 @@ namespace EasyPaint.View
 
         private void InitPalette()
         {
-            var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false);
+            var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true);
             _paletteColors = ImagesHelper.ReduceColors(imageColors, MAX_PALETTE_COLORS, out _ignoredColors);
             //_paletteColors = imageColors.Take(MAX_PALETTE_COLORS).ToList();
             //_ignoredColors = imageColors.Skip(MAX_PALETTE_COLORS).ToList();
@@ -484,8 +484,10 @@ namespace EasyPaint.View
             //ImageTest.Source = userDrawnPicture;
 
 
-            int diffPixels = ImagesHelper.GetNumberOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
-            int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
+           // int diffPixels = ImagesHelper.GetNumberOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
+            int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture, 
+                                                                                   userDrawnPicture, 
+                                                                                   _ignoredColors);
 
             ShowResultPopup(diffPixelsPercentage);
             //// textPrecision.Text = diffPixelsPercentage + "%";
