@@ -186,6 +186,10 @@ namespace EasyPaint.View
                     {
                         TextBlockCountDownBig.Visibility = Visibility.Collapsed;
                         _storyboardCountDown.Stop();
+                        
+                        //ImageBrush inkBackGround = new ImageBrush();
+                        //inkBackGround.ImageSource = ImageMain.Source;
+                        //InkPresenterElement.Background = inkBackGround;
                         StartTimer();
                     };
                 }
@@ -281,10 +285,10 @@ namespace EasyPaint.View
 
         private void InitPalette()
         {
-            //List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).Take(4).ToList(); //TODO valutare se portare a 8-10
             var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, false);
-            _paletteColors = imageColors.Take(MAX_PALETTE_COLORS).ToList();
-            _ignoredColors = imageColors.Skip(MAX_PALETTE_COLORS).ToList();
+            _paletteColors = ImagesHelper.ReduceColors(imageColors, MAX_PALETTE_COLORS, out _ignoredColors);
+            //_paletteColors = imageColors.Take(MAX_PALETTE_COLORS).ToList();
+            //_ignoredColors = imageColors.Skip(MAX_PALETTE_COLORS).ToList();
 
             int count = 1;
             foreach (var color in _paletteColors)
