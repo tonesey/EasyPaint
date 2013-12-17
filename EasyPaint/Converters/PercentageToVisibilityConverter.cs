@@ -4,6 +4,7 @@ using System.Windows.Data;
 using Microsoft.Phone.Controls;
 using System.Windows.Media;
 using System.Windows;
+using EasyPaint.Model;
 
 
 namespace EasyPaint.Converters
@@ -18,7 +19,7 @@ namespace EasyPaint.Converters
 
             int val = int.Parse(value.ToString());
 
-            if (val < 70) return Visibility.Collapsed;
+            if (val < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED) return Visibility.Collapsed;
             return Visibility.Visible;
 
         }

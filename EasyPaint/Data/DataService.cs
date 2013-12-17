@@ -5,9 +5,9 @@ namespace EasyPaint.Data
 {
     public class DataService : IDataService
     {
-        public void GetData(Action<AppData, Exception> callback)
+        public void GetData(Action<AppDataManager, Exception> callback)
         {
-            var item = AppData.GetInstance("runtime data");
+            var item = AppDataManager.GetInstance("runtime data");
             callback(item, null);
         }
     }

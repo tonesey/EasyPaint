@@ -48,7 +48,7 @@
             <DoubleAnimation Duration="0:0:0.8" From="0"  To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc4"/>
             <DoubleAnimation Duration="0:0:1" From="0"  To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pc5"/>
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="TextBlockCountDownSmall">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="BorderCountDownSmall">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-100">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <ElasticEase EasingMode="EaseOut"/>
@@ -99,7 +99,7 @@
             </DoubleAnimationUsingKeyFrames>-->
         </Storyboard>
         <Storyboard x:Name="StoryboardSmallCountDown">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="TextBlockCountDownSmall">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="BorderCountDownSmall">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseIn"/>
@@ -111,7 +111,7 @@
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="TextBlockCountDownSmall">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="BorderCountDownSmall">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseIn"/>
@@ -123,7 +123,7 @@
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="TextBlockCountDownSmall">
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="BorderCountDownSmall">
                 <EasingPointKeyFrame KeyTime="0" Value="0.5,0.5"/>
                 <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.5,0.5"/>
             </PointAnimationUsingKeyFrames>
@@ -297,22 +297,21 @@
                        Opacity="0.625"/>
 
 
-            <TextBlock x:Name="TextBlockCountDownSmall" 
+            <Border x:Name="BorderCountDownSmall" Grid.Column="2" Background="Azure" VerticalAlignment="Top"  Margin="0,0,0,0" Opacity="0.5" Height="70" BorderThickness="0">
+                <TextBlock x:Name="TextBlockCountDownSmall" 
                        FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
                        FontWeight="Bold"
-                       Grid.Column="2"  
-                       Margin="0,10,0,0"
                        Text="60"
                        Foreground="{Binding Text, Converter={StaticResource percentageToColorConverter}, RelativeSource={RelativeSource Self}}"
                        FontSize="50" 
                        HorizontalAlignment="Center" 
-                       VerticalAlignment="Top" 
                        Tap="TextBlockCountDownSmall_Tap"
                        Opacity="1">
-                <TextBlock.RenderTransform>
+                </TextBlock>
+                <Border.RenderTransform>
                     <CompositeTransform TranslateY="{Binding CountDownTranslateY}"/>
-                </TextBlock.RenderTransform>
-            </TextBlock>
+                </Border.RenderTransform>
+            </Border>
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

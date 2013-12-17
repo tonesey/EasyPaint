@@ -74,24 +74,28 @@ namespace EasyPaint.Design
         #region items
         void _designDataDs_Items_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
-            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute);
+            var imgFileName = _sampleImagesFilenames[e.Index] + ".png";
+            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
         }
 
         void _designDataDs_Items_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
-            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + _sampleImagesFilenames[e.Index] + ".png", UriKind.RelativeOrAbsolute) };
+            var imgFileName = _sampleImagesFilenames[e.Index] + ".png";
+            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute) };
         }
         #endregion
 
         #region groups
         void ds_ItemUpdated_Groups(object sender, LoopingListDataItemEventArgs e)
         {
-            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + e.Index + ".png", UriKind.RelativeOrAbsolute);
+            var imgFileName = e.Index + ".png";
+            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute);
         }
 
         void ds_ItemNeeded_Groups(object sender, LoopingListDataItemEventArgs e)
         {
-            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + e.Index + ".png", UriKind.RelativeOrAbsolute) };
+            var imgFileName = e.Index + ".png";
+            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute) };
         }
         #endregion
 
@@ -136,7 +140,6 @@ namespace EasyPaint.Design
             //items selector
             _designDataDs_Items.ItemNeeded += _designDataDs_Items_ItemNeeded;
             _designDataDs_Items.ItemUpdated += _designDataDs_Items_ItemUpdated;
-
 
             //result popup
             Percentage = 100;

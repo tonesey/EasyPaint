@@ -173,12 +173,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\LockedToOpacityConverter.cs" />
     <Compile Include="Converters\PercentageToVisibilityConverter.cs" />
     <Compile Include="Converters\PercentageToResultConverter.cs" />
     <Compile Include="Converters\PercentageToStringConverter.cs" />
     <Compile Include="Converters\PercentageToColorConverter.cs" />
     <Compile Include="Converters\OrientationConverter.cs" />
-    <Compile Include="Data\UserData.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverterInverted.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignData.cs" />
     <Compile Include="Helpers\Colors\ColorSpace.cs" />
@@ -220,12 +222,13 @@
     <Compile Include="Messages\BaseMessage.cs" />
     <Compile Include="Messages\RateAppMessage.cs" />
     <Compile Include="Messages\GoToPageMessage.cs" />
-    <Compile Include="Data\CfgData.cs" />
-    <Compile Include="Data\DataService.cs" />
     <Compile Include="Data\AppData.cs" />
+    <Compile Include="Data\DataService.cs" />
+    <Compile Include="Data\AppDataManager.cs" />
     <Compile Include="Data\IDataService.cs" />
     <Compile Include="Model\MyColor.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
+    <Compile Include="Service\ScoreManager.cs" />
     <Compile Include="Settings\AppSettings.cs" />
     <Compile Include="ViewModel\PainterPageViewModel.cs" />
     <Compile Include="ViewModel\ImageAndTextItem.cs" />
@@ -368,6 +371,7 @@
     <Resource Include="Assets\lres\groups\2\diavolo_lineart.png" />
     <Resource Include="Assets\lres\groups\2\koala colore.png" />
     <Resource Include="Assets\lres\groups\2\koala lineart.png" />
+    <Content Include="Assets\icons\Lock.png" />
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />

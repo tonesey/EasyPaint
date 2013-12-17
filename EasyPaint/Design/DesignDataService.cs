@@ -6,10 +6,10 @@ namespace EasyPaint.Design
 {
     public class DesignDataService : IDataService
     {
-        public void GetData(Action<AppData, Exception> callback)
+        public void GetData(Action<AppDataManager, Exception> callback)
         {
             // Use this to create design time data
-            var item = AppData.GetInstance("design-time data");
+            var item = AppDataManager.GetInstance("design-time data");
             callback(item, null);
         }
     }

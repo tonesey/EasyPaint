@@ -514,6 +514,9 @@ namespace EasyPaint.View
             _resultPopupChild.Height = 400;
             _resultPopupChild.Width = 400;
 
+            _resultPopup.VerticalOffset = 200;
+            _resultPopup.HorizontalOffset = 60;
+
             _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
             _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
             _resultPopupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
@@ -522,7 +525,6 @@ namespace EasyPaint.View
             _resultPopup.Child = _resultPopupChild;
             //
 
-
             _resultPopupChild.UserPercentage = percentage;
             _resultPopupChild.PageOrientation = Orientation;
             _resultPopup.IsOpen = true;
@@ -530,7 +532,6 @@ namespace EasyPaint.View
 
         private void InitPopup()
         {
-
         }
 
         void exportPopup_ActionPerformedEvent(GameAction action)
@@ -556,14 +557,11 @@ namespace EasyPaint.View
 
         private void TextBlockCountDownSmall_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-
 #if DEBUG
             StopTimer();
             CheckDrawnPicture();
 #endif
         }
-
-
 
     }
 }

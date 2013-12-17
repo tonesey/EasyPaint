@@ -49,7 +49,7 @@
 
         <!--<TextBlock Foreground="White" Text="{Binding CurrentGroup.Group.Id}" FontSize="50"></TextBlock>-->
 
-      
+
         <!--<Border  Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Width="70" HorizontalAlignment="Left">
             <Border.Background>
                 <LinearGradientBrush  StartPoint="0,0" EndPoint="1,0" >
@@ -62,8 +62,8 @@
         <telerikPrimitives:RadLoopingList 
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
-            Grid.Row="0" Grid.Column="0"
-            Grid.RowSpan="4" Grid.ColumnSpan="3"
+            Grid.Row="1" Grid.Column="0"
+            Grid.RowSpan="3" Grid.ColumnSpan="3"
             ItemSpacing="20"
             IsCentered="True"
             Orientation="Horizontal" 
@@ -73,12 +73,18 @@
             ItemStyle="{StaticResource loopingListItemStyle}">
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Picture}" Stretch="Fill" Tap="Image_Tap"/>
+                    <Grid>
+                        <Image Source="{Binding Picture}" Stretch="Fill" Tap="Image_Tap"
+                               Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"
+                               />
+                        <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" Opacity="0.6"
+                               Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"/>
+                    </Grid>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>
         </telerikPrimitives:RadLoopingList>
 
-        <Image  Grid.Row="0" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
+        <Image  Grid.Row="0" Grid.Column="0" Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
 
     </Grid>
 

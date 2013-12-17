@@ -17,6 +17,19 @@ namespace EasyPaint.ViewModel
             get { return _group; }
         }
 
+        public bool IsLocked
+        {
+            get
+            {
+                bool isLocked = !GroupHasAtLeastOneItemUnlocked();
+                return isLocked;
+            }
+        }
+
+        private bool GroupHasAtLeastOneItemUnlocked()
+        {
+            return _group.Items.Where(i => i.UserMaximumScore >= Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED).Count() >= 1;
+        }
 
         protected Uri _bckImage;
         public Uri BckImage

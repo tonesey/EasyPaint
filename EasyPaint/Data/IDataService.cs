@@ -7,6 +7,6 @@ namespace EasyPaint.Data
 {
     public interface IDataService
     {
-        void GetData(Action<AppData, Exception> callback);
+        void GetData(Action<AppDataManager, Exception> callback);
     }
 }

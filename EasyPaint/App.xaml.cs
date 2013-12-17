@@ -19,6 +19,7 @@ using Microsoft.Xna.Framework.Media;
 using System.Reflection;
 using System.IO.IsolatedStorage;
 using System.IO;
+using EasyPaint.Settings;
 
 namespace EasyPaint
 {
@@ -29,6 +30,8 @@ namespace EasyPaint
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+
+        private bool _wasApplicationTerminated = true;
 
         public static new App Current
         {
@@ -98,27 +101,36 @@ namespace EasyPaint
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            //if (!App.ViewModel.IsDataLoaded)
-            //{
-            //    App.ViewModel.LoadData();
-            //}
 
+            InitApp();
+
+        }
+
+        private void InitApp()
+        {
+            AppSettings.LoadSettings();
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            //if (!App.ViewModel.IsDataLoaded)
-            //{
-            //    App.ViewModel.LoadData();
-            //}
+            if (_wasApplicationTerminated)
+            {
+                // real tombstone, new App instance   
+                InitApp();
+            }
+            else
+            {
+                //must have been a chooser that did not tombstone or a quick back. 
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            _wasApplicationTerminated = false;
         }
 
         // Code to execute when the application is closing (eg, user hit Back)

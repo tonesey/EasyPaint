@@ -23,6 +23,7 @@ namespace EasyPaint.Converters
             var red = i < 50
                 ? 255
                 : 255 - (256.0 / 100 * ((i - 50) * 2));
+           
             var green = i < 50
                 ? 256.0 / 100 * (i * 2)
                 : 255;

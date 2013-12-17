@@ -55,6 +55,7 @@ namespace EasyPaint.View
             if (newEl != null)
             {
                 (e.Item as PictureLoopingItem).Picture = (newEl as GroupViewModel).ImageSource;
+                (e.Item as PictureLoopingItem).IsLocked = (newEl as GroupViewModel).IsLocked;
                 (e.Item as PictureLoopingItem).DataContext = newEl;
             }
         }
@@ -69,15 +70,12 @@ namespace EasyPaint.View
             var newEl = _vm.Groups.ElementAt(e.Index);
             if (newEl != null)
             {
-                e.Item = new PictureLoopingItem() { Picture = (newEl as GroupViewModel).ImageSource, DataContext = (newEl as GroupViewModel) };
-
+                e.Item = new PictureLoopingItem() { Picture = (newEl as GroupViewModel).ImageSource, 
+                                                    IsLocked = (newEl as GroupViewModel).IsLocked,
+                                                    DataContext = (newEl as GroupViewModel) };
             }
         }
 
-        //private void OnSelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    //this.UpdateCaption();
-        //}
 
         private void RegisterMessages()
         {
@@ -102,17 +100,17 @@ namespace EasyPaint.View
             //{
             //    NavigationService.RemoveBackEntry();
             //}
-
-           
-
-      
         }
 
         private void Image_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             _vm.SelectedGroup = (((sender as Image).DataContext as PictureLoopingItem).DataContext as GroupViewModel);
-            ViewModelLocator.ItemSelectorViewModelStatic.SetCurrentGroup(_vm.SelectedGroup);
-            _vm.GroupSelectedCommand.Execute(null);
+
+            if (!_vm.SelectedGroup.IsLocked)
+            {
+                ViewModelLocator.ItemSelectorViewModelStatic.SetCurrentGroup(_vm.SelectedGroup);
+                _vm.GroupSelectedCommand.Execute(null);
+            }
         }
 
     }

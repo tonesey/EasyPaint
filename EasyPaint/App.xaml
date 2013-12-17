@@ -17,6 +17,9 @@
         <Converters:PercentageToStringConverter x:Key="percentageToStringConverter" />
         <Converters:PercentageToResultConverter x:Key="percentageToResultConverter" />
         <Converters:PercentageToVisibilityConverter x:Key="percentageToVisibilityConverter" />
+        <Converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+        <Converters:LockedToOpacityConverter x:Key="lockedToOpacityConverter" />
+        
 
         <!-- Backgorund Sound Manager -->
         <!--<SSME:SmoothStreamingMediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />-->

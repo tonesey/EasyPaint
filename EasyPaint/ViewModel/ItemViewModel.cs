@@ -36,6 +36,14 @@ namespace EasyPaint.ViewModel
             }
         }
 
+        public bool IsLocked
+        {
+            get
+            {
+                return _item.UserMaximumScore < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
+            }
+        }
+
         protected string _lineArtResourcePath;
         public string LineArtResourcePath
         {
