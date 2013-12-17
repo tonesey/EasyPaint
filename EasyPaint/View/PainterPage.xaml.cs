@@ -74,7 +74,6 @@ namespace EasyPaint.View
             InitAnimations();
             AssignEventHandlers();
             InitPopup();
-
         }
 
         private void AssignEventHandlers()
@@ -86,7 +85,7 @@ namespace EasyPaint.View
                 ImageOverlay.MouseLeftButtonDown += ImageOverlay_MouseLeftButtonDown;
                 ImageOverlay.MouseLeftButtonUp += ImageOverlay_MouseLeftButtonUp;
                 ImageOverlay.MouseMove += ImageOverlay_MouseMove;
-                ImageOverlay.MouseLeave += ImageOverlay_MouseLeave;
+                //ImageOverlay.MouseLeave += ImageOverlay_MouseLeave;
             }
         }
 
@@ -97,14 +96,14 @@ namespace EasyPaint.View
                 ImageOverlay.MouseLeftButtonDown -= ImageOverlay_MouseLeftButtonDown;
                 ImageOverlay.MouseLeftButtonUp -= ImageOverlay_MouseLeftButtonUp;
                 ImageOverlay.MouseMove -= ImageOverlay_MouseMove;
-                ImageOverlay.MouseLeave -= ImageOverlay_MouseLeave;
+                // ImageOverlay.MouseLeave -= ImageOverlay_MouseLeave;
             }
         }
 
-        void ImageOverlay_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //_drawingboard.Ink_MouseLeave(sender, e);
-        }
+        //void ImageOverlay_MouseLeave(object sender, MouseEventArgs e)
+        //{
+        //    _drawingboard.Ink_MouseLeave(sender, e);
+        //}
 
         void ImageOverlay_MouseMove(object sender, MouseEventArgs e)
         {
@@ -169,6 +168,7 @@ namespace EasyPaint.View
 
         private void StartCountDown()
         {
+            TextBlockCountDownBig.Visibility = Visibility.Visible;
             int count = 3;
             TextBlockCountDownBig.Text = count.ToString();
             SoundHelper.PlaySound(_sounds[count]);
@@ -186,7 +186,7 @@ namespace EasyPaint.View
                     {
                         TextBlockCountDownBig.Visibility = Visibility.Collapsed;
                         _storyboardCountDown.Stop();
-                        
+
                         //ImageBrush inkBackGround = new ImageBrush();
                         //inkBackGround.ImageSource = ImageMain.Source;
                         //InkPresenterElement.Background = inkBackGround;
@@ -237,6 +237,7 @@ namespace EasyPaint.View
 
         private void StartTimer()
         {
+            BorderCountDownSmall.Visibility = System.Windows.Visibility.Visible;
             _gameInProgress = true;
             _availableTimeValue = TotalTime;
             // MessageBox.Show("disabled timer");
@@ -245,6 +246,7 @@ namespace EasyPaint.View
 
         private void StopTimer()
         {
+            BorderCountDownSmall.Visibility = System.Windows.Visibility.Collapsed;
             _gameInProgress = false;
             _availableTimeValue = 0;
             _dt.Stop();
@@ -253,31 +255,29 @@ namespace EasyPaint.View
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+            InitPage();
+        }
+
+        private void InitPage()
+        {
             if (_drawingboard != null) SetEllipseSize(_drawingboard.BrushWidth);
 
             _drawingboard.SetBoundary();
 
-            //InkPresenterElement.Visibility = System.Windows.Visibility.Visible;
-            //ImageMain.Visibility = System.Windows.Visibility.Visible;
-            //ImageOverlay.Visibility = System.Windows.Visibility.Visible;
+            ImageMain.Visibility = System.Windows.Visibility.Visible;
+            InkPresenterElement.Visibility = System.Windows.Visibility.Visible;
+            ImageOverlay.Visibility = System.Windows.Visibility.Visible;
 
-            //ImageTest.Visibility = System.Windows.Visibility.Collapsed;
+            _drawingboard.Clear();
 
             var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
 
             if (selectedImage != null)
             {
                 ImageMain.Source = new BitmapImage(selectedImage.ImageSource);
-                //ImagesHelper.WriteContentImageToIsoStore(selectedImage.ReducedColorsResourceUri, tmpFName);
-                //_reducedColorsPicture = new WriteableBitmap(ImagesHelper.GetBitmapImageFromIsoStore(tmpFName));
-
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
                 _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
-
-               // _drawingboard.MyImage = _lineArtPicture;
-
                 ImageOverlay.Source = _lineArtPicture;
-
                 InitPalette();
                 StartCountDown();
             }
@@ -396,102 +396,22 @@ namespace EasyPaint.View
         {
             WriteableBitmap userDrawnPicture = null;
 
-            //test1
-            //BitmapImage imgFromInk = ImagesHelper.GetImageFromInkPresenter(_drawingboard.Ink);
-            //userDrawnPicture = new WriteableBitmap(imgFromInk);
-
             userDrawnPicture = new WriteableBitmap((int)_drawingboard.Ink.Width, (int)_drawingboard.Ink.Height);
             userDrawnPicture.Render(_drawingboard.Ink, null);
             userDrawnPicture.Invalidate();
 
-            //2. caricamento da disco
-            //BitmapImage biImage = new BitmapImage();
-            //using (IsolatedStorageFileStream isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Open, IsolatedStorageFile.GetUserStoreForApplication()))
-            //{
-            //    biImage.SetSource(isfStream);
-            //}
-            //userDrawnPicture = new WriteableBitmap(biImage);
-
-            //test2
-
-            //Test1.Source = userDrawnPicture;
-
-            //test3
-            //WriteableBitmap userDrawnPicture = new WriteableBitmap((int)ImageOverlay.Width, (int)ImageOverlay.Height);
-            //userDrawnPicture.Render(GridPainter, null);
-            //userDrawnPicture.Invalidate();
-
-            //Test1.Source = userDrawnPicture;
-            //Test2.Source = _lineArtPicture;
-
-            //InkPresenterElement.Visibility = System.Windows.Visibility.Collapsed;
-
             ImageOverlay.Visibility = System.Windows.Visibility.Collapsed;
             ImageMain.Visibility = System.Windows.Visibility.Collapsed;
-            //ImageTest.Visibility = System.Windows.Visibility.Visible;
 
-            //////////////////// 
-            // merge 1
-            ////////////////////
-            //Grid g = new Grid();
-            //g.Width = ImageOverlay.Width;
-            //g.Height = ImageOverlay.Height;
-
-            //Image inkImage1 = new Image();
-            //inkImage1.Source = imgFromInk;
-            ////Test1.Source = imgFromInk;
-
-            //Image lineartImage1 = new Image();
-            //lineartImage1.Source = _lineArtPicture;
-            ////
-
-            //g.Children.Add(lineartImage1);
-            //g.Children.Add(inkImage1);
-
-            //WriteableBitmap resultigImg = new WriteableBitmap((int)ImageOverlay.Width, (int)ImageOverlay.Height);
-            //resultigImg.Render(g, null);
-            //resultigImg.Invalidate();
-            //ImageTest.Source = resultigImg;
-            ////////////////////
-
-            //////////////////// 
-            // merge 2
-            ////////////////////
             userDrawnPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
                                   _lineArtPicture,
                                   new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
-            //ImageTest.Source = userDrawnPicture;
-
-            ////_lineArtPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
-            ////                      userDrawnPicture,
-            ////                      new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
-            ////                      WriteableBitmapExtensions.BlendMode.Alpha);
-            ////testImg.Source = _lineArtPicture;
-
-
-            //////////////////// 
-            // merge 3
-            ////////////////////
-            //for (int y = 0; y < _lineArtPicture.PixelHeight; ++y)
-            //{
-            //    for (int x = 0; x < _lineArtPicture.PixelWidth; ++x)
-            //    {
-            //        userDrawnPicture.SetPixel(x, y, Colors.Red);
-            //    }
-            //}
-            //userDrawnPicture.Invalidate();
-            //ImageTest.Source = userDrawnPicture;
-
-
-           // int diffPixels = ImagesHelper.GetNumberOfDifferentPixels(_reducedColorsPicture, userDrawnPicture);
-            int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture, 
-                                                                                   userDrawnPicture, 
+            int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture,
+                                                                                   userDrawnPicture,
                                                                                    _ignoredColors);
 
             ShowResultPopup(diffPixelsPercentage);
-            //// textPrecision.Text = diffPixelsPercentage + "%";
-            //MessageBox.Show(string.Format("Precision: {0}%", diffPixelsPercentage));
         }
 
         private void ShowResultPopup(int percentage)
@@ -536,8 +456,19 @@ namespace EasyPaint.View
 
         void exportPopup_ActionPerformedEvent(GameAction action)
         {
-            //TODO inviare  messaggio 
-            MessageBox.Show("TODO: " + action);
+            switch (action)
+            {
+                case GameAction.Menu:
+                    NavigationService.Navigate(new Uri("/View/HomePage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
+                case GameAction.Redo:
+                    InitPage();
+                    break;
+                case GameAction.Ahead:
+                    break;
+                default:
+                    break;
+            }
         }
 
         void exportPopup_PopupClosedEvent()

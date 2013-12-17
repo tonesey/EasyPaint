@@ -9,27 +9,43 @@ namespace EasyPaint.Model.UI
     public class PictureLoopingItem : LoopingListDataItem
     {
 
-        public bool IsLocked { get; set; }
+       
 
         public object DataContext { get; set; }
 
-        private Uri pictureSource;
+        private Uri _picture;
         public Uri Picture
         {
             get
             {
-                return this.pictureSource;
+                return this._picture;
             }
             set
             {
-                if (value != this.pictureSource)
+                if (value != this._picture)
                 {
-                    this.pictureSource = value;
+                    this._picture = value;
                     this.OnPropertyChanged("Picture");
                 }
             }
         }
 
+        private bool _IsLocked;
+        public bool IsLocked
+        {
+            get
+            {
+                return _IsLocked;
+            }
+            set
+            {
+                if (value != _IsLocked)
+                {
+                    _IsLocked = value;
+                    this.OnPropertyChanged("IsLocked");
+                }
+            }
+        }
 
 
     }

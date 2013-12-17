@@ -58,7 +58,7 @@ namespace EasyPaint.ViewModel
 
 
         public RelayCommand ItemSelectedCommand { get; private set; }
-
+        
         public ItemSelectorViewModel() {
 
             ItemSelectedCommand = new RelayCommand(() => NavigateToSelectedItemCommand());

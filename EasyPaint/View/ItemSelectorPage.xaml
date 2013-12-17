@@ -78,7 +78,8 @@
                                Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"
                                />
                         <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" Opacity="0.6"
-                               Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"/>
+                               Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"
+                               />
                     </Grid>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>

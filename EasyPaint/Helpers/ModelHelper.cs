@@ -90,16 +90,10 @@ namespace EasyPaint.Helpers
                     groups.Add(g);
                 }
             }
-
             data.Groups = groups;
             data.UIMode = uiMode;
             #endregion
             
-
-
-
-
-
             return data;
         }
 
