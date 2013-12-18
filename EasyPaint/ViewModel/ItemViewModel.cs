@@ -40,7 +40,7 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-                return _item.UserMaximumScore < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
+                return _item.Score < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
             }
         }
 
@@ -67,8 +67,17 @@ namespace EasyPaint.ViewModel
             _belongingGroup = g;
             _key = item.Key;
             ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
-            LineArtResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart")});
+            LineArtResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
             ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename });
+        }
+
+        internal void SetScore(int value)
+        {
+            _item.Score = value;
+            if (value > _item.RecordScore)
+            {
+                _item.RecordScore = value; // new record!
+            }
         }
     }
 }

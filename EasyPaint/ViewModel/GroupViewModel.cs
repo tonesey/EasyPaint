@@ -28,7 +28,7 @@ namespace EasyPaint.ViewModel
 
         private bool GroupHasAtLeastOneItemUnlocked()
         {
-            return _group.Items.Where(i => i.UserMaximumScore >= Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED).Count() >= 1;
+            return _group.Items.Where(i => i.Score >= Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED).Count() >= 1;
         }
 
         protected Uri _bckImage;

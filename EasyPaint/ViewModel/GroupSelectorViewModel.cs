@@ -58,7 +58,7 @@ namespace EasyPaint.ViewModel
                     InitGroups(item.CfgData.Groups);
                 });
 
-           GroupSelectedCommand = new RelayCommand(() => NavigateToSelectedGroupCommand());
+            GroupSelectedCommand = new RelayCommand(() => NavigateToSelectedGroupCommand());
         }
 
         private object NavigateToSelectedGroupCommand()
@@ -77,6 +77,17 @@ namespace EasyPaint.ViewModel
                 groupsVm.Add(groupVm);
             }
             Groups = groupsVm;
+        }
+
+        internal bool ExistsNextGroup()
+        {
+            int indexOfCurGroup = _groups.IndexOf(SelectedGroup);
+            return (indexOfCurGroup < _groups.Count() - 1);
+        }
+
+        internal void GotoNextGroup()
+        {
+            throw new NotImplementedException();
         }
     }
 }

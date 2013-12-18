@@ -23,7 +23,7 @@ namespace EasyPaint.Helpers
             var doc = XDocument.Load(stream);
 
 //#if DEBUG
-//            string userScoreDebug = "canguro colore.png-0;clamidosauro colori.png-50;coccodrillo colore.png-1";
+//            string userScoreDebug = "canguro colore.png-0-0;clamidosauro colori.png-50-100;coccodrillo colore.png-10-45";
 //            StorageHelper.StoreSetting(AppSettings.UserScoreKey, userScoreDebug, true);
 //#endif
 
@@ -37,7 +37,7 @@ namespace EasyPaint.Helpers
                 for (int i = 0; i < defaultUnlockedItems.Length; i++)
                 {
                     var item = defaultUnlockedItems[i];
-                    tmp += string.Format("{0}-{1}", item, Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED);
+                    tmp += string.Format("{0}-{1}-{2}", item, Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED, Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED);
                     if (i < defaultUnlockedItems.Length - 1) {
                         tmp += ";";
                     }
@@ -48,14 +48,14 @@ namespace EasyPaint.Helpers
             }
             #endregion
 
-            //loading dictionary with <filename-score> t-uple
-            Dictionary<string, int> _userScore = new Dictionary<string,int>();
+            //loading dictionary with <filename-userscore-record> t-uple
+            Dictionary<string, int[]> _userScore = new Dictionary<string,int[]>();
             string userScore = AppSettings.UserScoreValue;
             string[] spl = userScore.Split(';');
             foreach (var item in spl)
 	        {
 		        string[] spl1 = item.Split('-');
-                _userScore.Add(spl1[0], int.Parse(spl1[1]));
+                _userScore.Add(spl1[0], new[] { int.Parse(spl1[1]), int.Parse(spl1[2]) });
 	        }
 
             #region cfg data
@@ -82,7 +82,8 @@ namespace EasyPaint.Helpers
                         p.ImgFilename = itemNode.Attribute("imgname").Value;
                         var userScoreItem = _userScore.Keys.FirstOrDefault(fn => fn == p.ImgFilename);
                         if (userScoreItem != null) {
-                            p.UserMaximumScore = _userScore[userScoreItem];
+                            p.Score = _userScore[userScoreItem][0];
+                            p.RecordScore = _userScore[userScoreItem][1];
                         }
                         p.Key = itemNode.Attribute("key").Value;
                         g.Items.Add(p);

@@ -217,7 +217,7 @@
                 </StackPanel>
             </Border>
 
-            <Border x:Name="BorderPalette"  CornerRadius="10" BorderThickness="2"   Grid.Column="0" Margin="0,10,0,0">
+            <Border x:Name="BorderPalette" Visibility="Collapsed" CornerRadius="10" BorderThickness="2"   Grid.Column="0" Margin="0,10,0,0">
 
                 <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
@@ -296,17 +296,18 @@
                        Opacity="0.625"/>
 
 
-            <Border x:Name="BorderCountDownSmall" Grid.Column="2" Background="LemonChiffon" VerticalAlignment="Top"  Margin="0,10,0,0" 
+            <Border x:Name="BorderCountDownSmall" Grid.Column="2" 
+                    Background="Transparent" VerticalAlignment="Top"  Margin="0,10,0,0" 
                     Width="70" Height="70" BorderThickness="0">
                 <TextBlock x:Name="TextBlockCountDownSmall" 
                        FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
                        FontWeight="Bold"
                        Text="60"
-                       Foreground="{Binding Text, Converter={StaticResource percentageToColorConverter}, RelativeSource={RelativeSource Self}}"
+                      Foreground="Green" Opacity="0.8"
                        FontSize="50" 
                        HorizontalAlignment="Center" 
                        Tap="TextBlockCountDownSmall_Tap"
-                       Opacity="1">
+                       >
                 </TextBlock>
                 <Border.RenderTransform>
                     <CompositeTransform TranslateY="{Binding CountDownTranslateY}"/>

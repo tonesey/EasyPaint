@@ -42,6 +42,29 @@ namespace EasyPaint.ViewModel
             }
         }
 
+        internal ItemViewModel SelectNextItem()
+        {
+            //go to next item in group
+            int indexOfCurItem = _items.IndexOf(_SelectedItem);
+            if (indexOfCurItem < _items.Count() - 1)
+            {
+                indexOfCurItem++;
+                SelectedItem = _items.ElementAt(indexOfCurItem); //go to next Item
+                return SelectedItem;
+            }
+            
+            //skip to net group and get first item
+            if (ViewModelLocator.GroupSelectorViewModelStatic.ExistsNextGroup()) {
+                ViewModelLocator.GroupSelectorViewModelStatic.GotoNextGroup();
+                SetCurrentGroup(ViewModelLocator.GroupSelectorViewModelStatic.SelectedGroup);
+                SelectedItem = Items.First();
+                return SelectedItem;
+            }
+            return null; //all levels completed!
+        }
+
+        
+
         private GroupViewModel _CurrentGroup = null;
         public GroupViewModel CurrentGroup
         {
@@ -58,9 +81,9 @@ namespace EasyPaint.ViewModel
 
 
         public RelayCommand ItemSelectedCommand { get; private set; }
-        
-        public ItemSelectorViewModel() {
 
+        public ItemSelectorViewModel()
+        {
             ItemSelectedCommand = new RelayCommand(() => NavigateToSelectedItemCommand());
         }
 
@@ -82,5 +105,7 @@ namespace EasyPaint.ViewModel
             }
             Items = itemsVm;
         }
+
+
     }
 }

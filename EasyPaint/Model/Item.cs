@@ -12,13 +12,13 @@ namespace EasyPaint.Model
         public string Key { get; set; }
         public string ImgFilename { get; set; }
 
-        //public int CurrentScore { get; set; }
-        public int UserMaximumScore { get; set; }
+        public int Score { get; set; }
+        public int RecordScore { get; set; }
 
         public Item() {
             Key = string.Empty;
             ImgFilename = string.Empty;
-            UserMaximumScore = 0;
+            RecordScore = 0;
         }
 
         public override string ToString()

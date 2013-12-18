@@ -22,8 +22,6 @@ namespace SimzzDev
         StrokeCollection _allErasedStrokes = new StrokeCollection();
         InkPresenter _presenter;
         private Nullable<StylusPoint> _lastPoint = null;
-        private bool _useOverlay = false;
-        private bool _dan_mode = false;
 
         public enum PenMode { Pen, Erase };
 
@@ -41,15 +39,10 @@ namespace SimzzDev
 
         public ImageSource MyImage { get; set; }
 
-        public DrawingBoard(InkPresenter Ink, bool useOverlay)
+        public DrawingBoard(InkPresenter Ink)
         {
             _presenter = Ink;
-
-            if (!_useOverlay)
-            {
-                AssignHandlers();
-            }
-
+            AssignHandlers();
             //defaults some properties so drawing will work
             InkMode = PenMode.Pen;
             MainColor = Colors.Black;
@@ -66,77 +59,16 @@ namespace SimzzDev
         {
             UnAssignHandlers();
 
-            if (!_dan_mode)
-            {
-                _presenter.MouseLeftButtonDown += new MouseButtonEventHandler(Ink_MouseLeftButtonDown);
-                _presenter.MouseLeftButtonUp += new MouseButtonEventHandler(Ink_MouseLeftButtonUp);
-                _presenter.MouseMove += new MouseEventHandler(Ink_MouseMove);
-                //_presenter.MouseLeave += new MouseEventHandler(Ink_MouseLeave);
-            }
-            else
-            {
-                _presenter.MouseLeftButtonDown += new MouseButtonEventHandler(Ink_MouseLeftButtonDown_D);
-                _presenter.MouseLeftButtonUp += new MouseButtonEventHandler(Ink_MouseLeftButtonUp_D);
-                _presenter.MouseMove += new MouseEventHandler(Ink_MouseMove_D);
-            }
-
-            _presenter.LayoutUpdated += _presenter_LayoutUpdated;
-            _presenter.ManipulationStarted += _presenter_ManipulationStarted;
-            _presenter.ManipulationCompleted += _presenter_ManipulationCompleted;
+            _presenter.MouseLeftButtonDown += new MouseButtonEventHandler(Ink_MouseLeftButtonDown);
+            _presenter.MouseLeftButtonUp += new MouseButtonEventHandler(Ink_MouseLeftButtonUp);
+            _presenter.MouseMove += new MouseEventHandler(Ink_MouseMove);
         }
 
         private void UnAssignHandlers()
         {
-            if (!_dan_mode)
-            {
-                _presenter.MouseLeftButtonDown -= new MouseButtonEventHandler(Ink_MouseLeftButtonDown);
-                _presenter.MouseLeftButtonUp -= new MouseButtonEventHandler(Ink_MouseLeftButtonUp);
-                _presenter.MouseMove -= new MouseEventHandler(Ink_MouseMove);
-                //_presenter.MouseLeave -= new MouseEventHandler(Ink_MouseLeave);
-            }
-            else
-            {
-                _presenter.MouseLeftButtonDown -= new MouseButtonEventHandler(Ink_MouseLeftButtonDown_D);
-                _presenter.MouseLeftButtonUp -= new MouseButtonEventHandler(Ink_MouseLeftButtonUp_D);
-                _presenter.MouseMove -= new MouseEventHandler(Ink_MouseMove_D);
-            }
-
-            _presenter.LayoutUpdated -= _presenter_LayoutUpdated;
-            _presenter.ManipulationStarted -= _presenter_ManipulationStarted;
-            _presenter.ManipulationCompleted -= _presenter_ManipulationCompleted;
-        }
-
-        void _presenter_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-        {
-            //Debug.WriteLine("_presenter_ManipulationCompleted");
-            //if (MyImage == null) return;
-            //try
-            //{
-            //    Image img = new Image();
-            //    img.Source = MyImage;
-            //    img.Width = _presenter.Width;
-            //    img.Height = _presenter.Height;
-            //    Canvas.SetLeft(img, 0);
-            //    Canvas.SetTop(img, 0);
-            //    _presenter.Children.Add(img);
-            //}
-            //catch (Exception ex)
-            //{
-            //}
-        }
-
-        void _presenter_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
-        {
-        }
-
-        void _presenter_LayoutUpdated(object sender, EventArgs e)
-        {
-            //            ColorMatrix cm = new ColorMatrix();
-            //cm.Matrix33 = 0.55f;
-            //ImageAttributes ia = new ImageAttributes();
-            //ia.SetColorMatrix(cm);
-            //canvas.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height), GraphicsUnit.Pixel
-
+            _presenter.MouseLeftButtonDown -= new MouseButtonEventHandler(Ink_MouseLeftButtonDown);
+            _presenter.MouseLeftButtonUp -= new MouseButtonEventHandler(Ink_MouseLeftButtonUp);
+            _presenter.MouseMove -= new MouseEventHandler(Ink_MouseMove);
         }
 
         private void ResetPen()
@@ -144,27 +76,6 @@ namespace SimzzDev
             _stroke = null;
             _presenter.ReleaseMouseCapture();
         }
-
-        //public void Ink_MouseLeave(object sender, MouseEventArgs e)
-        //{
-        //   ResetPen();
-        //}
-
-        //private void _presenter_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    if (_stroke != null)
-        //    {
-        //        _stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(_presenter));
-        //        borderInk.Children.Add(new System.Windows.Shapes.Rectangle()
-        //        {
-        //            Width = rectangleSize,
-        //            Height = rectangleSize,
-        //            Fill = lBrush
-        //        });
-        //        Canvas.SetLeft((System.Windows.Shapes.Rectangle)borderInk.Children[borderInk.Children.Count - 1], _stroke.StylusPoints[_stroke.StylusPoints.Count - 1].X);
-        //        Canvas.SetTop((System.Windows.Shapes.Rectangle)borderInk.Children[borderInk.Children.Count - 1], _stroke.StylusPoints[_stroke.StylusPoints.Count - 1].Y);
-        //    }
-        //}
 
         #region standard
         public void Ink_MouseMove(object sender, MouseEventArgs e)
@@ -280,57 +191,6 @@ namespace SimzzDev
         }
         #endregion
 
-        #region from dan
-        private void Ink_MouseMove_D(object sender, MouseEventArgs e)
-        {
-            if (_stroke != null)
-            {
-                _stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(_presenter));
-                //borderInk.Children.Add(new System.Windows.Shapes.Rectangle()
-                //{
-                //    Width = rectangleSize,
-                //    Height = rectangleSize,
-                //    Fill = lBrush
-                //});
-                //Canvas.SetLeft((System.Windows.Shapes.Rectangle)borderInk.Children[borderInk.Children.Count - 1], _stroke.StylusPoints[_stroke.StylusPoints.Count - 1].X);
-                //Canvas.SetTop((System.Windows.Shapes.Rectangle)borderInk.Children[borderInk.Children.Count - 1], _stroke.StylusPoints[_stroke.StylusPoints.Count - 1].Y);
-            }
-        }
-
-        private void Ink_MouseLeftButtonDown_D(object sender, MouseButtonEventArgs e)
-        {
-            _presenter.CaptureMouse();
-            _stroke = new Stroke();
-            _stroke.DrawingAttributes.Color = MainColor;
-            _stroke.DrawingAttributes.Height = BrushHeight;
-            _stroke.DrawingAttributes.Width = BrushWidth;
-            _stroke.DrawingAttributes.OutlineColor = OutlineColor;
-            _stroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(_presenter));
-            _presenter.Strokes.Add(_stroke);
-
-            //borderInk.Children.Add(new System.Windows.Shapes.Rectangle()
-            //{
-            //    Width = rectangleSize,
-            //    Height = rectangleSize,
-            //    Fill = lBrush
-            //});
-            //Canvas.SetLeft((System.Windows.Shapes.Rectangle)borderInk.Children[borderInk.Children.Count - 1], _stroke.StylusPoints[_stroke.StylusPoints.Count - 1].X);
-            //Canvas.SetTop((System.Windows.Shapes.Rectangle)borderInk.Children[borderInk.Children.Count - 1], _stroke.StylusPoints[_stroke.StylusPoints.Count - 1].Y);
-        }
-
-        private void Ink_MouseLeftButtonUp_D(object sender, MouseButtonEventArgs e)
-        {
-            if (_stroke != null)
-            {
-                _stroke.StylusPoints.Add(GetStylusPoint(e.GetPosition(_presenter)));
-            }
-            _stroke = null;
-        }
-
-        #endregion
-
-
-
         private StylusPoint GetStylusPoint(Point position)
         {
             return new StylusPoint(position.X, position.Y);
@@ -347,7 +207,6 @@ namespace SimzzDev
                 _presenter.Strokes.Add(_allErasedStrokes[_allErasedStrokes.Count - 1]);
                 _allErasedStrokes.RemoveAt(_allErasedStrokes.Count - 1);
             }
-
         }
 
         public void Clear()

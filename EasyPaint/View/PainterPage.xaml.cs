@@ -58,7 +58,6 @@ namespace EasyPaint.View
         List<MyColor> _paletteColors = new List<MyColor>();
         List<MyColor> _ignoredColors = new List<MyColor>();
 
-        bool _useOverlay = false;
 
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
 
@@ -66,7 +65,7 @@ namespace EasyPaint.View
         {
             InitializeComponent();
             //Tester.CheckImagesTester();
-            _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement, _useOverlay);
+            _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
             _dt.Interval = TimeSpan.FromSeconds(1);
             _dt.Tick += dt_Tick;
             //TryPlayBackgroundMusic();
@@ -79,31 +78,11 @@ namespace EasyPaint.View
         private void AssignEventHandlers()
         {
             UnassignEventHandlers();
-
-            if (_useOverlay)
-            {
-                ImageOverlay.MouseLeftButtonDown += ImageOverlay_MouseLeftButtonDown;
-                ImageOverlay.MouseLeftButtonUp += ImageOverlay_MouseLeftButtonUp;
-                ImageOverlay.MouseMove += ImageOverlay_MouseMove;
-                //ImageOverlay.MouseLeave += ImageOverlay_MouseLeave;
-            }
         }
 
         private void UnassignEventHandlers()
         {
-            if (_useOverlay)
-            {
-                ImageOverlay.MouseLeftButtonDown -= ImageOverlay_MouseLeftButtonDown;
-                ImageOverlay.MouseLeftButtonUp -= ImageOverlay_MouseLeftButtonUp;
-                ImageOverlay.MouseMove -= ImageOverlay_MouseMove;
-                // ImageOverlay.MouseLeave -= ImageOverlay_MouseLeave;
-            }
         }
-
-        //void ImageOverlay_MouseLeave(object sender, MouseEventArgs e)
-        //{
-        //    _drawingboard.Ink_MouseLeave(sender, e);
-        //}
 
         void ImageOverlay_MouseMove(object sender, MouseEventArgs e)
         {
@@ -262,6 +241,7 @@ namespace EasyPaint.View
         {
             if (_drawingboard != null) SetEllipseSize(_drawingboard.BrushWidth);
 
+            BorderPalette.Visibility = Visibility.Visible;
             _drawingboard.SetBoundary();
 
             ImageMain.Visibility = System.Windows.Visibility.Visible;
@@ -465,6 +445,16 @@ namespace EasyPaint.View
                     InitPage();
                     break;
                 case GameAction.Ahead:
+                    //LIVELLO COMPLETATO
+                    ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem.SetScore(_resultPopupChild.UserPercentage);
+                    if (ViewModelLocator.ItemSelectorViewModelStatic.SelectNextItem() != null)
+                    {
+                        InitPage();
+                    }
+                    else
+                    {
+                        MessageBox.Show("TODO - tutti i livelli completati!");
+                    }
                     break;
                 default:
                     break;
