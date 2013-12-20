@@ -17,6 +17,21 @@ namespace EasyPaint.ViewModel
     public class ItemViewModel : ImageAndTextItem
     {
         private Item _item;
+
+        //private ItemViewModel _next;
+        //public ItemViewModel Next
+        //{
+        //    get { return _next; }
+        //    set { _next = value; }
+        //}
+
+        //private ItemViewModel _prev;
+        //public ItemViewModel Prev
+        //{
+        //    get { return _prev; }
+        //    set { _prev = value; }
+        //}
+
         private Group _belongingGroup;
 
         protected string _resourcePath;
@@ -40,7 +55,15 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-                return _item.Score < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
+                return _item.IsLocked;
+            }
+            set
+            {
+                if (_item.IsLocked != value)
+                {
+                    _item.IsLocked = value;
+                    this.OnPropertyChanged("IsLocked");
+                }
             }
         }
 

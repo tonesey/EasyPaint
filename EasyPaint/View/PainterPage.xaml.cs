@@ -242,6 +242,13 @@ namespace EasyPaint.View
             if (_drawingboard != null) SetEllipseSize(_drawingboard.BrushWidth);
 
             BorderPalette.Visibility = Visibility.Visible;
+
+            (pc1.RenderTransform as CompositeTransform).TranslateX = ViewModelLocator.PainterPageViewModelStatic.PaletteItemTranslateX;
+            (pc2.RenderTransform as CompositeTransform).TranslateX = ViewModelLocator.PainterPageViewModelStatic.PaletteItemTranslateX;
+            (pc3.RenderTransform as CompositeTransform).TranslateX = ViewModelLocator.PainterPageViewModelStatic.PaletteItemTranslateX;
+            (pc4.RenderTransform as CompositeTransform).TranslateX = ViewModelLocator.PainterPageViewModelStatic.PaletteItemTranslateX;
+            (pc5.RenderTransform as CompositeTransform).TranslateX = ViewModelLocator.PainterPageViewModelStatic.PaletteItemTranslateX;
+
             _drawingboard.SetBoundary();
 
             ImageMain.Visibility = System.Windows.Visibility.Visible;
@@ -387,11 +394,13 @@ namespace EasyPaint.View
                                   _lineArtPicture,
                                   new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
-            int diffPixelsPercentage = ImagesHelper.GetPercentageOfDifferentPixels(_reducedColorsPicture,
+            int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                                    userDrawnPicture,
                                                                                    _ignoredColors);
-
-            ShowResultPopup(diffPixelsPercentage);
+#if DEBUG
+            accuracyPercentage = 80;
+#endif
+            ShowResultPopup(accuracyPercentage);
         }
 
         private void ShowResultPopup(int percentage)
@@ -446,9 +455,14 @@ namespace EasyPaint.View
                     break;
                 case GameAction.Ahead:
                     //LIVELLO COMPLETATO
-                    ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem.SetScore(_resultPopupChild.UserPercentage);
-                    if (ViewModelLocator.ItemSelectorViewModelStatic.SelectNextItem() != null)
+                    var curEl = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
+                    curEl.SetScore(_resultPopupChild.UserPercentage);
+
+                    var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
+                    if (nextEl != null)
                     {
+                        nextEl.IsLocked = false;
+                        ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
                         InitPage();
                     }
                     else

@@ -15,6 +15,14 @@ namespace EasyPaint.ViewModel
 {
     public class GroupSelectorViewModel : AppViewModel
     {
+
+        private ObservableCollection<ItemViewModel> _allItemsList;
+        private ObservableCollection<ItemViewModel> AllItemsList {
+            get {
+                return _allItemsList;
+            }
+        }
+
         private ObservableCollection<GroupViewModel> _groups;
         public ObservableCollection<GroupViewModel> Groups
         {
@@ -77,17 +85,15 @@ namespace EasyPaint.ViewModel
                 groupsVm.Add(groupVm);
             }
             Groups = groupsVm;
+            _allItemsList = new ObservableCollection<ItemViewModel>(Groups.SelectMany(g => g.Items));
         }
 
-        internal bool ExistsNextGroup()
-        {
-            int indexOfCurGroup = _groups.IndexOf(SelectedGroup);
-            return (indexOfCurGroup < _groups.Count() - 1);
-        }
-
-        internal void GotoNextGroup()
-        {
-            throw new NotImplementedException();
+        public ItemViewModel GetNextItem(ItemViewModel current) {
+            int curIndex = _allItemsList.IndexOf(current);
+            if ((curIndex + 1) < _allItemsList.Count) {
+                return _allItemsList.ElementAt(curIndex + 1);
+            }
+            return null;
         }
     }
 }

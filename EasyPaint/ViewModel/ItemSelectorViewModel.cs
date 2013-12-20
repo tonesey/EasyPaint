@@ -42,26 +42,26 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        internal ItemViewModel SelectNextItem()
-        {
-            //go to next item in group
-            int indexOfCurItem = _items.IndexOf(_SelectedItem);
-            if (indexOfCurItem < _items.Count() - 1)
-            {
-                indexOfCurItem++;
-                SelectedItem = _items.ElementAt(indexOfCurItem); //go to next Item
-                return SelectedItem;
-            }
+        //internal ItemViewModel SelectNextItem()
+        //{
+        //    //go to next item in group
+        //    int indexOfCurItem = _items.IndexOf(_SelectedItem);
+        //    if (indexOfCurItem < _items.Count() - 1)
+        //    {
+        //        indexOfCurItem++;
+        //        SelectedItem = _items.ElementAt(indexOfCurItem); //go to next Item
+        //        return SelectedItem;
+        //    }
             
-            //skip to net group and get first item
-            if (ViewModelLocator.GroupSelectorViewModelStatic.ExistsNextGroup()) {
-                ViewModelLocator.GroupSelectorViewModelStatic.GotoNextGroup();
-                SetCurrentGroup(ViewModelLocator.GroupSelectorViewModelStatic.SelectedGroup);
-                SelectedItem = Items.First();
-                return SelectedItem;
-            }
-            return null; //all levels completed!
-        }
+        //    //skip to net group and get first item
+        //    if (ViewModelLocator.GroupSelectorViewModelStatic.ExistsNextGroup()) {
+        //        ViewModelLocator.GroupSelectorViewModelStatic.GotoNextGroup();
+        //        SetCurrentGroup(ViewModelLocator.GroupSelectorViewModelStatic.SelectedGroup);
+        //        SelectedItem = Items.First();
+        //        return SelectedItem;
+        //    }
+        //    return null; //all levels completed!
+        //}
 
         
 
@@ -97,13 +97,15 @@ namespace EasyPaint.ViewModel
         public void SetCurrentGroup(GroupViewModel g)
         {
             _CurrentGroup = g;
-            var itemsVm = new ObservableCollection<ItemViewModel>();
-            foreach (var item in g.Group.Items)
-            {
-                ItemViewModel itemVm = new ItemViewModel(g.Group, item);
-                itemsVm.Add(itemVm);
-            }
-            Items = itemsVm;
+            Items = g.Items;
+
+            //var itemsVm = new ObservableCollection<ItemViewModel>();
+            //foreach (var item in g.Group.Items)
+            //{
+            //    ItemViewModel itemVm = new ItemViewModel(g.Group, item);
+            //    itemsVm.Add(itemVm);
+            //}
+            //Items = itemsVm;
         }
 
 

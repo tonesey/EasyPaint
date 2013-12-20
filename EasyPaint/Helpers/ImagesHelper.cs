@@ -149,10 +149,13 @@ namespace EasyPaint.Helpers
                     }
                     if (indexToRemove != -1)
                     {
-                        var colorToRemove = reducedColors.ElementAt(indexToRemove);
-                        Debug.WriteLine("color to remove: " + colorToRemove);
-                        discardedColors.Add(new MyColor(colorToRemove.MainColor));
-                        reducedColors.RemoveAt(indexToRemove);
+                        if (reducedColors.Count > maxColors)
+                        {
+                            var colorToRemove = reducedColors.ElementAt(indexToRemove);
+                            Debug.WriteLine("color to remove: " + colorToRemove);
+                            discardedColors.Add(new MyColor(colorToRemove.MainColor));
+                            reducedColors.RemoveAt(indexToRemove);
+                        }
                     }
                 }
                 // threshold += 1;
@@ -183,7 +186,7 @@ namespace EasyPaint.Helpers
             return count;
         }
 
-        internal static int GetPercentageOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore)
+        internal static int GetAccuracyPercentage(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore)
         {
             int diff = GetNumberOfDifferentPixels(bmp1, bmp2, colorsToIgnore);
             int totPixels = bmp1.Pixels.Count();
