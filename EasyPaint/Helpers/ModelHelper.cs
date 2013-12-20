@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
-using Wp7Shared.Helpers;
+using Wp8Shared.Helpers;
 
 namespace EasyPaint.Helpers
 {

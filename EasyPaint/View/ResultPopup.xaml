@@ -16,7 +16,8 @@
     <UserControl.Resources>
         <design:DesignData x:Key="DesignDataContext"/>
         <Storyboard x:Name="StoryboardShowTextResult">
-        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="TextBlockResultText">
+        	<!--
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="TextBlockResultText">
         		<EasingDoubleKeyFrame KeyTime="0" Value="-350"/>
         		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
         			<EasingDoubleKeyFrame.EasingFunction>
@@ -24,6 +25,7 @@
         			</EasingDoubleKeyFrame.EasingFunction>
         		</EasingDoubleKeyFrame>
         	</DoubleAnimationUsingKeyFrames>
+            -->
         	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TextBlockResultText">
         		<EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
         		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
@@ -69,9 +71,9 @@
 				FontSize="40" 
 				HorizontalAlignment="Center" 
 				VerticalAlignment="Center">
-                <TextBlock.Projection>
+                <!--<TextBlock.Projection>
                     <PlaneProjection GlobalOffsetX="-500"/>
-                </TextBlock.Projection>
+                </TextBlock.Projection>-->
             </TextBlock>
 
             <!--<ProgressBar x:Name="MyProgressBarResult"  Grid.Row="2" Value="10"></ProgressBar>-->

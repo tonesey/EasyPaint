@@ -9,8 +9,6 @@ namespace EasyPaint.Model.UI
     public class PictureLoopingItem : LoopingListDataItem
     {
 
-       
-
         public object DataContext { get; set; }
 
         private Uri _picture;

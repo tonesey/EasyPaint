@@ -1,7 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
   <ui mode="lres"/>
-  <unlocked_items value="canguro colore.png"></unlocked_items>
+  <!--<unlocked_items value="canguro colore.png"></unlocked_items>-->
+  <!--
+  <group id="0" key="group_Europe" imgname="0.png">
+    <items>
+    </items>
+  </group>
+  <group id="1" key="group_Africa" imgname="1.png">
+    <items>
+    </items>
+  </group>
+  <group id="2" key="group_America" imgname="2.png">
+    <items>
+    </items>
+  </group>
+  -->
   <group id="3" key="group_Oceania" imgname="3.png">
     <items>
       <item imgname="clamidosauro colore.png" key="item_clamidosauro"/>
@@ -20,32 +34,6 @@
       <item imgname="Yak colore.png" key="item_Yak"/>
     </items>
   </group>
-  <!--<group id="1" key="group_Europe" imgname="1.png">
-    <items>
-      <item imgname="canguro colore.png" key="item_canguro"/>
-      <item imgname="coccodrillo colore.png" key="item_coccodrillo"/>
-      <item imgname="clamidosauro colori.png" key="item_clamidosauro"/>
-      <item imgname="diavolo_colore.png" key="item_diavolo"/>
-      <item imgname="koala colore.png" key="item_koala"/>
-    </items>
-  </group>
-  <group id="2" key="group_America" imgname="2.png">
-    <items>
-      <item imgname="canguro colore.png" key="item_canguro"/>
-      <item imgname="coccodrillo colore.png" key="item_coccodrillo"/>
-      <item imgname="clamidosauro colori.png" key="item_clamidosauro"/>
-      <item imgname="diavolo_colore.png" key="item_diavolo"/>
-      <item imgname="koala colore.png" key="item_koala"/>
-    </items>
-  </group>
-  <group id="3" key="group_Oceania" imgname="3.png">
-    <items>
-      <item imgname="canguro colore.png" key="item_canguro"/>
-      <item imgname="coccodrillo colore.png" key="item_coccodrillo"/>
-      <item imgname="clamidosauro colori.png" key="item_clamidosauro"/>
-      <item imgname="diavolo_colore.png" key="item_diavolo"/>
-      <item imgname="koala colore.png" key="item_koala"/>
-    </items>
-  </group>-->
+ 
 
 </root>

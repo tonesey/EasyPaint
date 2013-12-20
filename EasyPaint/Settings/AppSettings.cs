@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Wp7Shared.Helpers;
+using Wp8Shared.Helpers;
 
 namespace EasyPaint.Settings
 {

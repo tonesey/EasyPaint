@@ -15,20 +15,6 @@ namespace EasyPaint.Model
         public int Score { get; set; }
         public int RecordScore { get; set; }
 
-        //private Item _next;
-        //public Item Next
-        //{
-        //    get { return _next; }
-        //    set { _next = value; }
-        //}
-
-        //private Item _prev;
-        //public Item Prev
-        //{
-        //    get { return _prev; }
-        //    set { _prev = value; }
-        //}
-
         private bool _isLocked = false;
         public bool IsLocked
         {
@@ -40,8 +26,6 @@ namespace EasyPaint.Model
             Key = string.Empty;
             ImgFilename = string.Empty;
             RecordScore = 0;
-            //_prev = null;
-            //_next = null;
         }
 
         public override string ToString()

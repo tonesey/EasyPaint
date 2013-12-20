@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Navigation;
 using System.Windows.Threading;
-using Wp7Shared.Helpers;
+using Wp8Shared.Helpers;
 
 namespace EasyPaint.Helpers
 {

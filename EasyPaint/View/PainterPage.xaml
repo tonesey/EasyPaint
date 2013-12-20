@@ -136,7 +136,7 @@
     <Grid x:Name="LayoutRoot" >
 
         <Grid.Background>
-            <ImageBrush ImageSource="/EasyPaint;component/Assets/lres/bkg/painter_bck.jpg"/>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/lres/bkg/painter_bck1.jpg"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
