@@ -7,15 +7,21 @@
     <items>
     </items>
   </group>
-  <group id="1" key="group_Africa" imgname="1.png">
-    <items>
-    </items>
+ 
   </group>
   <group id="2" key="group_America" imgname="2.png">
     <items>
     </items>
   </group>
   -->
+
+  <group id="1" key="group_Africa" imgname="1.png">
+    <items>
+      <item imgname="gazzella colore.png" key="item_gazzella"/>
+      <item imgname="rinoceronte colore.png" key="item_rinoceronte"/>
+      <item imgname="suricati colore.png" key="item_suricati"/>
+    </items>
+  </group>
   <group id="3" key="group_Oceania" imgname="3.png">
     <items>
       <item imgname="clamidosauro colore.png" key="item_clamidosauro"/>
@@ -34,6 +40,6 @@
       <item imgname="Yak colore.png" key="item_Yak"/>
     </items>
   </group>
- 
+
 
 </root>

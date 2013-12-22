@@ -20,7 +20,7 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="3"/>
+        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="4"/>
     </phone:PhoneApplicationPage.Resources>
 
     <UserControl.DataContext>
@@ -47,18 +47,6 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <!--<TextBlock Foreground="White" Text="{Binding CurrentGroup.Group.Id}" FontSize="50"></TextBlock>-->
-
-
-        <!--<Border  Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Width="70" HorizontalAlignment="Left">
-            <Border.Background>
-                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,0" >
-                    <GradientStop Color="Transparent"/>
-                    <GradientStop Color="#7FFFFFFF" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-        </Border>-->
-
         <telerikPrimitives:RadLoopingList 
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
@@ -80,12 +68,14 @@
                         <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" Opacity="0.6"
                                Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"
                                />
+                        <!--<TextBlock  Width="400" Height="40" Text="{Binding Text}" Foreground="Red"></TextBlock>-->
                     </Grid>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>
         </telerikPrimitives:RadLoopingList>
 
-        <Image  Grid.Row="0" Grid.Column="0" Source="../Assets/lres/bkg/explorer_groups.png" Grid.RowSpan="5"/>
+        <Image  Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Source="{Binding CurrentGroup.ProtagonistImage}" />
+        <!--<Image Grid.Row="3" Grid.RowSpan="2"  Grid.Column="1" Grid.ColumnSpan="4" Stretch="Fill" Source="{Binding CurrentGroup.ProtagonistImage}" />-->
 
     </Grid>
 

@@ -30,14 +30,17 @@ namespace EasyPaint.Data
         {
             this._tag = tag;
             //_groups = data.Groups;
+
+            _cfgData = ModelHelper.BuildAppData();
+
             if (tag.Contains("design"))
             {
                 //creare / aggiungere qua altri dati cablati per fare le prove a design time
             }
-            else
-            {
-                _cfgData = ModelHelper.BuildAppData();
-            }
+            //else
+            //{
+            //    _cfgData = ModelHelper.BuildAppData();
+            //}
         }
 
         internal static AppDataManager GetInstance(string tag)

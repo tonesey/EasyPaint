@@ -51,6 +51,23 @@ namespace EasyPaint.ViewModel
             }
         }
 
+        protected Uri _ProtagonistImage;
+        public Uri ProtagonistImage
+        {
+            get
+            {
+                return _ProtagonistImage;
+            }
+            set
+            {
+                if (_ProtagonistImage != value)
+                {
+                    _ProtagonistImage = value;
+                    this.OnPropertyChanged("ProtagonistImage");
+                }
+            }
+        }
+
         public GroupViewModel(Group gr)
         {
             try
@@ -63,6 +80,7 @@ namespace EasyPaint.ViewModel
                 //BckImage = new Uri(string.Format("EasyPaint;component/Assets/groups/" + AppSettings.AppRes + "/{0}_bck.png", _group.Id), UriKind.RelativeOrAbsolute);
                 BckImage = new Uri(string.Format("../Assets/{0}/groups/{1}_bck.jpg", AppSettings.AppRes, _group.Id), UriKind.RelativeOrAbsolute);
                 //ImageSource = new Uri(string.Format("EasyPaint;component/Assets/groups/" + AppSettings.AppRes + "/{0}.png", _group.Id), UriKind.RelativeOrAbsolute);
+                ProtagonistImage = new Uri(string.Format("../Assets/{0}/groups/{1}/explorer.png", AppSettings.AppRes, _group.Id), UriKind.RelativeOrAbsolute);
 
                 Items = new ObservableCollection<ItemViewModel>();
                 foreach (var item in gr.Items)
