@@ -58,7 +58,6 @@ namespace EasyPaint.View
         List<MyColor> _paletteColors = new List<MyColor>();
         List<MyColor> _ignoredColors = new List<MyColor>();
 
-
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
 
         public PainterPage()
@@ -68,7 +67,6 @@ namespace EasyPaint.View
             _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
             _dt.Interval = TimeSpan.FromSeconds(1);
             _dt.Tick += dt_Tick;
-            //TryPlayBackgroundMusic();
             LoadSounds();
             InitAnimations();
             AssignEventHandlers();
@@ -306,6 +304,10 @@ namespace EasyPaint.View
             //{
             //    e.Cancel = true;
             //}
+            if (_resultPopup != null)
+            {
+                _resultPopup.IsOpen = true;
+            }
             StopTimer();
         }
 
@@ -397,9 +399,9 @@ namespace EasyPaint.View
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                                    userDrawnPicture,
                                                                                    _ignoredColors);
-#if DEBUG
-            accuracyPercentage = 80;
-#endif
+//#if DEBUG
+//            accuracyPercentage = 80;
+//#endif
             ShowResultPopup(accuracyPercentage);
         }
 
@@ -407,33 +409,7 @@ namespace EasyPaint.View
         {
             //popup.VerticalOffset = 250;
             DisablePage();
-
-            //TrialMessage trialPopup = new TrialMessage(popup, query.ToString());
-            //trialPopup.Width = Application.Current.Host.Content.ActualWidth;
-            //trialPopup.PageOrientation = Orientation;
-            //popup.Child = trialPopup;
-            //popup.VerticalOffset = 250;
-            //popup.IsOpen = true;
-
-
-            /// private void InitPopup()
-            _resultPopup = new Popup();
-            //_resultPopup.Height = Application.Current.Host.Content.ActualHeight;
-            _resultPopupChild = new ResultPopup(_resultPopup);
-            _resultPopupChild.Height = 400;
-            _resultPopupChild.Width = 400;
-
-            _resultPopup.VerticalOffset = 200;
-            _resultPopup.HorizontalOffset = 60;
-
-            _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
-            _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
-            _resultPopupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
-            _resultPopupChild.ActionPerformedEvent += exportPopup_ActionPerformedEvent;
-            //exportPopup.Width = Application.Current.Host.Content.ActualWidth;
-            _resultPopup.Child = _resultPopupChild;
-            //
-
+            InitPopup();
             _resultPopupChild.UserPercentage = percentage;
             _resultPopupChild.PageOrientation = Orientation;
             _resultPopup.IsOpen = true;
@@ -441,6 +417,20 @@ namespace EasyPaint.View
 
         private void InitPopup()
         {
+            if (_resultPopup == null)
+            {
+                _resultPopup = new Popup();
+                _resultPopupChild = new ResultPopup(_resultPopup);
+                _resultPopupChild.Height = 400;
+                _resultPopupChild.Width = 400;
+                _resultPopup.VerticalOffset = 200;
+                _resultPopup.HorizontalOffset = 60;
+                _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
+                _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
+                _resultPopupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
+                _resultPopupChild.ActionPerformedEvent += exportPopup_ActionPerformedEvent;
+                _resultPopup.Child = _resultPopupChild;
+            }
         }
 
         void exportPopup_ActionPerformedEvent(GameAction action)
