@@ -20,7 +20,7 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="4"/>
+        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="1"/>
     </phone:PhoneApplicationPage.Resources>
 
     <UserControl.DataContext>
@@ -50,8 +50,9 @@
         <telerikPrimitives:RadLoopingList 
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
-            Grid.Row="1" Grid.Column="0"
-            Grid.RowSpan="3" Grid.ColumnSpan="3"
+            Grid.Row="{Binding CurrentGroup.Group.SelectorGridRow}" 
+            Grid.RowSpan="3"
+            Grid.Column="0" Grid.ColumnSpan="3"
             ItemSpacing="20"
             IsCentered="True"
             Orientation="Horizontal" 
@@ -79,6 +80,7 @@
                Grid.Column="{Binding CurrentGroup.Group.GridCol}"
                Grid.ColumnSpan="{Binding CurrentGroup.Group.GridColumnSpan}"
                Source="{Binding CurrentGroup.ProtagonistImage}" 
+               Opacity="1"
                Stretch="Fill"/>
 
         <!--<Image Grid.Row="0" 

@@ -7,66 +7,73 @@
              xmlns:telerikPrimitivesLoopingList="clr-namespace:Telerik.Windows.Controls.LoopingList;assembly=Telerik.Windows.Controls.Primitives" 
              d1p1:Ignorable="d" xmlns:Converters="clr-namespace:EasyPaint.Converters" 
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
-  <!--Application Resources-->
-  <Application.Resources>
-    <Converters:OrientationConverter x:Key="orientationConverter" />
-    <Converters:PercentageToColorConverter x:Key="percentageToColorConverter" />
-    <Converters:PercentageToStringConverter x:Key="percentageToStringConverter" />
-    <Converters:PercentageToResultConverter x:Key="percentageToResultConverter" />
-    <Converters:PercentageToVisibilityConverter x:Key="percentageToVisibilityConverter" />
-    <Converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
-    <Converters:LockedToOpacityConverter x:Key="lockedToOpacityConverter" />
-    <!-- Backgorund Sound Manager -->
-    <!--<SSME:SmoothStreamingMediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />-->
-    <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
-    <!-- VM Locator -->
-    <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:EasyPaint.ViewModel" />
-    <!--Storyboard animation for fading out a UI element-->
-    <!--<Storyboard x:Key="FadeOutAnimation">
+    <!--Application Resources-->
+    <Application.Resources>
+
+        <local:LocalizedStrings xmlns:local="clr-namespace:EasyPaint" x:Key="LocalizedStrings"/>
+        
+        <Converters:OrientationConverter x:Key="orientationConverter" />
+        <Converters:PercentageToColorConverter x:Key="percentageToColorConverter" />
+        <Converters:PercentageToStringConverter x:Key="percentageToStringConverter" />
+        <Converters:PercentageToResultConverter x:Key="percentageToResultConverter" />
+        <Converters:PercentageToVisibilityConverter x:Key="percentageToVisibilityConverter" />
+        <Converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+        <Converters:LockedToOpacityConverter x:Key="lockedToOpacityConverter" />
+        <!-- Backgorund Sound Manager -->
+        <!--<SSME:SmoothStreamingMediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />-->
+        <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
+        <!-- VM Locator -->
+        <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:EasyPaint.ViewModel" />
+        <!--Storyboard animation for fading out a UI element-->
+        <!--<Storyboard x:Key="FadeOutAnimation">
             <DoubleAnimation From="1" To="0" Duration="0:0:2" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" AutoReverse="True" />
         </Storyboard>-->
-    <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitivesLoopingList:LoopingListItem">
-      <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-      <Setter Property="VerticalContentAlignment" Value="Stretch" />
-      <Setter Property="BorderThickness" Value="5" />
-      <Setter Property="Template">
-        <Setter.Value>
-          <ControlTemplate TargetType="telerikPrimitivesLoopingList:LoopingListItem">
-            <ContentControl x:Name="contentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" DataContext="{TemplateBinding DataContext}" Padding="{TemplateBinding Padding}" />
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
-    </Style>
-    <Style x:Key="ButtonTextBlockStyle1" TargetType="TextBlock">
-      <Setter Property="FontSize" Value="36">
-      </Setter>
-      <Setter Property="Margin" Value="10,0,0,0">
-      </Setter>
-      <Setter Property="Foreground" Value="Black">
-      </Setter>
-      <Setter Property="VerticalAlignment" Value="Center">
-      </Setter>
-      <Setter Property="FontFamily" Value="..\Fonts\CURLZ___.TTF#Curlz MT">
-      </Setter>
-    </Style>
-    <Style x:Key="ButtonStyle1" TargetType="Button">
-      <Setter Property="Height" Value="90" />
-      <Setter Property="Width" Value="280" />
-      <Setter Property="Padding" Value="10" />
-      <Setter Property="HorizontalContentAlignment" Value="Center" />
-      <Setter Property="Background">
-        <Setter.Value>
-          <!--<LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.5">
+        <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitivesLoopingList:LoopingListItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="BorderThickness" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="telerikPrimitivesLoopingList:LoopingListItem">
+                        <ContentControl x:Name="contentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" DataContext="{TemplateBinding DataContext}" Padding="{TemplateBinding Padding}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonTextBlockStyle1" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36">
+            </Setter>
+            <Setter Property="Margin" Value="10,0,0,0">
+            </Setter>
+            <Setter Property="Foreground" Value="Black">
+            </Setter>
+            <Setter Property="VerticalAlignment" Value="Center">
+            </Setter>
+            <Setter Property="FontFamily" Value="..\Fonts\CURLZ___.TTF#Curlz MT">
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Height" Value="90" />
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Width" Value="280" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <!--<LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.5">
                         <GradientStop Color="Brown" Offset="0.8" />
                         <GradientStop Color ="Yellow" Offset="0.2" />
                     </LinearGradientBrush>-->
-          <ImageBrush ImageSource="/EasyPaint;component/Assets/buttons/pencil.png" />
-        </Setter.Value>
-      </Setter>
-    </Style>
-  </Application.Resources>
-  <Application.ApplicationLifetimeObjects>
-    <!--Required object that handles lifetime events for the application-->
-    <shell:PhoneApplicationService Launching="Application_Launching" Closing="Application_Closing" Activated="Application_Activated" Deactivated="Application_Deactivated" />
-  </Application.ApplicationLifetimeObjects>
+                    <ImageBrush ImageSource="/EasyPaint;component/Assets/buttons/pencil.png" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService Launching="Application_Launching" 
+                                       Closing="Application_Closing" 
+                                       Activated="Application_Activated" 
+                                       Deactivated="Application_Deactivated" />
+    </Application.ApplicationLifetimeObjects>
 </Application>

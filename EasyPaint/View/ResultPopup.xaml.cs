@@ -12,7 +12,8 @@ using System.Windows.Media.Animation;
 namespace EasyPaint.View
 {
 
-    public enum GameAction { 
+    public enum GameAction
+    {
         Undefined,
         Menu,
         Redo,
@@ -45,12 +46,13 @@ namespace EasyPaint.View
         private Storyboard _sbShowTextResult;
 
         public int UserPercentage { get; set; }
+        public int AvailableTime { get; set; }
 
         public int Percentage
         {
             set { SetValue(PercentageProperty, value); }
             get { return (int)GetValue(PercentageProperty); }
-        }   
+        }
 
         public PageOrientation PageOrientation
         {
@@ -65,7 +67,7 @@ namespace EasyPaint.View
             _popup = popup;
 
             _sbShowTextResult = (Storyboard)Resources["StoryboardShowTextResult"];
-            
+
             DataContext = this;
             //TextBlockResult.Text = string.Empty;
 
@@ -77,11 +79,25 @@ namespace EasyPaint.View
             _bw.RunWorkerCompleted += _bw_RunWorkerCompleted;
             _bw.WorkerReportsProgress = true;
 
-            //TextBlockResultText.Visibility = System.Windows.Visibility.Collapsed;
+            _sbShowTextResult.Completed -= _sbShowTextResult_Completed;
+            _sbShowTextResult.Completed += _sbShowTextResult_Completed;
+        }
+
+        void _sbShowTextResult_Completed(object sender, System.EventArgs e)
+        {
+            Dispatcher.BeginInvoke(() =>
+            {
+                ButtonRedo.Visibility = Visibility.Visible;
+                ButtonMenu.Visibility = Visibility.Visible;
+            });
         }
 
         void _bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            Dispatcher.BeginInvoke(() =>
+            {
+                TextBlockResultText.Visibility = System.Windows.Visibility.Visible;
+            });
             _sbShowTextResult.Begin();
         }
 
@@ -123,7 +139,8 @@ namespace EasyPaint.View
             if (_popup != null)
             {
                 _popup.IsOpen = false;
-                if (PopupClosedEvent != null) {
+                if (PopupClosedEvent != null)
+                {
                     PopupClosedEvent();
                 }
             }
@@ -158,7 +175,9 @@ namespace EasyPaint.View
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //TextBlockResultText.Visibility = System.Windows.Visibility.Collapsed;
+            TextBlockResultText.Visibility = System.Windows.Visibility.Collapsed;
+            TextBlockResultText.Opacity = 0.1;
+
             _bw.RunWorkerAsync(UserPercentage);
 
             //for (int i = 0; i <= Percentage; i++)
@@ -170,11 +189,15 @@ namespace EasyPaint.View
             //    //});
             //}
 
-            //ButtonRedo.Visibility = Visibility.Collapsed;
+            ButtonRedo.Visibility = Visibility.Collapsed;
             //ButtonNext.Visibility = Visibility.Collapsed;
+            ButtonMenu.Visibility = Visibility.Collapsed;
+
             //await RenderPercentage(Percentage);
             //ButtonRedo.Visibility = Visibility.Visible;
             //ButtonNext.Visibility = Visibility.Visible;
         }
+
+    
     }
 }

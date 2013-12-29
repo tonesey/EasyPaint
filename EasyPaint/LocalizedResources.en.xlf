@@ -6,6 +6,18 @@
     </header>
     <body>
       <group id="Resx">
+        <trans-unit translate="yes" id="Resx/ButtonCreditsText" xml:space="preserve">
+          <source>credits</source>
+          <target state="new">credits</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonSettingsText" xml:space="preserve">
+          <source>settings</source>
+          <target state="new">settings</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonStartText" xml:space="preserve">
+          <source>start game</source>
+          <target state="new">start game</target>
+        </trans-unit>
         <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
           <source>Africa</source>
           <target state="new">Africa</target>

@@ -22,7 +22,7 @@ namespace EasyPaint {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LocalizedResources {
+    public class LocalizedResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace EasyPaint {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EasyPaint.LocalizedResources", typeof(LocalizedResources).Assembly);
@@ -51,7 +51,7 @@ namespace EasyPaint {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,36 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to credits.
+        /// </summary>
+        public static string ButtonCreditsText {
+            get {
+                return ResourceManager.GetString("ButtonCreditsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to settings.
+        /// </summary>
+        public static string ButtonSettingsText {
+            get {
+                return ResourceManager.GetString("ButtonSettingsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to start game.
+        /// </summary>
+        public static string ButtonStartText {
+            get {
+                return ResourceManager.GetString("ButtonStartText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Africa.
         /// </summary>
-        internal static string group_Africa {
+        public static string group_Africa {
             get {
                 return ResourceManager.GetString("group_Africa", resourceCulture);
             }
@@ -72,7 +99,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to America.
         /// </summary>
-        internal static string group_America {
+        public static string group_America {
             get {
                 return ResourceManager.GetString("group_America", resourceCulture);
             }
@@ -81,7 +108,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to Europe.
         /// </summary>
-        internal static string group_Europe {
+        public static string group_Europe {
             get {
                 return ResourceManager.GetString("group_Europe", resourceCulture);
             }
@@ -90,7 +117,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to Oceania.
         /// </summary>
-        internal static string group_Oceania {
+        public static string group_Oceania {
             get {
                 return ResourceManager.GetString("group_Oceania", resourceCulture);
             }
@@ -99,7 +126,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to kangaroo.
         /// </summary>
-        internal static string item_canguro {
+        public static string item_canguro {
             get {
                 return ResourceManager.GetString("item_canguro", resourceCulture);
             }
@@ -108,7 +135,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to crocodile.
         /// </summary>
-        internal static string item_coccodrillo {
+        public static string item_coccodrillo {
             get {
                 return ResourceManager.GetString("item_coccodrillo", resourceCulture);
             }
@@ -117,7 +144,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to Tasmanian devil.
         /// </summary>
-        internal static string item_diavolo {
+        public static string item_diavolo {
             get {
                 return ResourceManager.GetString("item_diavolo", resourceCulture);
             }
@@ -126,7 +153,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to koala.
         /// </summary>
-        internal static string item_koala {
+        public static string item_koala {
             get {
                 return ResourceManager.GetString("item_koala", resourceCulture);
             }
@@ -135,7 +162,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to lion.
         /// </summary>
-        internal static string item_lion {
+        public static string item_lion {
             get {
                 return ResourceManager.GetString("item_lion", resourceCulture);
             }
@@ -144,7 +171,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to tiger.
         /// </summary>
-        internal static string item_tiger {
+        public static string item_tiger {
             get {
                 return ResourceManager.GetString("item_tiger", resourceCulture);
             }
@@ -153,7 +180,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to zebra.
         /// </summary>
-        internal static string item_zebra {
+        public static string item_zebra {
             get {
                 return ResourceManager.GetString("item_zebra", resourceCulture);
             }
@@ -162,7 +189,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to level completed!.
         /// </summary>
-        internal static string message_level_completed {
+        public static string message_level_completed {
             get {
                 return ResourceManager.GetString("message_level_completed", resourceCulture);
             }
@@ -171,7 +198,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to level failed!.
         /// </summary>
-        internal static string message_level_failed {
+        public static string message_level_failed {
             get {
                 return ResourceManager.GetString("message_level_failed", resourceCulture);
             }
@@ -180,7 +207,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to water.
         /// </summary>
-        internal static string water {
+        public static string water {
             get {
                 return ResourceManager.GetString("water", resourceCulture);
             }

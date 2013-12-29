@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ButtonCreditsText" xml:space="preserve">
+    <value>credits</value>
+  </data>
+  <data name="ButtonSettingsText" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="ButtonStartText" xml:space="preserve">
+    <value>start game</value>
+  </data>
   <data name="group_Africa" xml:space="preserve">
     <value>Africa</value>
   </data>

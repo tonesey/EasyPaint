@@ -85,7 +85,7 @@
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="startOrStopBtn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="stopTimeBtn">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-380">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseOut"/>
@@ -96,7 +96,7 @@
                         <BackEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>-->
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Name="StoryboardSmallCountDown">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="BorderCountDownSmall">
@@ -196,11 +196,7 @@
                         </Grid>
                     </Button>
 
-                    <Image x:Name="Test1" Width="50" Height="50">
-                    </Image>
-                    <Image x:Name="Test2" Width="50" Height="50">
-                    </Image>
-                    <!--<Button Name="startOrStopBtn" Visibility="Collapsed" HorizontalAlignment="Left" Width="80" Height="80"  Click="startOrStopBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+                    <Button Name="stopTimeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="stopTimeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
                         <Button.RenderTransform>
                             <CompositeTransform TranslateY="{Binding ToolBoxItem3TranslateY}"/>
                         </Button.RenderTransform>
@@ -211,9 +207,9 @@
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid>
-                            <Image Source="../Assets/buttons/media_play_green.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="42"/>
+                            <Image Source="../Assets/buttons/btn_yes.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="42"/>
                         </Grid>
-                    </Button>-->
+                    </Button>
                 </StackPanel>
             </Border>
 
@@ -303,10 +299,9 @@
                        FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
                        FontWeight="Bold"
                        Text="60"
-                      Foreground="Green" Opacity="0.8"
+                       Foreground="Green" Opacity="0.8"
                        FontSize="50" 
                        HorizontalAlignment="Center" 
-                       Tap="TextBlockCountDownSmall_Tap"
                        >
                 </TextBlock>
                 <Border.RenderTransform>

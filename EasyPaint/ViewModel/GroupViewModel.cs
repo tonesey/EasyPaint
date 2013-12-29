@@ -121,9 +121,6 @@ namespace EasyPaint.ViewModel
                 BckImage = new Uri(string.Format("../Assets/{0}/groups/{1}_bck.jpg", AppSettings.AppRes, _group.Id), UriKind.RelativeOrAbsolute);
                 ProtagonistImage = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _group.Id, _group.ProtagonistImageName }), UriKind.RelativeOrAbsolute);
 
-                //ProtagonistImage = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _group.Id, "explorer.png" }), UriKind.RelativeOrAbsolute);
-                //OnPropertyChanged("Group");
-
                 Items = new ObservableCollection<ItemViewModel>();
                 foreach (var item in gr.Items)
                 {

@@ -132,4 +132,4 @@
   <data name="item_zebra" xml:space="preserve">
     <value>cebra</value>
   </data>
-</root>
+<data name="ButtonCreditsText" xml:space="preserve"><value>créditos</value></data><data name="ButtonSettingsText" xml:space="preserve"><value>Configuración</value></data><data name="ButtonStartText" xml:space="preserve"><value>Comience el juego</value></data><data name="group_Europe" xml:space="preserve"><value>Europa</value></data><data name="item_canguro" xml:space="preserve"><value>canguro</value></data><data name="item_coccodrillo" xml:space="preserve"><value>cocodrilo</value></data><data name="item_diavolo" xml:space="preserve"><value>Demonio de Tasmania</value></data><data name="item_lion" xml:space="preserve"><value>León</value></data><data name="item_tiger" xml:space="preserve"><value>Tigre</value></data><data name="message_level_failed" xml:space="preserve"><value>nivel de error.</value></data><data name="message_level_completed" xml:space="preserve"><value>nivel completado!</value></data><data name="water" xml:space="preserve"><value>agua</value></data></root>

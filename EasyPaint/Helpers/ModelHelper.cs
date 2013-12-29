@@ -91,9 +91,13 @@ namespace EasyPaint.Helpers
                     g.GridColumnSpan = protagonistNode.Attribute("Grid.ColSpan") != null ? int.Parse(protagonistNode.Attribute("Grid.ColSpan").Value) : 1;
                 }
 
-                if (element.Element("items") != null)
+
+                var itemsElement = element.Element("items");
+                if (itemsElement != null)
                 {
-                    foreach (var itemNode in element.Element("items").Elements("item"))
+                    g.SelectorGridRow = itemsElement.Attribute("SelectorGridRow") != null ? int.Parse(itemsElement.Attribute("SelectorGridRow").Value) : 1;
+
+                    foreach (var itemNode in itemsElement.Elements("item"))
                     {
                         Item currentItem = new Item();
 
@@ -112,8 +116,6 @@ namespace EasyPaint.Helpers
                             currentItem.Score = _userScore[userScoreItem][0];
                             currentItem.RecordScore = _userScore[userScoreItem][1];
                             currentItem.IsLocked = currentItem.Score < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
-
-
                         }
                         currentItem.Key = itemNode.Attribute("key").Value;
                         g.Items.Add(currentItem);

@@ -6,6 +6,18 @@
     </header>
     <body>
       <group id="Resx">
+        <trans-unit translate="yes" id="Resx/ButtonCreditsText" xml:space="preserve">
+          <source>credits</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">créditos</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonSettingsText" xml:space="preserve">
+          <source>settings</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Configuración</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonStartText" xml:space="preserve">
+          <source>start game</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Comience el juego</target>
+        </trans-unit>
         <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
           <source>Africa</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">África</target>
@@ -16,7 +28,7 @@
         </trans-unit>
         <trans-unit id="Resx/group_Europe" translate="yes" xml:space="preserve">
           <source>Europe</source>
-          <target state="new" state-qualifier="mt-suggestion">Europe</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Europa</target>
         </trans-unit>
         <trans-unit id="Resx/group_Oceania" translate="yes" xml:space="preserve">
           <source>Oceania</source>
@@ -24,15 +36,15 @@
         </trans-unit>
         <trans-unit id="Resx/item_canguro" translate="yes" xml:space="preserve">
           <source>kangaroo</source>
-          <target state="new" state-qualifier="mt-suggestion">kangaroo</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">canguro</target>
         </trans-unit>
         <trans-unit id="Resx/item_coccodrillo" translate="yes" xml:space="preserve">
           <source>crocodile</source>
-          <target state="new" state-qualifier="mt-suggestion">crocodile</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">cocodrilo</target>
         </trans-unit>
         <trans-unit id="Resx/item_diavolo" translate="yes" xml:space="preserve">
           <source>Tasmanian devil</source>
-          <target state="new" state-qualifier="mt-suggestion">Tasmanian devil</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Demonio de Tasmania</target>
         </trans-unit>
         <trans-unit id="Resx/item_koala" translate="yes" xml:space="preserve">
           <source>koala</source>
@@ -40,11 +52,11 @@
         </trans-unit>
         <trans-unit id="Resx/item_lion" translate="yes" xml:space="preserve">
           <source>lion</source>
-          <target state="new" state-qualifier="mt-suggestion">lion</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">León</target>
         </trans-unit>
         <trans-unit id="Resx/item_tiger" translate="yes" xml:space="preserve">
           <source>tiger</source>
-          <target state="new" state-qualifier="mt-suggestion">tiger</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Tigre</target>
         </trans-unit>
         <trans-unit id="Resx/item_zebra" translate="yes" xml:space="preserve">
           <source>zebra</source>
@@ -52,15 +64,15 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_failed" xml:space="preserve">
           <source>level failed!</source>
-          <target state="new">level failed!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">nivel de error.</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_completed" xml:space="preserve">
           <source>level completed!</source>
-          <target state="new">level completed!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">nivel completado!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/water" xml:space="preserve">
           <source>water</source>
-          <target state="new">water</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">agua</target>
         </trans-unit>
       </group>
     </body>

@@ -27,6 +27,7 @@ using Microsoft.Xna.Framework.Media;
 using System.Windows.Controls.Primitives;
 using EasyPaint.Model;
 using System.Windows.Ink;
+using EasyPaint.Settings;
 
 namespace EasyPaint.View
 {
@@ -45,7 +46,8 @@ namespace EasyPaint.View
         DispatcherTimer _countDownTimer = new DispatcherTimer();
         bool _gameInProgress = false;
 
-        int _availableTimeValue = 0;
+        int _curAvailableTimeValue = 0;
+        int _lastAvailableTimeValue = 0;
 
         Storyboard _storyboardSubjectImageFading;
         Storyboard _storyboardCountDown;
@@ -187,13 +189,13 @@ namespace EasyPaint.View
         #region timer
         void dt_Tick(object sender, EventArgs e)
         {
-            if (_availableTimeValue - 1 > 0)
+            if (_curAvailableTimeValue - 1 > 0)
             {
-                _availableTimeValue--;
+                _curAvailableTimeValue--;
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    TextBlockCountDownSmall.Text = _availableTimeValue.ToString();
+                    TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
                 });
             }
             else
@@ -216,7 +218,7 @@ namespace EasyPaint.View
         {
             BorderCountDownSmall.Visibility = System.Windows.Visibility.Visible;
             _gameInProgress = true;
-            _availableTimeValue = TotalTime;
+            _curAvailableTimeValue = TotalTime;
             // MessageBox.Show("disabled timer");
             _dt.Start();
         }
@@ -225,7 +227,8 @@ namespace EasyPaint.View
         {
             BorderCountDownSmall.Visibility = System.Windows.Visibility.Collapsed;
             _gameInProgress = false;
-            _availableTimeValue = 0;
+            _lastAvailableTimeValue = _curAvailableTimeValue;
+            _curAvailableTimeValue = 0;
             _dt.Stop();
         }
         #endregion
@@ -397,20 +400,21 @@ namespace EasyPaint.View
                                   new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
-                                                                                   userDrawnPicture,
-                                                                                   _ignoredColors);
+                                                                        userDrawnPicture,
+                                                                        _ignoredColors);
 //#if DEBUG
 //            accuracyPercentage = 80;
 //#endif
-            ShowResultPopup(accuracyPercentage);
+            ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue);
         }
 
-        private void ShowResultPopup(int percentage)
+        private void ShowResultPopup(int percentage, int availTime)
         {
             //popup.VerticalOffset = 250;
             DisablePage();
             InitPopup();
             _resultPopupChild.UserPercentage = percentage;
+            _resultPopupChild.AvailableTime = availTime;
             _resultPopupChild.PageOrientation = Orientation;
             _resultPopup.IsOpen = true;
         }
@@ -448,6 +452,8 @@ namespace EasyPaint.View
                     var curEl = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
                     curEl.SetScore(_resultPopupChild.UserPercentage);
 
+                    AppSettings.SaveSettings();
+
                     var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                     if (nextEl != null)
                     {
@@ -480,12 +486,11 @@ namespace EasyPaint.View
             IsEnabled = true;
         }
 
-        private void TextBlockCountDownSmall_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void stopTimeBtn_Click(object sender, RoutedEventArgs e)
         {
-#if DEBUG
             StopTimer();
             CheckDrawnPicture();
-#endif
+
         }
 
     }

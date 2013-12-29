@@ -24,6 +24,8 @@ namespace EasyPaint.Model
             GridCol = 0;
             GridRowSpan = 1;
             GridColumnSpan = 1;
+
+            SelectorGridRow = 1;
         }
 
         public override string ToString()
@@ -41,6 +43,10 @@ namespace EasyPaint.Model
         public int GridRowSpan { get; set; }
 
         public int GridColumnSpan { get; set; }
+        #endregion
+
+        #region selector UI properties
+        public int SelectorGridRow { get; set; }
         #endregion
     }
 }

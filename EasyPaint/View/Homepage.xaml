@@ -50,7 +50,9 @@
                 <CompositeTransform Rotation="2.284"/>
             </Button.RenderTransform>
             <Button.Content>
-                <TextBlock Name="ButtonStartText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}">$start game</TextBlock>
+                <TextBlock Name="ButtonStartText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Text="{Binding Path=LocalizedResX.ButtonStartText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
             </Button.Content>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
@@ -64,7 +66,9 @@
                 <CompositeTransform Rotation="-2.646"/>
             </Button.RenderTransform>
             <Button.Content>
-                <TextBlock Name="ButtonCreditsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}">$credits</TextBlock>
+                <TextBlock Name="ButtonCreditsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Text="{Binding Path=LocalizedResX.ButtonCreditsText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
             </Button.Content>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
@@ -78,7 +82,9 @@
                 <CompositeTransform Rotation="1.945"/>
             </Button.RenderTransform>
             <Button.Content>
-                <TextBlock Name="ButtonSettingsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}">$settings</TextBlock>
+                <TextBlock Name="ButtonSettingsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                            Text="{Binding Path=LocalizedResX.ButtonSettingsText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
             </Button.Content>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">

@@ -150,4 +150,4 @@
   <data name="item_zebra" xml:space="preserve">
     <value>Zebra</value>
   </data>
-</root>
+<data name="ButtonCreditsText" xml:space="preserve"><value>créditos</value></data><data name="ButtonSettingsText" xml:space="preserve"><value>Configurações</value></data><data name="ButtonStartText" xml:space="preserve"><value>iniciar o jogo</value></data><data name="message_level_failed" xml:space="preserve"><value>nível falhou!</value></data><data name="message_level_completed" xml:space="preserve"><value>nível concluído!</value></data><data name="water" xml:space="preserve"><value>água</value></data></root>

@@ -17,7 +17,7 @@
 
   <group id="1" key="group_Africa" imgname="1.png">
     <protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="1" Grid.ColSpan="2"/>
-    <items>
+    <items SelectorGridRow="0">
       <item imgname="gazzella colore.png" key="item_gazzella"/>
       <item imgname="rinoceronte colore.png" key="item_rinoceronte"/>
       <item imgname="suricati colore.png" key="item_suricati"/>
@@ -26,7 +26,7 @@
 
   <group id="3" key="group_Oceania" imgname="3.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
-    <items>
+    <items SelectorGridRow="1">
       <item imgname="clamidosauro colore.png" key="item_clamidosauro"/>
       <item imgname="canguro colore.png" key="item_canguro"/>
       <item imgname="coccodrillo colore.png" key="item_coccodrillo"/>
@@ -37,7 +37,7 @@
   
   <group id="4" key="group_Asia" imgname="4.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
-    <items>
+    <items SelectorGridRow="1">
       <item imgname="Cobra colore.png" key="item_Cobra"/>
       <item imgname="Elefante colore.png" key="item_Elefante"/>
       <item imgname="scimmietta colore.png" key="item_scimmietta"/>

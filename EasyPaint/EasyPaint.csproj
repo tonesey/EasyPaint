@@ -214,6 +214,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\BaseMessage.cs" />
     <Compile Include="Messages\RateAppMessage.cs" />
     <Compile Include="Messages\GoToPageMessage.cs" />
@@ -374,6 +375,7 @@
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />
     <Content Include="README_FIRST.txt" />
+    <Content Include="todo.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -494,7 +496,7 @@
       <culture>qps-ploc</culture>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Assets\buttons\bullet_ball_blue.png" />
