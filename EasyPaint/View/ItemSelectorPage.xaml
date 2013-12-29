@@ -74,7 +74,22 @@
             </telerikPrimitives:RadLoopingList.ItemTemplate>
         </telerikPrimitives:RadLoopingList>
 
-        <Image  Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Source="{Binding CurrentGroup.ProtagonistImage}" />
+        <Image Grid.Row="{Binding CurrentGroup.Group.GridRow}" 
+               Grid.RowSpan="{Binding CurrentGroup.Group.GridRowSpan}"
+               Grid.Column="{Binding CurrentGroup.Group.GridCol}"
+               Grid.ColumnSpan="{Binding CurrentGroup.Group.GridColumnSpan}"
+               Source="{Binding CurrentGroup.ProtagonistImage}" 
+               Stretch="Fill"/>
+
+        <!--<Image Grid.Row="0" 
+               Grid.RowSpan="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="1"
+               Source="{Binding CurrentGroup.ProtagonistImage}" 
+               Stretch="Fill"/>-->
+        <!--<TextBlock Text="{Binding CurrentGroup.Group.ProtagonistImageName}" FontSize="50" Grid.Row="1" Foreground="Red"></TextBlock>-->
+        
+        
         <!--<Image Grid.Row="3" Grid.RowSpan="2"  Grid.Column="1" Grid.ColumnSpan="4" Stretch="Fill" Source="{Binding CurrentGroup.ProtagonistImage}" />-->
 
     </Grid>

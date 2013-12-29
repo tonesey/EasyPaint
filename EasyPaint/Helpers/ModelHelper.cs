@@ -80,6 +80,17 @@ namespace EasyPaint.Helpers
                 g.Id = element.Attribute("id").Value;
                 g.Key = element.Attribute("key").Value;
                 g.ImgFilename = element.Attribute("imgname").Value;
+
+                var protagonistNode = element.Element("protagonist");
+                if (protagonistNode != null)
+                {
+                    g.ProtagonistImageName = protagonistNode.Attribute("imgname").Value;
+                    g.GridRow = protagonistNode.Attribute("Grid.Row") != null ? int.Parse(protagonistNode.Attribute("Grid.Row").Value) : 0;
+                    g.GridCol = protagonistNode.Attribute("Grid.Col") != null ? int.Parse(protagonistNode.Attribute("Grid.Col").Value) : 0;
+                    g.GridRowSpan = protagonistNode.Attribute("Grid.RowSpan") != null ? int.Parse(protagonistNode.Attribute("Grid.RowSpan").Value) : 1;
+                    g.GridColumnSpan = protagonistNode.Attribute("Grid.ColSpan") != null ? int.Parse(protagonistNode.Attribute("Grid.ColSpan").Value) : 1;
+                }
+
                 if (element.Element("items") != null)
                 {
                     foreach (var itemNode in element.Element("items").Elements("item"))
@@ -101,6 +112,8 @@ namespace EasyPaint.Helpers
                             currentItem.Score = _userScore[userScoreItem][0];
                             currentItem.RecordScore = _userScore[userScoreItem][1];
                             currentItem.IsLocked = currentItem.Score < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
+
+
                         }
                         currentItem.Key = itemNode.Attribute("key").Value;
                         g.Items.Add(currentItem);

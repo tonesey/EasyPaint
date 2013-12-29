@@ -19,6 +19,11 @@ namespace EasyPaint.Model
         {
             Id = "not set";
             Items = new List<Item>();
+
+            GridRow = 0;
+            GridCol = 0;
+            GridRowSpan = 1;
+            GridColumnSpan = 1;
         }
 
         public override string ToString()
@@ -26,5 +31,16 @@ namespace EasyPaint.Model
             return Id;
         }
 
+        #region protagonist image
+        public string ProtagonistImageName { get; set; }
+
+        public int GridRow { get; set; }
+
+        public int GridCol { get; set; }
+
+        public int GridRowSpan { get; set; }
+
+        public int GridColumnSpan { get; set; }
+        #endregion
     }
 }

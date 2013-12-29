@@ -52,9 +52,9 @@ namespace EasyPaint.Design
         {
             get
             {
-                Group g = new Group();
-                g.Id = CurrentGroupId;
-                _currentGroup = new GroupViewModel(g);
+                //Group g = new Group();
+                //g.Id = CurrentGroupId;
+                _currentGroup = new GroupViewModel(_data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId));
                 return _currentGroup;
             }
         }
