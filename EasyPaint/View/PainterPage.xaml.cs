@@ -36,7 +36,7 @@ namespace EasyPaint.View
         const int TotalTime = 60;
 
         // Constructor
-        SimzzDev.DrawingBoard _drawingboard;
+        SimzzDev.DrawingBoard _drawingboard = null;
 
         // private const string tmpFName = "tmp.png";
 
@@ -153,24 +153,18 @@ namespace EasyPaint.View
             SoundHelper.PlaySound(_sounds[count]);
             count--;
 
-            _storyboardCountDown.Begin();
-            _storyboardCountDown.Completed += (sender, ev) =>
+            //http://stackoverflow.com/questions/4303922/removing-anonymous-event-handler
+            EventHandler handler1 = null;
+            EventHandler handler2 = null;
+
+            handler1 = (s, e) =>
             {
                 if (count == 0)
                 {
                     TextBlockCountDownBig.Text = "go!!!";
                     SoundHelper.PlaySound(_sounds[count]);
+                    _storyboardCountDown.Completed -= handler1;
                     _storyboardSubjectImageFading.Begin();
-                    _storyboardSubjectImageFading.Completed += (sender1, ev1) =>
-                    {
-                        TextBlockCountDownBig.Visibility = Visibility.Collapsed;
-                        _storyboardCountDown.Stop();
-
-                        //ImageBrush inkBackGround = new ImageBrush();
-                        //inkBackGround.ImageSource = ImageMain.Source;
-                        //InkPresenterElement.Background = inkBackGround;
-                        StartTimer();
-                    };
                 }
                 else
                 {
@@ -184,6 +178,50 @@ namespace EasyPaint.View
                     count--;
                 }
             };
+
+            handler2 = (s1, e1) =>
+            {
+                _storyboardSubjectImageFading.Completed -= handler2;
+                TextBlockCountDownBig.Visibility = Visibility.Collapsed;
+                _storyboardCountDown.Stop();
+                StartTimer();
+            };
+
+            _storyboardCountDown.Completed += handler1;
+            _storyboardSubjectImageFading.Completed += handler2;
+
+            _storyboardCountDown.Begin();
+
+            //_storyboardCountDown.Completed += (sender, ev) =>
+            //{
+            //    if (count == 0)
+            //    {
+            //        TextBlockCountDownBig.Text = "go!!!";
+            //        SoundHelper.PlaySound(_sounds[count]);
+            //        _storyboardSubjectImageFading.Begin();
+            //        _storyboardSubjectImageFading.Completed += (sender1, ev1) =>
+            //        {
+            //            TextBlockCountDownBig.Visibility = Visibility.Collapsed;
+            //            _storyboardCountDown.Stop();
+            //            StartTimer();
+            //        };
+            //    }
+            //    else
+            //    {
+            //        if (count == 1)
+            //        {
+            //            _storyboardShowPalette.Begin();
+            //        }
+            //        TextBlockCountDownBig.Text = count.ToString();
+            //        SoundHelper.PlaySound(_sounds[count]);
+            //        _storyboardCountDown.Begin();
+            //        count--;
+            //    }
+            //};
+        }
+
+        void _storyboardCountDown_Completed(object sender, EventArgs e)
+        {
         }
 
         #region timer
@@ -240,6 +278,13 @@ namespace EasyPaint.View
 
         private void InitPage()
         {
+            StopTimer();
+
+            _storyboardSubjectImageFading.Stop();
+            _storyboardCountDown.Stop();
+            _storyboardShowPalette.Stop();
+
+
             if (_drawingboard != null) SetEllipseSize(_drawingboard.BrushWidth);
 
             BorderPalette.Visibility = Visibility.Visible;
@@ -309,8 +354,9 @@ namespace EasyPaint.View
             //}
             if (_resultPopup != null)
             {
-                _resultPopup.IsOpen = true;
+                _resultPopup.IsOpen = false;
             }
+
             StopTimer();
         }
 
@@ -402,9 +448,9 @@ namespace EasyPaint.View
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
                                                                         _ignoredColors);
-//#if DEBUG
-//            accuracyPercentage = 80;
-//#endif
+            //#if DEBUG
+            //            accuracyPercentage = 80;
+            //#endif
             ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue);
         }
 

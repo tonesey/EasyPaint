@@ -41,15 +41,19 @@
             </Setter>
         </Style>
         <Style x:Key="ButtonTextBlockStyle1" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="36">
+            <Setter Property="FontSize" Value="40">
             </Setter>
-            <Setter Property="Margin" Value="10,0,0,0">
+            <Setter Property="Margin" Value="10,-10,0,0">
             </Setter>
             <Setter Property="Foreground" Value="Black">
             </Setter>
             <Setter Property="VerticalAlignment" Value="Center">
             </Setter>
             <Setter Property="FontFamily" Value="..\Fonts\CURLZ___.TTF#Curlz MT">
+            </Setter>
+            <Setter Property="FontWeight" Value="ExtraBlack">
+            </Setter>
+            <Setter Property="FontStretch" Value="UltraExpanded">
             </Setter>
         </Style>
         <Style x:Key="ButtonStyle1" TargetType="Button">
@@ -64,7 +68,7 @@
                         <GradientStop Color="Brown" Offset="0.8" />
                         <GradientStop Color ="Yellow" Offset="0.2" />
                     </LinearGradientBrush>-->
-                    <ImageBrush ImageSource="/EasyPaint;component/Assets/buttons/pencil.png" />
+                    <ImageBrush ImageSource="/EasyPaint;component/Assets/buttons/pencil2.png" />
                 </Setter.Value>
             </Setter>
         </Style>

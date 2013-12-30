@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
 
 namespace EasyPaint.View
 {
@@ -21,6 +22,7 @@ namespace EasyPaint.View
     {
 
         SoundEffect _soundEffect1 = null;
+        private bool _backgroundAnimationStarted = false;
 
         /// <summary>
         /// Initializes a new instance of the Homepage class.
@@ -69,18 +71,43 @@ namespace EasyPaint.View
             //    NavigationService.RemoveBackEntry();
             //}
 
-            //timeAnimation.EasingFunction = new ExponentialEase()
-            //{
-            //    Exponent = 9,
-            //    EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut
-            //}; 
+            if (!_backgroundAnimationStarted)
+            {
+                _backgroundAnimationStarted = true;
+                AnimateBackground();
+            }
+        }
 
-            var animationTime = TimeSpan.FromSeconds(20);
-            var timeline = ThicknessAnimation.Create(ImageBkg, Image.MarginProperty, new Duration(animationTime), new Thickness(0, 0, 0, 0), new Thickness(-800, 0, 0, 0));
+        private void AnimateBackground()
+        {
+
+            int duration = 20;
+            int beginTime = 0;
+            var timeline1 = ThicknessAnimation.Create(ImageBkg, Image.MarginProperty, new Duration(TimeSpan.FromSeconds(duration)),
+                           new Thickness(0, 0, 0, 0), new Thickness(-400, 0, 0, 0));
+            timeline1.BeginTime = TimeSpan.FromSeconds(beginTime);
+            beginTime += duration;
+            var timeline2 = ThicknessAnimation.Create(ImageBkg, Image.MarginProperty, new Duration(TimeSpan.FromSeconds(duration)),
+                    new Thickness(-400, 0, 0, 0), new Thickness(-400, -240, 0, 0));
+            timeline2.BeginTime = TimeSpan.FromSeconds(beginTime);
+            beginTime += duration;
+            var timeline3 = ThicknessAnimation.Create(ImageBkg, Image.MarginProperty, new Duration(TimeSpan.FromSeconds(duration)),
+                 new Thickness(-400, -240, 0, 0), new Thickness(0, -240, 0, 0));
+            timeline3.BeginTime = TimeSpan.FromSeconds(beginTime);
+            beginTime += duration;
+            var timeline4 = ThicknessAnimation.Create(ImageBkg, Image.MarginProperty, new Duration(TimeSpan.FromSeconds(duration)),
+                         new Thickness(0, -240, 0, 0), new Thickness(0, 0, 0, 0));
+            timeline4.BeginTime = TimeSpan.FromSeconds(beginTime);
+
             Storyboard storyBoard = new Storyboard();
-
-            storyBoard.Children.Add(timeline);
+            storyBoard.Children.Add(timeline1);
+            storyBoard.Children.Add(timeline2);
+            storyBoard.Children.Add(timeline3);
+            storyBoard.Children.Add(timeline4);
+            //storyBoard.AutoReverse = true;
+            storyBoard.RepeatBehavior = RepeatBehavior.Forever;
             storyBoard.Begin();
+
         }
 
         private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)

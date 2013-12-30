@@ -47,11 +47,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="ImageBkg" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Row="0" Width="1600" Height="960" Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-          
-
+        <Image x:Name="ImageBkg" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Row="0" 
+               Width="1200" Height="720" Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" 
+               Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
-        <!--Grid.ColumnSpan="3" Grid.RowSpan="5"-->
+
+        <Image x:Name="ImageExplorerSubject" Margin="-50,-50,0,0" Grid.Column="2" Grid.Row="2" Grid.RowSpan="5" 
+               Source="/EasyPaint;component/Assets/lres/bkg/explorer_subject.png" 
+               Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+        </Image>
 
         <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle1}" Height="Auto" UseLayoutRounding="False" Width="Auto" d:LayoutRounding="Auto" >
             <Button.RenderTransform>

@@ -368,6 +368,7 @@
     <Resource Include="Assets\lres\groups\0\explorer.png" />
     <Resource Include="Assets\ko.jpg" />
     <Resource Include="Assets\lres\bkg\homepage.jpg" />
+    <Resource Include="Assets\lres\bkg\explorer_subject.png" />
     <Content Include="Assets\lres\groups\1\explorer.png" />
     <Resource Include="Assets\lres\groups\2\explorer.png" />
     <Content Include="Assets\lres\groups\4\explorer.png" />
@@ -503,7 +504,7 @@
     <Content Include="Assets\buttons\bullet_ball_blue.png" />
     <Content Include="Assets\buttons\eraser.png" />
     <Content Include="Assets\buttons\media_play_green.png" />
-    <Resource Include="Assets\buttons\pencil.png" />
+    <Resource Include="Assets\buttons\pencil2.png" />
     <EmbeddedResource Include="cfg.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
