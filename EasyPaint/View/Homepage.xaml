@@ -33,9 +33,11 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid.Background>
+
+
+        <!--<Grid.Background>
             <ImageBrush ImageSource="/EasyPaint;component/Assets/lres/bkg/homepage.jpg"/>
-        </Grid.Background>
+        </Grid.Background>-->
 
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -44,6 +46,12 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
+        <Image x:Name="ImageBkg" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Row="0" Width="1600" Height="960" Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+          
+
+        </Image>
+        <!--Grid.ColumnSpan="3" Grid.RowSpan="5"-->
 
         <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle1}" Height="Auto" UseLayoutRounding="False" Width="Auto" d:LayoutRounding="Auto" >
             <Button.RenderTransform>

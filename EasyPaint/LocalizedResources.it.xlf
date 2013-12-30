@@ -64,7 +64,15 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_failed" xml:space="preserve">
           <source>level failed!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">livello non riuscito!</target>
+          <target state="translated">livello fallito!</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/MsgBoxTitleWarning" xml:space="preserve">
+          <source>Warning</source>
+          <target state="translated">Attenzione</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/MsgBoxExit" xml:space="preserve">
+          <source>Are you sure you want to exit?</source>
+          <target state="translated">Sei sicuro di voler uscire?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_completed" xml:space="preserve">
           <source>level completed!</source>

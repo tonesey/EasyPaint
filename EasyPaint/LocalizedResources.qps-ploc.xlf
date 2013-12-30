@@ -66,6 +66,14 @@
           <source>level failed!</source>
           <target state="new">level failed!</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/MsgBoxTitleWarning" xml:space="preserve">
+          <source>Warning</source>
+          <target state="new">Warning</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/MsgBoxExit" xml:space="preserve">
+          <source>Are you sure you want to exit?</source>
+          <target state="new">Are you sure you want to exit?</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_completed" xml:space="preserve">
           <source>level completed!</source>
           <target state="new">level completed!</target>

@@ -165,6 +165,12 @@
   <data name="message_level_failed" xml:space="preserve">
     <value>level failed!</value>
   </data>
+  <data name="MsgBoxExit" xml:space="preserve">
+    <value>Are you sure you want to exit?</value>
+  </data>
+  <data name="MsgBoxTitleWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
   <data name="water" xml:space="preserve">
     <value>water</value>
   </data>

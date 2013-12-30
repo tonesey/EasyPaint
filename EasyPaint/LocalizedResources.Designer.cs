@@ -205,6 +205,24 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to exit?.
+        /// </summary>
+        public static string MsgBoxExit {
+            get {
+                return ResourceManager.GetString("MsgBoxExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string MsgBoxTitleWarning {
+            get {
+                return ResourceManager.GetString("MsgBoxTitleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to water.
         /// </summary>
         public static string water {

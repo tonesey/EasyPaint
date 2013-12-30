@@ -1,4 +1,5 @@
-﻿using EasyPaint.Helpers;
+﻿using EasyPaint.Animations;
+using EasyPaint.Helpers;
 using EasyPaint.Messages;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
@@ -9,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace EasyPaint.View
 {
@@ -35,7 +37,7 @@ namespace EasyPaint.View
         {
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.click2.wav"))
             {
-                _soundEffect1 =  SoundEffect.FromStream(stream);
+                _soundEffect1 = SoundEffect.FromStream(stream);
             }
         }
 
@@ -66,11 +68,24 @@ namespace EasyPaint.View
             //{
             //    NavigationService.RemoveBackEntry();
             //}
+
+            //timeAnimation.EasingFunction = new ExponentialEase()
+            //{
+            //    Exponent = 9,
+            //    EasingMode = System.Windows.Media.Animation.EasingMode.EaseOut
+            //}; 
+
+            var animationTime = TimeSpan.FromSeconds(20);
+            var timeline = ThicknessAnimation.Create(ImageBkg, Image.MarginProperty, new Duration(animationTime), new Thickness(0, 0, 0, 0), new Thickness(-800, 0, 0, 0));
+            Storyboard storyBoard = new Storyboard();
+
+            storyBoard.Children.Add(timeline);
+            storyBoard.Begin();
         }
 
         private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult mb = MessageBox.Show("$Are you sure you want to exit?", "$Warning", MessageBoxButton.OKCancel);
+            MessageBoxResult mb = MessageBox.Show(LocalizedResources.MsgBoxExit, LocalizedResources.MsgBoxTitleWarning, MessageBoxButton.OKCancel);
             if (mb != MessageBoxResult.OK)
             {
                 e.Cancel = true;
