@@ -169,6 +169,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\MediaElementStateToImageConverter.cs" />
     <Compile Include="Converters\LockedToOpacityConverter.cs" />
     <Compile Include="Converters\PercentageToVisibilityConverter.cs" />
     <Compile Include="Converters\PercentageToResultConverter.cs" />
@@ -217,6 +218,7 @@
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Messages\BaseMessage.cs" />
+    <Compile Include="Messages\ToggleSoundMessage.cs" />
     <Compile Include="Messages\RateAppMessage.cs" />
     <Compile Include="Messages\GoToPageMessage.cs" />
     <Compile Include="Data\AppData.cs" />
@@ -353,6 +355,8 @@
     <Resource Include="Assets\lres\groups\2\diavolo_lineart.png" />
     <Resource Include="Assets\lres\groups\2\koala colore.png" />
     <Resource Include="Assets\lres\groups\2\koala lineart.png" />
+    <Resource Include="Assets\buttons\sound_off.png" />
+    <Resource Include="Assets\buttons\sound_on.png" />
     <Content Include="Assets\icons\Lock.png" />
     <Resource Include="Assets\lres\bkg\painter_bck1.jpg" />
     <Resource Include="Assets\lres\groups\1\gazzella colore.png" />
@@ -369,6 +373,7 @@
     <Resource Include="Assets\ko.jpg" />
     <Resource Include="Assets\lres\bkg\homepage.jpg" />
     <Resource Include="Assets\lres\bkg\explorer_subject.png" />
+    <Resource Include="Assets\lres\bkg\title1.png" />
     <Content Include="Assets\lres\groups\1\explorer.png" />
     <Resource Include="Assets\lres\groups\2\explorer.png" />
     <Content Include="Assets\lres\groups\4\explorer.png" />
@@ -428,6 +433,7 @@
     <EmbeddedResource Include="Audio\wav\two.wav" />
     <Content Include="Fonts\CURLZ___.TTF" />
     <None Include="app.config" />
+    <Content Include="Fonts\andyb.ttf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

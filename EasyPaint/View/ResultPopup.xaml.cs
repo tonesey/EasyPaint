@@ -87,8 +87,8 @@ namespace EasyPaint.View
         {
             Dispatcher.BeginInvoke(() =>
             {
-                ButtonRedo.Visibility = Visibility.Visible;
-                ButtonMenu.Visibility = Visibility.Visible;
+                ButtonRedo.IsEnabled = true;
+                ButtonMenu.IsEnabled = true;
             });
         }
 
@@ -189,9 +189,8 @@ namespace EasyPaint.View
             //    //});
             //}
 
-            ButtonRedo.Visibility = Visibility.Collapsed;
-            //ButtonNext.Visibility = Visibility.Collapsed;
-            ButtonMenu.Visibility = Visibility.Collapsed;
+            ButtonRedo.IsEnabled = false;
+            ButtonMenu.IsEnabled = false;
 
             //await RenderPercentage(Percentage);
             //ButtonRedo.Visibility = Visibility.Visible;

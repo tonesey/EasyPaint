@@ -65,8 +65,10 @@
                 <DataTemplate>
                     <Grid>
                         <Image Source="{Binding Picture}" Stretch="Fill" Tap="Image_Tap"
+                               CacheMode="BitmapCache"
                                Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"/>
                         <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" 
+                               CacheMode="BitmapCache"
                                Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"/>
                     </Grid>
                 </DataTemplate>

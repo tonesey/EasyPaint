@@ -20,7 +20,7 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="1"/>
+        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="4"/>
     </phone:PhoneApplicationPage.Resources>
 
     <UserControl.DataContext>
@@ -54,7 +54,7 @@
             Grid.RowSpan="3"
             Grid.Column="0" Grid.ColumnSpan="3"
             ItemSpacing="20"
-            IsCentered="True"
+            IsCentered="{Binding CurrentGroup.Group.IsSelectorCentered}"
             Orientation="Horizontal" 
             x:Name="loopingList"
             IsLoopingEnabled="False"
@@ -64,9 +64,11 @@
                 <DataTemplate>
                     <Grid>
                         <Image Source="{Binding Picture}" Stretch="Fill" Tap="Image_Tap"
+                               CacheMode="BitmapCache"
                                Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"
                                />
                         <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" Opacity="0.6"
+                               CacheMode="BitmapCache"
                                Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"
                                />
                         <!--<TextBlock  Width="400" Height="40" Text="{Binding Text}" Foreground="Red"></TextBlock>-->

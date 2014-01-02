@@ -79,13 +79,13 @@
             <!--<ProgressBar x:Name="MyProgressBarResult"  Grid.Row="2" Value="10"></ProgressBar>-->
 
             <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Visibility="Visible">
-                <Button x:Name="ButtonMenu" BorderBrush="Transparent" Width="100" Height="100" Padding="0" Tap="ButtonMenu_Tap_1">
+                <Button x:Name="ButtonMenu" BorderBrush="Transparent" BorderThickness="0" Width="100" Height="100" Padding="0" Tap="ButtonMenu_Tap_1">
                     <Image Source="/Assets/buttons/btn_menu.png"/>
                 </Button>
-                <Button x:Name="ButtonRedo" BorderBrush="Transparent" Width="100" Height="100" Padding="0" Tap="ButtonRedo_Tap_1">
+                <Button x:Name="ButtonRedo" BorderBrush="Transparent" BorderThickness="0" Width="100" Height="100" Padding="0" Tap="ButtonRedo_Tap_1">
                     <Image Source="/Assets/buttons/btn_refresh.png"/>
                 </Button>
-                <Button x:Name="ButtonNext"  BorderBrush="Transparent" Width="100" Height="100"  Padding="0" Tap="ButtonAhead_Tap_1"
+                <Button x:Name="ButtonNext"  BorderBrush="Transparent" BorderThickness="0" Width="100" Height="100"  Padding="0" Tap="ButtonAhead_Tap_1"
                         Visibility="{Binding Percentage, Converter={StaticResource percentageToVisibilityConverter}}">
                     <Image Source="/Assets/buttons/btn_avanti.png"/>
                 </Button>

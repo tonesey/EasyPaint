@@ -26,12 +26,17 @@ namespace EasyPaint.Model
             GridColumnSpan = 1;
 
             SelectorGridRow = 1;
+
+            IsSelectorCentered = true;
         }
 
         public override string ToString()
         {
             return Id;
         }
+
+
+        public bool IsSelectorCentered { get; set; }
 
         #region protagonist image
         public string ProtagonistImageName { get; set; }

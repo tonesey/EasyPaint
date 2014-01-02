@@ -16,16 +16,12 @@
     Loaded="PhoneApplicationPage_Loaded"
     shell:SystemTray.IsVisible="False">
 
-
     <phone:PhoneApplicationPage.Resources>
-
     </phone:PhoneApplicationPage.Resources>
-
 
     <UserControl.DataContext>
         <Binding Path="HomepageViewModel" Source="{StaticResource Locator}"/>
     </UserControl.DataContext>
-
 
     <Grid x:Name="LayoutRoot" >
         <Grid.ColumnDefinitions>
@@ -33,11 +29,6 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-
-
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="/EasyPaint;component/Assets/lres/bkg/homepage.jpg"/>
-        </Grid.Background>-->
 
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -49,6 +40,12 @@
 
         <Image x:Name="ImageBkg" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Row="0" 
                Width="1200" Height="720" Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" 
+               CacheMode="BitmapCache"
+               Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+        </Image>
+
+        <Image x:Name="ImageTitle" Margin="0,5,0,0" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" 
+               Source="/EasyPaint;component/Assets/lres/bkg/title1.png" 
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
 
@@ -57,7 +54,24 @@
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
 
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle1}" Height="Auto" UseLayoutRounding="False" Width="Auto" d:LayoutRounding="Auto" >
+        <Image x:Name="ImageSound" Margin="20,0,0,10" Grid.Column="0" Grid.Row="4" 
+               HorizontalAlignment="Left"
+               Tap="ImageSound_Tap"
+               Source="/EasyPaint;component/Assets/buttons/sound_on.png" 
+               Stretch="Uniform" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <CompositeTransform Rotation="-11.967"/>
+            </Image.RenderTransform>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Tap">
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ToggleSoundClicked" 
+                                                               Command="{Binding ToggleSoundCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" 
+                Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False"  d:LayoutRounding="Auto" ClickMode="Hover" >
             <Button.RenderTransform>
                 <CompositeTransform Rotation="2.284"/>
             </Button.RenderTransform>
@@ -68,12 +82,13 @@
             </Button.Content>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="StartGameClicked" Command="{Binding StartGameCommand, Mode=OneWay}"/>
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="StartGameClicked" 
+                                                               Command="{Binding StartGameCommand, Mode=OneWay}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Button>
 
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle1}" Height="Auto" UseLayoutRounding="False" Width="Auto" d:LayoutRounding="Auto" >
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" >
             <Button.RenderTransform>
                 <CompositeTransform Rotation="-2.646"/>
             </Button.RenderTransform>
@@ -84,12 +99,13 @@
             </Button.Content>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="StartCreditsClicked" Command="{Binding StartGameCommand, Mode=OneWay}"/>
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ShowCreditsClicked" 
+                                                               Command="{Binding ShowCreditsCommand, Mode=OneWay}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Button>
 
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonStyle1}" Height="Auto" UseLayoutRounding="False" Width="Auto" d:LayoutRounding="Auto" >
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="False" >
             <Button.RenderTransform>
                 <CompositeTransform Rotation="1.945"/>
             </Button.RenderTransform>
@@ -100,7 +116,8 @@
             </Button.Content>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="StartSettingsClicked" Command="{Binding StartGameCommand, Mode=OneWay}"/>
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ShowSettingsClicked" 
+                                                               Command="{Binding ShowSettingsCommand, Mode=OneWay}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Button>

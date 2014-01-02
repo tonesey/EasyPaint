@@ -23,8 +23,12 @@ using EasyPaint.Settings;
 
 namespace EasyPaint
 {
+    public delegate void MediaStateChangedHandler(MediaElementState state);
+
     public partial class App : Application
     {
+        public event MediaStateChangedHandler MediaStateChanged;
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -38,30 +42,16 @@ namespace EasyPaint
             get { return Application.Current as App; }
         }
 
-        //private static MainViewModel _viewModel;
-        //public static MainViewModel ViewModel
-        //{
-        //    get
-        //    {
-        //        // Delay creation of the view model until necessary
-        //        return _viewModel ?? (_viewModel = new MainViewModel());
-        //    }
-        //}
-
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
         public App()
         {
-
-           // var test = LocalizedResources.water;
-
-           // var _lineArtWb = BitmapFactory.New(400, 400).FromResource("/Assets/groups/3/lres/coccodrillo lineart.png");
-
+            // var test = LocalizedResources.water;
+            // var _lineArtWb = BitmapFactory.New(400, 400).FromResource("/Assets/groups/3/lres/coccodrillo lineart.png");
             // StreamResourceInfo streamInfo = App.GetResourceStream(new Uri("/Image;component/Images/123.png", UriKind.Relative));
 
-
-           // For content in external assemblies set the Build Action as "Resource".  
+            // For content in external assemblies set the Build Action as "Resource".  
             //You should then be able to use a Uri format like: "[assemblyname];component/[filename]" to access the resource stream.
             //StreamResourceInfo streamInfo = App.GetResourceStream(new Uri("EasyPaint;component/Assets/groups/3/lres/diavolo_colore.png", 
             //    UriKind.RelativeOrAbsolute));
@@ -95,15 +85,15 @@ namespace EasyPaint
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            
+
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-
             InitApp();
-
         }
 
         private void InitApp()
@@ -196,12 +186,6 @@ namespace EasyPaint
         #endregion
 
         #region audio
-
-        //public static SmoothStreamingMediaElement GlobalMediaElement
-        //{
-        //    get { return Current.Resources["GlobalMedia"] as SmoothStreamingMediaElement; }
-        //}
-
         public static MediaElement GlobalMediaElement
         {
             get { return Current.Resources["GlobalMedia"] as MediaElement; }
@@ -210,9 +194,7 @@ namespace EasyPaint
         public static bool BackgroundMusicAllowed()
         {
             //disabilitata temporaneamente musica
-              
             bool allowed = true;
-
             //you can check a stored property here and return false if you want to disable all bgm
             //if (!MediaPlayer.GameHasControl)
             //{
@@ -223,62 +205,44 @@ namespace EasyPaint
             //        allowed = false;
             //    }
             //}
-
             return allowed;
         }
 
-
-        public void SaveContentImageToIsoStore(Uri uri, string isoStoreFileName)
+        public void PauseBackgroundMusic()
         {
-            // var pngStream = Application.GetResourceStream(new Uri(contentPath, UriKind.RelativeOrAbsolute)).Stream;
+            GlobalMediaElement.Pause();
+        }
 
-            StreamResourceInfo streamInfo = App.GetResourceStream(uri);
-            if (streamInfo != null)
+        public void PlayBackgroundMusic()
+        {
+            if (GlobalMediaElement.CurrentState == MediaElementState.Paused)
             {
+                GlobalMediaElement.Play();
             }
-
-            var stream = Application.GetResourceStream(uri).Stream;
-            int counter;
-            byte[] buffer = new byte[1024];
-            using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
+            else
             {
-                using (IsolatedStorageFileStream isfs = new IsolatedStorageFileStream(isoStoreFileName, FileMode.Create, isf))
+                if (BackgroundMusicAllowed())
                 {
-                    counter = 0;
-                    while (0 < (counter = stream.Read(buffer, 0, buffer.Length)))
-                    {
-                        isfs.Write(buffer, 0, counter);
-                    }
-                    stream.Close();
+                    MediaPlayer.Stop(); //stop to clear any existing bg music
+
+                    GlobalMediaElement.Source = new Uri("Audio/mp3/HunterThemeLoop.mp3", UriKind.Relative);
+
+                    GlobalMediaElement.CurrentStateChanged -= GlobalMediaElement_CurrentStateChanged;
+                    GlobalMediaElement.CurrentStateChanged += GlobalMediaElement_CurrentStateChanged;
+                    GlobalMediaElement.MediaOpened -= MediaElement_MediaOpened;
+                    GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
+                    GlobalMediaElement.MediaFailed -= GlobalMediaElement_MediaFailed;
+                    GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
                 }
             }
         }
 
-        public void TryPlayBackgroundMusic()
+        void GlobalMediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
-            if (BackgroundMusicAllowed())
-            {
-                MediaPlayer.Stop(); //stop to clear any existing bg music
-
-                //SaveContentImageToIsoStore(new Uri("Audio/mp3/song.mp3", UriKind.RelativeOrAbsolute), "song.mp3");
-                ////GlobalMediaElement.SmoothStreamingSource = new Uri("isostore:/song.mp3", UriKind.Absolute);
-                ////GlobalMediaElement.SmoothStreamingSource = new Uri("appdata:/Audio/mp3/song.mp3", UriKind.Absolute);
-                ////GlobalMediaElement.SmoothStreamingSource = new Uri("http://tinyurl.com/Elephants-Dream"); ;
-                //GlobalMediaElement.SmoothStreamingErrorOccurred += GlobalMediaElement_SmoothStreamingErrorOccurred;
-                ////GlobalMediaElement.SetPlaybackRate(1);
-                //GlobalMediaElement.MediaOpened += MediaElement_MediaOpened; //wait until Media is ready before calling .Play()
-                //GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
-
-
-                GlobalMediaElement.Source = new Uri("Audio/mp3/HunterThemeLoop.mp3", UriKind.Relative);
-                GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
-                GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
+            if (MediaStateChanged != null) {
+                MediaStateChanged((sender as MediaElement).CurrentState);
             }
         }
-
-        //void GlobalMediaElement_SmoothStreamingErrorOccurred(object sender, SmoothStreamingErrorEventArgs e)
-        //{
-        //}
 
         void GlobalMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
         {

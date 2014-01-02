@@ -12,7 +12,7 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonSettingsText" xml:space="preserve">
           <source>settings</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Impostazioni</target>
+          <target state="translated">impostazioni</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartText" xml:space="preserve">
           <source>start game</source>

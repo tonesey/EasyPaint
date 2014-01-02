@@ -11,7 +11,7 @@
     <Application.Resources>
 
         <local:LocalizedStrings xmlns:local="clr-namespace:EasyPaint" x:Key="LocalizedStrings"/>
-        
+
         <Converters:OrientationConverter x:Key="orientationConverter" />
         <Converters:PercentageToColorConverter x:Key="percentageToColorConverter" />
         <Converters:PercentageToStringConverter x:Key="percentageToStringConverter" />
@@ -20,14 +20,10 @@
         <Converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         <Converters:LockedToOpacityConverter x:Key="lockedToOpacityConverter" />
         <!-- Backgorund Sound Manager -->
-        <!--<SSME:SmoothStreamingMediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />-->
         <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
         <!-- VM Locator -->
         <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:EasyPaint.ViewModel" />
-        <!--Storyboard animation for fading out a UI element-->
-        <!--<Storyboard x:Key="FadeOutAnimation">
-            <DoubleAnimation From="1" To="0" Duration="0:0:2" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever" AutoReverse="True" />
-        </Storyboard>-->
+        
         <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitivesLoopingList:LoopingListItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -40,36 +36,67 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <Style x:Key="ButtonTextBlockStyle1" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="40">
+            <Setter Property="FontSize" Value="30">
             </Setter>
             <Setter Property="Margin" Value="10,-10,0,0">
             </Setter>
-            <Setter Property="Foreground" Value="Black">
+            <Setter Property="Foreground" Value="Blue">
             </Setter>
             <Setter Property="VerticalAlignment" Value="Center">
             </Setter>
-            <Setter Property="FontFamily" Value="..\Fonts\CURLZ___.TTF#Curlz MT">
+            <!--<Setter Property="FontFamily" Value="..\Fonts\CURLZ___.TTF#Curlz MT">
+            </Setter>-->
+            <Setter Property="FontFamily" Value="..\Fonts\andyb.TTF#Andy">
             </Setter>
             <Setter Property="FontWeight" Value="ExtraBlack">
             </Setter>
             <Setter Property="FontStretch" Value="UltraExpanded">
             </Setter>
+            <Setter Property="Opacity" Value="0.8">
+            </Setter>
+            <Setter Property="Opacity" Value="0.8">
+            </Setter>
         </Style>
+
+        <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="ButtonBase">
+            <Grid Background="Transparent">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="MouseOver"/>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentContainer" Storyboard.TargetProperty="Foreground">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneButtonBasePressedForegroundBrush}" />
+                                </ObjectAnimationUsingKeyFrames>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Background">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}" />
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Border x:Name="ButtonBackground" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" Background="{TemplateBinding Background}" Margin="{StaticResource PhoneTouchTargetOverhang}" >
+                    <ContentControl x:Name="ContentContainer" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                </Border>
+            </Grid>
+        </ControlTemplate>
+        
         <Style x:Key="ButtonStyle1" TargetType="Button">
-            <Setter Property="Height" Value="90" />
-            <Setter Property="BorderThickness" Value="0"></Setter>
             <Setter Property="Width" Value="280" />
+            <Setter Property="Height" Value="80" />
+            <Setter Property="BorderThickness" Value="0"></Setter>
             <Setter Property="Padding" Value="10" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="Transparent" />
+            <!--<Setter Property="HorizontalContentAlignment" Value="Center" />-->
             <Setter Property="Background">
                 <Setter.Value>
-                    <!--<LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.5">
-                        <GradientStop Color="Brown" Offset="0.8" />
-                        <GradientStop Color ="Yellow" Offset="0.2" />
-                    </LinearGradientBrush>-->
-                    <ImageBrush ImageSource="/EasyPaint;component/Assets/buttons/pencil2.png" />
+                    <ImageBrush ImageSource="/EasyPaint;component/Assets/buttons/pencil2.png" Stretch="Fill" />
                 </Setter.Value>
+            </Setter>
+            <Setter Property="Template" Value="{StaticResource ButtonBaseControlTemplate1}">
             </Setter>
         </Style>
     </Application.Resources>

@@ -2,6 +2,7 @@
 <root>
   <ui mode="lres"/>
   <!--<unlocked_items value="canguro colore.png"></unlocked_items>-->
+  
   <!--
   <group id="0" key="group_Europe" imgname="0.png">
     <items>
@@ -17,7 +18,7 @@
 
   <group id="1" key="group_Africa" imgname="1.png">
     <protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="1" Grid.ColSpan="2"/>
-    <items SelectorGridRow="0">
+    <items SelectorGridRow="0" IsSelectorCentered="False">
       <item imgname="gazzella colore.png" key="item_gazzella"/>
       <item imgname="rinoceronte colore.png" key="item_rinoceronte"/>
       <item imgname="suricati colore.png" key="item_suricati"/>

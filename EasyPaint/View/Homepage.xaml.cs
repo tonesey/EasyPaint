@@ -32,7 +32,7 @@ namespace EasyPaint.View
             InitializeComponent();
             LoadSounds();
             RegisterMessages();
-            (Application.Current as App).TryPlayBackgroundMusic();
+            (Application.Current as App).PlayBackgroundMusic();
         }
 
         private void LoadSounds()
@@ -46,19 +46,26 @@ namespace EasyPaint.View
         private void RegisterMessages()
         {
             Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
+            Messenger.Default.Register<ToggleSoundMessage>(this, (action) => ReceiveMessage(action));
             //Messenger.Default.Register<RateAppMessage>(this, (action) => ReceiveMessage(action));
             // Messenger.Default.Register<PollCompletedMessage>(this, (action) => ReceiveMessage(action));
         }
 
         private object ReceiveMessage(BaseMessage action)
         {
-            FrameworkDispatcher.Update();
-            _soundEffect1.Play();
+            //FrameworkDispatcher.Update();
+            //_soundEffect1.Play();
 
             if (action is GoToPageMessage)
             {
                 GenericHelper.Navigate(NavigationService, Dispatcher, (action as GoToPageMessage).PageName);
                 return null;
+            }
+            else if (action is ToggleSoundMessage)
+            { 
+            
+            
+            
             }
 
             return null;
@@ -117,6 +124,11 @@ namespace EasyPaint.View
             {
                 e.Cancel = true;
             }
+        }
+
+        private void ImageSound_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+
         }
     }
 }

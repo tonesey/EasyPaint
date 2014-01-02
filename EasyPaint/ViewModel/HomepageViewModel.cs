@@ -3,6 +3,8 @@ using EasyPaint.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using System.Windows;
+using System.Windows.Media;
 
 namespace EasyPaint.ViewModel
 {
@@ -15,6 +17,24 @@ namespace EasyPaint.ViewModel
     public class HomePageViewModel : ViewModelBase
     {
         public RelayCommand StartGameCommand { get; private set; }
+        public RelayCommand ShowCreditsCommand { get; private set; }
+        public RelayCommand ShowSettingsCommand { get; private set; }
+        public RelayCommand ToggleSoundCommand { get; private set; }
+
+        private MediaElementState _MediaElementState = MediaElementState.Stopped;
+        public MediaElementState MediaElementState
+        {
+            get
+            {
+                return _MediaElementState;
+            }
+            private set {
+                if (value != _MediaElementState) {
+                    _MediaElementState = value;
+                    RaisePropertyChanged("MediaElementState");
+                }
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the HomepageViewModel class.
@@ -22,6 +42,37 @@ namespace EasyPaint.ViewModel
         public HomePageViewModel()
         {
             StartGameCommand = new RelayCommand(() => ExecStartGameCommand());
+            ShowCreditsCommand = new RelayCommand(() => ExecShowCreditsCommand());
+            ShowSettingsCommand = new RelayCommand(() => ExecShowSettingsCommand());
+            ToggleSoundCommand = new RelayCommand(() => ExecToggleSoundCommand());
+
+            App.Current.MediaStateChanged -= Current_MediaStateChanged;
+            App.Current.MediaStateChanged += Current_MediaStateChanged;
+        }
+
+        void Current_MediaStateChanged(System.Windows.Media.MediaElementState state)
+        {
+            MediaElementState = state;
+          
+        }
+
+        private object ExecToggleSoundCommand()
+        {
+            var msg = new ToggleSoundMessage();
+            Messenger.Default.Send<ToggleSoundMessage>(msg);
+            return null;
+        }
+
+        private object ExecShowCreditsCommand()
+        {
+            MessageBox.Show("WIP");
+            return null;
+        }
+
+        private object ExecShowSettingsCommand()
+        {
+            MessageBox.Show("WIP");
+            return null;
         }
 
         private object ExecStartGameCommand()

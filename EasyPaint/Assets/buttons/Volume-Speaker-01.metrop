@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IconProject Version="2.0" Name="Volume-Speaker-01">
+  <Icon Name="Volume-Speaker-01" HasCharacterMap="false" Data="F1M-709.019,901.87C-709.019,898.009,-711.559,896.728,-714.667,899.014L-732.853,912.45C-735.958,914.738 -738.498,916.155 -738.498,915.578 -738.498,915.018 -741.658,914.549 -745.518,914.549L-751.135,914.549C-754.993,914.549,-758.154,917.708,-758.154,921.57L-758.154,937.01C-758.154,940.868,-754.993,942.627,-751.135,942.627L-745.518,942.627C-741.658,942.627 -738.498,943.155 -738.498,942.952 -738.498,942.745 -735.958,944.799 -732.853,947.097L-714.667,960.695C-711.559,962.983,-709.019,961.886,-709.019,958.021L-709.019,901.87z" IsDirty="false" GroupName="Application" ExportCommand="MetroGraphicsPackage.IconCommand">
+    <Settings MainWidth="128" MainHeight="128" FlipX="1" FlipY="1" CustomSize="128" IconShape="None" BackgroundBrush="#FFFFFFFF" ContentWidth="62" ContentHeight="62" Angle="351" SizeIndex="5" Padding="33" MaximumPadding="39" IconBrush="#FF49B829" FontFamily="Webdings" Character="&gt;" FlipCommand="MetroGraphicsPackage.IconCommand" IsBackgroundVisible="true" />
+  </Icon>
+</IconProject>

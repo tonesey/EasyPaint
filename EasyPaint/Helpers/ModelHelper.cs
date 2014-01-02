@@ -96,6 +96,7 @@ namespace EasyPaint.Helpers
                 if (itemsElement != null)
                 {
                     g.SelectorGridRow = itemsElement.Attribute("SelectorGridRow") != null ? int.Parse(itemsElement.Attribute("SelectorGridRow").Value) : 1;
+                    g.IsSelectorCentered = itemsElement.Attribute("IsSelectorCentered") != null ? bool.Parse(itemsElement.Attribute("IsSelectorCentered").Value) : true;
 
                     foreach (var itemNode in itemsElement.Elements("item"))
                     {
