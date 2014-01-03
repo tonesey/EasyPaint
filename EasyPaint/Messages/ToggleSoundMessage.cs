@@ -13,6 +13,6 @@ namespace EasyPaint.Messages
 {
     public class ToggleSoundMessage : BaseMessage
     {
-        //public string PageName { get; set; }
+        public string PageName { get; set; }
     }
 }

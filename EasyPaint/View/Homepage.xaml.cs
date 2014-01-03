@@ -62,10 +62,8 @@ namespace EasyPaint.View
                 return null;
             }
             else if (action is ToggleSoundMessage)
-            { 
-            
-            
-            
+            {
+                App.Current.ToggleBackgroundMusic();
             }
 
             return null;

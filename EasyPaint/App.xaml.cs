@@ -85,7 +85,7 @@ namespace EasyPaint
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
-            
+
 
         }
 
@@ -208,6 +208,20 @@ namespace EasyPaint
             return allowed;
         }
 
+
+        public void ToggleBackgroundMusic()
+        {
+            if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
+            {
+                PlayBackgroundMusic();
+            }
+            else
+            {
+                PauseBackgroundMusic();
+            }
+        }
+
+
         public void PauseBackgroundMusic()
         {
             GlobalMediaElement.Pause();
@@ -239,7 +253,8 @@ namespace EasyPaint
 
         void GlobalMediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
-            if (MediaStateChanged != null) {
+            if (MediaStateChanged != null)
+            {
                 MediaStateChanged((sender as MediaElement).CurrentState);
             }
         }
