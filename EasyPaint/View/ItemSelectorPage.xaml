@@ -20,7 +20,7 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="4"/>
+        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="1"/>
     </phone:PhoneApplicationPage.Resources>
 
     <UserControl.DataContext>
@@ -51,7 +51,7 @@
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
             Grid.Row="{Binding CurrentGroup.Group.SelectorGridRow}" 
-            Grid.RowSpan="3"
+            Grid.RowSpan="4"
             Grid.Column="0" Grid.ColumnSpan="3"
             ItemSpacing="20"
             IsCentered="{Binding CurrentGroup.Group.IsSelectorCentered}"

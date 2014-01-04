@@ -9,6 +9,7 @@ using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -165,31 +166,100 @@ namespace EasyPaint.Helpers
             return reducedColors;
         }
 
-        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore)
+
+        public static Color HexStringToColor(string hexColor)
         {
-            int count = 0;
+            string hc = ExtractHexDigits(hexColor);
+            if (hc.Length != 6)
+            {
+                // you can choose whether to throw an exception
+                throw new ArgumentException("hexColor is not exactly 6 digits.");
+            }
+            string r = hc.Substring(0, 2);
+            string g = hc.Substring(2, 2);
+            string b = hc.Substring(4, 2);
+            Color color = Colors.Black;
+            try
+            {
+                int ri
+                   = Int32.Parse(r, System.Globalization.NumberStyles.HexNumber);
+                int gi
+                   = Int32.Parse(g, System.Globalization.NumberStyles.HexNumber);
+                int bi
+                   = Int32.Parse(b, System.Globalization.NumberStyles.HexNumber);
+                color = Color.FromArgb((byte)255, (byte)ri, (byte)gi, (byte)bi);
+            }
+            catch
+            {
+                // you can choose whether to throw an exception
+                throw new ArgumentException("Conversion failed.");
+            }
+            return color;
+        }
+        /// <summary>
+        /// Extract only the hex digits from a string.
+        /// </summary>
+        public static string ExtractHexDigits(string input)
+        {
+            // remove any characters that are not digits (like #)
+            Regex isHexDigit
+               = new Regex("[abcdefABCDEF\\d]+", RegexOptions.Compiled);
+            string newnum = "";
+            foreach (char c in input)
+            {
+                if (isHexDigit.IsMatch(c.ToString()))
+                    newnum += c.ToString();
+            }
+            return newnum;
+        }
+
+        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore, out int transparentPixelsCount)
+        {
+            int countDiff = 0;
+            //  int countEq = 0;
+            transparentPixelsCount = 0;
             for (int i = 0; i < bmp1.Pixels.Count(); i++)
             {
+                var bytesbmp1 = BitConverter.GetBytes(bmp1.Pixels[i]);
+                var bytesbmp2 = BitConverter.GetBytes(bmp2.Pixels[i]);
+
+                if ((byte)bytesbmp1[3] == 0 || (byte)bytesbmp2[3] == 0)
+                {
+                    transparentPixelsCount++;
+                    continue;
+                }
+
                 if (bmp1.Pixels[i] != bmp2.Pixels[i])
                 {
-                    byte a = (byte)bmp2.Pixels[3];
-                    byte r = (byte)bmp2.Pixels[2];
-                    byte g = (byte)bmp2.Pixels[1];
-                    byte b = (byte)bmp2.Pixels[0];
+                    byte a = (byte)bytesbmp2[3];
+                    byte r = (byte)bytesbmp2[2];
+                    byte g = (byte)bytesbmp2[1];
+                    byte b = (byte)bytesbmp2[0];
                     Color c = Color.FromArgb(a, r, g, b);
                     if (colorsToIgnore.FirstOrDefault(c1 => c1.MainColor.Equals(c)) == null) //il colore non è fra quelli da ignorare ed è diverso dall'immagine originale
                     {
-                        count++;
+                        countDiff++;
                     }
+                    //else
+                    //{
+                    //    countEq++;
+                    //}
+                }
+                else
+                {
+                    //countEq++;
                 }
             }
-            return count;
+            return countDiff;
         }
 
         internal static int GetAccuracyPercentage(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore)
         {
-            int diff = GetNumberOfDifferentPixels(bmp1, bmp2, colorsToIgnore);
-            int totPixels = bmp1.Pixels.Count();
+
+            int transparentPixelsCount = 0;
+            int diff = GetNumberOfDifferentPixels(bmp1, bmp2, colorsToIgnore, out transparentPixelsCount);
+
+            int totPixels = bmp1.Pixels.Count() - transparentPixelsCount;
             int percentage = 100 - ((diff * 100) / totPixels);
             return percentage;
         }
@@ -273,7 +343,7 @@ namespace EasyPaint.Helpers
                         eiImage.SetPixel(x, y,
                         (byte)((pixel >> 16) & 0xFF),
                         (byte)((pixel >> 8) & 0xFF),
-                        (byte)(pixel & 0xFF), 
+                        (byte)(pixel & 0xFF),
                         (byte)((pixel >> 24) & 0xFF)
                         );
                     }
@@ -291,7 +361,7 @@ namespace EasyPaint.Helpers
                 StreamReader srPNG = new StreamReader(streamPNG);
                 byte[] baBinaryData = new Byte[streamPNG.Length];
                 long bytesRead = streamPNG.Read(baBinaryData, 0, (int)streamPNG.Length);
-                
+
                 using (IsolatedStorageFileStream isfStream = new IsolatedStorageFileStream("temp.png", FileMode.Create, IsolatedStorageFile.GetUserStoreForApplication()))
                 {
                     isfStream.Write(baBinaryData, 0, baBinaryData.Length);

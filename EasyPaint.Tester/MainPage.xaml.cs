@@ -28,20 +28,20 @@ namespace EasyPaint.Tester
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
 
-            var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "clamidosauro colori.png" });
-            //var res = string.Format("Assets/3/{0}", new string[] { "diavolo_colore.png" });
+           // var res = string.Format("Assets/{0}", new string[] { "gazzella colore.png" });
+           // var res = string.Format("Assets/{0}", new string[] { "diavolo_colore.png" });
 
-            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Cobra.png" });
-            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Elefante.png" });
-            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "scimmietta.png" });
-            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Tigre.png" });
-            //var res = string.Format("Assets/3/reduced_10/{0}", new string[] { "Yak.png" });
+            var res = string.Format("Assets/{0}", new string[] { "Cobra.png" });
+            //var res = string.Format("Assets/{0}", new string[] { "Elefante.png" });
+            //var res = string.Format("Assets/{0}", new string[] { "scimmietta.png" });
+            //var res = string.Format("Assets/{0}", new string[] { "Tigre.png" });
+            //var res = string.Format("Assets/{0}", new string[] { "Yak.png" });
             var _reducedColorsPicture = BitmapFactory.New(400, 400).FromResource(res);
 
             ImageTest.Source = _reducedColorsPicture;
 
             //    List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).ToList();
-            List<MyColor> imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true    );
+            List<MyColor> imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true );
 
             //imageColors.Sort(delegate(Color left, Color right)
             //{
@@ -84,6 +84,7 @@ namespace EasyPaint.Tester
 
             List<MyColor> discardedColors = new List<MyColor>();
             List<MyColor> reducedColor = ReduceColors(imageColors, 4, out discardedColors);
+            //List<MyColor> reducedColor = imageColors.Take(4).ToList();
             //colori ridotti
             count = 1;
             foreach (var color in reducedColor)
@@ -123,7 +124,67 @@ namespace EasyPaint.Tester
             //}
         }
 
-        private List<MyColor> ReduceColors(List<MyColor> imageColors, int maxColors, out List<MyColor> discardedColors)
+        //private List<MyColor> ReduceColors(List<MyColor> imageColors, int maxColors, out List<MyColor> discardedColors)
+        //{
+        //    List<MyColor> colors = new List<MyColor>(imageColors);
+        //    discardedColors = new List<MyColor>();
+
+        //    List<MyColor> reducedColors = new List<MyColor>();
+        //    foreach (var item in colors)
+        //    {
+        //        reducedColors.Add(item);
+        //    }
+
+        //    int step = 1;
+        //    do
+        //    {
+        //        double minDiff = Double.MaxValue;
+        //       // Debug.WriteLine(">>>> step " + step + " - threshold = " + threshold);
+        //        for (int i = 0; i < reducedColors.Count - 1; i++)
+        //        {
+        //            int indexToRemove = -1;
+        //            var col1 = reducedColors.ElementAt(i);
+        //            Debug.WriteLine("start check with : " + col1);
+
+        //            for (int j = i; j < reducedColors.Count - 1; j++)
+        //            {
+        //                var nextColIndex = j + 1;
+        //                var col2 = reducedColors.ElementAt(nextColIndex);
+
+        //                //tutti KO, viene scartato un colore significativo!!!!!!!!!!!
+        //                //var colorDiff = Math.Abs(col1.GrayColor - col2.GrayColor) * 100.0 / 256.0;
+        //                //var colorDiff = Math.Abs(col1.Brightness - col2.Brightness) * 100.0 / 256.0;
+        //                //var colorDiff = MyColor.CompareColors(col1.MainColor, col2.MainColor);
+
+        //                //OK!!!!!!!!!!!!!
+        //                var a = new Rgb { R = col1.MainColor.R, G = col1.MainColor.G, B = col1.MainColor.B };
+        //                var b = new Rgb { R = col2.MainColor.R, G = col2.MainColor.G, B = col2.MainColor.B };
+        //                var colorDiff = a.Compare(b, new Cie1976Comparison());
+
+
+        //                Debug.WriteLine(j + ": difference between " + col1 + " and " + col2 + " = " + colorDiff);
+        //                if (colorDiff < minDiff)
+        //                {
+        //                    minDiff = colorDiff;
+        //                    indexToRemove = nextColIndex;
+        //                }
+        //            }
+        //            if (indexToRemove != -1)
+        //            {
+        //                var colorToRemove = reducedColors.ElementAt(indexToRemove);
+        //                Debug.WriteLine("color to remove: " + colorToRemove);
+        //                discardedColors.Add(new MyColor(colorToRemove.MainColor));
+        //                reducedColors.RemoveAt(indexToRemove);
+        //            }
+        //        }
+        //       // threshold += 1;
+        //        step++;
+        //    } while (reducedColors.Count > maxColors);
+
+        //    return reducedColors;
+        //}
+
+        public static List<MyColor> ReduceColors(List<MyColor> imageColors, int maxColors, out List<MyColor> discardedColors)
         {
             List<MyColor> colors = new List<MyColor>(imageColors);
             discardedColors = new List<MyColor>();
@@ -138,7 +199,7 @@ namespace EasyPaint.Tester
             do
             {
                 double minDiff = Double.MaxValue;
-               // Debug.WriteLine(">>>> step " + step + " - threshold = " + threshold);
+                // Debug.WriteLine(">>>> step " + step + " - threshold = " + threshold);
                 for (int i = 0; i < reducedColors.Count - 1; i++)
                 {
                     int indexToRemove = -1;
@@ -160,7 +221,6 @@ namespace EasyPaint.Tester
                         var b = new Rgb { R = col2.MainColor.R, G = col2.MainColor.G, B = col2.MainColor.B };
                         var colorDiff = a.Compare(b, new Cie1976Comparison());
 
-
                         Debug.WriteLine(j + ": difference between " + col1 + " and " + col2 + " = " + colorDiff);
                         if (colorDiff < minDiff)
                         {
@@ -170,18 +230,22 @@ namespace EasyPaint.Tester
                     }
                     if (indexToRemove != -1)
                     {
-                        var colorToRemove = reducedColors.ElementAt(indexToRemove);
-                        Debug.WriteLine("color to remove: " + colorToRemove);
-                        discardedColors.Add(new MyColor(colorToRemove.MainColor));
-                        reducedColors.RemoveAt(indexToRemove);
+                        if (reducedColors.Count > maxColors)
+                        {
+                            var colorToRemove = reducedColors.ElementAt(indexToRemove);
+                            Debug.WriteLine("color to remove: " + colorToRemove);
+                            discardedColors.Add(new MyColor(colorToRemove.MainColor));
+                            reducedColors.RemoveAt(indexToRemove);
+                        }
                     }
                 }
-               // threshold += 1;
+                // threshold += 1;
                 step++;
             } while (reducedColors.Count > maxColors);
 
             return reducedColors;
         }
+
 
 
         private List<MyColor> ReduceColorsOrderByBrightness(List<Color> imageColors, int maxColors)

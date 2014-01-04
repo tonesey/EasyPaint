@@ -1,6 +1,7 @@
 ﻿using EasyPaint.Model;
 using EasyPaint.Settings;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -102,5 +103,7 @@ namespace EasyPaint.ViewModel
                 _item.RecordScore = value; // new record!
             }
         }
+
+        public List<Color> PaletteColors { get { return _item.PaletteColors ; } }
     }
 }

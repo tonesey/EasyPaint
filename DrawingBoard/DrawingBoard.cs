@@ -47,13 +47,10 @@ namespace SimzzDev
             InkMode = PenMode.Pen;
             MainColor = Colors.Black;
             OutlineColor = Colors.Black;
-            BrushWidth = 2;
-            BrushHeight = 2;
-
+            BrushWidth = 6;
+            BrushHeight = 6;
             //SetBoundary();
         }
-
-      
 
         private void AssignHandlers()
         {

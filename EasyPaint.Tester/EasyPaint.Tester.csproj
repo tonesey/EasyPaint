@@ -153,21 +153,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\3\reduced_10\canguro colore.png" />
-    <Resource Include="Assets\3\reduced_10\clamidosauro colori.png" />
-    <Resource Include="Assets\3\reduced_10\coccodrillo colore.png" />
-    <Resource Include="Assets\3\reduced_10\diavolo_colore.png" />
-    <Resource Include="Assets\3\reduced_10\koala colore.png" />
-    <Resource Include="Assets\3\reduced_10\Cobra.png" />
-    <Resource Include="Assets\3\reduced_10\Elefante.png" />
-    <Resource Include="Assets\3\reduced_10\scimmietta.png" />
-    <Resource Include="Assets\3\reduced_10\Tigre.png" />
-    <Resource Include="Assets\3\reduced_10\Yak.png" />
+    <Resource Include="Assets\canguro colore.png" />
+    <Resource Include="Assets\clamidosauro colori.png" />
+    <Resource Include="Assets\coccodrillo colore.png" />
+    <Resource Include="Assets\diavolo_colore.png" />
+    <Resource Include="Assets\koala colore.png" />
+    <Resource Include="Assets\Cobra.png" />
+    <Resource Include="Assets\Elefante.png" />
+    <Resource Include="Assets\scimmietta.png" />
+    <Resource Include="Assets\Tigre.png" />
+    <Resource Include="Assets\Yak.png" />
+    <Resource Include="Assets\gazzella colore.png" />
+    <Resource Include="Assets\suricati colore.png" />
+    <Resource Include="Assets\rinoceronte colore.png" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\3\diavolo_colore.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -191,6 +193,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WP8">
+      <HintPath>..\..\Wp8Shared\packages\MvvmLightLibs.4.2.30.0\lib\wp8\GalaSoft.MvvmLight.Extras.WP8.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WP8">
+      <HintPath>..\..\Wp8Shared\packages\MvvmLightLibs.4.2.30.0\lib\wp8\GalaSoft.MvvmLight.WP8.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Wp8Shared\packages\MvvmLightLibs.4.2.30.0\lib\wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Wp8Shared\packages\MvvmLightLibs.4.2.30.0\lib\wp8\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="WriteableBitmapExWinPhone">
       <HintPath>..\..\Wp8Shared\packages\WriteableBitmapEx.1.0.9.0\lib\WindowsPhone8\WriteableBitmapExWinPhone.dll</HintPath>
     </Reference>

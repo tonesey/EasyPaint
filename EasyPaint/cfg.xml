@@ -19,31 +19,31 @@
   <group id="1" key="group_Africa" imgname="1.png">
     <protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="1" Grid.ColSpan="2"/>
     <items SelectorGridRow="0" IsSelectorCentered="False">
-      <item imgname="gazzella colore.png" key="item_gazzella"/>
-      <item imgname="rinoceronte colore.png" key="item_rinoceronte"/>
-      <item imgname="suricati colore.png" key="item_suricati"/>
+      <item imgname="gazzella colore.png" key="item_gazzella" colors="#C69C6D,#5E3815,#FEF467,#979797"/>
+      <item imgname="rinoceronte colore.png" key="item_rinoceronte" colors="#C7B29A,#736357"/>
+      <item imgname="suricati colore.png" key="item_suricati" colors="#CE8430,#CE8430,#FFA846"/>
     </items>
   </group>
 
   <group id="3" key="group_Oceania" imgname="3.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1">
-      <item imgname="clamidosauro colore.png" key="item_clamidosauro"/>
-      <item imgname="canguro colore.png" key="item_canguro"/>
-      <item imgname="coccodrillo colore.png" key="item_coccodrillo"/>
-      <item imgname="diavolo colore.png" key="item_diavolo"/>
-      <item imgname="koala colore.png" key="item_koala"/>
+      <item imgname="clamidosauro colore.png" key="item_clamidosauro" colors="#17AB4F,#8CC449,#DB6F9E"/>
+      <item imgname="canguro colore.png" key="item_canguro" colors="#9E4E18,#40230F,#B5DB03"/>
+      <item imgname="coccodrillo colore.png" key="item_coccodrillo" colors="#37332A,#565046,#E4D9A9"/>
+      <item imgname="diavolo colore.png" key="item_diavolo" colors="#22262E,#A3CE3C,#A3CE3C"/>
+      <item imgname="koala colore.png" key="item_koala" colors="#A3CE3C,#A3CE3C,#679366"/>
     </items>
   </group>
   
   <group id="4" key="group_Asia" imgname="4.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1">
-      <item imgname="Cobra colore.png" key="item_Cobra"/>
-      <item imgname="Elefante colore.png" key="item_Elefante"/>
-      <item imgname="scimmietta colore.png" key="item_scimmietta"/>
-      <item imgname="Tigre colore.png" key="item_Tigre"/>
-      <item imgname="Yak colore.png" key="item_Yak"/>
+      <item imgname="Cobra colore.png" key="item_Cobra" colors="#EBC577,#EBC577,#F4989E"/>
+      <item imgname="Elefante colore.png" key="item_Elefante" colors="#A7A7A7,#A7A7A7,#A7A7A7"/>
+      <item imgname="scimmietta colore.png" key="item_scimmietta" colors="#FEF474,#FEF474,#726357"/>
+      <item imgname="Tigre colore.png" key="item_Tigre" colors="#F29531,#E6EBF7"/>
+      <item imgname="Yak colore.png" key="item_Yak" colors="#1E2848,#1E2848"/>
     </items>
   </group>
 

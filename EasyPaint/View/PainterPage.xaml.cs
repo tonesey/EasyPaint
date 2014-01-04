@@ -57,8 +57,10 @@ namespace EasyPaint.View
 
         private const int MAX_PALETTE_COLORS = 4;
 
-        List<MyColor> _paletteColors = new List<MyColor>();
-        List<MyColor> _ignoredColors = new List<MyColor>();
+        //List<MyColor> _paletteColors = new List<MyColor>();
+        //List<MyColor> _ignoredColors = new List<MyColor>();
+
+        List<Color> _paletteColors = new List<Color>();
 
         private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
 
@@ -308,7 +310,9 @@ namespace EasyPaint.View
             if (selectedImage != null)
             {
                 ImageMain.Source = new BitmapImage(selectedImage.ImageSource);
+                
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
+                //_reducedColorsPicture = new WriteableBitmap(ImageMain, null);
                 _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
                 ImageOverlay.Source = _lineArtPicture;
                 InitPalette();
@@ -318,10 +322,12 @@ namespace EasyPaint.View
 
         private void InitPalette()
         {
-            var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true);
-            _paletteColors = ImagesHelper.ReduceColors(imageColors, MAX_PALETTE_COLORS, out _ignoredColors);
-            //_paletteColors = imageColors.Take(MAX_PALETTE_COLORS).ToList();
-            //_ignoredColors = imageColors.Skip(MAX_PALETTE_COLORS).ToList();
+
+
+            //var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true);
+            //_paletteColors = ImagesHelper.ReduceColors(imageColors, MAX_PALETTE_COLORS, out _ignoredColors);
+
+            _paletteColors = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem.PaletteColors;
 
             int count = 1;
             foreach (var color in _paletteColors)
@@ -331,7 +337,8 @@ namespace EasyPaint.View
                 var childEl = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(parentEl, "pc" + count + "_path");
                 if (childEl != null)
                 {
-                    childEl.Fill = new SolidColorBrush(color.MainColor);
+                    //childEl.Fill = new SolidColorBrush(color.MainColor);
+                    childEl.Fill = new SolidColorBrush(color);
                 }
                 count++;
             }
@@ -379,7 +386,7 @@ namespace EasyPaint.View
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
 
             Viewbox senderViewBox = (sender as Viewbox);
-            Color selectedColor = ((MyColor)senderViewBox.Tag).MainColor;
+            Color selectedColor = (Color)senderViewBox.Tag;
             _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
         }
         #endregion
@@ -445,9 +452,11 @@ namespace EasyPaint.View
                                   _lineArtPicture,
                                   new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
+
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
-                                                                        _ignoredColors);
+                                                                        new List<MyColor>());
+
             //#if DEBUG
             //            accuracyPercentage = 80;
             //#endif

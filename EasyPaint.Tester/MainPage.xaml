@@ -23,7 +23,7 @@
             <ColumnDefinition Width="6*" />
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="ImageTest"  Source="Assets/3/reduced_10/koala colore.png" VerticalAlignment="Top" Stretch="Fill" Grid.Column="0"  />
+        <Image x:Name="ImageTest"  Source="Assets/gazzella colore.png" VerticalAlignment="Top" Stretch="Fill" Grid.Column="0"  />
 
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>

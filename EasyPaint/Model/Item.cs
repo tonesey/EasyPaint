@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
 
 namespace EasyPaint.Model
 {
@@ -11,6 +12,8 @@ namespace EasyPaint.Model
 
         public string Key { get; set; }
         public string ImgFilename { get; set; }
+        public List<Color> PaletteColors { get; set; }
+
 
         public int Score { get; set; }
         public int RecordScore { get; set; }
@@ -26,6 +29,7 @@ namespace EasyPaint.Model
             Key = string.Empty;
             ImgFilename = string.Empty;
             RecordScore = 0;
+            PaletteColors = new List<Color>();
         }
 
         public override string ToString()

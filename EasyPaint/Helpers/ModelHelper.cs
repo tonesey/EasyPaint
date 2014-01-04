@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Windows.Media;
 using System.Xml.Linq;
 using Wp8Shared.Helpers;
 
@@ -101,6 +102,14 @@ namespace EasyPaint.Helpers
                     foreach (var itemNode in itemsElement.Elements("item"))
                     {
                         Item currentItem = new Item();
+
+                        if (itemNode.Attribute("colors") != null) {
+                            string[] colArrary = itemNode.Attribute("colors").Value.Split(',');
+                            foreach (var item in colArrary)
+                            {
+                                currentItem.PaletteColors.Add(ImagesHelper.HexStringToColor(item));
+                            }
+                        }
 
                         currentItem.ImgFilename = itemNode.Attribute("imgname").Value;
                         var userScoreItem = _userScore.Keys.FirstOrDefault(fn => fn == currentItem.ImgFilename);

@@ -208,7 +208,6 @@ namespace EasyPaint
             return allowed;
         }
 
-
         public void ToggleBackgroundMusic()
         {
             if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
@@ -220,7 +219,6 @@ namespace EasyPaint
                 PauseBackgroundMusic();
             }
         }
-
 
         public void PauseBackgroundMusic()
         {
