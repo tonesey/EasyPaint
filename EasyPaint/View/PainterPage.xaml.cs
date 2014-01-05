@@ -52,6 +52,7 @@ namespace EasyPaint.View
         Storyboard _storyboardSubjectImageFading;
         Storyboard _storyboardCountDown;
         Storyboard _storyboardShowPalette;
+        Storyboard _storyboardColorSelected;
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
 
@@ -142,6 +143,7 @@ namespace EasyPaint.View
             _storyboardSubjectImageFading = (Storyboard)Resources["StoryboardSubjectFadeout"];
             _storyboardCountDown = (Storyboard)Resources["StoryboardCountdown"];
             _storyboardShowPalette = (Storyboard)Resources["StoryboardShowPalette"];
+            _storyboardColorSelected = (Storyboard)Resources["TappedColorSb"];
             //Storyboard.SetTarget(_storyboardImageFading.Children.ElementAt(0) as DoubleAnimation, ImageMain);
             //Storyboard.SetTarget(_storyboardCountDown.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
             //Storyboard.SetTarget(_storyboardShowPalette.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
@@ -194,32 +196,6 @@ namespace EasyPaint.View
 
             _storyboardCountDown.Begin();
 
-            //_storyboardCountDown.Completed += (sender, ev) =>
-            //{
-            //    if (count == 0)
-            //    {
-            //        TextBlockCountDownBig.Text = "go!!!";
-            //        SoundHelper.PlaySound(_sounds[count]);
-            //        _storyboardSubjectImageFading.Begin();
-            //        _storyboardSubjectImageFading.Completed += (sender1, ev1) =>
-            //        {
-            //            TextBlockCountDownBig.Visibility = Visibility.Collapsed;
-            //            _storyboardCountDown.Stop();
-            //            StartTimer();
-            //        };
-            //    }
-            //    else
-            //    {
-            //        if (count == 1)
-            //        {
-            //            _storyboardShowPalette.Begin();
-            //        }
-            //        TextBlockCountDownBig.Text = count.ToString();
-            //        SoundHelper.PlaySound(_sounds[count]);
-            //        _storyboardCountDown.Begin();
-            //        count--;
-            //    }
-            //};
         }
 
         void _storyboardCountDown_Completed(object sender, EventArgs e)
@@ -374,19 +350,20 @@ namespace EasyPaint.View
         }
 
         #region palette
-        //private void pc1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
-        //    Color selectedColor = ((sender as Button).Background as SolidColorBrush).Color;
-        //    _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
-        //}
+       
 
         private void pc1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
+         
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
 
             Viewbox senderViewBox = (sender as Viewbox);
             Color selectedColor = (Color)senderViewBox.Tag;
+
+            _storyboardColorSelected.Stop();
+            _storyboardColorSelected.SetValue(Storyboard.TargetNameProperty, senderViewBox.Name);
+            _storyboardColorSelected.Begin();
+
             _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
         }
         #endregion
@@ -452,6 +429,8 @@ namespace EasyPaint.View
                                   _lineArtPicture,
                                   new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
+
+            int tPixels = userDrawnPicture.Pixels.Where(p => p != 0).Count();
 
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,

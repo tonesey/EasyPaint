@@ -218,12 +218,37 @@ namespace EasyPaint.Helpers
             int countDiff = 0;
             //  int countEq = 0;
             transparentPixelsCount = 0;
+
+            int x = -1;
+            int y = 0;
+
             for (int i = 0; i < bmp1.Pixels.Count(); i++)
             {
                 var bytesbmp1 = BitConverter.GetBytes(bmp1.Pixels[i]);
                 var bytesbmp2 = BitConverter.GetBytes(bmp2.Pixels[i]);
+               
+                //if ((byte)bytesbmp1[3] != 255 || (byte)bytesbmp2[3] != 255)
+                //{
+                //    transparentPixelsCount++;
+                //    continue;
+                //}
 
-                if ((byte)bytesbmp1[3] == 0 || (byte)bytesbmp2[3] == 0)
+                //x++;
+                //if (x > 400)
+                //{
+                //    x = 0;
+                //    y++;
+                //}
+
+                //se l'utente ha colorato sopra una zona trasparente dell'immagine originale la considero buona
+                if ((byte)bytesbmp1[3] != 255 && (byte)bytesbmp2[3] == 255)
+                {
+                   // bmp1.SetPixel(x, y, Colors.Red);
+                    continue;
+                }
+               
+                //se entrambi i pixel sono trasparenti li salto
+                if ((byte)bytesbmp1[3] != 255 && (byte)bytesbmp2[3] != 255)
                 {
                     transparentPixelsCount++;
                     continue;
@@ -250,6 +275,7 @@ namespace EasyPaint.Helpers
                     //countEq++;
                 }
             }
+            bmp1.Invalidate();
             return countDiff;
         }
 
