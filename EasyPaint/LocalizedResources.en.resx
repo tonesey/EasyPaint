@@ -117,4 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-<data name="ButtonCreditsText" xml:space="preserve"><value>credits</value></data><data name="ButtonSettingsText" xml:space="preserve"><value>settings</value></data><data name="ButtonStartText" xml:space="preserve"><value>start game</value></data><data name="group_Africa" xml:space="preserve"><value>Africa</value></data><data name="group_America" xml:space="preserve"><value>America</value></data><data name="group_Europe" xml:space="preserve"><value>Europe</value></data><data name="group_Oceania" xml:space="preserve"><value>Oceania</value></data><data name="item_canguro" xml:space="preserve"><value>kangaroo</value></data><data name="item_coccodrillo" xml:space="preserve"><value>crocodile</value></data><data name="item_diavolo" xml:space="preserve"><value>Tasmanian devil</value></data><data name="item_koala" xml:space="preserve"><value>koala</value></data><data name="item_lion" xml:space="preserve"><value>lion</value></data><data name="item_tiger" xml:space="preserve"><value>tiger</value></data><data name="item_zebra" xml:space="preserve"><value>zebra</value></data><data name="message_level_failed" xml:space="preserve"><value>level failed!</value></data><data name="message_level_completed" xml:space="preserve"><value>level completed!</value></data><data name="water" xml:space="preserve"><value>water</value></data></root>
+  <data name="ButtonCreditsText" xml:space="preserve">
+    <value>credits</value>
+  </data>
+  <data name="ButtonSettingsText" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="ButtonStartText" xml:space="preserve">
+    <value>start game</value>
+  </data>
+  <data name="group_Africa" xml:space="preserve">
+    <value>Africa</value>
+  </data>
+  <data name="group_America" xml:space="preserve">
+    <value>America</value>
+  </data>
+  <data name="group_Europe" xml:space="preserve">
+    <value>Europe</value>
+  </data>
+  <data name="group_Oceania" xml:space="preserve">
+    <value>Oceania</value>
+  </data>
+  <data name="item_canguro" xml:space="preserve">
+    <value>kangaroo</value>
+  </data>
+  <data name="item_coccodrillo" xml:space="preserve">
+    <value>crocodile</value>
+  </data>
+  <data name="item_diavolo" xml:space="preserve">
+    <value>Tasmanian devil</value>
+  </data>
+  <data name="item_koala" xml:space="preserve">
+    <value>koala</value>
+  </data>
+  <data name="item_lion" xml:space="preserve">
+    <value>lion</value>
+  </data>
+  <data name="item_tiger" xml:space="preserve">
+    <value>tiger</value>
+  </data>
+  <data name="item_zebra" xml:space="preserve">
+    <value>zebra</value>
+  </data>
+  <data name="message_level_failed" xml:space="preserve">
+    <value>level failed!</value>
+  </data>
+  <data name="message_level_completed" xml:space="preserve">
+    <value>level completed!</value>
+  </data>
+  <data name="water" xml:space="preserve">
+    <value>water</value>
+  </data>
+<data name="MsgBoxTitleWarning" xml:space="preserve"><value>Warning</value></data><data name="MsgBoxExit" xml:space="preserve"><value>Are you sure you want to exit?</value></data><data name="item_suricati" xml:space="preserve"><value>meerkats</value></data><data name="item_rinoceronte" xml:space="preserve"><value>rhinoceros</value></data><data name="item_gazzella" xml:space="preserve"><value>gazelle</value></data></root>

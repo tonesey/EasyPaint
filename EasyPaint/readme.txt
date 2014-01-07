@@ -2,12 +2,18 @@
 
 TODO
 
-* musica sottofondo pagina paint
-* blit
-* animazioni selezione colore + palette + bella graficamente
+- cambiamento traccia musicale in base a pagina
+- suoni ok/ko
+- calcolo punteggio che tiene conto del tempo risparmiato?
+- rivedere icone disegno con marta
 
+DONE
+- rifare le lineart partendo dalle img a colori reduced_10 - OK
+- salvataggio punteggi: salvare da modello il valore di ogni item - OK
+- ricontrollare calcolo diff colori - OK
 
 --------------
+
 * Suono:
 
 background
@@ -26,6 +32,4 @@ http://audiojungle.net/item/level-up-positive-02/5730904
 
 http://blogs.msdn.com/b/giuseppeguerrasio/archive/2010/12/06/using-smooth-streaming-media-element-for-windows-phone-7.aspx
 
-* InkPresenter
 
-http://sviluppomobile.blogspot.it/2011/10/wp7-better-inkpresenter-using-xna.html

@@ -85,9 +85,10 @@ namespace EasyPaint.Design
             try
             {
                 // var imgFileName = _sampleImagesFilenames[e.Index] + ".png";
-                string imgFileName = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index).ImgFilename;
+                var el = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index);
+                string imgFileName = el.ImgFilename;
                 uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = imgFileName;
+                text = el.Key + " " + LocalizedResources.ResourceManager.GetString(el.Key);
             }
             catch (Exception)
             {
@@ -104,10 +105,10 @@ namespace EasyPaint.Design
             string text = "none";
             try
             {
-                // var imgFileName = _sampleImagesFilenames[e.Index] + ".png";
-                string imgFileName = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index).ImgFilename;
+                var el = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index);
+                string imgFileName = el.ImgFilename;
                 uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = imgFileName;
+                text = el.Key + " " + LocalizedResources.ResourceManager.GetString(el.Key);
             }
             catch (Exception)
             {
@@ -123,12 +124,16 @@ namespace EasyPaint.Design
         {
             var imgFileName = e.Index + ".png";
             (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute);
+            (e.Item as PictureLoopingItem).Text = _data.Groups.ElementAt(e.Index).Key;
         }
 
         void ds_ItemNeeded_Groups(object sender, LoopingListDataItemEventArgs e)
         {
             var imgFileName = e.Index + ".png";
-            e.Item = new PictureLoopingItem() { Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute) };
+            e.Item = new PictureLoopingItem() { 
+                Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute),
+                Text = _data.Groups.ElementAt(e.Index).Key
+            };
         }
         #endregion
 

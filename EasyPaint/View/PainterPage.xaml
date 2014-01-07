@@ -224,7 +224,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid>
-                            <Image Source="../Assets/buttons/btn_yes.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="42" Opacity="0.5"/>
+                            <Image Source="../Assets/buttons/btn_yes.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="42" Opacity="0.9"/>
                         </Grid>
                     </Button>
                 </StackPanel>
@@ -306,7 +306,7 @@
             </Border>
 
             <TextBlock x:Name="TextBlockCountDownBig" 
-                       FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
+                       FontFamily="..\Fonts\andyb.TTF#Andy" 
                        Foreground="Lime" 
                        Grid.Column="1" 
                        Text="" 
@@ -319,12 +319,13 @@
                     Background="Transparent" VerticalAlignment="Top"  Margin="0,10,0,0" 
                     Width="70" Height="70" BorderThickness="0">
                 <TextBlock x:Name="TextBlockCountDownSmall" 
-                       FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
+                       FontFamily="..\Fonts\andyb.TTF#Andy" 
                        FontWeight="Bold"
                        Text="60"
                        Foreground="Green" Opacity="0.8"
                        FontSize="50" 
                        HorizontalAlignment="Center" 
+                           Tap="TextBlockCountDownSmall_Tap"
                        >
                 </TextBlock>
                 <Border.RenderTransform>

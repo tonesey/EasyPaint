@@ -16,6 +16,24 @@ namespace EasyPaint.Helpers
     public class ModelHelper
     {
 
+        public static string GetUserScoreValue(AppData appData)
+        {
+            //string userScoreDebug = "canguro colore.png-0-0;clamidosauro colori.png-50-100;coccodrillo colore.png-10-45";
+            string strVal = string.Empty;
+            var groups = appData.Groups;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < groups.Count; i++)
+            {
+                for (int j = 0; j < groups.ElementAt(i).Items.Count; j++)
+                {
+                    var item = groups.ElementAt(i).Items.ElementAt(j);
+                    sb.Append(string.Format("{0}-{1}-{2};", new[] { item.ImgFilename, item.Score.ToString(), item.RecordScore.ToString() }));
+                }
+            }
+            return sb.ToString();
+        }
+
+
         public static AppData BuildAppData()
         {
 
@@ -58,7 +76,10 @@ namespace EasyPaint.Helpers
                 foreach (var item in spl)
                 {
                     string[] spl1 = item.Split('-');
-                    _userScore.Add(spl1[0], new[] { int.Parse(spl1[1]), int.Parse(spl1[2]) });
+                    if (spl1.Length > 1)
+                    {
+                        _userScore.Add(spl1[0], new[] { int.Parse(spl1[1]), int.Parse(spl1[2]) });
+                    }
                 }
             }
 
@@ -91,7 +112,6 @@ namespace EasyPaint.Helpers
                     g.GridRowSpan = protagonistNode.Attribute("Grid.RowSpan") != null ? int.Parse(protagonistNode.Attribute("Grid.RowSpan").Value) : 1;
                     g.GridColumnSpan = protagonistNode.Attribute("Grid.ColSpan") != null ? int.Parse(protagonistNode.Attribute("Grid.ColSpan").Value) : 1;
                 }
-
 
                 var itemsElement = element.Element("items");
                 if (itemsElement != null)
@@ -146,6 +166,7 @@ namespace EasyPaint.Helpers
 
             return data;
         }
+
 
     }
 }

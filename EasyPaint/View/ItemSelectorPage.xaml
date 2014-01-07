@@ -62,8 +62,8 @@
             ItemStyle="{StaticResource loopingListItemStyle}">
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Image Source="{Binding Picture}" Stretch="Fill" Tap="Image_Tap"
+                    <Grid Tap="Grid_Tap">
+                        <Image Source="{Binding Picture}" Stretch="Fill" 
                                CacheMode="BitmapCache"
                                Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"
                                />
@@ -71,7 +71,13 @@
                                CacheMode="BitmapCache"
                                Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"
                                />
-                        <!--<TextBlock  Width="400" Height="40" Text="{Binding Text}" Foreground="Red"></TextBlock>-->
+                        <TextBlock Margin="0,0,0,0" 
+                                   HorizontalAlignment="Center"
+                                   Text="{Binding Text}" 
+                                   FontSize="50"   
+                                   FontFamily="..\..\Fonts\andyb.TTF#Andy"
+                                   Foreground="Green"
+                                   Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>

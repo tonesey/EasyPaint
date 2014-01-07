@@ -290,7 +290,7 @@ namespace EasyPaint.View
             if (selectedImage != null)
             {
                 ImageMain.Source = new BitmapImage(selectedImage.ImageSource);
-                
+
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
                 //_reducedColorsPicture = new WriteableBitmap(ImageMain, null);
                 _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
@@ -315,6 +315,7 @@ namespace EasyPaint.View
             {
                 var parentEl = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + count);
                 parentEl.Tag = color;
+                parentEl.Visibility = System.Windows.Visibility.Visible;
                 var childEl = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(parentEl, "pc" + count + "_path");
                 if (childEl != null)
                 {
@@ -355,11 +356,11 @@ namespace EasyPaint.View
         }
 
         #region palette
-       
+
 
         private void pc1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-         
+
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
 
             Viewbox senderViewBox = (sender as Viewbox);
@@ -446,7 +447,7 @@ namespace EasyPaint.View
 
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
-                                                                        new List<MyColor>(), 
+                                                                        new List<MyColor>(),
                                                                         out resImg);
 
             //#if DEBUG
@@ -499,9 +500,7 @@ namespace EasyPaint.View
                     //LIVELLO COMPLETATO
                     var curEl = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
                     curEl.SetScore(_resultPopupChild.UserPercentage);
-
-                    AppSettings.SaveSettings();
-
+                    AppSettings.SaveSettings(true);
                     var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                     if (nextEl != null)
                     {
@@ -539,6 +538,14 @@ namespace EasyPaint.View
             StopTimer();
             CheckDrawnPicture();
 
+        }
+
+        private void TextBlockCountDownSmall_Tap(object sender, GestureEventArgs e)
+        {
+#if DEBUG
+            int accuracyPercentage = 80;
+            ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue, null);
+#endif
         }
 
     }

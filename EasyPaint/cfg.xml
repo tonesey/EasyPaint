@@ -21,7 +21,7 @@
     <items SelectorGridRow="0" IsSelectorCentered="False">
       <item imgname="rinoceronte colore.png" key="item_rinoceronte" colors="#C7B29A,#736357"/>
       <item imgname="gazzella colore.png" key="item_gazzella" colors="#C69C6D,#5E3815,#FEF467,#979797"/>
-      <item imgname="suricati colore.png" key="item_suricati" colors="#CE8430,#CE8430,#FFA846"/>
+      <item imgname="suricati colore.png" key="item_suricati" colors="#CE8430,#E9A85F,#FFA846"/>
     </items>
   </group>
 

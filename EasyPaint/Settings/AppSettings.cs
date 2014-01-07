@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EasyPaint.Data;
+using EasyPaint.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,8 +27,11 @@ namespace EasyPaint.Settings
             SoundOnValue = StorageHelper.GetSetting<bool>(SoundOnKey);
         }
 
-        public static void SaveSettings()
+        public static void SaveSettings(bool rebuildData)
         {
+            if (rebuildData) {
+                UserScoreValue = AppDataManager.GetInstance().GetUserScoreStrValue();
+            }
             StorageHelper.StoreSetting(UserScoreKey, UserScoreValue, true);
             StorageHelper.StoreSetting(SoundOnKey, SoundOnValue, true);
         }

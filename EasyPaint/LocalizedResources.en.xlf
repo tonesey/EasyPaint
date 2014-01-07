@@ -68,11 +68,11 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MsgBoxTitleWarning" xml:space="preserve">
           <source>Warning</source>
-          <target state="new">Warning</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Warning</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MsgBoxExit" xml:space="preserve">
           <source>Are you sure you want to exit?</source>
-          <target state="new">Are you sure you want to exit?</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Are you sure you want to exit?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_completed" xml:space="preserve">
           <source>level completed!</source>
@@ -81,6 +81,18 @@
         <trans-unit translate="yes" id="Resx/water" xml:space="preserve">
           <source>water</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">water</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_suricati" xml:space="preserve">
+          <source>meerkats</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">meerkats</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_rinoceronte" xml:space="preserve">
+          <source>rhinoceros</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">rhinoceros</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_gazzella" xml:space="preserve">
+          <source>gazelle</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">gazelle</target>
         </trans-unit>
       </group>
     </body>

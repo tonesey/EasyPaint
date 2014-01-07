@@ -13,10 +13,10 @@ namespace EasyPaint.Data
 
         private string _tag;
 
-        private AppData _cfgData;
+        private AppData _appData;
         public AppData CfgData
         {
-            get { return _cfgData; }
+            get { return _appData; }
         }
 
         //private UserData _userData;
@@ -31,7 +31,7 @@ namespace EasyPaint.Data
             this._tag = tag;
             //_groups = data.Groups;
 
-            _cfgData = ModelHelper.BuildAppData();
+            _appData = ModelHelper.BuildAppData();
 
             if (tag.Contains("design"))
             {
@@ -41,6 +41,16 @@ namespace EasyPaint.Data
             //{
             //    _cfgData = ModelHelper.BuildAppData();
             //}
+        }
+
+        public string GetUserScoreStrValue()
+        {
+            return ModelHelper.GetUserScoreValue(_appData);
+        }
+
+        internal static AppDataManager GetInstance()
+        {
+            return GetInstance(string.Empty);
         }
 
         internal static AppDataManager GetInstance(string tag)

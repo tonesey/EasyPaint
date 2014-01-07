@@ -56,6 +56,7 @@ namespace EasyPaint.View
             {
                 (e.Item as PictureLoopingItem).Picture = (newEl as GroupViewModel).ImageSource;
                 (e.Item as PictureLoopingItem).IsLocked = (newEl as GroupViewModel).IsLocked;
+                (e.Item as PictureLoopingItem).Text = LocalizedResources.ResourceManager.GetString((newEl as GroupViewModel).Key);
                 (e.Item as PictureLoopingItem).DataContext = newEl;
             }
         }
@@ -72,6 +73,7 @@ namespace EasyPaint.View
             {
                 e.Item = new PictureLoopingItem() { Picture = (newEl as GroupViewModel).ImageSource, 
                                                     IsLocked = (newEl as GroupViewModel).IsLocked,
+                                                    Text = LocalizedResources.ResourceManager.GetString((newEl as GroupViewModel).Key),
                                                     DataContext = (newEl as GroupViewModel) };
             }
         }
@@ -102,9 +104,9 @@ namespace EasyPaint.View
             //}
         }
 
-        private void Image_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void Grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            _vm.SelectedGroup = (((sender as Image).DataContext as PictureLoopingItem).DataContext as GroupViewModel);
+            _vm.SelectedGroup = (((sender as Grid).DataContext as PictureLoopingItem).DataContext as GroupViewModel);
 
             if (!_vm.SelectedGroup.IsLocked)
             {

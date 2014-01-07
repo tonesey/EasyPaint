@@ -82,6 +82,18 @@
           <source>water</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">acqua</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_suricati" xml:space="preserve">
+          <source>meerkats</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">suricati</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_rinoceronte" xml:space="preserve">
+          <source>rhinoceros</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">rinoceronte</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_gazzella" xml:space="preserve">
+          <source>gazelle</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">gazzella</target>
+        </trans-unit>
       </group>
     </body>
   </file>

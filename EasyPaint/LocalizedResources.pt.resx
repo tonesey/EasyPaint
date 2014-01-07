@@ -150,4 +150,22 @@
   <data name="item_zebra" xml:space="preserve">
     <value>Zebra</value>
   </data>
-<data name="ButtonCreditsText" xml:space="preserve"><value>créditos</value></data><data name="ButtonSettingsText" xml:space="preserve"><value>Configurações</value></data><data name="ButtonStartText" xml:space="preserve"><value>iniciar o jogo</value></data><data name="message_level_failed" xml:space="preserve"><value>nível falhou!</value></data><data name="message_level_completed" xml:space="preserve"><value>nível concluído!</value></data><data name="water" xml:space="preserve"><value>água</value></data></root>
+  <data name="ButtonCreditsText" xml:space="preserve">
+    <value>créditos</value>
+  </data>
+  <data name="ButtonSettingsText" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="ButtonStartText" xml:space="preserve">
+    <value>iniciar o jogo</value>
+  </data>
+  <data name="message_level_failed" xml:space="preserve">
+    <value>nível falhou!</value>
+  </data>
+  <data name="message_level_completed" xml:space="preserve">
+    <value>nível concluído!</value>
+  </data>
+  <data name="water" xml:space="preserve">
+    <value>água</value>
+  </data>
+<data name="MsgBoxTitleWarning" xml:space="preserve"><value>Aviso</value></data><data name="MsgBoxExit" xml:space="preserve"><value>Tem certeza que deseja sair?</value></data><data name="item_suricati" xml:space="preserve"><value>Meerkats</value></data><data name="item_rinoceronte" xml:space="preserve"><value>Rinoceronte</value></data><data name="item_gazzella" xml:space="preserve"><value>gazela</value></data></root>

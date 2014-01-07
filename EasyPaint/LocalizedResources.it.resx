@@ -153,4 +153,25 @@
   <data name="water" xml:space="preserve">
     <value>acqua</value>
   </data>
-<data name="ButtonCreditsText" xml:space="preserve"><value>crediti</value></data><data name="ButtonSettingsText" xml:space="preserve"><value>impostazioni</value></data><data name="ButtonStartText" xml:space="preserve"><value>gioca</value></data><data name="message_level_failed" xml:space="preserve"><value>livello fallito!</value></data><data name="message_level_completed" xml:space="preserve"><value>livello completato!</value></data><data name="MsgBoxTitleWarning" xml:space="preserve"><value>Attenzione</value></data><data name="MsgBoxExit" xml:space="preserve"><value>Sei sicuro di voler uscire?</value></data></root>
+  <data name="ButtonCreditsText" xml:space="preserve">
+    <value>crediti</value>
+  </data>
+  <data name="ButtonSettingsText" xml:space="preserve">
+    <value>impostazioni</value>
+  </data>
+  <data name="ButtonStartText" xml:space="preserve">
+    <value>gioca</value>
+  </data>
+  <data name="message_level_failed" xml:space="preserve">
+    <value>livello fallito!</value>
+  </data>
+  <data name="message_level_completed" xml:space="preserve">
+    <value>livello completato!</value>
+  </data>
+  <data name="MsgBoxTitleWarning" xml:space="preserve">
+    <value>Attenzione</value>
+  </data>
+  <data name="MsgBoxExit" xml:space="preserve">
+    <value>Sei sicuro di voler uscire?</value>
+  </data>
+<data name="item_suricati" xml:space="preserve"><value>suricati</value></data><data name="item_rinoceronte" xml:space="preserve"><value>rinoceronte</value></data><data name="item_gazzella" xml:space="preserve"><value>gazzella</value></data></root>

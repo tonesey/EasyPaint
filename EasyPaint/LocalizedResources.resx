@@ -174,4 +174,13 @@
   <data name="water" xml:space="preserve">
     <value>water</value>
   </data>
+  <data name="item_gazzella" xml:space="preserve">
+    <value>gazelle</value>
+  </data>
+  <data name="item_rinoceronte" xml:space="preserve">
+    <value>rhinoceros</value>
+  </data>
+  <data name="item_suricati" xml:space="preserve">
+    <value>meerkats</value>
+  </data>
 </root>

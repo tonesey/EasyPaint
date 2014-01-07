@@ -68,6 +68,15 @@ namespace EasyPaint.ViewModel
             }
         }
 
+        //public string Text
+        //{
+        //    get
+        //    {
+        //        return _item.IsLocked;
+        //    }
+        //}
+
+
         protected string _lineArtResourcePath;
         public string LineArtResourcePath
         {

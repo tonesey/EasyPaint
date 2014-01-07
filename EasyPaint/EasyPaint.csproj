@@ -28,6 +28,8 @@
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -355,8 +357,8 @@
     <Resource Include="Assets\lres\groups\2\diavolo_lineart.png" />
     <Resource Include="Assets\lres\groups\2\koala colore.png" />
     <Resource Include="Assets\lres\groups\2\koala lineart.png" />
-    <Resource Include="Assets\buttons\sound_off.png" />
     <Resource Include="Assets\buttons\sound_on.png" />
+    <Resource Include="Assets\buttons\sound_off.png" />
     <Content Include="Assets\icons\Lock.png" />
     <Resource Include="Assets\lres\bkg\painter_bck1.jpg" />
     <Resource Include="Assets\lres\groups\1\gazzella colore.png" />
@@ -376,13 +378,22 @@
     <Resource Include="Assets\lres\groups\1\reduced_10\gazzella lineart.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\rinoceronte lineart.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\suricati lineart.png" />
+    <Resource Include="Assets\lres\groups\3\reduced_10\canguro lineart.png" />
+    <Resource Include="Assets\lres\groups\3\reduced_10\clamidosauro lineart.png" />
+    <Resource Include="Assets\lres\groups\3\reduced_10\coccodrillo lineart.png" />
+    <Resource Include="Assets\lres\groups\3\reduced_10\diavolo lineart.png" />
+    <Resource Include="Assets\lres\groups\3\reduced_10\koala lineart.png" />
     <Content Include="Assets\lres\groups\4\explorer.png" />
     <Resource Include="Assets\lres\groups\5\explorer.png" />
+    <Resource Include="Assets\lres\groups\4\reduced_10\Cobra lineart.png" />
+    <Resource Include="Assets\lres\groups\4\reduced_10\Elefante lineart.png" />
+    <Resource Include="Assets\lres\groups\4\reduced_10\scimmietta lineart.png" />
+    <Resource Include="Assets\lres\groups\4\reduced_10\Tigre lineart.png" />
+    <Resource Include="Assets\lres\groups\4\reduced_10\Yak lineart.png" />
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />
     <Content Include="README_FIRST.txt" />
-    <Content Include="todo.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -570,4 +581,5 @@
   -->
   <ProjectExtensions />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\WindowsPhone\v8.0\Microsoft.Expression.Blend.WindowsPhone.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

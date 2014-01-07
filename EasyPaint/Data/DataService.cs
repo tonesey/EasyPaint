@@ -7,7 +7,7 @@ namespace EasyPaint.Data
     {
         public void GetData(Action<AppDataManager, Exception> callback)
         {
-            var item = AppDataManager.GetInstance("runtime data");
+            var item = AppDataManager.GetInstance(); //"runtime data"
             callback(item, null);
         }
     }

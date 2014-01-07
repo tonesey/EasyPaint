@@ -8,79 +8,91 @@
       <group id="Resx">
         <trans-unit translate="yes" id="Resx/ButtonCreditsText" xml:space="preserve">
           <source>credits</source>
-          <target state="new">credits</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D11A0][!!_čѓęðîτś_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonSettingsText" xml:space="preserve">
           <source>settings</source>
-          <target state="new">settings</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[CD39E][!!_šéťţìйġŝ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartText" xml:space="preserve">
           <source>start game</source>
-          <target state="new">start game</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[46B2F][!!_şτâŕť ģámê_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Africa" xml:space="preserve">
           <source>Africa</source>
-          <target state="new">Africa</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D05B6][!!_Âƒŕîċâ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_America" xml:space="preserve">
           <source>America</source>
-          <target state="new">America</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[4500C][!!_Ãméŗìċà_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Europe" xml:space="preserve">
           <source>Europe</source>
-          <target state="new">Europe</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[9F8A9][!!_Ęûřòþè_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Oceania" xml:space="preserve">
           <source>Oceania</source>
-          <target state="new">Oceania</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[E77CD][!!_Òĉèàиíá_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_canguro" xml:space="preserve">
           <source>kangaroo</source>
-          <target state="new">kangaroo</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[1FA7A][!!_ķáйĝářòô_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_coccodrillo" xml:space="preserve">
           <source>crocodile</source>
-          <target state="new">crocodile</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[2F0FD][!!_čŕõĉóďįļê_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_diavolo" xml:space="preserve">
           <source>Tasmanian devil</source>
-          <target state="new">Tasmanian devil</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[B51E7][!!_Ťãśmàηîàй ðèνîł_!!!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_koala" xml:space="preserve">
           <source>koala</source>
-          <target state="new">koala</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[FCA56][!!_ĸõàłã_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_lion" xml:space="preserve">
           <source>lion</source>
-          <target state="new">lion</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[4B0D9][!!_ľîòи_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_tiger" xml:space="preserve">
           <source>tiger</source>
-          <target state="new">tiger</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[4BF14][!!_τìġéř_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_zebra" xml:space="preserve">
           <source>zebra</source>
-          <target state="new">zebra</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[99D12][!!_žéъŕâ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_failed" xml:space="preserve">
           <source>level failed!</source>
-          <target state="new">level failed!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[96F60][!!_ľéνèĺ ƒàįłęð!_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MsgBoxTitleWarning" xml:space="preserve">
           <source>Warning</source>
-          <target state="new">Warning</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[53BAB][!!_Ẁářηîήğ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MsgBoxExit" xml:space="preserve">
           <source>Are you sure you want to exit?</source>
-          <target state="new">Are you sure you want to exit?</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[02948][!!_Àѓê Уôµ ŝùŕê ýòú ẅâήτ ţõ ęхìť?_!!!!!!!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_completed" xml:space="preserve">
           <source>level completed!</source>
-          <target state="new">level completed!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[5AF35][!!_ļèνèľ ćómрĺèţéď!_!!!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/water" xml:space="preserve">
           <source>water</source>
-          <target state="new">water</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[796F0][!!_ẁáťèŗ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_suricati" xml:space="preserve">
+          <source>meerkats</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[FFFB7][!!_męêřķàţś_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_rinoceronte" xml:space="preserve">
+          <source>rhinoceros</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[78FF0][!!_řћîηõċéŗòš_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_gazzella" xml:space="preserve">
+          <source>gazelle</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[6FC76][!!_ġãźêĺłé_!!]</target>
         </trans-unit>
       </group>
     </body>
