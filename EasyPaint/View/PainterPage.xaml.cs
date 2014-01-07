@@ -33,7 +33,7 @@ namespace EasyPaint.View
 {
     public partial class PainterPage : PhoneApplicationPage
     {
-        const int TotalTime = 60;
+        const int TotalTime = 30;
 
         // Constructor
         SimzzDev.DrawingBoard _drawingboard = null;
@@ -56,8 +56,7 @@ namespace EasyPaint.View
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
 
-        private const int MAX_PALETTE_COLORS = 4;
-
+        //private const int MAX_PALETTE_COLORS = 4;
         //List<MyColor> _paletteColors = new List<MyColor>();
         //List<MyColor> _ignoredColors = new List<MyColor>();
 
@@ -76,6 +75,8 @@ namespace EasyPaint.View
             InitAnimations();
             AssignEventHandlers();
             InitPopup();
+
+            BorderPalette.Visibility = Visibility.Collapsed;
         }
 
         private void AssignEventHandlers()
@@ -87,22 +88,22 @@ namespace EasyPaint.View
         {
         }
 
-        void ImageOverlay_MouseMove(object sender, MouseEventArgs e)
-        {
-            _drawingboard.Ink_MouseMove(sender, e);
-        }
+        //void ImageOverlay_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    _drawingboard.Ink_MouseMove(sender, e);
+        //}
 
-        void ImageOverlay_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            ImageOverlay.ReleaseMouseCapture();
-            _drawingboard.Ink_MouseLeftButtonUp(sender, e);
-        }
+        //void ImageOverlay_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        //{
+        //    ImageOverlay.ReleaseMouseCapture();
+        //    _drawingboard.Ink_MouseLeftButtonUp(sender, e);
+        //}
 
-        void ImageOverlay_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            ImageOverlay.CaptureMouse();
-            _drawingboard.Ink_MouseLeftButtonDown(sender, e);
-        }
+        //void ImageOverlay_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    ImageOverlay.CaptureMouse();
+        //    _drawingboard.Ink_MouseLeftButtonDown(sender, e);
+        //}
 
         #region audio
         public void TryPlayBackgroundMusic()
@@ -256,6 +257,9 @@ namespace EasyPaint.View
 
         private void InitPage()
         {
+            StackPanelTest.Visibility = Visibility.Collapsed;
+            GridPainter.Visibility = System.Windows.Visibility.Visible;
+
             StopTimer();
 
             _storyboardSubjectImageFading.Stop();
@@ -291,6 +295,7 @@ namespace EasyPaint.View
                 //_reducedColorsPicture = new WriteableBitmap(ImageMain, null);
                 _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
                 ImageOverlay.Source = _lineArtPicture;
+                ImageOverlay.Opacity = 0.4;
                 InitPalette();
                 StartCountDown();
             }
@@ -386,8 +391,8 @@ namespace EasyPaint.View
             }
 
             //stroke 2 -> width 10
-            //stroke 4 -> width 20
-            //stroke 6 -> width 30
+            //stroke 10 -> width 20
+            //stroke 18 -> width 30
 
             SetEllipseSize(_drawingboard.BrushWidth);
         }
@@ -430,23 +435,32 @@ namespace EasyPaint.View
                                   new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
 
-            int tPixels = userDrawnPicture.Pixels.Where(p => p != 0).Count();
+            //int tPixels = userDrawnPicture.Pixels.Where(p => p != 0).Count();
+
+            //GridPainter.Visibility = Visibility.Collapsed;
+            //StackPanelTest.Visibility = Visibility.Visible;
+            //Img1.Source = userDrawnPicture;
+            //Img2.Source = _reducedColorsPicture;
+
+            WriteableBitmap resImg = null;
 
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
-                                                                        new List<MyColor>());
+                                                                        new List<MyColor>(), 
+                                                                        out resImg);
 
             //#if DEBUG
             //            accuracyPercentage = 80;
             //#endif
-            ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue);
+            ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue, resImg);
         }
 
-        private void ShowResultPopup(int percentage, int availTime)
+        private void ShowResultPopup(int percentage, int availTime, WriteableBitmap resImg)
         {
             //popup.VerticalOffset = 250;
             DisablePage();
             InitPopup();
+            _resultPopupChild.ResImg = resImg;
             _resultPopupChild.UserPercentage = percentage;
             _resultPopupChild.AvailableTime = availTime;
             _resultPopupChild.PageOrientation = Orientation;

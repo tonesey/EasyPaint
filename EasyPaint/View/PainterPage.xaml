@@ -290,11 +290,18 @@
                             VerticalAlignment="Center" 
                             HorizontalAlignment="Center"
                             Margin="0,0,0,0" >
-                    <Grid Name="GridPainter" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}">
+                    <Grid Name="GridPainter" Visibility="Visible" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}">
                         <Image IsHitTestVisible="False" Name="ImageMain" CacheMode="BitmapCache" Visibility="Visible" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  Stretch="Fill"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"></Image>
                         <InkPresenter Name="InkPresenterElement" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent" Visibility="Visible" />
                         <Image IsHitTestVisible="False" Name="ImageOverlay" CacheMode="BitmapCache" Visibility="Visible" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  Stretch="Fill"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"></Image>
                     </Grid>
+
+                    <StackPanel Name="StackPanelTest" Visibility="Collapsed"  Orientation="Horizontal" Margin="0">
+                        <Image Name="Img1"  Width="300" Height="300">
+                        </Image>
+                        <Image Name="Img2"  Width="300" Height="300">
+                        </Image>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 

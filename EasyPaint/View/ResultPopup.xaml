@@ -3,20 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"  
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             xmlns:design="clr-namespace:EasyPaint.Design"
+             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"  
              x:Class="EasyPaint.View.ResultPopup"
              mc:Ignorable="d"
-             xmlns:design="clr-namespace:EasyPaint.Design"
-             FontFamily="{StaticResource PhoneFontFamilyNormal}"
-             FontSize="{StaticResource PhoneFontSizeNormal}"
-             Foreground="{StaticResource PhoneForegroundBrush}"
              Loaded="UserControl_Loaded"
              d:DesignHeight="400" d:DesignWidth="400">
 
     <UserControl.Resources>
         <design:DesignData x:Key="DesignDataContext"/>
         <Storyboard x:Name="StoryboardShowTextResult">
-        	<!--
+            <!--
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="TextBlockResultText">
         		<EasingDoubleKeyFrame KeyTime="0" Value="-350"/>
         		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
@@ -26,15 +24,25 @@
         		</EasingDoubleKeyFrame>
         	</DoubleAnimationUsingKeyFrames>
             -->
-        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TextBlockResultText">
-        		<EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
-        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
-        	</DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TextBlockResultText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
 
+    <UserControl.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </UserControl.FontFamily>
+    <UserControl.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </UserControl.FontSize>
+    <UserControl.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </UserControl.Foreground>
+
     <Border d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
-            CornerRadius="30" BorderBrush="Orange" BorderThickness="10" Padding="0" RenderTransformOrigin="0.5,0.5" >
+		CornerRadius="30" BorderBrush="Orange" BorderThickness="10" Padding="0" RenderTransformOrigin="0.5,0.5" >
 
         <Border.RenderTransform>
             <RotateTransform Angle="{Binding PageOrientation, Converter={StaticResource orientationConverter}}"/>
@@ -55,15 +63,18 @@
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="TextBlockResult"  Grid.Row="0"
-				FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
-				Foreground="{Binding Percentage, Converter={StaticResource percentageToColorConverter}}" 
-				Text="{Binding Percentage, Converter={StaticResource percentageToStringConverter}}" 
-				FontSize="120" 
-				HorizontalAlignment="Center" 
-				VerticalAlignment="Center" 
-				Opacity="1"/>
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="ImageResult" Width="110" Height="110" Margin="10,10,10,10"/>
 
+                <TextBlock x:Name="TextBlockResult"  Grid.Row="0" Margin="10,0,0,0"
+					FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
+					Foreground="{Binding Percentage, Converter={StaticResource percentageToColorConverter}}" 
+					Text="{Binding Percentage, Converter={StaticResource percentageToStringConverter}}" 
+					FontSize="120" 
+					HorizontalAlignment="Center" 
+					VerticalAlignment="Center" 
+					Opacity="1"/>
+            </StackPanel>
             <TextBlock x:Name="TextBlockResultText"  Grid.Row="1"
 				FontFamily="..\Fonts\CURLZ___.TTF#Curlz MT" 
 				Foreground="{Binding Foreground, ElementName=TextBlockResult}" 
@@ -71,7 +82,7 @@
 				FontSize="40" 
 				HorizontalAlignment="Center" 
 				VerticalAlignment="Center">
-                <!--<TextBlock.Projection>
+				<!--<TextBlock.Projection>
                     <PlaneProjection GlobalOffsetX="-500"/>
                 </TextBlock.Projection>-->
             </TextBlock>
@@ -86,7 +97,7 @@
                     <Image Source="/Assets/buttons/btn_refresh.png"/>
                 </Button>
                 <Button x:Name="ButtonNext"  BorderBrush="Transparent" BorderThickness="0" Width="100" Height="100"  Padding="0" Tap="ButtonAhead_Tap_1"
-                        Visibility="{Binding Percentage, Converter={StaticResource percentageToVisibilityConverter}}">
+					Visibility="{Binding Percentage, Converter={StaticResource percentageToVisibilityConverter}}">
                     <Image Source="/Assets/buttons/btn_avanti.png"/>
                 </Button>
             </StackPanel>

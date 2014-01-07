@@ -1,5 +1,7 @@
 ﻿
+
+- rifare le lineart partendo dalle img a colori reduced_10
 - salvataggio punteggi: salvare da modello il valore di ogni item
-- ricontrollare calcolo diff colori
-- calcolo punteggio che tiene conto del tempo risparmiato
+- ricontrollare calcolo diff colori - OK
+- calcolo punteggio che tiene conto del tempo risparmiato?
 - rivedere icone disegno con marta

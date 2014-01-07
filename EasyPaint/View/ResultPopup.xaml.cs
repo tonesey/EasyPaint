@@ -192,11 +192,16 @@ namespace EasyPaint.View
             ButtonRedo.IsEnabled = false;
             ButtonMenu.IsEnabled = false;
 
+
+            ImageResult.Source = ResImg;
+
             //await RenderPercentage(Percentage);
             //ButtonRedo.Visibility = Visibility.Visible;
             //ButtonNext.Visibility = Visibility.Visible;
         }
 
-    
+
+
+        public System.Windows.Media.Imaging.WriteableBitmap ResImg { get; set; }
     }
 }

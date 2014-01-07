@@ -213,44 +213,27 @@ namespace EasyPaint.Helpers
             return newnum;
         }
 
-        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore, out int transparentPixelsCount)
+        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore, out int transparentPixelsCount, out WriteableBitmap resultImage)
         {
             int countDiff = 0;
             //  int countEq = 0;
             transparentPixelsCount = 0;
-
-            int x = -1;
-            int y = 0;
+            
+            resultImage = new WriteableBitmap(bmp1.PixelWidth, bmp1.PixelHeight);
+            int x, y;
 
             for (int i = 0; i < bmp1.Pixels.Count(); i++)
             {
                 var bytesbmp1 = BitConverter.GetBytes(bmp1.Pixels[i]);
                 var bytesbmp2 = BitConverter.GetBytes(bmp2.Pixels[i]);
                
-                //if ((byte)bytesbmp1[3] != 255 || (byte)bytesbmp2[3] != 255)
-                //{
-                //    transparentPixelsCount++;
-                //    continue;
-                //}
-
-                //x++;
-                //if (x > 400)
-                //{
-                //    x = 0;
-                //    y++;
-                //}
-
-                //se l'utente ha colorato sopra una zona trasparente dell'immagine originale la considero buona
-                if ((byte)bytesbmp1[3] != 255 && (byte)bytesbmp2[3] == 255)
-                {
-                   // bmp1.SetPixel(x, y, Colors.Red);
-                    continue;
-                }
+                x = i % bmp1.PixelWidth;
+                y = i / bmp1.PixelWidth;
                
-                //se entrambi i pixel sono trasparenti li salto
-                if ((byte)bytesbmp1[3] != 255 && (byte)bytesbmp2[3] != 255)
+                if ((byte)bytesbmp1[3] != 255)
                 {
                     transparentPixelsCount++;
+                    resultImage.SetPixel(x, y, Colors.Transparent);
                     continue;
                 }
 
@@ -264,26 +247,26 @@ namespace EasyPaint.Helpers
                     if (colorsToIgnore.FirstOrDefault(c1 => c1.MainColor.Equals(c)) == null) //il colore non è fra quelli da ignorare ed è diverso dall'immagine originale
                     {
                         countDiff++;
+                        resultImage.SetPixel(x, y, Colors.Red);
                     }
-                    //else
-                    //{
-                    //    countEq++;
-                    //}
+                    else
+                    {
+                        resultImage.SetPixel(x, y, Colors.Yellow);
+                    }
                 }
                 else
                 {
-                    //countEq++;
+                    resultImage.SetPixel(x, y, Colors.Green);
                 }
             }
-            bmp1.Invalidate();
             return countDiff;
         }
 
-        internal static int GetAccuracyPercentage(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore)
+        internal static int GetAccuracyPercentage(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore, out WriteableBitmap resImg)
         {
 
             int transparentPixelsCount = 0;
-            int diff = GetNumberOfDifferentPixels(bmp1, bmp2, colorsToIgnore, out transparentPixelsCount);
+            int diff = GetNumberOfDifferentPixels(bmp1, bmp2, colorsToIgnore, out transparentPixelsCount, out resImg);
 
             int totPixels = bmp1.Pixels.Count() - transparentPixelsCount;
             int percentage = 100 - ((diff * 100) / totPixels);

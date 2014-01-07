@@ -360,11 +360,8 @@
     <Content Include="Assets\icons\Lock.png" />
     <Resource Include="Assets\lres\bkg\painter_bck1.jpg" />
     <Resource Include="Assets\lres\groups\1\gazzella colore.png" />
-    <Resource Include="Assets\lres\groups\1\gazzella lineart.png" />
     <Resource Include="Assets\lres\groups\1\rinoceronte colore.png" />
-    <Resource Include="Assets\lres\groups\1\rinoceronte lineart.png" />
     <Resource Include="Assets\lres\groups\1\suricati colore.png" />
-    <Resource Include="Assets\lres\groups\1\suricati lineart.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\gazzella colore.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\rinoceronte colore.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\suricati colore.png" />
@@ -376,6 +373,9 @@
     <Resource Include="Assets\lres\bkg\title1.png" />
     <Content Include="Assets\lres\groups\1\explorer.png" />
     <Resource Include="Assets\lres\groups\2\explorer.png" />
+    <Resource Include="Assets\lres\groups\1\reduced_10\gazzella lineart.png" />
+    <Resource Include="Assets\lres\groups\1\reduced_10\rinoceronte lineart.png" />
+    <Resource Include="Assets\lres\groups\1\reduced_10\suricati lineart.png" />
     <Content Include="Assets\lres\groups\4\explorer.png" />
     <Resource Include="Assets\lres\groups\5\explorer.png" />
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
