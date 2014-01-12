@@ -7,6 +7,7 @@ using System.Threading;
 using System.ComponentModel;
 using EasyPaint.ViewModel;
 using System.Windows.Media.Animation;
+using EasyPaint.Helpers;
 
 
 namespace EasyPaint.View
@@ -99,6 +100,15 @@ namespace EasyPaint.View
                 TextBlockResultText.Visibility = System.Windows.Visibility.Visible;
             });
             _sbShowTextResult.Begin();
+
+            if (ButtonNext.Visibility == System.Windows.Visibility.Collapsed)
+            {
+                SoundHelper.PlaySound(App.Current.Sounds["levelFailed"]);
+            }
+            else
+            {
+                SoundHelper.PlaySound(App.Current.Sounds["levelCompleted"]);
+            }
         }
 
         void _bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -110,11 +120,15 @@ namespace EasyPaint.View
 
         void _bw_DoWork(object sender, DoWorkEventArgs e)
         {
+            SoundHelper.PlaySound(App.Current.Sounds["pointsCount"]);
             BackgroundWorker worker = sender as BackgroundWorker;
             for (int i = 1; i <= (int)e.Argument; i++)
             {
                 Thread.Sleep(50);
                 worker.ReportProgress(i);
+                if (i % 5 == 0) {
+                    SoundHelper.PlaySound(App.Current.Sounds["pointsCount"]);
+                }
             }
         }
 

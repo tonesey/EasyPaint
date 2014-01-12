@@ -383,6 +383,9 @@
     <Resource Include="Assets\lres\groups\3\reduced_10\coccodrillo lineart.png" />
     <Resource Include="Assets\lres\groups\3\reduced_10\diavolo lineart.png" />
     <Resource Include="Assets\lres\groups\3\reduced_10\koala lineart.png" />
+    <Resource Include="Assets\lres\groups\1\gazzella lineart.png" />
+    <Resource Include="Assets\lres\groups\1\rinoceronte lineart.png" />
+    <Resource Include="Assets\lres\groups\1\suricati lineart.png" />
     <Content Include="Assets\lres\groups\4\explorer.png" />
     <Resource Include="Assets\lres\groups\5\explorer.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\Cobra lineart.png" />
@@ -393,6 +396,10 @@
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />
+    <EmbeddedResource Include="Audio\wav\levelFailed.wav" />
+    <EmbeddedResource Include="Audio\wav\levelCompleted.wav" />
+    <EmbeddedResource Include="Audio\wav\pointsCount.wav" />
+    <EmbeddedResource Include="Audio\wav\click.wav" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

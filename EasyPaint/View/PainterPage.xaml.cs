@@ -42,8 +42,11 @@ namespace EasyPaint.View
 
         WriteableBitmap _lineArtPicture = null;
         WriteableBitmap _reducedColorsPicture = null;
-        DispatcherTimer _dt = new DispatcherTimer();
-        DispatcherTimer _countDownTimer = new DispatcherTimer();
+        WriteableBitmap _reducedColorsLineArtPicture = null;
+
+        //DispatcherTimer _dt = new DispatcherTimer();
+        //DispatcherTimer _countDownTimer = new DispatcherTimer();
+
         bool _gameInProgress = false;
 
         int _curAvailableTimeValue = 0;
@@ -53,6 +56,9 @@ namespace EasyPaint.View
         Storyboard _storyboardCountDown;
         Storyboard _storyboardShowPalette;
         Storyboard _storyboardColorSelected;
+        Storyboard _storyboardSmallCountDownAnimation;
+        EventHandler _storyboardSmallCountDownAnimationHandler;
+
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
 
@@ -61,17 +67,17 @@ namespace EasyPaint.View
         //List<MyColor> _ignoredColors = new List<MyColor>();
 
         List<Color> _paletteColors = new List<Color>();
-
-        private Dictionary<int, SoundEffect> _sounds = new Dictionary<int, SoundEffect>();
+ 
+    
 
         public PainterPage()
         {
             InitializeComponent();
             //Tester.CheckImagesTester();
             _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
-            _dt.Interval = TimeSpan.FromSeconds(1);
-            _dt.Tick += dt_Tick;
-            LoadSounds();
+            //_dt.Interval = TimeSpan.FromSeconds(1);
+            //_dt.Tick += dt_Tick;
+
             InitAnimations();
             AssignEventHandlers();
             InitPopup();
@@ -112,25 +118,7 @@ namespace EasyPaint.View
             //App.GlobalMediaElement.Source = new Uri("../Audio/mp3/Alegria.mp3", UriKind.RelativeOrAbsolute);
         }
 
-        private void LoadSounds()
-        {
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.three.wav"))
-            {
-                _sounds.Add(3, SoundEffect.FromStream(stream));
-            }
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.two.wav"))
-            {
-                _sounds.Add(2, SoundEffect.FromStream(stream));
-            }
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.one.wav"))
-            {
-                _sounds.Add(1, SoundEffect.FromStream(stream));
-            }
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.go.wav"))
-            {
-                _sounds.Add(0, SoundEffect.FromStream(stream));
-            }
-        }
+      
 
         #endregion
 
@@ -145,6 +133,7 @@ namespace EasyPaint.View
             _storyboardCountDown = (Storyboard)Resources["StoryboardCountdown"];
             _storyboardShowPalette = (Storyboard)Resources["StoryboardShowPalette"];
             _storyboardColorSelected = (Storyboard)Resources["TappedColorSb"];
+            _storyboardSmallCountDownAnimation = (Storyboard)Resources["StoryboardCountDownSmallAnimation"];
             //Storyboard.SetTarget(_storyboardImageFading.Children.ElementAt(0) as DoubleAnimation, ImageMain);
             //Storyboard.SetTarget(_storyboardCountDown.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
             //Storyboard.SetTarget(_storyboardShowPalette.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
@@ -155,8 +144,10 @@ namespace EasyPaint.View
             TextBlockCountDownBig.Visibility = Visibility.Visible;
             int count = 3;
             TextBlockCountDownBig.Text = count.ToString();
-            SoundHelper.PlaySound(_sounds[count]);
+            SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
             count--;
+
+            DisablePage();
 
             //http://stackoverflow.com/questions/4303922/removing-anonymous-event-handler
             EventHandler handler1 = null;
@@ -167,7 +158,7 @@ namespace EasyPaint.View
                 if (count == 0)
                 {
                     TextBlockCountDownBig.Text = "go!!!";
-                    SoundHelper.PlaySound(_sounds[count]);
+                    SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
                     _storyboardCountDown.Completed -= handler1;
                     _storyboardSubjectImageFading.Begin();
                 }
@@ -178,7 +169,7 @@ namespace EasyPaint.View
                         _storyboardShowPalette.Begin();
                     }
                     TextBlockCountDownBig.Text = count.ToString();
-                    SoundHelper.PlaySound(_sounds[count]);
+                    SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
                     _storyboardCountDown.Begin();
                     count--;
                 }
@@ -189,6 +180,8 @@ namespace EasyPaint.View
                 _storyboardSubjectImageFading.Completed -= handler2;
                 TextBlockCountDownBig.Visibility = Visibility.Collapsed;
                 _storyboardCountDown.Stop();
+
+                EnablePage();
                 StartTimer();
             };
 
@@ -236,8 +229,32 @@ namespace EasyPaint.View
             BorderCountDownSmall.Visibility = System.Windows.Visibility.Visible;
             _gameInProgress = true;
             _curAvailableTimeValue = TotalTime;
-            // MessageBox.Show("disabled timer");
-            _dt.Start();
+            TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
+
+            _storyboardSmallCountDownAnimationHandler = (s, e) =>
+            {
+                if (!_gameInProgress) return;
+
+                if (_curAvailableTimeValue == 0)
+                {
+                    _storyboardSmallCountDownAnimation.Completed -= _storyboardSmallCountDownAnimationHandler;
+                    StopTimer();
+                    CheckDrawnPicture();
+                }
+                else
+                {
+                    _curAvailableTimeValue--;
+                    Dispatcher.BeginInvoke(() =>
+                    {
+                        TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
+                    });
+                    _storyboardSmallCountDownAnimation.Begin();
+                }
+            };
+
+            _storyboardSmallCountDownAnimation.Completed -= _storyboardSmallCountDownAnimationHandler;
+            _storyboardSmallCountDownAnimation.Completed += _storyboardSmallCountDownAnimationHandler;
+            _storyboardSmallCountDownAnimation.Begin();
         }
 
         private void StopTimer()
@@ -246,7 +263,8 @@ namespace EasyPaint.View
             _gameInProgress = false;
             _lastAvailableTimeValue = _curAvailableTimeValue;
             _curAvailableTimeValue = 0;
-            _dt.Stop();
+            _storyboardSmallCountDownAnimation.Stop();
+            //_dt.Stop();
         }
         #endregion
 
@@ -255,8 +273,21 @@ namespace EasyPaint.View
             InitPage();
         }
 
+        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            PageLeftActions();
+            base.OnNavigatedFrom(e);
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+        }
+
         private void InitPage()
         {
+            TextBlockCountDownSmall.Text = TotalTime.ToString();
+
             StackPanelTest.Visibility = Visibility.Collapsed;
             GridPainter.Visibility = System.Windows.Visibility.Visible;
 
@@ -265,7 +296,6 @@ namespace EasyPaint.View
             _storyboardSubjectImageFading.Stop();
             _storyboardCountDown.Stop();
             _storyboardShowPalette.Stop();
-
 
             if (_drawingboard != null) SetEllipseSize(_drawingboard.BrushWidth);
 
@@ -292,8 +322,8 @@ namespace EasyPaint.View
                 ImageMain.Source = new BitmapImage(selectedImage.ImageSource);
 
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
-                //_reducedColorsPicture = new WriteableBitmap(ImageMain, null);
                 _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
+                _reducedColorsLineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorLineArtResourcePath);
                 ImageOverlay.Source = _lineArtPicture;
                 ImageOverlay.Opacity = 0.4;
                 InitPalette();
@@ -341,11 +371,15 @@ namespace EasyPaint.View
             //{
             //    e.Cancel = true;
             //}
+            PageLeftActions();
+        }
+
+        private void PageLeftActions()
+        {
             if (_resultPopup != null)
             {
                 _resultPopup.IsOpen = false;
             }
-
             StopTimer();
         }
 
@@ -353,6 +387,7 @@ namespace EasyPaint.View
         {
             //Change it to 'erase mode'.
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Erase;
+            SoundHelper.PlaySound(App.Current.Sounds["click"]);
         }
 
         #region palette
@@ -360,7 +395,6 @@ namespace EasyPaint.View
 
         private void pc1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
 
             Viewbox senderViewBox = (sender as Viewbox);
@@ -371,6 +405,8 @@ namespace EasyPaint.View
             _storyboardColorSelected.Begin();
 
             _drawingboard.OutlineColor = _drawingboard.MainColor = selectedColor;
+
+            SoundHelper.PlaySound(App.Current.Sounds["click"]);
         }
         #endregion
 
@@ -396,6 +432,7 @@ namespace EasyPaint.View
             //stroke 18 -> width 30
 
             SetEllipseSize(_drawingboard.BrushWidth);
+            SoundHelper.PlaySound(App.Current.Sounds["click"]);
         }
 
         private void SetEllipseSize(int strokeWidth)
@@ -423,7 +460,6 @@ namespace EasyPaint.View
         private void CheckDrawnPicture()
         {
             WriteableBitmap userDrawnPicture = null;
-
             userDrawnPicture = new WriteableBitmap((int)_drawingboard.Ink.Width, (int)_drawingboard.Ink.Height);
             userDrawnPicture.Render(_drawingboard.Ink, null);
             userDrawnPicture.Invalidate();
@@ -432,8 +468,8 @@ namespace EasyPaint.View
             ImageMain.Visibility = System.Windows.Visibility.Collapsed;
 
             userDrawnPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
-                                  _lineArtPicture,
-                                  new Rect(0, 0, _lineArtPicture.PixelWidth, _lineArtPicture.PixelHeight),
+                                  _reducedColorsLineArtPicture,
+                                  new Rect(0, 0, _reducedColorsLineArtPicture.PixelWidth, _reducedColorsLineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
 
             //int tPixels = userDrawnPicture.Pixels.Where(p => p != 0).Count();
@@ -477,7 +513,7 @@ namespace EasyPaint.View
                 _resultPopupChild.Height = 400;
                 _resultPopupChild.Width = 400;
                 _resultPopup.VerticalOffset = 200;
-                _resultPopup.HorizontalOffset = 60;
+                _resultPopup.HorizontalOffset = 30;
                 _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
                 _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
                 _resultPopupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
@@ -537,12 +573,14 @@ namespace EasyPaint.View
         {
             StopTimer();
             CheckDrawnPicture();
-
+            SoundHelper.PlaySound(App.Current.Sounds["click"]);
         }
 
         private void TextBlockCountDownSmall_Tap(object sender, GestureEventArgs e)
         {
+
 #if DEBUG
+             StopTimer();
             int accuracyPercentage = 80;
             ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue, null);
 #endif

@@ -86,6 +86,34 @@
           <source>meerkats</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">meerkats</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Yak" xml:space="preserve">
+          <source>yak</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">yak</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/group_Asia" xml:space="preserve">
+          <source>Asia</source>
+          <target state="new">Asia</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Tigre" xml:space="preserve">
+          <source>tiger</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">tiger</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_scimmietta" xml:space="preserve">
+          <source>monkey</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">monkey</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Elefante" xml:space="preserve">
+          <source>elephant</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">elephant</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Cobra" xml:space="preserve">
+          <source>cobra</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">cobra</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_clamidosauro" xml:space="preserve">
+          <source>frilled lizard</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">frilled lizard</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/item_rinoceronte" xml:space="preserve">
           <source>rhinoceros</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">rhinoceros</target>

@@ -75,9 +75,9 @@
                                    HorizontalAlignment="Center"
                                    Text="{Binding Text}" 
                                    FontSize="50"   
+                                   TextWrapping="Wrap"
                                    FontFamily="..\..\Fonts\andyb.TTF#Andy"
-                                   Foreground="Green"
-                                   Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"></TextBlock>
+                                   Foreground="Green"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>

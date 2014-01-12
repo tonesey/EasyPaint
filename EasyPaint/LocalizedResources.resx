@@ -183,4 +183,25 @@
   <data name="item_suricati" xml:space="preserve">
     <value>meerkats</value>
   </data>
+  <data name="item_clamidosauro" xml:space="preserve">
+    <value>frilled lizard</value>
+  </data>
+  <data name="item_Cobra" xml:space="preserve">
+    <value>cobra</value>
+  </data>
+  <data name="item_Elefante" xml:space="preserve">
+    <value>elephant</value>
+  </data>
+  <data name="item_scimmietta" xml:space="preserve">
+    <value>monkey</value>
+  </data>
+  <data name="item_Tigre" xml:space="preserve">
+    <value>tiger</value>
+  </data>
+  <data name="item_Yak" xml:space="preserve">
+    <value>yak</value>
+  </data>
+  <data name="group_Asia" xml:space="preserve">
+    <value>Asia</value>
+  </data>
 </root>

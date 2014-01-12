@@ -60,7 +60,7 @@
         </trans-unit>
         <trans-unit id="Resx/item_zebra" translate="yes" xml:space="preserve">
           <source>zebra</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Zebra</target>
+          <target state="translated">zebra</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_failed" xml:space="preserve">
           <source>level failed!</source>
@@ -85,6 +85,34 @@
         <trans-unit translate="yes" id="Resx/item_suricati" xml:space="preserve">
           <source>meerkats</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">suricati</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Yak" xml:space="preserve">
+          <source>yak</source>
+          <target state="translated">yak</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/group_Asia" xml:space="preserve">
+          <source>Asia</source>
+          <target state="new">Asia</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Tigre" xml:space="preserve">
+          <source>tiger</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">tigre</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_scimmietta" xml:space="preserve">
+          <source>monkey</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">scimmia</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Elefante" xml:space="preserve">
+          <source>elephant</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">elefante</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Cobra" xml:space="preserve">
+          <source>cobra</source>
+          <target state="translated">cobra</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_clamidosauro" xml:space="preserve">
+          <source>frilled lizard</source>
+          <target state="translated">clamidosauro</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_rinoceronte" xml:space="preserve">
           <source>rhinoceros</source>

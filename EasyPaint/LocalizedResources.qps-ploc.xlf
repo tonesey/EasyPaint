@@ -86,6 +86,34 @@
           <source>meerkats</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[FFFB7][!!_męêřķàţś_!!]</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Yak" xml:space="preserve">
+          <source>yak</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[88461][!!_ŷáк_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/group_Asia" xml:space="preserve">
+          <source>Asia</source>
+          <target state="new">Asia</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Tigre" xml:space="preserve">
+          <source>tiger</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[6F4F0][!!_τìġèŗ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_scimmietta" xml:space="preserve">
+          <source>monkey</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[DF5DD][!!_мõηкêў_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Elefante" xml:space="preserve">
+          <source>elephant</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[47174][!!_èļêþћâйţ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_Cobra" xml:space="preserve">
+          <source>cobra</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[7201E][!!_ĉõьŗà_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_clamidosauro" xml:space="preserve">
+          <source>frilled lizard</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[CC1F8][!!_ƒѓíłļęď ľįźâřð_!!!!]</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/item_rinoceronte" xml:space="preserve">
           <source>rhinoceros</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[78FF0][!!_řћîηõċéŗòš_!!]</target>

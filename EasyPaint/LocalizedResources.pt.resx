@@ -168,4 +168,19 @@
   <data name="water" xml:space="preserve">
     <value>água</value>
   </data>
-<data name="MsgBoxTitleWarning" xml:space="preserve"><value>Aviso</value></data><data name="MsgBoxExit" xml:space="preserve"><value>Tem certeza que deseja sair?</value></data><data name="item_suricati" xml:space="preserve"><value>Meerkats</value></data><data name="item_rinoceronte" xml:space="preserve"><value>Rinoceronte</value></data><data name="item_gazzella" xml:space="preserve"><value>gazela</value></data></root>
+  <data name="MsgBoxTitleWarning" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="MsgBoxExit" xml:space="preserve">
+    <value>Tem certeza que deseja sair?</value>
+  </data>
+  <data name="item_suricati" xml:space="preserve">
+    <value>Meerkats</value>
+  </data>
+  <data name="item_rinoceronte" xml:space="preserve">
+    <value>Rinoceronte</value>
+  </data>
+  <data name="item_gazzella" xml:space="preserve">
+    <value>gazela</value>
+  </data>
+<data name="item_Yak" xml:space="preserve"><value>iaque</value></data><data name="item_Tigre" xml:space="preserve"><value>Tigre</value></data><data name="item_scimmietta" xml:space="preserve"><value>macaco</value></data><data name="item_Elefante" xml:space="preserve"><value>elefante</value></data><data name="item_Cobra" xml:space="preserve"><value>cobra</value></data><data name="item_clamidosauro" xml:space="preserve"><value>frilled lagarto</value></data></root>

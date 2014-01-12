@@ -1,13 +1,15 @@
 ﻿
 
 TODO
-
+- suoni
+- scritta latina painter page
 - cambiamento traccia musicale in base a pagina
-- suoni ok/ko
 - calcolo punteggio che tiene conto del tempo risparmiato?
 - rivedere icone disegno con marta
 
 DONE
+
+- animazione countdown piccolo - OK
 - rifare le lineart partendo dalle img a colori reduced_10 - OK
 - salvataggio punteggi: salvare da modello il valore di ogni item - OK
 - ricontrollare calcolo diff colori - OK

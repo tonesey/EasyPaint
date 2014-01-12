@@ -20,6 +20,7 @@ using System.Reflection;
 using System.IO.IsolatedStorage;
 using System.IO;
 using EasyPaint.Settings;
+using Microsoft.Xna.Framework.Audio;
 
 namespace EasyPaint
 {
@@ -40,6 +41,13 @@ namespace EasyPaint
         public static new App Current
         {
             get { return Application.Current as App; }
+        }
+
+        private Dictionary<string, SoundEffect> _sounds = new Dictionary<string, SoundEffect>();
+        public Dictionary<string, SoundEffect> Sounds
+        {
+            get { return _sounds; }
+            private set { _sounds = value; }
         }
 
         /// <summary>
@@ -84,9 +92,6 @@ namespace EasyPaint
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-
-
-
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -99,6 +104,49 @@ namespace EasyPaint
         private void InitApp()
         {
             AppSettings.LoadSettings();
+            LoadSounds();
+        }
+
+        private void LoadSounds()
+        {
+
+            //countdown
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.three.wav"))
+            {
+                _sounds.Add("3", SoundEffect.FromStream(stream));
+            }
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.two.wav"))
+            {
+                _sounds.Add("2", SoundEffect.FromStream(stream));
+            }
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.one.wav"))
+            {
+                _sounds.Add("1", SoundEffect.FromStream(stream));
+            }
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.go.wav"))
+            {
+                _sounds.Add("0", SoundEffect.FromStream(stream));
+            }
+            //click
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.click.wav"))
+            {
+                _sounds.Add("click", SoundEffect.FromStream(stream));
+            }
+            //level ok
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.levelCompleted.wav"))
+            {
+                _sounds.Add("levelCompleted", SoundEffect.FromStream(stream));
+            }
+            //level ko
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.levelFailed.wav"))
+            {
+                _sounds.Add("levelFailed", SoundEffect.FromStream(stream));
+            }
+            //count
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.pointsCount.wav"))
+            {
+                _sounds.Add("pointsCount", SoundEffect.FromStream(stream));
+            }
         }
 
         // Code to execute when the application is activated (brought to foreground)

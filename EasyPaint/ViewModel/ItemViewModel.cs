@@ -94,15 +94,38 @@ namespace EasyPaint.ViewModel
             }
         }
 
+
+        protected string _reducedColorlineArtResourcePath;
+        public string ReducedColorLineArtResourcePath
+        {
+            get
+            {
+                return _reducedColorlineArtResourcePath;
+            }
+            set
+            {
+                if (_reducedColorlineArtResourcePath != value)
+                {
+                    _reducedColorlineArtResourcePath = value;
+                    this.OnPropertyChanged("ReducedColorLineArtResourcePath");
+                }
+            }
+        }
+
         public ItemViewModel(Group g, Item item)
         {
             _item = item;
             _belongingGroup = g;
             _key = item.Key;
+
+            //full colors
             ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
-            //LineArtResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
-            LineArtResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
+            LineArtResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
+           
+            //reduced colors
             ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename });
+            ReducedColorLineArtResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
+          
         }
 
         internal void SetScore(int value)
