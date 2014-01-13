@@ -24,11 +24,31 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace EasyPaint
 {
-    public delegate void MediaStateChangedHandler(MediaElementState state);
+    public delegate void MediaStateChangedHandler(bool isMuted);
 
     public partial class App : Application
     {
+
+        #region audio
         public event MediaStateChangedHandler MediaStateChanged;
+        private Dictionary<TrackType, string> _tracks = new Dictionary<TrackType, string>();
+
+        public enum TrackType
+        {
+            Paint,
+            StandardBackground
+        }
+
+        private string _currentTrack;
+
+        private Dictionary<string, SoundEffect> _sounds = new Dictionary<string, SoundEffect>();
+        public Dictionary<string, SoundEffect> Sounds
+        {
+            get { return _sounds; }
+            private set { _sounds = value; }
+        }
+
+        #endregion
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -43,12 +63,7 @@ namespace EasyPaint
             get { return Application.Current as App; }
         }
 
-        private Dictionary<string, SoundEffect> _sounds = new Dictionary<string, SoundEffect>();
-        public Dictionary<string, SoundEffect> Sounds
-        {
-            get { return _sounds; }
-            private set { _sounds = value; }
-        }
+
 
         /// <summary>
         /// Constructor for the Application object.
@@ -104,10 +119,10 @@ namespace EasyPaint
         private void InitApp()
         {
             AppSettings.LoadSettings();
-            LoadSounds();
+            InitAudio();
         }
 
-        private void LoadSounds()
+        private void InitAudio()
         {
 
             //countdown
@@ -147,6 +162,13 @@ namespace EasyPaint
             {
                 _sounds.Add("pointsCount", SoundEffect.FromStream(stream));
             }
+            //low time - alarm
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.alarm.wav"))
+            {
+                _sounds.Add("alarm", SoundEffect.FromStream(stream));
+            }
+
+            InitTracks();
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -202,6 +224,7 @@ namespace EasyPaint
         // Avoid double-initialization
         private bool phoneApplicationInitialized = false;
 
+
         // Do not add any additional code to this method
         private void InitializePhoneApplication()
         {
@@ -234,6 +257,18 @@ namespace EasyPaint
         #endregion
 
         #region audio
+
+        private void InitTracks()
+        {
+            //_tracks.Add(TrackType.StandardBackground, "Audio/mp3/HunterThemeFull.mp3");
+            //_tracks.Add(TrackType.Paint, "Audio/mp3/HunterMenuThemeLoop.mp3");
+
+            _tracks.Add(TrackType.Paint, "Audio/mp3/HunterThemeLoop.mp3");
+            _tracks.Add(TrackType.StandardBackground, "Audio/mp3/HunterMenuThemeLoop.mp3");
+
+            //_currentTrack = _tracks[TrackType.StandardBackground];
+        }
+
         public static MediaElement GlobalMediaElement
         {
             get { return Current.Resources["GlobalMedia"] as MediaElement; }
@@ -256,16 +291,23 @@ namespace EasyPaint
             return allowed;
         }
 
-        public void ToggleBackgroundMusic()
+        public void ToggleIsMute()
         {
-            if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
+            GlobalMediaElement.IsMuted = !GlobalMediaElement.IsMuted;
+
+            if (MediaStateChanged != null)
             {
-                PlayBackgroundMusic();
+                MediaStateChanged(GlobalMediaElement.IsMuted);
             }
-            else
-            {
-                PauseBackgroundMusic();
-            }
+
+            //if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
+            //{
+            //    PlayBackgroundMusic(type);
+            //}
+            //else
+            //{
+            //    PauseBackgroundMusic();
+            //}
         }
 
         public void PauseBackgroundMusic()
@@ -273,19 +315,44 @@ namespace EasyPaint
             GlobalMediaElement.Pause();
         }
 
-        public void PlayBackgroundMusic()
+        internal void StopBackgroundMusic()
         {
-            if (GlobalMediaElement.CurrentState == MediaElementState.Paused)
+            GlobalMediaElement.Stop();
+        }
+
+        //public void PlayBackgroundMusic()
+        //{
+        //    //if (string.IsNullOrEmpty(_currentTrack)) {
+        //    //    _currentTrack = _tracks[TrackType.StandardBackground];
+        //    //}
+        //    PlayBackgroundMusic(TODO!!!!);
+        //}
+
+        public void PlayBackgroundMusic(TrackType type)
+        {
+            PlayBackgroundMusic(_tracks[type]);
+        }
+
+        private void PlayBackgroundMusic(string trackName)
+        {
+            bool trackChanged = false;
+
+            if (trackName != _currentTrack)
             {
-                GlobalMediaElement.Play();
+                _currentTrack = trackName;
+                //if (string.IsNullOrEmpty(_currentTrack))
+                //{
+                //    _currentTrack = _tracks[TrackType.StandardBackground];
+                //}
+                trackChanged = true;
             }
-            else
+
+            if (trackChanged)
             {
                 if (BackgroundMusicAllowed())
                 {
                     MediaPlayer.Stop(); //stop to clear any existing bg music
-
-                    GlobalMediaElement.Source = new Uri("Audio/mp3/HunterThemeLoop.mp3", UriKind.Relative);
+                    GlobalMediaElement.Source = new Uri(trackName, UriKind.Relative);
 
                     GlobalMediaElement.CurrentStateChanged -= GlobalMediaElement_CurrentStateChanged;
                     GlobalMediaElement.CurrentStateChanged += GlobalMediaElement_CurrentStateChanged;
@@ -295,14 +362,27 @@ namespace EasyPaint
                     GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
                 }
             }
+            else
+            {
+                if (GlobalMediaElement.CurrentState == MediaElementState.Paused)
+                {
+                    GlobalMediaElement.Play();
+                }
+                else
+                {
+                    //track already playing
+                }
+            }
+
+            if (MediaStateChanged != null)
+            {
+                MediaStateChanged(GlobalMediaElement.IsMuted);
+            }
         }
 
         void GlobalMediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
-            if (MediaStateChanged != null)
-            {
-                MediaStateChanged((sender as MediaElement).CurrentState);
-            }
+           
         }
 
         void GlobalMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
@@ -324,5 +404,7 @@ namespace EasyPaint
             }
         }
         #endregion
+
+        
     }
 }

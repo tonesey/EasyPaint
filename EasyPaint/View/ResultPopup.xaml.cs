@@ -130,6 +130,7 @@ namespace EasyPaint.View
                     SoundHelper.PlaySound(App.Current.Sounds["pointsCount"]);
                 }
             }
+            Thread.Sleep(500);
         }
 
         //private async Task RenderPercentage(int percentage)

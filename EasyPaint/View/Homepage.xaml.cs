@@ -32,7 +32,8 @@ namespace EasyPaint.View
             InitializeComponent();
             LoadSounds();
             RegisterMessages();
-            (Application.Current as App).PlayBackgroundMusic();
+
+            (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
         }
 
         private void LoadSounds()
@@ -63,7 +64,7 @@ namespace EasyPaint.View
             }
             else if (action is ToggleSoundMessage)
             {
-                App.Current.ToggleBackgroundMusic();
+                App.Current.ToggleIsMute();
             }
 
             return null;

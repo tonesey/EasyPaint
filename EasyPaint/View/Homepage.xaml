@@ -57,7 +57,7 @@
         <Image x:Name="ImageSound" Margin="20,0,0,10" Grid.Column="0" Grid.Row="4" Width="60" Height="60"
                HorizontalAlignment="Left"
                Tap="ImageSound_Tap"
-               Source="{Binding MediaElementState, Converter={StaticResource mediaElementStateToImageConverter}, Mode=OneWay}" 
+               Source="{Binding IsMuted, Converter={StaticResource mediaElementStateToImageConverter}, Mode=OneWay}" 
                Stretch="Uniform" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <CompositeTransform Rotation="-11.967"/>

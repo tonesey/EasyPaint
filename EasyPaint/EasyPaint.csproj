@@ -359,6 +359,7 @@
     <Resource Include="Assets\lres\groups\2\koala lineart.png" />
     <Resource Include="Assets\buttons\sound_on.png" />
     <Resource Include="Assets\buttons\sound_off.png" />
+    <Resource Include="Assets\buttons\nav_left_green.png" />
     <Content Include="Assets\icons\Lock.png" />
     <Resource Include="Assets\lres\bkg\painter_bck1.jpg" />
     <Resource Include="Assets\lres\groups\1\gazzella colore.png" />
@@ -400,6 +401,8 @@
     <EmbeddedResource Include="Audio\wav\levelCompleted.wav" />
     <EmbeddedResource Include="Audio\wav\pointsCount.wav" />
     <EmbeddedResource Include="Audio\wav\click.wav" />
+    <EmbeddedResource Include="Audio\wav\fmbass.wav" />
+    <EmbeddedResource Include="Audio\wav\alarm.wav" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

@@ -25,6 +25,10 @@ namespace EasyPaint.Tester
         {
             InitializeComponent();
 
+            (Application.Current as App).PlayBackgroundMusic();
+
+            return;
+
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
 
@@ -292,6 +296,28 @@ namespace EasyPaint.Tester
             } while (reducedColors.Count > maxColors);
 
             return reducedColors;
+        }
+
+        private void ButtonTrack1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            App.Current.SwitchTrack("1");
+        }
+
+        private void ButtonTrack2_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            App.Current.SwitchTrack("2");
+        }
+
+        private void ButtonTrack3_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            App.Current.SwitchTrack("3");
+        }
+
+        private void ButtonToggle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+           App.Current.ToggleMute();
+
+
         }
 
 

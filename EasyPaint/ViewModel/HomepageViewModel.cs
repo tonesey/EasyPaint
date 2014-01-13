@@ -21,17 +21,35 @@ namespace EasyPaint.ViewModel
         public RelayCommand ShowSettingsCommand { get; private set; }
         public RelayCommand ToggleSoundCommand { get; private set; }
 
-        private MediaElementState _MediaElementState = MediaElementState.Stopped;
-        public MediaElementState MediaElementState
+        //private MediaElementState _MediaElementState = MediaElementState.Stopped;
+        //public MediaElementState MediaElementState
+        //{
+        //    get
+        //    {
+        //        return _MediaElementState;
+        //    }
+        //    private set {
+        //        if (value != _MediaElementState) {
+        //            _MediaElementState = value;
+        //            RaisePropertyChanged("MediaElementState");
+        //        }
+        //    }
+        //}
+
+
+        private bool _isMuted = false;
+        public bool IsMuted
         {
             get
             {
-                return _MediaElementState;
+                return _isMuted;
             }
-            private set {
-                if (value != _MediaElementState) {
-                    _MediaElementState = value;
-                    RaisePropertyChanged("MediaElementState");
+            private set
+            {
+                if (value != _isMuted)
+                {
+                    _isMuted = value;
+                    RaisePropertyChanged("IsMuted");
                 }
             }
         }
@@ -50,10 +68,14 @@ namespace EasyPaint.ViewModel
             App.Current.MediaStateChanged += Current_MediaStateChanged;
         }
 
-        void Current_MediaStateChanged(System.Windows.Media.MediaElementState state)
+        //void Current_MediaStateChanged(System.Windows.Media.MediaElementState state)
+        //{
+        //    MediaElementState = state;
+        //}
+
+        void Current_MediaStateChanged(bool state)
         {
-            MediaElementState = state;
-          
+            IsMuted = state;
         }
 
         private object ExecToggleSoundCommand()

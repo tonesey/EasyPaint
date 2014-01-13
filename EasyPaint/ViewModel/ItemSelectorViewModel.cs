@@ -81,10 +81,20 @@ namespace EasyPaint.ViewModel
 
 
         public RelayCommand ItemSelectedCommand { get; private set; }
+        public RelayCommand GoToGroupSelectorCommand { get; private set; }
+        
 
         public ItemSelectorViewModel()
         {
             ItemSelectedCommand = new RelayCommand(() => NavigateToSelectedItemCommand());
+            GoToGroupSelectorCommand = new RelayCommand(() => GoToGroupSelector());
+        }
+
+        private object GoToGroupSelector()
+        {
+            var msg = new GoToPageMessage() { PageName = Constants.View_GroupSeletor };
+            Messenger.Default.Send<GoToPageMessage>(msg);
+            return null;
         }
 
         private object NavigateToSelectedItemCommand()

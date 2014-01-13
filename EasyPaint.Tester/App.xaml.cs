@@ -9,16 +9,34 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using EasyPaint.Tester.Resources;
 using EasyPaint.Tester.ViewModel;
+using System.Windows.Media;
+using System.Windows.Controls;
+using Microsoft.Xna.Framework.Media;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace EasyPaint.Tester
 {
+    public delegate void MediaStateChangedHandler(MediaElementState state);
+
     public partial class App : Application
     {
+        public event MediaStateChangedHandler MediaStateChanged;
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+
+
+        private Dictionary<string, string> _tracks = new Dictionary<string, string>();
+
+
+        public static new App Current
+        {
+            get { return Application.Current as App; }
+        }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -36,6 +54,9 @@ namespace EasyPaint.Tester
 
             // Language display initialization
             InitializeLanguage();
+
+
+            InitTracks();
 
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
@@ -57,6 +78,13 @@ namespace EasyPaint.Tester
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+        }
+
+        private void InitTracks()
+        {
+            _tracks.Add("1", "Audio/mp3/HunterThemeLoop.mp3");
+            _tracks.Add("2", "Audio/mp3/HunterThemeFull.mp3");
+            _tracks.Add("3", "Audio/mp3/HunterMenuThemeLoop.mp3");
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -224,5 +252,100 @@ namespace EasyPaint.Tester
                 throw;
             }
         }
+
+        #region audio
+
+        internal void ToggleMute()
+        {
+            GlobalMediaElement.IsMuted = !GlobalMediaElement.IsMuted;
+
+            //GlobalMediaElement.Stop();
+            //Thread.Sleep(1000);
+            //SwitchTrack("1");
+        }
+
+        public static MediaElement GlobalMediaElement
+        {
+            get { return Current.Resources["GlobalMedia"] as MediaElement; }
+        }
+
+        public void ToggleBackgroundMusic()
+        {
+            if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
+            {
+                PlayBackgroundMusic();
+            }
+            else
+            {
+                PauseBackgroundMusic();
+            }
+        }
+
+        public void PauseBackgroundMusic()
+        {
+            GlobalMediaElement.Pause();
+        }
+
+
+        public void PlayBackgroundMusic()
+        {
+            PlayBackgroundMusic("Audio/mp3/HunterThemeLoop.mp3");
+        }
+
+        public void PlayBackgroundMusic(string trackName)
+        {
+            if (GlobalMediaElement.CurrentState == MediaElementState.Paused)
+            {
+                GlobalMediaElement.Play();
+            }
+            else
+            {
+                MediaPlayer.Stop(); //stop to clear any existing bg music
+                 
+                GlobalMediaElement.Source = new Uri(trackName, UriKind.Relative);
+
+                GlobalMediaElement.CurrentStateChanged -= GlobalMediaElement_CurrentStateChanged;
+                GlobalMediaElement.CurrentStateChanged += GlobalMediaElement_CurrentStateChanged;
+                GlobalMediaElement.MediaOpened -= MediaElement_MediaOpened;
+                GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
+                GlobalMediaElement.MediaFailed -= GlobalMediaElement_MediaFailed;
+                GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
+            }
+        }
+
+        public void SwitchTrack(string num)
+        {
+            PlayBackgroundMusic(_tracks[num]);
+        }
+
+        void GlobalMediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
+        {
+            if (MediaStateChanged != null)
+            {
+                MediaStateChanged((sender as MediaElement).CurrentState);
+            }
+        }
+
+        void GlobalMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            throw e.ErrorException;
+        }
+
+        private void MediaElement_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            App.GlobalMediaElement.Play();
+        }
+
+        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
+            {
+                //loop bg music
+                GlobalMediaElement.Play();
+            }
+        }
+        #endregion
+
+    
     }
 }

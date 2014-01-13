@@ -83,6 +83,8 @@ namespace EasyPaint.View
             InitPopup();
 
             BorderPalette.Visibility = Visibility.Collapsed;
+
+
         }
 
         private void AssignEventHandlers()
@@ -93,34 +95,6 @@ namespace EasyPaint.View
         private void UnassignEventHandlers()
         {
         }
-
-        //void ImageOverlay_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    _drawingboard.Ink_MouseMove(sender, e);
-        //}
-
-        //void ImageOverlay_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        //{
-        //    ImageOverlay.ReleaseMouseCapture();
-        //    _drawingboard.Ink_MouseLeftButtonUp(sender, e);
-        //}
-
-        //void ImageOverlay_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    ImageOverlay.CaptureMouse();
-        //    _drawingboard.Ink_MouseLeftButtonDown(sender, e);
-        //}
-
-        #region audio
-        public void TryPlayBackgroundMusic()
-        {
-            //App.GlobalMediaElement.Stop();
-            //App.GlobalMediaElement.Source = new Uri("../Audio/mp3/Alegria.mp3", UriKind.RelativeOrAbsolute);
-        }
-
-      
-
-        #endregion
 
         private void ShowPalette()
         {
@@ -147,6 +121,7 @@ namespace EasyPaint.View
             SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
             count--;
 
+
             DisablePage();
 
             //http://stackoverflow.com/questions/4303922/removing-anonymous-event-handler
@@ -158,6 +133,7 @@ namespace EasyPaint.View
                 if (count == 0)
                 {
                     TextBlockCountDownBig.Text = "go!!!";
+                    (Application.Current as App).PlayBackgroundMusic(App.TrackType.Paint);
                     SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
                     _storyboardCountDown.Completed -= handler1;
                     _storyboardSubjectImageFading.Begin();
@@ -180,7 +156,6 @@ namespace EasyPaint.View
                 _storyboardSubjectImageFading.Completed -= handler2;
                 TextBlockCountDownBig.Visibility = Visibility.Collapsed;
                 _storyboardCountDown.Stop();
-
                 EnablePage();
                 StartTimer();
             };
@@ -233,17 +208,25 @@ namespace EasyPaint.View
 
             _storyboardSmallCountDownAnimationHandler = (s, e) =>
             {
-                if (!_gameInProgress) return;
+                if (!_gameInProgress) {
+                    UnassignSmallCountdownEventHandlers();
+                    return;
+                }
 
                 if (_curAvailableTimeValue == 0)
                 {
-                    _storyboardSmallCountDownAnimation.Completed -= _storyboardSmallCountDownAnimationHandler;
+                    UnassignSmallCountdownEventHandlers();
                     StopTimer();
                     CheckDrawnPicture();
                 }
                 else
                 {
                     _curAvailableTimeValue--;
+
+                    if (_curAvailableTimeValue == 10) {
+                        SoundHelper.PlaySound(App.Current.Sounds["alarm"]);
+                    }
+
                     Dispatcher.BeginInvoke(() =>
                     {
                         TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
@@ -252,17 +235,28 @@ namespace EasyPaint.View
                 }
             };
 
-            _storyboardSmallCountDownAnimation.Completed -= _storyboardSmallCountDownAnimationHandler;
-            _storyboardSmallCountDownAnimation.Completed += _storyboardSmallCountDownAnimationHandler;
+            UnassignSmallCountdownEventHandlers();
+            AssignSmallCountdownEventHandlers();
             _storyboardSmallCountDownAnimation.Begin();
+        }
+
+        private void UnassignSmallCountdownEventHandlers()
+        {
+            _storyboardSmallCountDownAnimation.Completed -= _storyboardSmallCountDownAnimationHandler;
+        }
+
+        private void AssignSmallCountdownEventHandlers()
+        {
+            _storyboardSmallCountDownAnimation.Completed += _storyboardSmallCountDownAnimationHandler;
         }
 
         private void StopTimer()
         {
-            BorderCountDownSmall.Visibility = System.Windows.Visibility.Collapsed;
             _gameInProgress = false;
+            BorderCountDownSmall.Visibility = System.Windows.Visibility.Collapsed;
             _lastAvailableTimeValue = _curAvailableTimeValue;
             _curAvailableTimeValue = 0;
+            UnassignSmallCountdownEventHandlers();
             _storyboardSmallCountDownAnimation.Stop();
             //_dt.Stop();
         }
@@ -286,6 +280,7 @@ namespace EasyPaint.View
 
         private void InitPage()
         {
+            (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
             TextBlockCountDownSmall.Text = TotalTime.ToString();
 
             StackPanelTest.Visibility = Visibility.Collapsed;
@@ -333,8 +328,6 @@ namespace EasyPaint.View
 
         private void InitPalette()
         {
-
-
             //var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true);
             //_paletteColors = ImagesHelper.ReduceColors(imageColors, MAX_PALETTE_COLORS, out _ignoredColors);
 
@@ -349,14 +342,14 @@ namespace EasyPaint.View
                 var childEl = MyVisualTreeHelper.FindChild<System.Windows.Shapes.Path>(parentEl, "pc" + count + "_path");
                 if (childEl != null)
                 {
-                    //childEl.Fill = new SolidColorBrush(color.MainColor);
                     childEl.Fill = new SolidColorBrush(color);
+                    if (count == 1) {
+                        _drawingboard.OutlineColor = color; //sets drawingboard color 
+                    }
                 }
                 count++;
             }
-            //#if DEBUG
-            //                MessageBox.Show("colors detected : " + count);
-            //#endif
+     
             for (int i = count; i <= 5; i++)
             {
                 var el = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + i);
@@ -379,8 +372,11 @@ namespace EasyPaint.View
             if (_resultPopup != null)
             {
                 _resultPopup.IsOpen = false;
+                _resultPopup = null;
             }
             StopTimer();
+            (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
+         
         }
 
         private void eraseBtn_Click(object sender, RoutedEventArgs e)

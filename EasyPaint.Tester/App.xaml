@@ -11,6 +11,9 @@
 
     <!--Application Resources-->
     <Application.Resources>
+
+        <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
+        
         <local:LocalizedStrings x:Key="LocalizedStrings" />
 
         <vm:ViewModelLocator x:Key="Locator"

@@ -23,7 +23,7 @@
             <ColumnDefinition Width="6*" />
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="ImageTest"  Source="Assets/gazzella colore.png" VerticalAlignment="Top" Stretch="Fill" Grid.Column="0"  />
+        <Image Visibility="Collapsed" x:Name="ImageTest"  Source="Assets/gazzella colore.png" VerticalAlignment="Top" Stretch="Fill" Grid.Column="0"  />
 
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -31,7 +31,14 @@
                 <ColumnDefinition Width="12*" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel x:Name="StackPanelOrigColors"  Orientation="Vertical" VerticalAlignment="Center"  Grid.Column="0" Height="450" Margin="0,15">
+            
+            <StackPanel>
+                <Button Content="Track 1" Name="ButtonTrack1" Tap="ButtonTrack1_Tap"></Button>
+                <Button Content="Track 2" Name="ButtonTrack2" Tap="ButtonTrack2_Tap" ></Button>
+                <Button Content="Track 3" Name="ButtonTrack3" Tap="ButtonTrack3_Tap"></Button>
+                <Button Content="ToggleSound" Name="ButtonToggle" Tap="ButtonToggle_Tap"></Button>
+            </StackPanel>
+            <StackPanel x:Name="StackPanelOrigColors" Visibility="Collapsed"  Orientation="Vertical" VerticalAlignment="Center"  Grid.Column="0" Height="450" Margin="0,15">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle x:Name="c1"  Width="35" Height="35" Fill="AntiqueWhite" Margin="5"></Rectangle>
                     <TextBlock x:Name="c1Name" Text="COLORNAME1" VerticalAlignment="Center"></TextBlock>
@@ -74,7 +81,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel x:Name="StackPanelReducedColors" Orientation="Vertical" VerticalAlignment="Center"  Grid.Column="1" Margin="0">
+            <StackPanel x:Name="StackPanelReducedColors"  Visibility="Collapsed" Orientation="Vertical" VerticalAlignment="Center"  Grid.Column="1" Margin="0">
 
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">

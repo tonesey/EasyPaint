@@ -6,8 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:design="clr-namespace:EasyPaint.Design"
+       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
     xmlns:telerikPrimitivesLoopingList="clr-namespace:Telerik.Windows.Controls.LoopingList;assembly=Telerik.Windows.Controls.Primitives"
     xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP8" 
@@ -84,6 +84,16 @@
         </telerikPrimitives:RadLoopingList>
 
         <Image Grid.Row="2" Margin="10,50,0,0" Grid.RowSpan="3" Stretch="Fill" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png"/>
+
+        <Image Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="100" Grid.RowSpan="2" Stretch="Fill" Source="../Assets/buttons/nav_left_green.png">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Tap">
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="GoToHomepage" 
+                                                               Command="{Binding GotoHomepageCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+
 
     </Grid>
 

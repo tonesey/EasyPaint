@@ -183,4 +183,22 @@
   <data name="item_gazzella" xml:space="preserve">
     <value>[6FC76][!!_ġãźêĺłé_!!]</value>
   </data>
-<data name="item_Yak" xml:space="preserve"><value>[88461][!!_ŷáк_!!]</value></data><data name="item_Tigre" xml:space="preserve"><value>[6F4F0][!!_τìġèŗ_!!]</value></data><data name="item_scimmietta" xml:space="preserve"><value>[DF5DD][!!_мõηкêў_!!]</value></data><data name="item_Elefante" xml:space="preserve"><value>[47174][!!_èļêþћâйţ_!!]</value></data><data name="item_Cobra" xml:space="preserve"><value>[7201E][!!_ĉõьŗà_!!]</value></data><data name="item_clamidosauro" xml:space="preserve"><value>[CC1F8][!!_ƒѓíłļęď ľįźâřð_!!!!]</value></data></root>
+  <data name="item_Yak" xml:space="preserve">
+    <value>[88461][!!_ŷáк_!!]</value>
+  </data>
+  <data name="item_Tigre" xml:space="preserve">
+    <value>[6F4F0][!!_τìġèŗ_!!]</value>
+  </data>
+  <data name="item_scimmietta" xml:space="preserve">
+    <value>[DF5DD][!!_мõηкêў_!!]</value>
+  </data>
+  <data name="item_Elefante" xml:space="preserve">
+    <value>[47174][!!_èļêþћâйţ_!!]</value>
+  </data>
+  <data name="item_Cobra" xml:space="preserve">
+    <value>[7201E][!!_ĉõьŗà_!!]</value>
+  </data>
+  <data name="item_clamidosauro" xml:space="preserve">
+    <value>[CC1F8][!!_ƒѓíłļęď ľįźâřð_!!!!]</value>
+  </data>
+</root>

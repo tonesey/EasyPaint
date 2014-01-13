@@ -183,4 +183,22 @@
   <data name="item_gazzella" xml:space="preserve">
     <value>gazzella</value>
   </data>
-<data name="item_Yak" xml:space="preserve"><value>yak</value></data><data name="item_Tigre" xml:space="preserve"><value>tigre</value></data><data name="item_scimmietta" xml:space="preserve"><value>scimmia</value></data><data name="item_Elefante" xml:space="preserve"><value>elefante</value></data><data name="item_Cobra" xml:space="preserve"><value>cobra</value></data><data name="item_clamidosauro" xml:space="preserve"><value>clamidosauro</value></data></root>
+  <data name="item_Yak" xml:space="preserve">
+    <value>yak</value>
+  </data>
+  <data name="item_Tigre" xml:space="preserve">
+    <value>tigre</value>
+  </data>
+  <data name="item_scimmietta" xml:space="preserve">
+    <value>scimmia</value>
+  </data>
+  <data name="item_Elefante" xml:space="preserve">
+    <value>elefante</value>
+  </data>
+  <data name="item_Cobra" xml:space="preserve">
+    <value>cobra</value>
+  </data>
+  <data name="item_clamidosauro" xml:space="preserve">
+    <value>clamidosauro</value>
+  </data>
+</root>
