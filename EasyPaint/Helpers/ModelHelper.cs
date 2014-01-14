@@ -18,7 +18,8 @@ namespace EasyPaint.Helpers
 
         public static string GetUserScoreValue(AppData appData)
         {
-            //string userScoreDebug = "canguro colore.png-0-0;clamidosauro colori.png-50-100;coccodrillo colore.png-10-45";
+            //loading dictionary with <filename-unlocked-userscore-record> t-uple
+            //string userScoreDebug = "canguro colore.png-true-0-0;clamidosauro colori.png-false-50-100;coccodrillo colore.png-false-10-45";
             string strVal = string.Empty;
             var groups = appData.Groups;
             StringBuilder sb = new StringBuilder();
@@ -27,7 +28,7 @@ namespace EasyPaint.Helpers
                 for (int j = 0; j < groups.ElementAt(i).Items.Count; j++)
                 {
                     var item = groups.ElementAt(i).Items.ElementAt(j);
-                    sb.Append(string.Format("{0}-{1}-{2};", new[] { item.ImgFilename, item.Score.ToString(), item.RecordScore.ToString() }));
+                    sb.Append(string.Format("{0}-{1}-{2}-{3};", new string[] { item.ImgFilename, item.IsLocked.ToString(), item.Score.ToString(), item.RecordScore.ToString() }));
                 }
             }
             return sb.ToString();
@@ -42,33 +43,13 @@ namespace EasyPaint.Helpers
             var doc = XDocument.Load(stream);
 
             //#if DEBUG
-            //            string userScoreDebug = "canguro colore.png-0-0;clamidosauro colori.png-50-100;coccodrillo colore.png-10-45";
+            //            string userScoreDebug = "canguro colore.png-true-0-0;clamidosauro colori.png-false-50-100;coccodrillo colore.png-false-10-45";
             //            StorageHelper.StoreSetting(AppSettings.UserScoreKey, userScoreDebug, true);
             //#endif
 
+            #region userscore setting reading
             var userScoreValue = AppSettings.UserScoreValue;
-
-            //#region first start items unlock
-            //if (string.IsNullOrEmpty(userScoreValue)) 
-            //{
-            //    string tmp = string.Empty;
-            //    var defaultUnlockedItems = doc.Element("root").Element("unlocked_items").Attribute("value").Value.Split(',');
-            //    for (int i = 0; i < defaultUnlockedItems.Length; i++)
-            //    {
-            //        var item = defaultUnlockedItems[i];
-            //        tmp += string.Format("{0}-{1}-{2}", item, Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED, Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED);
-            //        if (i < defaultUnlockedItems.Length - 1) {
-            //            tmp += ";";
-            //        }
-            //    }
-            //    AppSettings.UserScoreValue = tmp;
-            //    AppSettings.SaveSettings();
-            //    AppSettings.LoadSettings();
-            //}
-            //#endregion
-
-            //loading dictionary with <filename-userscore-record> t-uple
-            Dictionary<string, int[]> _userScore = new Dictionary<string, int[]>();
+            Dictionary<string, string[]> _userScore = new Dictionary<string, string[]>();
             string userScore = AppSettings.UserScoreValue;
             if (!string.IsNullOrEmpty(userScore))
             {
@@ -78,10 +59,11 @@ namespace EasyPaint.Helpers
                     string[] spl1 = item.Split('-');
                     if (spl1.Length > 1)
                     {
-                        _userScore.Add(spl1[0], new[] { int.Parse(spl1[1]), int.Parse(spl1[2]) });
+                        _userScore.Add(spl1[0], new string[] { spl1[1], spl1[2], spl1[3] });
                     }
                 }
             }
+            #endregion
 
             #region cfg data
             AppData data = new AppData();
@@ -123,7 +105,8 @@ namespace EasyPaint.Helpers
                     {
                         Item currentItem = new Item();
 
-                        if (itemNode.Attribute("colors") != null) {
+                        if (itemNode.Attribute("colors") != null)
+                        {
                             string[] colArrary = itemNode.Attribute("colors").Value.Split(',');
                             foreach (var item in colArrary)
                             {
@@ -135,7 +118,7 @@ namespace EasyPaint.Helpers
                         var userScoreItem = _userScore.Keys.FirstOrDefault(fn => fn == currentItem.ImgFilename);
                         currentItem.IsLocked = true;
                         if (isFirstElement)
-                        { 
+                        {
                             //first item is always unlocked
                             currentItem.IsLocked = false;
                             isFirstElement = false;
@@ -143,9 +126,10 @@ namespace EasyPaint.Helpers
 
                         if (userScoreItem != null)
                         {
-                            currentItem.Score = _userScore[userScoreItem][0];
-                            currentItem.RecordScore = _userScore[userScoreItem][1];
-                            currentItem.IsLocked = currentItem.Score < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
+                            currentItem.IsLocked = bool.Parse(_userScore[userScoreItem][0]);
+                            currentItem.Score = int.Parse(_userScore[userScoreItem][1]);
+                            currentItem.RecordScore = int.Parse(_userScore[userScoreItem][2]);
+                            //currentItem.IsLocked = currentItem.Score < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
                         }
                         currentItem.Key = itemNode.Attribute("key").Value;
                         g.Items.Add(currentItem);

@@ -19,15 +19,37 @@ namespace EasyPaint.View
         public ItemSelectorPage()
         {
             InitializeComponent();
+            
+
+            Loaded += ItemSelectorPage_Loaded;
+            Unloaded += ItemSelectorPage_Unloaded;
+        }
+
+        private void InitPage()
+        {
             _vm = ViewModelLocator.ItemSelectorViewModelStatic;
             LoopingListDataSource ds = new LoopingListDataSource(_vm.Items.Count());
             ds.ItemNeeded += this.OnDs_ItemNeeded;
             ds.ItemUpdated += this.OnDs_ItemUpdated;
-
             this.loopingList.DataSource = ds;
             this.loopingList.SelectedIndex = 0;
-            // this.loopingList.SelectedIndexChanged += this.OnSelectedIndexChanged;
-            // this.loopingList.SelectedIndex = 0;
+        }
+
+        void ItemSelectorPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        void ItemSelectorPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            //foreach (JournalEntry item in NavigationService.BackStack.Reverse())
+            //{
+            //    NavigationService.RemoveBackEntry();
+            //}
+
+            NavigationServiceHelper.GetInstance().CurrentDispatcher = Dispatcher;
+            NavigationServiceHelper.GetInstance().CurrentNavigationService = NavigationService;
+
+            InitPage();
         }
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
@@ -66,14 +88,6 @@ namespace EasyPaint.View
                     DataContext = (newEl as ItemViewModel) 
                 };
             }
-        }
-
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            //foreach (JournalEntry item in NavigationService.BackStack.Reverse())
-            //{
-            //    NavigationService.RemoveBackEntry();
-            //}
         }
 
         private void Grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)

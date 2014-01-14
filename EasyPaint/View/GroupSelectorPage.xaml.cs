@@ -29,6 +29,16 @@ namespace EasyPaint.View
         public GroupSelectorPage()
         {
             InitializeComponent();
+            Loaded += GroupSelectorPage_Loaded;
+            Unloaded += GroupSelectorPage_Unloaded;
+        }
+
+        void GroupSelectorPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        void GroupSelectorPage_Loaded(object sender, RoutedEventArgs e)
+        {
             _vm = ViewModelLocator.GroupSelectorViewModelStatic;
             _listDs = new LoopingListDataSource(_vm.Groups.Count());
             _listDs.ItemNeeded += this.OnDs_ItemNeeded;
@@ -38,11 +48,9 @@ namespace EasyPaint.View
             this.loopingList.DataSource = _listDs;
             this.loopingList.SelectedIndex = 0;
 
-            // this.loopingList.SelectedIndexChanged += this.OnSelectedIndexChanged;
-            RegisterMessages();
+            NavigationServiceHelper.GetInstance().CurrentDispatcher = Dispatcher;
+            NavigationServiceHelper.GetInstance().CurrentNavigationService = NavigationService;
         }
-
-
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
@@ -77,14 +85,13 @@ namespace EasyPaint.View
                                                     DataContext = (newEl as GroupViewModel) };
             }
         }
-
-
-        private void RegisterMessages()
-        {
-            //Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
-            //Messenger.Default.Register<RateAppMessage>(this, (action) => ReceiveMessage(action));
-            // Messenger.Default.Register<PollCompletedMessage>(this, (action) => ReceiveMessage(action));
-        }
+        
+        //private void RegisterMessages()
+        //{
+        //    //Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
+        //    //Messenger.Default.Register<RateAppMessage>(this, (action) => ReceiveMessage(action));
+        //    // Messenger.Default.Register<PollCompletedMessage>(this, (action) => ReceiveMessage(action));
+        //}
 
         //private object ReceiveMessage(BaseMessage action)
         //{

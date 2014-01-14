@@ -1,14 +1,16 @@
 ﻿
 
 TODO
-- suoni
-- scritta latina painter page
-- cambiamento traccia musicale in base a pagina
+- suoni - OK da testare
+- gestione locking elemento iniziato - OK da testare
+- scritta latina painter page - WIP
 - calcolo punteggio che tiene conto del tempo risparmiato?
-- rivedere icone disegno con marta
+- ridefinire stato pressed dei bottoni, con scaling
 
 DONE
 
+- cambiamento traccia musicale in base a pagina - OK
+- eliminare icone licenziate - OK
 - animazione countdown piccolo - OK
 - rifare le lineart partendo dalle img a colori reduced_10 - OK
 - salvataggio punteggi: salvare da modello il valore di ogni item - OK

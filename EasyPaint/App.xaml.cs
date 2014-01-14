@@ -63,13 +63,14 @@ namespace EasyPaint
             get { return Application.Current as App; }
         }
 
-
+        public bool IsSoundEnabled { get; set; }
 
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
         public App()
         {
+
             // var test = LocalizedResources.water;
             // var _lineArtWb = BitmapFactory.New(400, 400).FromResource("/Assets/groups/3/lres/coccodrillo lineart.png");
             // StreamResourceInfo streamInfo = App.GetResourceStream(new Uri("/Image;component/Images/123.png", UriKind.Relative));
@@ -78,6 +79,8 @@ namespace EasyPaint
             //You should then be able to use a Uri format like: "[assemblyname];component/[filename]" to access the resource stream.
             //StreamResourceInfo streamInfo = App.GetResourceStream(new Uri("EasyPaint;component/Assets/groups/3/lres/diavolo_colore.png", 
             //    UriKind.RelativeOrAbsolute));
+
+            IsSoundEnabled = true;
 
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
@@ -163,9 +166,9 @@ namespace EasyPaint
                 _sounds.Add("pointsCount", SoundEffect.FromStream(stream));
             }
             //low time - alarm
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.alarm.wav"))
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.fmbass.wav"))
             {
-                _sounds.Add("alarm", SoundEffect.FromStream(stream));
+                _sounds.Add("lowtime", SoundEffect.FromStream(stream));
             }
 
             InitTracks();
@@ -295,6 +298,8 @@ namespace EasyPaint
         {
             GlobalMediaElement.IsMuted = !GlobalMediaElement.IsMuted;
 
+            IsSoundEnabled = !GlobalMediaElement.IsMuted;
+
             if (MediaStateChanged != null)
             {
                 MediaStateChanged(GlobalMediaElement.IsMuted);
@@ -405,6 +410,8 @@ namespace EasyPaint
         }
         #endregion
 
-        
+
+
+     
     }
 }

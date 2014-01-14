@@ -52,39 +52,40 @@ namespace EasyPaint.View
         int _curAvailableTimeValue = 0;
         int _lastAvailableTimeValue = 0;
 
-        Storyboard _storyboardSubjectImageFading;
-        Storyboard _storyboardCountDown;
+        Storyboard _storyboardImageFadingAndStartGame;
+        Storyboard _storyboardBigCountdown;
         Storyboard _storyboardShowPalette;
         Storyboard _storyboardColorSelected;
         Storyboard _storyboardSmallCountDownAnimation;
         EventHandler _storyboardSmallCountDownAnimationHandler;
 
+        EventHandler _storyboardBigCountdownHandler = null;
+        EventHandler _storyboardImageFadingAndStartGameHandler = null;
+
         Popup _resultPopup = null;
         ResultPopup _resultPopupChild = null;
-
-        //private const int MAX_PALETTE_COLORS = 4;
-        //List<MyColor> _paletteColors = new List<MyColor>();
-        //List<MyColor> _ignoredColors = new List<MyColor>();
-
         List<Color> _paletteColors = new List<Color>();
  
-    
-
         public PainterPage()
         {
             InitializeComponent();
-            //Tester.CheckImagesTester();
-            _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
-            //_dt.Interval = TimeSpan.FromSeconds(1);
-            //_dt.Tick += dt_Tick;
+            Loaded += PainterPage_Loaded;
+            Unloaded += PainterPage_Unloaded;
+        }
 
+        void PainterPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            PageLeftActions();
+        }
+
+        void PainterPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
             InitAnimations();
             AssignEventHandlers();
             InitPopup();
 
-            BorderPalette.Visibility = Visibility.Collapsed;
-
-
+            InitPage();
         }
 
         private void AssignEventHandlers()
@@ -103,8 +104,8 @@ namespace EasyPaint.View
 
         private void InitAnimations()
         {
-            _storyboardSubjectImageFading = (Storyboard)Resources["StoryboardSubjectFadeout"];
-            _storyboardCountDown = (Storyboard)Resources["StoryboardCountdown"];
+            _storyboardImageFadingAndStartGame = (Storyboard)Resources["StoryboardSubjectFadeout"];
+            _storyboardBigCountdown = (Storyboard)Resources["StoryboardCountdown"];
             _storyboardShowPalette = (Storyboard)Resources["StoryboardShowPalette"];
             _storyboardColorSelected = (Storyboard)Resources["TappedColorSb"];
             _storyboardSmallCountDownAnimation = (Storyboard)Resources["StoryboardCountDownSmallAnimation"];
@@ -121,22 +122,20 @@ namespace EasyPaint.View
             SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
             count--;
 
-
             DisablePage();
 
             //http://stackoverflow.com/questions/4303922/removing-anonymous-event-handler
-            EventHandler handler1 = null;
-            EventHandler handler2 = null;
 
-            handler1 = (s, e) =>
+
+            _storyboardBigCountdownHandler = (s, e) =>
             {
                 if (count == 0)
                 {
                     TextBlockCountDownBig.Text = "go!!!";
                     (Application.Current as App).PlayBackgroundMusic(App.TrackType.Paint);
                     SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
-                    _storyboardCountDown.Completed -= handler1;
-                    _storyboardSubjectImageFading.Begin();
+                    UnassignBigCountdownEventhandler();
+                    _storyboardImageFadingAndStartGame.Begin();
                 }
                 else
                 {
@@ -146,24 +145,27 @@ namespace EasyPaint.View
                     }
                     TextBlockCountDownBig.Text = count.ToString();
                     SoundHelper.PlaySound(App.Current.Sounds[count.ToString()]);
-                    _storyboardCountDown.Begin();
+                    _storyboardBigCountdown.Begin();
                     count--;
                 }
             };
 
-            handler2 = (s1, e1) =>
+            _storyboardImageFadingAndStartGameHandler = (s1, e1) =>
             {
-                _storyboardSubjectImageFading.Completed -= handler2;
+                UnassignImageFadingAndStartGameEventHandler();
                 TextBlockCountDownBig.Visibility = Visibility.Collapsed;
-                _storyboardCountDown.Stop();
+                _storyboardBigCountdown.Stop();
                 EnablePage();
                 StartTimer();
             };
 
-            _storyboardCountDown.Completed += handler1;
-            _storyboardSubjectImageFading.Completed += handler2;
+            //_storyboardBigCountdown.Completed += _storyboardBigCountdownHandler;
+            //_storyboardImageFadingAndStartGame.Completed += _storyboardImageFadingAndStartGameHandler;
 
-            _storyboardCountDown.Begin();
+            AssignBigCountdownEventhandler();
+            AssignImageFadingAndStartGameEventHandler();
+
+            _storyboardBigCountdown.Begin();
 
         }
 
@@ -189,14 +191,6 @@ namespace EasyPaint.View
                 CheckDrawnPicture();
                 return;
             }
-
-            ////leftMargin / 380 = _curTimeValue / totaltime;
-            //int totMargin = (int)timerCanvas.Width - (int)timerEllipse.Width; //ora 380
-            ////inizio: _availableTimeValue = totaltime -> timerEllipse.Margin = totMargin
-            ////fine:   _availableTimeValue = 0         -> timerEllipse.Margin = 0
-            //int leftMargin = _availableTimeValue * totMargin / TotalTime;
-            //timerEllipse.Margin = new Thickness(leftMargin, -2, 0, 0);
-
         }
 
         private void StartTimer()
@@ -209,13 +203,13 @@ namespace EasyPaint.View
             _storyboardSmallCountDownAnimationHandler = (s, e) =>
             {
                 if (!_gameInProgress) {
-                    UnassignSmallCountdownEventHandlers();
+                    UnassignSmallCountdownEventHandler();
                     return;
                 }
 
                 if (_curAvailableTimeValue == 0)
                 {
-                    UnassignSmallCountdownEventHandlers();
+                    UnassignSmallCountdownEventHandler();
                     StopTimer();
                     CheckDrawnPicture();
                 }
@@ -223,10 +217,10 @@ namespace EasyPaint.View
                 {
                     _curAvailableTimeValue--;
 
-                    if (_curAvailableTimeValue == 10) {
-                        SoundHelper.PlaySound(App.Current.Sounds["alarm"]);
+                    if (_curAvailableTimeValue <= 10) {
+                        SoundHelper.PlaySound(App.Current.Sounds["lowtime"]);
                     }
-
+                    
                     Dispatcher.BeginInvoke(() =>
                     {
                         TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
@@ -235,20 +229,47 @@ namespace EasyPaint.View
                 }
             };
 
-            UnassignSmallCountdownEventHandlers();
-            AssignSmallCountdownEventHandlers();
+            UnassignSmallCountdownEventHandler();
+            AssignSmallCountdownEventHandler();
+
             _storyboardSmallCountDownAnimation.Begin();
         }
 
-        private void UnassignSmallCountdownEventHandlers()
+        #region small count
+        private void UnassignSmallCountdownEventHandler()
         {
             _storyboardSmallCountDownAnimation.Completed -= _storyboardSmallCountDownAnimationHandler;
         }
 
-        private void AssignSmallCountdownEventHandlers()
+        private void AssignSmallCountdownEventHandler()
         {
             _storyboardSmallCountDownAnimation.Completed += _storyboardSmallCountDownAnimationHandler;
         }
+        #endregion
+
+        #region big count
+        private void AssignBigCountdownEventhandler()
+        {
+            _storyboardBigCountdown.Completed += _storyboardBigCountdownHandler;
+        }
+
+        private void UnassignBigCountdownEventhandler()
+        {
+            _storyboardBigCountdown.Completed -= _storyboardBigCountdownHandler;
+        }
+        #endregion
+
+        #region image fading + start game
+        private void AssignImageFadingAndStartGameEventHandler()
+        {
+            _storyboardImageFadingAndStartGame.Completed += _storyboardImageFadingAndStartGameHandler;
+        }
+
+        private void UnassignImageFadingAndStartGameEventHandler()
+        {
+            _storyboardImageFadingAndStartGame.Completed -= _storyboardImageFadingAndStartGameHandler;
+        }
+        #endregion
 
         private void StopTimer()
         {
@@ -256,16 +277,18 @@ namespace EasyPaint.View
             BorderCountDownSmall.Visibility = System.Windows.Visibility.Collapsed;
             _lastAvailableTimeValue = _curAvailableTimeValue;
             _curAvailableTimeValue = 0;
-            UnassignSmallCountdownEventHandlers();
-            _storyboardSmallCountDownAnimation.Stop();
-            //_dt.Stop();
-        }
-        #endregion
 
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            InitPage();
+            UnassignSmallCountdownEventHandler();
+            _storyboardSmallCountDownAnimation.Stop();
+
+            UnassignBigCountdownEventhandler(); ;
+            _storyboardBigCountdown.Stop();
+
+            UnassignImageFadingAndStartGameEventHandler();
+            _storyboardImageFadingAndStartGame.Stop();
         }
+
+        #endregion
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
@@ -281,15 +304,16 @@ namespace EasyPaint.View
         private void InitPage()
         {
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
-            TextBlockCountDownSmall.Text = TotalTime.ToString();
 
+            BorderPalette.Visibility = Visibility.Collapsed;
+            TextBlockCountDownSmall.Text = TotalTime.ToString();
             StackPanelTest.Visibility = Visibility.Collapsed;
             GridPainter.Visibility = System.Windows.Visibility.Visible;
 
             StopTimer();
 
-            _storyboardSubjectImageFading.Stop();
-            _storyboardCountDown.Stop();
+            _storyboardImageFadingAndStartGame.Stop();
+            _storyboardBigCountdown.Stop();
             _storyboardShowPalette.Stop();
 
             if (_drawingboard != null) SetEllipseSize(_drawingboard.BrushWidth);
@@ -310,15 +334,22 @@ namespace EasyPaint.View
 
             _drawingboard.Clear();
 
-            var selectedImage = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
+            var currentItem = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
 
-            if (selectedImage != null)
+            if (currentItem != null)
             {
-                ImageMain.Source = new BitmapImage(selectedImage.ImageSource);
+                ImageMain.Source = new BitmapImage(currentItem.ImageSource);
 
-                _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorsResourcePath);
-                _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.LineArtResourcePath);
-                _reducedColorsLineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(selectedImage.ReducedColorLineArtResourcePath);
+                if (currentItem.IsLocked)
+                {
+                    currentItem.IsLocked = false;
+                    AppSettings.SaveSettings(true);
+                }
+
+                _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorsResourcePath);
+                _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.LineArtResourcePath);
+                _reducedColorsLineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorLineArtResourcePath);
+                
                 ImageOverlay.Source = _lineArtPicture;
                 ImageOverlay.Opacity = 0.4;
                 InitPalette();
@@ -344,7 +375,8 @@ namespace EasyPaint.View
                 {
                     childEl.Fill = new SolidColorBrush(color);
                     if (count == 1) {
-                        _drawingboard.OutlineColor = color; //sets drawingboard color 
+                        //sets drawingboard color
+                        _drawingboard.OutlineColor = _drawingboard.MainColor = color;
                     }
                 }
                 count++;
@@ -371,6 +403,7 @@ namespace EasyPaint.View
         {
             if (_resultPopup != null)
             {
+                _resultPopupChild.Close();
                 _resultPopup.IsOpen = false;
                 _resultPopup = null;
             }

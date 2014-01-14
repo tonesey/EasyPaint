@@ -30,52 +30,21 @@ namespace EasyPaint.View
         public HomePage()
         {
             InitializeComponent();
-            LoadSounds();
-            RegisterMessages();
+            Loaded += HomePage_Loaded;
+            Unloaded += HomePage_Unloaded;
+        }
 
+        void HomePage_Unloaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        void HomePage_Loaded(object sender, RoutedEventArgs e)
+        {
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
-        }
 
-        private void LoadSounds()
-        {
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.click2.wav"))
-            {
-                _soundEffect1 = SoundEffect.FromStream(stream);
-            }
-        }
-
-        private void RegisterMessages()
-        {
-            Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
-            Messenger.Default.Register<ToggleSoundMessage>(this, (action) => ReceiveMessage(action));
-            //Messenger.Default.Register<RateAppMessage>(this, (action) => ReceiveMessage(action));
-            // Messenger.Default.Register<PollCompletedMessage>(this, (action) => ReceiveMessage(action));
-        }
-
-        private object ReceiveMessage(BaseMessage action)
-        {
-            //FrameworkDispatcher.Update();
-            //_soundEffect1.Play();
-
-            if (action is GoToPageMessage)
-            {
-                GenericHelper.Navigate(NavigationService, Dispatcher, (action as GoToPageMessage).PageName);
-                return null;
-            }
-            else if (action is ToggleSoundMessage)
-            {
-                App.Current.ToggleIsMute();
-            }
-
-            return null;
-        }
-
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            //foreach (JournalEntry item in NavigationService.BackStack.Reverse())
-            //{
-            //    NavigationService.RemoveBackEntry();
-            //}
+            NavigationServiceHelper.GetInstance().CurrentDispatcher = Dispatcher;
+            NavigationServiceHelper.GetInstance().CurrentNavigationService = NavigationService;
+            NavigationServiceHelper.GetInstance().RegisterMessages();
 
             if (!_backgroundAnimationStarted)
             {
@@ -83,6 +52,36 @@ namespace EasyPaint.View
                 AnimateBackground();
             }
         }
+
+        //private void LoadSounds()
+        //{
+        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.click2.wav"))
+        //    {
+        //        _soundEffect1 = SoundEffect.FromStream(stream);
+        //    }
+        //}
+
+        //private object ReceiveMessage(BaseMessage action)
+        //{
+        //    if (action is GoToPageMessage)
+        //    {
+        //        GenericHelper.Navigate(NavigationService, Dispatcher, (action as GoToPageMessage).PageName);
+        //        return null;
+        //    }
+        //    else if (action is ToggleSoundMessage)
+        //    {
+        //        App.Current.ToggleIsMute();
+        //    }
+        //    return null;
+        //}
+
+        //private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    //foreach (JournalEntry item in NavigationService.BackStack.Reverse())
+        //    //{
+        //    //    NavigationService.RemoveBackEntry();
+        //    //}
+        //}
 
         private void AnimateBackground()
         {
@@ -123,11 +122,6 @@ namespace EasyPaint.View
             {
                 e.Cancel = true;
             }
-        }
-
-        private void ImageSound_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-
         }
     }
 }

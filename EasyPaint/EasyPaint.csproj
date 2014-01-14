@@ -152,6 +152,9 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Wp8Shared\packages\MvvmLightLibs.4.2.30.0\lib\wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Wp8Shared\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Wp8Shared\packages\MvvmLightLibs.4.2.30.0\lib\wp8\System.Windows.Interactivity.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
@@ -204,6 +207,7 @@
     <Compile Include="Helpers\Colors\Conversions\Utility\DoubleExtension.cs" />
     <Compile Include="Helpers\Colors\Conversions\XyzConverter.cs" />
     <Compile Include="Helpers\Colors\Conversions\YxyConverter.cs" />
+    <Compile Include="Helpers\NavigationServiceHelper.cs" />
     <Compile Include="Helpers\ResolutionHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\GenericHelper.cs" />
@@ -530,7 +534,6 @@
     </EmbeddedResource>
     <Content Include="Assets\buttons\bullet_ball_blue.png" />
     <Content Include="Assets\buttons\eraser.png" />
-    <Content Include="Assets\buttons\media_play_green.png" />
     <Resource Include="Assets\buttons\pencil2.png" />
     <EmbeddedResource Include="cfg.xml">
       <SubType>Designer</SubType>

@@ -11,7 +11,6 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Landscape" Orientation="Landscape"
-    Loaded="PhoneApplicationPage_Loaded"
     shell:SystemTray.IsVisible="False">
 
     <UserControl.DataContext>

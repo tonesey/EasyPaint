@@ -12,7 +12,6 @@ using EasyPaint.Helpers;
 
 namespace EasyPaint.View
 {
-
     public enum GameAction
     {
         Undefined,
@@ -39,6 +38,8 @@ namespace EasyPaint.View
                                     new PropertyMetadata(0));
 
         BackgroundWorker _bw = new BackgroundWorker();
+
+        private bool _cancellationPending = false;
 
         public event PopupClosedEventHandler PopupClosedEvent;
         public event ActionPerformedEventHandler ActionPerformedEvent;
@@ -67,6 +68,7 @@ namespace EasyPaint.View
             LocalizeUI();
             _popup = popup;
 
+            _cancellationPending = false;
             _sbShowTextResult = (Storyboard)Resources["StoryboardShowTextResult"];
 
             DataContext = this;
@@ -95,10 +97,13 @@ namespace EasyPaint.View
 
         void _bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (_cancellationPending) return;
+
             Dispatcher.BeginInvoke(() =>
             {
                 TextBlockResultText.Visibility = System.Windows.Visibility.Visible;
             });
+
             _sbShowTextResult.Begin();
 
             if (ButtonNext.Visibility == System.Windows.Visibility.Collapsed)
@@ -124,6 +129,8 @@ namespace EasyPaint.View
             BackgroundWorker worker = sender as BackgroundWorker;
             for (int i = 1; i <= (int)e.Argument; i++)
             {
+                if (_cancellationPending) return;
+
                 Thread.Sleep(50);
                 worker.ReportProgress(i);
                 if (i % 5 == 0) {
@@ -192,22 +199,9 @@ namespace EasyPaint.View
         {
             TextBlockResultText.Visibility = System.Windows.Visibility.Collapsed;
             TextBlockResultText.Opacity = 0.1;
-
             _bw.RunWorkerAsync(UserPercentage);
-
-            //for (int i = 0; i <= Percentage; i++)
-            //{
-            //    //Dispatcher.BeginInvoke(() =>
-            //    //{
-            //    TextBlockResult.Text = string.Format("{0}%", i);
-            //    Thread.Sleep(10);
-            //    //});
-            //}
-
             ButtonRedo.IsEnabled = false;
             ButtonMenu.IsEnabled = false;
-
-
             ImageResult.Source = ResImg;
 
             //await RenderPercentage(Percentage);
@@ -216,7 +210,11 @@ namespace EasyPaint.View
         }
 
 
-
         public System.Windows.Media.Imaging.WriteableBitmap ResImg { get; set; }
+
+        internal void Close()
+        {
+            _cancellationPending = true;
+        }
     }
 }
