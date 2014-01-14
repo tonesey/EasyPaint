@@ -12,6 +12,7 @@ namespace EasyPaint.Model
 
         public string Key { get; set; }
         public string ImgFilename { get; set; }
+        public string LatinName { get; set; }
         public List<Color> PaletteColors { get; set; }
 
 
