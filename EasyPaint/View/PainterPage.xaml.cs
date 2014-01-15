@@ -39,14 +39,9 @@ namespace EasyPaint.View
         // Constructor
         SimzzDev.DrawingBoard _drawingboard = null;
 
-        // private const string tmpFName = "tmp.png";
-
         WriteableBitmap _lineArtPicture = null;
         WriteableBitmap _reducedColorsPicture = null;
         WriteableBitmap _reducedColorsLineArtPicture = null;
-
-        //DispatcherTimer _dt = new DispatcherTimer();
-        //DispatcherTimer _countDownTimer = new DispatcherTimer();
 
         bool _gameInProgress = false;
 
@@ -63,13 +58,17 @@ namespace EasyPaint.View
         EventHandler _storyboardBigCountdownHandler = null;
         EventHandler _storyboardImageFadingAndStartGameHandler = null;
 
-        Popup _resultPopup = null;
-        ResultPopup _resultPopupChild = null;
+        Popup _popup = null;
+        ResultPopup _popupChild = null;
         List<Color> _paletteColors = new List<Color>();
  
         public PainterPage()
         {
             InitializeComponent();
+
+            ItemName1.Visibility = Visibility.Visible;
+            ItemName2.Visibility = Visibility.Visible;
+
             Loaded += PainterPage_Loaded;
             Unloaded += PainterPage_Unloaded;
         }
@@ -85,7 +84,6 @@ namespace EasyPaint.View
             InitAnimations();
             AssignEventHandlers();
             InitPopup();
-
             InitPage();
         }
 
@@ -110,9 +108,6 @@ namespace EasyPaint.View
             _storyboardShowPalette = (Storyboard)Resources["StoryboardShowPalette"];
             _storyboardColorSelected = (Storyboard)Resources["TappedColorSb"];
             _storyboardSmallCountDownAnimation = (Storyboard)Resources["StoryboardCountDownSmallAnimation"];
-            //Storyboard.SetTarget(_storyboardImageFading.Children.ElementAt(0) as DoubleAnimation, ImageMain);
-            //Storyboard.SetTarget(_storyboardCountDown.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
-            //Storyboard.SetTarget(_storyboardShowPalette.Children.ElementAt(0) as DoubleAnimation, TextBlockCountDown);
         }
 
         private void StartCountDown()
@@ -126,8 +121,6 @@ namespace EasyPaint.View
             DisablePage();
 
             //http://stackoverflow.com/questions/4303922/removing-anonymous-event-handler
-
-
             _storyboardBigCountdownHandler = (s, e) =>
             {
                 if (count == 0)
@@ -160,14 +153,10 @@ namespace EasyPaint.View
                 StartTimer();
             };
 
-            //_storyboardBigCountdown.Completed += _storyboardBigCountdownHandler;
-            //_storyboardImageFadingAndStartGame.Completed += _storyboardImageFadingAndStartGameHandler;
-
             AssignBigCountdownEventhandler();
             AssignImageFadingAndStartGameEventHandler();
 
             _storyboardBigCountdown.Begin();
-
         }
 
         void _storyboardCountDown_Completed(object sender, EventArgs e)
@@ -308,7 +297,6 @@ namespace EasyPaint.View
 
             BorderPalette.Visibility = Visibility.Collapsed;
             TextBlockCountDownSmall.Text = TotalTime.ToString();
-           // StackPanelTest.Visibility = Visibility.Collapsed;
             GridPainter.Visibility = System.Windows.Visibility.Visible;
 
             StopTimer();
@@ -341,6 +329,9 @@ namespace EasyPaint.View
             {
                 ImageMain.Source = new BitmapImage(currentItem.ImageSource);
 
+                ItemName1.Visibility = Visibility.Visible;
+                ItemName2.Visibility = Visibility.Visible;
+
                 ItemName1.Text = currentItem.LocalizedName;
                 ItemName2.Text = currentItem.LatinName;
 
@@ -363,11 +354,7 @@ namespace EasyPaint.View
 
         private void InitPalette()
         {
-            //var imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true);
-            //_paletteColors = ImagesHelper.ReduceColors(imageColors, MAX_PALETTE_COLORS, out _ignoredColors);
-
             _paletteColors = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem.PaletteColors;
-
             int count = 1;
             foreach (var color in _paletteColors)
             {
@@ -405,15 +392,14 @@ namespace EasyPaint.View
 
         private void PageLeftActions()
         {
-            if (_resultPopup != null)
+            if (_popup != null)
             {
-                _resultPopupChild.Close();
-                _resultPopup.IsOpen = false;
-                _resultPopup = null;
+                _popupChild.Close();
+                _popup.IsOpen = false;
+                _popup = null;
             }
             StopTimer();
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
-         
         }
 
         private void eraseBtn_Click(object sender, RoutedEventArgs e)
@@ -424,8 +410,6 @@ namespace EasyPaint.View
         }
 
         #region palette
-
-
         private void pc1_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             _drawingboard.InkMode = SimzzDev.DrawingBoard.PenMode.Pen;
@@ -460,18 +444,16 @@ namespace EasyPaint.View
                 _drawingboard.BrushHeight = 2;
             }
 
-            //stroke 2 -> width 10
-            //stroke 10 -> width 20
-            //stroke 18 -> width 30
-
+            
             SetEllipseSize(_drawingboard.BrushWidth);
             SoundHelper.PlaySound(App.Current.Sounds["click"]);
         }
 
         private void SetEllipseSize(int strokeWidth)
         {
-            //ellipseStrokeSize.Width = ellipseStrokeSize.Height = strokeWidth * 5;
-
+            //stroke 2 -> width 10
+            //stroke 10 -> width 20
+            //stroke 18 -> width 30
             switch (strokeWidth)
             {
                 case 2:
@@ -505,12 +487,6 @@ namespace EasyPaint.View
                                   new Rect(0, 0, _reducedColorsLineArtPicture.PixelWidth, _reducedColorsLineArtPicture.PixelHeight),
                                   WriteableBitmapExtensions.BlendMode.Alpha);
 
-            //int tPixels = userDrawnPicture.Pixels.Where(p => p != 0).Count();
-            //GridPainter.Visibility = Visibility.Collapsed;
-            //StackPanelTest.Visibility = Visibility.Visible;
-            //Img1.Source = userDrawnPicture;
-            //Img2.Source = _reducedColorsPicture;
-
             WriteableBitmap resImg = null;
 
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
@@ -525,31 +501,30 @@ namespace EasyPaint.View
 
         private void ShowResultPopup(int percentage, int availTime, WriteableBitmap resImg)
         {
-            //popup.VerticalOffset = 250;
             DisablePage();
             InitPopup();
-            _resultPopupChild.ResImg = resImg;
-            _resultPopupChild.UserPercentage = percentage;
-            _resultPopupChild.AvailableTime = availTime;
-            _resultPopupChild.PageOrientation = Orientation;
-            _resultPopup.IsOpen = true;
+            _popupChild.ResImg = resImg;
+            _popupChild.UserPercentage = percentage;
+            _popupChild.AvailableTime = availTime;
+            _popupChild.PageOrientation = Orientation;
+            _popup.IsOpen = true;
         }
 
         private void InitPopup()
         {
-            if (_resultPopup == null)
+            if (_popup == null)
             {
-                _resultPopup = new Popup();
-                _resultPopupChild = new ResultPopup(_resultPopup);
-                _resultPopupChild.Height = 400;
-                _resultPopupChild.Width = 400;
-                _resultPopup.VerticalOffset = 200;
-                _resultPopup.HorizontalOffset = 30;
-                _resultPopupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
-                _resultPopupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
-                _resultPopupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
-                _resultPopupChild.ActionPerformedEvent += exportPopup_ActionPerformedEvent;
-                _resultPopup.Child = _resultPopupChild;
+                _popup = new Popup();
+                _popupChild = new ResultPopup(_popup);
+                _popupChild.Height = 400;
+                _popupChild.Width = 400;
+                _popupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
+                _popupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
+                _popupChild.ActionPerformedEvent -= exportPopup_ActionPerformedEvent;
+                _popupChild.ActionPerformedEvent += exportPopup_ActionPerformedEvent;
+                _popup.Child = _popupChild;
+                _popup.VerticalOffset = 200;
+                _popup.HorizontalOffset = 30;
             }
         }
 
@@ -566,7 +541,7 @@ namespace EasyPaint.View
                 case GameAction.Ahead:
                     //LIVELLO COMPLETATO
                     var curEl = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
-                    curEl.SetScore(_resultPopupChild.UserPercentage);
+                    curEl.SetScore(_popupChild.UserPercentage);
                     AppSettings.SaveSettings(true);
                     var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                     if (nextEl != null)
