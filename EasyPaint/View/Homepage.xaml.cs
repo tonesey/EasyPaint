@@ -42,9 +42,9 @@ namespace EasyPaint.View
         {
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
 
-            NavigationServiceHelper.GetInstance().CurrentDispatcher = Dispatcher;
-            NavigationServiceHelper.GetInstance().CurrentNavigationService = NavigationService;
-            NavigationServiceHelper.GetInstance().RegisterMessages();
+            //MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
+            //MessagingHelper.GetInstance().CurrentNavigationService = NavigationService;
+            MessagingHelper.GetInstance().RegisterMessages();
 
             if (!_backgroundAnimationStarted)
             {

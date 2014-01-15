@@ -68,13 +68,13 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        //public string Text
-        //{
-        //    get
-        //    {
-        //        return _item.IsLocked;
-        //    }
-        //}
+        public string LatinName
+        {
+            get
+            {
+                return _item.LatinName;
+            }
+        }
 
 
         protected string _lineArtResourcePath;

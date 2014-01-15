@@ -207,10 +207,9 @@
     <Compile Include="Helpers\Colors\Conversions\Utility\DoubleExtension.cs" />
     <Compile Include="Helpers\Colors\Conversions\XyzConverter.cs" />
     <Compile Include="Helpers\Colors\Conversions\YxyConverter.cs" />
-    <Compile Include="Helpers\NavigationServiceHelper.cs" />
+    <Compile Include="Helpers\MessagingHelper.cs" />
     <Compile Include="Helpers\ResolutionHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
-    <Compile Include="Helpers\GenericHelper.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\EditableImage.cs" />
     <Compile Include="Helpers\ImagesHelper.cs" />
@@ -226,7 +225,6 @@
     <Compile Include="Messages\BaseMessage.cs" />
     <Compile Include="Messages\ToggleSoundMessage.cs" />
     <Compile Include="Messages\RateAppMessage.cs" />
-    <Compile Include="Messages\GoToPageMessage.cs" />
     <Compile Include="Data\AppData.cs" />
     <Compile Include="Data\DataService.cs" />
     <Compile Include="Data\AppDataManager.cs" />

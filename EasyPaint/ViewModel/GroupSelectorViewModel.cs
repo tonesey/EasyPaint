@@ -74,15 +74,17 @@ namespace EasyPaint.ViewModel
 
         private object GotoHomepage()
         {
-            var msg = new GoToPageMessage() { PageName = Constants.View_Homepage };
-            Messenger.Default.Send<GoToPageMessage>(msg);
+            //var msg = new GoToPageMessage() { PageName = Constants.View_Homepage };
+            //Messenger.Default.Send<GoToPageMessage>(msg);
+            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Homepage);
             return null;
         }
 
         private object NavigateToSelectedGroupCommand()
         {
-            var msg = new GoToPageMessage() { PageName = Constants.View_ItemSeletor };
-            Messenger.Default.Send<GoToPageMessage>(msg);
+            //var msg = new GoToPageMessage() { PageName = Constants.View_ItemSeletor };
+            //Messenger.Default.Send<GoToPageMessage>(msg);
+            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_ItemSeletor);
             return null;
         }
 

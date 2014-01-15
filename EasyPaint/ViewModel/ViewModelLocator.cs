@@ -10,10 +10,13 @@
 */
 
 using EasyPaint.Data;
+using EasyPaint.Helpers;
 using EasyPaint.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using System;
+using Wp8Shared.Helpers;
 
 namespace EasyPaint.ViewModel
 {
@@ -26,6 +29,15 @@ namespace EasyPaint.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+
+        #region views uris
+        public static readonly Uri View_Painter = new Uri("/View/PainterPage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_Homepage = new Uri("/View/Homepage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_GroupSeletor = new Uri("/View/GroupSelectorPage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_ItemSeletor = new Uri("/View/ItemSelectorPage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_Credits = new Uri("/View/CreditsPage.xaml", UriKind.RelativeOrAbsolute);
+        #endregion
+
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -39,10 +51,25 @@ namespace EasyPaint.ViewModel
                 SimpleIoc.Default.Register<IDataService, DataService>();
             }
 
+            SimpleIoc.Default.Register<INavigationService, NavigationHelper>();
+
             SimpleIoc.Default.Register<HomePageViewModel>();
             SimpleIoc.Default.Register<GroupSelectorViewModel>();
             SimpleIoc.Default.Register<ItemSelectorViewModel>();
             SimpleIoc.Default.Register<PainterPageViewModel>();
+        }
+
+        private static INavigationService _NavigationServiceStatic;
+        public static INavigationService NavigationServiceStatic
+        {
+            get
+            {
+                if (_NavigationServiceStatic == null)
+                {
+                    return _NavigationServiceStatic = ServiceLocator.Current.GetInstance<INavigationService>();
+                }
+                return _NavigationServiceStatic;
+            }
         }
 
         #region homepage
@@ -135,6 +162,5 @@ namespace EasyPaint.ViewModel
         {
         }
 
-     
     }
 }

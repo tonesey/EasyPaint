@@ -46,8 +46,8 @@ namespace EasyPaint.View
             //    NavigationService.RemoveBackEntry();
             //}
 
-            NavigationServiceHelper.GetInstance().CurrentDispatcher = Dispatcher;
-            NavigationServiceHelper.GetInstance().CurrentNavigationService = NavigationService;
+            MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
+            //MessagingHelper.GetInstance().CurrentNavigationService = NavigationService;
 
             InitPage();
         }

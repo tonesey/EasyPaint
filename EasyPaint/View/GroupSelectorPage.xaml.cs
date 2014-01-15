@@ -48,8 +48,8 @@ namespace EasyPaint.View
             this.loopingList.DataSource = _listDs;
             this.loopingList.SelectedIndex = 0;
 
-            NavigationServiceHelper.GetInstance().CurrentDispatcher = Dispatcher;
-            NavigationServiceHelper.GetInstance().CurrentNavigationService = NavigationService;
+            //MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
+            //MessagingHelper.GetInstance().CurrentNavigationService = NavigationService;
         }
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)

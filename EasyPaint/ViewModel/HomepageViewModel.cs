@@ -107,8 +107,9 @@ namespace EasyPaint.ViewModel
             //    ((App)Application.Current).IsTrial.ToString()}
             //   );
 
-            var msg = new GoToPageMessage() { PageName = Constants.View_GroupSeletor };
-            Messenger.Default.Send<GoToPageMessage>(msg);
+            //var msg = new GoToPageMessage() { PageName = Constants.View_GroupSeletor };
+            //Messenger.Default.Send<GoToPageMessage>(msg);
+            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_GroupSeletor);
             return null;
         }
     }

@@ -15,7 +15,6 @@ namespace EasyPaint.Model
         public string LatinName { get; set; }
         public List<Color> PaletteColors { get; set; }
 
-
         public int Score { get; set; }
         public int RecordScore { get; set; }
 

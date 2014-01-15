@@ -1,14 +1,21 @@
 ﻿
 
 TODO
-- suoni - OK da testare
-- gestione locking elemento iniziato - OK da testare
-- scritta latina painter page - WIP
-- calcolo punteggio che tiene conto del tempo risparmiato?
+- creare UserControl MessageBox generico
+	- crearne uno per help gioco
+
 - ridefinire stato pressed dei bottoni, con scaling
+- creare modalità "gallery" con animali scoperti
+- splashscreen
+- credits
+- (low) MVVMLight pagina paint 
+- (low) calcolo punteggio che tiene conto del tempo risparmiato
 
 DONE
 
+- suoni - OK
+- gestione locking elemento iniziato - OK
+- scritta latina painter page - OK
 - cambiamento traccia musicale in base a pagina - OK
 - eliminare icone licenziate - OK
 - animazione countdown piccolo - OK

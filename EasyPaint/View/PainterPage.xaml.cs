@@ -28,6 +28,7 @@ using System.Windows.Controls.Primitives;
 using EasyPaint.Model;
 using System.Windows.Ink;
 using EasyPaint.Settings;
+using Microsoft.Practices.ServiceLocation;
 
 namespace EasyPaint.View
 {
@@ -307,7 +308,7 @@ namespace EasyPaint.View
 
             BorderPalette.Visibility = Visibility.Collapsed;
             TextBlockCountDownSmall.Text = TotalTime.ToString();
-            StackPanelTest.Visibility = Visibility.Collapsed;
+           // StackPanelTest.Visibility = Visibility.Collapsed;
             GridPainter.Visibility = System.Windows.Visibility.Visible;
 
             StopTimer();
@@ -339,6 +340,9 @@ namespace EasyPaint.View
             if (currentItem != null)
             {
                 ImageMain.Source = new BitmapImage(currentItem.ImageSource);
+
+                ItemName1.Text = currentItem.LocalizedName;
+                ItemName2.Text = currentItem.LatinName;
 
                 if (currentItem.IsLocked)
                 {
@@ -502,7 +506,6 @@ namespace EasyPaint.View
                                   WriteableBitmapExtensions.BlendMode.Alpha);
 
             //int tPixels = userDrawnPicture.Pixels.Where(p => p != 0).Count();
-
             //GridPainter.Visibility = Visibility.Collapsed;
             //StackPanelTest.Visibility = Visibility.Visible;
             //Img1.Source = userDrawnPicture;
@@ -514,7 +517,6 @@ namespace EasyPaint.View
                                                                         userDrawnPicture,
                                                                         new List<MyColor>(),
                                                                         out resImg);
-
             //#if DEBUG
             //            accuracyPercentage = 80;
             //#endif
@@ -556,7 +558,7 @@ namespace EasyPaint.View
             switch (action)
             {
                 case GameAction.Menu:
-                    NavigationService.Navigate(new Uri("/View/HomePage.xaml", UriKind.RelativeOrAbsolute));
+                    ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Homepage);
                     break;
                 case GameAction.Redo:
                     InitPage();
