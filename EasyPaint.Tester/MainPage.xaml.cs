@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using ColorMine.ColorSpaces.Comparisons;
 using ColorMine.ColorSpaces;
+using Wp8Shared.UserControls;
 
 namespace EasyPaint.Tester
 {
@@ -316,10 +317,18 @@ namespace EasyPaint.Tester
         private void ButtonToggle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
            App.Current.ToggleMute();
-
-
         }
 
+        private void ButtonMsgbox_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            MyMsgbox.MsgboxClosedEvent += MyMsgbox_MsgboxClosedEvent;
+            MyMsgbox.Show(this, Orientation, "te set un bel......... ciao a tutti!");
+        }
+
+        void MyMsgbox_MsgboxClosedEvent(MsgboxResponse response)
+        {
+            MessageBox.Show(response.ToString());
+        }
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()

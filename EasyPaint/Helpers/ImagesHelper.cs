@@ -1,5 +1,5 @@
-﻿using ColorMine.ColorSpaces;
-using ColorMine.ColorSpaces.Comparisons;
+﻿//using ColorMine.ColorSpaces;
+//using ColorMine.ColorSpaces.Comparisons;
 using EasyPaint.Model;
 using System;
 using System.Collections.Generic;
@@ -104,67 +104,67 @@ namespace EasyPaint.Helpers
             return cols;
         }
 
-        public static List<MyColor> ReduceColors(List<MyColor> imageColors, int maxColors, out List<MyColor> discardedColors)
-        {
-            List<MyColor> colors = new List<MyColor>(imageColors);
-            discardedColors = new List<MyColor>();
+        //public static List<MyColor> ReduceColors(List<MyColor> imageColors, int maxColors, out List<MyColor> discardedColors)
+        //{
+        //    List<MyColor> colors = new List<MyColor>(imageColors);
+        //    discardedColors = new List<MyColor>();
 
-            List<MyColor> reducedColors = new List<MyColor>();
-            foreach (var item in colors)
-            {
-                reducedColors.Add(item);
-            }
+        //    List<MyColor> reducedColors = new List<MyColor>();
+        //    foreach (var item in colors)
+        //    {
+        //        reducedColors.Add(item);
+        //    }
 
-            int step = 1;
-            do
-            {
-                double minDiff = Double.MaxValue;
-                // Debug.WriteLine(">>>> step " + step + " - threshold = " + threshold);
-                for (int i = 0; i < reducedColors.Count - 1; i++)
-                {
-                    int indexToRemove = -1;
-                    var col1 = reducedColors.ElementAt(i);
-                    Debug.WriteLine("start check with : " + col1);
+        //    int step = 1;
+        //    do
+        //    {
+        //        double minDiff = Double.MaxValue;
+        //        // Debug.WriteLine(">>>> step " + step + " - threshold = " + threshold);
+        //        for (int i = 0; i < reducedColors.Count - 1; i++)
+        //        {
+        //            int indexToRemove = -1;
+        //            var col1 = reducedColors.ElementAt(i);
+        //            Debug.WriteLine("start check with : " + col1);
 
-                    for (int j = i; j < reducedColors.Count - 1; j++)
-                    {
-                        var nextColIndex = j + 1;
-                        var col2 = reducedColors.ElementAt(nextColIndex);
+        //            for (int j = i; j < reducedColors.Count - 1; j++)
+        //            {
+        //                var nextColIndex = j + 1;
+        //                var col2 = reducedColors.ElementAt(nextColIndex);
 
-                        //tutti KO, viene scartato un colore significativo!!!!!!!!!!!
-                        //var colorDiff = Math.Abs(col1.GrayColor - col2.GrayColor) * 100.0 / 256.0;
-                        //var colorDiff = Math.Abs(col1.Brightness - col2.Brightness) * 100.0 / 256.0;
-                        //var colorDiff = MyColor.CompareColors(col1.MainColor, col2.MainColor);
+        //                //tutti KO, viene scartato un colore significativo!!!!!!!!!!!
+        //                //var colorDiff = Math.Abs(col1.GrayColor - col2.GrayColor) * 100.0 / 256.0;
+        //                //var colorDiff = Math.Abs(col1.Brightness - col2.Brightness) * 100.0 / 256.0;
+        //                //var colorDiff = MyColor.CompareColors(col1.MainColor, col2.MainColor);
 
-                        //OK!!!!!!!!!!!!!
-                        var a = new Rgb { R = col1.MainColor.R, G = col1.MainColor.G, B = col1.MainColor.B };
-                        var b = new Rgb { R = col2.MainColor.R, G = col2.MainColor.G, B = col2.MainColor.B };
-                        var colorDiff = a.Compare(b, new Cie1976Comparison());
+        //                //OK!!!!!!!!!!!!!
+        //                var a = new Rgb { R = col1.MainColor.R, G = col1.MainColor.G, B = col1.MainColor.B };
+        //                var b = new Rgb { R = col2.MainColor.R, G = col2.MainColor.G, B = col2.MainColor.B };
+        //                var colorDiff = a.Compare(b, new Cie1976Comparison());
 
-                        Debug.WriteLine(j + ": difference between " + col1 + " and " + col2 + " = " + colorDiff);
-                        if (colorDiff < minDiff)
-                        {
-                            minDiff = colorDiff;
-                            indexToRemove = nextColIndex;
-                        }
-                    }
-                    if (indexToRemove != -1)
-                    {
-                        if (reducedColors.Count > maxColors)
-                        {
-                            var colorToRemove = reducedColors.ElementAt(indexToRemove);
-                            Debug.WriteLine("color to remove: " + colorToRemove);
-                            discardedColors.Add(new MyColor(colorToRemove.MainColor));
-                            reducedColors.RemoveAt(indexToRemove);
-                        }
-                    }
-                }
-                // threshold += 1;
-                step++;
-            } while (reducedColors.Count > maxColors);
+        //                Debug.WriteLine(j + ": difference between " + col1 + " and " + col2 + " = " + colorDiff);
+        //                if (colorDiff < minDiff)
+        //                {
+        //                    minDiff = colorDiff;
+        //                    indexToRemove = nextColIndex;
+        //                }
+        //            }
+        //            if (indexToRemove != -1)
+        //            {
+        //                if (reducedColors.Count > maxColors)
+        //                {
+        //                    var colorToRemove = reducedColors.ElementAt(indexToRemove);
+        //                    Debug.WriteLine("color to remove: " + colorToRemove);
+        //                    discardedColors.Add(new MyColor(colorToRemove.MainColor));
+        //                    reducedColors.RemoveAt(indexToRemove);
+        //                }
+        //            }
+        //        }
+        //        // threshold += 1;
+        //        step++;
+        //    } while (reducedColors.Count > maxColors);
 
-            return reducedColors;
-        }
+        //    return reducedColors;
+        //}
 
 
         public static Color HexStringToColor(string hexColor)

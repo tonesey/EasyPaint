@@ -14,16 +14,6 @@
     <UserControl.Resources>
         <design:DesignData x:Key="DesignDataContext"/>
         <Storyboard x:Name="StoryboardShowTextResult">
-            <!--
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetX)" Storyboard.TargetName="TextBlockResultText">
-        		<EasingDoubleKeyFrame KeyTime="0" Value="-350"/>
-        		<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
-        			<EasingDoubleKeyFrame.EasingFunction>
-        				<QuinticEase EasingMode="EaseInOut"/>
-        			</EasingDoubleKeyFrame.EasingFunction>
-        		</EasingDoubleKeyFrame>
-        	</DoubleAnimationUsingKeyFrames>
-            -->
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TextBlockResultText">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
@@ -75,6 +65,7 @@
 					VerticalAlignment="Center" 
 					Opacity="1"/>
             </StackPanel>
+            
             <TextBlock x:Name="TextBlockResultText"  Grid.Row="1"
 				FontFamily="..\Fonts\andyb.TTF#Andy" 
 				Foreground="{Binding Foreground, ElementName=TextBlockResult}" 
@@ -82,12 +73,7 @@
 				FontSize="40" 
 				HorizontalAlignment="Center" 
 				VerticalAlignment="Center">
-				<!--<TextBlock.Projection>
-                    <PlaneProjection GlobalOffsetX="-500"/>
-                </TextBlock.Projection>-->
             </TextBlock>
-
-            <!--<ProgressBar x:Name="MyProgressBarResult"  Grid.Row="2" Value="10"></ProgressBar>-->
 
             <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Visibility="Visible">
                 <Button x:Name="ButtonMenu" BorderBrush="Transparent" BorderThickness="0" Width="100" Height="100" Padding="0" Tap="ButtonMenu_Tap_1">
