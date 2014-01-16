@@ -33,8 +33,8 @@ namespace EasyPaint.Tester
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
 
-           // var res = string.Format("Assets/{0}", new string[] { "gazzella colore.png" });
-           // var res = string.Format("Assets/{0}", new string[] { "diavolo_colore.png" });
+            // var res = string.Format("Assets/{0}", new string[] { "gazzella colore.png" });
+            // var res = string.Format("Assets/{0}", new string[] { "diavolo_colore.png" });
 
             var res = string.Format("Assets/{0}", new string[] { "Cobra.png" });
             //var res = string.Format("Assets/{0}", new string[] { "Elefante.png" });
@@ -46,7 +46,7 @@ namespace EasyPaint.Tester
             ImageTest.Source = _reducedColorsPicture;
 
             //    List<Color> imageColors = ImagesHelper.GetColors(_reducedColorsPicture).ToList();
-            List<MyColor> imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true );
+            List<MyColor> imageColors = ImagesHelper.GetColors(_reducedColorsPicture, true, true);
 
             //imageColors.Sort(delegate(Color left, Color right)
             //{
@@ -316,13 +316,20 @@ namespace EasyPaint.Tester
 
         private void ButtonToggle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-           App.Current.ToggleMute();
+            App.Current.ToggleMute();
         }
 
         private void ButtonMsgbox_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            MyMsgbox.MsgboxClosedEvent += MyMsgbox_MsgboxClosedEvent;
-            MyMsgbox.Show(this, Orientation, "te set un bel......... ciao a tutti!");
+            //MyMsgbox.Show(this, MsgboxMode.Ok, "ciao a tutti!", result =>
+            //{
+            //    MessageBox.Show(result.ToString());
+            //});
+
+            MyMsgbox.Show(this, MsgboxMode.YesNo, "scatta l'acquisto?", result =>
+            {
+                MessageBox.Show(result.ToString());
+            });
         }
 
         void MyMsgbox_MsgboxClosedEvent(MsgboxResponse response)
