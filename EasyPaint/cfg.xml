@@ -2,7 +2,7 @@
 <root>
   <ui mode="lres"/>
   <!--<unlocked_items value="canguro colore.png"></unlocked_items>-->
-  
+
   <!--
   <group id="0" key="group_Europe" imgname="0.png">
     <items>
@@ -28,7 +28,7 @@
 
   <group id="3" key="group_Oceania" imgname="3.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
-    <items SelectorGridRow="1">
+    <items SelectorGridRow="1" IsSelectorCentered="True">
       <item imgname="clamidosauro colore.png" key="item_clamidosauro" latin="Chlamydoselachus anguineus" colors="#15AD50,#8CC449,#E9629E"/>
       <item imgname="canguro colore.png" key="item_canguro" latin="Macropus fuliginosus" colors="#9E4E18,#45230C,#B6DE01" />
       <item imgname="coccodrillo colore.png" key="item_coccodrillo" latin="Crocodylus porosus" colors="#37332A,#554F45,#FDF699"/>
@@ -36,10 +36,10 @@
       <item imgname="koala colore.png" key="item_koala" latin="Phascolarctos cinereus" colors="#A2A2A2,#825D42,#EFEFEF,#65B363"/>
     </items>
   </group>
-  
+
   <group id="4" key="group_Asia" imgname="4.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
-    <items SelectorGridRow="1">
+    <items SelectorGridRow="1" IsSelectorCentered="True">
       <item imgname="Cobra colore.png" key="item_Cobra" latin="Naja naja"  colors="#EBC577,#C2A977,#F4989E"/>
       <item imgname="Tigre colore.png" key="item_Tigre" latin="Panthera tigris tigris"  colors="#F29531,#E7ECF9"/>
       <item imgname="Yak colore.png" key="item_Yak" latin="Bos grunniens" colors="#1E2848,#998776"/>

@@ -1,7 +1,7 @@
 ﻿
 
 TODO
-- creare UserControl MessageBox generico
+- creare UserControl MessageBox generico - ok
 	- crearne uno per help gioco
 
 - ridefinire stato pressed dei bottoni, con scaling
