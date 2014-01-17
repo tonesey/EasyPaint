@@ -12,7 +12,7 @@ namespace EasyPaint.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class PainterPageViewModel : ViewModelBase
+    public class PainterPageViewModel : AppViewModel
     {
 
         public PainterPageViewModel()

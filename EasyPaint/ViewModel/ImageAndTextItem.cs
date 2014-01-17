@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EasyPaint.ViewModel
 {
-    public class ImageAndTextItem : MyViewModelBase
+    public class ImageAndTextItem : AppViewModel
     {
         protected string _id;
         public string Id
@@ -44,7 +44,7 @@ namespace EasyPaint.ViewModel
                 if (this._imageSource != value)
                 {
                     this._imageSource = value;
-                    this.OnPropertyChanged("ImageSource");
+                    OnPropertyChanged("ImageSource");
                 }
             }
         }

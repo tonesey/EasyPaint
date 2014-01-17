@@ -204,4 +204,7 @@
   <data name="group_Asia" xml:space="preserve">
     <value>Asia</value>
   </data>
+  <data name="WarningExit" xml:space="preserve">
+    <value>Do you want to quit app?</value>
+  </data>
 </root>

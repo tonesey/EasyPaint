@@ -1,17 +1,20 @@
 ﻿using EasyPaint.Animations;
 using EasyPaint.Helpers;
 using EasyPaint.Messages;
+using EasyPaint.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
+using Wp8Shared.UserControls;
 
 namespace EasyPaint.View
 {
@@ -40,6 +43,13 @@ namespace EasyPaint.View
 
         void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
+            foreach (JournalEntry item in NavigationService.BackStack.Reverse())
+            {
+                NavigationService.RemoveBackEntry();
+            }
+
+            ViewModelLocator.HomepageViewModelStatic.CurrentPage = this;
+
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
 
             //MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
@@ -52,36 +62,6 @@ namespace EasyPaint.View
                 AnimateBackground();
             }
         }
-
-        //private void LoadSounds()
-        //{
-        //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.click2.wav"))
-        //    {
-        //        _soundEffect1 = SoundEffect.FromStream(stream);
-        //    }
-        //}
-
-        //private object ReceiveMessage(BaseMessage action)
-        //{
-        //    if (action is GoToPageMessage)
-        //    {
-        //        GenericHelper.Navigate(NavigationService, Dispatcher, (action as GoToPageMessage).PageName);
-        //        return null;
-        //    }
-        //    else if (action is ToggleSoundMessage)
-        //    {
-        //        App.Current.ToggleIsMute();
-        //    }
-        //    return null;
-        //}
-
-        //private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    //foreach (JournalEntry item in NavigationService.BackStack.Reverse())
-        //    //{
-        //    //    NavigationService.RemoveBackEntry();
-        //    //}
-        //}
 
         private void AnimateBackground()
         {
@@ -117,11 +97,19 @@ namespace EasyPaint.View
 
         private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult mb = MessageBox.Show(LocalizedResources.MsgBoxExit, LocalizedResources.MsgBoxTitleWarning, MessageBoxButton.OKCancel);
-            if (mb != MessageBoxResult.OK)
+            //MessageBoxResult mb = MessageBox.Show(LocalizedResources.MsgBoxExit, LocalizedResources.MsgBoxTitleWarning, MessageBoxButton.OKCancel);
+            //if (mb != MessageBoxResult.OK)
+            //{
+            //    e.Cancel = true;
+            //}
+
+            MyMsgbox.Show(this, MsgboxMode.YesNo, LocalizedResources.WarningExit, response =>
             {
-                e.Cancel = true;
-            }
+                if (response == MsgboxResponse.No) {
+                    e.Cancel = true;
+                }
+            });
+
         }
     }
 }

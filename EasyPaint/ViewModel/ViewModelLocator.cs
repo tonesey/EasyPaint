@@ -73,6 +73,20 @@ namespace EasyPaint.ViewModel
         }
 
         #region homepage
+
+        private static HomePageViewModel _HomepageViewModelStatic;
+        public static HomePageViewModel HomepageViewModelStatic
+        {
+            get
+            {
+                if (_HomepageViewModelStatic == null)
+                {
+                    return _HomepageViewModelStatic = ServiceLocator.Current.GetInstance<HomePageViewModel>();
+                }
+                return _HomepageViewModelStatic;
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]
         public HomePageViewModel HomepageViewModel
         {

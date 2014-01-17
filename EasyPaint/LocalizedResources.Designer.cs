@@ -313,6 +313,15 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to quit app?.
+        /// </summary>
+        public static string WarningExit {
+            get {
+                return ResourceManager.GetString("WarningExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to water.
         /// </summary>
         public static string water {

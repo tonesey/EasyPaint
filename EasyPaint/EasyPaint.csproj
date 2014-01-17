@@ -210,7 +210,6 @@
     <Compile Include="Model\MyColor.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
     <Compile Include="Settings\AppSettings.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PainterPageViewModel.cs" />
     <Compile Include="ViewModel\ImageAndTextItem.cs" />
     <Compile Include="ViewModel\ItemSelectorViewModel.cs" />
@@ -240,10 +239,6 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
-    <Compile Include="ViewModel\MyViewModelBase.cs" />
-    <Compile Include="WriteableBitmapTestsPage.xaml.cs">
-      <DependentUpon>WriteableBitmapTestsPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -266,10 +261,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PainterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WriteableBitmapTestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

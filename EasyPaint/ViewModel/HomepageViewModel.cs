@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System.Windows;
 using System.Windows.Media;
+using Wp8Shared.UserControls;
 
 namespace EasyPaint.ViewModel
 {
@@ -14,29 +15,13 @@ namespace EasyPaint.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class HomePageViewModel : ViewModelBase
+    public class HomePageViewModel : AppViewModel
     {
         public RelayCommand StartGameCommand { get; private set; }
         public RelayCommand ShowCreditsCommand { get; private set; }
         public RelayCommand ShowSettingsCommand { get; private set; }
         public RelayCommand ToggleSoundCommand { get; private set; }
-
-        //private MediaElementState _MediaElementState = MediaElementState.Stopped;
-        //public MediaElementState MediaElementState
-        //{
-        //    get
-        //    {
-        //        return _MediaElementState;
-        //    }
-        //    private set {
-        //        if (value != _MediaElementState) {
-        //            _MediaElementState = value;
-        //            RaisePropertyChanged("MediaElementState");
-        //        }
-        //    }
-        //}
-
-
+        
         private bool _isMuted = false;
         public bool IsMuted
         {
@@ -49,7 +34,7 @@ namespace EasyPaint.ViewModel
                 if (value != _isMuted)
                 {
                     _isMuted = value;
-                    RaisePropertyChanged("IsMuted");
+                    OnPropertyChanged("IsMuted");
                 }
             }
         }
@@ -68,11 +53,6 @@ namespace EasyPaint.ViewModel
             App.Current.MediaStateChanged += Current_MediaStateChanged;
         }
 
-        //void Current_MediaStateChanged(System.Windows.Media.MediaElementState state)
-        //{
-        //    MediaElementState = state;
-        //}
-
         void Current_MediaStateChanged(bool state)
         {
             IsMuted = state;
@@ -87,13 +67,12 @@ namespace EasyPaint.ViewModel
 
         private object ExecShowCreditsCommand()
         {
-            MessageBox.Show("WIP");
+            MyMsgbox.Show(CurrentPage, MsgboxMode.Ok, "App engineering: Davide Tentori\nMusic: Raphael Ruis\nGraphics: MArta Todeschini, Davide Tentori\n\n Special Thanks To: Isa, Ele, Albi, Luca");
             return null;
         }
 
         private object ExecShowSettingsCommand()
         {
-            MessageBox.Show("WIP");
             return null;
         }
 
@@ -112,5 +91,6 @@ namespace EasyPaint.ViewModel
             ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_GroupSeletor);
             return null;
         }
+
     }
 }

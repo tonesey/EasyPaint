@@ -19,12 +19,9 @@ namespace EasyPaint.Design
         Item
     }
 
-    public class DesignData : MyViewModelBase
+    public class DesignData : AppViewModel
     {
-
         private AppData _data = null;
-
-
 
         #region group and items selectors
         //list type
