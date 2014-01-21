@@ -3,26 +3,40 @@
   <ui mode="lres"/>
   <!--<unlocked_items value="canguro colore.png"></unlocked_items>-->
 
-  <!--
+  <!-- TODO
+  
   <group id="0" key="group_Europe" imgname="0.png">
-    <items>
+    <protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>
+    <items SelectorGridRow="0" IsSelectorCentered="False">
+      <item imgname="cervo colore.png" key="item_cervo" latin="Diceros TODO" colors="#CE8430"/>
+      <item imgname="renna colore.png" key="item_renna" latin="Diceros TODO" colors="#CE8430"/>
+      <item imgname="marmotta colore.png" key="item_marmotta" latin="Diceros TODO" colors="#CE8430"/>
+      <item imgname="stambecco colore.png" key="item_stambecco" latin="Diceros TODO" colors="#CE8430"/>
+      <item imgname="volpe colore.png" key="item_renna" latin="Diceros TODO" colors="#CE8430"/>
     </items>
-  </group>
- 
-  </group>
-  <group id="2" key="group_America" imgname="2.png">
-    <items>
-    </items>
-  </group>
-  -->
-
+  </group>-->
+  
   <group id="1" key="group_Africa" imgname="1.png">
     <protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>
     <items SelectorGridRow="0" IsSelectorCentered="False">
       <item imgname="rinoceronte colore.png" key="item_rinoceronte" latin="Diceros bicornis" colors="#C7B29A,#736357"/>
       <item imgname="gazzella colore.png" key="item_gazzella" latin="Gazella gazella" colors="#C69C6D,#5E3815,#FEF467,#979797"/>
-      <item imgname="suricati colore.png" key="item_suricati" latin="Suricata suricatta" colors="#CE8430,#E9A85F,#FFA846"/>
-      <!-- altri 2 -->
+      <item imgname="leone colore.png" key="item_leone" latin="TODO" colors="#CE8430"/>
+      <item imgname="elefante colore.png" key="item_elefante" latin="TODO" colors="#CE8430"/>
+      <item imgname="giraffa colore.png" key="item_giraffa" latin="TODO" colors="#CE8430"/>
+      <!--<item imgname="suricati colore.png" key="item_suricati" latin="Suricata suricatta" colors="#CE8430,#E9A85F,#FFA846"/>-->
+    </items>
+  </group>
+
+  <group id="2" key="group_America" imgname="2.png">
+    <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
+    <items SelectorGridRow="1" IsSelectorCentered="True">
+      <item imgname="avvoltoio colore.png" key="item_avvoltoio" latin="Cathartes aura" colors="#FB9A68,#AD9E82,#C83407,#99835E"/>
+      <item imgname="orso colore.png" key="item_orso" latin="TODO" colors="#CE8430"/>
+      <item imgname="bisonte colore.png" key="item_bisonte" latin="TODO" colors="#CE8430"/>
+      <item imgname="aquila colore.png" key="item_aquila" latin="TODO" colors="#CE8430"/>
+      <item imgname="bradipo colore.png" key="item_bradipo" latin="TODO" colors="#CE8430"/>
+      <!--<item imgname="castoro colore.png" key="item_castoro" latin="TODO" colors="#CE8430"/>-->
     </items>
   </group>
 
@@ -45,6 +59,17 @@
       <item imgname="Yak colore.png" key="item_Yak" latin="Bos grunniens" colors="#1E2848,#998776"/>
       <item imgname="Elefante colore.png" key="item_Elefante" latin="Bos grunniens"  colors="#A7A7A7,#F5989D,#7CC576"/>
       <item imgname="scimmietta colore.png" key="item_scimmietta" latin="Macaca silenus" colors="#716256,#EF662F,#FEF474"/>
+    </items>
+  </group>
+
+  <group id="5" key="group_Antarctica" imgname="5.png">
+    <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
+    <items SelectorGridRow="1" IsSelectorCentered="True">
+      <item imgname="orso colore.png" key="item_orsobianco" latin="TODO" colors="#CE8430"/>
+      <item imgname="pinguino colore.png" key="item_pinguino" latin="TODO" colors="#CE8430"/>
+      <item imgname="foca colore.png" key="item_foca" latin="TODO" colors="#CE8430"/>
+      <item imgname="albatro colore.png" key="item_albatro" latin="TODO" colors="#CE8430"/>
+      <item imgname="balena colore.png" key="item_balena" latin="TODO" colors="#CE8430"/>
     </items>
   </group>
 

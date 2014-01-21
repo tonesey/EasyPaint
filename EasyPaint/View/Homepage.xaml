@@ -30,11 +30,11 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="1.9*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1.1*"/>
         </Grid.RowDefinitions>
 
         <Image x:Name="ImageBkg" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Row="0" 
@@ -43,7 +43,7 @@
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
 
-        <Image x:Name="ImageTitle" Margin="0,5,0,0" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" 
+        <Image x:Name="ImageTitle" Margin="0,10,0,30" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" 
                Source="/EasyPaint;component/Assets/lres/bkg/title1.png" 
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
@@ -75,6 +75,8 @@
             </Button.RenderTransform>
             <Button.Content>
                 <TextBlock Name="ButtonStartText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Foreground="#FF471E17"
+                           FontSize="40"
                            Text="{Binding Path=LocalizedResX.ButtonStartText, Source={StaticResource LocalizedStrings}}">
                 </TextBlock>
             </Button.Content>
@@ -86,6 +88,24 @@
             </i:Interaction.Triggers>
         </Button>
 
+
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="False" >
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="1.945"/>
+            </Button.RenderTransform>
+            <Button.Content>
+                <TextBlock Name="ButtonHelpText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                            Text="{Binding Path=LocalizedResX.ButtonHelpText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
+            </Button.Content>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ShowHelpClicked" 
+                                                               Command="{Binding ShowSettingsCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        
         <Button RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" >
             <Button.RenderTransform>
                 <CompositeTransform Rotation="-2.646"/>
@@ -103,22 +123,7 @@
             </i:Interaction.Triggers>
         </Button>
 
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="False" >
-            <Button.RenderTransform>
-                <CompositeTransform Rotation="1.945"/>
-            </Button.RenderTransform>
-            <Button.Content>
-                <TextBlock Name="ButtonSettingsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
-                            Text="{Binding Path=LocalizedResX.ButtonSettingsText, Source={StaticResource LocalizedStrings}}">
-                </TextBlock>
-            </Button.Content>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ShowSettingsClicked" 
-                                                               Command="{Binding ShowSettingsCommand, Mode=OneWay}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
+        
 
     </Grid>
 

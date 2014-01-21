@@ -36,6 +36,7 @@ namespace EasyPaint.ViewModel
         public static readonly Uri View_GroupSeletor = new Uri("/View/GroupSelectorPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_ItemSeletor = new Uri("/View/ItemSelectorPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_Credits = new Uri("/View/CreditsPage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_Help = new Uri("/View/HelpPage.xaml", UriKind.RelativeOrAbsolute);
         #endregion
 
         static ViewModelLocator()
@@ -57,6 +58,8 @@ namespace EasyPaint.ViewModel
             SimpleIoc.Default.Register<GroupSelectorViewModel>();
             SimpleIoc.Default.Register<ItemSelectorViewModel>();
             SimpleIoc.Default.Register<PainterPageViewModel>();
+            SimpleIoc.Default.Register<CreditsViewModel>();
+            SimpleIoc.Default.Register<HelpViewModel>();
         }
 
         private static INavigationService _NavigationServiceStatic;
@@ -117,6 +120,28 @@ namespace EasyPaint.ViewModel
                     return _GroupSelectorViewModelStatic = ServiceLocator.Current.GetInstance<GroupSelectorViewModel>();
                 }
                 return _GroupSelectorViewModelStatic;
+            }
+        }
+        #endregion
+
+        #region credits
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]
+        public CreditsViewModel CreditsViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CreditsViewModel>();
+            }
+        }
+        #endregion
+
+        #region help
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]
+        public HelpViewModel HelpViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<HelpViewModel>();
             }
         }
         #endregion

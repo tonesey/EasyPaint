@@ -138,9 +138,6 @@
   <data name="ButtonSettingsText" xml:space="preserve">
     <value>Configuración</value>
   </data>
-  <data name="ButtonStartText" xml:space="preserve">
-    <value>Comience el juego</value>
-  </data>
   <data name="group_Europe" xml:space="preserve">
     <value>Europa</value>
   </data>
@@ -200,5 +197,11 @@
   </data>
   <data name="item_clamidosauro" xml:space="preserve">
     <value>Lagarto con volantes</value>
+  </data>
+  <data name="group_Asia" xml:space="preserve">
+    <value>Asia</value>
+  </data>
+  <data name="WarningExit" xml:space="preserve">
+    <value>¿Quieres salir de aplicación?</value>
   </data>
 </root>

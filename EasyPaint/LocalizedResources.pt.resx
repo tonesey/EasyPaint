@@ -156,9 +156,6 @@
   <data name="ButtonSettingsText" xml:space="preserve">
     <value>Configurações</value>
   </data>
-  <data name="ButtonStartText" xml:space="preserve">
-    <value>iniciar o jogo</value>
-  </data>
   <data name="message_level_failed" xml:space="preserve">
     <value>nível falhou!</value>
   </data>
@@ -200,5 +197,11 @@
   </data>
   <data name="item_clamidosauro" xml:space="preserve">
     <value>frilled lagarto</value>
+  </data>
+  <data name="group_Asia" xml:space="preserve">
+    <value>Ásia</value>
+  </data>
+  <data name="WarningExit" xml:space="preserve">
+    <value>Você quer parar de app?</value>
   </data>
 </root>

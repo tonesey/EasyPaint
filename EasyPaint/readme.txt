@@ -2,10 +2,13 @@
 
 TODO
 - creare UserControl MessageBox generico - ok
-	- crearne uno per help gioco
-
+- sistemare homepage
+	- gioca
+		- gallery (animali già colorati)
+		- arcade
+	- aiuto
+	- credits
 - ridefinire stato pressed dei bottoni, con scaling
-- creare modalità "gallery" con animali scoperti
 - splashscreen
 - credits
 - (low) MVVMLight pagina paint 

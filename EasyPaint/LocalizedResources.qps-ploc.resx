@@ -123,9 +123,6 @@
   <data name="ButtonSettingsText" xml:space="preserve">
     <value>[CD39E][!!_šéťţìйġŝ_!!]</value>
   </data>
-  <data name="ButtonStartText" xml:space="preserve">
-    <value>[46B2F][!!_şτâŕť ģámê_!!]</value>
-  </data>
   <data name="group_Africa" xml:space="preserve">
     <value>[D05B6][!!_Âƒŕîċâ_!!]</value>
   </data>
@@ -200,5 +197,11 @@
   </data>
   <data name="item_clamidosauro" xml:space="preserve">
     <value>[CC1F8][!!_ƒѓíłļęď ľįźâřð_!!!!]</value>
+  </data>
+  <data name="group_Asia" xml:space="preserve">
+    <value>[BEB33][!!_Ãšîá_!!]</value>
+  </data>
+  <data name="WarningExit" xml:space="preserve">
+    <value>[8DEB3][!!_Ðó ўòû ẃàиť ţõ qµìţ àþþ?_!!!!!!!!]</value>
   </data>
 </root>

@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="qps-ploc" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.3" build-num="0">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.2010.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="Resx">
@@ -15,8 +15,8 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[CD39E][!!_šéťţìйġŝ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartText" xml:space="preserve">
-          <source>start game</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">[46B2F][!!_şτâŕť ģámê_!!]</target>
+          <source>start game!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[46B2F][!!_ŝτàѓт ģàмê!_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Africa" xml:space="preserve">
           <source>Africa</source>
@@ -93,6 +93,14 @@
         <trans-unit translate="yes" id="Resx/group_Asia" xml:space="preserve">
           <source>Asia</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[BEB33][!!_Ãšîá_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonHelpText" xml:space="preserve">
+          <source>help</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[FCD7A][!!_ђęľρ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/WarningExit" xml:space="preserve">
+          <source>Do you want to quit app?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[8DEB3][!!_Ðó ўòû ẃàиť ţõ qµìţ àþþ?_!!!!!!!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_Tigre" xml:space="preserve">
           <source>tiger</source>

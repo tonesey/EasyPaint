@@ -56,6 +56,9 @@ namespace EasyPaint.ViewModel
         {
             get
             {
+#if DEBUG
+                return false;
+#endif
                 return _item.IsLocked;
             }
             set

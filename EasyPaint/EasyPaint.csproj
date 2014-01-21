@@ -210,6 +210,8 @@
     <Compile Include="Model\MyColor.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
     <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="ViewModel\HelpViewModel.cs" />
+    <Compile Include="ViewModel\CreditsViewModel.cs" />
     <Compile Include="ViewModel\PainterPageViewModel.cs" />
     <Compile Include="ViewModel\ImageAndTextItem.cs" />
     <Compile Include="ViewModel\ItemSelectorViewModel.cs" />
@@ -218,6 +220,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="View\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreditsPage.xaml.cs">
+      <DependentUpon>CreditsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ResultPopup.xaml.cs">
       <DependentUpon>ResultPopup.xaml</DependentUpon>
     </Compile>
@@ -245,6 +253,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="View\HelpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CreditsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\ResultPopup.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -276,11 +292,6 @@
     <Resource Include="Assets\lres\groups\4\Tigre colore.png" />
     <Resource Include="Assets\lres\groups\4\Yak lineart.png" />
     <Resource Include="Assets\lres\groups\4\Yak colore.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\canguro colore.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\clamidosauro colore.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\coccodrillo colore.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\diavolo colore.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\koala colore.png" />
     <Resource Include="Assets\lres\groups\3\reduced_10\canguro colore.png" />
     <Resource Include="Assets\lres\groups\3\reduced_10\clamidosauro colore.png" />
     <Resource Include="Assets\lres\groups\3\reduced_10\coccodrillo colore.png" />
@@ -298,36 +309,11 @@
     <Resource Include="Assets\lres\groups\2_bck.jpg" />
     <Resource Include="Assets\lres\groups\4_bck.jpg" />
     <Resource Include="Assets\lres\groups\5_bck.jpg" />
-    <Resource Include="Assets\lres\groups\5\reduced_10\Cobra.png" />
-    <Resource Include="Assets\lres\groups\5\reduced_10\Elefante.png" />
-    <Resource Include="Assets\lres\groups\5\reduced_10\scimmietta.png" />
-    <Resource Include="Assets\lres\groups\5\reduced_10\Tigre.png" />
-    <Resource Include="Assets\lres\groups\5\reduced_10\Yak.png" />
-    <Resource Include="Assets\lres\groups\5\Cobra lineart.png" />
-    <Resource Include="Assets\lres\groups\5\Cobra.png" />
-    <Resource Include="Assets\lres\groups\5\Elefante lineart.png" />
-    <Resource Include="Assets\lres\groups\5\Elefante.png" />
-    <Resource Include="Assets\lres\groups\5\scimmietta lineart.png" />
-    <Resource Include="Assets\lres\groups\5\scimmietta.png" />
-    <Resource Include="Assets\lres\groups\5\Tigre line art.png" />
-    <Resource Include="Assets\lres\groups\5\Tigre.png" />
-    <Resource Include="Assets\lres\groups\5\Yak lineart.png" />
-    <Resource Include="Assets\lres\groups\5\Yak.png" />
     <Resource Include="Assets\lres\groups\2\reduced_10\canguro colore.png" />
     <Resource Include="Assets\lres\groups\2\reduced_10\clamidosauro colori.png" />
     <Resource Include="Assets\lres\groups\2\reduced_10\coccodrillo colore.png" />
     <Resource Include="Assets\lres\groups\2\reduced_10\diavolo_colore.png" />
     <Resource Include="Assets\lres\groups\2\reduced_10\koala colore.png" />
-    <Resource Include="Assets\lres\groups\2\canguro colore.png" />
-    <Resource Include="Assets\lres\groups\2\canguro lineart.png" />
-    <Resource Include="Assets\lres\groups\2\clamidosauro colori.png" />
-    <Resource Include="Assets\lres\groups\2\clamidosauroline art.png" />
-    <Resource Include="Assets\lres\groups\2\coccodrillo colore.png" />
-    <Resource Include="Assets\lres\groups\2\coccodrillo lineart.png" />
-    <Resource Include="Assets\lres\groups\2\diavolo_colore.png" />
-    <Resource Include="Assets\lres\groups\2\diavolo_lineart.png" />
-    <Resource Include="Assets\lres\groups\2\koala colore.png" />
-    <Resource Include="Assets\lres\groups\2\koala lineart.png" />
     <Resource Include="Assets\buttons\sound_on.png" />
     <Resource Include="Assets\buttons\sound_off.png" />
     <Resource Include="Assets\buttons\nav_left_green.png" />
@@ -340,13 +326,16 @@
     <Resource Include="Assets\lres\groups\1\reduced_10\rinoceronte colore.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\suricati colore.png" />
     <Resource Include="Assets\lres\bkg\explorer_groups.png" />
-    <Resource Include="Assets\lres\groups\0\explorer.png" />
     <Resource Include="Assets\ko.jpg" />
     <Resource Include="Assets\lres\bkg\homepage.jpg" />
     <Resource Include="Assets\lres\bkg\explorer_subject.png" />
     <Resource Include="Assets\lres\bkg\title1.png" />
+    <Resource Include="Assets\lres\bkg\explorer_tr.png" />
+    <Resource Include="Assets\lres\groups\2\avvoltoio colore.png" />
+    <Resource Include="Assets\lres\groups\2\avvoltoio lineart.png" />
+    <Resource Include="Assets\lres\groups\1\elefante colore.png" />
+    <Resource Include="Assets\lres\groups\1\elefante lineart.png" />
     <Content Include="Assets\lres\groups\1\explorer.png" />
-    <Resource Include="Assets\lres\groups\2\explorer.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\gazzella lineart.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\rinoceronte lineart.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\suricati lineart.png" />
@@ -358,13 +347,36 @@
     <Resource Include="Assets\lres\groups\1\gazzella lineart.png" />
     <Resource Include="Assets\lres\groups\1\rinoceronte lineart.png" />
     <Resource Include="Assets\lres\groups\1\suricati lineart.png" />
+    <Resource Include="Assets\lres\groups\1\reduced_10\avvoltoio colore.png" />
+    <Resource Include="Assets\lres\groups\1\reduced_10\avvoltoio lineart.png" />
+    <Resource Include="Assets\lres\groups\2\aquila colore.png" />
+    <Resource Include="Assets\lres\groups\2\aquila lineart.png" />
+    <Resource Include="Assets\lres\groups\2\bisonte colore.png" />
+    <Resource Include="Assets\lres\groups\2\bisonte lineart.png" />
+    <Resource Include="Assets\lres\groups\2\bradipo colore.png" />
+    <Resource Include="Assets\lres\groups\2\bradipo lineart.png" />
+    <Resource Include="Assets\lres\groups\1\leone colore.png" />
+    <Resource Include="Assets\lres\groups\1\leone lineart.png" />
+    <Resource Include="Assets\lres\groups\1\giraffa colore.png" />
+    <Resource Include="Assets\lres\groups\1\giraffa lineart.png" />
+    <Content Include="Assets\lres\groups\2\orso colore.png" />
+    <Content Include="Assets\lres\groups\2\orso lineart.png" />
     <Content Include="Assets\lres\groups\4\explorer.png" />
-    <Resource Include="Assets\lres\groups\5\explorer.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\Cobra lineart.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\Elefante lineart.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\scimmietta lineart.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\Tigre lineart.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\Yak lineart.png" />
+    <Resource Include="Assets\lres\groups\5\albatro colore.png" />
+    <Resource Include="Assets\lres\groups\5\albatro lineart.png" />
+    <Resource Include="Assets\lres\groups\5\balena colore.png" />
+    <Resource Include="Assets\lres\groups\5\balena lineart.png" />
+    <Resource Include="Assets\lres\groups\5\foca colore.png" />
+    <Resource Include="Assets\lres\groups\5\foca lineart.png" />
+    <Resource Include="Assets\lres\groups\5\orso colore.png" />
+    <Resource Include="Assets\lres\groups\5\orso lineart.png" />
+    <Resource Include="Assets\lres\groups\5\pinguino colore.png" />
+    <Resource Include="Assets\lres\groups\5\pinguino lineart.png" />
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />
@@ -386,16 +398,6 @@
     <Resource Include="Assets\lres\groups\0.png" />
     <Resource Include="Assets\lres\bkg\painter_bck.jpg" />
     <Resource Include="Assets\lres\groups\1.png" />
-    <Resource Include="Assets\lres\groups\0\canguro colore.png" />
-    <Resource Include="Assets\lres\groups\0\canguro lineart.png" />
-    <Resource Include="Assets\lres\groups\0\clamidosauro colore.png" />
-    <Resource Include="Assets\lres\groups\0\clamidosauro lineart.png" />
-    <Resource Include="Assets\lres\groups\0\coccodrillo colore.png" />
-    <Resource Include="Assets\lres\groups\0\coccodrillo lineart.png" />
-    <Resource Include="Assets\lres\groups\0\diavolo colore.png" />
-    <Resource Include="Assets\lres\groups\0\diavolo lineart.png" />
-    <Resource Include="Assets\lres\groups\0\koala colore.png" />
-    <Resource Include="Assets\lres\groups\0\koala lineart.png" />
     <Content Include="Assets\buttons\btn_avanti.png" />
     <Content Include="Assets\buttons\btn_menu.png" />
     <Content Include="Assets\buttons\btn_no.png" />
@@ -518,6 +520,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\lres\groups\0\reduced_10\" />
+    <Folder Include="Assets\lres\groups\5\reduced_10\" />
     <Folder Include="Assets\testImages\" />
   </ItemGroup>
   <ItemGroup>

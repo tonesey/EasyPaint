@@ -124,7 +124,7 @@
     <value>settings</value>
   </data>
   <data name="ButtonStartText" xml:space="preserve">
-    <value>start game</value>
+    <value>start game!</value>
   </data>
   <data name="group_Africa" xml:space="preserve">
     <value>Africa</value>
@@ -145,7 +145,7 @@
     <value>crocodile</value>
   </data>
   <data name="item_diavolo" xml:space="preserve">
-    <value>Tasmanian devil</value>
+    <value>tasmanian devil</value>
   </data>
   <data name="item_koala" xml:space="preserve">
     <value>koala</value>
@@ -189,7 +189,7 @@
   <data name="item_Cobra" xml:space="preserve">
     <value>cobra</value>
   </data>
-  <data name="item_Elefante" xml:space="preserve">
+  <data name="item_elefante" xml:space="preserve">
     <value>elephant</value>
   </data>
   <data name="item_scimmietta" xml:space="preserve">
@@ -206,5 +206,47 @@
   </data>
   <data name="WarningExit" xml:space="preserve">
     <value>Do you want to quit app?</value>
+  </data>
+  <data name="ButtonHelpText" xml:space="preserve">
+    <value>help</value>
+  </data>
+  <data name="group_Antarctica" xml:space="preserve">
+    <value>Antartica</value>
+  </data>
+  <data name="item_albatro" xml:space="preserve">
+    <value>albatross</value>
+  </data>
+  <data name="item_aquila" xml:space="preserve">
+    <value>eagle</value>
+  </data>
+  <data name="item_avvoltoio" xml:space="preserve">
+    <value>vulture</value>
+  </data>
+  <data name="item_balena" xml:space="preserve">
+    <value>whale</value>
+  </data>
+  <data name="item_bisonte" xml:space="preserve">
+    <value>bison</value>
+  </data>
+  <data name="item_bradipo" xml:space="preserve">
+    <value>sloath</value>
+  </data>
+  <data name="item_foca" xml:space="preserve">
+    <value>seal</value>
+  </data>
+  <data name="item_giraffa" xml:space="preserve">
+    <value>giraffe</value>
+  </data>
+  <data name="item_leone" xml:space="preserve">
+    <value>lion</value>
+  </data>
+  <data name="item_orso" xml:space="preserve">
+    <value>bear</value>
+  </data>
+  <data name="item_orsobianco" xml:space="preserve">
+    <value>white bear</value>
+  </data>
+  <data name="item_pinguino" xml:space="preserve">
+    <value>penguin</value>
   </data>
 </root>
