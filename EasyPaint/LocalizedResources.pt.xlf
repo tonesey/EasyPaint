@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="pt" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.3" build-num="0">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.2010.0" tool-company="Microsoft" />
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="Resx">
@@ -43,8 +43,8 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">crocodilo</target>
         </trans-unit>
         <trans-unit id="Resx/item_diavolo" translate="yes" xml:space="preserve">
-          <source>Tasmanian devil</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Diabo da Tasmânia</target>
+          <source>tasmanian devil</source>
+          <target state="new" state-qualifier="mt-suggestion">tasmanian devil</target>
         </trans-unit>
         <trans-unit id="Resx/item_koala" translate="yes" xml:space="preserve">
           <source>koala</source>
@@ -98,6 +98,58 @@
           <source>help</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Ajuda</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_pinguino" xml:space="preserve">
+          <source>penguin</source>
+          <target state="new">penguin</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_orsobianco" xml:space="preserve">
+          <source>white bear</source>
+          <target state="new">white bear</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_orso" xml:space="preserve">
+          <source>bear</source>
+          <target state="new">bear</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_leone" xml:space="preserve">
+          <source>lion</source>
+          <target state="new">lion</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_giraffa" xml:space="preserve">
+          <source>giraffe</source>
+          <target state="new">giraffe</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_foca" xml:space="preserve">
+          <source>seal</source>
+          <target state="new">seal</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_bradipo" xml:space="preserve">
+          <source>sloath</source>
+          <target state="new">sloath</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_bisonte" xml:space="preserve">
+          <source>bison</source>
+          <target state="new">bison</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_balena" xml:space="preserve">
+          <source>whale</source>
+          <target state="new">whale</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_avvoltoio" xml:space="preserve">
+          <source>vulture</source>
+          <target state="new">vulture</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_aquila" xml:space="preserve">
+          <source>eagle</source>
+          <target state="new">eagle</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_albatro" xml:space="preserve">
+          <source>albatross</source>
+          <target state="new">albatross</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/group_Antarctica" xml:space="preserve">
+          <source>Antartica</source>
+          <target state="new">Antartica</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/WarningExit" xml:space="preserve">
           <source>Do you want to quit app?</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Você quer parar de app?</target>
@@ -110,13 +162,13 @@
           <source>monkey</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">macaco</target>
         </trans-unit>
-        <trans-unit translate="yes" id="Resx/item_Elefante" xml:space="preserve">
-          <source>elephant</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">elefante</target>
-        </trans-unit>
         <trans-unit translate="yes" id="Resx/item_Cobra" xml:space="preserve">
           <source>cobra</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">cobra</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_elefante" xml:space="preserve">
+          <source>elephant</source>
+          <target state="new">elephant</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_clamidosauro" xml:space="preserve">
           <source>frilled lizard</source>

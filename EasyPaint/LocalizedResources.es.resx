@@ -147,9 +147,6 @@
   <data name="item_coccodrillo" xml:space="preserve">
     <value>cocodrilo</value>
   </data>
-  <data name="item_diavolo" xml:space="preserve">
-    <value>Demonio de Tasmania</value>
-  </data>
   <data name="item_lion" xml:space="preserve">
     <value>León</value>
   </data>
@@ -189,9 +186,6 @@
   <data name="item_scimmietta" xml:space="preserve">
     <value>mono</value>
   </data>
-  <data name="item_Elefante" xml:space="preserve">
-    <value>elefante</value>
-  </data>
   <data name="item_Cobra" xml:space="preserve">
     <value>cobra</value>
   </data>
@@ -203,5 +197,11 @@
   </data>
   <data name="WarningExit" xml:space="preserve">
     <value>¿Quieres salir de aplicación?</value>
+  </data>
+  <data name="ButtonStartText" xml:space="preserve">
+    <value>Comience el juego!</value>
+  </data>
+  <data name="ButtonHelpText" xml:space="preserve">
+    <value>Ayuda</value>
   </data>
 </root>

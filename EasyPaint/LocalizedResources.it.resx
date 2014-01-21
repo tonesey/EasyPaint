@@ -135,9 +135,6 @@
   <data name="item_coccodrillo" xml:space="preserve">
     <value>coccodrillo</value>
   </data>
-  <data name="item_diavolo" xml:space="preserve">
-    <value>Diavolo della Tasmania</value>
-  </data>
   <data name="item_koala" xml:space="preserve">
     <value>Koala</value>
   </data>
@@ -189,9 +186,6 @@
   <data name="item_scimmietta" xml:space="preserve">
     <value>scimmia</value>
   </data>
-  <data name="item_Elefante" xml:space="preserve">
-    <value>elefante</value>
-  </data>
   <data name="item_Cobra" xml:space="preserve">
     <value>cobra</value>
   </data>
@@ -203,5 +197,11 @@
   </data>
   <data name="WarningExit" xml:space="preserve">
     <value>Si desidera chiudere l'app?</value>
+  </data>
+  <data name="ButtonStartText" xml:space="preserve">
+    <value>inizia la partita!</value>
+  </data>
+  <data name="ButtonHelpText" xml:space="preserve">
+    <value>Guida</value>
   </data>
 </root>

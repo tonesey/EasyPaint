@@ -76,7 +76,6 @@
             <Button.Content>
                 <TextBlock Name="ButtonStartText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
                            Foreground="#FF471E17"
-                           FontSize="40"
                            Text="{Binding Path=LocalizedResX.ButtonStartText, Source={StaticResource LocalizedStrings}}">
                 </TextBlock>
             </Button.Content>
