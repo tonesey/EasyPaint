@@ -350,8 +350,6 @@
     <Resource Include="Assets\lres\groups\1\suricati lineart.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\avvoltoio colore.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\avvoltoio lineart.png" />
-    <Resource Include="Assets\lres\groups\2\aquila colore.png" />
-    <Resource Include="Assets\lres\groups\2\aquila lineart.png" />
     <Resource Include="Assets\lres\groups\2\bisonte colore.png" />
     <Resource Include="Assets\lres\groups\2\bisonte lineart.png" />
     <Resource Include="Assets\lres\groups\2\bradipo colore.png" />
@@ -360,8 +358,14 @@
     <Resource Include="Assets\lres\groups\1\leone lineart.png" />
     <Resource Include="Assets\lres\groups\1\giraffa colore.png" />
     <Resource Include="Assets\lres\groups\1\giraffa lineart.png" />
-    <Content Include="Assets\lres\groups\2\orso colore.png" />
-    <Content Include="Assets\lres\groups\2\orso lineart.png" />
+    <Resource Include="Assets\lres\groups\1\zebra colore.png" />
+    <Resource Include="Assets\lres\groups\1\zebra lineart.png" />
+    <Resource Include="Assets\lres\groups\2\alce colore.png" />
+    <Resource Include="Assets\lres\groups\2\alce lineart.png" />
+    <Resource Include="Assets\lres\groups\2\castoro colore.png" />
+    <Resource Include="Assets\lres\groups\2\castoro lineart.png" />
+    <Resource Include="Assets\lres\groups\2\orso colore.png" />
+    <Resource Include="Assets\lres\groups\2\orso lineart.png" />
     <Content Include="Assets\lres\groups\4\explorer.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\Cobra lineart.png" />
     <Resource Include="Assets\lres\groups\4\reduced_10\Elefante lineart.png" />
