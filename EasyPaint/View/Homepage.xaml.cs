@@ -26,6 +26,7 @@ namespace EasyPaint.View
 
         SoundEffect _soundEffect1 = null;
         private bool _backgroundAnimationStarted = false;
+        Storyboard _bkgAnimationStoryboard = new Storyboard();
 
         /// <summary>
         /// Initializes a new instance of the Homepage class.
@@ -63,6 +64,34 @@ namespace EasyPaint.View
             }
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            PauseAnimation();
+            base.OnNavigatedFrom(e);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            ResumeAnimation();
+            base.OnNavigatedTo(e);
+        }
+
+        private void PauseAnimation()
+        {
+            if (_backgroundAnimationStarted)
+            {
+                _bkgAnimationStoryboard.Pause();
+            }
+        }
+
+        private void ResumeAnimation()
+        {
+            if (_backgroundAnimationStarted)
+            {
+                _bkgAnimationStoryboard.Resume();
+            }
+        }
+
         private void AnimateBackground()
         {
 
@@ -84,32 +113,25 @@ namespace EasyPaint.View
                          new Thickness(0, -240, 0, 0), new Thickness(0, 0, 0, 0));
             timeline4.BeginTime = TimeSpan.FromSeconds(beginTime);
 
-            Storyboard storyBoard = new Storyboard();
-            storyBoard.Children.Add(timeline1);
-            storyBoard.Children.Add(timeline2);
-            storyBoard.Children.Add(timeline3);
-            storyBoard.Children.Add(timeline4);
+            _bkgAnimationStoryboard.Children.Add(timeline1);
+            _bkgAnimationStoryboard.Children.Add(timeline2);
+            _bkgAnimationStoryboard.Children.Add(timeline3);
+            _bkgAnimationStoryboard.Children.Add(timeline4);
             //storyBoard.AutoReverse = true;
-            storyBoard.RepeatBehavior = RepeatBehavior.Forever;
-            storyBoard.Begin();
+            _bkgAnimationStoryboard.RepeatBehavior = RepeatBehavior.Forever;
+            _bkgAnimationStoryboard.Begin();
 
         }
 
         private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //MessageBoxResult mb = MessageBox.Show(LocalizedResources.MsgBoxExit, LocalizedResources.MsgBoxTitleWarning, MessageBoxButton.OKCancel);
-            //if (mb != MessageBoxResult.OK)
-            //{
-            //    e.Cancel = true;
-            //}
-
             MyMsgbox.Show(this, MsgboxMode.YesNo, LocalizedResources.WarningExit, response =>
             {
-                if (response == MsgboxResponse.No) {
+                if (response == MsgboxResponse.No)
+                {
                     e.Cancel = true;
                 }
             });
-
         }
     }
 }

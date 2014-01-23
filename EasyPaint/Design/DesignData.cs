@@ -168,6 +168,10 @@ namespace EasyPaint.Design
 
         public DesignData()
         {
+            if (!IsInDesignModeStatic)
+            { 
+                return;
+            }
 
             _data = AppDataManager.GetInstance("design").CfgData;
 

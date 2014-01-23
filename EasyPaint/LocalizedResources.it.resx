@@ -199,7 +199,7 @@
     <value>Si desidera chiudere l'app?</value>
   </data>
   <data name="ButtonStartText" xml:space="preserve">
-    <value>inizia la partita!</value>
+    <value>gioca!</value>
   </data>
   <data name="ButtonHelpText" xml:space="preserve">
     <value>Guida</value>

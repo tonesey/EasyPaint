@@ -16,7 +16,7 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartText" xml:space="preserve">
           <source>start game!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">inizia la partita!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">gioca!</target>
         </trans-unit>
         <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
           <source>Africa</source>

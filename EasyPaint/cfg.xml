@@ -4,7 +4,6 @@
   <!--<unlocked_items value="canguro colore.png"></unlocked_items>-->
 
   <!-- TODO
-  
   <group id="0" key="group_Europe" imgname="0.png">
     <protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>
     <items SelectorGridRow="0" IsSelectorCentered="False">
@@ -15,31 +14,35 @@
       <item imgname="volpe colore.png" key="item_renna" latin="Diceros TODO" colors="#CE8430"/>
     </items>
   </group>-->
-  
+
+  <!-- ok definizione animali -->
   <group id="1" key="group_Africa" imgname="1.png">
     <protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>
     <items SelectorGridRow="0" IsSelectorCentered="False">
       <item imgname="rinoceronte colore.png" key="item_rinoceronte" latin="Diceros bicornis" colors="#C7B29A,#736357"/>
       <item imgname="gazzella colore.png" key="item_gazzella" latin="Gazella gazella" colors="#C69C6D,#5E3815,#FEF467,#979797"/>
+      <item imgname="suricati colore.png" key="item_suricati" latin="Suricata suricatta" colors="#CE8430,#E9A85F,#FFA846"/>
       <item imgname="leone colore.png" key="item_leone" latin="TODO" colors="#CE8430"/>
       <item imgname="elefante colore.png" key="item_elefante" latin="TODO" colors="#CE8430"/>
       <item imgname="giraffa colore.png" key="item_giraffa" latin="TODO" colors="#CE8430"/>
-      <!--<item imgname="suricati colore.png" key="item_suricati" latin="Suricata suricatta" colors="#CE8430,#E9A85F,#FFA846"/>-->
+      <item imgname="zebra colore.png" key="item_giraffa" latin="TODO" colors="#CE8430"/>
     </items>
   </group>
 
+  <!-- ok definizione animali -->
   <group id="2" key="group_America" imgname="2.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
-      <item imgname="avvoltoio colore.png" key="item_avvoltoio" latin="Cathartes aura" colors="#FB9A68,#AD9E82,#C83407,#99835E"/>
       <item imgname="orso colore.png" key="item_orso" latin="TODO" colors="#CE8430"/>
       <item imgname="bisonte colore.png" key="item_bisonte" latin="TODO" colors="#CE8430"/>
-      <item imgname="aquila colore.png" key="item_aquila" latin="TODO" colors="#CE8430"/>
       <item imgname="bradipo colore.png" key="item_bradipo" latin="TODO" colors="#CE8430"/>
-      <!--<item imgname="castoro colore.png" key="item_castoro" latin="TODO" colors="#CE8430"/>-->
+      <item imgname="avvoltoio colore.png" key="item_avvoltoio" latin="Cathartes aura" colors="#FB9A68,#AD9E82,#C83407,#99835E"/>
+      <item imgname="alce lineart.png" key="item_aquila" latin="TODO" colors="#CE8430"/>
+      <item imgname="castoro colore.png" key="item_castoro" latin="TODO" colors="#CE8430"/>
     </items>
   </group>
 
+  <!-- aggiungere 1-2 animali -->
   <group id="3" key="group_Oceania" imgname="3.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
@@ -51,6 +54,7 @@
     </items>
   </group>
 
+  <!-- aggiungere 1-2 animali -->
   <group id="4" key="group_Asia" imgname="4.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
@@ -62,10 +66,12 @@
     </items>
   </group>
 
+
+  <!-- sostituire con animali da clipart -->
   <group id="5" key="group_Antarctica" imgname="5.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
-      <item imgname="orso colore.png" key="item_orsobianco" latin="TODO" colors="#CE8430"/>
+      <item imgname="orsobianco colore.png" key="item_orsobianco" latin="TODO" colors="#CE8430"/>
       <item imgname="pinguino colore.png" key="item_pinguino" latin="TODO" colors="#CE8430"/>
       <item imgname="foca colore.png" key="item_foca" latin="TODO" colors="#CE8430"/>
       <item imgname="albatro colore.png" key="item_albatro" latin="TODO" colors="#CE8430"/>

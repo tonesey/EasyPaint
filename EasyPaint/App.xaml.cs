@@ -123,6 +123,8 @@ namespace EasyPaint
         {
             AppSettings.LoadSettings();
             InitAudio();
+
+            var vm = ViewModelLocator.GroupSelectorViewModelStatic;
         }
 
         private void InitAudio()

@@ -42,10 +42,11 @@ namespace EasyPaint.Helpers
             Stream stream = asm.GetManifestResourceStream("EasyPaint.cfg.xml");
             var doc = XDocument.Load(stream);
 
-            //#if DEBUG
-            //            string userScoreDebug = "canguro colore.png-true-0-0;clamidosauro colori.png-false-50-100;coccodrillo colore.png-false-10-45";
-            //            StorageHelper.StoreSetting(AppSettings.UserScoreKey, userScoreDebug, true);
-            //#endif
+#if DEBUG
+            string userScoreDebug = "canguro colore.png-true-0-0;clamidosauro colori.png-false-50-100;coccodrillo colore.png-false-10-45";
+            StorageHelper.StoreSetting(AppSettings.UserScoreKey, userScoreDebug, true);
+            AppSettings.LoadSettings();
+#endif
 
             #region userscore setting reading
             var userScoreValue = AppSettings.UserScoreValue;

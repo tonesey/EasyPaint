@@ -317,7 +317,7 @@
     <Resource Include="Assets\buttons\sound_on.png" />
     <Resource Include="Assets\buttons\sound_off.png" />
     <Resource Include="Assets\buttons\nav_left_green.png" />
-    <Content Include="Assets\buttons\pencil3.png" />
+    <Resource Include="Assets\buttons\pencil3.png" />
     <Content Include="Assets\icons\Lock.png" />
     <Resource Include="Assets\lres\bkg\painter_bck1.jpg" />
     <Resource Include="Assets\lres\groups\1\gazzella colore.png" />
@@ -374,7 +374,7 @@
     <Resource Include="Assets\lres\groups\5\balena lineart.png" />
     <Resource Include="Assets\lres\groups\5\foca colore.png" />
     <Resource Include="Assets\lres\groups\5\foca lineart.png" />
-    <Resource Include="Assets\lres\groups\5\orso colore.png" />
+    <Resource Include="Assets\lres\groups\5\orsobianco colore.png" />
     <Resource Include="Assets\lres\groups\5\orso lineart.png" />
     <Resource Include="Assets\lres\groups\5\pinguino colore.png" />
     <Resource Include="Assets\lres\groups\5\pinguino lineart.png" />

@@ -185,7 +185,8 @@
             <Border x:Name="BorderTools" CornerRadius="10" BorderThickness="2"  Grid.Column="2"  Margin="0,10,0,0">
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Button Name="eraserBtn" HorizontalAlignment="Left" Width="80" Height="80" BorderBrush="DarkGray" BorderThickness="2"  Click="eraseBtn_Click" Padding="0" RenderTransformOrigin="0.5,0.5">
+                    <Button Name="eraserBtn" HorizontalAlignment="Left" Width="80" Height="80" BorderBrush="DarkGray" BorderThickness="2"  Click="eraseBtn_Click" Padding="0" RenderTransformOrigin="0.5,0.5" 
+                            Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
                             <CompositeTransform TranslateY="{Binding ToolBoxItem1TranslateY}"/>
                         </Button.RenderTransform>
@@ -204,7 +205,7 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="penSizeChange"  HorizontalAlignment="Left" VerticalContentAlignment="Center"  Width="80" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+                    <Button Name="penSizeChange"  HorizontalAlignment="Left" VerticalContentAlignment="Center"  Width="80" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
                             <CompositeTransform TranslateY="{Binding ToolBoxItem2TranslateY}"/>
                         </Button.RenderTransform>
@@ -226,7 +227,7 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="stopTimeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="stopTimeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5">
+                    <Button Name="stopTimeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="stopTimeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
                             <CompositeTransform TranslateY="{Binding ToolBoxItem3TranslateY}"/>
                         </Button.RenderTransform>

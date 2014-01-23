@@ -1,21 +1,26 @@
 ﻿
 
 TODO
-- creare UserControl MessageBox generico - ok
-- sistemare homepage
+
+- homepage
 	- gioca
-		- gallery (animali già colorati)
-		- arcade
+	- gallery (animali già colorati) - LOW
 	- aiuto
-	- credits
-- ridefinire stato pressed dei bottoni, con scaling
+	- credits - LOW
+
+- pausa/sospensione gioco
+	- tombstoning
+- rate my app
+(- credits)
+
 - splashscreen
-- credits
 - (low) MVVMLight pagina paint 
 - (low) calcolo punteggio che tiene conto del tempo risparmiato
 
 DONE
 
+- creare UserControl MessageBox generico - ok
+- ridefinire stato pressed dei bottoni, con scaling - ok
 - suoni - OK
 - gestione locking elemento iniziato - OK
 - scritta latina painter page - OK
