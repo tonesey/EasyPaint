@@ -334,7 +334,6 @@
     <Resource Include="Assets\lres\groups\2\avvoltoio colore.png" />
     <Resource Include="Assets\lres\groups\2\avvoltoio lineart.png" />
     <Resource Include="Assets\lres\groups\1\elefante colore.png" />
-    <Resource Include="Assets\lres\groups\1\elefante lineart.png" />
     <Resource Include="Assets\lres\bkg\painter_bck2.jpg" />
     <Resource Include="Assets\lres\groups\0\cane colore.png" />
     <Resource Include="Assets\lres\groups\0\cervo colore.png" />
@@ -352,7 +351,6 @@
     <Resource Include="Assets\lres\groups\3\reduced_10\diavolo lineart.png" />
     <Resource Include="Assets\lres\groups\3\reduced_10\koala lineart.png" />
     <Resource Include="Assets\lres\groups\1\gazzella lineart.png" />
-    <Resource Include="Assets\lres\groups\1\rinoceronte lineart.png" />
     <Resource Include="Assets\lres\groups\1\suricati lineart.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\avvoltoio colore.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\avvoltoio lineart.png" />
@@ -386,7 +384,6 @@
     <Resource Include="Assets\lres\groups\5\albatro colore.png" />
     <Resource Include="Assets\lres\groups\5\albatro lineart.png" />
     <Resource Include="Assets\lres\groups\5\balena colore.png" />
-    <Resource Include="Assets\lres\groups\5\balena lineart.png" />
     <Resource Include="Assets\lres\groups\5\foca colore.png" />
     <Resource Include="Assets\lres\groups\5\foca lineart.png" />
     <Resource Include="Assets\lres\groups\5\orsobianco colore.png" />
@@ -395,6 +392,11 @@
     <Resource Include="Assets\lres\groups\5\pinguino lineart.png" />
     <Resource Include="Assets\lres\groups\4\panda colore.png" />
     <Resource Include="Assets\lres\groups\5\elefante marino colore.png" />
+    <Resource Include="Assets\lres\groups\0\explorer.png" />
+    <Resource Include="Assets\lres\groups\1\explorer_Africa.png" />
+    <Resource Include="Assets\lres\groups\2\explorer.png" />
+    <Resource Include="Assets\lres\groups\5\explorer.png" />
+    <Resource Include="Assets\lres\groups\5\orca colore.png" />
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />
@@ -423,7 +425,6 @@
     <Resource Include="Assets\lres\groups\2.png" />
     <Resource Include="Assets\lres\groups\3.png" />
     <Resource Include="Assets\lres\groups\3\canguro colore.png" />
-    <Resource Include="Assets\lres\groups\3\canguro lineart.png" />
     <Resource Include="Assets\lres\groups\3\clamidosauro colore.png" />
     <Resource Include="Assets\lres\groups\3\clamidosauro lineart.png" />
     <Resource Include="Assets\lres\groups\3\coccodrillo colore.png" />

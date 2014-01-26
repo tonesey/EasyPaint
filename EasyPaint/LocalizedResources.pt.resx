@@ -138,9 +138,7 @@
   <data name="item_koala" xml:space="preserve">
     <value>Coala</value>
   </data>
-  <data name="item_lion" xml:space="preserve">
-    <value>Leão</value>
-  </data>
+  
   <data name="item_tiger" xml:space="preserve">
     <value>Tigre</value>
   </data>
@@ -204,4 +202,4 @@
   <data name="ButtonHelpText" xml:space="preserve">
     <value>Ajuda</value>
   </data>
-</root>
+<data name="item_diavolo" xml:space="preserve"><value>Diabo da Tasmânia</value></data><data name="item_pinguino" xml:space="preserve"><value>pinguim</value></data><data name="item_orsobianco" xml:space="preserve"><value>urso branco</value></data><data name="item_orso" xml:space="preserve"><value>urso</value></data><data name="item_leone" xml:space="preserve"><value>Leão</value></data><data name="item_giraffa" xml:space="preserve"><value>girafa</value></data><data name="item_foca" xml:space="preserve"><value>selo</value></data><data name="item_bradipo" xml:space="preserve"><value>sloath</value></data><data name="item_bisonte" xml:space="preserve"><value>Bison</value></data><data name="item_balena" xml:space="preserve"><value>baleia</value></data><data name="item_avvoltoio" xml:space="preserve"><value>abutre</value></data><data name="item_aquila" xml:space="preserve"><value>Águia</value></data><data name="item_albatro" xml:space="preserve"><value>Albatroz</value></data><data name="group_Antarctica" xml:space="preserve"><value>Antartica</value></data><data name="item_elefante" xml:space="preserve"><value>elefante</value></data></root>

@@ -144,9 +144,7 @@
   <data name="item_koala" xml:space="preserve">
     <value>[FCA56][!!_ĸõàłã_!!]</value>
   </data>
-  <data name="item_lion" xml:space="preserve">
-    <value>[4B0D9][!!_ľîòи_!!]</value>
-  </data>
+  
   <data name="item_tiger" xml:space="preserve">
     <value>[4BF14][!!_τìġéř_!!]</value>
   </data>
@@ -204,4 +202,4 @@
   <data name="ButtonHelpText" xml:space="preserve">
     <value>[FCD7A][!!_ђęľρ_!!]</value>
   </data>
-</root>
+<data name="item_diavolo" xml:space="preserve"><value>[B51E7][!!_ţãşmáиįâή ðêνìľ_!!!!]</value></data><data name="item_pinguino" xml:space="preserve"><value>[70D02][!!_þęήġùîи_!!]</value></data><data name="item_orsobianco" xml:space="preserve"><value>[945F9][!!_ẅнįţè ьèàѓ_!!]</value></data><data name="item_orso" xml:space="preserve"><value>[55A22][!!_ъéãŗ_!!]</value></data><data name="item_leone" xml:space="preserve"><value>[B36B6][!!_ľîóи_!!]</value></data><data name="item_giraffa" xml:space="preserve"><value>[CAF3B][!!_ġíѓáƒƒę_!!]</value></data><data name="item_foca" xml:space="preserve"><value>[E2E83][!!_śèáľ_!!]</value></data><data name="item_bradipo" xml:space="preserve"><value>[4F5F1][!!_ŝĺóáτђ_!!]</value></data><data name="item_bisonte" xml:space="preserve"><value>[4406B][!!_ъįšòй_!!]</value></data><data name="item_balena" xml:space="preserve"><value>[5B41C][!!_ŵћãļé_!!]</value></data><data name="item_avvoltoio" xml:space="preserve"><value>[9F913][!!_νùĺτùѓę_!!]</value></data><data name="item_aquila" xml:space="preserve"><value>[83A4A][!!_éàĝľè_!!]</value></data><data name="item_albatro" xml:space="preserve"><value>[B50FB][!!_ãļБáтřóšš_!!]</value></data><data name="group_Antarctica" xml:space="preserve"><value>[D5E4D][!!_Âήťâŕтîċà_!!]</value></data><data name="item_elefante" xml:space="preserve"><value>[C31F6][!!_éłèþħâит_!!]</value></data></root>

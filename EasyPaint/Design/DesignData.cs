@@ -85,7 +85,7 @@ namespace EasyPaint.Design
                 var el = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index);
                 string imgFileName = el.ImgFilename;
                 uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = el.Key + " " + LocalizedResources.ResourceManager.GetString(el.Key);
+                text = LocalizedResources.ResourceManager.GetString(el.Key);
             }
             catch (Exception)
             {
@@ -105,7 +105,7 @@ namespace EasyPaint.Design
                 var el = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index);
                 string imgFileName = el.ImgFilename;
                 uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = el.Key + " " + LocalizedResources.ResourceManager.GetString(el.Key);
+                text = LocalizedResources.ResourceManager.GetString(el.Key);
             }
             catch (Exception)
             {

@@ -19,7 +19,7 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="1"/>
+        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="3"/>
     </phone:PhoneApplicationPage.Resources>
 
     <UserControl.DataContext>
@@ -57,14 +57,17 @@
             Orientation="Horizontal" 
             x:Name="loopingList"
             IsLoopingEnabled="False"
-            ItemWidth="400" ItemHeight="360"
+            ItemWidth="300" ItemHeight="400"
             ItemStyle="{StaticResource loopingListItemStyle}">
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>
-                    <Grid Tap="Grid_Tap">
-                        <Image Source="{Binding Picture}" Stretch="Fill" 
-                               CacheMode="BitmapCache"
-                               Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"
+
+                    <Grid  Tap="Grid_Tap">
+                        <Image Source="{Binding Picture}" 
+                                   Width="300" Height="300"
+                                   Stretch="Fill" 
+                                   CacheMode="BitmapCache"
+                                   Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"
                                />
                         <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" Opacity="0.6"
                                CacheMode="BitmapCache"
@@ -106,8 +109,8 @@
                Source="{Binding CurrentGroup.ProtagonistImage}" 
                Stretch="Fill"/>-->
         <!--<TextBlock Text="{Binding CurrentGroup.Group.ProtagonistImageName}" FontSize="50" Grid.Row="1" Foreground="Red"></TextBlock>-->
-        
-        
+
+
         <!--<Image Grid.Row="3" Grid.RowSpan="2"  Grid.Column="1" Grid.ColumnSpan="4" Stretch="Fill" Source="{Binding CurrentGroup.ProtagonistImage}" />-->
 
     </Grid>

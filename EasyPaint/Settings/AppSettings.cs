@@ -23,8 +23,11 @@ namespace EasyPaint.Settings
 
         public static void LoadSettings()
         {
-            UserScoreValue = StorageHelper.GetSetting<string>(UserScoreKey);
-            SoundOnValue = StorageHelper.GetSetting<bool>(SoundOnKey);
+            if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
+            {
+                UserScoreValue = StorageHelper.GetSetting<string>(UserScoreKey);
+                SoundOnValue = StorageHelper.GetSetting<bool>(SoundOnKey);
+            }
         }
 
         public static void SaveSettings(bool rebuildData)

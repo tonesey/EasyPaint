@@ -150,9 +150,6 @@
   <data name="item_koala" xml:space="preserve">
     <value>koala</value>
   </data>
-  <data name="item_lion" xml:space="preserve">
-    <value>lion</value>
-  </data>
   <data name="item_tiger" xml:space="preserve">
     <value>tiger</value>
   </data>
@@ -248,5 +245,50 @@
   </data>
   <data name="item_pinguino" xml:space="preserve">
     <value>penguin</value>
+  </data>
+  <data name="item_alce" xml:space="preserve">
+    <value>elk</value>
+  </data>
+  <data name="item_armadillo" xml:space="preserve">
+    <value>armadillo</value>
+  </data>
+  <data name="item_cane" xml:space="preserve">
+    <value>dog</value>
+  </data>
+  <data name="item_cervo" xml:space="preserve">
+    <value>deer</value>
+  </data>
+  <data name="item_elefantemarino" xml:space="preserve">
+    <value>elephant seal</value>
+  </data>
+  <data name="item_formichiere" xml:space="preserve">
+    <value>ant-bear</value>
+  </data>
+  <data name="item_gatto" xml:space="preserve">
+    <value>cat</value>
+  </data>
+  <data name="item_ippopotamo" xml:space="preserve">
+    <value>hyppo</value>
+  </data>
+  <data name="item_marmotta" xml:space="preserve">
+    <value>marmot</value>
+  </data>
+  <data name="item_orca" xml:space="preserve">
+    <value>grampus</value>
+  </data>
+  <data name="item_panda" xml:space="preserve">
+    <value>panda</value>
+  </data>
+  <data name="item_pesce_pagliaccio" xml:space="preserve">
+    <value>clown fish</value>
+  </data>
+  <data name="item_renna" xml:space="preserve">
+    <value>reindeer</value>
+  </data>
+  <data name="item_scoiattolo" xml:space="preserve">
+    <value>squirrel</value>
+  </data>
+  <data name="item_volpe" xml:space="preserve">
+    <value>fox</value>
   </data>
 </root>
