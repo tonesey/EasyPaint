@@ -19,9 +19,7 @@ namespace EasyPaint.View
         public ItemSelectorPage()
         {
             InitializeComponent();
-            
-
-            Loaded += ItemSelectorPage_Loaded;
+                        Loaded += ItemSelectorPage_Loaded;
             Unloaded += ItemSelectorPage_Unloaded;
         }
 
@@ -41,6 +39,7 @@ namespace EasyPaint.View
 
         void ItemSelectorPage_Loaded(object sender, RoutedEventArgs e)
         {
+            AppViewModel.CurrentPage = this;
             //foreach (JournalEntry item in NavigationService.BackStack.Reverse())
             //{
             //    NavigationService.RemoveBackEntry();

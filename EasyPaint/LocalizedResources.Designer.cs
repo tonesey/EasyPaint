@@ -97,6 +97,51 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App engineering: Davide Tentori
+        ///Graphics and clipart: virinaflora - Fotolia.com, Marta&amp;Martina
+        ///Background music / sound fx: Raphael Ruis
+        ///
+        ///Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
+        ///
+        ///Special thanks to Marco Uberti for inspiration of this game. 
+        ///Checkout his magnific apps: 
+        ///- &quot;Who is the fastest painter?&quot; (Android)
+        ///- &quot;Monsters Discovery&quot; (Win8/Android).
+        /// </summary>
+        public static string CreditsPage_MainText {
+            get {
+                return ResourceManager.GetString("CreditsPage_MainText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREDITS.
+        /// </summary>
+        public static string CreditsPage_MainTitle {
+            get {
+                return ResourceManager.GetString("CreditsPage_MainTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internet connection not available, please retry.
+        /// </summary>
+        public static string Error_NoNetworkAvailable {
+            get {
+                return ResourceManager.GetString("Error_NoNetworkAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;{0}&quot; feedback/comment .
+        /// </summary>
+        public static string FeedbackOrCommentText {
+            get {
+                return ResourceManager.GetString("FeedbackOrCommentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Africa.
         /// </summary>
         public static string group_Africa {
@@ -147,6 +192,61 @@ namespace EasyPaint {
         public static string group_Oceania {
             get {
                 return ResourceManager.GetString("group_Oceania", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact us!.
+        /// </summary>
+        public static string HelpPage_ButtonContactUsText {
+            get {
+                return ResourceManager.GetString("HelpPage_ButtonContactUsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Draw at least 70% of each picture to unlock and access new animals and continents! 
+        ///Be accurate, be precise but... be FAST!.
+        /// </summary>
+        public static string HelpPage_HelpMainText {
+            get {
+                return ResourceManager.GetString("HelpPage_HelpMainText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HELP.
+        /// </summary>
+        public static string HelpPage_HelpMainTitle {
+            get {
+                return ResourceManager.GetString("HelpPage_HelpMainTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Questions/feedback?.
+        /// </summary>
+        public static string HelpPage_NeedHelpQuestionText {
+            get {
+                return ResourceManager.GetString("HelpPage_NeedHelpQuestionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate 5 stars!!!.
+        /// </summary>
+        public static string HelpPage_RateThisGameButtonText {
+            get {
+                return ResourceManager.GetString("HelpPage_RateThisGameButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you like this game?.
+        /// </summary>
+        public static string HelpPage_RateThisGameRequestText {
+            get {
+                return ResourceManager.GetString("HelpPage_RateThisGameRequestText", resourceCulture);
             }
         }
         
@@ -570,6 +670,15 @@ namespace EasyPaint {
         public static string WarningExit {
             get {
                 return ResourceManager.GetString("WarningExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press Yes if you’d like to use this app’s background music (this will stop your current music playback).
+        /// </summary>
+        public static string WarningMusic {
+            get {
+                return ResourceManager.GetString("WarningMusic", resourceCulture);
             }
         }
         

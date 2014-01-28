@@ -291,4 +291,47 @@
   <data name="item_volpe" xml:space="preserve">
     <value>fox</value>
   </data>
+  <data name="CreditsPage_MainText" xml:space="preserve">
+    <value>App engineering: Davide Tentori
+Graphics and clipart: virinaflora - Fotolia.com, Marta&amp;Martina
+Background music / sound fx: Raphael Ruis
+
+Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
+
+Special thanks to Marco Uberti for inspiration of this game. 
+Checkout his magnific apps: 
+- "Who is the fastest painter?" (Android)
+- "Monsters Discovery" (Win8/Android)</value>
+  </data>
+  <data name="CreditsPage_MainTitle" xml:space="preserve">
+    <value>CREDITS</value>
+  </data>
+  <data name="HelpPage_HelpMainText" xml:space="preserve">
+    <value>Draw at least 70% of each picture to unlock and access new animals and continents! 
+Be accurate, be precise but... be FAST!</value>
+  </data>
+  <data name="HelpPage_HelpMainTitle" xml:space="preserve">
+    <value>HELP</value>
+  </data>
+  <data name="HelpPage_ButtonContactUsText" xml:space="preserve">
+    <value>Contact us!</value>
+  </data>
+  <data name="HelpPage_NeedHelpQuestionText" xml:space="preserve">
+    <value>Questions/feedback?</value>
+  </data>
+  <data name="HelpPage_RateThisGameButtonText" xml:space="preserve">
+    <value>Rate 5 stars!!!</value>
+  </data>
+  <data name="HelpPage_RateThisGameRequestText" xml:space="preserve">
+    <value>Do you like this game?</value>
+  </data>
+  <data name="Error_NoNetworkAvailable" xml:space="preserve">
+    <value>Internet connection not available, please retry</value>
+  </data>
+  <data name="FeedbackOrCommentText" xml:space="preserve">
+    <value>"{0}" feedback/comment </value>
+  </data>
+  <data name="WarningMusic" xml:space="preserve">
+    <value>Press Yes if you’d like to use this app’s background music (this will stop your current music playback)</value>
+  </data>
 </root>

@@ -19,17 +19,6 @@ namespace EasyPaint.ViewModel
 
         public CreditsViewModel(IDataService dataService)
         {
-            //_dataService = dataService;
-            //_dataService.GetData(
-            //    (item, error) =>
-            //    {
-            //        if (error != null)
-            //        {
-            //            throw new Exception("invalid data source: " + error.Message);
-            //        }
-            //        InitGroups(item.CfgData.Groups);
-            //    });
-
             GotoHomepageCommand = new RelayCommand(() => GotoHomepage());
         }
 

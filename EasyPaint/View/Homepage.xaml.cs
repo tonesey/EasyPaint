@@ -44,12 +44,11 @@ namespace EasyPaint.View
 
         void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
+            AppViewModel.CurrentPage = this;
             foreach (JournalEntry item in NavigationService.BackStack.Reverse())
             {
                 NavigationService.RemoveBackEntry();
             }
-
-            ViewModelLocator.HomepageViewModelStatic.CurrentPage = this;
 
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
 

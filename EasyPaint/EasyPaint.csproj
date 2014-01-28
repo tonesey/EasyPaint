@@ -397,6 +397,27 @@
     <Resource Include="Assets\lres\groups\2\explorer.png" />
     <Resource Include="Assets\lres\groups\5\explorer.png" />
     <Resource Include="Assets\lres\groups\5\orca colore.png" />
+    <Resource Include="Assets\lres\bkg\explorer_horizontal.png" />
+    <Resource Include="Assets\lres\groups\0\cane lineart.png" />
+    <Resource Include="Assets\lres\groups\0\cervo lineart.png" />
+    <Resource Include="Assets\lres\groups\0\gatto lineart.png" />
+    <Resource Include="Assets\lres\groups\0\renna lineart.png" />
+    <Resource Include="Assets\lres\groups\0\scoiattolo lineart.png" />
+    <Resource Include="Assets\lres\groups\0\volpe lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\cane colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\cane lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\cervo colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\cervo lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\gatto colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\gatto lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\marmotta colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\marmotta lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\renna colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\renna lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\scoiattolo colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\scoiattolo lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\volpe colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\volpe lineart.png" />
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />
@@ -538,7 +559,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\lres\groups\0\reduced_10\" />
     <Folder Include="Assets\lres\groups\5\reduced_10\" />
     <Folder Include="Assets\testImages\" />
   </ItemGroup>

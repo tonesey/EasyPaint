@@ -21,7 +21,7 @@
     <phone:PhoneApplicationPage.Resources>
         <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="1"/>
     </phone:PhoneApplicationPage.Resources>
-    
+
     <UserControl.DataContext>
         <Binding Path="CreditsViewModel" Source="{StaticResource Locator}"/>
     </UserControl.DataContext>
@@ -47,11 +47,31 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        
+
+        <Border CornerRadius="30" Margin="20,-40,20,45" Background="White"  Opacity="0.8" 
+                Grid.Column="0"  Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" 
+                RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <CompositeTransform Rotation="3.21"/>
+            </Border.RenderTransform>
+            <ScrollViewer Padding="20">
+                <StackPanel Height="1000">
+                    <TextBlock Opacity="1" Name="TextBlockBasicHelpTitle" Style="{StaticResource ButtonTextBlockStyle1}" 
+                               Text="{Binding Path=LocalizedResX.CreditsPage_MainTitle, Source={StaticResource LocalizedStrings}}" 
+                               Foreground="Green"/>
+                    <TextBlock Opacity="1" Name="TextBlockBasicHelpText" Style="{StaticResource ButtonTextBlockStyle1}" 
+                               Text="{Binding Path=LocalizedResX.CreditsPage_MainText, Source={StaticResource LocalizedStrings}}" 
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
         <Image x:Name="ImageExplorerSubject" Margin="0" 
                Grid.Column="0" Grid.ColumnSpan="2"
-               Grid.Row="0" Grid.RowSpan="5"  
+               Grid.Row="3" Grid.RowSpan="5"  
                Opacity="1"
-               Source="/EasyPaint;component/Assets/lres/bkg/explorer_tr.png" 
+               Source="/EasyPaint;component/Assets/lres/bkg/explorer_horizontal.png" 
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
 
@@ -63,6 +83,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Image>
+
 
     </Grid>
 

@@ -80,6 +80,7 @@ namespace EasyPaint.View
 
         void PainterPage_Loaded(object sender, RoutedEventArgs e)
         {
+            AppViewModel.CurrentPage = this;
             _drawingboard = new SimzzDev.DrawingBoard(InkPresenterElement);
             InitAnimations();
             AssignEventHandlers();

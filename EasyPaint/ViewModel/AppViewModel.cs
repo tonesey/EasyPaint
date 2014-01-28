@@ -62,6 +62,6 @@ namespace EasyPaint.ViewModel
         }
 
 
-        public PhoneApplicationPage CurrentPage { get; set; }
+        public static PhoneApplicationPage CurrentPage { get; set; }
     }
 }

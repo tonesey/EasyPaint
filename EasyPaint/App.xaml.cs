@@ -21,6 +21,7 @@ using System.IO.IsolatedStorage;
 using System.IO;
 using EasyPaint.Settings;
 using Microsoft.Xna.Framework.Audio;
+using Wp8Shared.UserControls;
 
 namespace EasyPaint
 {
@@ -123,13 +124,17 @@ namespace EasyPaint
         {
             AppSettings.LoadSettings();
             InitAudio();
-
             var vm = ViewModelLocator.GroupSelectorViewModelStatic;
+
+            //if (string.IsNullOrEmpty(_currentTrack))
+            //{
+            //    _currentTrack = _tracks[TrackType.StandardBackground];
+            //}
+            //(Application.Current as App).PlayBackgroundMusic(_currentTrack);
         }
 
         private void InitAudio()
         {
-
             //countdown
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("EasyPaint.Audio.wav.three.wav"))
             {
@@ -265,13 +270,8 @@ namespace EasyPaint
 
         private void InitTracks()
         {
-            //_tracks.Add(TrackType.StandardBackground, "Audio/mp3/HunterThemeFull.mp3");
-            //_tracks.Add(TrackType.Paint, "Audio/mp3/HunterMenuThemeLoop.mp3");
-
             _tracks.Add(TrackType.Paint, "Audio/mp3/HunterThemeLoop.mp3");
             _tracks.Add(TrackType.StandardBackground, "Audio/mp3/HunterMenuThemeLoop.mp3");
-
-            //_currentTrack = _tracks[TrackType.StandardBackground];
         }
 
         public static MediaElement GlobalMediaElement
@@ -281,18 +281,18 @@ namespace EasyPaint
 
         public static bool BackgroundMusicAllowed()
         {
-            //disabilitata temporaneamente musica
             bool allowed = true;
             //you can check a stored property here and return false if you want to disable all bgm
-            //if (!MediaPlayer.GameHasControl)
-            //{
-            //    //ask user about background music
-            //    MessageBoxResult mbr = MessageBox.Show("press ok if you’d like to use this app’s background music (this will stop your current music playback)", "use app background music?", MessageBoxButton.OKCancel);
-            //    if (mbr != MessageBoxResult.OK)
-            //    {
-            //        allowed = false;
-            //    }
-            //}
+            if (!MediaPlayer.GameHasControl)
+            {
+                MyMsgbox.Show(AppViewModel.CurrentPage, MsgboxMode.YesNo, LocalizedResources.WarningMusic, response =>
+                {
+                    if (response == MsgboxResponse.No)
+                    {
+                        allowed = false;
+                    }
+                });
+            }
             return allowed;
         }
 
@@ -327,14 +327,6 @@ namespace EasyPaint
             GlobalMediaElement.Stop();
         }
 
-        //public void PlayBackgroundMusic()
-        //{
-        //    //if (string.IsNullOrEmpty(_currentTrack)) {
-        //    //    _currentTrack = _tracks[TrackType.StandardBackground];
-        //    //}
-        //    PlayBackgroundMusic(TODO!!!!);
-        //}
-
         public void PlayBackgroundMusic(TrackType type)
         {
             PlayBackgroundMusic(_tracks[type]);
@@ -342,22 +334,22 @@ namespace EasyPaint
 
         private void PlayBackgroundMusic(string trackName)
         {
+            if (!BackgroundMusicAllowed())
+            {
+                return;
+            }
+
             bool trackChanged = false;
 
             if (trackName != _currentTrack)
             {
-                _currentTrack = trackName;
-                //if (string.IsNullOrEmpty(_currentTrack))
-                //{
-                //    _currentTrack = _tracks[TrackType.StandardBackground];
-                //}
+                _currentTrack = trackName;          
                 trackChanged = true;
             }
 
             if (trackChanged)
             {
-                if (BackgroundMusicAllowed())
-                {
+                
                     MediaPlayer.Stop(); //stop to clear any existing bg music
                     GlobalMediaElement.Source = new Uri(trackName, UriKind.Relative);
 
@@ -367,7 +359,6 @@ namespace EasyPaint
                     GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
                     GlobalMediaElement.MediaFailed -= GlobalMediaElement_MediaFailed;
                     GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
-                }
             }
             else
             {

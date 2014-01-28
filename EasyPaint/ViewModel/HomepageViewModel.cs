@@ -19,7 +19,7 @@ namespace EasyPaint.ViewModel
     {
         public RelayCommand StartGameCommand { get; private set; }
         public RelayCommand ShowCreditsCommand { get; private set; }
-        public RelayCommand ShowSettingsCommand { get; private set; }
+        public RelayCommand ShowHelpCommand { get; private set; }
         public RelayCommand ToggleSoundCommand { get; private set; }
         
         private bool _isMuted = false;
@@ -46,7 +46,7 @@ namespace EasyPaint.ViewModel
         {
             StartGameCommand = new RelayCommand(() => ExecStartGameCommand());
             ShowCreditsCommand = new RelayCommand(() => ExecShowCreditsCommand());
-            ShowSettingsCommand = new RelayCommand(() => ExecShowSettingsCommand());
+            ShowHelpCommand = new RelayCommand(() => ExecShowHelpCommand());
             ToggleSoundCommand = new RelayCommand(() => ExecToggleSoundCommand());
 
             App.Current.MediaStateChanged -= Current_MediaStateChanged;
@@ -67,12 +67,13 @@ namespace EasyPaint.ViewModel
 
         private object ExecShowCreditsCommand()
         {
-            MyMsgbox.Show(CurrentPage, MsgboxMode.Ok, "App engineering: Davide Tentori\nMusic: Raphael Ruis\nGraphics: MArta Todeschini, Davide Tentori\n\n Special Thanks To: Isa, Ele, Albi, Luca");
+            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Credits);
             return null;
         }
 
-        private object ExecShowSettingsCommand()
+        private object ExecShowHelpCommand()
         {
+            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Help);
             return null;
         }
 

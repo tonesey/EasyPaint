@@ -47,13 +47,12 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-
         <telerikPrimitives:RadLoopingList 
             x:Name="loopingList"
             d:DataContext="{Binding Source={StaticResource DesignDataContext}}"
             DataSource ="{Binding ListDs}"
-            Grid.Row="1" Grid.Column="0"
-            Grid.RowSpan="3" Grid.ColumnSpan="3"
+            Grid.Row="0" Grid.RowSpan="4"
+            Grid.Column="0" Grid.ColumnSpan="3"
             ItemSpacing="60"
             IsCentered="True"
             Orientation="Horizontal" 
@@ -78,6 +77,14 @@
                                    FontSize="65"   
                                    FontFamily="..\..\Fonts\andyb.TTF#Andy"
                                    Foreground="Green"></TextBlock>
+                        <TextBlock Margin="0,-5,0,0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Text}" 
+                                   TextWrapping="Wrap"
+                                   FontSize="65"   
+                                   FontFamily="..\..\Fonts\andyb.TTF#Andy"
+                                   Foreground="Lime"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </telerikPrimitives:RadLoopingList.ItemTemplate>

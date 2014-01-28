@@ -39,6 +39,7 @@ namespace EasyPaint.View
 
         void GroupSelectorPage_Loaded(object sender, RoutedEventArgs e)
         {
+            AppViewModel.CurrentPage = this;
             _vm = ViewModelLocator.GroupSelectorViewModelStatic;
             _listDs = new LoopingListDataSource(_vm.Groups.Count());
             _listDs.ItemNeeded += this.OnDs_ItemNeeded;

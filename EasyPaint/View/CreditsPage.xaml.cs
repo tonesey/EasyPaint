@@ -18,17 +18,18 @@ namespace EasyPaint.View
         public CreditsPage()
         {
             InitializeComponent();
-            Loaded += ItemSelectorPage_Loaded;
-            Unloaded += ItemSelectorPage_Unloaded;
+            Loaded += CreditsPage_Loaded;
+            Unloaded += CreditsPage_Unloaded;
         }
 
 
-        void ItemSelectorPage_Unloaded(object sender, RoutedEventArgs e)
+        void CreditsPage_Unloaded(object sender, RoutedEventArgs e)
         {
         }
 
-        void ItemSelectorPage_Loaded(object sender, RoutedEventArgs e)
+        void CreditsPage_Loaded(object sender, RoutedEventArgs e)
         {
+            AppViewModel.CurrentPage = this;
             MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
             InitPage();
         }

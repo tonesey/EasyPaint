@@ -100,63 +100,127 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_volpe" xml:space="preserve">
           <source>fox</source>
-          <target state="new">fox</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[05CEA][!!_ƒóх_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/CreditsPage_MainTitle" xml:space="preserve">
+          <source>CREDITS</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[5B407][!!_ĆŔÊÐÌТŞ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/CreditsPage_MainText" xml:space="preserve">
+          <source>App engineering: Davide Tentori
+Graphics and clipart: virinaflora - Fotolia.com, Marta%%amp;Martina
+Background music / sound fx: Raphael Ruis
+
+Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
+
+Special thanks to Marco Uberti for inspiration of this game. 
+Checkout his magnific apps: 
+- "Who is the fastest painter?" (Android)
+- "Monsters Discovery" (Win8/Android)</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[09BE9][!!_Áрþ ęйģîηêêříйğ: Ďâνîđè Ťêητôřį
+Ġŗáρћîćš âήđ ĉłìþãѓτ: νíříηâƒłôѓà - ₣õťóļįâ.ċóm, Мáŕťã%%amp;Мàѓτíиã
+Βàċķģѓòùήđ múśîĉ / śôµиð ƒх: Ѓàρћáęł Ŕµìŝ
+
+Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒòŗ мôřãł ãήđ тêčĥηįćâľ śûррõŕť!
+
+Šρèċìàĺ τђâиќš ţó Μãŗčô Ûьéŕтî ƒôř ìиśþíŕâτįòй õƒ ţђįŝ ģâmé. 
+Ćĥéċќõµт ђíŝ mãĝйìƒįć ãррş: 
+- "Ẁнò îś ťħé ƒàşτęŝт þâîитéŕ?" (Àήðŗõîđ)
+- "Μòиŝťèŕš Ďíŝčòνèѓў" (Ŵìй8/Âйďřóìđ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_HelpMainTitle" xml:space="preserve">
+          <source>HELP</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[8B644][!!_ΗÊĻÞ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_ButtonContactUsText" xml:space="preserve">
+          <source>Contact us!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[F67FB][!!_Ćôητáċť µş!_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_NeedHelpQuestionText" xml:space="preserve">
+          <source>Questions/feedback?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D3303][!!_Qµêŝţíòήş/ƒèèđБãčќ?_!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameRequestText" xml:space="preserve">
+          <source>Do you like this game?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[68264][!!_Ďô Уòµ łìķê ţђîş ġáмê?_!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Error_NoNetworkAvailable" xml:space="preserve">
+          <source>Internet connection not available, please retry</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[9022A][!!_Įηтéřήêτ ĉôηйéĉтìóй ήóт áνàìĺàьĺę, þłęàŝè řèтŗÿ_!!!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackOrCommentText" xml:space="preserve">
+          <source>"{0}" feedback/comment </source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[1608A][!!_"{0}" ƒèęđъáĉĸ/ĉõmмęйт _!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/WarningMusic" xml:space="preserve">
+          <source>Press Yes if you’d like to use this app’s background music (this will stop your current music playback)</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[0E342][!!_Ρŕéşş Ŷèŝ ìƒ ýóú’đ ļîĸę ťó µśè ťћîš àρρ’ŝ ъâčкġѓôúйð mùšįċ (ťнîš ẅįłļ ŝţòþ ÿóµř ċùŗŗęйт mûşįć ρļãÿъãĉķ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameButtonText" xml:space="preserve">
+          <source>Rate 5 stars!!!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[1484D][!!_Ŗâтè 5 śтářŝ!!!_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_HelpMainText" xml:space="preserve">
+          <source>Draw at least 70% of each picture to unlock and access new animals and continents! 
+Be accurate, be precise but... be FAST!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[18A6D][!!_Ðŕãŵ ãт ĺęáśť 70% òƒ ęãĉĥ рìĉţúřé τò ùйļôćĸ áηď âčċęśş иèẁ áήìмâłŝ àиď ćòηţįήèиţŝ! 
+βę àčċûŕàτè, Бè þŕéćįśê ъµţ... вê ₣ÁŚΤ!_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_scoiattolo" xml:space="preserve">
           <source>squirrel</source>
-          <target state="new">squirrel</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[96987][!!_šqùîŗřêľ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_pesce_pagliaccio" xml:space="preserve">
           <source>clown fish</source>
-          <target state="new">clown fish</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[2A319][!!_ćĺõŵи ƒíśħ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_renna" xml:space="preserve">
           <source>reindeer</source>
-          <target state="new">reindeer</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[BAC19][!!_ŗèíйďêéѓ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_panda" xml:space="preserve">
           <source>panda</source>
-          <target state="new">panda</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[FADAD][!!_ρàиđà_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_orca" xml:space="preserve">
           <source>grampus</source>
-          <target state="new">grampus</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[9BD2C][!!_ģѓãмþûŝ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_marmotta" xml:space="preserve">
           <source>marmot</source>
-          <target state="new">marmot</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[C19DB][!!_mâŗmòť_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_ippopotamo" xml:space="preserve">
           <source>hyppo</source>
-          <target state="new">hyppo</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[E9B7A][!!_ħŷррò_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_gatto" xml:space="preserve">
           <source>cat</source>
-          <target state="new">cat</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[A6F94][!!_ĉáτ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_formichiere" xml:space="preserve">
           <source>ant-bear</source>
-          <target state="new">ant-bear</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[732B2][!!_âηţ-ьêâŕ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefantemarino" xml:space="preserve">
           <source>elephant seal</source>
-          <target state="new">elephant seal</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[07F34][!!_êĺèþћãйť śèàľ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cervo" xml:space="preserve">
           <source>deer</source>
-          <target state="new">deer</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D9081][!!_ðéêř_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cane" xml:space="preserve">
           <source>dog</source>
-          <target state="new">dog</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[ED752][!!_ďòģ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_armadillo" xml:space="preserve">
           <source>armadillo</source>
-          <target state="new">armadillo</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[265DC][!!_àŕмáðìļľõ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_alce" xml:space="preserve">
           <source>elk</source>
-          <target state="new">elk</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[96F7A][!!_èļк_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_orsobianco" xml:space="preserve">
           <source>white bear</source>

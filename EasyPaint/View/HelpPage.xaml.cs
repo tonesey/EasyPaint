@@ -29,6 +29,7 @@ namespace EasyPaint.View
 
         void ItemSelectorPage_Loaded(object sender, RoutedEventArgs e)
         {
+            AppViewModel.CurrentPage = this;
             MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
             InitPage();
         }

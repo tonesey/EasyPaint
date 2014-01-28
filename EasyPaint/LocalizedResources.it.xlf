@@ -48,7 +48,7 @@
         </trans-unit>
         <trans-unit id="Resx/item_koala" translate="yes" xml:space="preserve">
           <source>koala</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Koala</target>
+          <target state="translated">koala</target>
         </trans-unit>
         <trans-unit id="Resx/item_tiger" translate="yes" xml:space="preserve">
           <source>tiger</source>
@@ -100,63 +100,127 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_volpe" xml:space="preserve">
           <source>fox</source>
-          <target state="new">fox</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">volpe</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/CreditsPage_MainTitle" xml:space="preserve">
+          <source>CREDITS</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">CREDITI</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/CreditsPage_MainText" xml:space="preserve">
+          <source>App engineering: Davide Tentori
+Graphics and clipart: virinaflora - Fotolia.com, Marta%%amp;Martina
+Background music / sound fx: Raphael Ruis
+
+Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
+
+Special thanks to Marco Uberti for inspiration of this game. 
+Checkout his magnific apps: 
+- "Who is the fastest painter?" (Android)
+- "Monsters Discovery" (Win8/Android)</source>
+          <target state="signed-off">Ingegnerizzazione gioco: Davide Tentori
+Grafica e clipart: virinaflora - Fotolia.com, Marta%%amp;Martina
+Musica di sottofondo / effetti sonori: Raphael Ruis
+
+Ringraziamenti molto speciali a: Ele, Albi, Isa, Luca per il supporto morale e tecnico!
+
+Un ringraziamento speciale a Marco Uberti.
+Scaricate le sue magnifiche app :)
+-"Who Is The Fastest Painter?" (Android)
+-"Monsters Discovery" (Win8/Android)</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_HelpMainTitle" xml:space="preserve">
+          <source>HELP</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Guida</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_ButtonContactUsText" xml:space="preserve">
+          <source>Contact us!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Contattaci!</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_NeedHelpQuestionText" xml:space="preserve">
+          <source>Questions/feedback?</source>
+          <target state="translated">Domande/commenti?</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameRequestText" xml:space="preserve">
+          <source>Do you like this game?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ti piace questo gioco?</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/Error_NoNetworkAvailable" xml:space="preserve">
+          <source>Internet connection not available, please retry</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Connessione a Internet non disponibile, si prega di riprovare</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackOrCommentText" xml:space="preserve">
+          <source>"{0}" feedback/comment </source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">"{0}" feedback/commento </target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/WarningMusic" xml:space="preserve">
+          <source>Press Yes if you’d like to use this app’s background music (this will stop your current music playback)</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Premere Sì se si desidera utilizzare sottofondo musicale questa app (questo si interrompe la riproduzione di musica attuale)</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameButtonText" xml:space="preserve">
+          <source>Rate 5 stars!!!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Votare 5 stelle!!!</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/HelpPage_HelpMainText" xml:space="preserve">
+          <source>Draw at least 70% of each picture to unlock and access new animals and continents! 
+Be accurate, be precise but... be FAST!</source>
+          <target state="translated">Colora almeno il 70% di ogni foto per sbloccare e accedere a nuovi continenti e animali! 
+Sii accurato, preciso, ma soprattutto... sii VELOCE!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_scoiattolo" xml:space="preserve">
           <source>squirrel</source>
-          <target state="new">squirrel</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">scoiattolo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_pesce_pagliaccio" xml:space="preserve">
           <source>clown fish</source>
-          <target state="new">clown fish</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">pesce pagliaccio</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_renna" xml:space="preserve">
           <source>reindeer</source>
-          <target state="new">reindeer</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">renna</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_panda" xml:space="preserve">
           <source>panda</source>
-          <target state="new">panda</target>
+          <target state="final">panda</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_orca" xml:space="preserve">
           <source>grampus</source>
-          <target state="new">grampus</target>
+          <target state="translated">orca</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_marmotta" xml:space="preserve">
           <source>marmot</source>
-          <target state="new">marmot</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">marmotta</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_ippopotamo" xml:space="preserve">
           <source>hyppo</source>
-          <target state="new">hyppo</target>
+          <target state="translated">ippopotamo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_gatto" xml:space="preserve">
           <source>cat</source>
-          <target state="new">cat</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">gatto</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_formichiere" xml:space="preserve">
           <source>ant-bear</source>
-          <target state="new">ant-bear</target>
+          <target state="translated">formichiere</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefantemarino" xml:space="preserve">
           <source>elephant seal</source>
-          <target state="new">elephant seal</target>
+          <target state="translated">elefante marino</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cervo" xml:space="preserve">
           <source>deer</source>
-          <target state="new">deer</target>
+          <target state="translated">cervo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cane" xml:space="preserve">
           <source>dog</source>
-          <target state="new">dog</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">cane</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_armadillo" xml:space="preserve">
           <source>armadillo</source>
-          <target state="new">armadillo</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">armadillo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_alce" xml:space="preserve">
           <source>elk</source>
-          <target state="new">elk</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">alce</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_orsobianco" xml:space="preserve">
           <source>white bear</source>
@@ -168,7 +232,7 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_leone" xml:space="preserve">
           <source>lion</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Leone</target>
+          <target state="translated">leone</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_giraffa" xml:space="preserve">
           <source>giraffe</source>
@@ -176,11 +240,11 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_foca" xml:space="preserve">
           <source>seal</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">sigillo</target>
+          <target state="translated">foca</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_bradipo" xml:space="preserve">
           <source>sloath</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">sloath</target>
+          <target state="translated">bradipo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_bisonte" xml:space="preserve">
           <source>bison</source>
@@ -196,7 +260,7 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_aquila" xml:space="preserve">
           <source>eagle</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Aquila</target>
+          <target state="translated">aquila</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_albatro" xml:space="preserve">
           <source>albatross</source>
@@ -204,11 +268,11 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Antarctica" xml:space="preserve">
           <source>Antartica</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Antartica</target>
+          <target state="translated">Antartico</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/WarningExit" xml:space="preserve">
           <source>Do you want to quit app?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Si desidera chiudere l'app?</target>
+          <target state="translated">Vuoi uscire?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_Tigre" xml:space="preserve">
           <source>tiger</source>
