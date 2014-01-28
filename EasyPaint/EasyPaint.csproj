@@ -365,7 +365,6 @@
     <Resource Include="Assets\lres\groups\2\alce colore.png" />
     <Resource Include="Assets\lres\groups\2\alce lineart.png" />
     <Resource Include="Assets\lres\groups\0\marmotta colore.png" />
-    <Resource Include="Assets\lres\groups\0\marmotta lineart.png" />
     <Resource Include="Assets\lres\groups\2\orso colore.png" />
     <Resource Include="Assets\lres\groups\2\orso lineart.png" />
     <Resource Include="Assets\lres\groups\1\ippopotamo colore.png" />
@@ -398,12 +397,6 @@
     <Resource Include="Assets\lres\groups\5\explorer.png" />
     <Resource Include="Assets\lres\groups\5\orca colore.png" />
     <Resource Include="Assets\lres\bkg\explorer_horizontal.png" />
-    <Resource Include="Assets\lres\groups\0\cane lineart.png" />
-    <Resource Include="Assets\lres\groups\0\cervo lineart.png" />
-    <Resource Include="Assets\lres\groups\0\gatto lineart.png" />
-    <Resource Include="Assets\lres\groups\0\renna lineart.png" />
-    <Resource Include="Assets\lres\groups\0\scoiattolo lineart.png" />
-    <Resource Include="Assets\lres\groups\0\volpe lineart.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\cane colore.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\cane lineart.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\cervo colore.png" />

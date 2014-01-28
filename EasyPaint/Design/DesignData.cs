@@ -56,8 +56,8 @@ namespace EasyPaint.Design
             }
         }
 
-        LoopingListDataSource _designDataDs_Groups = new LoopingListDataSource(2);
-        LoopingListDataSource _designDataDs_Items = new LoopingListDataSource(2);
+        LoopingListDataSource _designDataDs_Groups = new LoopingListDataSource(3);
+        LoopingListDataSource _designDataDs_Items = new LoopingListDataSource(3);
 
         public LoopingListDataSource ListDs
         {

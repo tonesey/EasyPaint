@@ -282,17 +282,17 @@ namespace EasyPaint
         public static bool BackgroundMusicAllowed()
         {
             bool allowed = true;
-            //you can check a stored property here and return false if you want to disable all bgm
-            if (!MediaPlayer.GameHasControl)
-            {
-                MyMsgbox.Show(AppViewModel.CurrentPage, MsgboxMode.YesNo, LocalizedResources.WarningMusic, response =>
-                {
-                    if (response == MsgboxResponse.No)
-                    {
-                        allowed = false;
-                    }
-                });
-            }
+            ////you can check a stored property here and return false if you want to disable all bgm
+            //if (!MediaPlayer.GameHasControl)
+            //{
+            //    MyMsgbox.Show(AppViewModel.CurrentPage, MsgboxMode.YesNo, LocalizedResources.WarningMusic, response =>
+            //    {
+            //        if (response == MsgboxResponse.No)
+            //        {
+            //            allowed = false;
+            //        }
+            //    });
+            //}
             return allowed;
         }
 

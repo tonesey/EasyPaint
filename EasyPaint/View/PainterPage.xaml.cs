@@ -39,7 +39,7 @@ namespace EasyPaint.View
         // Constructor
         SimzzDev.DrawingBoard _drawingboard = null;
 
-        WriteableBitmap _lineArtPicture = null;
+        //WriteableBitmap _lineArtPicture = null;
         WriteableBitmap _reducedColorsPicture = null;
         WriteableBitmap _reducedColorsLineArtPicture = null;
 
@@ -61,7 +61,7 @@ namespace EasyPaint.View
         Popup _popup = null;
         ResultPopup _popupChild = null;
         List<Color> _paletteColors = new List<Color>();
- 
+
         public PainterPage()
         {
             InitializeComponent();
@@ -193,7 +193,8 @@ namespace EasyPaint.View
 
             _storyboardSmallCountDownAnimationHandler = (s, e) =>
             {
-                if (!_gameInProgress) {
+                if (!_gameInProgress)
+                {
                     UnassignSmallCountdownEventHandler();
                     return;
                 }
@@ -208,10 +209,11 @@ namespace EasyPaint.View
                 {
                     _curAvailableTimeValue--;
 
-                    if (_curAvailableTimeValue <= 10) {
+                    if (_curAvailableTimeValue <= 10)
+                    {
                         SoundHelper.PlaySound(App.Current.Sounds["lowtime"]);
                     }
-                    
+
                     Dispatcher.BeginInvoke(() =>
                     {
                         TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
@@ -343,11 +345,12 @@ namespace EasyPaint.View
                 }
 
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorsResourcePath);
-                _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.LineArtResourcePath);
+               // _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.LineArtResourcePath);
                 _reducedColorsLineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorLineArtResourcePath);
                 
-                ImageOverlay.Source = _lineArtPicture;
-                ImageOverlay.Opacity = 0.4;
+                //ImageOverlay.Source = _lineArtPicture;
+                ImageOverlay.Source = _reducedColorsLineArtPicture;
+                ImageOverlay.Opacity = 0.5;
                 InitPalette();
                 StartCountDown();
             }
@@ -366,14 +369,15 @@ namespace EasyPaint.View
                 if (childEl != null)
                 {
                     childEl.Fill = new SolidColorBrush(color);
-                    if (count == 1) {
+                    if (count == 1)
+                    {
                         //sets drawingboard color
                         _drawingboard.OutlineColor = _drawingboard.MainColor = color;
                     }
                 }
                 count++;
             }
-     
+
             for (int i = count; i <= 5; i++)
             {
                 var el = MyVisualTreeHelper.FindChild<Viewbox>(Application.Current.RootVisual, "pc" + i);
@@ -445,7 +449,7 @@ namespace EasyPaint.View
                 _drawingboard.BrushHeight = 2;
             }
 
-            
+
             SetEllipseSize(_drawingboard.BrushWidth);
             SoundHelper.PlaySound(App.Current.Sounds["click"]);
         }
@@ -587,7 +591,7 @@ namespace EasyPaint.View
         {
 
 #if DEBUG
-             StopTimer();
+            StopTimer();
             int accuracyPercentage = 80;
             ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue, null);
 #endif

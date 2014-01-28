@@ -5,6 +5,7 @@ using EasyPaint.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,12 +16,14 @@ namespace EasyPaint.View
     public partial class ItemSelectorPage : PhoneApplicationPage
     {
         private ItemSelectorViewModel _vm;
+        private Dictionary<string, LoopingListDataItem> _dict = new Dictionary<string, LoopingListDataItem>();
 
         public ItemSelectorPage()
         {
             InitializeComponent();
-                        Loaded += ItemSelectorPage_Loaded;
+            Loaded += ItemSelectorPage_Loaded;
             Unloaded += ItemSelectorPage_Unloaded;
+            _dict.Clear();
         }
 
         private void InitPage()
@@ -31,6 +34,12 @@ namespace EasyPaint.View
             ds.ItemUpdated += this.OnDs_ItemUpdated;
             this.loopingList.DataSource = ds;
             this.loopingList.SelectedIndex = 0;
+
+            //this.loopingList.SelectedIndexChanged += loopingList_SelectedIndexChanged;
+        }
+
+        void loopingList_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
 
         void ItemSelectorPage_Unloaded(object sender, RoutedEventArgs e)
@@ -69,6 +78,8 @@ namespace EasyPaint.View
             }
         }
 
+
+
         private void OnDs_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
             if (e.Index > _vm.Items.Count)
@@ -80,12 +91,24 @@ namespace EasyPaint.View
             var newEl = _vm.Items.ElementAt(e.Index);
             if (newEl != null)
             {
-                e.Item = new PictureLoopingItem() { 
-                    Picture = (newEl as ItemViewModel).ImageSource,
-                    IsLocked = (newEl as ItemViewModel).IsLocked,
-                    Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key),
-                    DataContext = (newEl as ItemViewModel) 
-                };
+
+                PictureLoopingItem item = null;
+                if (_dict.ContainsKey((newEl as ItemViewModel).Key))
+                {
+                    item = _dict[(newEl as ItemViewModel).Key] as PictureLoopingItem;
+                }
+                else
+                {
+                    item = new PictureLoopingItem()
+                    {
+                        Picture = (newEl as ItemViewModel).ImageSource,
+                        IsLocked = (newEl as ItemViewModel).IsLocked,
+                        Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key),
+                        DataContext = (newEl as ItemViewModel)
+                    };
+                    _dict.Add((newEl as ItemViewModel).Key, item);
+                }
+                e.Item = item;
             }
         }
 

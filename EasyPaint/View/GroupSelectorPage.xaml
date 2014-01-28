@@ -53,9 +53,10 @@
             DataSource ="{Binding ListDs}"
             Grid.Row="0" Grid.RowSpan="4"
             Grid.Column="0" Grid.ColumnSpan="3"
-            ItemSpacing="60"
+            ItemSpacing="10"
             IsCentered="True"
             Orientation="Horizontal" 
+            CenteredItemSnapPosition="Middle" 
             IsLoopingEnabled="False"
             ItemWidth="400" ItemHeight="350" 
             VerticalAlignment="Center" VerticalContentAlignment="Center"
@@ -90,7 +91,7 @@
             </telerikPrimitives:RadLoopingList.ItemTemplate>
         </telerikPrimitives:RadLoopingList>
 
-        <Image Grid.Row="2" Margin="10,50,0,0" Grid.RowSpan="3" Stretch="Fill" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png"/>
+        <Image Grid.Row="3" Margin="10,0,0,0" Grid.RowSpan="2" Stretch="Fill" Grid.Column="0"  Source="../Assets/lres/bkg/explorer_groups.png"/>
 
         <Image Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="100" Grid.RowSpan="2" Stretch="Fill" Source="../Assets/buttons/nav_left_green.png">
             <i:Interaction.Triggers>
@@ -100,7 +101,6 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Image>
-
 
     </Grid>
 
