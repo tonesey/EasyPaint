@@ -29,6 +29,7 @@ using EasyPaint.Model;
 using System.Windows.Ink;
 using EasyPaint.Settings;
 using Microsoft.Practices.ServiceLocation;
+using Wp8Shared.UserControls;
 
 namespace EasyPaint.View
 {
@@ -151,7 +152,15 @@ namespace EasyPaint.View
                 TextBlockCountDownBig.Visibility = Visibility.Collapsed;
                 _storyboardBigCountdown.Stop();
                 EnablePage();
-                StartTimer();
+
+                switch (App.Current.GameMode)
+                {
+                    case GameMode.Arcade:
+                        StartTimer();
+                        break;
+                    case GameMode.Gallery:
+                        break;
+                }
             };
 
             AssignBigCountdownEventhandler();
@@ -298,6 +307,16 @@ namespace EasyPaint.View
         {
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
 
+            switch (App.Current.GameMode)
+            {
+                case GameMode.Arcade:
+                    stopTimeBtn.Visibility = System.Windows.Visibility.Collapsed;
+                    break;
+                case GameMode.Gallery:
+                    stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
+                    break;
+            }
+
             BorderPalette.Visibility = Visibility.Collapsed;
             TextBlockCountDownSmall.Text = TotalTime.ToString();
             GridPainter.Visibility = System.Windows.Visibility.Visible;
@@ -345,13 +364,12 @@ namespace EasyPaint.View
                 }
 
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorsResourcePath);
-               // _lineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.LineArtResourcePath);
                 _reducedColorsLineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorLineArtResourcePath);
-                
-                //ImageOverlay.Source = _lineArtPicture;
+
                 ImageOverlay.Source = _reducedColorsLineArtPicture;
                 ImageOverlay.Opacity = 0.5;
                 InitPalette();
+
                 StartCountDown();
             }
         }
@@ -449,7 +467,6 @@ namespace EasyPaint.View
                 _drawingboard.BrushHeight = 2;
             }
 
-
             SetEllipseSize(_drawingboard.BrushWidth);
             SoundHelper.PlaySound(App.Current.Sounds["click"]);
         }
@@ -498,9 +515,6 @@ namespace EasyPaint.View
                                                                         userDrawnPicture,
                                                                         new List<MyColor>(),
                                                                         out resImg);
-            //#if DEBUG
-            //            accuracyPercentage = 80;
-            //#endif
             ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue, resImg);
         }
 
@@ -544,20 +558,29 @@ namespace EasyPaint.View
                     InitPage();
                     break;
                 case GameAction.Ahead:
-                    //LIVELLO COMPLETATO
-                    var curEl = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
-                    curEl.SetScore(_popupChild.UserPercentage);
-                    AppSettings.SaveSettings(true);
-                    var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
-                    if (nextEl != null)
+
+                    switch (App.Current.GameMode)
                     {
-                        nextEl.IsLocked = false;
-                        ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
-                        InitPage();
-                    }
-                    else
-                    {
-                        MessageBox.Show("TODO - tutti i livelli completati!");
+                        case GameMode.Arcade:
+                            //LIVELLO COMPLETATO
+                            var curEl = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
+                            curEl.SetScore(_popupChild.UserPercentage);
+                            AppSettings.SaveSettings(true);
+                            var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
+                            if (nextEl != null)
+                            {
+                                nextEl.IsLocked = false;
+                                ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
+                                InitPage();
+                            }
+                            else
+                            {
+                                MyMsgbox.Show(this, MsgboxMode.Ok, LocalizedResources.MessageAllLevelsCompleted);
+                            }
+                            break;
+                        case GameMode.Gallery:
+                            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Gallery);
+                            break;
                     }
                     break;
                 default:
@@ -589,7 +612,6 @@ namespace EasyPaint.View
 
         private void TextBlockCountDownSmall_Tap(object sender, GestureEventArgs e)
         {
-
 #if DEBUG
             StopTimer();
             int accuracyPercentage = 80;

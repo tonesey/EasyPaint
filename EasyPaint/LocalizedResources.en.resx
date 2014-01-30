@@ -195,9 +195,6 @@
   <data name="WarningExit" xml:space="preserve">
     <value>Do you want to quit app?</value>
   </data>
-  <data name="ButtonStartText" xml:space="preserve">
-    <value>start game!</value>
-  </data>
   <data name="ButtonHelpText" xml:space="preserve">
     <value>help</value>
   </data>

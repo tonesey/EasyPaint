@@ -30,33 +30,98 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.9*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="1.1*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="39*"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="ImageBkg" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Grid.Row="0" 
-               Width="1200" Height="720" Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" 
+        <Image x:Name="ImageBkg" Margin="0,0,-400,-189" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="6" Grid.Row="0" Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" 
                CacheMode="BitmapCache"
-               Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-        </Image>
+               Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
 
-        <Image x:Name="ImageTitle" Margin="0,10,0,30" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" 
+        <Image x:Name="ImageTitle" Margin="50,10,50,0" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" 
                Source="/EasyPaint;component/Assets/lres/bkg/title1.png" 
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
 
-        <Image x:Name="ImageExplorerSubject" Margin="-50,-50,0,0" Grid.Column="2" Grid.Row="2" Grid.RowSpan="5" 
+        <Image x:Name="ImageExplorerSubject" Margin="110,77,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" 
                Source="/EasyPaint;component/Assets/lres/bkg/explorer_subject.png" 
-               Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+               Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
         </Image>
 
-        <Image x:Name="ImageSound" Margin="20,0,0,10" Grid.Column="0" Grid.Row="4" Width="60" Height="60"
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False"  d:LayoutRounding="Auto" ClickMode="Hover" Height="Auto" Margin="20,0" Width="Auto" >
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="2.888"/>
+            </Button.RenderTransform>
+            <Button.Content>
+                <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Foreground="#FF471E17"
+                           Text="{Binding Path=LocalizedResX.ButtonStartArcadeText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
+            </Button.Content>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding StartGameArcadeCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False"  d:LayoutRounding="Auto" ClickMode="Hover" Height="Auto" Margin="20,0" Width="Auto" >
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="-2.293"/>
+            </Button.RenderTransform>
+            <Button.Content>
+                <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Foreground="#FF471E17"
+                           Text="{Binding Path=LocalizedResX.ButtonStartGalleryText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
+            </Button.Content>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding StartGameGalleryCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="False" Height="Auto" Margin="20,0" Width="Auto" >
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="1.945"/>
+            </Button.RenderTransform>
+            <Button.Content>
+                <TextBlock  Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                            Text="{Binding Path=LocalizedResX.ButtonHelpText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
+            </Button.Content>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding ShowHelpCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="4" Grid.Column="0" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="-2.646"/>
+            </Button.RenderTransform>
+            <Button.Content>
+                <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Text="{Binding Path=LocalizedResX.ButtonCreditsText, Source={StaticResource LocalizedStrings}}">
+                </TextBlock>
+            </Button.Content>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding ShowCreditsCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <Image x:Name="ImageSound" Margin="20,9,0,19" Grid.Column="0" Grid.Row="5" Width="60"
                HorizontalAlignment="Left"
                Source="{Binding IsMuted, Converter={StaticResource mediaElementStateToImageConverter}, Mode=OneWay}" 
-               Stretch="Uniform" RenderTransformOrigin="0.5,0.5">
+               Stretch="Uniform" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Image.RenderTransform>
                 <CompositeTransform Rotation="-11.967"/>
             </Image.RenderTransform>
@@ -68,60 +133,6 @@
             </i:Interaction.Triggers>
         </Image>
 
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" 
-                Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False"  d:LayoutRounding="Auto" ClickMode="Hover" >
-            <Button.RenderTransform>
-                <CompositeTransform Rotation="2.284"/>
-            </Button.RenderTransform>
-            <Button.Content>
-                <TextBlock Name="ButtonStartText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
-                           Foreground="#FF471E17"
-                           Text="{Binding Path=LocalizedResX.ButtonStartText, Source={StaticResource LocalizedStrings}}">
-                </TextBlock>
-            </Button.Content>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="StartGameClicked" 
-                                                               Command="{Binding StartGameCommand, Mode=OneWay}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="False" >
-            <Button.RenderTransform>
-                <CompositeTransform Rotation="1.945"/>
-            </Button.RenderTransform>
-            <Button.Content>
-                <TextBlock Name="ButtonHelpText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
-                            Text="{Binding Path=LocalizedResX.ButtonHelpText, Source={StaticResource LocalizedStrings}}">
-                </TextBlock>
-            </Button.Content>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ShowHelpClicked" 
-                                                               Command="{Binding ShowHelpCommand, Mode=OneWay}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-        
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" >
-            <Button.RenderTransform>
-                <CompositeTransform Rotation="-2.646"/>
-            </Button.RenderTransform>
-            <Button.Content>
-                <TextBlock Name="ButtonCreditsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
-                           Text="{Binding Path=LocalizedResX.ButtonCreditsText, Source={StaticResource LocalizedStrings}}">
-                </TextBlock>
-            </Button.Content>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ShowCreditsClicked" 
-                                                               Command="{Binding ShowCreditsCommand, Mode=OneWay}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-
-        
 
     </Grid>
 

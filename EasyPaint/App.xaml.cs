@@ -27,6 +27,12 @@ namespace EasyPaint
 {
     public delegate void MediaStateChangedHandler(bool isMuted);
 
+
+    public enum GameMode { 
+        Arcade,
+        Gallery
+    }
+
     public partial class App : Application
     {
 
@@ -65,6 +71,8 @@ namespace EasyPaint
         }
 
         public bool IsSoundEnabled { get; set; }
+
+        public GameMode GameMode { get; set; }
 
         /// <summary>
         /// Constructor for the Application object.

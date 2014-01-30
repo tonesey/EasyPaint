@@ -15,7 +15,6 @@ namespace EasyPaint.ViewModel
 {
     public class GroupSelectorViewModel : AppViewModel
     {
-
         public RelayCommand GotoHomepageCommand { get; private set; }
 
         private ObservableCollection<ItemViewModel> _allItemsList;
@@ -74,16 +73,12 @@ namespace EasyPaint.ViewModel
 
         private object GotoHomepage()
         {
-            //var msg = new GoToPageMessage() { PageName = Constants.View_Homepage };
-            //Messenger.Default.Send<GoToPageMessage>(msg);
             ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Homepage);
             return null;
         }
 
         private object NavigateToSelectedGroupCommand()
         {
-            //var msg = new GoToPageMessage() { PageName = Constants.View_ItemSeletor };
-            //Messenger.Default.Send<GoToPageMessage>(msg);
             ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_ItemSeletor);
             return null;
         }

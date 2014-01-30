@@ -210,6 +210,7 @@
     <Compile Include="Model\MyColor.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
     <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="ViewModel\GalleryViewModel.cs" />
     <Compile Include="ViewModel\HelpViewModel.cs" />
     <Compile Include="ViewModel\CreditsViewModel.cs" />
     <Compile Include="ViewModel\PainterPageViewModel.cs" />
@@ -220,6 +221,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="View\GalleryPage.xaml.cs">
+      <DependentUpon>GalleryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
     </Compile>
@@ -253,6 +257,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="View\GalleryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\HelpPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -14,6 +14,7 @@ namespace EasyPaint.Model
         public string ImgFilename { get; set; }
         public string LatinName { get; set; }
         public List<Color> PaletteColors { get; set; }
+        public Group ParentGroup { get; set; }
 
         public int Score { get; set; }
         public int RecordScore { get; set; }
@@ -36,5 +37,7 @@ namespace EasyPaint.Model
         {
             return Key;
         }
+
+      
     }
 }

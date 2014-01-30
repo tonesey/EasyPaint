@@ -120,6 +120,7 @@ namespace EasyPaint.Helpers
 
                         currentItem.ImgFilename = itemNode.Attribute("imgname").Value;
                         currentItem.LatinName = itemNode.Attribute("latin").Value;
+                        currentItem.ParentGroup = g;
 
                         var userScoreItem = _userScore.Keys.FirstOrDefault(fn => fn == currentItem.ImgFilename);
                         currentItem.IsLocked = true;

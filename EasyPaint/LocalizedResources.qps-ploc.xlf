@@ -14,9 +14,9 @@
           <source>settings</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[CD39E][!!_šéťţìйġŝ_!!]</target>
         </trans-unit>
-        <trans-unit translate="yes" id="Resx/ButtonStartText" xml:space="preserve">
-          <source>start game!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">[46B2F][!!_ŝτàѓт ģàмê!_!!]</target>
+        <trans-unit translate="yes" id="Resx/ButtonStartArcadeText" xml:space="preserve">
+          <source>play!</source>
+          <target state="new">play!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Africa" xml:space="preserve">
           <source>Africa</source>
@@ -155,6 +155,14 @@ Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒ�
         <trans-unit translate="yes" id="Resx/WarningMusic" xml:space="preserve">
           <source>Press Yes if you’d like to use this app’s background music (this will stop your current music playback)</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[0E342][!!_Ρŕéşş Ŷèŝ ìƒ ýóú’đ ļîĸę ťó µśè ťћîš àρρ’ŝ ъâčкġѓôúйð mùšįċ (ťнîš ẅįłļ ŝţòþ ÿóµř ċùŗŗęйт mûşįć ρļãÿъãĉķ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonStartGalleryText" xml:space="preserve">
+          <source>gallery</source>
+          <target state="new">gallery</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/MessageAllLevelsCompleted" xml:space="preserve">
+          <source>CONGRATULATIONS!!! All levels completed!!!</source>
+          <target state="new">CONGRATULATIONS!!! All levels completed!!!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameButtonText" xml:space="preserve">
           <source>Rate 5 stars!!!</source>

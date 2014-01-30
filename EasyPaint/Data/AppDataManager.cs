@@ -36,6 +36,14 @@ namespace EasyPaint.Data
             if (tag.Contains("design"))
             {
                 //creare / aggiungere qua altri dati cablati per fare le prove a design time
+
+                //sblocco di alcuni animali per modalità gallery
+                _appData.Groups.ElementAt(0).Items.ElementAt(1).IsLocked = false;
+                _appData.Groups.ElementAt(0).Items.ElementAt(2).IsLocked = false;
+                _appData.Groups.ElementAt(0).Items.ElementAt(3).IsLocked = false;
+
+                _appData.Groups.ElementAt(1).Items.ElementAt(0).IsLocked = false;
+                _appData.Groups.ElementAt(1).Items.ElementAt(1).IsLocked = false;
             }
             //else
             //{

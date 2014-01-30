@@ -123,8 +123,8 @@
   <data name="ButtonSettingsText" xml:space="preserve">
     <value>settings</value>
   </data>
-  <data name="ButtonStartText" xml:space="preserve">
-    <value>start game!</value>
+  <data name="ButtonStartArcadeText" xml:space="preserve">
+    <value>play!</value>
   </data>
   <data name="group_Africa" xml:space="preserve">
     <value>Africa</value>
@@ -333,5 +333,11 @@ Be accurate, be precise but... be FAST!</value>
   </data>
   <data name="WarningMusic" xml:space="preserve">
     <value>Press Yes if you’d like to use this app’s background music (this will stop your current music playback)</value>
+  </data>
+  <data name="MessageAllLevelsCompleted" xml:space="preserve">
+    <value>CONGRATULATIONS!!! All levels completed!!!</value>
+  </data>
+  <data name="ButtonStartGalleryText" xml:space="preserve">
+    <value>gallery</value>
   </data>
 </root>

@@ -88,11 +88,20 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to start game!.
+        ///   Looks up a localized string similar to play!.
         /// </summary>
-        public static string ButtonStartText {
+        public static string ButtonStartArcadeText {
             get {
-                return ResourceManager.GetString("ButtonStartText", resourceCulture);
+                return ResourceManager.GetString("ButtonStartArcadeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to gallery.
+        /// </summary>
+        public static string ButtonStartGalleryText {
+            get {
+                return ResourceManager.GetString("ButtonStartGalleryText", resourceCulture);
             }
         }
         
@@ -643,6 +652,15 @@ namespace EasyPaint {
         public static string message_level_failed {
             get {
                 return ResourceManager.GetString("message_level_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CONGRATULATIONS!!! All levels completed!!!.
+        /// </summary>
+        public static string MessageAllLevelsCompleted {
+            get {
+                return ResourceManager.GetString("MessageAllLevelsCompleted", resourceCulture);
             }
         }
         

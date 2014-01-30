@@ -32,6 +32,7 @@ namespace EasyPaint.ViewModel
 
         #region views uris
         public static readonly Uri View_Painter = new Uri("/View/PainterPage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_Gallery = new Uri("/View/GalleryPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_Homepage = new Uri("/View/Homepage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_GroupSeletor = new Uri("/View/GroupSelectorPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_ItemSeletor = new Uri("/View/ItemSelectorPage.xaml", UriKind.RelativeOrAbsolute);
@@ -56,6 +57,7 @@ namespace EasyPaint.ViewModel
 
             SimpleIoc.Default.Register<HomePageViewModel>();
             SimpleIoc.Default.Register<GroupSelectorViewModel>();
+            SimpleIoc.Default.Register<GalleryViewModel>();
             SimpleIoc.Default.Register<ItemSelectorViewModel>();
             SimpleIoc.Default.Register<PainterPageViewModel>();
             SimpleIoc.Default.Register<CreditsViewModel>();
@@ -76,7 +78,6 @@ namespace EasyPaint.ViewModel
         }
 
         #region homepage
-
         private static HomePageViewModel _HomepageViewModelStatic;
         public static HomePageViewModel HomepageViewModelStatic
         {
@@ -99,6 +100,31 @@ namespace EasyPaint.ViewModel
             }
         }
         #endregion
+
+        #region Gallery
+        private static GalleryViewModel _GalleryViewModelStatic;
+        public static GalleryViewModel GalleryViewModelStatic
+        {
+            get
+            {
+                if (_GalleryViewModelStatic == null)
+                {
+                    return _GalleryViewModelStatic = ServiceLocator.Current.GetInstance<GalleryViewModel>();
+                }
+                return _GalleryViewModelStatic;
+            }
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]
+        public GalleryViewModel GalleryViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<GalleryViewModel>();
+            }
+        }
+        #endregion
+
 
         #region group selector
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]

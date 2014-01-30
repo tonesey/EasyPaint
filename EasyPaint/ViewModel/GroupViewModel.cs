@@ -75,38 +75,6 @@ namespace EasyPaint.ViewModel
 
 
         public string ProtagonistImageName { get; set; }
-
-        //public int GridRow
-        //{
-        //    get
-        //    {
-        //        return _group.GridRow;
-        //    }
-        //}
-
-        //public int GridCol
-        //{
-        //    get
-        //    {
-        //        return _group.GridCol;
-        //    }
-        //}
-
-        //public int GridRowSpan
-        //{
-        //    get
-        //    {
-        //        return _group.GridRowSpan;
-        //    }
-        //}
-
-        //public int GridColSpan
-        //{
-        //    get
-        //    {
-        //        return _group.GridColumnSpan;
-        //    }
-        //}
         #endregion
 
         public GroupViewModel(Group gr)

@@ -195,9 +195,6 @@
   <data name="WarningExit" xml:space="preserve">
     <value>¿Quieres salir de aplicación?</value>
   </data>
-  <data name="ButtonStartText" xml:space="preserve">
-    <value>Comience el juego!</value>
-  </data>
   <data name="ButtonHelpText" xml:space="preserve">
     <value>Ayuda</value>
   </data>

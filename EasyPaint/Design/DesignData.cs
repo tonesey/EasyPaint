@@ -16,7 +16,8 @@ namespace EasyPaint.Design
     public enum ListType
     {
         Group,
-        Item
+        Item,
+        GalleryItem
     }
 
     public class DesignData : AppViewModel
@@ -42,15 +43,11 @@ namespace EasyPaint.Design
             }
         }
 
-        ///private List<string> _sampleImagesFilenames = new List<string> { "canguro colore", "coccodrillo colore" };
-
         private GroupViewModel _currentGroup = null;
         public GroupViewModel CurrentGroup
         {
             get
             {
-                //Group g = new Group();
-                //g.Id = CurrentGroupId;
                 _currentGroup = new GroupViewModel(_data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId));
                 return _currentGroup;
             }
@@ -58,6 +55,7 @@ namespace EasyPaint.Design
 
         LoopingListDataSource _designDataDs_Groups = new LoopingListDataSource(3);
         LoopingListDataSource _designDataDs_Items = new LoopingListDataSource(3);
+        LoopingListDataSource _designDataDs_ItemsUnlocked = new LoopingListDataSource(3);
 
         public LoopingListDataSource ListDs
         {
@@ -69,11 +67,14 @@ namespace EasyPaint.Design
                         return _designDataDs_Groups;
                     case ListType.Item:
                         return _designDataDs_Items;
+                    case ListType.GalleryItem:
+                        return _designDataDs_ItemsUnlocked;
                 }
                 return null;
             }
         }
 
+        #region arcade mode
         #region items
         void _designDataDs_Items_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
@@ -81,7 +82,6 @@ namespace EasyPaint.Design
             string text = "none";
             try
             {
-                // var imgFileName = _sampleImagesFilenames[e.Index] + ".png";
                 var el = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index);
                 string imgFileName = el.ImgFilename;
                 uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
@@ -91,7 +91,6 @@ namespace EasyPaint.Design
             {
                 uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
             }
-
             (e.Item as PictureLoopingItem).Picture = uri;
             (e.Item as PictureLoopingItem).Text = text;
         }
@@ -131,6 +130,48 @@ namespace EasyPaint.Design
                 Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute),
                 Text = _data.Groups.ElementAt(e.Index).Key
             };
+        }
+        #endregion
+        #endregion
+
+        #region gallery mode
+        void _designDataDs_ItemsUnlocked_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
+        {
+            Uri uri = null;
+            string text = "none";
+            try
+            {
+                var el = _data.Groups.SelectMany(g => g.Items).Where(it => !it.IsLocked).ElementAt(e.Index);
+                string imgFileName = el.ImgFilename;
+                uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + el.ParentGroup.Id + "/" + imgFileName, UriKind.RelativeOrAbsolute);
+                text = LocalizedResources.ResourceManager.GetString(el.Key);
+            }
+            catch (Exception)
+            {
+                uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
+            }
+
+            (e.Item as PictureLoopingItem).Picture = uri;
+            (e.Item as PictureLoopingItem).Text = text;
+        }
+
+        void _designDataDs_ItemsUnlocked_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
+        {
+            Uri uri = null;
+            string text = "none";
+            try
+            {
+                var el = _data.Groups.SelectMany(g => g.Items).Where(it => !it.IsLocked).ElementAt(e.Index);
+                string imgFileName = el.ImgFilename;
+                uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + el.ParentGroup.Id + "/" + imgFileName, UriKind.RelativeOrAbsolute);
+                text = LocalizedResources.ResourceManager.GetString(el.Key);
+            }
+            catch (Exception)
+            {
+                uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
+            }
+
+            e.Item = new PictureLoopingItem() { Picture = uri, Text = text };
         }
         #endregion
 
@@ -175,20 +216,24 @@ namespace EasyPaint.Design
 
             _data = AppDataManager.GetInstance("design").CfgData;
 
+            #region arcade mode
             //groups selector
             _designDataDs_Groups.ItemNeeded += ds_ItemNeeded_Groups;
             _designDataDs_Groups.ItemUpdated += ds_ItemUpdated_Groups;
-
             //items selector
             _designDataDs_Items.ItemNeeded += _designDataDs_Items_ItemNeeded;
             _designDataDs_Items.ItemUpdated += _designDataDs_Items_ItemUpdated;
+            #endregion
+
+            #region gallery mode
+            _designDataDs_ItemsUnlocked.ItemNeeded += _designDataDs_ItemsUnlocked_ItemNeeded;
+            _designDataDs_ItemsUnlocked.ItemUpdated += _designDataDs_ItemsUnlocked_ItemUpdated;
+            #endregion
 
             //result popup
             Percentage = 100;
             PageOrientation = Microsoft.Phone.Controls.PageOrientation.LandscapeLeft;
         }
-
-
 
 
     }
