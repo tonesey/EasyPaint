@@ -345,7 +345,7 @@ namespace EasyPaint.View
 
             _drawingboard.Clear();
 
-            var currentItem = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
+            ItemViewModel currentItem = GetUserSelectedItem();
 
             if (currentItem != null)
             {
@@ -374,9 +374,24 @@ namespace EasyPaint.View
             }
         }
 
+        private static ItemViewModel GetUserSelectedItem()
+        {
+            ItemViewModel currentItem = null;
+            switch (App.Current.GameMode)
+            {
+                case GameMode.Gallery:
+                    currentItem = ViewModelLocator.GalleryViewModelStatic.SelectedItem;
+                    break;
+                case GameMode.Arcade:
+                    currentItem = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
+                    break;
+            }
+            return currentItem;
+        }
+
         private void InitPalette()
         {
-            _paletteColors = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem.PaletteColors;
+            _paletteColors = GetUserSelectedItem().PaletteColors;
             int count = 1;
             foreach (var color in _paletteColors)
             {
@@ -563,14 +578,15 @@ namespace EasyPaint.View
                     {
                         case GameMode.Arcade:
                             //LIVELLO COMPLETATO
-                            var curEl = ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem;
+                            var curEl = GetUserSelectedItem();
                             curEl.SetScore(_popupChild.UserPercentage);
                             AppSettings.SaveSettings(true);
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                             if (nextEl != null)
                             {
                                 nextEl.IsLocked = false;
-                                ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
+                                //ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
+                                curEl = nextEl;
                                 InitPage();
                             }
                             else

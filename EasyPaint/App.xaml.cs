@@ -28,7 +28,8 @@ namespace EasyPaint
     public delegate void MediaStateChangedHandler(bool isMuted);
 
 
-    public enum GameMode { 
+    public enum GameMode
+    {
         Arcade,
         Gallery
     }
@@ -133,12 +134,7 @@ namespace EasyPaint
             AppSettings.LoadSettings();
             InitAudio();
             var vm = ViewModelLocator.GroupSelectorViewModelStatic;
-
-            //if (string.IsNullOrEmpty(_currentTrack))
-            //{
-            //    _currentTrack = _tracks[TrackType.StandardBackground];
-            //}
-            //(Application.Current as App).PlayBackgroundMusic(_currentTrack);
+         
         }
 
         private void InitAudio()
@@ -202,6 +198,13 @@ namespace EasyPaint
             {
                 //must have been a chooser that did not tombstone or a quick back. 
             }
+
+            if (string.IsNullOrEmpty(_currentTrack))
+            {
+                _currentTrack = _tracks[TrackType.StandardBackground];
+            }
+            (Application.Current as App).PlayBackgroundMusic(_currentTrack);
+
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -351,33 +354,33 @@ namespace EasyPaint
 
             if (trackName != _currentTrack)
             {
-                _currentTrack = trackName;          
+                _currentTrack = trackName;
                 trackChanged = true;
             }
 
-            if (trackChanged)
+            if (trackChanged || GlobalMediaElement.CurrentState == MediaElementState.Closed)
             {
-                
-                    MediaPlayer.Stop(); //stop to clear any existing bg music
-                    GlobalMediaElement.Source = new Uri(trackName, UriKind.Relative);
-
-                    GlobalMediaElement.CurrentStateChanged -= GlobalMediaElement_CurrentStateChanged;
-                    GlobalMediaElement.CurrentStateChanged += GlobalMediaElement_CurrentStateChanged;
-                    GlobalMediaElement.MediaOpened -= MediaElement_MediaOpened;
-                    GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
-                    GlobalMediaElement.MediaFailed -= GlobalMediaElement_MediaFailed;
-                    GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
+                InitTrack(trackName);
             }
             else
             {
-                if (GlobalMediaElement.CurrentState == MediaElementState.Paused)
+                switch (GlobalMediaElement.CurrentState)
                 {
-                    GlobalMediaElement.Play();
-                }
-                else
-                {
+                    case MediaElementState.Paused:
+                        GlobalMediaElement.Play();
+                        break;
+                    case MediaElementState.Playing:
                     //track already playing
+                    default:
+                        break;
                 }
+                //if (GlobalMediaElement.CurrentState != MediaElementState.Playing)
+                //{
+                //    GlobalMediaElement.Play();
+                //}
+                //else
+                //{
+                //}
             }
 
             if (MediaStateChanged != null)
@@ -386,9 +389,21 @@ namespace EasyPaint
             }
         }
 
+        private void InitTrack(string trackName)
+        {
+            MediaPlayer.Stop(); //stop to clear any existing bg music
+            GlobalMediaElement.Source = new Uri(trackName, UriKind.Relative);
+            GlobalMediaElement.CurrentStateChanged -= GlobalMediaElement_CurrentStateChanged;
+            GlobalMediaElement.CurrentStateChanged += GlobalMediaElement_CurrentStateChanged;
+            GlobalMediaElement.MediaOpened -= MediaElement_MediaOpened;
+            GlobalMediaElement.MediaOpened += MediaElement_MediaOpened;
+            GlobalMediaElement.MediaFailed -= GlobalMediaElement_MediaFailed;
+            GlobalMediaElement.MediaFailed += GlobalMediaElement_MediaFailed;
+        }
+
         void GlobalMediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         void GlobalMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
@@ -413,6 +428,6 @@ namespace EasyPaint
 
 
 
-     
+
     }
 }

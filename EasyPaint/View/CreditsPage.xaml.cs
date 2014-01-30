@@ -22,7 +22,6 @@ namespace EasyPaint.View
             Unloaded += CreditsPage_Unloaded;
         }
 
-
         void CreditsPage_Unloaded(object sender, RoutedEventArgs e)
         {
         }

@@ -35,11 +35,12 @@ namespace EasyPaint.Converters
             //        return new BitmapImage(new Uri("/EasyPaint;component/Assets/buttons/sound_on.png", UriKind.RelativeOrAbsolute));
             //}
 
-
             bool isMuted = (bool)value;
 
             if (isMuted)
+            {
                 return new BitmapImage(new Uri("/EasyPaint;component/Assets/buttons/sound_off.png", UriKind.RelativeOrAbsolute));
+            }
 
             return new BitmapImage(new Uri("/EasyPaint;component/Assets/buttons/sound_on.png", UriKind.RelativeOrAbsolute));
         }
