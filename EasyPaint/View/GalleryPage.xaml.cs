@@ -15,7 +15,7 @@ namespace EasyPaint.View
 {
     public partial class GalleryPage : PhoneApplicationPage
     {
-        private ItemSelectorViewModel _vm;
+        private GalleryViewModel _vm;
         private Dictionary<string, LoopingListDataItem> _dict = new Dictionary<string, LoopingListDataItem>();
 
         public GalleryPage()
@@ -24,12 +24,12 @@ namespace EasyPaint.View
             Loaded += ItemSelectorPage_Loaded;
             Unloaded += ItemSelectorPage_Unloaded;
             _dict.Clear();
-            InitPage(); 
+            InitPage();
         }
 
         private void InitPage()
         {
-            _vm = ViewModelLocator.ItemSelectorViewModelStatic;
+            _vm = ViewModelLocator.GalleryViewModelStatic;
             //importante mettere nel costruttore altrimenti non centra la prima immagine!
             LoopingListDataSource ds = new LoopingListDataSource(_vm.Items.Count());
             ds.ItemNeeded += this.OnDs_ItemNeeded;
@@ -77,7 +77,6 @@ namespace EasyPaint.View
             var newEl = _vm.Items.ElementAt(e.Index);
             if (newEl != null)
             {
-
                 PictureLoopingItem item = null;
                 if (_dict.ContainsKey((newEl as ItemViewModel).Key))
                 {
@@ -101,11 +100,7 @@ namespace EasyPaint.View
         private void Grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             _vm.SelectedItem = (((sender as Grid).DataContext as PictureLoopingItem).DataContext as ItemViewModel);
-
-            if (!_vm.SelectedItem.IsLocked)
-            {
-                _vm.ItemSelectedCommand.Execute(null);
-            }
+            _vm.ItemSelectedCommand.Execute(null);
         }
 
     }

@@ -38,7 +38,8 @@
             <RowDefinition Height="39*"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="ImageBkg" Margin="0,0,-400,-189" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="6" Grid.Row="0" Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" 
+        <Image x:Name="ImageBkg" Margin="0,0,-400,-189" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" Grid.RowSpan="6" 
+               Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" 
                CacheMode="BitmapCache"
                Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
 
@@ -47,7 +48,7 @@
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
 
-        <Image x:Name="ImageExplorerSubject" Margin="110,77,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" 
+        <Image x:Name="ImageExplorerSubject" Margin="110,20,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" 
                Source="/EasyPaint;component/Assets/lres/bkg/explorer_subject.png" 
                Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
         </Image>
@@ -127,12 +128,10 @@
             </Image.RenderTransform>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Tap">
-                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ToggleSoundClicked" 
-                                                               Command="{Binding ToggleSoundCommand, Mode=OneWay}"/>
+                    <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding ToggleSoundCommand, Mode=OneWay}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Image>
-
 
     </Grid>
 

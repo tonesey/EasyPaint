@@ -77,63 +77,63 @@
             <Border.RenderTransform>
                 <CompositeTransform Rotation="-1.403"/>
             </Border.RenderTransform>
-                <StackPanel>
-                    <TextBlock Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
+            <StackPanel>
+                <TextBlock Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
                                Text="{Binding Path=LocalizedResX.HelpPage_HelpMainTitle, Source={StaticResource LocalizedStrings}}" 
                                Foreground="Green"/>
-                    <TextBlock Margin="0,10,0,0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
+                <TextBlock Margin="0,10,0,0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
                                Text="{Binding Path=LocalizedResX.HelpPage_HelpMainText, Source={StaticResource LocalizedStrings}}" 
                                TextWrapping="Wrap"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Margin="0,0,0,0" Grid.Column="0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="0,0,0,0" Grid.Column="0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
                                    HorizontalAlignment="Right"
                                Text="{Binding Path=LocalizedResX.HelpPage_NeedHelpQuestionText, Source={StaticResource LocalizedStrings}}" 
                                TextWrapping="Wrap"/>
-                        <Button Grid.Column="1"  Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="Auto" ClickMode="Hover" >
-                            <Button.Content >
-                                <TextBlock Opacity="1"  Name="ButtonContactUsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                    <Button Grid.Column="1"  Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="Auto" ClickMode="Hover" Height="Auto">
+                        <Button.Content >
+                            <TextBlock Opacity="1"  Name="ButtonContactUsText" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
                                        Foreground="#FF471E17"
                                        Text="{Binding Path=LocalizedResX.HelpPage_ButtonContactUsText, Source={StaticResource LocalizedStrings}}">
-                                </TextBlock>
-                            </Button.Content>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ContactUsClicked" 
+                            </TextBlock>
+                        </Button.Content>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <GalaSoft_MvvmLight_Command:EventToCommand x:Name="ContactUsClicked" 
                                                                Command="{Binding ContactUsCommand, Mode=OneWay}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                    </Grid>
-                    <Grid Margin="80,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock  Grid.Column="0" Margin="0,0,0,0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Grid>
+                <Grid Margin="80,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Grid.Column="0" Margin="0,0,0,0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
                                     HorizontalAlignment="Right"
                                Text="{Binding Path=LocalizedResX.HelpPage_RateThisGameRequestText, Source={StaticResource LocalizedStrings}}" 
                                TextWrapping="Wrap"/>
 
-                        <Button Grid.Column="1"  Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="Auto" ClickMode="Hover" >
-                            <Button.Content >
-                                <TextBlock Opacity="1" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                    <Button Grid.Column="1"  Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False" d:LayoutRounding="Auto" ClickMode="Hover" Height="Auto">
+                        <Button.Content >
+                            <TextBlock Opacity="1" Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
                                        Foreground="#FF471E17"
                                        Text="{Binding Path=LocalizedResX.HelpPage_RateThisGameButtonText, Source={StaticResource LocalizedStrings}}">
-                                </TextBlock>
-                            </Button.Content>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="RateAppClicked" 
+                            </TextBlock>
+                        </Button.Content>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <GalaSoft_MvvmLight_Command:EventToCommand x:Name="RateAppClicked" 
                                                                Command="{Binding RateAppCommand, Mode=OneWay}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                    </Grid>
-                </StackPanel>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Grid>
+            </StackPanel>
         </Border>
 
         <Image x:Name="ImageExplorerSubject" Margin="0" 

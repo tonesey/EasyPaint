@@ -15,7 +15,7 @@ namespace EasyPaint.ViewModel
 {
     public class GalleryViewModel : AppViewModel
     {
-        private ObservableCollection<ItemViewModel> _items;
+        private ObservableCollection<ItemViewModel> _items = new ObservableCollection<ItemViewModel>();
         public ObservableCollection<ItemViewModel> Items
         {
             get
