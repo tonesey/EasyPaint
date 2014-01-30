@@ -22,9 +22,9 @@
         <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="1"/>
     </phone:PhoneApplicationPage.Resources>
 
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <Binding Path="CreditsViewModel" Source="{StaticResource Locator}"/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
 
 
     <Grid x:Name="LayoutRoot">
@@ -47,22 +47,25 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        
-
-        <Border CornerRadius="30" Margin="20,-40,20,45" Background="White"  Opacity="0.8" 
-                Grid.Column="0"  Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" 
+        <Border CornerRadius="30" 
+                Margin="10" 
+                Background="White"
+                Opacity="1" 
+                Grid.Column="0" Grid.ColumnSpan="3" 
+                Grid.Row="1" Grid.RowSpan="3" 
                 RenderTransformOrigin="0.5,0.5">
             <Border.RenderTransform>
                 <CompositeTransform Rotation="3.21"/>
             </Border.RenderTransform>
-            <ScrollViewer Padding="20">
-                <StackPanel Height="1000">
+
+            <ScrollViewer Height="300">
+                <StackPanel Orientation="Vertical">
                     <TextBlock Opacity="1" Name="TextBlockBasicHelpTitle" Style="{StaticResource ButtonTextBlockStyle1}" 
                                Text="{Binding Path=LocalizedResX.CreditsPage_MainTitle, Source={StaticResource LocalizedStrings}}" 
                                Foreground="Green"/>
                     <TextBlock Opacity="1" Name="TextBlockBasicHelpText" Style="{StaticResource ButtonTextBlockStyle1}" 
-                               Text="{Binding Path=LocalizedResX.CreditsPage_MainText, Source={StaticResource LocalizedStrings}}" 
-                               TextWrapping="Wrap"/>
+                                   Text="{Binding Path=LocalizedResX.CreditsPage_MainText, Source={StaticResource LocalizedStrings}}" 
+                                   TextWrapping="Wrap"/>
                 </StackPanel>
             </ScrollViewer>
         </Border>

@@ -144,7 +144,6 @@
   <data name="item_koala" xml:space="preserve">
     <value>[FCA56][!!_ĸõàłã_!!]</value>
   </data>
-  
   <data name="item_tiger" xml:space="preserve">
     <value>[4BF14][!!_τìġéř_!!]</value>
   </data>
@@ -202,7 +201,59 @@
   <data name="ButtonHelpText" xml:space="preserve">
     <value>[FCD7A][!!_ђęľρ_!!]</value>
   </data>
-<data name="item_diavolo" xml:space="preserve"><value>[B51E7][!!_ţãşmáиįâή ðêνìľ_!!!!]</value></data><data name="item_pinguino" xml:space="preserve"><value>[70D02][!!_þęήġùîи_!!]</value></data><data name="item_orsobianco" xml:space="preserve"><value>[945F9][!!_ẅнįţè ьèàѓ_!!]</value></data><data name="item_orso" xml:space="preserve"><value>[55A22][!!_ъéãŗ_!!]</value></data><data name="item_leone" xml:space="preserve"><value>[B36B6][!!_ľîóи_!!]</value></data><data name="item_giraffa" xml:space="preserve"><value>[CAF3B][!!_ġíѓáƒƒę_!!]</value></data><data name="item_foca" xml:space="preserve"><value>[E2E83][!!_śèáľ_!!]</value></data><data name="item_bradipo" xml:space="preserve"><value>[4F5F1][!!_ŝĺóáτђ_!!]</value></data><data name="item_bisonte" xml:space="preserve"><value>[4406B][!!_ъįšòй_!!]</value></data><data name="item_balena" xml:space="preserve"><value>[5B41C][!!_ŵћãļé_!!]</value></data><data name="item_avvoltoio" xml:space="preserve"><value>[9F913][!!_νùĺτùѓę_!!]</value></data><data name="item_aquila" xml:space="preserve"><value>[83A4A][!!_éàĝľè_!!]</value></data><data name="item_albatro" xml:space="preserve"><value>[B50FB][!!_ãļБáтřóšš_!!]</value></data><data name="group_Antarctica" xml:space="preserve"><value>[D5E4D][!!_Âήťâŕтîċà_!!]</value></data><data name="item_elefante" xml:space="preserve"><value>[C31F6][!!_éłèþħâит_!!]</value></data><data name="item_volpe" xml:space="preserve"><value>[05CEA][!!_ƒóх_!!]</value></data><data name="CreditsPage_MainTitle" xml:space="preserve"><value>[5B407][!!_ĆŔÊÐÌТŞ_!!]</value></data><data name="CreditsPage_MainText" xml:space="preserve"><value>[09BE9][!!_Áрþ ęйģîηêêříйğ: Ďâνîđè Ťêητôřį
+  <data name="item_diavolo" xml:space="preserve">
+    <value>[B51E7][!!_ţãşmáиįâή ðêνìľ_!!!!]</value>
+  </data>
+  <data name="item_pinguino" xml:space="preserve">
+    <value>[70D02][!!_þęήġùîи_!!]</value>
+  </data>
+  <data name="item_orsobianco" xml:space="preserve">
+    <value>[945F9][!!_ẅнįţè ьèàѓ_!!]</value>
+  </data>
+  <data name="item_orso" xml:space="preserve">
+    <value>[55A22][!!_ъéãŗ_!!]</value>
+  </data>
+  <data name="item_leone" xml:space="preserve">
+    <value>[B36B6][!!_ľîóи_!!]</value>
+  </data>
+  <data name="item_giraffa" xml:space="preserve">
+    <value>[CAF3B][!!_ġíѓáƒƒę_!!]</value>
+  </data>
+  <data name="item_foca" xml:space="preserve">
+    <value>[E2E83][!!_śèáľ_!!]</value>
+  </data>
+  <data name="item_bradipo" xml:space="preserve">
+    <value>[4F5F1][!!_ŝĺóáτђ_!!]</value>
+  </data>
+  <data name="item_bisonte" xml:space="preserve">
+    <value>[4406B][!!_ъįšòй_!!]</value>
+  </data>
+  <data name="item_balena" xml:space="preserve">
+    <value>[5B41C][!!_ŵћãļé_!!]</value>
+  </data>
+  <data name="item_avvoltoio" xml:space="preserve">
+    <value>[9F913][!!_νùĺτùѓę_!!]</value>
+  </data>
+  <data name="item_aquila" xml:space="preserve">
+    <value>[83A4A][!!_éàĝľè_!!]</value>
+  </data>
+  <data name="item_albatro" xml:space="preserve">
+    <value>[B50FB][!!_ãļБáтřóšš_!!]</value>
+  </data>
+  <data name="group_Antarctica" xml:space="preserve">
+    <value>[D5E4D][!!_Âήťâŕтîċà_!!]</value>
+  </data>
+  <data name="item_elefante" xml:space="preserve">
+    <value>[C31F6][!!_éłèþħâит_!!]</value>
+  </data>
+  <data name="item_volpe" xml:space="preserve">
+    <value>[05CEA][!!_ƒóх_!!]</value>
+  </data>
+  <data name="CreditsPage_MainTitle" xml:space="preserve">
+    <value>[5B407][!!_ĆŔÊÐÌТŞ_!!]</value>
+  </data>
+  <data name="CreditsPage_MainText" xml:space="preserve">
+    <value>[09BE9][!!_Áрþ ęйģîηêêříйğ: Ďâνîđè Ťêητôřį
 Ġŗáρћîćš âήđ ĉłìþãѓτ: νíříηâƒłôѓà - ₣õťóļįâ.ċóm, Мáŕťã&amp;Мàѓτíиã
 Βàċķģѓòùήđ múśîĉ / śôµиð ƒх: Ѓàρћáęł Ŕµìŝ
 
@@ -211,5 +262,76 @@ Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒ�
 Šρèċìàĺ τђâиќš ţó Μãŗčô Ûьéŕтî ƒôř ìиśþíŕâτįòй õƒ ţђįŝ ģâmé. 
 Ćĥéċќõµт ђíŝ mãĝйìƒįć ãррş: 
 - "Ẁнò îś ťħé ƒàşτęŝт þâîитéŕ?" (Àήðŗõîđ)
-- "Μòиŝťèŕš Ďíŝčòνèѓў" (Ŵìй8/Âйďřóìđ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value></data><data name="HelpPage_HelpMainTitle" xml:space="preserve"><value>[8B644][!!_ΗÊĻÞ_!!]</value></data><data name="HelpPage_ButtonContactUsText" xml:space="preserve"><value>[F67FB][!!_Ćôητáċť µş!_!!]</value></data><data name="HelpPage_NeedHelpQuestionText" xml:space="preserve"><value>[D3303][!!_Qµêŝţíòήş/ƒèèđБãčќ?_!!!!!!]</value></data><data name="HelpPage_RateThisGameRequestText" xml:space="preserve"><value>[68264][!!_Ďô Уòµ łìķê ţђîş ġáмê?_!!!!!!]</value></data><data name="Error_NoNetworkAvailable" xml:space="preserve"><value>[9022A][!!_Įηтéřήêτ ĉôηйéĉтìóй ήóт áνàìĺàьĺę, þłęàŝè řèтŗÿ_!!!!!!!!!!!!!!]</value></data><data name="FeedbackOrCommentText" xml:space="preserve"><value>[1608A][!!_"{0}" ƒèęđъáĉĸ/ĉõmмęйт _!!!!!!]</value></data><data name="WarningMusic" xml:space="preserve"><value>[0E342][!!_Ρŕéşş Ŷèŝ ìƒ ýóú’đ ļîĸę ťó µśè ťћîš àρρ’ŝ ъâčкġѓôúйð mùšįċ (ťнîš ẅįłļ ŝţòþ ÿóµř ċùŗŗęйт mûşįć ρļãÿъãĉķ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value></data><data name="HelpPage_RateThisGameButtonText" xml:space="preserve"><value>[1484D][!!_Ŗâтè 5 śтářŝ!!!_!!!!]</value></data><data name="HelpPage_HelpMainText" xml:space="preserve"><value>[18A6D][!!_Ðŕãŵ ãт ĺęáśť 70% òƒ ęãĉĥ рìĉţúřé τò ùйļôćĸ áηď âčċęśş иèẁ áήìмâłŝ àиď ćòηţįήèиţŝ! 
-βę àčċûŕàτè, Бè þŕéćįśê ъµţ... вê ₣ÁŚΤ!_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value></data><data name="item_scoiattolo" xml:space="preserve"><value>[96987][!!_šqùîŗřêľ_!!]</value></data><data name="item_pesce_pagliaccio" xml:space="preserve"><value>[2A319][!!_ćĺõŵи ƒíśħ_!!]</value></data><data name="item_renna" xml:space="preserve"><value>[BAC19][!!_ŗèíйďêéѓ_!!]</value></data><data name="item_panda" xml:space="preserve"><value>[FADAD][!!_ρàиđà_!!]</value></data><data name="item_orca" xml:space="preserve"><value>[9BD2C][!!_ģѓãмþûŝ_!!]</value></data><data name="item_marmotta" xml:space="preserve"><value>[C19DB][!!_mâŗmòť_!!]</value></data><data name="item_ippopotamo" xml:space="preserve"><value>[E9B7A][!!_ħŷррò_!!]</value></data><data name="item_gatto" xml:space="preserve"><value>[A6F94][!!_ĉáτ_!!]</value></data><data name="item_formichiere" xml:space="preserve"><value>[732B2][!!_âηţ-ьêâŕ_!!]</value></data><data name="item_elefantemarino" xml:space="preserve"><value>[07F34][!!_êĺèþћãйť śèàľ_!!]</value></data><data name="item_cervo" xml:space="preserve"><value>[D9081][!!_ðéêř_!!]</value></data><data name="item_cane" xml:space="preserve"><value>[ED752][!!_ďòģ_!!]</value></data><data name="item_armadillo" xml:space="preserve"><value>[265DC][!!_àŕмáðìļľõ_!!]</value></data><data name="item_alce" xml:space="preserve"><value>[96F7A][!!_èļк_!!]</value></data></root>
+- "Μòиŝťèŕš Ďíŝčòνèѓў" (Ŵìй8/Âйďřóìđ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="HelpPage_HelpMainTitle" xml:space="preserve">
+    <value>[8B644][!!_ΗÊĻÞ_!!]</value>
+  </data>
+  <data name="HelpPage_ButtonContactUsText" xml:space="preserve">
+    <value>[F67FB][!!_Ćôητáċť µş!_!!]</value>
+  </data>
+  <data name="HelpPage_NeedHelpQuestionText" xml:space="preserve">
+    <value>[D3303][!!_Qµêŝţíòήş/ƒèèđБãčќ?_!!!!!!]</value>
+  </data>
+  <data name="HelpPage_RateThisGameRequestText" xml:space="preserve">
+    <value>[68264][!!_Ďô Уòµ łìķê ţђîş ġáмê?_!!!!!!]</value>
+  </data>
+  <data name="Error_NoNetworkAvailable" xml:space="preserve">
+    <value>[9022A][!!_Įηтéřήêτ ĉôηйéĉтìóй ήóт áνàìĺàьĺę, þłęàŝè řèтŗÿ_!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="FeedbackOrCommentText" xml:space="preserve">
+    <value>[1608A][!!_"{0}" ƒèęđъáĉĸ/ĉõmмęйт _!!!!!!]</value>
+  </data>
+  <data name="WarningMusic" xml:space="preserve">
+    <value>[0E342][!!_Ρŕéşş Ŷèŝ ìƒ ýóú’đ ļîĸę ťó µśè ťћîš àρρ’ŝ ъâčкġѓôúйð mùšįċ (ťнîš ẅįłļ ŝţòþ ÿóµř ċùŗŗęйт mûşįć ρļãÿъãĉķ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="HelpPage_RateThisGameButtonText" xml:space="preserve">
+    <value>[1484D][!!_Ŗâтè 5 śтářŝ!!!_!!!!]</value>
+  </data>
+  <data name="HelpPage_HelpMainText" xml:space="preserve">
+    <value>[18A6D][!!_Ðŕãŵ ãт ĺęáśť 70% òƒ ęãĉĥ рìĉţúřé τò ùйļôćĸ áηď âčċęśş иèẁ áήìмâłŝ àиď ćòηţįήèиţŝ! 
+βę àčċûŕàτè, Бè þŕéćįśê ъµţ... вê ₣ÁŚΤ!_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="item_scoiattolo" xml:space="preserve">
+    <value>[96987][!!_šqùîŗřêľ_!!]</value>
+  </data>
+  <data name="item_pesce_pagliaccio" xml:space="preserve">
+    <value>[2A319][!!_ćĺõŵи ƒíśħ_!!]</value>
+  </data>
+  <data name="item_renna" xml:space="preserve">
+    <value>[BAC19][!!_ŗèíйďêéѓ_!!]</value>
+  </data>
+  <data name="item_panda" xml:space="preserve">
+    <value>[FADAD][!!_ρàиđà_!!]</value>
+  </data>
+  <data name="item_orca" xml:space="preserve">
+    <value>[9BD2C][!!_ģѓãмþûŝ_!!]</value>
+  </data>
+  <data name="item_marmotta" xml:space="preserve">
+    <value>[C19DB][!!_mâŗmòť_!!]</value>
+  </data>
+  <data name="item_ippopotamo" xml:space="preserve">
+    <value>[E9B7A][!!_ħŷррò_!!]</value>
+  </data>
+  <data name="item_gatto" xml:space="preserve">
+    <value>[A6F94][!!_ĉáτ_!!]</value>
+  </data>
+  <data name="item_formichiere" xml:space="preserve">
+    <value>[732B2][!!_âηţ-ьêâŕ_!!]</value>
+  </data>
+  <data name="item_elefantemarino" xml:space="preserve">
+    <value>[07F34][!!_êĺèþћãйť śèàľ_!!]</value>
+  </data>
+  <data name="item_cervo" xml:space="preserve">
+    <value>[D9081][!!_ðéêř_!!]</value>
+  </data>
+  <data name="item_cane" xml:space="preserve">
+    <value>[ED752][!!_ďòģ_!!]</value>
+  </data>
+  <data name="item_armadillo" xml:space="preserve">
+    <value>[265DC][!!_àŕмáðìļľõ_!!]</value>
+  </data>
+  <data name="item_alce" xml:space="preserve">
+    <value>[96F7A][!!_èļк_!!]</value>
+  </data>
+</root>

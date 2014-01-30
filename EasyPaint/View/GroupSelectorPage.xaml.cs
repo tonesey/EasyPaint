@@ -31,6 +31,17 @@ namespace EasyPaint.View
             InitializeComponent();
             Loaded += GroupSelectorPage_Loaded;
             Unloaded += GroupSelectorPage_Unloaded;
+            InitPage();
+        }
+
+        private void InitPage()
+        {
+            _vm = ViewModelLocator.GroupSelectorViewModelStatic;
+            _listDs = new LoopingListDataSource(_vm.Groups.Count());
+            _listDs.ItemNeeded += this.OnDs_ItemNeeded;
+            _listDs.ItemUpdated += this.OnDs_ItemUpdated;
+            this.loopingList.DataSource = _listDs;
+            this.loopingList.SelectedIndex = 0;
         }
 
         void GroupSelectorPage_Unloaded(object sender, RoutedEventArgs e)
@@ -40,17 +51,6 @@ namespace EasyPaint.View
         void GroupSelectorPage_Loaded(object sender, RoutedEventArgs e)
         {
             AppViewModel.CurrentPage = this;
-            _vm = ViewModelLocator.GroupSelectorViewModelStatic;
-            _listDs = new LoopingListDataSource(_vm.Groups.Count());
-            _listDs.ItemNeeded += this.OnDs_ItemNeeded;
-            _listDs.ItemUpdated += this.OnDs_ItemUpdated;
-
-            //this.loopingList.DataContext = _vm.Groups;
-            this.loopingList.DataSource = _listDs;
-            this.loopingList.SelectedIndex = 0;
-
-            //MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
-            //MessagingHelper.GetInstance().CurrentNavigationService = NavigationService;
         }
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)

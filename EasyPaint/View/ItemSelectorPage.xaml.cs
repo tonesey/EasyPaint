@@ -24,22 +24,18 @@ namespace EasyPaint.View
             Loaded += ItemSelectorPage_Loaded;
             Unloaded += ItemSelectorPage_Unloaded;
             _dict.Clear();
+            InitPage(); 
         }
 
         private void InitPage()
         {
             _vm = ViewModelLocator.ItemSelectorViewModelStatic;
+            //importante mettere nel costruttore altrimenti non centra la prima immagine!
             LoopingListDataSource ds = new LoopingListDataSource(_vm.Items.Count());
             ds.ItemNeeded += this.OnDs_ItemNeeded;
             ds.ItemUpdated += this.OnDs_ItemUpdated;
             this.loopingList.DataSource = ds;
             this.loopingList.SelectedIndex = 0;
-
-            //this.loopingList.SelectedIndexChanged += loopingList_SelectedIndexChanged;
-        }
-
-        void loopingList_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
 
         void ItemSelectorPage_Unloaded(object sender, RoutedEventArgs e)
@@ -49,15 +45,8 @@ namespace EasyPaint.View
         void ItemSelectorPage_Loaded(object sender, RoutedEventArgs e)
         {
             AppViewModel.CurrentPage = this;
-            //foreach (JournalEntry item in NavigationService.BackStack.Reverse())
-            //{
-            //    NavigationService.RemoveBackEntry();
-            //}
-
             MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
-            //MessagingHelper.GetInstance().CurrentNavigationService = NavigationService;
-
-            InitPage();
+            //InitPage();
         }
 
         private void OnDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)

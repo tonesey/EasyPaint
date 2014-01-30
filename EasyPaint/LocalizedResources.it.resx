@@ -138,7 +138,6 @@
   <data name="item_koala" xml:space="preserve">
     <value>koala</value>
   </data>
-  
   <data name="item_tiger" xml:space="preserve">
     <value>tigre</value>
   </data>
@@ -202,7 +201,59 @@
   <data name="ButtonHelpText" xml:space="preserve">
     <value>aiuto</value>
   </data>
-<data name="item_diavolo" xml:space="preserve"><value>diavolo della Tasmania</value></data><data name="item_pinguino" xml:space="preserve"><value>pinguino</value></data><data name="item_orsobianco" xml:space="preserve"><value>orso bianco</value></data><data name="item_orso" xml:space="preserve"><value>orso</value></data><data name="item_leone" xml:space="preserve"><value>leone</value></data><data name="item_giraffa" xml:space="preserve"><value>giraffa</value></data><data name="item_foca" xml:space="preserve"><value>foca</value></data><data name="item_bradipo" xml:space="preserve"><value>bradipo</value></data><data name="item_bisonte" xml:space="preserve"><value>bisonte</value></data><data name="item_balena" xml:space="preserve"><value>balena</value></data><data name="item_avvoltoio" xml:space="preserve"><value>avvoltoio</value></data><data name="item_aquila" xml:space="preserve"><value>aquila</value></data><data name="item_albatro" xml:space="preserve"><value>albatro</value></data><data name="group_Antarctica" xml:space="preserve"><value>Antartico</value></data><data name="item_elefante" xml:space="preserve"><value>elefante</value></data><data name="item_volpe" xml:space="preserve"><value>volpe</value></data><data name="CreditsPage_MainTitle" xml:space="preserve"><value>CREDITI</value></data><data name="CreditsPage_MainText" xml:space="preserve"><value>Progettazione e realizzazione: Davide Tentori
+  <data name="item_diavolo" xml:space="preserve">
+    <value>diavolo della Tasmania</value>
+  </data>
+  <data name="item_pinguino" xml:space="preserve">
+    <value>pinguino</value>
+  </data>
+  <data name="item_orsobianco" xml:space="preserve">
+    <value>orso bianco</value>
+  </data>
+  <data name="item_orso" xml:space="preserve">
+    <value>orso</value>
+  </data>
+  <data name="item_leone" xml:space="preserve">
+    <value>leone</value>
+  </data>
+  <data name="item_giraffa" xml:space="preserve">
+    <value>giraffa</value>
+  </data>
+  <data name="item_foca" xml:space="preserve">
+    <value>foca</value>
+  </data>
+  <data name="item_bradipo" xml:space="preserve">
+    <value>bradipo</value>
+  </data>
+  <data name="item_bisonte" xml:space="preserve">
+    <value>bisonte</value>
+  </data>
+  <data name="item_balena" xml:space="preserve">
+    <value>balena</value>
+  </data>
+  <data name="item_avvoltoio" xml:space="preserve">
+    <value>avvoltoio</value>
+  </data>
+  <data name="item_aquila" xml:space="preserve">
+    <value>aquila</value>
+  </data>
+  <data name="item_albatro" xml:space="preserve">
+    <value>albatro</value>
+  </data>
+  <data name="group_Antarctica" xml:space="preserve">
+    <value>Antartico</value>
+  </data>
+  <data name="item_elefante" xml:space="preserve">
+    <value>elefante</value>
+  </data>
+  <data name="item_volpe" xml:space="preserve">
+    <value>volpe</value>
+  </data>
+  <data name="CreditsPage_MainTitle" xml:space="preserve">
+    <value>CREDITI</value>
+  </data>
+  <data name="CreditsPage_MainText" xml:space="preserve">
+    <value>Progettazione e realizzazione: Davide Tentori
 Grafica e clipart: virinaflora - Fotolia.com, Marta&amp;Martina
 Musica di sottofondo / effetti sonori: Raphael Ruis
 
@@ -211,5 +262,76 @@ Ringraziamenti molto speciali a: Ele, Albi, Isa, Luca per il supporto morale e t
 Un ringraziamento speciale a Marco Uberti.
 Scaricate le sue magnifiche app :)
 -"Who Is The Fastest Painter?" (Android)
--"Monsters Discovery" (Win8/Android)</value></data><data name="HelpPage_HelpMainTitle" xml:space="preserve"><value>Guida</value></data><data name="HelpPage_ButtonContactUsText" xml:space="preserve"><value>Contattaci!</value></data><data name="HelpPage_NeedHelpQuestionText" xml:space="preserve"><value>Domande/commenti?</value></data><data name="HelpPage_RateThisGameRequestText" xml:space="preserve"><value>Ti piace questo gioco?</value></data><data name="Error_NoNetworkAvailable" xml:space="preserve"><value>Connessione a Internet non disponibile, si prega di riprovare</value></data><data name="FeedbackOrCommentText" xml:space="preserve"><value>"{0}" feedback/commento </value></data><data name="WarningMusic" xml:space="preserve"><value>Premere Sì se si desidera utilizzare sottofondo musicale questa app (questo si interrompe la riproduzione di musica attuale)</value></data><data name="HelpPage_RateThisGameButtonText" xml:space="preserve"><value>Votare 5 stelle!!!</value></data><data name="HelpPage_HelpMainText" xml:space="preserve"><value>Colora almeno il 70% di ogni foto per sbloccare e accedere a nuovi continenti e animali! 
-Sii accurato, preciso, ma soprattutto... sii VELOCE!</value></data><data name="item_scoiattolo" xml:space="preserve"><value>scoiattolo</value></data><data name="item_pesce_pagliaccio" xml:space="preserve"><value>pesce pagliaccio</value></data><data name="item_renna" xml:space="preserve"><value>renna</value></data><data name="item_panda" xml:space="preserve"><value>panda</value></data><data name="item_orca" xml:space="preserve"><value>orca</value></data><data name="item_marmotta" xml:space="preserve"><value>marmotta</value></data><data name="item_ippopotamo" xml:space="preserve"><value>ippopotamo</value></data><data name="item_gatto" xml:space="preserve"><value>gatto</value></data><data name="item_formichiere" xml:space="preserve"><value>formichiere</value></data><data name="item_elefantemarino" xml:space="preserve"><value>elefante marino</value></data><data name="item_cervo" xml:space="preserve"><value>cervo</value></data><data name="item_cane" xml:space="preserve"><value>cane</value></data><data name="item_armadillo" xml:space="preserve"><value>armadillo</value></data><data name="item_alce" xml:space="preserve"><value>alce</value></data></root>
+-"Monsters Discovery" (Win8/Android)</value>
+  </data>
+  <data name="HelpPage_HelpMainTitle" xml:space="preserve">
+    <value>Guida</value>
+  </data>
+  <data name="HelpPage_ButtonContactUsText" xml:space="preserve">
+    <value>Contattaci!</value>
+  </data>
+  <data name="HelpPage_NeedHelpQuestionText" xml:space="preserve">
+    <value>Domande/commenti?</value>
+  </data>
+  <data name="HelpPage_RateThisGameRequestText" xml:space="preserve">
+    <value>Ti piace questo gioco?</value>
+  </data>
+  <data name="Error_NoNetworkAvailable" xml:space="preserve">
+    <value>Connessione a Internet non disponibile, si prega di riprovare</value>
+  </data>
+  <data name="FeedbackOrCommentText" xml:space="preserve">
+    <value>"{0}" feedback/commento </value>
+  </data>
+  <data name="WarningMusic" xml:space="preserve">
+    <value>Premere Sì se si desidera utilizzare sottofondo musicale questa app (questo si interrompe la riproduzione di musica attuale)</value>
+  </data>
+  <data name="HelpPage_RateThisGameButtonText" xml:space="preserve">
+    <value>Votare 5 stelle!!!</value>
+  </data>
+  <data name="HelpPage_HelpMainText" xml:space="preserve">
+    <value>Colora almeno il 70% di ogni foto per sbloccare e accedere a nuovi continenti e animali! 
+Sii accurato, preciso, ma soprattutto... sii VELOCE!</value>
+  </data>
+  <data name="item_scoiattolo" xml:space="preserve">
+    <value>scoiattolo</value>
+  </data>
+  <data name="item_pesce_pagliaccio" xml:space="preserve">
+    <value>pesce pagliaccio</value>
+  </data>
+  <data name="item_renna" xml:space="preserve">
+    <value>renna</value>
+  </data>
+  <data name="item_panda" xml:space="preserve">
+    <value>panda</value>
+  </data>
+  <data name="item_orca" xml:space="preserve">
+    <value>orca</value>
+  </data>
+  <data name="item_marmotta" xml:space="preserve">
+    <value>marmotta</value>
+  </data>
+  <data name="item_ippopotamo" xml:space="preserve">
+    <value>ippopotamo</value>
+  </data>
+  <data name="item_gatto" xml:space="preserve">
+    <value>gatto</value>
+  </data>
+  <data name="item_formichiere" xml:space="preserve">
+    <value>formichiere</value>
+  </data>
+  <data name="item_elefantemarino" xml:space="preserve">
+    <value>elefante marino</value>
+  </data>
+  <data name="item_cervo" xml:space="preserve">
+    <value>cervo</value>
+  </data>
+  <data name="item_cane" xml:space="preserve">
+    <value>cane</value>
+  </data>
+  <data name="item_armadillo" xml:space="preserve">
+    <value>armadillo</value>
+  </data>
+  <data name="item_alce" xml:space="preserve">
+    <value>alce</value>
+  </data>
+</root>

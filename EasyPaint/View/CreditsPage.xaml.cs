@@ -30,7 +30,7 @@ namespace EasyPaint.View
         void CreditsPage_Loaded(object sender, RoutedEventArgs e)
         {
             AppViewModel.CurrentPage = this;
-            MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
+            //MessagingHelper.GetInstance().CurrentDispatcher = Dispatcher;
             InitPage();
         }
 
