@@ -16,7 +16,7 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartArcadeText" xml:space="preserve">
           <source>play!</source>
-          <target state="new">play!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[B89F8][!!_þľãý!_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Africa" xml:space="preserve">
           <source>Africa</source>
@@ -158,23 +158,23 @@ Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒ�
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartGalleryText" xml:space="preserve">
           <source>gallery</source>
-          <target state="new">gallery</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[44429][!!_ğãľĺèѓÿ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText" xml:space="preserve">
           <source>Unlock as many animals as you can in arcade mode to see more items here!</source>
-          <target state="new">Unlock as many animals as you can in arcade mode to see more items here!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[1F2BC][!!_Úйłòčķ àš mâйý áйìмâļś áš ŷòú ĉâй îη áѓćàđè mòďè τó śèè мóřę įτéмś ĥèѓę!_!!!!!!!!!!!!!!!!!!!!!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
           <source>hedgehog</source>
-          <target state="new">hedgehog</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[E094E][!!_ĥęđģèĥòĝ_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_lepre" xml:space="preserve">
           <source>hare</source>
-          <target state="new">hare</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[8F5F4][!!_ĥářè_!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MessageAllLevelsCompleted" xml:space="preserve">
           <source>CONGRATULATIONS!!! All levels completed!!!</source>
-          <target state="new">CONGRATULATIONS!!! All levels completed!!!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[94C59][!!_ĈÔÑĜŔÃТÛĹÃŤÌÒŃŜ!!! Àłľ ĺêνêľś ċõmрľéţęð!!!_!!!!!!!!!!!!]</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameButtonText" xml:space="preserve">
           <source>Rate 5 stars!!!</source>

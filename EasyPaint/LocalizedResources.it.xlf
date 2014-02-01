@@ -16,7 +16,7 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartArcadeText" xml:space="preserve">
           <source>play!</source>
-          <target state="new">play!</target>
+          <target state="translated">gioca!</target>
         </trans-unit>
         <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
           <source>Africa</source>
@@ -117,7 +117,7 @@ Special thanks to Marco Uberti for inspiration of this game.
 Checkout his magnific apps: 
 - "Who is the fastest painter?" (Android)
 - "Monsters Discovery" (Win8/Android)</source>
-          <target state="translated">Progettazione e realizzazione: Davide Tentori
+          <target state="signed-off">Progettazione e realizzazione: Davide Tentori
 Grafica e clipart: virinaflora - Fotolia.com, Marta%%amp;Martina
 Musica di sottofondo / effetti sonori: Raphael Ruis
 
@@ -158,32 +158,32 @@ Scaricate le sue magnifiche app :)
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartGalleryText" xml:space="preserve">
           <source>gallery</source>
-          <target state="new">gallery</target>
+          <target state="signed-off">galleria</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText" xml:space="preserve">
           <source>Unlock as many animals as you can in arcade mode to see more items here!</source>
-          <target state="new">Unlock as many animals as you can in arcade mode to see more items here!</target>
+          <target state="signed-off">Gioca e sblocca più animali che puoi per vederli in questa sezione!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
           <source>hedgehog</source>
-          <target state="new">hedgehog</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">riccio</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_lepre" xml:space="preserve">
           <source>hare</source>
-          <target state="new">hare</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">lepre</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MessageAllLevelsCompleted" xml:space="preserve">
           <source>CONGRATULATIONS!!! All levels completed!!!</source>
-          <target state="new">CONGRATULATIONS!!! All levels completed!!!</target>
+          <target state="translated">COMPLIMENTI!!! Tutti i livelli sono stati completati!!!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameButtonText" xml:space="preserve">
           <source>Rate 5 stars!!!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Votare 5 stelle!!!</target>
+          <target state="translated">vota 5 stelle!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_HelpMainText" xml:space="preserve">
           <source>Draw at least 70% of each picture to unlock and access new animals and continents! 
 Be accurate, be precise but... be FAST!</source>
-          <target state="translated">Colora almeno il 70% di ogni foto per sbloccare e accedere a nuovi continenti e animali! 
+          <target state="translated">Colora almeno il 70% di ogni disegno per sbloccare e accedere a nuovi continenti e animali! 
 Sii accurato, preciso, ma soprattutto... sii VELOCE!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_scoiattolo" xml:space="preserve">

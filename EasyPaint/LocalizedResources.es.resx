@@ -331,4 +331,4 @@ Ser exactos, precisos pero ser rápido!</value>
   <data name="item_alce" xml:space="preserve">
     <value>alce</value>
   </data>
-</root>
+<data name="ButtonStartArcadeText" xml:space="preserve"><value>¡ Juega!</value></data><data name="ButtonStartGalleryText" xml:space="preserve"><value>Galería</value></data><data name="GalleryPage_InfoText" xml:space="preserve"><value>Desbloquear tantos animales como puedas en el modo arcade para ver más artículos aquí!</value></data><data name="item_riccio" xml:space="preserve"><value>erizo</value></data><data name="item_lepre" xml:space="preserve"><value>liebre</value></data><data name="MessageAllLevelsCompleted" xml:space="preserve"><value>¡ FELICITACIONES! Completada todos los niveles!!!</value></data></root>

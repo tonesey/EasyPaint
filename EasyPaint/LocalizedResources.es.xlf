@@ -16,7 +16,7 @@
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartArcadeText" xml:space="preserve">
           <source>play!</source>
-          <target state="new">play!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">¡ Juega!</target>
         </trans-unit>
         <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
           <source>Africa</source>
@@ -158,23 +158,23 @@ Retirada sus magnifica apps:
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartGalleryText" xml:space="preserve">
           <source>gallery</source>
-          <target state="new">gallery</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Galería</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText" xml:space="preserve">
           <source>Unlock as many animals as you can in arcade mode to see more items here!</source>
-          <target state="new">Unlock as many animals as you can in arcade mode to see more items here!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Desbloquear tantos animales como puedas en el modo arcade para ver más artículos aquí!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
           <source>hedgehog</source>
-          <target state="new">hedgehog</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">erizo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_lepre" xml:space="preserve">
           <source>hare</source>
-          <target state="new">hare</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">liebre</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MessageAllLevelsCompleted" xml:space="preserve">
           <source>CONGRATULATIONS!!! All levels completed!!!</source>
-          <target state="new">CONGRATULATIONS!!! All levels completed!!!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">¡ FELICITACIONES! Completada todos los niveles!!!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameButtonText" xml:space="preserve">
           <source>Rate 5 stars!!!</source>
