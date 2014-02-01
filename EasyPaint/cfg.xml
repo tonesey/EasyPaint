@@ -6,9 +6,11 @@
     <!--<protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>-->
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
-      <item imgname="cane colore.png" key="item_cane" latin="Canis lupus familiaris" colors="#CD9967,#B18051"/>
+      <!--<item imgname="cane colore.png" key="item_cane" latin="Canis lupus familiaris" colors="#CD9967,#B18051"/>-->
       <item imgname="cervo colore.png" key="item_cervo" latin="Cervus elaphus" colors="#CD9967,#BA8754,#FDD0A2,#FEFECE"/>
-      <item imgname="gatto colore.png" key="item_gatto" latin="Felis catus" colors="#FD9965,#E08450,#F8B990"/>
+      <!--<item imgname="gatto colore.png" key="item_gatto" latin="Felis catus" colors="#FD9965,#E08450,#F8B990"/>-->
+      <item imgname="lepre colore.png" key="item_lepre" latin="Lepus timidus" colors="#CDFCFD,#BAECFB"/>
+      <item imgname="riccio colore.png" key="item_riccio" latin="Erinaceus europaeus" colors="#686868,#F8C8C0,#424242"/>
       <item imgname="volpe colore.png" key="item_volpe" latin="Vulpes vulpes" colors="#FF6600,#C94A1C,#F8B994,#F4CFBF"/>
       <item imgname="marmotta colore.png" key="item_marmotta" latin="Marmota marmota" colors="#CD9967,#AE7B4B,D8B390"/>
       <item imgname="renna colore.png" key="item_renna" latin="Rangifer tarandus" colors="#996533,#A87E55,#7D4B27,#FCFACB"/>

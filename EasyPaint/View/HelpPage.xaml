@@ -73,7 +73,13 @@
         </Border>-->
 
 
-        <Border Padding="10" CornerRadius="30" Margin="30,-40,30,40" Background="White"  Opacity="0.8" Grid.Column="0"  Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5">
+        <Border Padding="10" CornerRadius="30" Margin="30,-40,30,40"  Opacity="1" Grid.Column="0"  Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#66FFFFFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
             <Border.RenderTransform>
                 <CompositeTransform Rotation="-1.403"/>
             </Border.RenderTransform>
@@ -85,6 +91,7 @@
                                Text="{Binding Path=LocalizedResX.HelpPage_HelpMainText, Source={StaticResource LocalizedStrings}}" 
                                TextWrapping="Wrap"/>
                 <Grid>
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"></ColumnDefinition>
                         <ColumnDefinition Width="5*"></ColumnDefinition>

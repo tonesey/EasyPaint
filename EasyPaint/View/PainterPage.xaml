@@ -325,16 +325,18 @@
                        VerticalAlignment="Center" 
                        Opacity="0.625"/>
 
+            <!--Foreground="{Binding Text, Converter={StaticResource percentageToColorConverter}, RelativeSource={RelativeSource Self}}"-->
+
             <Border x:Name="BorderCountDownSmall" Grid.Column="2" 
                     VerticalAlignment="Top"  Margin="0,10,0,0" 
                     Width="70" Height="70" BorderThickness="0">
                 <TextBlock x:Name="TextBlockCountDownSmall" 
                        FontFamily="..\Fonts\andyb.TTF#Andy" 
                        FontWeight="Bold"
-                       Text="30"
-                       Foreground="{Binding Text, Converter={StaticResource percentageToColorConverter}, RelativeSource={RelativeSource Self}}" 
+                       Text="35"
+                       Foreground="DarkBlue" 
                        Opacity="0.8"
-                       FontSize="50" 
+                       FontSize="60" 
                        HorizontalAlignment="Center" 
                            Tap="TextBlockCountDownSmall_Tap" RenderTransformOrigin="0.5,0.5"
                        >

@@ -185,6 +185,7 @@
     <Compile Include="Converters\BoolToVisibilityConverterInverted.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignData.cs" />
+    <Compile Include="Helpers\IAPHelper.cs" />
     <Compile Include="Helpers\MessagingHelper.cs" />
     <Compile Include="Helpers\ResolutionHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
@@ -343,9 +344,7 @@
     <Resource Include="Assets\lres\groups\2\avvoltoio lineart.png" />
     <Resource Include="Assets\lres\groups\1\elefante colore.png" />
     <Resource Include="Assets\lres\bkg\painter_bck2.jpg" />
-    <Resource Include="Assets\lres\groups\0\cane colore.png" />
     <Resource Include="Assets\lres\groups\0\cervo colore.png" />
-    <Resource Include="Assets\lres\groups\0\gatto colore.png" />
     <Resource Include="Assets\lres\groups\0\renna colore.png" />
     <Resource Include="Assets\lres\groups\0\scoiattolo colore.png" />
     <Resource Include="Assets\lres\groups\0\volpe colore.png" />
@@ -405,12 +404,8 @@
     <Resource Include="Assets\lres\groups\5\explorer.png" />
     <Resource Include="Assets\lres\groups\5\orca colore.png" />
     <Resource Include="Assets\lres\bkg\explorer_horizontal.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\cane colore.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\cane lineart.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\cervo colore.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\cervo lineart.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\gatto colore.png" />
-    <Resource Include="Assets\lres\groups\0\reduced_10\gatto lineart.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\marmotta colore.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\marmotta lineart.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\renna colore.png" />
@@ -419,6 +414,12 @@
     <Resource Include="Assets\lres\groups\0\reduced_10\scoiattolo lineart.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\volpe colore.png" />
     <Resource Include="Assets\lres\groups\0\reduced_10\volpe lineart.png" />
+    <Content Include="Assets\lres\groups\0\lepre colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\lepre colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\lepre lineart.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\riccio colore.png" />
+    <Resource Include="Assets\lres\groups\0\reduced_10\riccio lineart.png" />
+    <Content Include="Assets\lres\groups\0\riccio colore.png" />
     <Content Include="Audio\mp3\HunterMenuThemeLoop.mp3" />
     <Content Include="Audio\mp3\HunterThemeFull.mp3" />
     <Content Include="Audio\mp3\HunterThemeLoop.mp3" />

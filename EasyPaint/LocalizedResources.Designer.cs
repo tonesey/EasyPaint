@@ -151,6 +151,15 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unlock as many animals as you can in arcade mode to see more items here!.
+        /// </summary>
+        public static string GalleryPage_InfoText {
+            get {
+                return ResourceManager.GetString("GalleryPage_InfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Africa.
         /// </summary>
         public static string group_Africa {
@@ -485,6 +494,15 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hare.
+        /// </summary>
+        public static string item_lepre {
+            get {
+                return ResourceManager.GetString("item_lepre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to marmot.
         /// </summary>
         public static string item_marmotta {
@@ -553,6 +571,15 @@ namespace EasyPaint {
         public static string item_renna {
             get {
                 return ResourceManager.GetString("item_renna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hedgehog.
+        /// </summary>
+        public static string item_riccio {
+            get {
+                return ResourceManager.GetString("item_riccio", resourceCulture);
             }
         }
         

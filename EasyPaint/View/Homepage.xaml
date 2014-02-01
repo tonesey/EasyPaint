@@ -38,10 +38,10 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="ImageBkg" Margin="0,0,-400,-189" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" Grid.RowSpan="6" 
+        <Image x:Name="ImageBkg" Margin="0,0,0,0" Width="1200" Height="720" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" Grid.RowSpan="6" 
                Source="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg" 
                CacheMode="BitmapCache"
-               Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+               Stretch="Fill" RenderTransformOrigin="0,0"/>
 
         <Image x:Name="ImageTitle" Margin="50,10,50,0" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" 
                Source="/EasyPaint;component/Assets/lres/bkg/title1.png" 
@@ -119,7 +119,7 @@
             </i:Interaction.Triggers>
         </Button>
 
-        <Image x:Name="ImageSound" Margin="20,9,0,19" Grid.Column="0" Grid.Row="5" Width="60"
+        <Image x:Name="ImageSound" Margin="20,9,0,19" Grid.Column="0" Grid.Row="5" Width="80" Height="50"
                HorizontalAlignment="Left"
                Source="{Binding IsMuted, Converter={StaticResource mediaElementStateToImageConverter}, Mode=OneWay}" 
                Stretch="Uniform" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">

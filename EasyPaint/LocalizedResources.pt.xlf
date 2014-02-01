@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="pt" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.3" build-num="0">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.2010.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="Resx">
@@ -159,6 +159,18 @@ Check-out seus magnific apps:
         <trans-unit translate="yes" id="Resx/ButtonStartGalleryText" xml:space="preserve">
           <source>gallery</source>
           <target state="new">gallery</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/GalleryPage_InfoText" xml:space="preserve">
+          <source>Unlock as many animals as you can in arcade mode to see more items here!</source>
+          <target state="new">Unlock as many animals as you can in arcade mode to see more items here!</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
+          <source>hedgehog</source>
+          <target state="new">hedgehog</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_lepre" xml:space="preserve">
+          <source>hare</source>
+          <target state="new">hare</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MessageAllLevelsCompleted" xml:space="preserve">
           <source>CONGRATULATIONS!!! All levels completed!!!</source>
