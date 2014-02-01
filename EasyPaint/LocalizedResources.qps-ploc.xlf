@@ -164,6 +164,14 @@ Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒ�
           <source>Unlock as many animals as you can in arcade mode to see more items here!</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[1F2BC][!!_Úйłòčķ àš mâйý áйìмâļś áš ŷòú ĉâй îη áѓćàđè mòďè τó śèè мóřę įτéмś ĥèѓę!_!!!!!!!!!!!!!!!!!!!!!!]</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
+          <source>indian elephant</source>
+          <target state="new">indian elephant</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_cammello" xml:space="preserve">
+          <source>camel</source>
+          <target state="new">camel</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
           <source>hedgehog</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">[E094E][!!_ĥęđģèĥòĝ_!!]</target>

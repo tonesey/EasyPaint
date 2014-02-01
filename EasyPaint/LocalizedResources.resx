@@ -343,6 +343,12 @@ Be accurate, be precise but... be FAST!</value>
   <data name="GalleryPage_InfoText" xml:space="preserve">
     <value>Unlock as many animals as you can in arcade mode to see more items here!</value>
   </data>
+  <data name="item_cammello" xml:space="preserve">
+    <value>camel</value>
+  </data>
+  <data name="item_elefante_indiano" xml:space="preserve">
+    <value>indian elephant</value>
+  </data>
   <data name="item_lepre" xml:space="preserve">
     <value>hare</value>
   </data>

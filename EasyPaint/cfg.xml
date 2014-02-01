@@ -66,7 +66,7 @@
       <item imgname="Cobra colore.png" key="item_Cobra" latin="Naja naja"  colors="#EBC577,#C2A977,#F4989E"/>
       <item imgname="Tigre colore.png" key="item_Tigre" latin="Panthera tigris tigris"  colors="#F29531,#E7ECF9"/>
       <item imgname="Yak colore.png" key="item_Yak" latin="Bos grunniens" colors="#1E2848,#998776"/>
-      <item imgname="Elefante colore.png" key="item_Elefante" latin="Bos grunniens"  colors="#A7A7A7,#F5989D,#7CC576"/>
+      <item imgname="Elefante colore.png" key="item_elefante_indiano" latin="Bos grunniens"  colors="#A7A7A7,#F5989D,#7CC576"/>
       <item imgname="scimmietta colore.png" key="item_scimmietta" latin="Macaca silenus" colors="#716256,#EF662F,#FEF474"/>
       <item imgname="cammello colore.png" key="item_cammello" latin="Camelus bactrianus" colors="#716256,#EF662F,#FEF474"/>
       <item imgname="panda colore.png" key="item_panda" latin="Ailuropoda melanoleuca" colors="#716256,#EF662F,#FEF474"/>

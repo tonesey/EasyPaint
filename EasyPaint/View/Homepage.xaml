@@ -48,7 +48,7 @@
                Stretch="Fill" RenderTransformOrigin="0.5,0.5">
         </Image>
 
-        <Image x:Name="ImageExplorerSubject" Margin="110,20,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" 
+        <Image x:Name="ImageExplorerSubject" Margin="110,40,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" 
                Source="/EasyPaint;component/Assets/lres/bkg/explorer_subject.png" 
                Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
         </Image>

@@ -164,6 +164,14 @@ Check-out seus magnific apps:
           <source>Unlock as many animals as you can in arcade mode to see more items here!</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Desbloquear animais como muitos como você pode no modo arcade para ver mais artigos aqui!</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
+          <source>indian elephant</source>
+          <target state="new">indian elephant</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/item_cammello" xml:space="preserve">
+          <source>camel</source>
+          <target state="new">camel</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
           <source>hedgehog</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">porco-espinho</target>

@@ -341,6 +341,15 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to camel.
+        /// </summary>
+        public static string item_cammello {
+            get {
+                return ResourceManager.GetString("item_cammello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to dog.
         /// </summary>
         public static string item_cane {
@@ -409,6 +418,15 @@ namespace EasyPaint {
         public static string item_elefante {
             get {
                 return ResourceManager.GetString("item_elefante", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to indian elephant.
+        /// </summary>
+        public static string item_elefante_indiano {
+            get {
+                return ResourceManager.GetString("item_elefante_indiano", resourceCulture);
             }
         }
         
