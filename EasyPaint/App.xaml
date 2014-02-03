@@ -21,7 +21,6 @@
         <Converters:LockedToOpacityConverter x:Key="lockedToOpacityConverter" />
         <Converters:MediaElementStateToImageConverter x:Key="mediaElementStateToImageConverter" />
         
-
         <!-- Backgorund Sound Manager -->
         <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
         <!-- VM Locator -->
@@ -41,7 +40,7 @@
         </Style>
         
         <Style x:Key="ButtonTextBlockStyle1" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="24">
+            <Setter Property="FontSize" Value="28">
             </Setter>
             <Setter Property="Margin" Value="10,0,0,0">
             </Setter>
@@ -51,7 +50,7 @@
             </Setter>
             <!--<Setter Property="FontFamily" Value="..\Fonts\CURLZ___.TTF#Curlz MT">
             </Setter>-->
-            <Setter Property="FontFamily" Value="..\Fonts\andyb.TTF#Andy">
+            <Setter Property="FontFamily" Value="..\Fonts\BuxtonSketch.ttf#Buxton Sketch">
             </Setter>
             <Setter Property="FontWeight" Value="ExtraBlack">
             </Setter>

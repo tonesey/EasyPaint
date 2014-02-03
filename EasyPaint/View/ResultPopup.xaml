@@ -57,7 +57,7 @@
                 <Image x:Name="ImageResult" Width="110" Height="110" Margin="10,10,10,10"/>
 
                 <TextBlock x:Name="TextBlockResult"  Grid.Row="0" Margin="10,0,0,0"
-					FontFamily="..\Fonts\andyb.TTF#Andy" 
+					FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
 					Foreground="{Binding Percentage, Converter={StaticResource percentageToColorConverter}}" 
 					Text="{Binding Percentage, Converter={StaticResource percentageToStringConverter}}" 
 					FontSize="120" 
@@ -67,7 +67,7 @@
             </StackPanel>
             
             <TextBlock x:Name="TextBlockResultText"  Grid.Row="1"
-				FontFamily="..\Fonts\andyb.TTF#Andy" 
+				FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
 				Foreground="{Binding Foreground, ElementName=TextBlockResult}" 
 				Text="{Binding Percentage, Converter={StaticResource percentageToResultConverter}}" 
 				FontSize="40" 

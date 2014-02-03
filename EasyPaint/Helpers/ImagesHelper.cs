@@ -213,6 +213,63 @@ namespace EasyPaint.Helpers
             return newnum;
         }
 
+
+        internal static WriteableBitmap CheckColors(WriteableBitmap imageBase, WriteableBitmap imageLineart, List<Color> palette, out int coverage)
+        {
+            WriteableBitmap resultImage = new WriteableBitmap(imageBase.PixelWidth, imageBase.PixelHeight);
+            int x, y;
+            coverage = 0;
+
+            int matchingPixels = 0;
+
+            for (int i = 0; i < imageBase.Pixels.Count(); i++)
+            {
+                x = i % imageBase.PixelWidth;
+                y = i / imageBase.PixelWidth;
+
+                var imageBaseColorBytes = BitConverter.GetBytes(imageBase.Pixels[i]);
+
+                byte a = (byte)imageBaseColorBytes[3];
+                byte r = (byte)imageBaseColorBytes[2];
+                byte g = (byte)imageBaseColorBytes[1];
+                byte b = (byte)imageBaseColorBytes[0];
+
+                Color c = Color.FromArgb(a, r, g, b);
+
+                if ((byte)imageBaseColorBytes[3] != 255)
+                {
+                    resultImage.SetPixel(x, y, Colors.Yellow);
+                    matchingPixels++; //il trasparente viene considerato buono
+                    continue;
+                }
+
+                var imageLineartColorBytes = BitConverter.GetBytes(imageLineart.Pixels[i]);
+                if ((byte)imageLineartColorBytes[3] == 255)
+                {
+                    //il pixel corrispondente della lineart non è trasparente: viene considerato buono, come se l'avesse disegnato l'utente
+                    matchingPixels++;
+                    resultImage.SetPixel(x, y, Colors.Green);
+                    continue;
+                }
+                
+                if (palette.FirstOrDefault(c1 => c1.Equals(c)) == default(Color)) 
+                {
+                    //il colore non è presente nella palette
+                    resultImage.SetPixel(x, y, Colors.Red);
+                }
+                else
+                {
+                    //il colore è presente nella palette
+                    matchingPixels++; 
+                    resultImage.SetPixel(x, y, Colors.Green);
+                }
+            }
+
+            coverage = ((matchingPixels * 100) / imageBase.Pixels.Count());
+            return resultImage;
+        }
+
+
         public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore, out int transparentPixelsCount, out WriteableBitmap resultImage)
         {
             int countDiff = 0;
@@ -384,5 +441,7 @@ namespace EasyPaint.Helpers
 
             return biImage;
         }
+
+       
     }
 }

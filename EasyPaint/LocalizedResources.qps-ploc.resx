@@ -331,4 +331,22 @@ Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒ�
   <data name="item_alce" xml:space="preserve">
     <value>[96F7A][!!_èļк_!!]</value>
   </data>
-<data name="ButtonStartArcadeText" xml:space="preserve"><value>[B89F8][!!_þľãý!_!!]</value></data><data name="ButtonStartGalleryText" xml:space="preserve"><value>[44429][!!_ğãľĺèѓÿ_!!]</value></data><data name="GalleryPage_InfoText" xml:space="preserve"><value>[1F2BC][!!_Úйłòčķ àš mâйý áйìмâļś áš ŷòú ĉâй îη áѓćàđè mòďè τó śèè мóřę įτéмś ĥèѓę!_!!!!!!!!!!!!!!!!!!!!!!]</value></data><data name="item_riccio" xml:space="preserve"><value>[E094E][!!_ĥęđģèĥòĝ_!!]</value></data><data name="item_lepre" xml:space="preserve"><value>[8F5F4][!!_ĥářè_!!]</value></data><data name="MessageAllLevelsCompleted" xml:space="preserve"><value>[94C59][!!_ĈÔÑĜŔÃТÛĹÃŤÌÒŃŜ!!! Àłľ ĺêνêľś ċõmрľéţęð!!!_!!!!!!!!!!!!]</value></data></root>
+  <data name="ButtonStartArcadeText" xml:space="preserve">
+    <value>[B89F8][!!_þľãý!_!!]</value>
+  </data>
+  <data name="ButtonStartGalleryText" xml:space="preserve">
+    <value>[44429][!!_ğãľĺèѓÿ_!!]</value>
+  </data>
+  <data name="GalleryPage_InfoText" xml:space="preserve">
+    <value>[1F2BC][!!_Úйłòčķ àš mâйý áйìмâļś áš ŷòú ĉâй îη áѓćàđè mòďè τó śèè мóřę įτéмś ĥèѓę!_!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="item_riccio" xml:space="preserve">
+    <value>[E094E][!!_ĥęđģèĥòĝ_!!]</value>
+  </data>
+  <data name="item_lepre" xml:space="preserve">
+    <value>[8F5F4][!!_ĥářè_!!]</value>
+  </data>
+  <data name="MessageAllLevelsCompleted" xml:space="preserve">
+    <value>[94C59][!!_ĈÔÑĜŔÃТÛĹÃŤÌÒŃŜ!!! Àłľ ĺêνêľś ċõmрľéţęð!!!_!!!!!!!!!!!!]</value>
+  </data>
+</root>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace EasyPaint.ViewModel
 {
@@ -49,6 +50,7 @@ namespace EasyPaint.ViewModel
             }
         }
 
+
         public string LocalizedName
         {
             get
@@ -56,6 +58,9 @@ namespace EasyPaint.ViewModel
                 return LocalizedResources.ResourceManager.GetString(Key);
             }
         }
+
+      
+
 
     }
 }

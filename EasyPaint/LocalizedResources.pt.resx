@@ -331,4 +331,22 @@ Ser preciso, ser preciso, mas... ser rápido!</value>
   <data name="item_alce" xml:space="preserve">
     <value>Alce</value>
   </data>
-<data name="ButtonStartArcadeText" xml:space="preserve"><value>joga!</value></data><data name="ButtonStartGalleryText" xml:space="preserve"><value>Galeria</value></data><data name="GalleryPage_InfoText" xml:space="preserve"><value>Desbloquear animais como muitos como você pode no modo arcade para ver mais artigos aqui!</value></data><data name="item_riccio" xml:space="preserve"><value>porco-espinho</value></data><data name="item_lepre" xml:space="preserve"><value>Lebre</value></data><data name="MessageAllLevelsCompleted" xml:space="preserve"><value>PARABÉNS!!! Todos os níveis concluídos!!!</value></data></root>
+  <data name="ButtonStartArcadeText" xml:space="preserve">
+    <value>joga!</value>
+  </data>
+  <data name="ButtonStartGalleryText" xml:space="preserve">
+    <value>Galeria</value>
+  </data>
+  <data name="GalleryPage_InfoText" xml:space="preserve">
+    <value>Desbloquear animais como muitos como você pode no modo arcade para ver mais artigos aqui!</value>
+  </data>
+  <data name="item_riccio" xml:space="preserve">
+    <value>porco-espinho</value>
+  </data>
+  <data name="item_lepre" xml:space="preserve">
+    <value>Lebre</value>
+  </data>
+  <data name="MessageAllLevelsCompleted" xml:space="preserve">
+    <value>PARABÉNS!!! Todos os níveis concluídos!!!</value>
+  </data>
+</root>

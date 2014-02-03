@@ -76,7 +76,7 @@
                                    Text="{Binding Text}" 
                                    TextWrapping="Wrap"
                                    FontSize="65"   
-                                   FontFamily="..\..\Fonts\andyb.TTF#Andy"
+                                   FontFamily="..\..\Fonts\BuxtonSketch.ttf#Buxton Sketch"
                                    Foreground="Green"></TextBlock>
                         <TextBlock Margin="0,-5,0,0"
                                    HorizontalAlignment="Center"
@@ -84,7 +84,7 @@
                                    Text="{Binding Text}" 
                                    TextWrapping="Wrap"
                                    FontSize="65"   
-                                   FontFamily="..\..\Fonts\andyb.TTF#Andy"
+                                   FontFamily="..\..\Fonts\BuxtonSketch.ttf#Buxton Sketch"
                                    Foreground="Lime"></TextBlock>
                     </Grid>
                 </DataTemplate>

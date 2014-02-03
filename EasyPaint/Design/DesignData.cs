@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Media.Imaging;
 using Telerik.Windows.Controls;
 
 namespace EasyPaint.Design
@@ -110,6 +111,8 @@ namespace EasyPaint.Design
             {
                 uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
             }
+
+            
 
             e.Item = new PictureLoopingItem() { Picture = uri, Text = text };
         }

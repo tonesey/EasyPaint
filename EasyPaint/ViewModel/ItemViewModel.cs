@@ -1,8 +1,11 @@
-﻿using EasyPaint.Model;
+﻿using EasyPaint.Helpers;
+using EasyPaint.Model;
 using EasyPaint.Settings;
 using System;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -10,8 +13,11 @@ using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Telerik.Windows.Controls;
+using Windows.Storage;
+using Wp8Shared.Utility;
 
 namespace EasyPaint.ViewModel
 {
@@ -89,15 +95,83 @@ namespace EasyPaint.ViewModel
 
             //full colors
             ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
-           
             //reduced colors
             ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename });
             ReducedColorLineArtResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
-          
-           
 
+#if COLORSCHECK
+            if (g.Id == "0")
+            {
+                WriteableBitmap bmpBase = BitmapFactory.New(400, 400).FromResource(ReducedColorsResourcePath);
+                WriteableBitmap bmpLineart = BitmapFactory.New(400, 400).FromResource(ReducedColorLineArtResourcePath);
 
+                //elimina la lineart dall'immagine base, per poter calcolare la % di copertura dei colori definiti nella palette
+                //bmpBase.Blit(new Rect(0, 0, bmpBase.PixelWidth, bmpBase.PixelHeight),
+                //             bmpLineart,
+                //             new Rect(0, 0, bmpBase.PixelWidth, bmpBase.PixelHeight),
+                //             WriteableBitmapExtensions.BlendMode.Subtractive);
+
+                WriteableBitmap _checkImage = ImagesHelper.CheckColors(bmpBase, bmpLineart, item.PaletteColors, out _coverage);
+                //WriteableBitmap _checkImage = bmpBase;
+
+                using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    string fileName = "checkimage_" + _key + ".jpg";
+                    if (myIsolatedStorage.FileExists(fileName))
+                    {
+                        myIsolatedStorage.DeleteFile(fileName);
+                    }
+                    IsolatedStorageFileStream fileStream = myIsolatedStorage.CreateFile(fileName);
+                    Extensions.SaveJpeg(_checkImage, fileStream, _checkImage.PixelWidth, _checkImage.PixelHeight, 0, 100);
+                    fileStream.Close();
+                    GetImageSourceFromIsoStore(fileName);
+                }
+            }
+#endif
         }
+
+        public async void GetImageSourceFromIsoStore(string filename)
+        {
+            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile storageFile = await localFolder.GetFileAsync(filename);
+            ImageSource = new Uri(GenericUtility.GetIsolatedStorageFullImagePath(storageFile));
+        }
+
+#if COLORSCHECK
+        //protected WriteableBitmap _checkImage;
+        //public WriteableBitmap CheckImage
+        //{
+        //    get
+        //    {
+        //        return _checkImage;
+        //    }
+        //    set
+        //    {
+        //        if (_checkImage != value)
+        //        {
+        //            _checkImage = value;
+        //            OnPropertyChanged("CheckImage");
+        //        }
+        //    }
+        //}
+
+        protected int _coverage;
+        public int PaletteCoverage
+        {
+            get
+            {
+                return _coverage;
+            }
+            set
+            {
+                if (_coverage != value)
+                {
+                    _coverage = value;
+                    OnPropertyChanged("PaletteCoverage");
+                }
+            }
+        }
+#endif
 
         internal void SetScore(int value)
         {
@@ -108,6 +182,6 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        public List<Color> PaletteColors { get { return _item.PaletteColors ; } }
+        public List<Color> PaletteColors { get { return _item.PaletteColors; } }
     }
 }

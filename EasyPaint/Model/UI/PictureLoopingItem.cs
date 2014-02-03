@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media.Imaging;
 using Telerik.Windows.Controls;
 
 namespace EasyPaint.Model.UI
@@ -10,6 +11,25 @@ namespace EasyPaint.Model.UI
     {
 
         public object DataContext { get; set; }
+
+//#if COLORSCHECK
+//        private BitmapSource _picture;
+//        public BitmapSource Picture
+//        {
+//            get
+//            {
+//                return this._picture;
+//            }
+//            set
+//            {
+//                if (value != this._picture)
+//                {
+//                    this._picture = value;
+//                    this.OnPropertyChanged("Picture");
+//                }
+//            }
+//        }
+//#else
 
         private Uri _picture;
         public Uri Picture
@@ -28,22 +48,6 @@ namespace EasyPaint.Model.UI
             }
         }
 
-        //private string _text;
-        //public string Text
-        //{
-        //    get
-        //    {
-        //        return _text;
-        //    }
-        //    set
-        //    {
-        //        if (value != _text)
-        //        {
-        //            _text = value;
-        //            this.OnPropertyChanged("Text");
-        //        }
-        //    }
-        //}
 
         private bool _IsLocked;
         public bool IsLocked
@@ -61,7 +65,6 @@ namespace EasyPaint.Model.UI
                 }
             }
         }
-
 
     }
 }

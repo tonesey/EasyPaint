@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 using Wp8Shared.Helpers;
 
@@ -117,6 +118,9 @@ namespace EasyPaint.Helpers
                                 currentItem.PaletteColors.Add(ImagesHelper.HexStringToColor(item));
                             }
                         }
+
+                     
+
 
                         currentItem.ImgFilename = itemNode.Attribute("imgname").Value;
                         currentItem.LatinName = itemNode.Attribute("latin").Value;

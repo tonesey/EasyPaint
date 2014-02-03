@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;COLORSCHECK</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -472,7 +472,7 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <BlendEmbeddedFont Include="Fonts\BuxtonSketch.ttf">
+    <Content Include="Fonts\BuxtonSketch.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>
@@ -480,7 +480,7 @@
       <Lowercase>True</Lowercase>
       <Numbers>True</Numbers>
       <Punctuation>True</Punctuation>
-    </BlendEmbeddedFont>
+    </Content>
     <BlendEmbeddedFont Include="Fonts\JingJing.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
