@@ -92,39 +92,45 @@ namespace EasyPaint.ViewModel
             _key = item.Key;
 
             //full colors
-            ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
+            //ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
             //reduced colors
+            ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
+
+            //---reduced colors
             ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename });
             ReducedColorLineArtResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
+            //---full color
+            //ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename });
+            //ReducedColorLineArtResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
 
 #if COLORSCHECK
-            if (_item.ParentGroup.Id == "0")
+            //if (_item.ParentGroup.Id == "0")
+            //{
+            WriteableBitmap bmpBase = BitmapFactory.New(400, 400).FromResource(ReducedColorsResourcePath);
+            WriteableBitmap bmpLineart = BitmapFactory.New(400, 400).FromResource(ReducedColorLineArtResourcePath);
+
+            //elimina la lineart dall'immagine base, per poter calcolare la % di copertura dei colori definiti nella palette
+            //bmpBase.Blit(new Rect(0, 0, bmpBase.PixelWidth, bmpBase.PixelHeight),
+            //             bmpLineart,
+            //             new Rect(0, 0, bmpBase.PixelWidth, bmpBase.PixelHeight),
+            //             WriteableBitmapExtensions.BlendMode.Subtractive);
+
+            WriteableBitmap _checkImage = ImagesHelper.CheckPaletteCoverage(bmpBase, bmpLineart, item.PaletteColors, out _coverage);
+            //WriteableBitmap _checkImage = bmpBase;
+
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                WriteableBitmap bmpBase = BitmapFactory.New(400, 400).FromResource(ReducedColorsResourcePath);
-                WriteableBitmap bmpLineart = BitmapFactory.New(400, 400).FromResource(ReducedColorLineArtResourcePath);
-
-                //elimina la lineart dall'immagine base, per poter calcolare la % di copertura dei colori definiti nella palette
-                //bmpBase.Blit(new Rect(0, 0, bmpBase.PixelWidth, bmpBase.PixelHeight),
-                //             bmpLineart,
-                //             new Rect(0, 0, bmpBase.PixelWidth, bmpBase.PixelHeight),
-                //             WriteableBitmapExtensions.BlendMode.Subtractive);
-
-                WriteableBitmap _checkImage = ImagesHelper.CheckColors(bmpBase, bmpLineart, item.PaletteColors, out _coverage);
-                //WriteableBitmap _checkImage = bmpBase;
-
-                using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+                string fileName = "checkimage_" + _key + ".jpg";
+                if (myIsolatedStorage.FileExists(fileName))
                 {
-                    string fileName = "checkimage_" + _key + ".jpg";
-                    if (myIsolatedStorage.FileExists(fileName))
-                    {
-                        myIsolatedStorage.DeleteFile(fileName);
-                    }
-                    IsolatedStorageFileStream fileStream = myIsolatedStorage.CreateFile(fileName);
-                    Extensions.SaveJpeg(_checkImage, fileStream, _checkImage.PixelWidth, _checkImage.PixelHeight, 0, 100);
-                    fileStream.Close();
-                    GetImageSourceFromIsoStore(fileName);
+                    myIsolatedStorage.DeleteFile(fileName);
                 }
+                IsolatedStorageFileStream fileStream = myIsolatedStorage.CreateFile(fileName);
+                Extensions.SaveJpeg(_checkImage, fileStream, _checkImage.PixelWidth, _checkImage.PixelHeight, 0, 100);
+                fileStream.Close();
+                GetImageSourceFromIsoStore(fileName);
             }
+            //}
 #endif
         }
 

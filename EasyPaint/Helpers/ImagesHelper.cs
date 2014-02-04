@@ -54,12 +54,13 @@ namespace EasyPaint.Helpers
         //    return cols;
         //}
 
-        public static List<MyColor> GetColors(WriteableBitmap bmp, bool excludeDarkColors = true, bool excludeBrightColors = true)
+
+        public static List<Color> GetColors(WriteableBitmap bmp, bool excludeDarkColors = true, bool excludeBrightColors = true)
         {
             int darkThreshold = 30;
             int lightThreshold = 200;
 
-            List<MyColor> cols = new List<MyColor>();
+            List<Color> cols = new List<Color>();
             foreach (var pixel in bmp.Pixels)
             {
                 var bytes = BitConverter.GetBytes(pixel);
@@ -91,18 +92,63 @@ namespace EasyPaint.Helpers
                 }
 
                 Color c = Color.FromArgb(a, r, g, b);
-                var myColor = new MyColor(c);
-                if (!cols.Contains(myColor))
+                if (!cols.Contains(c))
                 {
-                    cols.Add(myColor);
-                }
-                else
-                {
-                    cols.First(col => col.Equals(myColor)).Count++;
+                    cols.Add(c);
                 }
             }
             return cols;
         }
+
+        //public static List<MyColor> GetColors(WriteableBitmap bmp, bool excludeDarkColors = true, bool excludeBrightColors = true)
+        //{
+        //    int darkThreshold = 30;
+        //    int lightThreshold = 200;
+
+        //    List<MyColor> cols = new List<MyColor>();
+        //    foreach (var pixel in bmp.Pixels)
+        //    {
+        //        var bytes = BitConverter.GetBytes(pixel);
+
+        //        var a = bytes[3];
+        //        if (a == 0)
+        //        {
+        //            continue; //skips transparency
+        //        }
+
+        //        var r = bytes[2];
+        //        var g = bytes[1];
+        //        var b = bytes[0];
+
+        //        if (excludeDarkColors) //skips too dark colors
+        //        {
+        //            if (r < darkThreshold && g < darkThreshold && b < darkThreshold)
+        //            {
+        //                continue;
+        //            }
+        //        }
+
+        //        if (excludeBrightColors) //skips too bright colors
+        //        {
+        //            if (r > lightThreshold && g > lightThreshold && b > lightThreshold)
+        //            {
+        //                continue;
+        //            }
+        //        }
+
+        //        Color c = Color.FromArgb(a, r, g, b);
+        //        var myColor = new MyColor(c);
+        //        if (!cols.Contains(myColor))
+        //        {
+        //            cols.Add(myColor);
+        //        }
+        //        else
+        //        {
+        //            cols.First(col => col.Equals(myColor)).Count++;
+        //        }
+        //    }
+        //    return cols;
+        //}
 
         //public static List<MyColor> ReduceColors(List<MyColor> imageColors, int maxColors, out List<MyColor> discardedColors)
         //{
@@ -214,7 +260,7 @@ namespace EasyPaint.Helpers
         }
 
 
-        internal static WriteableBitmap CheckColors(WriteableBitmap imageBase, WriteableBitmap imageLineart, List<Color> palette, out int coverage)
+        internal static WriteableBitmap CheckPaletteCoverage(WriteableBitmap imageBase, WriteableBitmap imageLineart, List<Color> palette, out int coverage)
         {
             WriteableBitmap resultImage = new WriteableBitmap(imageBase.PixelWidth, imageBase.PixelHeight);
             int x, y;
@@ -252,7 +298,8 @@ namespace EasyPaint.Helpers
                     continue;
                 }
                 
-                if (palette.FirstOrDefault(c1 => c1.Equals(c)) == default(Color)) 
+                //if (palette.FirstOrDefault(c1 => c1.Equals(c)) == default(Color)) 
+                if (!palette.Contains(c)) 
                 {
                     //il colore non è presente nella palette
                     resultImage.SetPixel(x, y, Colors.Red);
@@ -271,7 +318,7 @@ namespace EasyPaint.Helpers
         }
 
 
-        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore, out int transparentPixelsCount, out WriteableBitmap resultImage)
+        public static int GetNumberOfDifferentPixels(WriteableBitmap bmp1, WriteableBitmap bmp2, List<Color> colorsToIgnore, out int transparentPixelsCount, out WriteableBitmap resultImage)
         {
             int countDiff = 0;
             //  int countEq = 0;
@@ -302,7 +349,7 @@ namespace EasyPaint.Helpers
                     byte g = (byte)bytesbmp2[1];
                     byte b = (byte)bytesbmp2[0];
                     Color c = Color.FromArgb(a, r, g, b);
-                    if (colorsToIgnore.FirstOrDefault(c1 => c1.MainColor.Equals(c)) == null) //il colore non è fra quelli da ignorare ed è diverso dall'immagine originale
+                    if (!colorsToIgnore.Contains(c)) //il colore non è fra quelli da ignorare ed è diverso dall'immagine originale
                     {
                         countDiff++;
                         resultImage.SetPixel(x, y, Colors.Red);
@@ -320,7 +367,7 @@ namespace EasyPaint.Helpers
             return countDiff;
         }
 
-        internal static int GetAccuracyPercentage(WriteableBitmap bmp1, WriteableBitmap bmp2, List<MyColor> colorsToIgnore, out WriteableBitmap resImg)
+        internal static int GetAccuracyPercentage(WriteableBitmap bmp1, WriteableBitmap bmp2, List<Color> colorsToIgnore, out WriteableBitmap resImg)
         {
 
             int transparentPixelsCount = 0;

@@ -526,9 +526,13 @@ namespace EasyPaint.View
 
             WriteableBitmap resImg = null;
 
+            var colorsToIgnore = ImagesHelper.GetColors(_reducedColorsPicture, false, false);
+            colorsToIgnore = colorsToIgnore.Except(GetUserSelectedItem().PaletteColors).ToList();
+            colorsToIgnore = colorsToIgnore.Except(ImagesHelper.GetColors(_reducedColorsLineArtPicture, false, false)).ToList();
+           // var colorsToIgnore = new List<Color>();
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
-                                                                        new List<MyColor>(),
+                                                                        colorsToIgnore,
                                                                         out resImg);
             ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue, resImg);
         }
