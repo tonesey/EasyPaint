@@ -24,7 +24,6 @@ namespace EasyPaint.ViewModel
     public class ItemViewModel : ImageAndTextItem
     {
         private Item _item;
-        private Group _belongingGroup;
 
         protected string _resourcePath;
         public string ReducedColorsResourcePath
@@ -39,6 +38,23 @@ namespace EasyPaint.ViewModel
                 {
                     this._resourcePath = value;
                     this.OnPropertyChanged("ReducedColorsResourcePath");
+                }
+            }
+        }
+
+        protected string _reducedColorlineArtResourcePath;
+        public string ReducedColorLineArtResourcePath
+        {
+            get
+            {
+                return _reducedColorlineArtResourcePath;
+            }
+            set
+            {
+                if (_reducedColorlineArtResourcePath != value)
+                {
+                    _reducedColorlineArtResourcePath = value;
+                    this.OnPropertyChanged("ReducedColorLineArtResourcePath");
                 }
             }
         }
@@ -70,37 +86,19 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        protected string _reducedColorlineArtResourcePath;
-        public string ReducedColorLineArtResourcePath
-        {
-            get
-            {
-                return _reducedColorlineArtResourcePath;
-            }
-            set
-            {
-                if (_reducedColorlineArtResourcePath != value)
-                {
-                    _reducedColorlineArtResourcePath = value;
-                    this.OnPropertyChanged("ReducedColorLineArtResourcePath");
-                }
-            }
-        }
-
-        public ItemViewModel(Group g, Item item)
+        public ItemViewModel(Item item)
         {
             _item = item;
-            _belongingGroup = g;
             _key = item.Key;
 
             //full colors
-            ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
+            ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
             //reduced colors
-            ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename });
-            ReducedColorLineArtResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, _belongingGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
+            ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename });
+            ReducedColorLineArtResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
 
 #if COLORSCHECK
-            if (g.Id == "0")
+            if (_item.ParentGroup.Id == "0")
             {
                 WriteableBitmap bmpBase = BitmapFactory.New(400, 400).FromResource(ReducedColorsResourcePath);
                 WriteableBitmap bmpLineart = BitmapFactory.New(400, 400).FromResource(ReducedColorLineArtResourcePath);
@@ -132,8 +130,7 @@ namespace EasyPaint.ViewModel
 
         public async void GetImageSourceFromIsoStore(string filename)
         {
-            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            Windows.Storage.StorageFile storageFile = await localFolder.GetFileAsync(filename);
+            Windows.Storage.StorageFile storageFile = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(filename);
             ImageSource = new Uri(GenericUtility.GetIsolatedStorageFullImagePath(storageFile));
         }
 

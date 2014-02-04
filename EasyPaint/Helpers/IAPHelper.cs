@@ -33,6 +33,36 @@ namespace EasyPaint.Helpers
                 string pID = li.ProductListings[key].ProductId;
                 string receipt = await CurrentApp.RequestProductPurchaseAsync(pID, false);
             }
+
+
+            //if (!CurrentApp.LicenseInformation.ProductLicenses[key].IsActive)
+            //{
+            //    ListingInformation li = await CurrentApp.LoadListingInformationAsync();
+            //    string pID = li.ProductListings[key].ProductId;
+            //    string receipt = await CurrentApp.RequestProductPurchaseAsync(pID, false);
+            //}
+
+            //#if DEBUG
+            //            MockIAPLib.ListingInformation listings = await MockIAPLib.CurrentApp.LoadListingInformationByProductIdsAsync(
+            //                                    new string[] { key });
+            //#else
+            //            ListingInformation listings = await CurrentApp.LoadListingInformationByProductIdsAsync(
+            //                                    new string[] { "testitem" });
+            //#endif
+            //            string receipt = null;
+            //            try
+            //            {
+            //#if DEBUG
+            //                receipt = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(listings.ProductListings.ToList()[0].Value.ProductId, false);
+            //#else
+            //            receipt = await CurrentApp.RequestProductPurchaseAsync(listings.ProductListings.ToList()[0].Value.ProductId, false);
+            //#endif
+            //            }
+            //            catch (Exception)
+            //            {
+            //                //item non acquistato
+            //                return;
+            //            }
         }
     }
 }

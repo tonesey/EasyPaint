@@ -5,10 +5,12 @@ using EasyPaint.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
 using System;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using Telerik.Windows.Controls;
+using Windows.ApplicationModel.Store;
 
 namespace EasyPaint.View
 {
@@ -80,13 +82,16 @@ namespace EasyPaint.View
             var newEl = _vm.Groups.ElementAt(e.Index);
             if (newEl != null)
             {
-                e.Item = new PictureLoopingItem() { Picture = (newEl as GroupViewModel).ImageSource, 
-                                                    IsLocked = (newEl as GroupViewModel).IsLocked,
-                                                    Text = LocalizedResources.ResourceManager.GetString((newEl as GroupViewModel).Key),
-                                                    DataContext = (newEl as GroupViewModel) };
+                e.Item = new PictureLoopingItem()
+                {
+                    Picture = (newEl as GroupViewModel).ImageSource,
+                    IsLocked = (newEl as GroupViewModel).IsLocked,
+                    Text = LocalizedResources.ResourceManager.GetString((newEl as GroupViewModel).Key),
+                    DataContext = (newEl as GroupViewModel)
+                };
             }
         }
-        
+
         //private void RegisterMessages()
         //{
         //    //Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
@@ -112,9 +117,13 @@ namespace EasyPaint.View
             //}
         }
 
-        private void Grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private async void Grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             _vm.SelectedGroup = (((sender as Grid).DataContext as PictureLoopingItem).DataContext as GroupViewModel);
+
+            string key = "testitem";
+
+        
 
             if (!_vm.SelectedGroup.IsLocked)
             {
@@ -122,6 +131,27 @@ namespace EasyPaint.View
                 _vm.GroupSelectedCommand.Execute(null);
             }
         }
+
+
+        //        private void CompleteFulfillMent()
+        //        {
+        //#if DEBUG
+        //            var productLicenses = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses;
+        //            MockIAPLib.ProductLicense tokenLicense = productLicenses["testitem"];
+        //#else
+        //            var productLicenses = CurrentApp.LicenseInformation.ProductLicenses;
+        //            ProductLicense tokenLicense = productLicenses["testitem];
+        //#endif
+        //            if (tokenLicense.IsConsumable && tokenLicense.IsActive)
+        //            {
+        //                tokenCount += 1;
+        //#if DEBUG
+        //                MockIAPLib.CurrentApp.ReportProductFulfillment(tokenLicense.ProductId);
+        //#else
+        //                CurrentApp.ReportProductFulfillment(tokenLicense.ProductId);
+        //#endif
+        //            }
+        //        }
 
     }
 }

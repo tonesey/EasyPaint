@@ -262,6 +262,7 @@ namespace EasyPaint.Helpers
                     //il colore è presente nella palette
                     matchingPixels++; 
                     resultImage.SetPixel(x, y, Colors.Green);
+                    //resultImage.SetPixel(x, y, c);
                 }
             }
 

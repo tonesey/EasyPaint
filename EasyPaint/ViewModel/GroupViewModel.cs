@@ -92,7 +92,8 @@ namespace EasyPaint.ViewModel
                 Items = new ObservableCollection<ItemViewModel>();
                 foreach (var item in gr.Items)
                 {
-                    ItemViewModel itemVm = new ItemViewModel(gr, item);
+                    //ItemViewModel itemVm = new ItemViewModel(gr, item);
+                    ItemViewModel itemVm = new ItemViewModel(item);
                     Items.Add(itemVm);
                 }
             }

@@ -15,5 +15,9 @@ namespace EasyPaint.Helpers
         public const string View_ItemSeletor = "ItemSelectorPage";
         public const string View_Credits = "CreditsPage";
         #endregion
+
+
+        public const string IapCompleteGameItemName = "testitem";
+
     }
 }

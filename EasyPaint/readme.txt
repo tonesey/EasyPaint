@@ -2,19 +2,18 @@
 
 TODO
 
-- homepage
-	- gioca
-	- gallery (animali già colorati) - LOW
-
 - pausa/sospensione gioco
 	- tombstoning
 - rate my app
-
 - splashscreen
 - (low) MVVMLight pagina paint 
 - (low) calcolo punteggio che tiene conto del tempo risparmiato
 
 DONE
+
+- homepage
+	- gioca
+	- gallery (animali già colorati) 
 - aiuto + feedback + rate
 - credits
 - creare UserControl MessageBox generico - ok

@@ -22,6 +22,8 @@ using System.IO;
 using EasyPaint.Settings;
 using Microsoft.Xna.Framework.Audio;
 using Wp8Shared.UserControls;
+using EasyPaint.Helpers;
+using System.Threading.Tasks;
 
 namespace EasyPaint
 {
@@ -120,6 +122,46 @@ namespace EasyPaint
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+            SetupMockIAP();
+        }
+
+        private void SetupMockIAP()
+        {
+#if DEBUG
+            MockIAPLib.MockIAP.Init();
+
+            MockIAPLib.MockIAP.RunInMockMode(true);
+
+            MockIAPLib.MockIAP.ClearCache();
+
+            MockIAPLib.MockIAP.SetListingInformation(1, "en-us", "A description", "1", "TestApp");
+
+            // Add some more items manually.
+            MockIAPLib.ProductListing p = new MockIAPLib.ProductListing
+            {
+                Name = "testitem",
+                ProductId = "testitem",
+                ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+                Keywords = new string[] { "image" },
+                Description = "An image",
+                FormattedPrice = "1.99",
+                Tag = string.Empty
+            };
+            MockIAPLib.MockIAP.AddProductListing("testitem", p);
+#endif
+
+            //ProductListing p = new ProductListing
+            //{
+            //    Name = "img.2",
+            //    ImageUri = new Uri("/Res/Image/2.jpg", UriKind.Relative),
+            //    ProductId = "img.2",
+            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+            //    Keywords = new string[] { "image" },
+            //    Description = "An image",
+            //    FormattedPrice = "1.0",
+            //    Tag = string.Empty
+            //};
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -129,12 +171,36 @@ namespace EasyPaint
             InitApp();
         }
 
-        private void InitApp()
+        private async void InitApp()
         {
             AppSettings.LoadSettings();
             InitAudio();
             var vm = ViewModelLocator.GroupSelectorViewModelStatic;
-         
+            await CheckLicense();
+        }
+
+        private static async Task CheckLicense()
+        {
+            bool isProductActive = false;
+#if DEBUG_
+            isProductActive = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
+#else
+            isProductActive = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
+#endif
+            if (!isProductActive)
+            {
+                AppSettings.ProductLicensed = false;
+#if DEBUG_
+                MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
+#else
+                Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
+#endif
+                AppSettings.IapCompleteGameProductId = li.ProductListings[Constants.IapCompleteGameItemName].ProductId;
+            }
+            else
+            {
+                AppSettings.ProductLicensed = true;
+            }
         }
 
         private void InitAudio()

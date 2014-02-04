@@ -39,5 +39,10 @@ namespace EasyPaint.Settings
             StorageHelper.StoreSetting(SoundOnKey, SoundOnValue, true);
         }
 
+        #region IAP
+        public static string IapCompleteGameProductId { get; set; }
+
+        public static bool ProductLicensed { get; set; }
+        #endregion
     }
 }

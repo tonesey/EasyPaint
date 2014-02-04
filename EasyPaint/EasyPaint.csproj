@@ -559,6 +559,10 @@
       <Project>{B83FB793-E618-4077-B301-10894D036A98}</Project>
       <Name>DrawingBoard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MockIAPLib\MockIAPLib.csproj">
+      <Project>{015E3DFE-EB56-429F-95EF-BAB5D41B23BE}</Project>
+      <Name>MockIAPLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\lres\groups\5\reduced_10\" />

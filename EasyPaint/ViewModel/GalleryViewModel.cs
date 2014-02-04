@@ -65,12 +65,17 @@ namespace EasyPaint.ViewModel
 
         private void InitGalleryItems(List<Group> groups)
         {
-            foreach (var group in groups)
+            //foreach (var group in groups)
+            //{
+            //    foreach (var item in group.Items.Where(it => !it.IsLocked))
+            //    {
+            //        //Items.Add(new ItemViewModel(group, item));
+            //    }
+            //}
+
+            foreach (var item in groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
             {
-                foreach (var item in group.Items.Where(it => !it.IsLocked))
-                {
-                    Items.Add(new ItemViewModel(group, item));
-                }
+                Items.Add(new ItemViewModel(item));
             }
         }
 
