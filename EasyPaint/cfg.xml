@@ -8,13 +8,13 @@
     <items SelectorGridRow="1" IsSelectorCentered="True">
       <!--<item imgname="cane colore.png" key="item_cane" latin="Canis lupus familiaris" colors="#CD9967,#B18051"/>-->
       <!--<item imgname="gatto colore.png" key="item_gatto" latin="Felis catus" colors="#FD9965,#E08450,#F8B990"/>-->
-      <item imgname="cervo colore.png" key="item_cervo" latin="Cervus elaphus" colors="#CD9967,#BA8754,#FDD0A2,#FEFECE"/>
       <item imgname="lepre colore.png" key="item_lepre" latin="Lepus timidus" colors="#CDFCFD,#BAECFB"/>
       <item imgname="riccio colore.png" key="item_riccio" latin="Erinaceus europaeus" colors="#686868,#F8C8C0,#424242"/>
-      <item imgname="volpe colore.png" key="item_volpe" latin="Vulpes vulpes" colors="#FF6600,#C94A1C,#F8B994,#F4CFBF"/>
       <item imgname="marmotta colore.png" key="item_marmotta" latin="Marmota marmota" colors="#CD9967,#AE7B4B,D8B390"/>
+      <item imgname="volpe colore.png" key="item_volpe" latin="Vulpes vulpes" colors="#FF6600,#C94A1C,#F8B994,#F4CFBF"/>
       <item imgname="renna colore.png" key="item_renna" latin="Rangifer tarandus" colors="#996533,#A87E55,#7D4B27,#FCFACB"/>
       <item imgname="scoiattolo colore.png" key="item_scoiattolo" latin="Sciurus vulgaris" colors="#FE9900,#EA8519,#EA8616,#D1794A"/>
+      <item imgname="cervo colore.png" key="item_cervo" latin="Cervus elaphus" colors="#CD9967,#BA8754,#FDD0A2,#FEFECE"/>
     </items>
   </group>
 
@@ -24,13 +24,13 @@
     <!--<items SelectorGridRow="0" IsSelectorCentered="False">-->
     <items SelectorGridRow="1" IsSelectorCentered="True">
       <!--<item  imgname="rinoceronte colore.png" key="item_rinoceronte" latin="Diceros bicornis" colors="#C7B29A,#736357" tag="marta"/>-->
+      <item imgname="ippopotamo colore.png" key="item_ippopotamo" latin="Hippopotamus amphibius" colors="#999999,#808080"/>
       <item imgname="rinoceronte colore.png" key="item_rinoceronte" latin="Diceros bicornis" colors="#C7B29A,#736357" tag="fotolia" />
       <item imgname="gazzella colore.png" key="item_gazzella" latin="Gazella gazella" colors="#C69C6D,#5E3815,#FEF467,#979797"/>
       <item imgname="suricati colore.png" key="item_suricati" latin="Suricata suricatta" colors="#CE8430,#E9A85F,#FFA846"/>
       <item imgname="leone colore.png" key="item_leone" latin="Panthera leo" colors="#FCC831,#663433,#E89A1B"/>
       <item imgname="elefante colore.png" key="item_elefante" latin="Loxodonta africana" colors="#999999,#898989,#606060"/>
       <item imgname="giraffa colore.png" key="item_giraffa" latin="Giraffa camelopardalis" colors="#FECC33,#E29B1A,#653432"/>
-      <item imgname="ippopotamo colore.png" key="item_ippopotamo" latin="Hippopotamus amphibius" colors="#999999,#808080"/>
     </items>
   </group>
 
@@ -39,21 +39,21 @@
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="False">
       <item imgname="orso colore.png" key="item_orso" latin="Ursus arctos horribilis" colors="#996533,#885634"/>
-      <item imgname="bisonte colore.png" key="item_bisonte" latin="Bison bison " colors="#986533,#734322,#623103,#B37F4D"/>
       <item imgname="bradipo colore.png" key="item_bradipo" latin="Bradypus variegatus" colors="#666666,#545454"/>
       <item imgname="avvoltoio colore.png" key="item_avvoltoio" latin="Cathartes aura" colors="#646464,#959595,#FBC3C5,#FDCB99"/>
       <item imgname="alce colore.png" key="item_alce" latin="Alces alces" colors="#996501,#AA8335,#FCFCCA,#804E04"/>
       <item imgname="formichiere colore.png" key="item_formichiere" latin="Myrmecophaga tridactyla" colors="#663201,#7C4902,#986502,#511E01"/>
       <item imgname="armadillo colore.png" key="item_armadillo" latin="Dasypus kappleri" colors="#663201,#552403,#330101,#976766"/>
+      <item imgname="bisonte colore.png" key="item_bisonte" latin="Bison bison " colors="#986533,#734322,#623103,#B37F4D"/>
     </items>
   </group>
 
   <group id="3" key="group_Oceania" imgname="3.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
+      <item imgname="tartaruga colore.png" key="item_tartaruga" latin="Natator depressus" colors="#329602,#66CB32"/>
       <item imgname="clamidosauro colore.png" key="item_clamidosauro" latin="Chlamydoselachus anguineus" colors="#15AD50,#8CC449,#E9629E"/>
       <item imgname="canguro colore.png" key="item_canguro" latin="Macropus fuliginosus" colors="#9E4E18,#45230C,#B6DE01" />
-      <item imgname="tartaruga colore.png" key="item_tartaruga" latin="Natator depressus" colors="#329602,#66CB32"/>
       <item imgname="coccodrillo colore.png" key="item_coccodrillo" latin="Crocodylus porosus" colors="#37332A,#554F45,#FDF699"/>
       <item imgname="diavolo colore.png" key="item_diavolo" latin="Sarcophilus harrisii" colors="#22262E,#EFB5B6,#A3CE3C"/>
       <item imgname="koala colore.png" key="item_koala" latin="Phascolarctos cinereus" colors="#A2A2A2,#825D42,#EFEFEF,#65B363"/>
@@ -64,9 +64,9 @@
   <group id="4" key="group_Asia" imgname="4.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
-      <item imgname="Cobra colore.png" key="item_Cobra" latin="Naja naja"  colors="#EBC577,#C2A977,#F4989E"/>
-      <item imgname="Tigre colore.png" key="item_Tigre" latin="Panthera tigris tigris" colors="#F29531,#E7ECF9"/>
       <item imgname="Yak colore.png" key="item_Yak" latin="Bos grunniens" colors="#1E2848,#998776"/>
+      <item imgname="Tigre colore.png" key="item_Tigre" latin="Panthera tigris tigris" colors="#F29531,#E7ECF9"/>
+      <item imgname="Cobra colore.png" key="item_Cobra" latin="Naja naja"  colors="#EBC577,#C2A977,#F4989E"/>
       <item imgname="Elefante colore.png" key="item_elefante_indiano" latin="Bos grunniens" colors="#A7A7A7,#F5989D,#7CC576"/>
       <item imgname="scimmietta colore.png" key="item_scimmietta" latin="Macaca silenus" colors="#716256,#EF662F,#FEF474"/>
       <item imgname="cammello colore.png" key="item_cammello" latin="Camelus bactrianus" colors="#FECC32,#EDA923,#FE9B33"/>
@@ -77,12 +77,12 @@
   <group id="5" key="group_Antarctica" imgname="5.png">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
+      <item imgname="foca colore.png" key="item_foca" latin="Leptonychotes weddellii" colors="#333333,#222222"/>
+      <item imgname="orca colore.png" key="item_orca" latin="Orcinus orca" colors="#000000,#FDFDFD"/>
       <item imgname="orsobianco colore.png" key="item_orsobianco" latin="Ursus maritimus" colors="#CDFEFE,#E8FDFE,#A6E5FE"/>
       <item imgname="pinguino colore.png" key="item_pinguino" latin="Aptenodytes forsteri " colors="#F99202,#323232,#FFFFFF"/>
-      <item imgname="foca colore.png" key="item_foca" latin="Leptonychotes weddellii" colors="#333333,#222222"/>
       <item imgname="elefante marino colore.png" key="item_elefantemarino" latin="Mirounga leonina" colors="#663201,#552302,#82572C"/>
       <item imgname="albatro colore.png" key="item_albatro" latin="Diomedea epomophora" colors="#FEFEFE,#970304,#333333"/>
-      <item imgname="orca colore.png" key="item_orca" latin="Orcinus orca" colors="#000000,#FDFDFD"/>
       <!--<item imgname="balena colore.png" key="item_balena" latin="Eubalaena australis " colors="#CE8430"/>-->
     </items>
   </group>

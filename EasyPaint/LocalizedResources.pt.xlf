@@ -166,11 +166,11 @@ Check-out seus magnific apps:
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>
-          <target state="new">indian elephant</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">elefante indiano</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cammello" xml:space="preserve">
           <source>camel</source>
-          <target state="new">camel</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">camelo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
           <source>hedgehog</source>

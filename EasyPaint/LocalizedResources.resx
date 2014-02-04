@@ -355,4 +355,7 @@ Be accurate, be precise but... be FAST!</value>
   <data name="item_riccio" xml:space="preserve">
     <value>hedgehog</value>
   </data>
+  <data name="item_tartaruga" xml:space="preserve">
+    <value>flatback sea turtle</value>
+  </data>
 </root>

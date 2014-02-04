@@ -638,6 +638,15 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to flatback sea turtle.
+        /// </summary>
+        public static string item_tartaruga {
+            get {
+                return ResourceManager.GetString("item_tartaruga", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to tiger.
         /// </summary>
         public static string item_tiger {
