@@ -2,15 +2,17 @@
 
 TODO
 
-- pausa/sospensione gioco (low)
+- controllare algoritmo colori
+- gestire IAP
 - testare tombstoning
-- rate my app
 - splashscreen
+- (low) pausa/sospensione gioco 
 - (low) MVVMLight pagina paint 
 - (low) calcolo punteggio che tiene conto del tempo risparmiato
 
 DONE
 
+- rate my app
 - homepage
 	- gioca
 	- gallery (animali già colorati) 

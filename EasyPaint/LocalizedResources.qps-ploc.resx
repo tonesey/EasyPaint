@@ -343,4 +343,43 @@
   <data name="item_cammello" xml:space="preserve">
     <value>[83743][!!_čãмêļ_!!]</value>
   </data>
+  <data name="CreditsPage_MainText" xml:space="preserve">
+    <value>[09BE9][!!_Áρρ éиġîηèêŕîйğ: Ðàνíðè Τêиťôŕì
+Ĝŕàρђîĉŝ áиđ čĺįρářţ: νįŕîήáƒłòŕâ - ₣òτõľíà.ĉõm, Мâŕţã&amp;Мâŕтîηâ
+ßãćќğѓòûйď мùšįć / şòúηð ƒх: Ŕáрћâęľ Řµíš
+
+VęѓУ śρęċįáĺ тħàηќş ţó: Įŝâ, Ęļę, Âļъì, Ļµčá ƒóŕ мôŗàł ãиđ τêĉђηįċãļ šûρρôѓτ!
+
+Ŝþęċíâľ τћàикş τô Μãŕĉò ÚБèřтí ƒõŕ îήşþìŕâтįõή õƒ тĥîš ğãmę. 
+Ĉĥéćĸòúτ ћîś àẃèśòмé âþρŝ áť ẅŵẁ.ìήνéиķťíôή.îт_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="item_tartaruga" xml:space="preserve">
+    <value>[D3CAA][!!_ƒłáţБãćк šéá ťúŕťļè_!!!!!!]</value>
+  </data>
+  <data name="ExceptionMessageTitle" xml:space="preserve">
+    <value>[9CED7][!!_ΡѓóБłęм řęρòѓτ_!!!!]</value>
+  </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>[5A9F7][!!_Â þŗõьļém õčċùѓřèð тħè ľãśť τîмè Уôù ŗâи тнįś ãþþ :(
+Ẁõµļď ŷõú ļįķê τó ŝéηđ ãи êмàîļ ţõ ŗéрóŕť îť?_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="RatingYes" xml:space="preserve">
+    <value>[496A7][!!_řãţê 5 ŝţáŕŝ_!!]</value>
+  </data>
+  <data name="RatingTitle" xml:space="preserve">
+    <value>[A9E12][!!_Ęήјõýíйģ {0}?_!!]</value>
+  </data>
+  <data name="RatingNo" xml:space="preserve">
+    <value>[F93DA][!!_ήò ťћãηќś_!!]</value>
+  </data>
+  <data name="RatingMessage2" xml:space="preserve">
+    <value>[5A268][!!_Ỳôû łóôк ťó ьê ĝèτťîηġ á łõτ ôƒ ûšé õùτ òƒ ôûѓ ãрρ!
+
+ŴћУ йòτ ĝįνê ùŝ ã 5 šťãŗ řàťîήġ ťó ŝћóẃ ўóûѓ àρþŗęćìàтįõи?_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
+  <data name="RatingMessage1" xml:space="preserve">
+    <value>[8196E][!!_Ŵę'đ ĺõνé ýóµ ťó řáтé òúѓ áрρ 5 śтãřŝ :)
+
+Šђóẅîиğ ûş şõmê ļõνé óη ťђê ŝťòŗê ħêľрš µŝ ťõ ćóηţîиùè ťò ẁóŗќ ôή ţĥê áρρ áηð mâкé ťħìήĝŝ éνêη ъéţťéŗ!_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
+  </data>
 </root>

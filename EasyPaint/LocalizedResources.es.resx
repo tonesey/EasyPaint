@@ -343,4 +343,43 @@ Ser exactos, precisos pero ser rápido!</value>
   <data name="item_cammello" xml:space="preserve">
     <value>camello</value>
   </data>
+  <data name="CreditsPage_MainText" xml:space="preserve">
+    <value>Ingeniería de la aplicación: Davide Tentori
+Imágenes Prediseñadas y gráficos: virinaflora - Fotolia.com, Marta&amp;Martina
+La música de fondo / sound fx: Raphael Ruis
+
+Un agradecimiento muy especial a: Isa, Ele, Albi, Luca para apoyo moral y técnico.
+
+Agradecimiento especial a Marco Uberti por inspiración de este juego. 
+Retirada sus impresionantes aplicaciones en www.invenktion.it</value>
+  </data>
+  <data name="item_tartaruga" xml:space="preserve">
+    <value>flatback tortuga</value>
+  </data>
+  <data name="ExceptionMessageTitle" xml:space="preserve">
+    <value>Informe de problemas</value>
+  </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>La última vez que corrió esta aplicación :(se produjo un problema
+¿Quieres enviar un correo electrónico a denunciarlo?</value>
+  </data>
+  <data name="RatingYes" xml:space="preserve">
+    <value>tarifa 5 estrellas</value>
+  </data>
+  <data name="RatingTitle" xml:space="preserve">
+    <value>Disfrutando de {0}.</value>
+  </data>
+  <data name="RatingNo" xml:space="preserve">
+    <value>No, gracias</value>
+  </data>
+  <data name="RatingMessage2" xml:space="preserve">
+    <value>Te ves para tener un montón de uso de nuestra aplicación.
+
+¿Por qué no nos dan una calificación de 5 estrellas para mostrar su agradecimiento.</value>
+  </data>
+  <data name="RatingMessage1" xml:space="preserve">
+    <value>Nos encantaría a nuestras estrellas app 5 :)
+
+Nos muestra un poco de amor en la tienda nos ayuda a seguir trabajando en la aplicación y hacer las cosas aún mejor!</value>
+  </data>
 </root>

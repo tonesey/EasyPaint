@@ -6,7 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:ctrl="clr-namespace:EasyPaint.Controls"
     xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP8" 
     mc:Ignorable="d" d:DesignWidth="768" d:DesignHeight="480"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -45,7 +46,8 @@
 
         <Image x:Name="ImageTitle" Margin="50,10,50,0" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="0" 
                Source="/EasyPaint;component/Assets/lres/bkg/title1.png" 
-               Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+               Stretch="Fill" RenderTransformOrigin="0.5,0.5"
+               Tap="ImageTitle_Tap">
         </Image>
 
         <Image x:Name="ImageExplorerSubject" Margin="110,40,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" 
@@ -133,6 +135,8 @@
             </i:Interaction.Triggers>
         </Image>
 
+        <!-- Feedback overlay -->
+        <ctrl:FeedbackOverlay Grid.RowSpan="4" Grid.ColumnSpan="3" EnableAnimation="True" />
     </Grid>
 
 </phone:PhoneApplicationPage>

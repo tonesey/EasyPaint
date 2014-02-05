@@ -157,18 +157,20 @@ namespace MockIAPLib
 
             string receipt;
 
-            if (!MockIAP.MockMode)
-            {
-                receipt = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(ProductId, includeReceipt);
 
-                // Now we refresh the license information post purchase.
-                LicenseInformation = new LicenseInformation(Windows.ApplicationModel.Store.CurrentApp.LicenseInformation);
-            }
-            else
-            {
-                receipt = MockIAP.SimulatePurchase(ProductId, includeReceipt);
-            }
+           
+                if (!MockIAP.MockMode)
+                {
+                    receipt = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(ProductId, includeReceipt);
 
+                    // Now we refresh the license information post purchase.
+                    LicenseInformation = new LicenseInformation(Windows.ApplicationModel.Store.CurrentApp.LicenseInformation);
+                }
+                else
+                {
+                    receipt = MockIAP.SimulatePurchase(ProductId, includeReceipt);
+                }
+         
             return receipt;
         }
 

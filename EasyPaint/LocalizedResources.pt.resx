@@ -343,4 +343,43 @@ Ser preciso, ser preciso, mas... ser rápido!</value>
   <data name="item_cammello" xml:space="preserve">
     <value>camelo</value>
   </data>
+  <data name="CreditsPage_MainText" xml:space="preserve">
+    <value>Engenharia de App: Davide Tentori
+Gráficos e clipart: virinaflora - Fotolia.com, Marta&amp;, Martina
+Música de fundo / som fx: Raphael Ruis
+
+Agradecimentos muito especiais para: Isa, Ele, Albi, Luca para apoio moral e técnico!
+
+Marco Uberti um agradecimento especial para a inspiração deste jogo. 
+Check-out seus apps impressionantes no www.invenktion.it</value>
+  </data>
+  <data name="item_tartaruga" xml:space="preserve">
+    <value>flatback tartaruga</value>
+  </data>
+  <data name="ExceptionMessageTitle" xml:space="preserve">
+    <value>Relatório de problema</value>
+  </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>Um problema ocorreu da última vez que você executou este app :(
+Gostaria de enviar um e-mail para denunciá-lo?</value>
+  </data>
+  <data name="RatingYes" xml:space="preserve">
+    <value>classificar 5 estrelas</value>
+  </data>
+  <data name="RatingTitle" xml:space="preserve">
+    <value>Desfrutando de {0}?</value>
+  </data>
+  <data name="RatingNo" xml:space="preserve">
+    <value>Não, obrigado</value>
+  </data>
+  <data name="RatingMessage2" xml:space="preserve">
+    <value>Você olha para estar recebendo um monte de uso fora nosso app!
+
+Por que não dar-em uma classificação de 5 estrelas para mostrar a sua gratidão?</value>
+  </data>
+  <data name="RatingMessage1" xml:space="preserve">
+    <value>Gostaríamos que a taxa de nossas estrelas app 5 :)
+
+Mostrando-em um pouco de amor na loja ajuda-na continuar a trabalhar sobre o app e tornar as coisas ainda melhor!</value>
+  </data>
 </root>

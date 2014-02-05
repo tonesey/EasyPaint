@@ -231,6 +231,15 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CONGRATULATIONS! All animals of continent {0} completed! Now let&apos;s discover {1}!.
+        /// </summary>
+        public static string GroupCompleted {
+            get {
+                return ResourceManager.GetString("GroupCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact us!.
         /// </summary>
         public static string HelpPage_ButtonContactUsText {
@@ -750,6 +759,15 @@ namespace EasyPaint {
         public static string MsgBoxTitleWarning {
             get {
                 return ResourceManager.GetString("MsgBoxTitleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry but continent &apos;{0}&apos; is available only into full licensed app, do you want to buy?.
+        /// </summary>
+        public static string NeedPaidAppQuestion {
+            get {
+                return ResourceManager.GetString("NeedPaidAppQuestion", resourceCulture);
             }
         }
         

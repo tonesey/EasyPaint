@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="es" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.4" build-num="0">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.2010.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="Resx">
@@ -115,14 +115,14 @@ Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
 
 Special thanks to Marco Uberti for inspiration of this game. 
 Checkout his awesome apps at www.invenktion.it</source>
-          <target state="new" state-qualifier="mt-suggestion">App engineering: Davide Tentori
-Graphics and clipart: virinaflora - Fotolia.com, Marta%%amp;Martina
-Background music / sound fx: Raphael Ruis
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ingeniería de la aplicación: Davide Tentori
+Imágenes Prediseñadas y gráficos: virinaflora - Fotolia.com, Marta%%amp;Martina
+La música de fondo / sound fx: Raphael Ruis
 
-Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
+Un agradecimiento muy especial a: Isa, Ele, Albi, Luca para apoyo moral y técnico.
 
-Special thanks to Marco Uberti for inspiration of this game. 
-Checkout his awesome apps at www.invenktion.it</target>
+Agradecimiento especial a Marco Uberti por inspiración de este juego. 
+Retirada sus impresionantes aplicaciones en www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_HelpMainTitle" xml:space="preserve">
           <source>HELP</source>
@@ -174,45 +174,53 @@ Checkout his awesome apps at www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_tartaruga" xml:space="preserve">
           <source>flatback sea turtle</source>
-          <target state="new">flatback sea turtle</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">flatback tortuga</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ExceptionMessageTitle" xml:space="preserve">
           <source>Problem report</source>
-          <target state="new">Problem report</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Informe de problemas</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/NeedPaidAppQuestion" xml:space="preserve">
+          <source>Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</source>
+          <target state="new">Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/GroupCompleted" xml:space="preserve">
+          <source>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</source>
+          <target state="new">CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ExceptionMessage" xml:space="preserve">
           <source>A problem occurred the last time you ran this app :(
 Would you like to send an email to report it?</source>
-          <target state="new">A problem occurred the last time you ran this app :(
-Would you like to send an email to report it?</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">La última vez que corrió esta aplicación :(se produjo un problema
+¿Quieres enviar un correo electrónico a denunciarlo?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingYes" xml:space="preserve">
           <source>rate 5 stars</source>
-          <target state="new">rate 5 stars</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">tarifa 5 estrellas</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingTitle" xml:space="preserve">
           <source>Enjoying {0}?</source>
-          <target state="new">Enjoying {0}?</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Disfrutando de {0}.</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingNo" xml:space="preserve">
           <source>no thanks</source>
-          <target state="new">no thanks</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">No, gracias</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingMessage2" xml:space="preserve">
           <source>You look to be getting a lot of use out of our app!
 
 Why not give us a 5 star rating to show your appreciation?</source>
-          <target state="new">You look to be getting a lot of use out of our app!
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Te ves para tener un montón de uso de nuestra aplicación.
 
-Why not give us a 5 star rating to show your appreciation?</target>
+¿Por qué no nos dan una calificación de 5 estrellas para mostrar su agradecimiento.</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingMessage1" xml:space="preserve">
           <source>We'd love you to rate our app 5 stars :)
 
 Showing us some love on the store helps us to continue to work on the app and make things even better!</source>
-          <target state="new">We'd love you to rate our app 5 stars :)
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Nos encantaría a nuestras estrellas app 5 :)
 
-Showing us some love on the store helps us to continue to work on the app and make things even better!</target>
+Nos muestra un poco de amor en la tienda nos ayuda a seguir trabajando en la aplicación y hacer las cosas aún mejor!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_lepre" xml:space="preserve">
           <source>hare</source>

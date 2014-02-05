@@ -90,6 +90,7 @@ namespace EasyPaint.Settings
                 Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
 #endif
                 AppSettings.IapCompleteGameProductId = li.ProductListings[Constants.IapCompleteGameItemName].ProductId;
+               
             }
             else
             {
@@ -97,7 +98,8 @@ namespace EasyPaint.Settings
             }
         }
 
-        public static async Task SaveSettings(bool rebuildData)
+        //public static async Task SaveSettings(bool rebuildData)
+        public static void SaveSettings(bool rebuildData)
         {
             if (IsDataLoading)
             {
@@ -106,14 +108,11 @@ namespace EasyPaint.Settings
 
             if (rebuildData)
             {
-                UserScoreValue = (await AppDataManager.GetInstanceAsync()).GetUserScoreStrValue();
+                UserScoreValue = AppDataManager.GetInstance().GetUserScoreStrValue();
             }
             StorageHelper.StoreSetting(UserScoreKey, UserScoreValue, true);
             // StorageHelper.StoreSetting(SoundOnKey, SoundOnValue, true);
         }
-
-     
-
 
     }
 }

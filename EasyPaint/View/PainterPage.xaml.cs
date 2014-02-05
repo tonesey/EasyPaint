@@ -30,6 +30,7 @@ using System.Windows.Ink;
 using EasyPaint.Settings;
 using Microsoft.Practices.ServiceLocation;
 using Wp8Shared.UserControls;
+using System.Threading.Tasks;
 
 namespace EasyPaint.View
 {
@@ -430,14 +431,19 @@ namespace EasyPaint.View
 
         private void PageLeftActions()
         {
+            ClosePopup();
+            StopTimer();
+            (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
+        }
+
+        private void ClosePopup()
+        {
             if (_popup != null)
             {
                 _popupChild.Close();
                 _popup.IsOpen = false;
                 _popup = null;
             }
-            StopTimer();
-            (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
         }
 
         private void eraseBtn_Click(object sender, RoutedEventArgs e)
@@ -529,7 +535,7 @@ namespace EasyPaint.View
             var colorsToIgnore = ImagesHelper.GetColors(_reducedColorsPicture, false, false);
             colorsToIgnore = colorsToIgnore.Except(GetUserSelectedItem().PaletteColors).ToList();
             colorsToIgnore = colorsToIgnore.Except(ImagesHelper.GetColors(_reducedColorsLineArtPicture, false, false)).ToList();
-           // var colorsToIgnore = new List<Color>();
+            // var colorsToIgnore = new List<Color>();
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
                                                                         colorsToIgnore,
@@ -568,6 +574,9 @@ namespace EasyPaint.View
 
         void exportPopup_ActionPerformedEvent(GameAction action)
         {
+
+            ClosePopup();
+
             switch (action)
             {
                 case GameAction.Menu:
@@ -581,21 +590,87 @@ namespace EasyPaint.View
                     switch (App.Current.GameMode)
                     {
                         case GameMode.Arcade:
-                            //LIVELLO COMPLETATO
+                            //livello completato
                             var curEl = GetUserSelectedItem();
                             curEl.SetScore(_popupChild.UserPercentage);
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
-                            if (nextEl != null)
+                            if (nextEl.ParentGroupId == curEl.ParentGroupId)
                             {
-                                nextEl.IsLocked = false;
-                                ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
-                                //curEl = nextEl;
-                                InitPage();
+                                if (nextEl != null)
+                                {
+                                    UnlockAndRestartWithItem(nextEl);
+                                }
+                                else
+                                {
+                                    //tutti i livelli completati
+                                    MyMsgbox.Show(this, MsgboxMode.Ok, LocalizedResources.MessageAllLevelsCompleted);
+                                }
                             }
                             else
                             {
-                                MyMsgbox.Show(this, MsgboxMode.Ok, LocalizedResources.MessageAllLevelsCompleted);
+                                //res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+
+                                //switch continente
+                                MyMsgbox.Show(this,
+                                              MsgboxMode.Ok,
+                                              string.Format(LocalizedResources.GroupCompleted, curEl.ParentGroupName, nextEl.ParentGroupName),
+                                    result =>
+                                    {
+                                        //verifica se è presente la licenza, nel caso sia richiesta
+                                        if (AppSettings.ProductLicensed || !nextEl.ParentGroupRequiresLicense)
+                                        {
+                                            UnlockAndRestartWithItem(nextEl);
+                                        }
+                                        else
+                                        {
+                                            MyMsgbox.Show(this, MsgboxMode.YesNo,
+                                                string.Format(LocalizedResources.NeedPaidAppQuestion, nextEl.ParentGroupName),
+                                                async result1 =>
+                                            {
+                                                switch (result1)
+                                                {
+                                                    case MsgboxResponse.Yes:
+
+                                                        string res = null;
+#if DEBUG
+                                                        res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+#else
+                                                        res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+#endif
+                                                        //var task = Task.Run(async () =>
+                                                        //{
+                                                        //    try
+                                                        //    {
+                                                        //    }
+                                                        //    catch
+                                                        //    {
+                                                        //        res = null;
+                                                        //    }
+                                                        //});
+                                                        //task.Wait();
+
+                                                        if (res == null)
+                                                        {
+                                                            //acquisto KO
+                                                            InitPage();
+                                                            return; //se non si vuole acquistare resta sullo stesso item
+                                                        }
+                                                        else
+                                                        {
+                                                            AppSettings.ProductLicensed = true;
+                                                            //si prosegue normalmente nel flusso
+                                                            UnlockAndRestartWithItem(nextEl);
+                                                        }
+                                                        break;
+                                                    case MsgboxResponse.No:
+                                                        InitPage();
+                                                        return; //se non si vuole acquistare resta sullo stesso item
+                                                }
+                                            });
+                                        }
+                                    });
                             }
+
                             break;
                         case GameMode.Gallery:
                             ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Gallery);
@@ -605,6 +680,13 @@ namespace EasyPaint.View
                 default:
                     break;
             }
+        }
+
+        private void UnlockAndRestartWithItem(ItemViewModel nextEl)
+        {
+            nextEl.IsLocked = false;
+            ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
+            InitPage();
         }
 
         void exportPopup_PopupClosedEvent()

@@ -18,7 +18,7 @@
     </TargetFrameworkProfile>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>en;es;it;pt;qps-ploc</SupportedCultures>
+    <SupportedCultures>it%3bqps-ploc</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>EasyPaint_$(Configuration)_$(Platform).xap</XapFilename>

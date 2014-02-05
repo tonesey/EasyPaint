@@ -382,4 +382,10 @@ Would you like to send an email to report it?</value>
   <data name="ExceptionMessageTitle" xml:space="preserve">
     <value>Problem report</value>
   </data>
+  <data name="GroupCompleted" xml:space="preserve">
+    <value>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</value>
+  </data>
+  <data name="NeedPaidAppQuestion" xml:space="preserve">
+    <value>Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</value>
+  </data>
 </root>

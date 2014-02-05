@@ -63,9 +63,9 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-//#if DEBUG
-//                return false;
-//#endif
+                //#if DEBUG
+                //                return false;
+                //#endif
                 return _item.IsLocked;
             }
             set
@@ -83,6 +83,30 @@ namespace EasyPaint.ViewModel
             get
             {
                 return _item.LatinName;
+            }
+        }
+
+        public string ParentGroupId
+        {
+            get
+            {
+                return _item.ParentGroup.Id;
+            }
+        }
+
+        public string ParentGroupName
+        {
+            get
+            {
+                return LocalizedResources.ResourceManager.GetString(_item.ParentGroup.Key);
+            }
+        }
+
+        public bool ParentGroupRequiresLicense
+        {
+            get
+            {
+                return _item.ParentGroup.LicenseRequired;
             }
         }
 

@@ -343,4 +343,43 @@ Be accurate, be precise but... be FAST!</value>
   <data name="item_cammello" xml:space="preserve">
     <value>camel</value>
   </data>
+  <data name="CreditsPage_MainText" xml:space="preserve">
+    <value>App engineering: Davide Tentori
+Graphics and clipart: virinaflora - Fotolia.com, Marta&amp;Martina
+Background music / sound fx: Raphael Ruis
+
+Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
+
+Special thanks to Marco Uberti for inspiration of this game. 
+Checkout his awesome apps at www.invenktion.it</value>
+  </data>
+  <data name="item_tartaruga" xml:space="preserve">
+    <value>flatback sea turtle</value>
+  </data>
+  <data name="ExceptionMessageTitle" xml:space="preserve">
+    <value>Problem report</value>
+  </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>A problem occurred the last time you ran this app :(
+Would you like to send an email to report it?</value>
+  </data>
+  <data name="RatingYes" xml:space="preserve">
+    <value>rate 5 stars</value>
+  </data>
+  <data name="RatingTitle" xml:space="preserve">
+    <value>Enjoying {0}?</value>
+  </data>
+  <data name="RatingNo" xml:space="preserve">
+    <value>no thanks</value>
+  </data>
+  <data name="RatingMessage2" xml:space="preserve">
+    <value>You look to be getting a lot of use out of our app!
+
+Why not give us a 5 star rating to show your appreciation?</value>
+  </data>
+  <data name="RatingMessage1" xml:space="preserve">
+    <value>We'd love you to rate our app 5 stars :)
+
+Showing us some love on the store helps us to continue to work on the app and make things even better!</value>
+  </data>
 </root>

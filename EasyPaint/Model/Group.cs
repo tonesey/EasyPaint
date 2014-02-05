@@ -10,6 +10,7 @@ namespace EasyPaint.Model
         public string Id { get; set; }
         public string Key { get; set; }
         public string ImgFilename { get; set; }
+        public bool LicenseRequired { get; set; }
 
         //public string FriendlyName { get; set; }
 
@@ -28,6 +29,8 @@ namespace EasyPaint.Model
             SelectorGridRow = 1;
 
             IsSelectorCentered = true;
+
+            LicenseRequired = false;
         }
 
         public override string ToString()
@@ -53,5 +56,7 @@ namespace EasyPaint.Model
         #region selector UI properties
         public int SelectorGridRow { get; set; }
         #endregion
+
+       
     }
 }

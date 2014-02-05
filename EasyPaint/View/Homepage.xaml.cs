@@ -1,6 +1,7 @@
 ﻿using EasyPaint.Animations;
 using EasyPaint.Helpers;
 using EasyPaint.Messages;
+using EasyPaint.Settings;
 using EasyPaint.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
@@ -10,6 +11,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -61,6 +63,42 @@ namespace EasyPaint.View
                 _backgroundAnimationStarted = true;
                 AnimateBackground();
             }
+
+//            MyMsgbox.Show(this, MsgboxMode.YesNo, string.Format(LocalizedResources.NeedPaidAppQuestion, "test"), result1 =>
+//            {
+//                switch (result1)
+//                {
+//                    case MsgboxResponse.Yes:
+
+//                        string res = null;
+//                        var task = Task.Run(async () =>
+//                        {
+//                            try
+//                            {
+//#if DEBUG_
+//                                res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+//#else
+//                                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+//#endif
+//                            } 
+//                            catch (Exception ex)
+//                            {
+//                                res = null;
+//                            }
+//                        });
+//                        task.Wait();
+
+//                        if (res == null)
+//                        {
+//                        }
+//                        else
+//                        {
+//                        }
+//                        break;
+//                    case MsgboxResponse.No:
+//                        return;
+//                }
+//            });
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -131,6 +169,19 @@ namespace EasyPaint.View
                     e.Cancel = true;
                 }
             });
+        }
+
+        private async void ImageTitle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+//#if DEBUG
+//            MyMsgbox.Show(this, MsgboxMode.YesNo, "acquisto?", async response =>
+//            {
+//                //string receipt = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+//                string res = null;
+//                //res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync("testitem", false);
+//                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync("testitem", false);
+//            });
+//#endif
         }
     }
 }

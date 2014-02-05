@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
+  
   <ui mode="lres"/>
 
   <group id="0" key="group_Europe" imgname="0.png">
@@ -34,7 +35,7 @@
     </items>
   </group>
 
-  <group id="2" key="group_America" imgname="2.png">
+  <group id="2" key="group_America" imgname="2.png" licenseRequired="true">
     <!--<protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>-->
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="False">
@@ -48,7 +49,7 @@
     </items>
   </group>
 
-  <group id="3" key="group_Oceania" imgname="3.png">
+  <group id="3" key="group_Oceania" imgname="3.png" licenseRequired="true">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
       <item imgname="tartaruga colore.png" key="item_tartaruga" latin="Natator depressus" colors="#329602,#66CB32"/>
@@ -61,20 +62,20 @@
     </items>
   </group>
 
-  <group id="4" key="group_Asia" imgname="4.png">
+  <group id="4" key="group_Asia" imgname="4.png" licenseRequired="true">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
       <item imgname="Yak colore.png" key="item_Yak" latin="Bos grunniens" colors="#1E2848,#998776"/>
       <item imgname="Tigre colore.png" key="item_Tigre" latin="Panthera tigris tigris" colors="#F29531,#E7ECF9"/>
       <item imgname="Cobra colore.png" key="item_Cobra" latin="Naja naja"  colors="#EBC577,#C2A977,#F4989E"/>
-      <item imgname="Elefante colore.png" key="item_elefante_indiano" latin="Bos grunniens" colors="#A7A7A7,#F5989D,#7CC576"/>
+      <item imgname="Elefante colore.png" key="item_elefante_indiano" latin="Elephas maximus" colors="#A7A7A7,#F5989D,#7CC576"/>
       <item imgname="scimmietta colore.png" key="item_scimmietta" latin="Macaca silenus" colors="#716256,#EF662F,#FEF474"/>
       <item imgname="cammello colore.png" key="item_cammello" latin="Camelus bactrianus" colors="#FECC32,#EDA923,#FE9B33"/>
       <item imgname="panda colore.png" key="item_panda" latin="Ailuropoda melanoleuca" colors="#000000,#333333,#FFFFFF"/>
     </items>
   </group>
 
-  <group id="5" key="group_Antarctica" imgname="5.png">
+  <group id="5" key="group_Antarctica" imgname="5.png" licenseRequired="true">
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
     <items SelectorGridRow="1" IsSelectorCentered="True">
       <item imgname="foca colore.png" key="item_foca" latin="Leptonychotes weddellii" colors="#333333,#222222"/>

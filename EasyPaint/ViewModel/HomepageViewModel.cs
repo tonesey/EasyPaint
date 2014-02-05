@@ -77,6 +77,7 @@ namespace EasyPaint.ViewModel
 
         private object ExecShowHelpCommand()
         {
+
             ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Help);
             return null;
         }

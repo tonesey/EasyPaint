@@ -99,6 +99,10 @@ namespace EasyPaint.Helpers
                     g.Id = element.Attribute("id").Value;
                     g.Key = element.Attribute("key").Value;
                     g.ImgFilename = element.Attribute("imgname").Value;
+                    g.LicenseRequired = false;
+                    if (element.Attribute("licenseRequired") != null) {
+                        g.LicenseRequired = bool.Parse(element.Attribute("licenseRequired").Value);
+                    }
 
                     var protagonistNode = element.Element("protagonist");
                     if (protagonistNode != null)
@@ -152,12 +156,6 @@ namespace EasyPaint.Helpers
                             currentItem.Key = itemNode.Attribute("key").Value;
                             g.Items.Add(currentItem);
 
-                            //currentItem.Prev = prevItem;
-                            //if (currentItem.Prev != null)
-                            //{
-                            //    currentItem.Prev.Next = currentItem;
-                            //}
-                            //prevItem = currentItem;
                         }
                         groups.Add(g);
                     }
