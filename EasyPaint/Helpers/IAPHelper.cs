@@ -9,7 +9,6 @@ namespace EasyPaint.Helpers
 {
     class IAPHelper
     {
-
         //http://developer.nokia.com/community/wiki/Increase_your_revenue_with_In-App_Purchase_on_Windows_Phone_8
 
         //async void LoadProductListingsByProductIds()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPaint.Settings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,17 +17,56 @@ namespace EasyPaint.Model
         public List<Color> PaletteColors { get; set; }
         public Group ParentGroup { get; set; }
 
-        public int Score { get; set; }
-        public int RecordScore { get; set; }
+        public int _score;
+        public int Score
+        {
+            get
+            {
+                return _score;
+            }
+            set
+            {
+                if (_score != value)
+                {
+                    _score = value;
+                    AppSettings.SaveSettings(true);
+                }
+            }
+        }
+
+        public int _recordScore;
+        public int RecordScore
+        {
+            get
+            {
+                return _recordScore;
+            }
+            set
+            {
+                if (_recordScore != value)
+                {
+                    _recordScore = value;
+                    AppSettings.SaveSettings(true);
+                }
+            }
+        }
 
         private bool _isLocked = false;
         public bool IsLocked
         {
             get { return _isLocked; }
-            set { _isLocked = value; }
+            set
+            {
+                if (_isLocked != value)
+                {
+                    _isLocked = value;
+                    AppSettings.SaveSettings(true);
+                }
+            }
         }
 
-        public Item() {
+        public Item()
+        {
             Key = string.Empty;
             ImgFilename = string.Empty;
             RecordScore = 0;
@@ -38,6 +78,5 @@ namespace EasyPaint.Model
             return Key;
         }
 
-      
     }
 }

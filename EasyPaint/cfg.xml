@@ -44,7 +44,7 @@
       <item imgname="alce colore.png" key="item_alce" latin="Alces alces" colors="#996501,#AA8335,#FCFCCA,#804E04"/>
       <item imgname="formichiere colore.png" key="item_formichiere" latin="Myrmecophaga tridactyla" colors="#663201,#7C4902,#986502,#511E01"/>
       <item imgname="armadillo colore.png" key="item_armadillo" latin="Dasypus kappleri" colors="#663201,#552403,#330101,#976766"/>
-      <item imgname="bisonte colore.png" key="item_bisonte" latin="Bison bison " colors="#986533,#734322,#623103,#B37F4D"/>
+      <item imgname="bisonte colore.png" key="item_bisonte" latin="Bison bison" colors="#986533,#734322,#623103,#B37F4D"/>
     </items>
   </group>
 

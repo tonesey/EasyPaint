@@ -2,8 +2,8 @@
 
 TODO
 
-- pausa/sospensione gioco
-	- tombstoning
+- pausa/sospensione gioco (low)
+- testare tombstoning
 - rate my app
 - splashscreen
 - (low) MVVMLight pagina paint 

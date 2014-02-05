@@ -24,9 +24,9 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-#if DEBUG
-                return false;
-#endif
+//#if DEBUG
+//                return false;
+//#endif
                 bool isLocked = !GroupHasAtLeastOneItemUnlocked();
                 return isLocked;
             }

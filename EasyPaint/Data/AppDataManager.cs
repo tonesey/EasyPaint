@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EasyPaint.Data
 {
@@ -19,21 +20,24 @@ namespace EasyPaint.Data
             get { return _appData; }
         }
 
-        //private UserData _userData;
-        //public UserData UserData
-        //{
-        //    get { return _userData; }
-        //}
-
-        //public AppData(string tag, CfgData cfgData, UserData userData)
         public AppDataManager(string tag)
         {
             this._tag = tag;
-            //_groups = data.Groups;
+        }
 
+        public async Task BuildDataAsync()
+        {
+            _appData = await ModelHelper.BuildAppDataAsync();
+            if (_tag.Contains("design"))
+            {
+                //creare / aggiungere qua altri dati cablati per fare le prove a design time
+            }
+        }
+
+        public void BuildData()
+        {
             _appData = ModelHelper.BuildAppData();
-
-            if (tag.Contains("design"))
+            if (_tag.Contains("design"))
             {
                 //creare / aggiungere qua altri dati cablati per fare le prove a design time
 
@@ -45,15 +49,26 @@ namespace EasyPaint.Data
                 _appData.Groups.ElementAt(1).Items.ElementAt(0).IsLocked = false;
                 _appData.Groups.ElementAt(1).Items.ElementAt(1).IsLocked = false;
             }
-            //else
-            //{
-            //    _cfgData = ModelHelper.BuildAppData();
-            //}
         }
 
         public string GetUserScoreStrValue()
         {
             return ModelHelper.GetUserScoreValue(_appData);
+        }
+
+        internal static async Task<AppDataManager> GetInstanceAsync()
+        {
+            return await GetInstanceAsync(string.Empty);
+        }
+
+        internal static async Task<AppDataManager> GetInstanceAsync(string tag)
+        {
+            if (_curInstance == null)
+            {
+                _curInstance = new AppDataManager(tag);
+                await _curInstance.BuildDataAsync();
+            }
+            return _curInstance;
         }
 
         internal static AppDataManager GetInstance()
@@ -66,6 +81,7 @@ namespace EasyPaint.Data
             if (_curInstance == null)
             {
                 _curInstance = new AppDataManager(tag);
+                _curInstance.BuildData();
             }
             return _curInstance;
         }

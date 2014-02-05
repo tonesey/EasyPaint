@@ -357,11 +357,11 @@ namespace EasyPaint.View
                 ItemName1.Text = currentItem.LocalizedName;
                 ItemName2.Text = currentItem.LatinName;
 
-                if (currentItem.IsLocked)
-                {
-                    currentItem.IsLocked = false;
-                    AppSettings.SaveSettings(true);
-                }
+                //if (currentItem.IsLocked)
+                //{
+                //    currentItem.IsLocked = false;
+                //    AppSettings.SaveSettings(true);
+                //}
 
                 _reducedColorsPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorsResourcePath);
                 _reducedColorsLineArtPicture = BitmapFactory.New(ViewModelLocator.PainterPageViewModelStatic.DrawingboardWidth, ViewModelLocator.PainterPageViewModelStatic.DrawingboardHeigth).FromResource(currentItem.ReducedColorLineArtResourcePath);
@@ -584,13 +584,12 @@ namespace EasyPaint.View
                             //LIVELLO COMPLETATO
                             var curEl = GetUserSelectedItem();
                             curEl.SetScore(_popupChild.UserPercentage);
-                            AppSettings.SaveSettings(true);
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                             if (nextEl != null)
                             {
                                 nextEl.IsLocked = false;
-                                //ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
-                                curEl = nextEl;
+                                ViewModelLocator.ItemSelectorViewModelStatic.SelectedItem = nextEl;
+                                //curEl = nextEl;
                                 InitPage();
                             }
                             else

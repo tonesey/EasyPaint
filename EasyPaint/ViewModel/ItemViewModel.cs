@@ -63,9 +63,9 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-#if DEBUG
-                return false;
-#endif
+//#if DEBUG
+//                return false;
+//#endif
                 return _item.IsLocked;
             }
             set
@@ -134,13 +134,13 @@ namespace EasyPaint.ViewModel
 #endif
         }
 
+#if COLORSCHECK
         public async void GetImageSourceFromIsoStore(string filename)
         {
             Windows.Storage.StorageFile storageFile = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(filename);
             ImageSource = new Uri(GenericUtility.GetIsolatedStorageFullImagePath(storageFile));
         }
 
-#if COLORSCHECK
         //protected WriteableBitmap _checkImage;
         //public WriteableBitmap CheckImage
         //{
@@ -186,5 +186,11 @@ namespace EasyPaint.ViewModel
         }
 
         public List<Color> PaletteColors { get { return _item.PaletteColors; } }
+
+        public override string ToString()
+        {
+            if (_item != null) return _item.ToString();
+            return "empty element";
+        }
     }
 }

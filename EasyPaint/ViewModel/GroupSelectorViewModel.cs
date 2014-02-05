@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Telerik.Windows.Controls;
 
 namespace EasyPaint.ViewModel
@@ -57,6 +58,15 @@ namespace EasyPaint.ViewModel
         public GroupSelectorViewModel(IDataService dataService)
         {
             _dataService = dataService;
+            //_dataService.GetDataAsynch(
+            //    (item, error) =>
+            //    {
+            //        if (error != null)
+            //        {
+            //            throw new Exception("invalid data source: " + error.Message);
+            //        }
+            //        InitGroups(item.CfgData.Groups);
+            //    }).Wait();
             _dataService.GetData(
                 (item, error) =>
                 {
@@ -66,6 +76,7 @@ namespace EasyPaint.ViewModel
                     }
                     InitGroups(item.CfgData.Groups);
                 });
+
 
             GroupSelectedCommand = new RelayCommand(() => NavigateToSelectedGroupCommand());
             GotoHomepageCommand = new RelayCommand(() => GotoHomepage());

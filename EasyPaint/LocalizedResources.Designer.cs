@@ -113,9 +113,7 @@ namespace EasyPaint {
         ///Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
         ///
         ///Special thanks to Marco Uberti for inspiration of this game. 
-        ///Checkout his magnific apps: 
-        ///- &quot;Who is the fastest painter?&quot; (Android)
-        ///- &quot;Monsters Discovery&quot; (Win8/Android).
+        ///Checkout his awesome apps at www.invenktion.it.
         /// </summary>
         public static string CreditsPage_MainText {
             get {
@@ -138,6 +136,25 @@ namespace EasyPaint {
         public static string Error_NoNetworkAvailable {
             get {
                 return ResourceManager.GetString("Error_NoNetworkAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A problem occurred the last time you ran this app :(
+        ///Would you like to send an email to report it?.
+        /// </summary>
+        public static string ExceptionMessage {
+            get {
+                return ResourceManager.GetString("ExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem report.
+        /// </summary>
+        public static string ExceptionMessageTitle {
+            get {
+                return ResourceManager.GetString("ExceptionMessageTitle", resourceCulture);
             }
         }
         
@@ -733,6 +750,55 @@ namespace EasyPaint {
         public static string MsgBoxTitleWarning {
             get {
                 return ResourceManager.GetString("MsgBoxTitleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We&apos;d love you to rate our app 5 stars :)
+        ///
+        ///Showing us some love on the store helps us to continue to work on the app and make things even better!.
+        /// </summary>
+        public static string RatingMessage1 {
+            get {
+                return ResourceManager.GetString("RatingMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You look to be getting a lot of use out of our app!
+        ///
+        ///Why not give us a 5 star rating to show your appreciation?.
+        /// </summary>
+        public static string RatingMessage2 {
+            get {
+                return ResourceManager.GetString("RatingMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no thanks.
+        /// </summary>
+        public static string RatingNo {
+            get {
+                return ResourceManager.GetString("RatingNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoying {0}?.
+        /// </summary>
+        public static string RatingTitle {
+            get {
+                return ResourceManager.GetString("RatingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rate 5 stars.
+        /// </summary>
+        public static string RatingYes {
+            get {
+                return ResourceManager.GetString("RatingYes", resourceCulture);
             }
         }
         

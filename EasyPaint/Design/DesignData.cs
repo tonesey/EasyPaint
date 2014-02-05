@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Media.Imaging;
 using Telerik.Windows.Controls;
 
@@ -210,14 +211,23 @@ namespace EasyPaint.Design
         }
         #endregion
 
+
+        static  DesignData() { 
+        }
+
         public DesignData()
         {
             if (!IsInDesignModeStatic)
             { 
                 return;
             }
+            Init().Wait();
+        }
 
-            _data = AppDataManager.GetInstance("design").CfgData;
+        private async System.Threading.Tasks.Task Init()
+        {
+            var instance = await AppDataManager.GetInstanceAsync("design");
+            _data = instance.CfgData;
 
             #region arcade mode
             //groups selector
@@ -236,6 +246,7 @@ namespace EasyPaint.Design
             //result popup
             Percentage = 100;
             PageOrientation = Microsoft.Phone.Controls.PageOrientation.LandscapeLeft;
+
         }
 
 

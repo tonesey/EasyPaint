@@ -249,18 +249,6 @@
   <data name="CreditsPage_MainTitle" xml:space="preserve">
     <value>CREDITS</value>
   </data>
-  <data name="CreditsPage_MainText" xml:space="preserve">
-    <value>App engineering: Davide Tentori
-Graphics and clipart: virinaflora - Fotolia.com, Marta&amp;Martina
-Background music / sound fx: Raphael Ruis
-
-Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
-
-Special thanks to Marco Uberti for inspiration of this game. 
-Checkout his magnific apps: 
-- "Who is the fastest painter?" (Android)
-- "Monsters Discovery" (Win8/Android)</value>
-  </data>
   <data name="HelpPage_HelpMainTitle" xml:space="preserve">
     <value>HELP</value>
   </data>
@@ -348,5 +336,11 @@ Be accurate, be precise but... be FAST!</value>
   </data>
   <data name="MessageAllLevelsCompleted" xml:space="preserve">
     <value>CONGRATULATIONS!!! All levels completed!!!</value>
+  </data>
+  <data name="item_elefante_indiano" xml:space="preserve">
+    <value>indian elephant</value>
+  </data>
+  <data name="item_cammello" xml:space="preserve">
+    <value>camel</value>
   </data>
 </root>

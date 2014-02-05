@@ -249,18 +249,6 @@
   <data name="CreditsPage_MainTitle" xml:space="preserve">
     <value>[5B407][!!_ĆŔÊÐÌТŞ_!!]</value>
   </data>
-  <data name="CreditsPage_MainText" xml:space="preserve">
-    <value>[09BE9][!!_Áрþ ęйģîηêêříйğ: Ďâνîđè Ťêητôřį
-Ġŗáρћîćš âήđ ĉłìþãѓτ: νíříηâƒłôѓà - ₣õťóļįâ.ċóm, Мáŕťã&amp;Мàѓτíиã
-Βàċķģѓòùήđ múśîĉ / śôµиð ƒх: Ѓàρћáęł Ŕµìŝ
-
-Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒòŗ мôřãł ãήđ тêčĥηįćâľ śûррõŕť!
-
-Šρèċìàĺ τђâиќš ţó Μãŗčô Ûьéŕтî ƒôř ìиśþíŕâτįòй õƒ ţђįŝ ģâmé. 
-Ćĥéċќõµт ђíŝ mãĝйìƒįć ãррş: 
-- "Ẁнò îś ťħé ƒàşτęŝт þâîитéŕ?" (Àήðŗõîđ)
-- "Μòиŝťèŕš Ďíŝčòνèѓў" (Ŵìй8/Âйďřóìđ)_!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!]</value>
-  </data>
   <data name="HelpPage_HelpMainTitle" xml:space="preserve">
     <value>[8B644][!!_ΗÊĻÞ_!!]</value>
   </data>
@@ -348,5 +336,11 @@ Véřÿ šрéċîãł ťħáйĸŝ ţõ: Ìśá, Èłè, ÀļБì, Ľûĉà ƒ�
   </data>
   <data name="MessageAllLevelsCompleted" xml:space="preserve">
     <value>[94C59][!!_ĈÔÑĜŔÃТÛĹÃŤÌÒŃŜ!!! Àłľ ĺêνêľś ċõmрľéţęð!!!_!!!!!!!!!!!!]</value>
+  </data>
+  <data name="item_elefante_indiano" xml:space="preserve">
+    <value>[A1515][!!_įйðîâη èĺéрнáйť_!!!!]</value>
+  </data>
+  <data name="item_cammello" xml:space="preserve">
+    <value>[83743][!!_čãмêļ_!!]</value>
   </data>
 </root>

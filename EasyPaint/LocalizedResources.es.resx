@@ -249,18 +249,6 @@
   <data name="CreditsPage_MainTitle" xml:space="preserve">
     <value>CRÉDITOS</value>
   </data>
-  <data name="CreditsPage_MainText" xml:space="preserve">
-    <value>Ingeniería de la aplicación: Davide Tentori
-Imágenes Prediseñadas y gráficos: virinaflora - Fotolia.com, Marta&amp;Martina
-La música de fondo / sound fx: Raphael Ruis
-
-Un agradecimiento muy especial a: Isa, Ele, Albi, Luca para apoyo moral y técnico.
-
-Agradecimiento especial a Marco Uberti por inspiración de este juego. 
-Retirada sus magnifica apps: 
--"Quién es el pintor más rápido?" (Android)
--"Descubrimiento de monstruos" (Win8/Android)</value>
-  </data>
   <data name="HelpPage_HelpMainTitle" xml:space="preserve">
     <value>Ayuda</value>
   </data>
@@ -348,5 +336,11 @@ Ser exactos, precisos pero ser rápido!</value>
   </data>
   <data name="MessageAllLevelsCompleted" xml:space="preserve">
     <value>¡ FELICITACIONES! Completada todos los niveles!!!</value>
+  </data>
+  <data name="item_elefante_indiano" xml:space="preserve">
+    <value>elefante indio</value>
+  </data>
+  <data name="item_cammello" xml:space="preserve">
+    <value>camello</value>
   </data>
 </root>

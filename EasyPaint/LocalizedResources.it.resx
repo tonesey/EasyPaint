@@ -249,18 +249,6 @@
   <data name="CreditsPage_MainTitle" xml:space="preserve">
     <value>CREDITI</value>
   </data>
-  <data name="CreditsPage_MainText" xml:space="preserve">
-    <value>Progettazione e realizzazione: Davide Tentori
-Grafica e clipart: virinaflora - Fotolia.com, Marta&amp;Martina
-Musica di sottofondo / effetti sonori: Raphael Ruis
-
-Ringraziamenti molto speciali a: Ele, Albi, Isa, Luca per il supporto morale e tecnico!
-
-Un ringraziamento speciale a Marco Uberti.
-Scaricate le sue magnifiche app :)
--"Who Is The Fastest Painter?" (Android)
--"Monsters Discovery" (Win8/Android)</value>
-  </data>
   <data name="HelpPage_HelpMainTitle" xml:space="preserve">
     <value>Guida</value>
   </data>
@@ -348,5 +336,11 @@ Sii accurato, preciso, ma soprattutto... sii VELOCE!</value>
   </data>
   <data name="MessageAllLevelsCompleted" xml:space="preserve">
     <value>COMPLIMENTI!!! Tutti i livelli sono stati completati!!!</value>
+  </data>
+  <data name="item_elefante_indiano" xml:space="preserve">
+    <value>elefante indiano</value>
+  </data>
+  <data name="item_cammello" xml:space="preserve">
+    <value>cammello</value>
   </data>
 </root>

@@ -174,6 +174,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FeedbackOverlay.xaml.cs">
+      <DependentUpon>FeedbackOverlay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\MediaElementStateToImageConverter.cs" />
     <Compile Include="Converters\LockedToOpacityConverter.cs" />
     <Compile Include="Converters\PercentageToVisibilityConverter.cs" />
@@ -186,6 +189,7 @@
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignData.cs" />
     <Compile Include="Helpers\IAPHelper.cs" />
+    <Compile Include="Helpers\LittleWatson.cs" />
     <Compile Include="Helpers\MessagingHelper.cs" />
     <Compile Include="Helpers\ResolutionHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
@@ -258,6 +262,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\FeedbackOverlay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\GalleryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

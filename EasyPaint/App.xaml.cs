@@ -24,6 +24,10 @@ using Microsoft.Xna.Framework.Audio;
 using Wp8Shared.UserControls;
 using EasyPaint.Helpers;
 using System.Threading.Tasks;
+using Wp8Shared.Exceptions;
+using Wp8Shared.Helpers;
+using Microsoft.Phone.Info;
+using System.Threading;
 
 namespace EasyPaint
 {
@@ -59,6 +63,8 @@ namespace EasyPaint
         }
 
         #endregion
+
+        static ManualResetEvent _dataLoaded = new ManualResetEvent(false);
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -130,13 +136,9 @@ namespace EasyPaint
         {
 #if DEBUG
             MockIAPLib.MockIAP.Init();
-
             MockIAPLib.MockIAP.RunInMockMode(true);
-
             MockIAPLib.MockIAP.ClearCache();
-
             MockIAPLib.MockIAP.SetListingInformation(1, "en-us", "A description", "1", "TestApp");
-
             // Add some more items manually.
             MockIAPLib.ProductListing p = new MockIAPLib.ProductListing
             {
@@ -164,43 +166,38 @@ namespace EasyPaint
             //};
         }
 
+
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             InitApp();
+            //InitApp().Wait(); 
+            //KO: The await inside your asynchronous method is trying to come back to the UI thread.
+            //Since the UI thread is busy waiting for the entire task to complete, you have a deadlock.
+            //Moving the async call to Task.Run() solves the issue.
+            //Because the async call is now running on a thread pool thread, it doesn't try to come back to the UI thread, and everything therefore works.
+
+            //http://blogs.msdn.com/b/andy_wigley/archive/2013/07/31/beware-the-perils-of-async-await-in-application-lifecycle-event-handlers-in-fact-in-any-event-handlers.aspx
+            //_dataLoaded.WaitOne();
         }
 
-        private async void InitApp()
+        //private async Task InitAppAsync()
+        //{
+        //    await AppSettings.LoadAppSettingsAsync();
+        //    FeedbackHelper.Default.Launching(AppSettings.ProductLicensed);
+        //    LittleWatson.CheckForPreviousException(LocalizedResources.ExceptionMessage, LocalizedResources.ExceptionMessageTitle);
+        //    InitAudio();
+        //    var vm = ViewModelLocator.GroupSelectorViewModelStatic;
+        //}
+
+        private void InitApp()
         {
-            AppSettings.LoadSettings();
+            AppSettings.LoadAppSettings();
+            FeedbackHelper.Default.Launching(AppSettings.ProductLicensed);
+            LittleWatson.CheckForPreviousException(LocalizedResources.ExceptionMessage, LocalizedResources.ExceptionMessageTitle);
             InitAudio();
             var vm = ViewModelLocator.GroupSelectorViewModelStatic;
-            await CheckLicense();
-        }
-
-        private static async Task CheckLicense()
-        {
-            bool isProductActive = false;
-#if DEBUG_
-            isProductActive = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
-#else
-            isProductActive = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
-#endif
-            if (!isProductActive)
-            {
-                AppSettings.ProductLicensed = false;
-#if DEBUG_
-                MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
-#else
-                Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
-#endif
-                AppSettings.IapCompleteGameProductId = li.ProductListings[Constants.IapCompleteGameItemName].ProductId;
-            }
-            else
-            {
-                AppSettings.ProductLicensed = true;
-            }
         }
 
         private void InitAudio()
@@ -303,6 +300,40 @@ namespace EasyPaint
             {
                 // An unhandled exception has occurred; break into the debugger
                 System.Diagnostics.Debugger.Break();
+            }
+
+            if (!(e.ExceptionObject is ForcedExitException))
+            {
+                string extraInfos = string.Empty;
+                extraInfos += "--------------------------------------------\n";
+                extraInfos = "- App version: " + AppSettings.AppVersion + "\n" +
+                             "- OS ver: " + System.Environment.OSVersion.Version.ToString() + "\n";
+                extraInfos += "\n";
+                extraInfos += "Phone infos:\n";
+
+                string phoneNameStr = "-unknown-";
+                try
+                {
+                    var phoneInfo = PhoneNameResolver.Resolve(DeviceStatus.DeviceManufacturer, DeviceStatus.DeviceName);
+                    if (phoneInfo.IsResolved)
+                    {
+                        phoneNameStr = phoneInfo.FullCanonicalName;
+                    }
+                    else
+                    {
+                        phoneNameStr = string.Format("{0} {1}", phoneInfo.ReportedManufacturer, phoneInfo.ReportedModel);
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                extraInfos += phoneNameStr;
+                extraInfos += "\n";
+                //extraInfos += "Internal log:";
+                //extraInfos += "\n";
+                //extraInfos += App.ViewModel.Logger.GetLog();
+
+                LittleWatson.StoreExceptionDetails(e.ExceptionObject, extraInfos);
             }
         }
 
