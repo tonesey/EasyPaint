@@ -76,7 +76,7 @@ namespace EasyPaint.Settings
         private static async Task CheckIAPLicenseInfosAsync()
         {
             bool isProductActive = false;
-#if DEBUG_
+#if DEBUG
             isProductActive = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
 #else
             isProductActive = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
@@ -84,13 +84,12 @@ namespace EasyPaint.Settings
             if (!isProductActive)
             {
                 ProductLicensed = false;
-#if DEBUG_
+#if DEBUG
                 MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
 #else
                 Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
 #endif
                 AppSettings.IapCompleteGameProductId = li.ProductListings[Constants.IapCompleteGameItemName].ProductId;
-               
             }
             else
             {

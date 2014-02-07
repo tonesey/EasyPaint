@@ -299,7 +299,7 @@ namespace EasyPaint.Helpers
                 }
                 
                 //if (palette.FirstOrDefault(c1 => c1.Equals(c)) == default(Color)) 
-                if (!palette.Contains(c)) 
+                if (!palette.Contains(c))
                 {
                     //il colore non è presente nella palette
                     resultImage.SetPixel(x, y, Colors.Red);

@@ -535,7 +535,8 @@ namespace EasyPaint.View
             var colorsToIgnore = ImagesHelper.GetColors(_reducedColorsPicture, false, false);
             colorsToIgnore = colorsToIgnore.Except(GetUserSelectedItem().PaletteColors).ToList();
             colorsToIgnore = colorsToIgnore.Except(ImagesHelper.GetColors(_reducedColorsLineArtPicture, false, false)).ToList();
-            // var colorsToIgnore = new List<Color>();
+            
+          //  var colorsToIgnore = new List<Color>();
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
                                                                         colorsToIgnore,
@@ -614,7 +615,7 @@ namespace EasyPaint.View
                                 MyMsgbox.Show(this,
                                               MsgboxMode.Ok,
                                               string.Format(LocalizedResources.GroupCompleted, curEl.ParentGroupName, nextEl.ParentGroupName),
-                                    result =>
+                                    async result =>
                                     {
                                         //verifica se è presente la licenza, nel caso sia richiesta
                                         if (AppSettings.ProductLicensed || !nextEl.ParentGroupRequiresLicense)
@@ -632,22 +633,19 @@ namespace EasyPaint.View
                                                     case MsgboxResponse.Yes:
 
                                                         string res = null;
+                                                        try
+                                                        {
 #if DEBUG
-                                                        res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+                                                            res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
 #else
-                                                        res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+                                                            res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, true);
 #endif
-                                                        //var task = Task.Run(async () =>
-                                                        //{
-                                                        //    try
-                                                        //    {
-                                                        //    }
-                                                        //    catch
-                                                        //    {
-                                                        //        res = null;
-                                                        //    }
-                                                        //});
-                                                        //task.Wait();
+                                                        }
+                                                        catch (Exception)
+                                                        {
+                                                            //capita anche se l'utente fa "Annulla" sull'acquisto
+                                                            res = null;
+                                                        }
 
                                                         if (res == null)
                                                         {
@@ -657,6 +655,7 @@ namespace EasyPaint.View
                                                         }
                                                         else
                                                         {
+                                                            //acquisto OK
                                                             AppSettings.ProductLicensed = true;
                                                             //si prosegue normalmente nel flusso
                                                             UnlockAndRestartWithItem(nextEl);
@@ -717,6 +716,13 @@ namespace EasyPaint.View
             StopTimer();
             int accuracyPercentage = 80;
             ShowResultPopup(accuracyPercentage, _lastAvailableTimeValue, null);
+#endif
+        }
+
+        private void ItemName1_Tap(object sender, GestureEventArgs e)
+        {
+#if DEBUG
+            stopTimeBtn_Click(null, null);
 #endif
         }
 
