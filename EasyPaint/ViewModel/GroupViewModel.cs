@@ -77,6 +77,11 @@ namespace EasyPaint.ViewModel
         public string ProtagonistImageName { get; set; }
         #endregion
 
+
+        public GroupViewModel()
+        {
+        }
+
         public GroupViewModel(Group gr)
         {
             try
@@ -102,6 +107,8 @@ namespace EasyPaint.ViewModel
                 throw;
             }
         }
+
+        
 
 
     }

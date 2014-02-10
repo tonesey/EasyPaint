@@ -30,6 +30,16 @@ namespace EasyPaint.ViewModel
             set
             {
                 _key = value;
+                OnPropertyChanged("Key");
+                OnPropertyChanged("LocalizedDescr");
+            }
+        }
+
+        public string LocalizedDescr
+        {
+            get
+            {
+                return LocalizedResources.ResourceManager.GetString(Key);
             }
         }
 
@@ -46,6 +56,23 @@ namespace EasyPaint.ViewModel
                 {
                     this._imageSource = value;
                     OnPropertyChanged("ImageSource");
+                }
+            }
+        }
+
+        protected Uri _imageSourceHidden = null;
+        public Uri ImageSourceHidden
+        {
+            get
+            {
+                return this._imageSourceHidden;
+            }
+            set
+            {
+                if (this._imageSourceHidden != value)
+                {
+                    this._imageSourceHidden = value;
+                    OnPropertyChanged("ImageSourceHidden");
                 }
             }
         }

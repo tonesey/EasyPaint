@@ -59,8 +59,8 @@ namespace EasyPaint.View
             var newEl = _vm.Items.ElementAt(e.Index);
             if (newEl != null)
             {
-                (e.Item as PictureLoopingItem).Picture = (newEl as ItemViewModel).ImageSource;
-                (e.Item as PictureLoopingItem).IsLocked = (newEl as ItemViewModel).IsLocked;
+                //(e.Item as PictureLoopingItem).Picture = (newEl as ItemViewModel).ImageSource;
+                //(e.Item as PictureLoopingItem).IsLocked = (newEl as ItemViewModel).IsLocked;
                 (e.Item as PictureLoopingItem).Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key);
                 (e.Item as PictureLoopingItem).DataContext = (newEl as ItemViewModel);
             }
@@ -86,8 +86,8 @@ namespace EasyPaint.View
                 {
                     item = new PictureLoopingItem()
                     {
-                        Picture = (newEl as ItemViewModel).ImageSource,
-                        IsLocked = (newEl as ItemViewModel).IsLocked,
+                        //Picture = (newEl as ItemViewModel).ImageSource,
+                        //IsLocked = (newEl as ItemViewModel).IsLocked,
                         Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key),
                         DataContext = (newEl as ItemViewModel)
                     };

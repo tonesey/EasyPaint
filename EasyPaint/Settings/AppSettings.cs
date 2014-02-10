@@ -1,5 +1,6 @@
 ﻿using EasyPaint.Data;
 using EasyPaint.Helpers;
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,6 +102,11 @@ namespace EasyPaint.Settings
         public static void SaveSettings(bool rebuildData)
         {
             if (IsDataLoading)
+            {
+                return;
+            }
+
+            if (ViewModelBase.IsInDesignModeStatic)
             {
                 return;
             }

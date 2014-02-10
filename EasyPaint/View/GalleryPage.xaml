@@ -61,21 +61,21 @@
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>
                     <Grid  Tap="Grid_Tap">
-                        <Image Source="{Binding Picture}" 
+                        <Image Source="{Binding DataContext.ImageSource}" 
                                    Width="300" Height="300"
                                    Stretch="Fill" 
                                    CacheMode="BitmapCache"
                                />
                         <TextBlock Margin="0,0,0,0" 
                                    HorizontalAlignment="Center"
-                                   Text="{Binding Text}" 
+                                   Text="{Binding DataContext.LocalizedDescr}" 
                                    FontSize="50"   
                                    TextWrapping="Wrap"
                                    FontFamily="..\..\Fonts\BuxtonSketch.ttf#Buxton Sketch"
                                    Foreground="Green"></TextBlock>
                         <TextBlock Margin="0,-5,0,0"
                                    HorizontalAlignment="Center"
-                                   Text="{Binding Text}" 
+                                   Text="{Binding DataContext.LocalizedDescr}" 
                                    FontSize="50"   
                                    TextWrapping="Wrap"
                                    FontFamily="..\..\Fonts\BuxtonSketch.ttf#Buxton Sketch"

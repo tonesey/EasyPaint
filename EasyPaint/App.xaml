@@ -20,7 +20,10 @@
         <Converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         <Converters:LockedToOpacityConverter x:Key="lockedToOpacityConverter" />
         <Converters:MediaElementStateToImageConverter x:Key="mediaElementStateToImageConverter" />
+        <Converters:LockedToImageConverter x:Key="lockedToImageConverter" />
+
         
+
         <!-- Backgorund Sound Manager -->
         <MediaElement x:Key="GlobalMedia" MediaEnded="MediaElement_MediaEnded" AutoPlay="False" />
         <!-- VM Locator -->

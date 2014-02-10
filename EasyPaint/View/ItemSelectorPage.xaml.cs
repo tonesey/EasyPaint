@@ -37,7 +37,6 @@ namespace EasyPaint.View
             ds.ItemUpdated += this.OnDs_ItemUpdated;
             this.loopingList.DataSource = ds;
             this.loopingList.SelectedIndex = 0;
-
         }
 
         void ItemSelectorPage_Unloaded(object sender, RoutedEventArgs e)
@@ -62,18 +61,16 @@ namespace EasyPaint.View
             var newEl = _vm.Items.ElementAt(e.Index);
             if (newEl != null)
             {
-                (e.Item as PictureLoopingItem).Picture = (newEl as ItemViewModel).ImageSource;
-                (e.Item as PictureLoopingItem).IsLocked = (newEl as ItemViewModel).IsLocked;
+                //(e.Item as PictureLoopingItem).Picture = (newEl as ItemViewModel).ImageSource;
+                //(e.Item as PictureLoopingItem).IsLocked = (newEl as ItemViewModel).IsLocked;
 #if COLORSCHECK
-                (e.Item as PictureLoopingItem).Text = string.Format("{0}({1}%)", LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key), (newEl as ItemViewModel).PaletteCoverage.ToString());
-#else
-                (e.Item as PictureLoopingItem).Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key);
+                  (e.Item as PictureLoopingItem).Text = string.Format("{0}({1}%)", LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key), (newEl as ItemViewModel).PaletteCoverage.ToString());
+//#else
+//                (e.Item as PictureLoopingItem).Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key);
 #endif
                 (e.Item as PictureLoopingItem).DataContext = (newEl as ItemViewModel);
             }
         }
-
-
 
         private void OnDs_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
@@ -88,26 +85,21 @@ namespace EasyPaint.View
             {
 
                 PictureLoopingItem item = null;
-                if (_dict.ContainsKey((newEl as ItemViewModel).Key))
+                //if (_dict.ContainsKey((newEl as ItemViewModel).Key))
+                //{
+                //    item = _dict[(newEl as ItemViewModel).Key] as PictureLoopingItem;
+                //}
+                //else
+                //{
+                item = new PictureLoopingItem()
                 {
-                    item = _dict[(newEl as ItemViewModel).Key] as PictureLoopingItem;
-                }
-                else
-                {
-                    item = new PictureLoopingItem()
-                    {
-                        Picture = (newEl as ItemViewModel).ImageSource,
 #if COLORSCHECK
                         Text = string.Format("{0} ({1}%)", LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key), (newEl as ItemViewModel).PaletteCoverage.ToString()),
-#else
-                        Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key),
 #endif
-                        IsLocked = (newEl as ItemViewModel).IsLocked,
-
-                        DataContext = (newEl as ItemViewModel)
-                    };
-                    _dict.Add((newEl as ItemViewModel).Key, item);
-                }
+                    DataContext = (newEl as ItemViewModel)
+                };
+                //_dict.Add((newEl as ItemViewModel).Key, item);
+                //}
                 e.Item = item;
             }
         }

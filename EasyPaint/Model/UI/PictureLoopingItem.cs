@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Telerik.Windows.Controls;
 
@@ -9,62 +10,21 @@ namespace EasyPaint.Model.UI
 {
     public class PictureLoopingItem : LoopingListDataItem
     {
-
-        public object DataContext { get; set; }
-
-//#if COLORSCHECK
-//        private BitmapSource _picture;
-//        public BitmapSource Picture
-//        {
-//            get
-//            {
-//                return this._picture;
-//            }
-//            set
-//            {
-//                if (value != this._picture)
-//                {
-//                    this._picture = value;
-//                    this.OnPropertyChanged("Picture");
-//                }
-//            }
-//        }
-//#else
-
-        private Uri _picture;
-        public Uri Picture
+        private object _DataContext = null;
+        public object DataContext
         {
             get
             {
-                return this._picture;
+                return _DataContext;
             }
             set
             {
-                if (value != this._picture)
+                if (value != _DataContext)
                 {
-                    this._picture = value;
-                    this.OnPropertyChanged("Picture");
+                    _DataContext = value;
+                    this.OnPropertyChanged("DataContext");
                 }
             }
         }
-
-
-        private bool _IsLocked;
-        public bool IsLocked
-        {
-            get
-            {
-                return _IsLocked;
-            }
-            set
-            {
-                if (value != _IsLocked)
-                {
-                    _IsLocked = value;
-                    this.OnPropertyChanged("IsLocked");
-                }
-            }
-        }
-
     }
 }

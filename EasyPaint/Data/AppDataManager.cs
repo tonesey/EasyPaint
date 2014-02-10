@@ -42,7 +42,7 @@ namespace EasyPaint.Data
                 //creare / aggiungere qua altri dati cablati per fare le prove a design time
 
                 //sblocco di alcuni animali per modalità gallery
-                _appData.Groups.ElementAt(0).Items.ElementAt(1).IsLocked = false;
+                _appData.Groups.ElementAt(0).Items.ElementAt(1).IsLocked  =true;
                 _appData.Groups.ElementAt(0).Items.ElementAt(2).IsLocked = false;
                 _appData.Groups.ElementAt(0).Items.ElementAt(3).IsLocked = false;
 

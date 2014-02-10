@@ -64,16 +64,17 @@
             <telerikPrimitives:RadLoopingList.ItemTemplate>
                 <DataTemplate>
                     <Grid Tap="Grid_Tap">
-                        <Image Source="{Binding Picture}" Stretch="Fill"
+                        <Image Source="{Binding DataContext.ImageSource}" Stretch="Fill"
                                CacheMode="BitmapCache"
-                               Opacity="{Binding IsLocked, Converter={StaticResource lockedToOpacityConverter}}"/>
+                               Opacity="{Binding DataContext.IsLocked, Converter={StaticResource lockedToOpacityConverter}}">
+                        </Image>
                         <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" 
                                CacheMode="BitmapCache"
-                               Visibility="{Binding IsLocked, Converter={StaticResource boolToVisibilityConverter}}"/>
+                               Visibility="{Binding DataContext.IsLocked, Converter={StaticResource boolToVisibilityConverter}}"/>
                         <TextBlock Margin="0,0,0,0"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
-                                   Text="{Binding Text}" 
+                                   Text="{Binding DataContext.LocalizedDescr}" 
                                    TextWrapping="Wrap"
                                    FontSize="65"   
                                    FontFamily="..\..\Fonts\BuxtonSketch.ttf#Buxton Sketch"
@@ -81,7 +82,7 @@
                         <TextBlock Margin="0,-5,0,0"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
-                                   Text="{Binding Text}" 
+                                   Text="{Binding DataContext.LocalizedDescr}" 
                                    TextWrapping="Wrap"
                                    FontSize="65"   
                                    FontFamily="..\..\Fonts\BuxtonSketch.ttf#Buxton Sketch"

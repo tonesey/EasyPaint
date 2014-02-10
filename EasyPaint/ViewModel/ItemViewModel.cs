@@ -63,9 +63,9 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-                //#if DEBUG
-                //                return false;
-                //#endif
+//#if DEBUG
+//                return false;
+//#endif
                 return _item.IsLocked;
             }
             set
@@ -74,9 +74,11 @@ namespace EasyPaint.ViewModel
                 {
                     _item.IsLocked = value;
                     this.OnPropertyChanged("IsLocked");
+                    this.OnPropertyChanged("ImageSource");
                 }
             }
         }
+
 
         public string LatinName
         {
@@ -110,6 +112,10 @@ namespace EasyPaint.ViewModel
             }
         }
 
+        public ItemViewModel()
+        {
+        }
+
         public ItemViewModel(Item item)
         {
             _item = item;
@@ -119,6 +125,7 @@ namespace EasyPaint.ViewModel
             //ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
             //reduced colors
             ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
+            ImageSourceHidden = new Uri(string.Format("../Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename.Replace("colore", "hidden") }), UriKind.RelativeOrAbsolute);
 
             //---reduced colors
             ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename });
@@ -126,6 +133,21 @@ namespace EasyPaint.ViewModel
             //---full color
             //ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename });
             //ReducedColorLineArtResourcePath = string.Format("Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename.Replace("colore", "lineart") });
+
+            ////HIDDEN IMAGE
+            //WriteableBitmap hiddenImage = BitmapFactory.New(400, 400).FromResource(ReducedColorsResourcePath);
+            //using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            //{
+            //    string fileName = "hidden_" + item.ImgFilename;
+            //    if (myIsolatedStorage.FileExists(fileName))
+            //    {
+            //        myIsolatedStorage.DeleteFile(fileName);
+            //    }
+            //    IsolatedStorageFileStream fileStream = myIsolatedStorage.CreateFile(fileName);
+            //    Extensions.SaveJpeg(hiddenImage, fileStream, hiddenImage.PixelWidth, hiddenImage.PixelHeight, 0, 100);
+            //    fileStream.Close();
+            //    GetImageSourceFromIsoStore(fileName);
+            //}
 
 #if COLORSCHECK
             //if (_item.ParentGroup.Id == "0")
@@ -158,13 +180,16 @@ namespace EasyPaint.ViewModel
 #endif
         }
 
-#if COLORSCHECK
+       
+
         public async void GetImageSourceFromIsoStore(string filename)
         {
             Windows.Storage.StorageFile storageFile = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(filename);
             ImageSource = new Uri(GenericUtility.GetIsolatedStorageFullImagePath(storageFile));
         }
 
+
+#if COLORSCHECK
         //protected WriteableBitmap _checkImage;
         //public WriteableBitmap CheckImage
         //{

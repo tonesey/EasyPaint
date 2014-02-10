@@ -80,102 +80,86 @@ namespace EasyPaint.Design
         #region items
         void _designDataDs_Items_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
         {
-            Uri uri = null;
-            string text = "none";
-            try
-            {
-                var el = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index);
-                string imgFileName = el.ImgFilename;
-                uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = LocalizedResources.ResourceManager.GetString(el.Key);
-            }
-            catch (Exception)
-            {
-                uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
-            }
-            (e.Item as PictureLoopingItem).Picture = uri;
-            (e.Item as PictureLoopingItem).Text = text;
+            (e.Item as PictureLoopingItem).DataContext = GetItemDataContext(e);
         }
 
         void _designDataDs_Items_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
-            Uri uri = null;
-            string text = "none";
+            e.Item = new PictureLoopingItem() { DataContext = GetItemDataContext(e) };
+        }
+
+        private ItemViewModel GetItemDataContext(LoopingListDataItemEventArgs e)
+        {
+            ItemViewModel itemVm = null;
             try
             {
                 var el = _data.Groups.FirstOrDefault(g => g.Id == CurrentGroupId).Items.ElementAt(e.Index);
-                string imgFileName = el.ImgFilename;
-                uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + CurrentGroupId + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = LocalizedResources.ResourceManager.GetString(el.Key);
+                itemVm = new ItemViewModel(el);
             }
             catch (Exception)
             {
-                uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
+                itemVm = new ItemViewModel() { ImageSource = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute) };
             }
-
-            
-
-            e.Item = new PictureLoopingItem() { Picture = uri, Text = text };
+            return itemVm;
         }
         #endregion
 
         #region groups
+        private GroupViewModel GetGroupDataContext(LoopingListDataItemEventArgs e)
+        {
+            GroupViewModel groupVm = null;
+            try
+            {
+                var el = _data.Groups.ElementAt(e.Index);
+                groupVm = new GroupViewModel(el);
+            }
+            catch (Exception)
+            {
+                groupVm = new GroupViewModel() { ImageSource = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute) };
+            }
+            return groupVm;
+        }
+
         void ds_ItemUpdated_Groups(object sender, LoopingListDataItemEventArgs e)
         {
-            var imgFileName = e.Index + ".png";
-            (e.Item as PictureLoopingItem).Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute);
-            (e.Item as PictureLoopingItem).Text = _data.Groups.ElementAt(e.Index).Key;
+            (e.Item as PictureLoopingItem).DataContext = GetGroupDataContext(e);
         }
 
         void ds_ItemNeeded_Groups(object sender, LoopingListDataItemEventArgs e)
         {
-            var imgFileName = e.Index + ".png";
-            e.Item = new PictureLoopingItem() { 
-                Picture = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + imgFileName, UriKind.RelativeOrAbsolute),
-                Text = _data.Groups.ElementAt(e.Index).Key
+            e.Item = new PictureLoopingItem()
+            {
+                DataContext = GetGroupDataContext(e)
             };
         }
         #endregion
         #endregion
 
         #region gallery mode
-        void _designDataDs_ItemsUnlocked_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
+
+        private ItemViewModel GetUnlockedItemsDataContext(LoopingListDataItemEventArgs e)
         {
-            Uri uri = null;
-            string text = "none";
+            ItemViewModel itemVm = null;
             try
             {
                 var el = _data.Groups.SelectMany(g => g.Items).Where(it => !it.IsLocked).ElementAt(e.Index);
-                string imgFileName = el.ImgFilename;
-                uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + el.ParentGroup.Id + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = LocalizedResources.ResourceManager.GetString(el.Key);
+                itemVm = new ItemViewModel(el);
             }
             catch (Exception)
             {
-                uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
+                itemVm = new ItemViewModel() { ImageSource = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute) };
             }
+            return itemVm;
+        }
 
-            (e.Item as PictureLoopingItem).Picture = uri;
-            (e.Item as PictureLoopingItem).Text = text;
+        void _designDataDs_ItemsUnlocked_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
+        {
+            (e.Item as PictureLoopingItem).DataContext = GetUnlockedItemsDataContext(e);
         }
 
         void _designDataDs_ItemsUnlocked_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
         {
-            Uri uri = null;
-            string text = "none";
-            try
-            {
-                var el = _data.Groups.SelectMany(g => g.Items).Where(it => !it.IsLocked).ElementAt(e.Index);
-                string imgFileName = el.ImgFilename;
-                uri = new Uri("../Assets/" + AppSettings.AppRes + "/groups/" + el.ParentGroup.Id + "/" + imgFileName, UriKind.RelativeOrAbsolute);
-                text = LocalizedResources.ResourceManager.GetString(el.Key);
-            }
-            catch (Exception)
-            {
-                uri = new Uri("../Assets/ko.jpg", UriKind.RelativeOrAbsolute);
-            }
-
-            e.Item = new PictureLoopingItem() { Picture = uri, Text = text };
+            e.Item = new PictureLoopingItem() { DataContext = GetUnlockedItemsDataContext(e) };
         }
         #endregion
 
@@ -211,22 +195,22 @@ namespace EasyPaint.Design
         }
         #endregion
 
-
-        static  DesignData() { 
+        static DesignData()
+        {
         }
 
         public DesignData()
         {
             if (!IsInDesignModeStatic)
-            { 
+            {
                 return;
             }
-            Init().Wait();
+            Init();
         }
 
-        private async System.Threading.Tasks.Task Init()
+        private void Init()
         {
-            var instance = await AppDataManager.GetInstanceAsync("design");
+            var instance = AppDataManager.GetInstance("design");
             _data = instance.CfgData;
 
             #region arcade mode
@@ -248,8 +232,6 @@ namespace EasyPaint.Design
             PageOrientation = Microsoft.Phone.Controls.PageOrientation.LandscapeLeft;
 
         }
-
-
     }
 
 }
