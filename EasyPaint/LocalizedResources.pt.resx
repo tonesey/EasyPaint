@@ -325,9 +325,6 @@ Ser preciso, ser preciso, mas... ser rápido!</value>
   <data name="ButtonStartGalleryText" xml:space="preserve">
     <value>Galeria</value>
   </data>
-  <data name="GalleryPage_InfoText" xml:space="preserve">
-    <value>Desbloquear animais como muitos como você pode no modo arcade para ver mais artigos aqui!</value>
-  </data>
   <data name="item_riccio" xml:space="preserve">
     <value>porco-espinho</value>
   </data>

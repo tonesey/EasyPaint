@@ -36,12 +36,11 @@ namespace EasyPaint.View
 {
     public partial class PainterPage : PhoneApplicationPage
     {
-        const int TotalTime = 30;
+        const int TotalTime = 60;
 
         // Constructor
         SimzzDev.DrawingBoard _drawingboard = null;
 
-        //WriteableBitmap _lineArtPicture = null;
         WriteableBitmap _reducedColorsPicture = null;
         WriteableBitmap _reducedColorsLineArtPicture = null;
 

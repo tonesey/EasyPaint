@@ -325,9 +325,6 @@ Be accurate, be precise but... be FAST!</value>
   <data name="ButtonStartGalleryText" xml:space="preserve">
     <value>gallery</value>
   </data>
-  <data name="GalleryPage_InfoText" xml:space="preserve">
-    <value>Unlock as many animals as you can in arcade mode to see more items here!</value>
-  </data>
   <data name="item_riccio" xml:space="preserve">
     <value>hedgehog</value>
   </data>

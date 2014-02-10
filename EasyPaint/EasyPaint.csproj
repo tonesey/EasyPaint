@@ -323,6 +323,7 @@
     <Resource Include="Assets\buttons\sound_off.png" />
     <Resource Include="Assets\buttons\nav_left_green.png" />
     <Resource Include="Assets\buttons\pencil3.png" />
+    <Content Include="Assets\buttons\download.png" />
     <Content Include="Assets\icons\Lock.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\gazzella colore.png" />
     <Resource Include="Assets\lres\groups\1\reduced_10\rinoceronte colore.png" />

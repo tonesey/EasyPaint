@@ -325,9 +325,6 @@ Sii accurato, preciso, ma soprattutto... sii VELOCE!</value>
   <data name="ButtonStartGalleryText" xml:space="preserve">
     <value>galleria</value>
   </data>
-  <data name="GalleryPage_InfoText" xml:space="preserve">
-    <value>Gioca e sblocca più animali che puoi per vederli in questa sezione!</value>
-  </data>
   <data name="item_riccio" xml:space="preserve">
     <value>riccio</value>
   </data>

@@ -68,9 +68,11 @@
                                CacheMode="BitmapCache"
                                Opacity="{Binding DataContext.IsLocked, Converter={StaticResource lockedToOpacityConverter}}">
                         </Image>
-                        <Image Source="/Assets/icons/Lock.png" Width="400" Height="400" Stretch="Fill" 
+                        
+                        <Image Source="/Assets/icons/Lock.png" Width="200" Height="200" Stretch="Fill" Opacity="0.6"
                                CacheMode="BitmapCache"
                                Visibility="{Binding DataContext.IsLocked, Converter={StaticResource boolToVisibilityConverter}}"/>
+
                         <TextBlock Margin="0,0,0,0"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"

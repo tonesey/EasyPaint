@@ -325,9 +325,6 @@ Ser exactos, precisos pero ser rápido!</value>
   <data name="ButtonStartGalleryText" xml:space="preserve">
     <value>Galería</value>
   </data>
-  <data name="GalleryPage_InfoText" xml:space="preserve">
-    <value>Desbloquear tantos animales como puedas en el modo arcade para ver más artículos aquí!</value>
-  </data>
   <data name="item_riccio" xml:space="preserve">
     <value>erizo</value>
   </data>

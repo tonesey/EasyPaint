@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="pt" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.4" build-num="0">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.2.1212.0" tool-company="Microsoft" />
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="Resx">
@@ -157,8 +157,8 @@ Check-out seus apps impressionantes no www.invenktion.it</target>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Galeria</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText" xml:space="preserve">
-          <source>Unlock as many animals as you can in arcade mode to see more items here!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Desbloquear animais como muitos como você pode no modo arcade para ver mais artigos aqui!</target>
+          <source>Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</source>
+          <target state="new" state-qualifier="mt-suggestion">Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>

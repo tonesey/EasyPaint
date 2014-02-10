@@ -168,7 +168,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unlock as many animals as you can in arcade mode to see more items here!.
+        ///   Looks up a localized string similar to Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!.
         /// </summary>
         public static string GalleryPage_InfoText {
             get {
