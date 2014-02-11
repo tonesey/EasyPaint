@@ -38,6 +38,8 @@ namespace EasyPaint.View
             this.loopingList.SelectedIndex = 0;
         }
 
+
+
         void ItemSelectorPage_Unloaded(object sender, RoutedEventArgs e)
         {
         }

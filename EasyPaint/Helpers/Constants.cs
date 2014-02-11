@@ -16,8 +16,9 @@ namespace EasyPaint.Helpers
         public const string View_Credits = "CreditsPage";
         #endregion
 
+        //public const string IapCompleteGameItemName1 = "testitem";
 
-        public const string IapCompleteGameItemName = "testitem";
-
+        public const string IAPItem_FullTraining = "FullTrainingPack";
+        public const string IAPItem_ContinentsUnlocker = "ContinentsUnlocker";
     }
 }

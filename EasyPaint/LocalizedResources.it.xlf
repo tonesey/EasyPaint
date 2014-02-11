@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file datatype="xml" source-language="en-US" target-language="it" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.0.0.4" build-num="0">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.2.1212.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="Resx">
@@ -156,7 +156,7 @@ Checkout suo impressionante apps presso www.invenktion.it</target>
           <source>gallery</source>
           <target state="signed-off">galleria</target>
         </trans-unit>
-        <trans-unit translate="yes" id="Resx/GalleryPage_InfoText" xml:space="preserve">
+        <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_NotPurchased" xml:space="preserve">
           <source>Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</source>
           <target state="new">Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</target>
         </trans-unit>
@@ -183,6 +183,10 @@ Checkout suo impressionante apps presso www.invenktion.it</target>
         <trans-unit translate="yes" id="Resx/NeedPaidAppQuestion" xml:space="preserve">
           <source>Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</source>
           <target state="new">Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_Purchased" xml:space="preserve">
+          <source>Train yourself colouring all animals!</source>
+          <target state="new">Train yourself colouring all animals!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GroupCompleted" xml:space="preserve">
           <source>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</source>

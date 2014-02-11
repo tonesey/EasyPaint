@@ -338,7 +338,7 @@ Be accurate, be precise but... be FAST!</value>
   <data name="ButtonStartGalleryText" xml:space="preserve">
     <value>gallery</value>
   </data>
-  <data name="GalleryPage_InfoText" xml:space="preserve">
+  <data name="GalleryPage_InfoText_NotPurchased" xml:space="preserve">
     <value>Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</value>
   </data>
   <data name="item_cammello" xml:space="preserve">
@@ -387,5 +387,8 @@ Would you like to send an email to report it?</value>
   </data>
   <data name="NeedPaidAppQuestion" xml:space="preserve">
     <value>Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</value>
+  </data>
+  <data name="GalleryPage_InfoText_Purchased" xml:space="preserve">
+    <value>Train yourself colouring all animals!</value>
   </data>
 </root>

@@ -170,9 +170,18 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!.
         /// </summary>
-        public static string GalleryPage_InfoText {
+        public static string GalleryPage_InfoText_NotPurchased {
             get {
-                return ResourceManager.GetString("GalleryPage_InfoText", resourceCulture);
+                return ResourceManager.GetString("GalleryPage_InfoText_NotPurchased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Train yourself colouring all animals!.
+        /// </summary>
+        public static string GalleryPage_InfoText_Purchased {
+            get {
+                return ResourceManager.GetString("GalleryPage_InfoText_Purchased", resourceCulture);
             }
         }
         

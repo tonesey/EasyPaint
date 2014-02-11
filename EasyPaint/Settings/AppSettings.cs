@@ -26,8 +26,23 @@ namespace EasyPaint.Settings
         public static string AppVersion;
         public static string AppName;
 
-        public static string IapCompleteGameProductId { get; set; }
-        public static bool ProductLicensed { get; set; }
+        //public static string IapCompleteGameProductId { get; set; }
+        //public static bool ProductLicensed { get; set; }
+
+        public static string IAPItem_FullTraining_ProductId { get; set; }
+        public static bool IAPItem_FullTraining_ProductLicensed { get; set; }
+
+        public static string IAPItem_ContinentsUnlocker_ProductId { get; set; }
+        public static bool IAPItem_ContinentsUnlocker_ProductLicensed { get; set; }
+
+        public static bool AtLeastOneItemLicensed
+        {
+            get
+            {
+                return IAPItem_FullTraining_ProductLicensed || IAPItem_ContinentsUnlocker_ProductLicensed;
+            }
+        }
+
         #endregion
 
         //public const string SoundOnKey = "SOUND_ON";
@@ -76,26 +91,30 @@ namespace EasyPaint.Settings
 
         private static async Task CheckIAPLicenseInfosAsync()
         {
-            bool isProductActive = false;
+            bool isProductActive_FullTraining_ProductLicensed = false;
+            bool isProductActive_ContinentsUnlocker_ProductLicensed = false;
 #if DEBUG
-            isProductActive = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
+            isProductActive_FullTraining_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
+            isProductActive_ContinentsUnlocker_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
 #else
-            isProductActive = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IapCompleteGameItemName].IsActive;
+            isProductActive_FullTraining_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
+            isProductActive_ContinentsUnlocker_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
 #endif
-            if (!isProductActive)
+            if (!isProductActive_FullTraining_ProductLicensed || !isProductActive_ContinentsUnlocker_ProductLicensed)
             {
-                ProductLicensed = false;
 #if DEBUG
                 MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
 #else
                 Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
 #endif
-                AppSettings.IapCompleteGameProductId = li.ProductListings[Constants.IapCompleteGameItemName].ProductId;
+                AppSettings.IAPItem_ContinentsUnlocker_ProductId = li.ProductListings[Constants.IAPItem_ContinentsUnlocker].ProductId;
+                AppSettings.IAPItem_FullTraining_ProductId = li.ProductListings[Constants.IAPItem_FullTraining].ProductId;
             }
-            else
-            {
-                ProductLicensed = true;
-            }
+
+            //else
+            //{
+            //    ProductLicensed = true;
+            //}
         }
 
         //public static async Task SaveSettings(bool rebuildData)
@@ -118,6 +137,8 @@ namespace EasyPaint.Settings
             StorageHelper.StoreSetting(UserScoreKey, UserScoreValue, true);
             // StorageHelper.StoreSetting(SoundOnKey, SoundOnValue, true);
         }
+
+
 
     }
 }

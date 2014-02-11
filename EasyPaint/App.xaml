@@ -18,6 +18,7 @@
         <Converters:PercentageToResultConverter x:Key="percentageToResultConverter" />
         <Converters:PercentageToVisibilityConverter x:Key="percentageToVisibilityConverter" />
         <Converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+        <Converters:BoolToVisibilityConverterInverted x:Key="boolToVisibilityConverterInverted" />
         <Converters:LockedToOpacityConverter x:Key="lockedToOpacityConverter" />
         <Converters:MediaElementStateToImageConverter x:Key="mediaElementStateToImageConverter" />
         <Converters:LockedToImageConverter x:Key="lockedToImageConverter" />

@@ -617,7 +617,7 @@ namespace EasyPaint.View
                                     async result =>
                                     {
                                         //verifica se è presente la licenza, nel caso sia richiesta
-                                        if (AppSettings.ProductLicensed || !nextEl.ParentGroupRequiresLicense)
+                                        if (AppSettings.IAPItem_ContinentsUnlocker_ProductLicensed || !nextEl.ParentGroupRequiresLicense)
                                         {
                                             UnlockAndRestartWithItem(nextEl);
                                         }
@@ -635,9 +635,9 @@ namespace EasyPaint.View
                                                         try
                                                         {
 #if DEBUG
-                                                            res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+                                                            res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_ContinentsUnlocker_ProductId, false);
 #else
-                                                            res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, true);
+                                                            res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_ContinentsUnlocker_ProductId, true);
 #endif
                                                         }
                                                         catch (Exception)
@@ -655,7 +655,7 @@ namespace EasyPaint.View
                                                         else
                                                         {
                                                             //acquisto OK
-                                                            AppSettings.ProductLicensed = true;
+                                                            AppSettings.IAPItem_ContinentsUnlocker_ProductLicensed = true;
                                                             //si prosegue normalmente nel flusso
                                                             UnlockAndRestartWithItem(nextEl);
                                                         }
