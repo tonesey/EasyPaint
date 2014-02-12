@@ -148,7 +148,7 @@
     <value>acqua</value>
   </data>
   <data name="ButtonCreditsText" xml:space="preserve">
-    <value>crediti</value>
+    <value>riconoscimenti</value>
   </data>
   <data name="ButtonSettingsText" xml:space="preserve">
     <value>impostazioni</value>
@@ -160,10 +160,10 @@
     <value>livello completato!</value>
   </data>
   <data name="MsgBoxTitleWarning" xml:space="preserve">
-    <value>Attenzione</value>
+    <value>attenzione</value>
   </data>
   <data name="MsgBoxExit" xml:space="preserve">
-    <value>Sei sicuro di voler uscire?</value>
+    <value>sei sicuro di voler uscire?</value>
   </data>
   <data name="item_suricati" xml:space="preserve">
     <value>suricati</value>
@@ -247,10 +247,10 @@
     <value>volpe</value>
   </data>
   <data name="CreditsPage_MainTitle" xml:space="preserve">
-    <value>CREDITI</value>
+    <value>RICONOSCIMENTI</value>
   </data>
   <data name="HelpPage_HelpMainTitle" xml:space="preserve">
-    <value>Guida</value>
+    <value>AIUTO</value>
   </data>
   <data name="HelpPage_ButtonContactUsText" xml:space="preserve">
     <value>Contattaci!</value>
@@ -262,19 +262,19 @@
     <value>Ti piace questo gioco?</value>
   </data>
   <data name="Error_NoNetworkAvailable" xml:space="preserve">
-    <value>Connessione a Internet non disponibile, si prega di riprovare</value>
+    <value>Connessione a internet non disponibile, si prega di riprovare</value>
   </data>
   <data name="FeedbackOrCommentText" xml:space="preserve">
     <value>"{0}" feedback/commento </value>
   </data>
   <data name="WarningMusic" xml:space="preserve">
-    <value>Premere Sì se si desidera utilizzare sottofondo musicale questa app (questo si interrompe la riproduzione di musica attuale)</value>
+    <value>Premere OK se si desidera utilizzare il sottofondo musicale di questa app, interrompendo l'esecuzione della musica corrente</value>
   </data>
   <data name="HelpPage_RateThisGameButtonText" xml:space="preserve">
     <value>vota 5 stelle!</value>
   </data>
   <data name="HelpPage_HelpMainText" xml:space="preserve">
-    <value>Colora almeno il 70% di ogni disegno per sbloccare e accedere a nuovi continenti e animali! 
+    <value>Colora almeno il 70% di ogni disegno per sbloccare gli animali e accedere a nuovi continenti! 
 Sii accurato, preciso, ma soprattutto... sii VELOCE!</value>
   </data>
   <data name="item_scoiattolo" xml:space="preserve">
@@ -341,42 +341,39 @@ Sii accurato, preciso, ma soprattutto... sii VELOCE!</value>
     <value>cammello</value>
   </data>
   <data name="CreditsPage_MainText" xml:space="preserve">
-    <value>Ingegneria di app: Davide Tentori
+    <value>Realizzazione gioco: Davide Tentori
 Grafica e clipart: virinaflora - Fotolia.com, Marta&amp;Martina
-Musica di sottofondo / sound fx: Raphael Ruis
+Musica di sottofondo / effetti sonori: Raphael Ruis
 
 Un ringraziamento molto speciale a: Ele, Albi, Isa, Luca per il supporto morale e tecnico!
 
-Un ringraziamento speciale Marco Uberti per l'ispirazione di questo gioco. 
-Checkout suo impressionante apps presso www.invenktion.it</value>
+Grazie a Marco Uberti: visitate il sito www.invenktion.it</value>
   </data>
   <data name="item_tartaruga" xml:space="preserve">
-    <value>tartaruga di dorso di mare</value>
+    <value>tartaruga</value>
   </data>
   <data name="ExceptionMessageTitle" xml:space="preserve">
-    <value>Rapporto problema</value>
+    <value>Report problema</value>
   </data>
   <data name="ExceptionMessage" xml:space="preserve">
-    <value>Un problema si è verificato l'ultima volta che è stato eseguito questo app :(
-Ti piacerebbe inviare una email a segnalarlo?</value>
+    <value>Si è verificato un problema l'ultima volta che hai giocato... Vuoi mandarci un'email per aiutarci a risolverlo?</value>
   </data>
   <data name="RatingYes" xml:space="preserve">
-    <value>votare 5 stelle</value>
+    <value>vota 5 stelle</value>
   </data>
   <data name="RatingTitle" xml:space="preserve">
-    <value>Godendo {0}?</value>
+    <value>Ti sta piacendo {0}?</value>
   </data>
   <data name="RatingNo" xml:space="preserve">
     <value>No grazie</value>
   </data>
   <data name="RatingMessage2" xml:space="preserve">
-    <value>Si guarda per essere sempre un sacco di uso fuori la nostra app!
-
-Perché non ci danno una valutazione di 5 stelle per mostrare il vostro apprezzamento?</value>
+    <value>Ti sta piacendo molto {0}!
+Perchè non ci dai 5 stelle sullo store?</value>
   </data>
   <data name="RatingMessage1" xml:space="preserve">
-    <value>Ci piacerebbe che tu per votare i nostri stelle app 5 :)
+    <value>Perchè non cidai 5 stelle sullo store? :)
 
-Mostrandoci qualche amore nell'archivio ci aiuta a continuare a lavorare sull'app e rendere le cose ancora meglio!</value>
+Mostrando il tuo apprezzamento ci aiuterai a fare ancora meglio!</value>
   </data>
-</root>
+<data name="GalleryPage_InfoText_NotPurchased" xml:space="preserve"><value>Gioca e sblocca gli animali per vederli in questa sezione... o scarica il pacchetto ALL ANIMALS PACK per vederli tutti subito!</value></data><data name="NeedPaidAppQuestion" xml:space="preserve"><value>Mi dispiace ma il continente '{0}' è disponibile solo scaricando il gioco completo, lo vuoi?</value></data><data name="GalleryPage_InfoText_Purchased" xml:space="preserve"><value>Allenati colorantdo tutti gli animali del mondo!</value></data><data name="GroupCompleted" xml:space="preserve"><value>Complimenti! Tutti gli animali del continente {0} sono stati colorati! Ora andiamo a scoprire il continente {1}!</value></data></root>
