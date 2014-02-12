@@ -8,7 +8,7 @@
       <group id="Resx">
         <trans-unit translate="yes" id="Resx/ButtonCreditsText" xml:space="preserve">
           <source>credits</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">crediti</target>
+          <target state="translated">riconoscimenti</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonSettingsText" xml:space="preserve">
           <source>settings</source>
@@ -20,91 +20,91 @@
         </trans-unit>
         <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
           <source>Africa</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Africa</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">Africa</target>
         </trans-unit>
         <trans-unit id="Resx/group_America" translate="yes" xml:space="preserve">
           <source>America</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">America</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">America</target>
         </trans-unit>
         <trans-unit id="Resx/group_Europe" translate="yes" xml:space="preserve">
           <source>Europe</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Europa</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">Europa</target>
         </trans-unit>
         <trans-unit id="Resx/group_Oceania" translate="yes" xml:space="preserve">
           <source>Oceania</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Oceania</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">Oceania</target>
         </trans-unit>
         <trans-unit id="Resx/item_canguro" translate="yes" xml:space="preserve">
           <source>kangaroo</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">canguro</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">canguro</target>
         </trans-unit>
         <trans-unit id="Resx/item_coccodrillo" translate="yes" xml:space="preserve">
           <source>crocodile</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">coccodrillo</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">coccodrillo</target>
         </trans-unit>
         <trans-unit id="Resx/item_diavolo" translate="yes" xml:space="preserve">
           <source>tasmanian devil</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">diavolo della Tasmania</target>
+          <target state="signed-off">diavolo della Tasmania</target>
         </trans-unit>
         <trans-unit id="Resx/item_koala" translate="yes" xml:space="preserve">
           <source>koala</source>
-          <target state="translated">koala</target>
+          <target state="signed-off">koala</target>
         </trans-unit>
         <trans-unit id="Resx/item_tiger" translate="yes" xml:space="preserve">
           <source>tiger</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">tigre</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">tigre</target>
         </trans-unit>
         <trans-unit id="Resx/item_zebra" translate="yes" xml:space="preserve">
           <source>zebra</source>
-          <target state="translated">zebra</target>
+          <target state="signed-off">zebra</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_failed" xml:space="preserve">
           <source>level failed!</source>
-          <target state="translated">livello fallito!</target>
+          <target state="signed-off">livello fallito!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MsgBoxTitleWarning" xml:space="preserve">
           <source>Warning</source>
-          <target state="translated">Attenzione</target>
+          <target state="signed-off">attenzione</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MsgBoxExit" xml:space="preserve">
           <source>Are you sure you want to exit?</source>
-          <target state="translated">Sei sicuro di voler uscire?</target>
+          <target state="signed-off">sei sicuro di voler uscire?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/message_level_completed" xml:space="preserve">
           <source>level completed!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">livello completato!</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">livello completato!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/water" xml:space="preserve">
           <source>water</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">acqua</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">acqua</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_suricati" xml:space="preserve">
           <source>meerkats</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">suricati</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">suricati</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_Yak" xml:space="preserve">
           <source>yak</source>
-          <target state="translated">yak</target>
+          <target state="signed-off">yak</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Asia" xml:space="preserve">
           <source>Asia</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Asia</target>
+          <target state="signed-off">Asia</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonHelpText" xml:space="preserve">
           <source>help</source>
-          <target state="translated">aiuto</target>
+          <target state="signed-off">aiuto</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_pinguino" xml:space="preserve">
           <source>penguin</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">pinguino</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">pinguino</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_volpe" xml:space="preserve">
           <source>fox</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">volpe</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">volpe</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/CreditsPage_MainTitle" xml:space="preserve">
           <source>CREDITS</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">CREDITI</target>
+          <target state="signed-off">RICONOSCIMENTI</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/CreditsPage_MainText" xml:space="preserve">
           <source>App engineering: Davide Tentori
@@ -115,42 +115,41 @@ Very special thanks to: Isa, Ele, Albi, Luca for moral and technical support!
 
 Special thanks to Marco Uberti for inspiration of this game. 
 Checkout his awesome apps at www.invenktion.it</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ingegneria di app: Davide Tentori
+          <target state="signed-off">Realizzazione gioco: Davide Tentori
 Grafica e clipart: virinaflora - Fotolia.com, Marta%%amp;Martina
-Musica di sottofondo / sound fx: Raphael Ruis
+Musica di sottofondo / effetti sonori: Raphael Ruis
 
 Un ringraziamento molto speciale a: Ele, Albi, Isa, Luca per il supporto morale e tecnico!
 
-Un ringraziamento speciale Marco Uberti per l'ispirazione di questo gioco. 
-Checkout suo impressionante apps presso www.invenktion.it</target>
+Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_HelpMainTitle" xml:space="preserve">
           <source>HELP</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Guida</target>
+          <target state="signed-off">AIUTO</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_ButtonContactUsText" xml:space="preserve">
           <source>Contact us!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Contattaci!</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">Contattaci!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_NeedHelpQuestionText" xml:space="preserve">
           <source>Questions/feedback?</source>
-          <target state="translated">Domande/commenti?</target>
+          <target state="signed-off">Domande/commenti?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameRequestText" xml:space="preserve">
           <source>Do you like this game?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ti piace questo gioco?</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">Ti piace questo gioco?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/Error_NoNetworkAvailable" xml:space="preserve">
           <source>Internet connection not available, please retry</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Connessione a Internet non disponibile, si prega di riprovare</target>
+          <target state="signed-off">Connessione a internet non disponibile, si prega di riprovare</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackOrCommentText" xml:space="preserve">
           <source>"{0}" feedback/comment </source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">"{0}" feedback/commento </target>
+          <target state="signed-off" state-qualifier="mt-suggestion">"{0}" feedback/commento </target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/WarningMusic" xml:space="preserve">
           <source>Press Yes if you’d like to use this app’s background music (this will stop your current music playback)</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Premere Sì se si desidera utilizzare sottofondo musicale questa app (questo si interrompe la riproduzione di musica attuale)</target>
+          <target state="signed-off">Premere OK se si desidera utilizzare il sottofondo musicale di questa app, interrompendo l'esecuzione della musica corrente</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartGalleryText" xml:space="preserve">
           <source>gallery</source>
@@ -158,227 +157,225 @@ Checkout suo impressionante apps presso www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_NotPurchased" xml:space="preserve">
           <source>Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</source>
-          <target state="new">Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</target>
+          <target state="signed-off">Gioca e sblocca gli animali per vederli in questa sezione... o scarica il pacchetto ALL ANIMALS PACK per vederli tutti subito!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">elefante indiano</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">elefante indiano</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cammello" xml:space="preserve">
           <source>camel</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">cammello</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">cammello</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_riccio" xml:space="preserve">
           <source>hedgehog</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">riccio</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">riccio</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_tartaruga" xml:space="preserve">
           <source>flatback sea turtle</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">tartaruga di dorso di mare</target>
+          <target state="signed-off">tartaruga</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ExceptionMessageTitle" xml:space="preserve">
           <source>Problem report</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Rapporto problema</target>
+          <target state="signed-off">Report problema</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/NeedPaidAppQuestion" xml:space="preserve">
           <source>Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</source>
-          <target state="new">Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</target>
+          <target state="signed-off">Mi dispiace ma il continente '{0}' è disponibile solo scaricando il gioco completo, lo vuoi?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_Purchased" xml:space="preserve">
           <source>Train yourself colouring all animals!</source>
-          <target state="new">Train yourself colouring all animals!</target>
+          <target state="signed-off">Allenati colorantdo tutti gli animali del mondo!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GroupCompleted" xml:space="preserve">
           <source>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</source>
-          <target state="new">CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</target>
+          <target state="signed-off">Complimenti! Tutti gli animali del continente {0} sono stati colorati! Ora andiamo a scoprire il continente {1}!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ExceptionMessage" xml:space="preserve">
           <source>A problem occurred the last time you ran this app :(
 Would you like to send an email to report it?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Un problema si è verificato l'ultima volta che è stato eseguito questo app :(
-Ti piacerebbe inviare una email a segnalarlo?</target>
+          <target state="signed-off">Si è verificato un problema l'ultima volta che hai giocato... Vuoi mandarci un'email per aiutarci a risolverlo?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingYes" xml:space="preserve">
           <source>rate 5 stars</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">votare 5 stelle</target>
+          <target state="signed-off">vota 5 stelle</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingTitle" xml:space="preserve">
           <source>Enjoying {0}?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Godendo {0}?</target>
+          <target state="signed-off">Ti sta piacendo {0}?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingNo" xml:space="preserve">
           <source>no thanks</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">No grazie</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">No grazie</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingMessage2" xml:space="preserve">
           <source>You look to be getting a lot of use out of our app!
 
 Why not give us a 5 star rating to show your appreciation?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Si guarda per essere sempre un sacco di uso fuori la nostra app!
-
-Perché non ci danno una valutazione di 5 stelle per mostrare il vostro apprezzamento?</target>
+          <target state="signed-off">Ti sta piacendo molto {0}!
+Perchè non ci dai 5 stelle sullo store?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/RatingMessage1" xml:space="preserve">
           <source>We'd love you to rate our app 5 stars :)
 
 Showing us some love on the store helps us to continue to work on the app and make things even better!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ci piacerebbe che tu per votare i nostri stelle app 5 :)
+          <target state="signed-off">Perchè non cidai 5 stelle sullo store? :)
 
-Mostrandoci qualche amore nell'archivio ci aiuta a continuare a lavorare sull'app e rendere le cose ancora meglio!</target>
+Mostrando il tuo apprezzamento ci aiuterai a fare ancora meglio!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_lepre" xml:space="preserve">
           <source>hare</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">lepre</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">lepre</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/MessageAllLevelsCompleted" xml:space="preserve">
           <source>CONGRATULATIONS!!! All levels completed!!!</source>
-          <target state="translated">COMPLIMENTI!!! Tutti i livelli sono stati completati!!!</target>
+          <target state="signed-off">COMPLIMENTI!!! Tutti i livelli sono stati completati!!!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_RateThisGameButtonText" xml:space="preserve">
           <source>Rate 5 stars!!!</source>
-          <target state="translated">vota 5 stelle!</target>
+          <target state="signed-off">vota 5 stelle!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/HelpPage_HelpMainText" xml:space="preserve">
           <source>Draw at least 70% of each picture to unlock and access new animals and continents! 
 Be accurate, be precise but... be FAST!</source>
-          <target state="translated">Colora almeno il 70% di ogni disegno per sbloccare e accedere a nuovi continenti e animali! 
+          <target state="signed-off">Colora almeno il 70% di ogni disegno per sbloccare gli animali e accedere a nuovi continenti! 
 Sii accurato, preciso, ma soprattutto... sii VELOCE!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_scoiattolo" xml:space="preserve">
           <source>squirrel</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">scoiattolo</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">scoiattolo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_pesce_pagliaccio" xml:space="preserve">
           <source>clown fish</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">pesce pagliaccio</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">pesce pagliaccio</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_renna" xml:space="preserve">
           <source>reindeer</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">renna</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">renna</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_panda" xml:space="preserve">
           <source>panda</source>
-          <target state="final">panda</target>
+          <target state="signed-off">panda</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_orca" xml:space="preserve">
           <source>grampus</source>
-          <target state="translated">orca</target>
+          <target state="signed-off">orca</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_marmotta" xml:space="preserve">
           <source>marmot</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">marmotta</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">marmotta</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_ippopotamo" xml:space="preserve">
           <source>hyppo</source>
-          <target state="translated">ippopotamo</target>
+          <target state="signed-off">ippopotamo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_gatto" xml:space="preserve">
           <source>cat</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">gatto</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">gatto</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_formichiere" xml:space="preserve">
           <source>ant-bear</source>
-          <target state="translated">formichiere</target>
+          <target state="signed-off">formichiere</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefantemarino" xml:space="preserve">
           <source>elephant seal</source>
-          <target state="translated">elefante marino</target>
+          <target state="signed-off">elefante marino</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cervo" xml:space="preserve">
           <source>deer</source>
-          <target state="translated">cervo</target>
+          <target state="signed-off">cervo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_cane" xml:space="preserve">
           <source>dog</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">cane</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">cane</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_armadillo" xml:space="preserve">
           <source>armadillo</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">armadillo</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">armadillo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_alce" xml:space="preserve">
           <source>elk</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">alce</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">alce</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_orsobianco" xml:space="preserve">
           <source>white bear</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">orso bianco</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">orso bianco</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_orso" xml:space="preserve">
           <source>bear</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">orso</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">orso</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_leone" xml:space="preserve">
           <source>lion</source>
-          <target state="translated">leone</target>
+          <target state="signed-off">leone</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_giraffa" xml:space="preserve">
           <source>giraffe</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">giraffa</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">giraffa</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_foca" xml:space="preserve">
           <source>seal</source>
-          <target state="translated">foca</target>
+          <target state="signed-off">foca</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_bradipo" xml:space="preserve">
           <source>sloath</source>
-          <target state="translated">bradipo</target>
+          <target state="signed-off">bradipo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_bisonte" xml:space="preserve">
           <source>bison</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">bisonte</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">bisonte</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_balena" xml:space="preserve">
           <source>whale</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">balena</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">balena</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_avvoltoio" xml:space="preserve">
           <source>vulture</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">avvoltoio</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">avvoltoio</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_aquila" xml:space="preserve">
           <source>eagle</source>
-          <target state="translated">aquila</target>
+          <target state="signed-off">aquila</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_albatro" xml:space="preserve">
           <source>albatross</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">albatro</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">albatro</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/group_Antarctica" xml:space="preserve">
           <source>Antartica</source>
-          <target state="translated">Antartico</target>
+          <target state="signed-off">Antartico</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/WarningExit" xml:space="preserve">
           <source>Do you want to quit app?</source>
-          <target state="translated">Vuoi uscire?</target>
+          <target state="signed-off">Vuoi uscire?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_Tigre" xml:space="preserve">
           <source>tiger</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">tigre</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">tigre</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_scimmietta" xml:space="preserve">
           <source>monkey</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">scimmia</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">scimmia</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_Cobra" xml:space="preserve">
           <source>cobra</source>
-          <target state="translated">cobra</target>
+          <target state="signed-off">cobra</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante" xml:space="preserve">
           <source>elephant</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">elefante</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">elefante</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_clamidosauro" xml:space="preserve">
           <source>frilled lizard</source>
-          <target state="translated">clamidosauro</target>
+          <target state="signed-off">clamidosauro</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_rinoceronte" xml:space="preserve">
           <source>rhinoceros</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">rinoceronte</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">rinoceronte</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_gazzella" xml:space="preserve">
           <source>gazelle</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">gazzella</target>
+          <target state="signed-off" state-qualifier="mt-suggestion">gazzella</target>
         </trans-unit>
       </group>
     </body>
