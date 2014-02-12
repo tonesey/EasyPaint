@@ -8,15 +8,15 @@
       <group id="Resx">
         <trans-unit translate="yes" id="Resx/ButtonCreditsText" xml:space="preserve">
           <source>credits</source>
-          <target state="translated">riconoscimenti</target>
+          <target state="signed-off">riconoscimenti</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonSettingsText" xml:space="preserve">
           <source>settings</source>
-          <target state="translated">impostazioni</target>
+          <target state="signed-off">impostazioni</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonStartArcadeText" xml:space="preserve">
           <source>play!</source>
-          <target state="translated">gioca!</target>
+          <target state="signed-off">gioca!</target>
         </trans-unit>
         <trans-unit id="Resx/group_Africa" translate="yes" xml:space="preserve">
           <source>Africa</source>
@@ -156,8 +156,8 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
           <target state="signed-off">galleria</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_NotPurchased" xml:space="preserve">
-          <source>Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</source>
-          <target state="signed-off">Gioca e sblocca gli animali per vederli in questa sezione... o scarica il pacchetto ALL ANIMALS PACK per vederli tutti subito!</target>
+          <source>Draw and unlock as many animals as you can to see more items here... or download FULL TRAINING PACK to see them all now!</source>
+          <target state="needs-review-translation">Gioca e sblocca gli animali per vederli in questa sezione... o scarica il pacchetto FULL TRAINING PACK per vederli tutti subito!</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>

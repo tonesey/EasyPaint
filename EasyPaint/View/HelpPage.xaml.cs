@@ -1,6 +1,7 @@
 ﻿using EasyPaint.Helpers;
 using EasyPaint.Messages;
 using EasyPaint.Model.UI;
+using EasyPaint.Settings;
 using EasyPaint.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
@@ -36,6 +37,7 @@ namespace EasyPaint.View
 
         private void InitPage()
         {
+            TextBlockVersion.Text = "v." + AppSettings.AppVersion;
         }
     }
 }

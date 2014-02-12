@@ -81,12 +81,23 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Border.RenderTransform>
-                <CompositeTransform Rotation="-1.403"/>
+                <CompositeTransform Rotation="-1"/>
             </Border.RenderTransform>
             <StackPanel>
-                <TextBlock Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
                                Text="{Binding Path=LocalizedResX.HelpPage_HelpMainTitle, Source={StaticResource LocalizedStrings}}" 
                                Foreground="Green"/>
+                    <TextBlock x:Name="TextBlockVersion" Grid.Column="1" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
+                               Text="v. 1.0.0" 
+                               Foreground="Green"/>
+                </Grid>
+
+            
                 <TextBlock Margin="0,10,0,0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
                                Text="{Binding Path=LocalizedResX.HelpPage_HelpMainText, Source={StaticResource LocalizedStrings}}" 
                                TextWrapping="Wrap"/>

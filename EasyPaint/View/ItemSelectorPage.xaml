@@ -63,7 +63,6 @@
                     <Grid Tap="Grid_Tap">
                         <Image Source="{Binding DataContext, Converter={StaticResource lockedToImageConverter}}" 
                                Width="300" Height="300"
-                               Opacity="{Binding DataContext.IsLocked, Converter={StaticResource lockedToOpacityConverter}}"
                                Stretch="Fill" 
                                CacheMode="BitmapCache">
                         </Image>

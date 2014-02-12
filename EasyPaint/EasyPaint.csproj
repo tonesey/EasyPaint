@@ -18,7 +18,7 @@
     </TargetFrameworkProfile>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>it%3bqps-ploc</SupportedCultures>
+    <SupportedCultures>en;it</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>EasyPaint_$(Configuration)_$(Platform).xap</XapFilename>
@@ -533,29 +533,11 @@
       <DependentUpon>LocalizedResources.en.xlf</DependentUpon>
       <culture>en</culture>
     </EmbeddedResource>
-    <EmbeddedResource Include="LocalizedResources.es.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalizedResources.es.xlf</DependentUpon>
-      <culture>es</culture>
-    </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources.it.resx">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedResources.it.xlf</DependentUpon>
       <culture>it</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LocalizedResources.pt.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalizedResources.pt.xlf</DependentUpon>
-      <culture>pt</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LocalizedResources.qps-ploc.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalizedResources.qps-ploc.xlf</DependentUpon>
-      <culture>qps-ploc</culture>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -595,21 +577,9 @@
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>LocalizedResources.en.resx</LastGenOutput>
     </XliffResource>
-    <XliffResource Include="LocalizedResources.es.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>LocalizedResources.es.resx</LastGenOutput>
-    </XliffResource>
     <XliffResource Include="LocalizedResources.it.xlf">
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>LocalizedResources.it.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="LocalizedResources.pt.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>LocalizedResources.pt.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="LocalizedResources.qps-ploc.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>LocalizedResources.qps-ploc.resx</LastGenOutput>
     </XliffResource>
   </ItemGroup>
   <ItemGroup>

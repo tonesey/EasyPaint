@@ -157,8 +157,8 @@ Checkout his awesome apps at www.invenktion.it</target>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">gallery</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_NotPurchased" xml:space="preserve">
-          <source>Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</source>
-          <target state="new">Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</target>
+          <source>Draw and unlock as many animals as you can to see more items here... or download FULL TRAINING PACK to see them all now!</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>
@@ -182,15 +182,15 @@ Checkout his awesome apps at www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/NeedPaidAppQuestion" xml:space="preserve">
           <source>Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</source>
-          <target state="new">Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_Purchased" xml:space="preserve">
           <source>Train yourself colouring all animals!</source>
-          <target state="new">Train yourself colouring all animals!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Train yourself colouring all animals!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GroupCompleted" xml:space="preserve">
           <source>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</source>
-          <target state="new">CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ExceptionMessage" xml:space="preserve">
           <source>A problem occurred the last time you ran this app :(

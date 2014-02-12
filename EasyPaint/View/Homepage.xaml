@@ -78,7 +78,6 @@
             </Button.RenderTransform>
             <Button.Content>
                 <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
-                           Foreground="#FF471E17"
                            Text="{Binding Path=LocalizedResX.ButtonStartGalleryText, Source={StaticResource LocalizedStrings}}">
                 </TextBlock>
             </Button.Content>
@@ -105,7 +104,7 @@
             </i:Interaction.Triggers>
         </Button>
 
-        <Button RenderTransformOrigin="0.5,0.5" Grid.Row="4" Grid.Column="0" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+        <Button Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Grid.Row="4" Grid.Column="0" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
             <Button.RenderTransform>
                 <CompositeTransform Rotation="-2.646"/>
             </Button.RenderTransform>
