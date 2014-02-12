@@ -2,6 +2,7 @@
 using EasyPaint.Helpers;
 using EasyPaint.Messages;
 using EasyPaint.Model;
+using EasyPaint.Model.UI;
 using EasyPaint.Settings;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -19,6 +20,20 @@ namespace EasyPaint.ViewModel
     {
 
         private List<Group> _groups = null;
+
+        LoopingListDataSource _listDs = new LoopingListDataSource(0);
+        public LoopingListDataSource ListDs
+        {
+            get
+            {
+                return _listDs;
+            }
+            private set
+            {
+                _listDs = value;
+                OnPropertyChanged("ListDs");
+            }
+        }
 
         private ObservableCollection<ItemViewModel> _items = new ObservableCollection<ItemViewModel>();
         public ObservableCollection<ItemViewModel> Items
@@ -97,16 +112,12 @@ namespace EasyPaint.ViewModel
 
         private void InitGalleryItems()
         {
-            //TODO IAP 
-            //- verificare se l'item è licenziato o meno
-            //- mettere una prp di Description in Binding e un bool che indica se l'item è stato comprato o meno per cambiare la UI
-            //- inizializzare opportunamente la lista, togliendo IsLocked se l'item è stato comprato
-
             Items = new ObservableCollection<ItemViewModel>();
             FullTrainingPackAvailable = AppSettings.IAPItem_FullTraining_ProductLicensed;
 
             if (!FullTrainingPackAvailable)
             {
+                //visualizzazione solo animali sbloccati
                 foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
                 {
                     Items.Add(new ItemViewModel(item));
@@ -114,12 +125,56 @@ namespace EasyPaint.ViewModel
             }
             else
             {
+                //visualizzazione di tutti gli animali
                 foreach (var item in _groups.SelectMany(g => g.Items))
                 {
                     Items.Add(new ItemViewModel(item));
                 }
             }
-            OnPropertyChanged("Items");
+
+            var listDs = new LoopingListDataSource(Items.Count());
+            listDs.ItemNeeded -= _listDs_ItemNeeded;
+            listDs.ItemNeeded += _listDs_ItemNeeded;
+            listDs.ItemUpdated -= _listDs_ItemUpdated;
+            listDs.ItemUpdated += _listDs_ItemUpdated;
+            ListDs = listDs;
+        }
+
+        void _listDs_ItemUpdated(object sender, LoopingListDataItemEventArgs e)
+        {
+            if (e.Index > Items.Count)
+            {
+                e.Item = null;
+                return;
+            }
+
+            var newEl = Items.ElementAt(e.Index);
+            if (newEl != null)
+            {
+                (e.Item as PictureLoopingItem).Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key);
+                (e.Item as PictureLoopingItem).DataContext = (newEl as ItemViewModel);
+            }
+        }
+
+        void _listDs_ItemNeeded(object sender, LoopingListDataItemEventArgs e)
+        {
+            if (e.Index > Items.Count)
+            {
+                e.Item = null;
+                return;
+            }
+
+            var newEl = Items.ElementAt(e.Index);
+            if (newEl != null)
+            {
+                PictureLoopingItem item = null;
+                item = new PictureLoopingItem()
+                {
+                    Text = LocalizedResources.ResourceManager.GetString((newEl as ItemViewModel).Key),
+                    DataContext = (newEl as ItemViewModel)
+                };
+                e.Item = item;
+            }
         }
 
         private object GotoHomepage()
@@ -164,6 +219,5 @@ namespace EasyPaint.ViewModel
                 InitGalleryItems();
             }
         }
-
     }
 }
