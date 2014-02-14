@@ -485,9 +485,7 @@
     <EmbeddedResource Include="Audio\wav\one.wav" />
     <EmbeddedResource Include="Audio\wav\three.wav" />
     <EmbeddedResource Include="Audio\wav\two.wav" />
-    <Content Include="Fonts\CURLZ___.TTF" />
     <None Include="app.config" />
-    <Content Include="Fonts\andyb.ttf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -504,24 +502,6 @@
       <Numbers>True</Numbers>
       <Punctuation>True</Punctuation>
     </Content>
-    <BlendEmbeddedFont Include="Fonts\JingJing.ttf">
-      <IsSystemFont>True</IsSystemFont>
-      <All>True</All>
-      <AutoFill>True</AutoFill>
-      <Uppercase>True</Uppercase>
-      <Lowercase>True</Lowercase>
-      <Numbers>True</Numbers>
-      <Punctuation>True</Punctuation>
-    </BlendEmbeddedFont>
-    <BlendEmbeddedFont Include="Fonts\PAPYRUS.TTF">
-      <IsSystemFont>True</IsSystemFont>
-      <All>True</All>
-      <AutoFill>True</AutoFill>
-      <Uppercase>True</Uppercase>
-      <Lowercase>True</Lowercase>
-      <Numbers>True</Numbers>
-      <Punctuation>True</Punctuation>
-    </BlendEmbeddedFont>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
