@@ -52,8 +52,6 @@
             </Setter>
             <Setter Property="VerticalAlignment" Value="Center">
             </Setter>
-            <!--<Setter Property="FontFamily" Value="..\Fonts\CURLZ___.TTF#Curlz MT">
-            </Setter>-->
             <Setter Property="FontFamily" Value="..\Fonts\BuxtonSketch.ttf#Buxton Sketch">
             </Setter>
             <Setter Property="FontWeight" Value="ExtraBlack">
