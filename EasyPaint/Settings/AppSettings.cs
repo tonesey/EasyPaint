@@ -50,6 +50,7 @@ namespace EasyPaint.Settings
 
         public AppSettings()
         {
+            ExternalMusicAllowed = null;
         }
 
         //public async static Task LoadAppSettingsAsync()
@@ -140,5 +141,7 @@ namespace EasyPaint.Settings
 
 
 
+
+        public static bool ? ExternalMusicAllowed { get; set; }
     }
 }

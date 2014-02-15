@@ -28,6 +28,7 @@ using Wp8Shared.Exceptions;
 using Wp8Shared.Helpers;
 using Microsoft.Phone.Info;
 using System.Threading;
+using Microsoft.Xna.Framework;
 
 namespace EasyPaint
 {
@@ -401,19 +402,36 @@ namespace EasyPaint
 
         public static bool BackgroundMusicAllowed()
         {
-            bool allowed = true;
-            ////you can check a stored property here and return false if you want to disable all bgm
-            //if (!MediaPlayer.GameHasControl)
-            //{
-            //    MyMsgbox.Show(AppViewModel.CurrentPage, MsgboxMode.YesNo, LocalizedResources.WarningMusic, response =>
-            //    {
-            //        if (response == MsgboxResponse.No)
-            //        {
-            //            allowed = false;
-            //        }
-            //    });
-            //}
-            return allowed;
+            //bool allowed = true;
+
+            FrameworkDispatcher.Update();
+
+            if (!MediaPlayer.GameHasControl && MediaPlayer.State != MediaState.Stopped && AppSettings.ExternalMusicAllowed == null)
+            {
+                if (MessageBox.Show(LocalizedResources.WarningMusic, "", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+                {
+                    AppSettings.ExternalMusicAllowed = true;
+                }
+                else
+                {
+                    AppSettings.ExternalMusicAllowed = false;
+                    MediaPlayer.Stop();
+                }
+                //MyMsgbox.Show(AppViewModel.CurrentPage, MsgboxMode.YesNo, LocalizedResources.WarningMusic, response =>
+                //{
+                //    if (response == MsgboxResponse.No)
+                //    {
+                //        allowed = false;
+                //    }
+                //});
+            }
+
+            if (AppSettings.ExternalMusicAllowed == null) {
+                // non è ancora stato chiesto all'utente se interrompere la musica di sottofondo o meno, il gioco ha il controllo
+                return true;
+            }
+
+            return !AppSettings.ExternalMusicAllowed.Value;
         }
 
         public void ToggleIsMute()
@@ -458,6 +476,8 @@ namespace EasyPaint
             {
                 return;
             }
+
+            //GlobalMediaElement.Pause();
 
             bool trackChanged = false;
 

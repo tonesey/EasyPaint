@@ -63,9 +63,9 @@ namespace EasyPaint.ViewModel
         {
             get
             {
-//#if DEBUG
-//                return false;
-//#endif
+#if DEBUG
+                return false;
+#endif
                 return _item.IsLocked;
             }
             set
@@ -174,15 +174,21 @@ namespace EasyPaint.ViewModel
                 IsolatedStorageFileStream fileStream = myIsolatedStorage.CreateFile(fileName);
                 Extensions.SaveJpeg(_checkImage, fileStream, _checkImage.PixelWidth, _checkImage.PixelHeight, 0, 100);
                 fileStream.Close();
+
                 GetImageSourceFromIsoStore(fileName);
+
+
+                //var task = Task.Run(async () => { await GetImageSourceFromIsoStore(fileName); });
+                //task.Wait();
+
             }
             //}
 #endif
         }
 
-       
 
-        public async void GetImageSourceFromIsoStore(string filename)
+
+        public async Task GetImageSourceFromIsoStore(string filename)
         {
             Windows.Storage.StorageFile storageFile = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(filename);
             ImageSource = new Uri(GenericUtility.GetIsolatedStorageFullImagePath(storageFile));
