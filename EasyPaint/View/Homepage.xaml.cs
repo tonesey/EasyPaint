@@ -38,6 +38,10 @@ namespace EasyPaint.View
             InitializeComponent();
             Loaded += HomePage_Loaded;
             Unloaded += HomePage_Unloaded;
+            TextBlockDebug.Visibility = System.Windows.Visibility.Collapsed;
+#if DEBUG
+            TextBlockDebug.Visibility = System.Windows.Visibility.Visible;
+#endif
         }
 
         void HomePage_Unloaded(object sender, RoutedEventArgs e)

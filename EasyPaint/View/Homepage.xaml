@@ -55,6 +55,9 @@
                Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
         </Image>
 
+        <TextBlock x:Name="TextBlockDebug" Text="TEST" Grid.Column="2" Grid.Row="5" FontSize="80" Foreground="Red" TextAlignment="Center">
+
+        </TextBlock>
         <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False"  d:LayoutRounding="Auto" ClickMode="Hover" Height="Auto" Margin="20,0" Width="Auto" >
             <Button.RenderTransform>
                 <CompositeTransform Rotation="2.888"/>
