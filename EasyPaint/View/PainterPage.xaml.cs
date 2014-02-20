@@ -307,15 +307,21 @@ namespace EasyPaint.View
         {
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
 
+
+#if DEBUG
+            stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
+#else
             switch (App.Current.GameMode)
             {
                 case GameMode.Arcade:
+
                     stopTimeBtn.Visibility = System.Windows.Visibility.Collapsed;
                     break;
                 case GameMode.Gallery:
                     stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
                     break;
             }
+#endif
 
             BorderPalette.Visibility = Visibility.Collapsed;
             TextBlockCountDownSmall.Text = TotalTime.ToString();
@@ -534,8 +540,8 @@ namespace EasyPaint.View
             var colorsToIgnore = ImagesHelper.GetColors(_reducedColorsPicture, false, false);
             colorsToIgnore = colorsToIgnore.Except(GetUserSelectedItem().PaletteColors).ToList();
             colorsToIgnore = colorsToIgnore.Except(ImagesHelper.GetColors(_reducedColorsLineArtPicture, false, false)).ToList();
-            
-          //  var colorsToIgnore = new List<Color>();
+
+            //  var colorsToIgnore = new List<Color>();
             int accuracyPercentage = ImagesHelper.GetAccuracyPercentage(_reducedColorsPicture,
                                                                         userDrawnPicture,
                                                                         colorsToIgnore,
@@ -626,45 +632,45 @@ namespace EasyPaint.View
                                             MyMsgbox.Show(this, MsgboxMode.YesNo,
                                                 string.Format(LocalizedResources.NeedPaidAppQuestion, nextEl.ParentGroupName),
                                                 async result1 =>
-                                            {
-                                                switch (result1)
                                                 {
-                                                    case MsgboxResponse.Yes:
+                                                    switch (result1)
+                                                    {
+                                                        case MsgboxResponse.Yes:
 
-                                                        string res = null;
-                                                        try
-                                                        {
+                                                            string res = null;
+                                                            try
+                                                            {
 #if DEBUG
-                                                            res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_ContinentsUnlocker_ProductId, false);
+                                                                res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_ContinentsUnlocker_ProductId, false);
 #else
                                                             res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_ContinentsUnlocker_ProductId, true);
 #endif
-                                                        }
-                                                        catch (Exception)
-                                                        {
-                                                            //capita anche se l'utente fa "Annulla" sull'acquisto
-                                                            res = null;
-                                                        }
+                                                            }
+                                                            catch (Exception)
+                                                            {
+                                                                //capita anche se l'utente fa "Annulla" sull'acquisto
+                                                                res = null;
+                                                            }
 
-                                                        if (res == null)
-                                                        {
-                                                            //acquisto KO
+                                                            if (res == null)
+                                                            {
+                                                                //acquisto KO
+                                                                InitPage();
+                                                                return; //se non si vuole acquistare resta sullo stesso item
+                                                            }
+                                                            else
+                                                            {
+                                                                //acquisto OK
+                                                                AppSettings.IAPItem_ContinentsUnlocker_ProductLicensed = true;
+                                                                //si prosegue normalmente nel flusso
+                                                                UnlockAndRestartWithItem(nextEl);
+                                                            }
+                                                            break;
+                                                        case MsgboxResponse.No:
                                                             InitPage();
                                                             return; //se non si vuole acquistare resta sullo stesso item
-                                                        }
-                                                        else
-                                                        {
-                                                            //acquisto OK
-                                                            AppSettings.IAPItem_ContinentsUnlocker_ProductLicensed = true;
-                                                            //si prosegue normalmente nel flusso
-                                                            UnlockAndRestartWithItem(nextEl);
-                                                        }
-                                                        break;
-                                                    case MsgboxResponse.No:
-                                                        InitPage();
-                                                        return; //se non si vuole acquistare resta sullo stesso item
-                                                }
-                                            });
+                                                    }
+                                                });
                                         }
                                     });
                             }
