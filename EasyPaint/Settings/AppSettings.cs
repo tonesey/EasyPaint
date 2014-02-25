@@ -92,30 +92,26 @@ namespace EasyPaint.Settings
 
         private static async Task CheckIAPLicenseInfosAsync()
         {
-            bool isProductActive_FullTraining_ProductLicensed = false;
-            bool isProductActive_ContinentsUnlocker_ProductLicensed = false;
+            //bool isProductActive_FullTraining_ProductLicensed = false;
+            //bool isProductActive_ContinentsUnlocker_ProductLicensed = false;
 #if DEBUG
-            isProductActive_FullTraining_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
-            isProductActive_ContinentsUnlocker_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
+            IAPItem_FullTraining_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
+            IAPItem_ContinentsUnlocker_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
 #else
-            isProductActive_FullTraining_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
-            isProductActive_ContinentsUnlocker_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
+            IAPItem_FullTraining_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
+            IAPItem_ContinentsUnlocker_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
+
 #endif
-            if (!isProductActive_FullTraining_ProductLicensed || !isProductActive_ContinentsUnlocker_ProductLicensed)
+            if (!IAPItem_FullTraining_ProductLicensed || !IAPItem_ContinentsUnlocker_ProductLicensed)
             {
 #if DEBUG
                 MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
 #else
                 Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
 #endif
-                AppSettings.IAPItem_ContinentsUnlocker_ProductId = li.ProductListings[Constants.IAPItem_ContinentsUnlocker].ProductId;
-                AppSettings.IAPItem_FullTraining_ProductId = li.ProductListings[Constants.IAPItem_FullTraining].ProductId;
+                IAPItem_ContinentsUnlocker_ProductId = li.ProductListings[Constants.IAPItem_ContinentsUnlocker].ProductId;
+                IAPItem_FullTraining_ProductId = li.ProductListings[Constants.IAPItem_FullTraining].ProductId;
             }
-
-            //else
-            //{
-            //    ProductLicensed = true;
-            //}
         }
 
         //public static async Task SaveSettings(bool rebuildData)
