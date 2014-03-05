@@ -16,7 +16,8 @@ namespace TesterMMM
     {
 
         private TranslateTransform _transform_Move = new TranslateTransform();
-        private ScaleTransform _transform_Resize = new ScaleTransform();
+        private ScaleTransform _transform_Scale = new ScaleTransform();
+
         private TransformGroup _transformGroup = new TransformGroup();
 
         private Brush _stationaryBrush;
@@ -31,17 +32,17 @@ namespace TesterMMM
             // Combine the moving and resizing tranforms into one TransformGroup.
             // The rectangle's RenderTransform can only contain a single transform or TransformGroup.
             _transformGroup.Children.Add(_transform_Move);
-            _transformGroup.Children.Add(_transform_Resize);
-            _border.RenderTransform = _transformGroup;
-
+            _transformGroup.Children.Add(_transform_Scale);
+            border.RenderTransform = _transformGroup;
+            //border.RenderTransformOrigin = new Point(0.5, 0.5);
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
 
         private void Border_ManipulationStarted(object sender, System.Windows.Input.ManipulationStartedEventArgs e)
         {
-            _stationaryBrush = _border.Background;
-            _border.Background = _transformingBrush;
+            _stationaryBrush =border.Background;
+            border.Background = _transformingBrush;
         }
 
         private void Border_ManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)
@@ -50,19 +51,22 @@ namespace TesterMMM
             _transform_Move.X += e.DeltaManipulation.Translation.X;
             _transform_Move.Y += e.DeltaManipulation.Translation.Y;
 
-            // Resize the rectangle.
-            if (e.DeltaManipulation.Scale.X > 0 && e.DeltaManipulation.Scale.Y > 0)
+            double scaleX = e.DeltaManipulation.Scale.X;
+            double scaleY = e.DeltaManipulation.Scale.Y;
+
+            double scaleFactor = Math.Min(scaleX, scaleY);
+
+            if (scaleFactor > 0)
             {
-                // Scale the rectangle.
-                _transform_Resize.ScaleX *= e.DeltaManipulation.Scale.X;
-                _transform_Resize.ScaleY *= e.DeltaManipulation.Scale.Y;
+                _transform_Scale.ScaleX *= scaleFactor;
+                _transform_Scale.ScaleY *= scaleFactor;
             }
         }
 
         private void Border_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
         {
             // Restore the original color.
-            _border.Background = _stationaryBrush;
+            border.Background = _stationaryBrush;
         }
 
         // Sample code for building a localized ApplicationBar

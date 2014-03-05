@@ -15,8 +15,13 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Canvas x:Name="LayoutRoot" Background="Transparent">
-        <Border Name="_border" Width="200" Height="200" Background="Gray" ManipulationStarted="Border_ManipulationStarted" ManipulationDelta="Border_ManipulationDelta" ManipulationCompleted="Border_ManipulationCompleted" Canvas.Left="62" Canvas.Top="134">
-            
+        <Border Name="border" 
+                Width="200" Height="200" 
+                Background="Gray" 
+                ManipulationStarted="Border_ManipulationStarted" 
+                ManipulationDelta="Border_ManipulationDelta" 
+                ManipulationCompleted="Border_ManipulationCompleted" 
+                Canvas.Left="62" Canvas.Top="134" RenderTransformOrigin="0.5,0.5">
         </Border>
 
     </Canvas>
