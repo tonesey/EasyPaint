@@ -140,18 +140,18 @@ namespace EasyPaint
             MockIAPLib.MockIAP.RunInMockMode(true);
             MockIAPLib.MockIAP.ClearCache();
             MockIAPLib.MockIAP.SetListingInformation(1, "en-us", "A description", "1", "TestApp");
-            // Add some more items manually.
-            MockIAPLib.ProductListing p1 = new MockIAPLib.ProductListing
-            {
-                Name = "Full Training Pack",
-                ProductId = Constants.IAPItem_FullTraining,
-                ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
-                Keywords = new string[] { "image" },
-                Description = "Full Training Pack description",
-                FormattedPrice = "1.99",
-                Tag = string.Empty
-            };
-            MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_FullTraining, p1);
+            //// Add some more items manually.
+            //MockIAPLib.ProductListing p1 = new MockIAPLib.ProductListing
+            //{
+            //    Name = "Full Training Pack",
+            //    ProductId = Constants.IAPItem_FullTraining,
+            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+            //    Keywords = new string[] { "image" },
+            //    Description = "Full Training Pack description",
+            //    FormattedPrice = "1.99",
+            //    Tag = string.Empty
+            //};
+            //MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_FullTraining, p1);
 
             MockIAPLib.ProductListing p2 = new MockIAPLib.ProductListing
             {
@@ -207,7 +207,8 @@ namespace EasyPaint
         private void InitApp()
         {
             AppSettings.LoadAppSettings();
-            FeedbackHelper.Default.Launching(AppSettings.AtLeastOneItemLicensed);
+            //FeedbackHelper.Default.Launching(!AppSettings.FreePlayingMode);
+            FeedbackHelper.Default.Launching(true); //TBD - forza il caricamento del RateMyApp - dopo il lancio abilitare solo se l'app è in modalità "free" ?
             LittleWatson.CheckForPreviousException(LocalizedResources.ExceptionMessage, LocalizedResources.ExceptionMessageTitle);
             InitAudio();
             var vm = ViewModelLocator.GroupSelectorViewModelStatic;

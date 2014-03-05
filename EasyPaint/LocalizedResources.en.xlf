@@ -158,7 +158,7 @@ Checkout his awesome apps at www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_NotPurchased" xml:space="preserve">
           <source>Draw and unlock as many animals as you can to see more items here... or download FULL TRAINING PACK to see them all now!</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Draw and unlock as many animals as you can to see more items here... or download ALL ANIMALS PACK to see them all now!</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="translated">Draw and unlock as many animals as you can to see more items here!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>

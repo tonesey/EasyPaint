@@ -157,7 +157,7 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_NotPurchased" xml:space="preserve">
           <source>Draw and unlock as many animals as you can to see more items here... or download FULL TRAINING PACK to see them all now!</source>
-          <target state="final">Gioca e sblocca gli animali per vederli in questa sezione... o scarica il pacchetto FULL TRAINING PACK per vederli tutti subito!</target>
+          <target state="translated">Gioca e sblocca più animali che puoi per vederli in questa sezione!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>

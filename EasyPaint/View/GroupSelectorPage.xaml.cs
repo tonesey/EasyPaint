@@ -120,38 +120,10 @@ namespace EasyPaint.View
         private async void Grid_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             _vm.SelectedGroup = (((sender as Grid).DataContext as PictureLoopingItem).DataContext as GroupViewModel);
+            ViewModelLocator.ItemSelectorViewModelStatic.SetCurrentGroup(_vm.SelectedGroup);
+            _vm.GroupSelectedCommand.Execute(null);
 
-            string key = "testitem";
-
-        
-
-            if (!_vm.SelectedGroup.IsLocked)
-            {
-                ViewModelLocator.ItemSelectorViewModelStatic.SetCurrentGroup(_vm.SelectedGroup);
-                _vm.GroupSelectedCommand.Execute(null);
-            }
         }
-
-
-        //        private void CompleteFulfillMent()
-        //        {
-        //#if DEBUG
-        //            var productLicenses = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses;
-        //            MockIAPLib.ProductLicense tokenLicense = productLicenses["testitem"];
-        //#else
-        //            var productLicenses = CurrentApp.LicenseInformation.ProductLicenses;
-        //            ProductLicense tokenLicense = productLicenses["testitem];
-        //#endif
-        //            if (tokenLicense.IsConsumable && tokenLicense.IsActive)
-        //            {
-        //                tokenCount += 1;
-        //#if DEBUG
-        //                MockIAPLib.CurrentApp.ReportProductFulfillment(tokenLicense.ProductId);
-        //#else
-        //                CurrentApp.ReportProductFulfillment(tokenLicense.ProductId);
-        //#endif
-        //            }
-        //        }
 
     }
 }
