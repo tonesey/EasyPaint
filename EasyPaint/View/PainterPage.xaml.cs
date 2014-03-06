@@ -40,6 +40,7 @@ namespace EasyPaint.View
 
         // Constructor
         SimzzDev.DrawingBoard _drawingboard = null;
+        bool _drawing = true;
 
         WriteableBitmap _reducedColorsPicture = null;
         WriteableBitmap _reducedColorsLineArtPicture = null;
@@ -79,8 +80,6 @@ namespace EasyPaint.View
             Loaded += PainterPage_Loaded;
             Unloaded += PainterPage_Unloaded;
 
-            BuildTransformGroup();
-            GridMainContainer.RenderTransform = _transformGroup;
         }
 
         private void BuildTransformGroup()
@@ -330,7 +329,12 @@ namespace EasyPaint.View
         private void InitPage()
         {
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
+            _drawing = true;
+            _drawingboard.IsEnabled = true;
 
+            BuildTransformGroup();
+            GridMainContainer.RenderTransform = _transformGroup;
+            GridMainContainer.RenderTransformOrigin = new Point(0.5, 0.5);
 
 #if DEBUG
             stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
@@ -771,13 +775,19 @@ namespace EasyPaint.View
         private void GridMainContainer_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
         {
             if (_drawing) return;
+
             _transform_Move.X += e.DeltaManipulation.Translation.X;
             _transform_Move.Y += e.DeltaManipulation.Translation.Y;
 
             double scaleX = e.DeltaManipulation.Scale.X;
             double scaleY = e.DeltaManipulation.Scale.Y;
 
-            double scaleFactor = Math.Min(scaleX, scaleY);
+            bool zoomingIn = false;
+            if (Math.Abs(scaleX) > Math.Abs(scaleY)) { 
+            
+            }
+
+            double scaleFactor = Math.Max(scaleX, scaleY);
 
             if (scaleFactor > 0)
             {
@@ -786,7 +796,7 @@ namespace EasyPaint.View
             }
         }
 
-        bool _drawing = true;
+
         private void toggleModeBtn_Click(object sender, RoutedEventArgs e)
         {
             _drawing = !_drawing;

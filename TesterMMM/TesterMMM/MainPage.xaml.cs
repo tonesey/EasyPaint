@@ -31,12 +31,11 @@ namespace TesterMMM
 
             // Combine the moving and resizing tranforms into one TransformGroup.
             // The rectangle's RenderTransform can only contain a single transform or TransformGroup.
-            _transformGroup.Children.Add(_transform_Move);
-            _transformGroup.Children.Add(_transform_Scale);
-            border.RenderTransform = _transformGroup;
+            //_transformGroup.Children.Add(_transform_Move);
+            //_transformGroup.Children.Add(_transform_Scale);
+            //border.RenderTransform = _transformGroup;
             //border.RenderTransformOrigin = new Point(0.5, 0.5);
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            
         }
 
         private void Border_ManipulationStarted(object sender, System.Windows.Input.ManipulationStartedEventArgs e)

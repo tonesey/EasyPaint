@@ -320,10 +320,16 @@
                             HorizontalAlignment="Center"
                             Margin="0,0,0,0" >
 
-                    <Grid Name="GridPainter" Visibility="Visible" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}">
+                    <Grid Name="GridPainter" Visibility="Visible" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                          Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}">
+                        
+                        <Grid.Clip>
+                            <RectangleGeometry Rect="-100 0 600 400" />
+                        </Grid.Clip>
+                        
                         <TextBlock Name="ItemName1" FontSize="35" Text="Chlamydoselachus anguineus" Foreground="Green" HorizontalAlignment="Center" Opacity="0.6" FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" Margin="-50,-35,-50,0" VerticalAlignment="Top" Tap="ItemName1_Tap"></TextBlock>
                         <TextBlock  Name="ItemName2" FontSize="35" FontStyle="Italic" Text="Clamidosauro ABC ABC ABC ABC" Foreground="DarkBlue" HorizontalAlignment="Center" Opacity="0.6" FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" Margin="0,0,0,-40" VerticalAlignment="Bottom"></TextBlock>
-
+                        
                         <Grid Name="GridMainContainer" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"
                               ManipulationStarted="GridMainContainer_ManipulationStarted"
                               ManipulationCompleted="GridMainContainer_ManipulationCompleted"
@@ -344,10 +350,15 @@
                                 </InkPresenter.RenderTransform>
                             </InkPresenter>
                             <Image IsHitTestVisible="False" Name="ImageOverlay" CacheMode="BitmapCache" 
-                               Visibility="Visible" 
-                               Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  
-                               Stretch="Fill"  
-                               HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1">
+                                   Source="../Assets/buttons/btn_yes.png" 
+                                   Visibility="Visible" 
+                                   Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  
+                                   Stretch="Fill"  
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"
+                                   RenderTransformOrigin="0.5,0.5">
+                                <Image.RenderTransform>
+                                    <CompositeTransform ScaleY="1" ScaleX="1"/>
+                                </Image.RenderTransform>
                             </Image>
                         </Grid>
                     </Grid>
@@ -377,7 +388,8 @@
                        Opacity="0.8"
                        FontSize="62" 
                        HorizontalAlignment="Center" 
-                           Tap="TextBlockCountDownSmall_Tap" RenderTransformOrigin="0.5,0.5"
+                        Tap="TextBlockCountDownSmall_Tap" 
+                        RenderTransformOrigin="0.5,0.5"
                        >
                     <TextBlock.RenderTransform>
                         <CompositeTransform/>

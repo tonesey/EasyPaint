@@ -14,16 +14,23 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Canvas x:Name="LayoutRoot" Background="Transparent">
+    <Canvas x:Name="LayoutRoot" Background="Gray" Width="500" Height="300">
+        <Canvas.Clip>
+            <RectangleGeometry Rect="0 0 500 300" />
+        </Canvas.Clip>
         <Border Name="border" 
                 Width="200" Height="200" 
-                Background="Gray" 
                 ManipulationStarted="Border_ManipulationStarted" 
                 ManipulationDelta="Border_ManipulationDelta" 
                 ManipulationCompleted="Border_ManipulationCompleted" 
-                Canvas.Left="62" Canvas.Top="134" RenderTransformOrigin="0.5,0.5">
+                Canvas.Left="13" Canvas.Top="225" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <CompositeTransform ScaleX="3" ScaleY="3"/>
+            </Border.RenderTransform>
+            <Border.Background>
+                <ImageBrush Stretch="Fill" ImageSource="/btn_no.png"/>
+            </Border.Background>
         </Border>
-
     </Canvas>
 
 </phone:PhoneApplicationPage>
