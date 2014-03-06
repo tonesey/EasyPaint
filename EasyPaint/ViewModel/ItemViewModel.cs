@@ -125,7 +125,8 @@ namespace EasyPaint.ViewModel
             //ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
             //reduced colors
             ImageSource = new Uri(string.Format("../Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename }), UriKind.RelativeOrAbsolute);
-            ImageSourceHidden = new Uri(string.Format("../Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename.Replace("colore", "hidden") }), UriKind.RelativeOrAbsolute);
+            //ImageSourceHidden = new Uri(string.Format("../Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename.Replace("colore", "hidden") }), UriKind.RelativeOrAbsolute);
+            ImageSourceHidden = ImageSource;
 
             //---reduced colors
             ReducedColorsResourcePath = string.Format("Assets/{0}/groups/{1}/reduced_10/{2}", new string[] { AppSettings.AppRes, item.ParentGroup.Id, item.ImgFilename });

@@ -307,21 +307,8 @@ namespace EasyPaint.View
         {
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
 
-
-#if DEBUG
+            //stop always visible
             stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
-#else
-            switch (App.Current.GameMode)
-            {
-                case GameMode.Arcade:
-
-                    stopTimeBtn.Visibility = System.Windows.Visibility.Collapsed;
-                    break;
-                case GameMode.Gallery:
-                    stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
-                    break;
-            }
-#endif
 
             BorderPalette.Visibility = Visibility.Collapsed;
             TextBlockCountDownSmall.Text = TotalTime.ToString();
