@@ -77,6 +77,7 @@ namespace SimzzDev
         #region standard
         public void Ink_MouseMove(object sender, MouseEventArgs e)
         {
+            if (!IsEnabled) return;
             var pos = e.GetPosition(sender as UIElement);
             if (pos.X < 0 || pos.Y < 0 || pos.X > _presenter.Width || pos.Y > _presenter.Height)
             {
@@ -115,12 +116,14 @@ namespace SimzzDev
 
         public void Ink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (!IsEnabled) return;
             _stroke = null;
             //  _presenter.ReleaseMouseCapture();
         }
 
         public void Ink_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (!IsEnabled) return;
             //_presenter.CaptureMouse();
             if (InkMode == PenMode.Pen)
             {
@@ -217,5 +220,7 @@ namespace SimzzDev
             MyRectangleGeometry.Rect = new Rect(0, 0, _presenter.ActualWidth, _presenter.ActualHeight);
             _presenter.Clip = MyRectangleGeometry;
         }
+
+        public bool IsEnabled { get; set; }
     }
 }

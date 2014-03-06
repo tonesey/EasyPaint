@@ -54,14 +54,20 @@ namespace EasyPaint.View
         Storyboard _storyboardShowPalette;
         Storyboard _storyboardColorSelected;
         Storyboard _storyboardSmallCountDownAnimation;
-        EventHandler _storyboardSmallCountDownAnimationHandler;
 
+        EventHandler _storyboardSmallCountDownAnimationHandler;
         EventHandler _storyboardBigCountdownHandler = null;
         EventHandler _storyboardImageFadingAndStartGameHandler = null;
 
         Popup _popup = null;
         ResultPopup _popupChild = null;
         List<Color> _paletteColors = new List<Color>();
+
+        private TranslateTransform _transform_Move = new TranslateTransform();
+        private ScaleTransform _transform_Scale = new ScaleTransform();
+        private TransformGroup _transformGroup = new TransformGroup();
+        private Brush _stationaryBrush;
+        private Brush _transformingBrush = new SolidColorBrush(Colors.Orange);
 
         public PainterPage()
         {
@@ -72,6 +78,24 @@ namespace EasyPaint.View
 
             Loaded += PainterPage_Loaded;
             Unloaded += PainterPage_Unloaded;
+
+            BuildTransformGroup();
+            GridMainContainer.RenderTransform = _transformGroup;
+        }
+
+        private void BuildTransformGroup()
+        {
+            ClearTransformGroup();
+            _transformGroup.Children.Add(_transform_Move);
+            _transformGroup.Children.Add(_transform_Scale);
+        }
+
+        private void ClearTransformGroup()
+        {
+            if (_transformGroup.Children.Any())
+            {
+                _transformGroup.Children.Clear();
+            }
         }
 
         void PainterPage_Unloaded(object sender, RoutedEventArgs e)
@@ -729,6 +753,44 @@ namespace EasyPaint.View
 #if DEBUG
             stopTimeBtn_Click(null, null);
 #endif
+        }
+
+        private void GridMainContainer_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            if (_drawing) return;
+            _stationaryBrush = GridMainContainer.Background;
+            GridMainContainer.Background = _transformingBrush;
+        }
+
+        private void GridMainContainer_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
+        {
+            if (_drawing) return;
+            GridMainContainer.Background = _stationaryBrush;
+        }
+
+        private void GridMainContainer_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        {
+            if (_drawing) return;
+            _transform_Move.X += e.DeltaManipulation.Translation.X;
+            _transform_Move.Y += e.DeltaManipulation.Translation.Y;
+
+            double scaleX = e.DeltaManipulation.Scale.X;
+            double scaleY = e.DeltaManipulation.Scale.Y;
+
+            double scaleFactor = Math.Min(scaleX, scaleY);
+
+            if (scaleFactor > 0)
+            {
+                _transform_Scale.ScaleX *= scaleFactor;
+                _transform_Scale.ScaleY *= scaleFactor;
+            }
+        }
+
+        bool _drawing = true;
+        private void toggleModeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _drawing = !_drawing;
+            _drawingboard.IsEnabled = _drawing;
         }
 
     }
