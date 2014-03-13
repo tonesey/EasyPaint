@@ -88,5 +88,17 @@ namespace EasyPaint.ViewModel
                 return -380;
             }
         }
+
+        public int ToolBoxItem4TranslateY
+        {
+            get
+            {
+                if (ViewModelBase.IsInDesignModeStatic)
+                {
+                    return 0;
+                }
+                return -470;
+            }
+        }
     }
 }

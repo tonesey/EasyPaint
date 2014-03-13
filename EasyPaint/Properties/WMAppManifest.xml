@@ -5,7 +5,7 @@
     <Language code="en" />
     <Language code="it" />
   </Languages>
-  <App xmlns="" ProductID="{06e5b413-8d7d-4ead-86c9-4ea63e6429b6}" Title="The Color Hunter" RuntimeType="Silverlight" Version="1.0.3" Genre="apps.normal" Author="centapp" Description="The Color Hunter" Publisher="centapp" PublisherID="{5da64413-db0b-4927-a26d-534226f489ac}">
+  <App xmlns="" ProductID="{06e5b413-8d7d-4ead-86c9-4ea63e6429b6}" Title="The Color Hunter" RuntimeType="Silverlight" Version="1.1.0" Genre="apps.normal" Author="centapp" Description="The Color Hunter" Publisher="centapp" PublisherID="{5da64413-db0b-4927-a26d-534226f489ac}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <!--<Capability Name="ID_CAP_GAMERSERVICES" />-->

@@ -79,7 +79,6 @@ namespace EasyPaint.View
 
             Loaded += PainterPage_Loaded;
             Unloaded += PainterPage_Unloaded;
-
         }
 
         private void BuildTransformGroup()
@@ -335,21 +334,27 @@ namespace EasyPaint.View
             BuildTransformGroup();
             GridMainContainer.RenderTransform = _transformGroup;
             GridMainContainer.RenderTransformOrigin = new Point(0.5, 0.5);
+            _transform_Move.X = 0;
+            _transform_Move.Y = 0;
+            _transform_Scale.ScaleX = 1;
+            _transform_Scale.ScaleY = 1;
 
-#if DEBUG
+
             stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
-#else
-            switch (App.Current.GameMode)
-            {
-                case GameMode.Arcade:
 
-                    stopTimeBtn.Visibility = System.Windows.Visibility.Collapsed;
-                    break;
-                case GameMode.Gallery:
-                    stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
-                    break;
-            }
-#endif
+//#if DEBUG
+//            stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
+//#else
+//            switch (App.Current.GameMode)
+//            {
+//                case GameMode.Arcade:
+//                    stopTimeBtn.Visibility = System.Windows.Visibility.Collapsed;
+//                    break;
+//                case GameMode.Gallery:
+//                    stopTimeBtn.Visibility = System.Windows.Visibility.Visible;
+//                    break;
+//            }
+//#endif
 
             BorderPalette.Visibility = Visibility.Collapsed;
             TextBlockCountDownSmall.Text = TotalTime.ToString();
@@ -779,18 +784,16 @@ namespace EasyPaint.View
             _transform_Move.X += e.DeltaManipulation.Translation.X;
             _transform_Move.Y += e.DeltaManipulation.Translation.Y;
 
-            double scaleX = e.DeltaManipulation.Scale.X;
-            double scaleY = e.DeltaManipulation.Scale.Y;
+            //double scaleX = e.DeltaManipulation.Scale.X;
+            //double scaleY = e.DeltaManipulation.Scale.Y;
+            //bool zoomingIn = false;
+            //if (Math.Abs(scaleX) > Math.Abs(scaleY)) { 
+            //}
 
-            bool zoomingIn = false;
-            if (Math.Abs(scaleX) > Math.Abs(scaleY)) { 
-            
-            }
-
-            double scaleFactor = Math.Max(scaleX, scaleY);
-
-            if (scaleFactor > 0)
+            if (e.DeltaManipulation.Scale.X > 0 && e.DeltaManipulation.Scale.Y > 0)
             {
+                //double scaleFactor = Math.Max(scaleX, scaleY);
+                double scaleFactor = (e.DeltaManipulation.Scale.X + e.DeltaManipulation.Scale.Y) / 2;
                 _transform_Scale.ScaleX *= scaleFactor;
                 _transform_Scale.ScaleY *= scaleFactor;
             }
@@ -801,6 +804,17 @@ namespace EasyPaint.View
         {
             _drawing = !_drawing;
             _drawingboard.IsEnabled = _drawing;
+
+            //TODO portare in un converter
+            if (_drawing)
+            {
+                ZoomImage.Source = new BitmapImage(new Uri("../Assets/buttons/Zoom-icon-small.png", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                ZoomImage.Source = new BitmapImage(new Uri("../Assets/buttons/lock.png", UriKind.RelativeOrAbsolute));
+            }
+
         }
 
     }

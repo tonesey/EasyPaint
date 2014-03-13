@@ -114,29 +114,28 @@ namespace EasyPaint.ViewModel
         private void InitGalleryItems()
         {
             Items = new ObservableCollection<ItemViewModel>();
-            //FullTrainingPackAvailable = AppSettings.IAPItem_FullTraining_ProductLicensed;
-            //if (!FullTrainingPackAvailable)
-            //{
-            //    //visualizzazione solo animali sbloccati
-            //    foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
-            //    {
-            //        Items.Add(new ItemViewModel(item));
-            //    }
-            //}
-            //else
-            //{
-            //    //visualizzazione di tutti gli animali
-            //    foreach (var item in _groups.SelectMany(g => g.Items))
-            //    {
-            //        Items.Add(new ItemViewModel(item));
-            //    }
-            //}
-
-            //visualizzazione solo animali sbloccati
-            foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
+            if (!AppSettings.IAPItem_FullTraining_ProductLicensed)
             {
-                Items.Add(new ItemViewModel(item));
+                //visualizzazione solo animali sbloccati
+                foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
+                {
+                    Items.Add(new ItemViewModel(item));
+                }
             }
+            else
+            {
+                //visualizzazione di tutti gli animali
+                foreach (var item in _groups.SelectMany(g => g.Items))
+                {
+                    Items.Add(new ItemViewModel(item));
+                }
+            }
+
+            ////visualizzazione solo animali sbloccati
+            //foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
+            //{
+            //    Items.Add(new ItemViewModel(item));
+            //}
 
             var listDs = new LoopingListDataSource(Items.Count());
             listDs.ItemNeeded -= _listDs_ItemNeeded;

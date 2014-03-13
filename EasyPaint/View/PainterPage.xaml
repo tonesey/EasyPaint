@@ -96,6 +96,18 @@
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="toggleModeBtn">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-470">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Name="StoryboardSmallCountDown">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="BorderCountDownSmall">
@@ -244,7 +256,7 @@
 
                     <Button Name="toggleModeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="toggleModeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
-                            <CompositeTransform TranslateY="0"/>
+                            <CompositeTransform TranslateY="{Binding ToolBoxItem4TranslateY}"/>
                         </Button.RenderTransform>
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
@@ -253,7 +265,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid>
-                            <Image Source="../Assets/buttons/fit_to_size.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
+                            <Image x:Name="ZoomImage" Source="../Assets/buttons/Zoom-icon-small.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
                         </Grid>
                     </Button>
                 </StackPanel>
