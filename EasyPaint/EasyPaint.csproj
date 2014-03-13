@@ -326,6 +326,8 @@
     <Resource Include="Assets\buttons\pencil3.png" />
     <Content Include="Assets\buttons\download.png" />
     <Content Include="Assets\buttons\lock.png" />
+    <Content Include="Assets\buttons\PanZoom.png" />
+    <Content Include="Assets\buttons\PanZoom1.png" />
     <Content Include="Assets\buttons\Zoom-icon-small.png" />
     <Content Include="Assets\buttons\Zoom-icon.png" />
     <Content Include="Assets\icons\Lock.png" />

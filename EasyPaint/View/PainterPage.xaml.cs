@@ -790,7 +790,7 @@ namespace EasyPaint.View
             //if (Math.Abs(scaleX) > Math.Abs(scaleY)) { 
             //}
 
-            if (e.DeltaManipulation.Scale.X > 0 && e.DeltaManipulation.Scale.Y > 0)
+            if (e.DeltaManipulation.Scale.X > 0 || e.DeltaManipulation.Scale.Y > 0)
             {
                 //double scaleFactor = Math.Max(scaleX, scaleY);
                 double scaleFactor = (e.DeltaManipulation.Scale.X + e.DeltaManipulation.Scale.Y) / 2;
@@ -808,7 +808,7 @@ namespace EasyPaint.View
             //TODO portare in un converter
             if (_drawing)
             {
-                ZoomImage.Source = new BitmapImage(new Uri("../Assets/buttons/Zoom-icon-small.png", UriKind.RelativeOrAbsolute));
+                ZoomImage.Source = new BitmapImage(new Uri("../Assets/buttons/PanZoom1.png", UriKind.RelativeOrAbsolute));
             }
             else
             {
