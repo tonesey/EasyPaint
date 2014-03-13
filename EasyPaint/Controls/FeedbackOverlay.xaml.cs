@@ -193,7 +193,7 @@ namespace EasyPaint.Controls
         private void SetupSecondMessage()
         {
             this.Title = string.Format(LocalizedResources.RatingTitle, AppSettings.AppName.ToUpper());
-            this.Message = LocalizedResources.RatingMessage2;
+            this.Message = string.Format(LocalizedResources.RatingMessage2, AppSettings.AppName.ToUpper()); 
             this.YesText = LocalizedResources.RatingYes;
             this.NoText = LocalizedResources.RatingNo;
         }
