@@ -23,9 +23,9 @@
                 ManipulationStarted="Border_ManipulationStarted" 
                 ManipulationDelta="Border_ManipulationDelta" 
                 ManipulationCompleted="Border_ManipulationCompleted" 
-                Canvas.Left="13" Canvas.Top="225" RenderTransformOrigin="0.5,0.5">
+                Canvas.Left="13" Canvas.Top="55" RenderTransformOrigin="0.5,0.5">
             <Border.RenderTransform>
-                <CompositeTransform ScaleX="3" ScaleY="3"/>
+                <CompositeTransform ScaleX="1" ScaleY="1"/>
             </Border.RenderTransform>
             <Border.Background>
                 <ImageBrush Stretch="Fill" ImageSource="/btn_no.png"/>

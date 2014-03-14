@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -7,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 using TesterMMM.Resources;
 using System.Windows.Media;
 
@@ -22,7 +24,7 @@ namespace TesterMMM
 
         private Brush _stationaryBrush;
         private Brush _transformingBrush = new SolidColorBrush(Colors.Orange);
-
+        private double scaleX;
 
         // Constructor
         public MainPage()
@@ -31,16 +33,16 @@ namespace TesterMMM
 
             // Combine the moving and resizing tranforms into one TransformGroup.
             // The rectangle's RenderTransform can only contain a single transform or TransformGroup.
-            //_transformGroup.Children.Add(_transform_Move);
-            //_transformGroup.Children.Add(_transform_Scale);
-            //border.RenderTransform = _transformGroup;
-            //border.RenderTransformOrigin = new Point(0.5, 0.5);
-            
+            _transformGroup.Children.Add(_transform_Move);
+            _transformGroup.Children.Add(_transform_Scale);
+            border.RenderTransform = _transformGroup;
+            border.RenderTransformOrigin = new Point(0.5, 0.5);
+
         }
 
         private void Border_ManipulationStarted(object sender, System.Windows.Input.ManipulationStartedEventArgs e)
         {
-            _stationaryBrush =border.Background;
+            _stationaryBrush = border.Background;
             border.Background = _transformingBrush;
         }
 
@@ -53,12 +55,31 @@ namespace TesterMMM
             double scaleX = e.DeltaManipulation.Scale.X;
             double scaleY = e.DeltaManipulation.Scale.Y;
 
+            //Debug.WriteLine("> _transform_Scale.ScaleX: " + _transform_Scale.ScaleX);
+            //Debug.WriteLine("> _transform_Scale.ScaleY: " + _transform_Scale.ScaleY);
+
+            //if (_transform_Scale.ScaleX < 1 || _transform_Scale.ScaleY < 1)
+            //{
+            //    e.Handled = true;
+            //    return;
+            //}
+
+            //if (_transform_Scale.ScaleX > 2 || _transform_Scale.ScaleY > 2)
+            //{
+            //    e.Handled = true;
+            //    return;
+            //}
+
             double scaleFactor = Math.Min(scaleX, scaleY);
 
             if (scaleFactor > 0)
             {
-                _transform_Scale.ScaleX *= scaleFactor;
-                _transform_Scale.ScaleY *= scaleFactor;
+                var newScaleX = _transform_Scale.ScaleX * scaleFactor;
+                if (newScaleX > 1 && newScaleX < 2)
+                {
+                    _transform_Scale.ScaleX *= scaleFactor;
+                    _transform_Scale.ScaleY *= scaleFactor;
+                }
             }
         }
 

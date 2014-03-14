@@ -790,13 +790,34 @@ namespace EasyPaint.View
             //if (Math.Abs(scaleX) > Math.Abs(scaleY)) { 
             //}
 
-            if (e.DeltaManipulation.Scale.X > 0 || e.DeltaManipulation.Scale.Y > 0)
+            //if (_transform_Scale.ScaleX > 2 && _transform_Scale.ScaleX > 2)
+            //{
+            //    //ingrandimento max = 2x
+            //    return;
+            //}
+            //if (_transform_Scale.ScaleX < 1 && _transform_Scale.ScaleX < 1)
+            //{
+            //    //non è consentito il rimpicciolimento
+            //    return;
+            //}
+
+            double scaleFactor = (e.DeltaManipulation.Scale.X + e.DeltaManipulation.Scale.Y) / 2;
+            if (scaleFactor > 0)
             {
-                //double scaleFactor = Math.Max(scaleX, scaleY);
-                double scaleFactor = (e.DeltaManipulation.Scale.X + e.DeltaManipulation.Scale.Y) / 2;
-                _transform_Scale.ScaleX *= scaleFactor;
-                _transform_Scale.ScaleY *= scaleFactor;
+                var newScaleX = _transform_Scale.ScaleX * scaleFactor;
+                if (newScaleX > 1 && newScaleX < 2)
+                {
+                    _transform_Scale.ScaleX *= scaleFactor;
+                    _transform_Scale.ScaleY *= scaleFactor;
+                }
             }
+
+            //if (e.DeltaManipulation.Scale.X > 0 || e.DeltaManipulation.Scale.Y > 0)
+            //{
+            //    //double scaleFactor = Math.Max(scaleX, scaleY);
+            //    _transform_Scale.ScaleX *= scaleFactor;
+            //    _transform_Scale.ScaleY *= scaleFactor;
+            //}
         }
 
 

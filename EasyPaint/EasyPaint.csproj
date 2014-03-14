@@ -18,7 +18,7 @@
     </TargetFrameworkProfile>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>en;it</SupportedCultures>
+    <SupportedCultures>en;es;it</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>EasyPaint_$(Configuration)_$(Platform).xap</XapFilename>
@@ -477,6 +477,12 @@
       <DependentUpon>LocalizedResources.en.xlf</DependentUpon>
       <culture>en</culture>
     </EmbeddedResource>
+    <EmbeddedResource Include="LocalizedResources.es.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedResources.es.xlf</DependentUpon>
+      <culture>es</culture>
+    </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources.it.resx">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -520,6 +526,10 @@
     <XliffResource Include="LocalizedResources.en.xlf">
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>LocalizedResources.en.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="LocalizedResources.es.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>LocalizedResources.es.resx</LastGenOutput>
     </XliffResource>
     <XliffResource Include="LocalizedResources.it.xlf">
       <Generator>XliffResxGenerator</Generator>
