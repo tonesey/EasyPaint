@@ -362,7 +362,6 @@
                                 </InkPresenter.RenderTransform>
                             </InkPresenter>
                             <Image IsHitTestVisible="False" Name="ImageOverlay" CacheMode="BitmapCache" 
-                                   Source="../Assets/buttons/btn_yes.png" 
                                    Visibility="Visible" 
                                    Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  
                                    Stretch="Fill"  

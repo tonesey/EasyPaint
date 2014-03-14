@@ -76,6 +76,8 @@ namespace EasyPaint.View
 
             ItemName1.Visibility = Visibility.Visible;
             ItemName2.Visibility = Visibility.Visible;
+            BorderPalette.Visibility = Visibility.Collapsed;
+            BorderTools.Visibility = Visibility.Collapsed;
 
             Loaded += PainterPage_Loaded;
             Unloaded += PainterPage_Unloaded;
@@ -407,6 +409,9 @@ namespace EasyPaint.View
 
                 ImageOverlay.Source = _reducedColorsLineArtPicture;
                 ImageOverlay.Opacity = 0.5;
+
+                BorderPalette.Visibility = Visibility.Visible;
+                BorderTools.Visibility = Visibility.Visible;
                 InitPalette();
 
                 StartCountDown();
@@ -767,14 +772,14 @@ namespace EasyPaint.View
         private void GridMainContainer_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
             if (_drawing) return;
-            _stationaryBrush = GridMainContainer.Background;
-            GridMainContainer.Background = _transformingBrush;
+            //_stationaryBrush = GridMainContainer.Background;
+            //GridMainContainer.Background = _transformingBrush;
         }
 
         private void GridMainContainer_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
             if (_drawing) return;
-            GridMainContainer.Background = _stationaryBrush;
+            //GridMainContainer.Background = _stationaryBrush;
         }
 
         private void GridMainContainer_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
@@ -783,23 +788,6 @@ namespace EasyPaint.View
 
             _transform_Move.X += e.DeltaManipulation.Translation.X;
             _transform_Move.Y += e.DeltaManipulation.Translation.Y;
-
-            //double scaleX = e.DeltaManipulation.Scale.X;
-            //double scaleY = e.DeltaManipulation.Scale.Y;
-            //bool zoomingIn = false;
-            //if (Math.Abs(scaleX) > Math.Abs(scaleY)) { 
-            //}
-
-            //if (_transform_Scale.ScaleX > 2 && _transform_Scale.ScaleX > 2)
-            //{
-            //    //ingrandimento max = 2x
-            //    return;
-            //}
-            //if (_transform_Scale.ScaleX < 1 && _transform_Scale.ScaleX < 1)
-            //{
-            //    //non è consentito il rimpicciolimento
-            //    return;
-            //}
 
             double scaleFactor = (e.DeltaManipulation.Scale.X + e.DeltaManipulation.Scale.Y) / 2;
             if (scaleFactor > 0)
@@ -811,15 +799,7 @@ namespace EasyPaint.View
                     _transform_Scale.ScaleY *= scaleFactor;
                 }
             }
-
-            //if (e.DeltaManipulation.Scale.X > 0 || e.DeltaManipulation.Scale.Y > 0)
-            //{
-            //    //double scaleFactor = Math.Max(scaleX, scaleY);
-            //    _transform_Scale.ScaleX *= scaleFactor;
-            //    _transform_Scale.ScaleY *= scaleFactor;
-            //}
         }
-
 
         private void toggleModeBtn_Click(object sender, RoutedEventArgs e)
         {
