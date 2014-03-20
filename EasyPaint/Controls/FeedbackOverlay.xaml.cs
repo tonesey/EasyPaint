@@ -140,6 +140,12 @@ namespace EasyPaint.Controls
                 this.xProjection.RotationX = 90;
             }
 
+            if (AppSettings.AlreadyAskedRating)
+            {
+                this.SetVisibility(false);
+                return;
+            }
+
             if (FeedbackHelper.Default.State == FeedbackState.FirstReview)
             {
                 this.SetVisibility(true);
@@ -147,6 +153,8 @@ namespace EasyPaint.Controls
 
                 if (FeedbackOverlay.GetEnableAnimation(this))
                     this.showContent.Begin();
+
+                AppSettings.AlreadyAskedRating = true;
             }
             else if (FeedbackHelper.Default.State == FeedbackState.SecondReview)
             {
@@ -155,6 +163,8 @@ namespace EasyPaint.Controls
 
                 if (FeedbackOverlay.GetEnableAnimation(this))
                     this.showContent.Begin();
+
+                AppSettings.AlreadyAskedRating = true;
             }
             else
             {

@@ -104,13 +104,13 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        public bool ParentGroupRequiresLicense
-        {
-            get
-            {
-                return _item.ParentGroup.LicenseRequired;
-            }
-        }
+        //public bool ParentGroupRequiresLicense
+        //{
+        //    get
+        //    {
+        //        return _item.ParentGroup.LicenseRequired;
+        //    }
+        //}
 
         public ItemViewModel()
         {

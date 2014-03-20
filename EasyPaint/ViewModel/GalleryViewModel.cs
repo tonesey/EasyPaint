@@ -63,34 +63,33 @@ namespace EasyPaint.ViewModel
             }
         }
 
-
-        //private bool _fullTrainingPackAvailable = false;
-        //public bool FullTrainingPackAvailable
-        //{
-        //    get
-        //    {
-        //        return _fullTrainingPackAvailable;
-        //    }
-        //    set
-        //    {
-        //        _fullTrainingPackAvailable = value;
-        //        OnPropertyChanged("FullTrainingPackAvailable");
-        //        OnPropertyChanged("InfoFieldContent");
-        //    }
-        //}
+        private bool _fullTrainingPackAvailable = false;
+        public bool FullTrainingPackAvailable
+        {
+            get
+            {
+                return _fullTrainingPackAvailable;
+            }
+            set
+            {
+                _fullTrainingPackAvailable = value;
+                OnPropertyChanged("FullTrainingPackAvailable");
+                OnPropertyChanged("InfoFieldContent");
+            }
+        }
 
         public string InfoFieldContent
         {
             get
             {
-                //return FullTrainingPackAvailable ? LocalizedResources.GalleryPage_InfoText_Purchased : LocalizedResources.GalleryPage_InfoText_NotPurchased;
-                return LocalizedResources.GalleryPage_InfoText_NotPurchased;
+                return FullTrainingPackAvailable ? LocalizedResources.GalleryPage_InfoText_Purchased : LocalizedResources.GalleryPage_InfoText_NotPurchased;
+                //return LocalizedResources.GalleryPage_InfoText_NotPurchased;
             }
         }
 
         public RelayCommand ItemSelectedCommand { get; private set; }
         public RelayCommand GotoHomepageCommand { get; private set; }
-        //public RelayCommand GetAllItemsTrainingPackCommand { get; private set; }
+        public RelayCommand GetAllItemsTrainingPackCommand { get; private set; }
 
         public GalleryViewModel(IDataService dataService)
         {
@@ -108,7 +107,7 @@ namespace EasyPaint.ViewModel
 
             ItemSelectedCommand = new RelayCommand(() => NavigateToSelectedItemCommand());
             GotoHomepageCommand = new RelayCommand(() => GotoHomepage());
-            //GetAllItemsTrainingPackCommand = new RelayCommand(() => GetAllItemsTrainingPack());
+            GetAllItemsTrainingPackCommand = new RelayCommand(() => GetAllItemsTrainingPack());
         }
 
         private void InitGalleryItems()
@@ -194,34 +193,34 @@ namespace EasyPaint.ViewModel
             return null;
         }
 
-//        private async Task GetAllItemsTrainingPack()
-//        {
-//            string res = null;
-//            try
-//            {
-//#if DEBUG
-//                res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, false);
-//#else
-//                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, true);
-//#endif
-//            }
-//            catch (Exception)
-//            {
-//                //capita anche se l'utente fa "Annulla" sull'acquisto
-//                res = null;
-//            }
-//            if (res == null)
-//            {
-//                //acquisto KO
-//                return;
-//            }
-//            else
-//            {
-//                //acquisto OK
-//                FullTrainingPackAvailable = true;
-//                AppSettings.IAPItem_FullTraining_ProductLicensed = true;
-//                InitGalleryItems();
-//            }
-//        }
+        private async Task GetAllItemsTrainingPack()
+        {
+            string res = null;
+            try
+            {
+#if DEBUG
+                res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, false);
+#else
+                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, true);
+#endif
+            }
+            catch (Exception)
+            {
+                //capita anche se l'utente fa "Annulla" sull'acquisto
+                res = null;
+            }
+            if (res == null)
+            {
+                //acquisto KO
+                return;
+            }
+            else
+            {
+                //acquisto OK
+                FullTrainingPackAvailable = true;
+                AppSettings.IAPItem_FullTraining_ProductLicensed = true;
+                InitGalleryItems();
+            }
+        }
     }
 }

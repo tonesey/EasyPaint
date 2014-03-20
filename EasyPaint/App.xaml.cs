@@ -141,29 +141,29 @@ namespace EasyPaint
             MockIAPLib.MockIAP.ClearCache();
             MockIAPLib.MockIAP.SetListingInformation(1, "en-us", "A description", "1", "TestApp");
             //// Add some more items manually.
-            //MockIAPLib.ProductListing p1 = new MockIAPLib.ProductListing
-            //{
-            //    Name = "Full Training Pack",
-            //    ProductId = Constants.IAPItem_FullTraining,
-            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
-            //    Keywords = new string[] { "image" },
-            //    Description = "Full Training Pack description",
-            //    FormattedPrice = "1.99",
-            //    Tag = string.Empty
-            //};
-            //MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_FullTraining, p1);
-
-            MockIAPLib.ProductListing p2 = new MockIAPLib.ProductListing
+            MockIAPLib.ProductListing p1 = new MockIAPLib.ProductListing
             {
-                Name = "Continents Unlocker",
-                ProductId = Constants.IAPItem_ContinentsUnlocker,
+                Name = "Full Training Pack",
+                ProductId = Constants.IAPItem_FullTraining,
                 ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
                 Keywords = new string[] { "image" },
-                Description = "Continents Unlocker description",
+                Description = "Full Training Pack description",
                 FormattedPrice = "1.99",
                 Tag = string.Empty
             };
-            MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_ContinentsUnlocker, p2);
+            MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_FullTraining, p1);
+
+            //MockIAPLib.ProductListing p2 = new MockIAPLib.ProductListing
+            //{
+            //    Name = "Continents Unlocker",
+            //    ProductId = Constants.IAPItem_ContinentsUnlocker,
+            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+            //    Keywords = new string[] { "image" },
+            //    Description = "Continents Unlocker description",
+            //    FormattedPrice = "1.99",
+            //    Tag = string.Empty
+            //};
+            //MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_ContinentsUnlocker, p2);
 #endif
 
             //ProductListing p = new ProductListing
