@@ -331,7 +331,7 @@
                             VerticalAlignment="Center" 
                             HorizontalAlignment="Center"
                             Margin="0,0,0,0" >
-                    <TextBlock Name="ItemName1" FontSize="32" Text="Chlamydoselachus anguineus" Foreground="Green" 
+                    <TextBlock Name="ItemName1" FontSize="30" Text="Chlamydoselachus anguineus" Foreground="Green" 
                                HorizontalAlignment="Center" Opacity="0.6" FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                Margin="-50,-38,-50,0" 
                                VerticalAlignment="Top" Tap="ItemName1_Tap"></TextBlock>
@@ -373,10 +373,10 @@
                             </Image>
                         </Grid>
                     </Grid>
-                    <TextBlock  Name="ItemName2" FontSize="32" FontStyle="Italic" Text="Clamidosauro ABC ABC ABC ABC" 
+                    <TextBlock  Name="ItemName2" FontSize="30" FontStyle="Italic" Text="ClamidgggJJJosauro ABC ABC ABC ABC" 
                                     Foreground="DarkBlue" HorizontalAlignment="Center" Opacity="0.6" 
                                     FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
-                                    Margin="0,0,0,-42" VerticalAlignment="Bottom"></TextBlock>
+                                    Margin="0,0,0,-40" VerticalAlignment="Bottom"></TextBlock>
                 </StackPanel>
             </Border>
 
