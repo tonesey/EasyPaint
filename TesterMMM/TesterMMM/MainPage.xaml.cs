@@ -5,12 +5,14 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using TesterMMM.Resources;
 using System.Windows.Media;
+using System.Windows.Ink;
 
 namespace TesterMMM
 {
@@ -38,16 +40,67 @@ namespace TesterMMM
             border.RenderTransform = _transformGroup;
             border.RenderTransformOrigin = new Point(0.5, 0.5);
 
+            Touch.FrameReported += Touch_FrameReported;
         }
 
+        private bool _drawing = true;
+
+
+
+        void Touch_FrameReported(object sender, TouchFrameEventArgs e)
+        {
+            
+            TouchPointCollection tpc = e.GetTouchPoints(border);
+            //TouchPointCollection tpc1 = e.GetTouchPoints(MyIP);
+
+            //if (tpc.Count != tpc1.Count)
+            //{
+            //    _drawing = false;
+            //}
+    
+            int numberOfTouchPoint = tpc.Count;
+            Debug.WriteLine("Touch_FrameReported : " + numberOfTouchPoint);
+
+            //http://msdn.microsoft.com/IT-IT/library/system.windows.input.touchframeeventargs(v=vs.110).aspx
+
+            foreach (TouchPoint touchPoint in tpc)
+            {
+            }
+
+            if (numberOfTouchPoint > 1)
+            {
+                _drawing = false;
+                //AssignBorderEvents();
+                //UnassignInkEvents();
+            }
+            else
+            {
+                _drawing = true;
+                //AssignInkEvents();
+                //UnassignBorderEvents();
+            }
+        }
+       
         private void Border_ManipulationStarted(object sender, System.Windows.Input.ManipulationStartedEventArgs e)
         {
+            if (_drawing)
+            {
+                return;
+            }
+            Debug.WriteLine("Border_ManipulationStarted");
             _stationaryBrush = border.Background;
             border.Background = _transformingBrush;
         }
 
         private void Border_ManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)
         {
+          
+            if (_drawing)
+            {
+                return;
+            }
+            Debug.WriteLine("Border_ManipulationDelta");
+
             // Move the rectangle.
             _transform_Move.X += e.DeltaManipulation.Translation.X;
             _transform_Move.Y += e.DeltaManipulation.Translation.Y;
@@ -85,6 +138,12 @@ namespace TesterMMM
 
         private void Border_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
         {
+          
+            if (_drawing)
+            {
+                return;
+            }
+            Debug.WriteLine("Border_ManipulationCompleted");
             // Restore the original color.
             border.Background = _stationaryBrush;
         }
@@ -102,5 +161,49 @@ namespace TesterMMM
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+        Stroke NewStroke;
+
+        //A new stroke object named MyStroke is created. MyStroke is added to the StrokeCollection of the InkPresenter named MyIP
+        private void MyIP_MouseLeftButtonDown(object sender, MouseEventArgs e)
+        {
+            if (!_drawing)
+            {
+                return;
+            }
+            Debug.WriteLine("MyIP_MouseLeftButtonDown");
+            MyIP.CaptureMouse();
+            StylusPointCollection MyStylusPointCollection = new StylusPointCollection();
+            MyStylusPointCollection.Add(e.StylusDevice.GetStylusPoints(MyIP));
+            NewStroke = new Stroke(MyStylusPointCollection);
+            MyIP.Strokes.Add(NewStroke);
+        }
+
+        //StylusPoint objects are collected from the MouseEventArgs and added to MyStroke. 
+        private void MyIP_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_drawing)
+            {
+                return;
+            }
+            Debug.WriteLine("MyIP_MouseMove");
+            if (NewStroke != null)
+                NewStroke.StylusPoints.Add(e.StylusDevice.GetStylusPoints(MyIP));
+        }
+
+        //MyStroke is completed
+        private void MyIP_LostMouseCapture(object sender, MouseEventArgs e)
+        {
+            if (!_drawing)
+            {
+                return;
+            }
+            Debug.WriteLine("MyIP_LostMouseCapture");
+            NewStroke = null;
+        }
+
+        private void UIElement_OnTap(object sender, GestureEventArgs e)
+        {
+            MyIP.Strokes.Clear();
+        }
     }
 }
