@@ -3,7 +3,6 @@
   <DefaultLanguage xmlns="" code="en" />
   <Languages xmlns="">
     <Language code="en" />
-    <Language code="es" />
     <Language code="it" />
   </Languages>
   <App xmlns="" ProductID="{06e5b413-8d7d-4ead-86c9-4ea63e6429b6}" Title="The Color Hunter" RuntimeType="Silverlight" Version="1.1.0" Genre="apps.normal" Author="centapp" Description="The Color Hunter" Publisher="centapp" PublisherID="{5da64413-db0b-4927-a26d-534226f489ac}">
@@ -39,10 +38,14 @@
           <Count>0</Count>
           <BackgroundImageURI IsResource="false" IsRelative="true">Background.png</BackgroundImageURI>
           <Title>The Color Hunter</Title>
-          <BackContent></BackContent>
-          <BackBackgroundImageURI></BackBackgroundImageURI>
-          <BackTitle></BackTitle>
-          <DeviceLockImageURI></DeviceLockImageURI>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
           <HasLarge>False</HasLarge>
         </TemplateFlip>
       </PrimaryToken>

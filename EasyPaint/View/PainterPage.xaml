@@ -331,10 +331,34 @@
                             VerticalAlignment="Center" 
                             HorizontalAlignment="Center"
                             Margin="0,0,0,0" >
-                    <TextBlock Name="ItemName1" FontSize="30" Text="Chlamydoselachus anguineus" Foreground="Green" 
+                    
+                    <!--<TextBlock Name="ItemName1" FontSize="30" Text="Chlamydoselachus anguineus" Foreground="Green" 
                                HorizontalAlignment="Center" Opacity="0.6" FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                Margin="-50,-38,-50,0" 
-                               VerticalAlignment="Top" Tap="ItemName1_Tap"></TextBlock>
+                               VerticalAlignment="Top" Tap="ItemName1_Tap"></TextBlock>-->
+
+                    <StackPanel Orientation="Horizontal" Name="ScoreStackPanel" Margin="-50,-38,-50,0" VerticalAlignment="Top">
+                        <TextBlock Name="TextBlockScoreDescr" FontSize="30" Text="$current score:" 
+                                  Foreground="#FF011E3C" 
+                                  HorizontalAlignment="Center" Opacity="0.6" 
+                                  FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+                               />
+                        <TextBlock Name="TextBlockScoreValue" FontSize="30" Text="3456" Foreground="Green" 
+                               HorizontalAlignment="Center" Opacity="0.8" 
+                               FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+                               Margin="20,0,0,0"
+                               />
+                        <TextBlock Name="TextBlockRecordDescr" FontSize="30" Text="$record:" Foreground="#FF011E3C" 
+                               HorizontalAlignment="Center" Opacity="0.6" 
+                               FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+                                    Margin="40,0,0,0"
+                               />
+                        <TextBlock Name="TextBlockRecordValue" FontSize="30" Text="12300" Foreground="Green" 
+                               HorizontalAlignment="Center" Opacity="0.8" 
+                               FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+                               Margin="20,0,0,0"
+                               />
+                    </StackPanel>
 
                     <Grid Name="GridPainter" Visibility="Visible" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
                           Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}">

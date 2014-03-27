@@ -187,8 +187,6 @@ namespace EasyPaint.ViewModel
 #endif
         }
 
-
-
         public async Task GetImageSourceFromIsoStore(string filename)
         {
             Windows.Storage.StorageFile storageFile = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(filename);
@@ -232,13 +230,13 @@ namespace EasyPaint.ViewModel
         }
 #endif
 
-        internal void SetScore(int value)
+        internal void SetScore(long value)
         {
             _item.Score = value;
-            if (value > _item.RecordScore)
-            {
-                _item.RecordScore = value; // new record!
-            }
+            //if (value > _item.RecordScore)
+            //{
+            //    _item.RecordScore = value; // new record!
+            //}
         }
 
         public List<Color> PaletteColors { get { return _item.PaletteColors; } }

@@ -17,8 +17,8 @@ namespace EasyPaint.Model
         public List<Color> PaletteColors { get; set; }
         public Group ParentGroup { get; set; }
 
-        public int _score;
-        public int Score
+        public long _score;
+        public long Score
         {
             get
             {

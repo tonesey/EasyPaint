@@ -180,6 +180,35 @@ namespace EasyPaint.Design
             }
         }
 
+        private int _userScoreDrawValue = 0;
+        public int UserScoreDrawValue
+        {
+            get
+            {
+                return _userScoreDrawValue;
+            }
+            set
+            {
+                _userScoreDrawValue = value;
+                OnPropertyChanged("UserScoreDrawValue");
+            }
+        }
+
+        private int _userScoreTimeValue = 0;
+        public int UserScoreTimeValue
+        {
+            get
+            {
+                return _userScoreTimeValue;
+            }
+            set
+            {
+                _userScoreTimeValue = value;
+                OnPropertyChanged("UserScoreTimeValue");
+            }
+        }
+
+
         private PageOrientation _PageOrientation = PageOrientation.LandscapeLeft;
         public PageOrientation PageOrientation
         {
@@ -229,6 +258,8 @@ namespace EasyPaint.Design
 
             //result popup
             Percentage = 100;
+            UserScoreDrawValue = 4500;
+            UserScoreTimeValue = 200;
             PageOrientation = Microsoft.Phone.Controls.PageOrientation.LandscapeLeft;
 
         }

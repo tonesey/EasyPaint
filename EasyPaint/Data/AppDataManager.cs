@@ -56,6 +56,11 @@ namespace EasyPaint.Data
             return ModelHelper.GetUserScoreValue(_appData);
         }
 
+        internal long GetTotalPoints()
+        {
+            return _appData.Groups.SelectMany(g => g.Items).Sum(item => item.Score);
+        }
+
         internal static async Task<AppDataManager> GetInstanceAsync()
         {
             return await GetInstanceAsync(string.Empty);
@@ -85,5 +90,7 @@ namespace EasyPaint.Data
             }
             return _curInstance;
         }
+
+        
     }
 }

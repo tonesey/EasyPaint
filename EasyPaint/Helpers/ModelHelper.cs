@@ -150,7 +150,7 @@ namespace EasyPaint.Helpers
                             {
                                 currentItem.IsLocked = bool.Parse(_userScore[userScoreItem][0]);
                                 currentItem.Score = int.Parse(_userScore[userScoreItem][1]);
-                                currentItem.RecordScore = int.Parse(_userScore[userScoreItem][2]);
+                                //currentItem.RecordScore = int.Parse(_userScore[userScoreItem][2]);
                                 //currentItem.IsLocked = currentItem.Score < Item.MINIMUM_UNLOCK_PERCENTAGE_REQUIRED;
                             }
                             currentItem.Key = itemNode.Attribute("key").Value;

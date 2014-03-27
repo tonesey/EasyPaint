@@ -9,7 +9,7 @@
              x:Class="EasyPaint.View.ResultPopup"
              mc:Ignorable="d"
              Loaded="UserControl_Loaded"
-             d:DesignHeight="400" d:DesignWidth="400">
+             d:DesignHeight="480" d:DesignWidth="400">
 
     <UserControl.Resources>
         <design:DesignData x:Key="DesignDataContext"/>
@@ -48,34 +48,96 @@
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="4*" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="132*" />
+                <RowDefinition Height="61*" />
+                <RowDefinition Height="56*" />
+                <RowDefinition Height="57*" />
+                <RowDefinition Height="56*" />
+                <RowDefinition Height="98*" />
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="ImageResult" Width="110" Height="110" Margin="10,10,10,10"/>
-
                 <TextBlock x:Name="TextBlockResult"  Grid.Row="0" Margin="10,0,0,0"
 					FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
 					Foreground="{Binding Percentage, Converter={StaticResource percentageToColorConverter}}" 
 					Text="{Binding Percentage, Converter={StaticResource percentageToStringConverter}}" 
-					FontSize="120" 
+					FontSize="110" 
 					HorizontalAlignment="Center" 
 					VerticalAlignment="Center" 
 					Opacity="1"/>
             </StackPanel>
-            
+
             <TextBlock x:Name="TextBlockResultText"  Grid.Row="1"
 				FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
 				Foreground="{Binding Foreground, ElementName=TextBlockResult}" 
 				Text="{Binding Percentage, Converter={StaticResource percentageToResultConverter}}" 
 				FontSize="40" 
 				HorizontalAlignment="Center" 
-				VerticalAlignment="Center">
+				VerticalAlignment="Center" >
             </TextBlock>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Visibility="Visible">
+            <StackPanel Grid.Row="2" x:Name="StackPanelDrawScore" Orientation="Horizontal" HorizontalAlignment="Left" Margin="80,0,0,0" Width="226">
+                <TextBlock x:Name="TextBlockDrawPointDescr"  
+				    FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+				    Foreground="#FF10E2F7" 
+				    Text="$points:" 
+				    FontSize="40" 
+				    HorizontalAlignment="Center" 
+				    VerticalAlignment="Center" >
+                </TextBlock>
+                <TextBlock x:Name="TextBlockDrawPointsValue"  
+				    FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+				    Text="{Binding UserScoreDrawValue}" 
+				    FontSize="40" 
+                    Margin="20,0,0,0"
+                    Foreground="{Binding Foreground, ElementName=TextBlockResult}" 
+				    HorizontalAlignment="Center" 
+				    VerticalAlignment="Center" >
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" x:Name="StackPanelTimeScore" Orientation="Horizontal"  HorizontalAlignment="Left" Margin="80,0,0,0" Width="269">
+                <TextBlock x:Name="TextBlockTimeBonusDescr"  
+				    FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+				    Foreground="#FF10E2F7" 
+				    Text="$time bonus:" 
+				    FontSize="40" 
+				    HorizontalAlignment="Center" 
+				    VerticalAlignment="Center" >
+                </TextBlock>
+                <TextBlock x:Name="TextBlockTimeBonusValue"  
+				    FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+				    Text="{Binding UserScoreTimeValue}" 
+				    FontSize="40" 
+                    Margin="20,0,0,0"
+                    Foreground="{Binding Foreground, ElementName=TextBlockResult}" 
+				    HorizontalAlignment="Center" 
+				    VerticalAlignment="Center" >
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" x:Name="StackPanelTotalScore" Orientation="Horizontal"  HorizontalAlignment="Left" Margin="80,0,0,0" Width="216">
+                <TextBlock x:Name="TextBlockTotalScoreDescr"  
+				    FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+				    Foreground="#FF10E2F7" 
+				    Text="$TOTAL:" 
+				    FontSize="40" 
+				    HorizontalAlignment="Center" 
+				    VerticalAlignment="Center" >
+                </TextBlock>
+                <TextBlock x:Name="TextBlockTotalScoreValue"  
+				    FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
+				    Text="{Binding TotalScore}" 
+				    FontSize="40" 
+                    Margin="20,0,0,0"
+                    Foreground="{Binding Foreground, ElementName=TextBlockResult}" 
+				    HorizontalAlignment="Center" 
+				    VerticalAlignment="Center" >
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center" Visibility="Visible" Margin="40,0" Width="300">
                 <Button x:Name="ButtonMenu" BorderBrush="Transparent" BorderThickness="0" Width="100" Height="100" Padding="0" Tap="ButtonMenu_Tap_1">
                     <Image Source="/Assets/buttons/btn_menu.png"/>
                 </Button>

@@ -74,7 +74,8 @@ namespace EasyPaint.View
         {
             InitializeComponent();
 
-            ItemName1.Visibility = Visibility.Visible;
+            //ItemName1.Visibility = Visibility.Visible;
+            ScoreStackPanel.Visibility = Visibility.Visible;
             ItemName2.Visibility = Visibility.Visible;
             BorderPalette.Visibility = Visibility.Collapsed;
             BorderTools.Visibility = Visibility.Collapsed;
@@ -392,10 +393,21 @@ namespace EasyPaint.View
             {
                 ImageMain.Source = new BitmapImage(currentItem.ImageSource);
 
-                ItemName1.Visibility = Visibility.Visible;
+                //ItemName1.Visibility = Visibility.Visible;
+
+                switch (App.Current.GameMode)
+                {
+                    case GameMode.Gallery:
+                        ScoreStackPanel.Visibility = Visibility.Collapsed;
+                        break;
+                    case GameMode.Arcade:
+                        ScoreStackPanel.Visibility = Visibility.Visible;
+                        break;
+                }
+
                 ItemName2.Visibility = Visibility.Visible;
 
-                ItemName1.Text = currentItem.LocalizedName;
+               // ItemName1.Text = currentItem.LocalizedName;
                 ItemName2.Text = currentItem.LatinName;
 
                 //if (currentItem.IsLocked)
@@ -592,8 +604,8 @@ namespace EasyPaint.View
             DisablePage();
             InitPopup();
             _popupChild.ResImg = resImg;
-            _popupChild.UserPercentage = percentage;
-            _popupChild.AvailableTime = availTime;
+            _popupChild.InputUserPercentage = percentage;
+            _popupChild.InputSavedTime = availTime;
             _popupChild.PageOrientation = Orientation;
             _popup.IsOpen = true;
         }
@@ -604,7 +616,7 @@ namespace EasyPaint.View
             {
                 _popup = new Popup();
                 _popupChild = new ResultPopup(_popup);
-                _popupChild.Height = 400;
+                _popupChild.Height = 460;
                 _popupChild.Width = 400;
                 _popupChild.PopupClosedEvent -= exportPopup_PopupClosedEvent;
                 _popupChild.PopupClosedEvent += exportPopup_PopupClosedEvent;
@@ -636,7 +648,8 @@ namespace EasyPaint.View
                         case GameMode.Arcade:
                             //livello completato
                             var curEl = GetUserSelectedItem();
-                            curEl.SetScore(_popupChild.UserPercentage);
+                            //curEl.SetScore(_popupChild.UserPercentage);
+                            curEl.SetScore(_popupChild.GetTotalScore());
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                             if (nextEl.ParentGroupId == curEl.ParentGroupId)
                             {

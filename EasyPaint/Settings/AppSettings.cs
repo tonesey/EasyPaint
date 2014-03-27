@@ -20,6 +20,9 @@ namespace EasyPaint.Settings
         #region user settings
         public const string UserScoreKey = "USER_SCORE";
         public static string UserScoreValue = string.Empty;
+
+        public const string RecordScoreKey = "RECORD_SCORE";
+        public static long RecordScoreValue = 0;
         #endregion
 
         #region global app settings
@@ -78,6 +81,7 @@ namespace EasyPaint.Settings
         {
             //user settings
             UserScoreValue = StorageHelper.GetSetting<string>(UserScoreKey);
+            RecordScoreValue = StorageHelper.GetSetting<long>(RecordScoreKey, 0);
         }
 
         private static async Task LoadAppAttributesAsync()
@@ -192,7 +196,14 @@ namespace EasyPaint.Settings
             {
                 UserScoreValue = AppDataManager.GetInstance().GetUserScoreStrValue();
             }
+
             StorageHelper.StoreSetting(UserScoreKey, UserScoreValue, true);
+
+            long totalPoints = AppDataManager.GetInstance().GetTotalPoints();
+            if (totalPoints > RecordScoreValue) {
+                StorageHelper.StoreSetting(RecordScoreKey, totalPoints, true);
+            }
+            
             // StorageHelper.StoreSetting(SoundOnKey, SoundOnValue, true);
         }
 
