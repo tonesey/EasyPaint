@@ -268,7 +268,6 @@ namespace EasyPaint.View
             });
 
             _sbShowTextResult.Begin();
-
             if (ButtonNext.Visibility == System.Windows.Visibility.Collapsed)
             {
                 SoundHelper.PlaySound(App.Current.Sounds["levelFailed"]);
@@ -281,6 +280,9 @@ namespace EasyPaint.View
 
         async void _sbShowTextResult_Completed(object sender, System.EventArgs e)
         {
+          
+            Thread.Sleep(1000);
+
             Dispatcher.BeginInvoke(() =>
             {
                 ButtonRedo.IsEnabled = true;
