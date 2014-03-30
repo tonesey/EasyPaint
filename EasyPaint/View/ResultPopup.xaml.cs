@@ -153,7 +153,7 @@ namespace EasyPaint.View
                         break;
                 }
 
-                for (int i = 0; i < value; i += increment)
+                for (int i = 0; i <= value; i += increment)
                 {
                     if (_cancellationPending) return;
                     Dispatcher.BeginInvoke(() =>

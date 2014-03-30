@@ -660,7 +660,6 @@ namespace EasyPaint.View
                     InitPage();
                     break;
                 case GameAction.Ahead:
-
                     switch (App.Current.GameMode)
                     {
                         case GameMode.Arcade:
@@ -668,8 +667,6 @@ namespace EasyPaint.View
                             var curEl = GetUserSelectedItem();
                             curEl.SetScore(_popupChild.GetItemTotalScore());
                             
-
-
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                             if (nextEl.ParentGroupId == curEl.ParentGroupId)
                             {
@@ -685,65 +682,13 @@ namespace EasyPaint.View
                             }
                             else
                             {
-                                //res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
-
                                 //switch continente
                                 MyMsgbox.Show(this,
                                               MsgboxMode.Ok,
                                               string.Format(LocalizedResources.GroupCompleted, curEl.ParentGroupName, nextEl.ParentGroupName),
                                     async result =>
                                     {
-
                                         UnlockAndRestartWithItem(nextEl);
-
-                                        //                                        //verifica se è presente la licenza, nel caso sia richiesta
-                                        //                                        if (AppSettings.IAPItem_ContinentsUnlocker_ProductLicensed || !nextEl.ParentGroupRequiresLicense)
-                                        //                                        {
-                                        //                                            UnlockAndRestartWithItem(nextEl);
-                                        //                                        }
-                                        //                                        else
-                                        //                                        {
-                                        //                                            MyMsgbox.Show(this, MsgboxMode.YesNo,
-                                        //                                                string.Format(LocalizedResources.NeedPaidAppQuestion, nextEl.ParentGroupName),
-                                        //                                                async result1 =>
-                                        //                                                {
-                                        //                                                    switch (result1)
-                                        //                                                    {
-                                        //                                                        case MsgboxResponse.Yes:
-                                        //                                                            string res = null;
-                                        //                                                            try
-                                        //                                                            {
-                                        //#if DEBUG
-                                        //                                                                res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_ContinentsUnlocker_ProductId, false);
-                                        //#else
-                                        //                                                            res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_ContinentsUnlocker_ProductId, true);
-                                        //#endif
-                                        //                                                            }
-                                        //                                                            catch (Exception)
-                                        //                                                            {
-                                        //                                                                //capita anche se l'utente fa "Annulla" sull'acquisto
-                                        //                                                                res = null;
-                                        //                                                            }
-                                        //                                                            if (res == null)
-                                        //                                                            {
-                                        //                                                                //acquisto KO
-                                        //                                                                InitPage();
-                                        //                                                                return; //se non si vuole acquistare resta sullo stesso item
-                                        //                                                            }
-                                        //                                                            else
-                                        //                                                            {
-                                        //                                                                //acquisto OK
-                                        //                                                                AppSettings.IAPItem_ContinentsUnlocker_ProductLicensed = true;
-                                        //                                                                //si prosegue normalmente nel flusso
-                                        //                                                                UnlockAndRestartWithItem(nextEl);
-                                        //                                                            }
-                                        //                                                            break;
-                                        //                                                        case MsgboxResponse.No:
-                                        //                                                            InitPage();
-                                        //                                                            return; //se non si vuole acquistare resta sullo stesso item
-                                        //                                                    }
-                                        //                                                });
-                                        //                                        }
                                     });
                             }
 
