@@ -3,22 +3,6 @@
   
   <ui mode="lres"/>
 
-  <group id="0" key="group_Europe" imgname="0.png">
-    <!--<protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>-->
-    <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
-    <items SelectorGridRow="1" IsSelectorCentered="True">
-      <!--<item imgname="cane colore.png" key="item_cane" latin="Canis lupus familiaris" colors="#CD9967,#B18051"/>-->
-      <!--<item imgname="gatto colore.png" key="item_gatto" latin="Felis catus" colors="#FD9965,#E08450,#F8B990"/>-->
-      <item imgname="riccio colore.png" key="item_riccio" latin="Erinaceus europaeus" colors="#686868,#F7C9C0,#434343"/>
-      <item imgname="lepre colore.png" key="item_lepre" latin="Lepus timidus" colors="#CDFCFD,#BAECFB"/>
-      <item imgname="marmotta colore.png" key="item_marmotta" latin="Marmota marmota" colors="#CD9967,#AE7B4B,D8B390"/>
-      <item imgname="volpe colore.png" key="item_volpe" latin="Vulpes vulpes" colors="#FF6600,#C94A1C,#F8B994,#F4CFBF"/>
-      <item imgname="renna colore.png" key="item_renna" latin="Rangifer tarandus" colors="#996533,#A87E55,#7D4B27,#FCFACB"/>
-      <item imgname="scoiattolo colore.png" key="item_scoiattolo" latin="Sciurus vulgaris" colors="#FE9900,#EA8519,#EA8616,#D1794A"/>
-      <item imgname="cervo colore.png" key="item_cervo" latin="Cervus elaphus" colors="#CD9967,#BA8754,#FDD0A2,#FEFECE"/>
-    </items>
-  </group>
-
   <group id="1" key="group_Africa" imgname="1.png">
     <!--<protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>-->
     <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
@@ -32,6 +16,22 @@
       <item imgname="leone colore.png" key="item_leone" latin="Panthera leo" colors="#FCC831,#663433,#E89A1B"/>
       <item imgname="elefante colore.png" key="item_elefante" latin="Loxodonta africana" colors="#999999,#898989,#606060"/>
       <item imgname="giraffa colore.png" key="item_giraffa" latin="Giraffa camelopardalis" colors="#FECC33,#E29B1A,#653432"/>
+    </items>
+  </group>
+
+  <group id="0" key="group_Europe" imgname="0.png">
+    <!--<protagonist imgname="explorer.png" Grid.Row="3" Grid.RowSpan="2"  Grid.Col="0" Grid.ColSpan="2"/>-->
+    <protagonist imgname="explorer.png" Grid.Row="0" Grid.RowSpan="5"  Grid.Col="0" Grid.ColSpan="1"/>
+    <items SelectorGridRow="1" IsSelectorCentered="True">
+      <!--<item imgname="cane colore.png" key="item_cane" latin="Canis lupus familiaris" colors="#CD9967,#B18051"/>-->
+      <!--<item imgname="gatto colore.png" key="item_gatto" latin="Felis catus" colors="#FD9965,#E08450,#F8B990"/>-->
+      <item imgname="riccio colore.png" key="item_riccio" latin="Erinaceus europaeus" colors="#686868,#F7C9C0,#434343"/>
+      <item imgname="lepre colore.png" key="item_lepre" latin="Lepus timidus" colors="#CDFCFD,#BAECFB"/>
+      <item imgname="marmotta colore.png" key="item_marmotta" latin="Marmota marmota" colors="#CD9967,#AE7B4B,D8B390"/>
+      <item imgname="volpe colore.png" key="item_volpe" latin="Vulpes vulpes" colors="#FF6600,#C94A1C,#F8B994,#F4CFBF"/>
+      <item imgname="renna colore.png" key="item_renna" latin="Rangifer tarandus" colors="#996533,#A87E55,#7D4B27,#FCFACB"/>
+      <item imgname="scoiattolo colore.png" key="item_scoiattolo" latin="Sciurus vulgaris" colors="#FE9900,#EA8519,#EA8616,#D1794A"/>
+      <item imgname="cervo colore.png" key="item_cervo" latin="Cervus elaphus" colors="#CD9967,#BA8754,#FDD0A2,#FEFECE"/>
     </items>
   </group>
 

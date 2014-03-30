@@ -208,6 +208,9 @@ namespace EasyPaint.View
 
         private void LocalizeUI()
         {
+            TextBlockDrawPointDescr.Text = LocalizedResources.DrawScore;
+            TextBlockTimeBonusDescr.Text = LocalizedResources.TimeScore;
+            TextBlockTotalScoreDescr.Text = LocalizedResources.TotalScore;
         }
 
         private void ClosePopup()
@@ -254,8 +257,11 @@ namespace EasyPaint.View
             HideElements();
 
             TextBlockResultText.Opacity = 0.1;
+
             ButtonRedo.IsEnabled = false;
             ButtonMenu.IsEnabled = false;
+            ButtonNext.IsEnabled = false;
+
             ImageResult.Source = ResImg;
 
             await RenderScore(ScoreType.Percentage, InputUserPercentage);
@@ -282,39 +288,43 @@ namespace EasyPaint.View
         {
           
             Thread.Sleep(1000);
+          
+
+            bool levelPassed = ButtonNext.Visibility == System.Windows.Visibility.Visible;
+
+            if (levelPassed)
+            {
+                //draw score
+                int drawScore = InputUserPercentage * 10;
+                Dispatcher.BeginInvoke(() =>
+                {
+                    StackPanelDrawScore.Visibility = Visibility.Visible;
+                });
+                await RenderScore(ScoreType.DrawScore, drawScore);
+
+                //time score
+                int timeScore = InputSavedTime * 5;
+                Dispatcher.BeginInvoke(() =>
+                {
+                    StackPanelTimeScore.Visibility = Visibility.Visible;
+                });
+                await RenderScore(ScoreType.TimeScore, timeScore);
+
+                //total
+                int totalScore = drawScore + timeScore;
+                Dispatcher.BeginInvoke(() =>
+                {
+                    StackPanelTotalScore.Visibility = Visibility.Visible;
+                });
+                await RenderScore(ScoreType.TotalScore, totalScore);
+            }
 
             Dispatcher.BeginInvoke(() =>
             {
                 ButtonRedo.IsEnabled = true;
                 ButtonMenu.IsEnabled = true;
+                ButtonNext.IsEnabled = true;
             });
-
-            bool levelPassed = ButtonNext.Visibility == System.Windows.Visibility.Visible;
-
-            //draw score
-            int drawScore = InputUserPercentage * 10;
-            Dispatcher.BeginInvoke(() =>
-            {
-                StackPanelDrawScore.Visibility = Visibility.Visible;
-            });
-            await RenderScore(ScoreType.DrawScore, drawScore);
-
-            //time score
-            int timeScore = InputSavedTime * 5;
-            Dispatcher.BeginInvoke(() =>
-            {
-                StackPanelTimeScore.Visibility = Visibility.Visible;
-            });
-            await RenderScore(ScoreType.TimeScore, timeScore);
-
-            //total
-            int totalScore = drawScore + timeScore;
-            Dispatcher.BeginInvoke(() =>
-            {
-                StackPanelTotalScore.Visibility = Visibility.Visible;
-            });
-            await RenderScore(ScoreType.TotalScore, totalScore);
-
 
         }
 

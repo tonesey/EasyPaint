@@ -81,8 +81,17 @@ namespace EasyPaint.View
             BorderPalette.Visibility = Visibility.Collapsed;
             BorderTools.Visibility = Visibility.Collapsed;
 
+
+            LocalizeUI();
+
             Loaded += PainterPage_Loaded;
             Unloaded += PainterPage_Unloaded;
+        }
+
+        private void LocalizeUI()
+        {
+            TextBlockScoreDescr.Text = LocalizedResources.PainterPageCurrentScore;
+            TextBlockRecordDescr.Text = LocalizedResources.PainterPageRecord;
         }
 
         private void BuildTransformGroup()

@@ -131,6 +131,15 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to score:.
+        /// </summary>
+        public static string DrawScore {
+            get {
+                return ResourceManager.GetString("DrawScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internet connection not available, please retry.
         /// </summary>
         public static string Error_NoNetworkAvailable {
@@ -781,6 +790,24 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to score:.
+        /// </summary>
+        public static string PainterPageCurrentScore {
+            get {
+                return ResourceManager.GetString("PainterPageCurrentScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to record:.
+        /// </summary>
+        public static string PainterPageRecord {
+            get {
+                return ResourceManager.GetString("PainterPageRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We&apos;d love you to rate our app 5 stars :)
         ///
         ///Showing us some love on the store helps us to continue to work on the app and make things even better!.
@@ -826,6 +853,24 @@ namespace EasyPaint {
         public static string RatingYes {
             get {
                 return ResourceManager.GetString("RatingYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to time bonus:.
+        /// </summary>
+        public static string TimeScore {
+            get {
+                return ResourceManager.GetString("TimeScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to total:.
+        /// </summary>
+        public static string TotalScore {
+            get {
+                return ResourceManager.GetString("TotalScore", resourceCulture);
             }
         }
         

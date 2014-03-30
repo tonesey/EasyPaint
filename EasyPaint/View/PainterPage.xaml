@@ -239,7 +239,7 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="stopTimeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="stopTimeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
+                    <Button Name="toggleModeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="toggleModeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
                             <CompositeTransform TranslateY="{Binding ToolBoxItem3TranslateY}"/>
                         </Button.RenderTransform>
@@ -250,11 +250,11 @@
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid>
-                            <Image Source="../Assets/buttons/btn_yes.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
+                            <Image x:Name="ZoomImage" Source="../Assets/buttons/PanZoom1.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
                         </Grid>
                     </Button>
 
-                    <Button Name="toggleModeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="toggleModeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
+                    <Button Name="stopTimeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="stopTimeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
                             <CompositeTransform TranslateY="{Binding ToolBoxItem4TranslateY}"/>
                         </Button.RenderTransform>
@@ -265,7 +265,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                         <Grid>
-                            <Image x:Name="ZoomImage" Source="../Assets/buttons/PanZoom1.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
+                            <Image Source="../Assets/buttons/btn_yes.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
                         </Grid>
                     </Button>
                 </StackPanel>
@@ -331,13 +331,13 @@
                             VerticalAlignment="Center" 
                             HorizontalAlignment="Center"
                             Margin="0,0,0,0" >
-                    
+
                     <!--<TextBlock Name="ItemName1" FontSize="30" Text="Chlamydoselachus anguineus" Foreground="Green" 
                                HorizontalAlignment="Center" Opacity="0.6" FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                Margin="-50,-38,-50,0" 
                                VerticalAlignment="Top" Tap="ItemName1_Tap"></TextBlock>-->
 
-                    <StackPanel Orientation="Horizontal" Name="ScoreStackPanel" Margin="-50,-38,-50,0" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal" Name="ScoreStackPanel" Margin="0,-38,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <TextBlock Name="TextBlockScoreDescr" FontSize="30" Text="$current score:" 
                                   Foreground="#FF011E3C" 
                                   HorizontalAlignment="Center" Opacity="0.6" 
@@ -365,7 +365,7 @@
                         <Grid.Clip>
                             <RectangleGeometry Rect="-100 0 600 400" />
                         </Grid.Clip>
-                        
+
                         <Grid Name="GridMainContainer" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"
                               ManipulationStarted="GridMainContainer_ManipulationStarted"
                               ManipulationCompleted="GridMainContainer_ManipulationCompleted"

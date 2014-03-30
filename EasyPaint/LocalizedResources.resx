@@ -391,4 +391,19 @@ Would you like to send an email to report it?</value>
   <data name="GalleryPage_InfoText_Purchased" xml:space="preserve">
     <value>Train yourself colouring all animals!</value>
   </data>
+  <data name="DrawScore" xml:space="preserve">
+    <value>score:</value>
+  </data>
+  <data name="TimeScore" xml:space="preserve">
+    <value>time bonus:</value>
+  </data>
+  <data name="TotalScore" xml:space="preserve">
+    <value>total:</value>
+  </data>
+  <data name="PainterPageCurrentScore" xml:space="preserve">
+    <value>score:</value>
+  </data>
+  <data name="PainterPageRecord" xml:space="preserve">
+    <value>record:</value>
+  </data>
 </root>

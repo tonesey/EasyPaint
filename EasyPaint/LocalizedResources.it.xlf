@@ -157,7 +157,7 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_NotPurchased" xml:space="preserve">
           <source>Draw and unlock as many animals as you can to see more items here... or download FULL TRAINING PACK to see them all now!</source>
-          <target state="translated">Gioca e sblocca più animali che puoi per vederli in questa sezione!</target>
+          <target state="signed-off">Gioca e sblocca più animali che puoi per vederli in questa sezione!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_elefante_indiano" xml:space="preserve">
           <source>indian elephant</source>
@@ -186,6 +186,26 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_Purchased" xml:space="preserve">
           <source>Train yourself colouring all animals!</source>
           <target state="signed-off">Allenati colorantdo tutti gli animali del mondo!</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/TotalScore" xml:space="preserve">
+          <source>total:</source>
+          <target state="signed-off">totale punti:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/PainterPageRecord" xml:space="preserve">
+          <source>record:</source>
+          <target state="signed-off" state-qualifier="mt-suggestion">record:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/PainterPageCurrentScore" xml:space="preserve">
+          <source>score:</source>
+          <target state="signed-off">punteggio:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/TimeScore" xml:space="preserve">
+          <source>time bonus:</source>
+          <target state="signed-off">bonus tempo:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/DrawScore" xml:space="preserve">
+          <source>score:</source>
+          <target state="signed-off">punteggio:</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GroupCompleted" xml:space="preserve">
           <source>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</source>
@@ -219,7 +239,7 @@ Perchè non ci dai 5 stelle sullo store?</target>
           <source>We'd love you to rate our app 5 stars :)
 
 Showing us some love on the store helps us to continue to work on the app and make things even better!</source>
-          <target state="translated">Perchè non ci dai 5 stelle sullo store? :)
+          <target state="signed-off">Perchè non ci dai 5 stelle sullo store? :)
 
 Mostrando il tuo apprezzamento ci aiuterai a fare ancora meglio!</target>
         </trans-unit>

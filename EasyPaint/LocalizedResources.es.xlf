@@ -380,6 +380,26 @@ Would you like to send an email to report it?</target>
           <source>Train yourself colouring all animals!</source>
           <target state="new">Train yourself colouring all animals!</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/TotalScore" xml:space="preserve">
+          <source>total:</source>
+          <target state="new">total:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/PainterPageRecord" xml:space="preserve">
+          <source>record:</source>
+          <target state="new">record:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/PainterPageCurrentScore" xml:space="preserve">
+          <source>score:</source>
+          <target state="new">score:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/TimeScore" xml:space="preserve">
+          <source>time bonus:</source>
+          <target state="new">time bonus:</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/DrawScore" xml:space="preserve">
+          <source>score:</source>
+          <target state="new">score:</target>
+        </trans-unit>
       </group>
     </body>
   </file>
