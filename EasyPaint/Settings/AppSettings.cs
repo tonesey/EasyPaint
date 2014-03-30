@@ -200,8 +200,10 @@ namespace EasyPaint.Settings
             StorageHelper.StoreSetting(UserScoreKey, UserScoreValue, true);
 
             long totalPoints = AppDataManager.GetInstance().GetTotalPoints();
-            if (totalPoints > RecordScoreValue) {
-                StorageHelper.StoreSetting(RecordScoreKey, totalPoints, true);
+            if (totalPoints > RecordScoreValue)
+            {
+                RecordScoreValue = totalPoints;
+                StorageHelper.StoreSetting(RecordScoreKey, RecordScoreValue, true);
             }
             
             // StorageHelper.StoreSetting(SoundOnKey, SoundOnValue, true);

@@ -331,7 +331,7 @@ namespace EasyPaint.View
             _cancellationPending = true;
         }
 
-        internal long GetTotalScore()
+        internal long GetItemTotalScore()
         {
             return TotalScore;
         }

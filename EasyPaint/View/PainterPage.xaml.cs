@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using EasyPaint.Data;
 using Microsoft.Phone.Controls;
 //using EasyPaint.Tests;
 using System.Windows.Media.Imaging;
@@ -330,6 +331,7 @@ namespace EasyPaint.View
 
         private void InitPage()
         {
+           
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
             _drawing = true;
             _drawingboard.IsEnabled = true;
@@ -404,6 +406,7 @@ namespace EasyPaint.View
                         ScoreStackPanel.Visibility = Visibility.Visible;
                         break;
                 }
+                UpdateScores();
 
                 ItemName2.Visibility = Visibility.Visible;
 
@@ -428,6 +431,12 @@ namespace EasyPaint.View
 
                 StartCountDown();
             }
+        }
+
+        private void UpdateScores()
+        {
+            TextBlockScoreValue.Text = AppDataManager.GetInstance().GetTotalPoints().ToString();
+            TextBlockRecordValue.Text = AppSettings.RecordScoreValue.ToString();
         }
 
         private static ItemViewModel GetUserSelectedItem()
@@ -648,8 +657,10 @@ namespace EasyPaint.View
                         case GameMode.Arcade:
                             //livello completato
                             var curEl = GetUserSelectedItem();
-                            //curEl.SetScore(_popupChild.UserPercentage);
-                            curEl.SetScore(_popupChild.GetTotalScore());
+                            curEl.SetScore(_popupChild.GetItemTotalScore());
+                            
+
+
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
                             if (nextEl.ParentGroupId == curEl.ParentGroupId)
                             {

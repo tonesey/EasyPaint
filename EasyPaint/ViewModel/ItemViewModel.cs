@@ -239,6 +239,11 @@ namespace EasyPaint.ViewModel
             //}
         }
 
+        internal long GetScore()
+        {
+            return _item.Score;
+        }
+
         public List<Color> PaletteColors { get { return _item.PaletteColors; } }
 
         public override string ToString()
@@ -246,5 +251,7 @@ namespace EasyPaint.ViewModel
             if (_item != null) return _item.ToString();
             return "empty element";
         }
+
+       
     }
 }
