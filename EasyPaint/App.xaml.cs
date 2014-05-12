@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BugSense;
+using BugSense.Core.Model;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using EasyPaint.ViewModel;
@@ -102,13 +104,15 @@ namespace EasyPaint
             IsSoundEnabled = true;
 
             // Global handler for uncaught exceptions. 
-            UnhandledException += Application_UnhandledException;
+            //UnhandledException += Application_UnhandledException;
 
             // Standard Silverlight initialization
             InitializeComponent();
 
             // Phone-specific initialization
             InitializePhoneApplication();
+
+            BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "3913d686");
 
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
@@ -295,6 +299,7 @@ namespace EasyPaint
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            //BugSenseHandler.Instance.CloseSession();
         }
 
         // Code to execute if a navigation fails
