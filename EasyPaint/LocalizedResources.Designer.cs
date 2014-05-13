@@ -188,7 +188,7 @@ namespace EasyPaint {
         /// <summary>
         ///   Looks up a localized string similar to Sorry to hear you didn&apos;t want to rate this app.
         ///
-        ///Tell us about your experience or suggest how we can make it even better..
+        ///Tell us about your experience or suggest how we can make it even better :).
         /// </summary>
         public static string FeedbackMessage1 {
             get {
@@ -215,29 +215,11 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Color Hunter Customer Feedback .
-        /// </summary>
-        public static string FeedbackSubject {
-            get {
-                return ResourceManager.GetString("FeedbackSubject", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Can we make it better?.
         /// </summary>
         public static string FeedbackTitle {
             get {
                 return ResourceManager.GetString("FeedbackTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to centapp@hotmail.com.
-        /// </summary>
-        public static string FeedbackTo {
-            get {
-                return ResourceManager.GetString("FeedbackTo", resourceCulture);
             }
         }
         

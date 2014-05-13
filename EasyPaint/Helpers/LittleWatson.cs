@@ -58,7 +58,7 @@ namespace EasyPaint.Helpers
                     if (MessageBox.Show(message, title, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                     {
                         EmailComposeTask email = new EmailComposeTask();
-                        email.To = "centapp@hotmail.com";
+                        email.To = AppSettings.SupportEmailAddress;
                         email.Subject = string.Format("{0} auto-generated problem report", AppSettings.AppName.ToUpper());
                         email.Body = contents;
                         SafeDeleteFile(IsolatedStorageFile.GetUserStoreForApplication());

@@ -392,17 +392,9 @@ Would you like to send an email to report it?</source>
           <source>give feedback</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">dar retroalimentación</target>
         </trans-unit>
-        <trans-unit translate="yes" id="Resx/FeedbackTo" xml:space="preserve">
-          <source>centapp@hotmail.com</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">centapp@hotmail.com</target>
-        </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackTitle" xml:space="preserve">
           <source>Can we make it better?</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">¿Podemos hacerlo mejor?</target>
-        </trans-unit>
-        <trans-unit translate="yes" id="Resx/FeedbackSubject" xml:space="preserve">
-          <source>The Color Hunter Customer Feedback </source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">La regeneración de cliente cazador de Color </target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackNo" xml:space="preserve">
           <source>no thanks</source>
@@ -411,10 +403,10 @@ Would you like to send an email to report it?</source>
         <trans-unit translate="yes" id="Resx/FeedbackMessage1" xml:space="preserve">
           <source>Sorry to hear you didn't want to rate this app.
 
-Tell us about your experience or suggest how we can make it even better.</source>
+Tell us about your experience or suggest how we can make it even better :)</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Lamento que no quería tarifa esta aplicación.
 
-Cuéntanos tu experiencia o sugerir cómo podemos hacerlo aún mejor.</target>
+Cuéntanos tu experiencia o sugerir cómo podemos hacerlo aún mejor.</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackBody" xml:space="preserve">
           <source>[Your feedback here]

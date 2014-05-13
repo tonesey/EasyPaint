@@ -439,6 +439,7 @@
     <EmbeddedResource Include="Audio\wav\alarm.wav" />
     <Content Include="BugSense\BugSense - SDK License Agreement.txt" />
     <Content Include="README_FIRST.txt" />
+    <Content Include="TileWide.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />

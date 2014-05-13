@@ -199,17 +199,9 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
           <source>give feedback</source>
           <target state="signed-off">lascia un commento</target>
         </trans-unit>
-        <trans-unit translate="yes" id="Resx/FeedbackTo" xml:space="preserve">
-          <source>centapp@hotmail.com</source>
-          <target state="signed-off" state-qualifier="mt-suggestion">centapp@hotmail.com</target>
-        </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackTitle" xml:space="preserve">
           <source>Can we make it better?</source>
           <target state="signed-off">Possiamo fare qualcosa per migliorare il gioco? :)</target>
-        </trans-unit>
-        <trans-unit translate="yes" id="Resx/FeedbackSubject" xml:space="preserve">
-          <source>The Color Hunter Customer Feedback </source>
-          <target state="signed-off">Commento The Color Hunter</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackNo" xml:space="preserve">
           <source>no thanks</source>
@@ -218,8 +210,8 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
         <trans-unit translate="yes" id="Resx/FeedbackMessage1" xml:space="preserve">
           <source>Sorry to hear you didn't want to rate this app.
 
-Tell us about your experience or suggest how we can make it even better.</source>
-          <target state="signed-off">Mi dispiace che non voti l'app :(
+Tell us about your experience or suggest how we can make it even better :)</source>
+          <target state="signed-off">Ci dispiace se non voti l'app :(
 
 Vuoi darci un consiglio su come migliorarla? :)</target>
         </trans-unit>

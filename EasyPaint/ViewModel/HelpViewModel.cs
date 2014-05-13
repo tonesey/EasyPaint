@@ -2,6 +2,7 @@
 using EasyPaint.Helpers;
 using EasyPaint.Messages;
 using EasyPaint.Model;
+using EasyPaint.Settings;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Net.NetworkInformation;
@@ -42,7 +43,7 @@ namespace EasyPaint.ViewModel
                 }
                 var email = new EmailComposeTask();
                 email.To = "centapp@hotmail.com";
-                email.Subject = string.Format(LocalizedResources.FeedbackOrCommentText, "The Color Hunter");
+                email.Subject = string.Format(LocalizedResources.FeedbackOrCommentText, AppSettings.AppName);
                 email.Show();
             }
             catch (InvalidOperationException ignored)

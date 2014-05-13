@@ -200,17 +200,9 @@ Checkout his awesome apps at www.invenktion.it</target>
           <source>give feedback</source>
           <target state="new">give feedback</target>
         </trans-unit>
-        <trans-unit translate="yes" id="Resx/FeedbackTo" xml:space="preserve">
-          <source>centapp@hotmail.com</source>
-          <target state="new">centapp@hotmail.com</target>
-        </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackTitle" xml:space="preserve">
           <source>Can we make it better?</source>
           <target state="new">Can we make it better?</target>
-        </trans-unit>
-        <trans-unit translate="yes" id="Resx/FeedbackSubject" xml:space="preserve">
-          <source>The Color Hunter Customer Feedback </source>
-          <target state="new">The Color Hunter Customer Feedback </target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackNo" xml:space="preserve">
           <source>no thanks</source>
@@ -219,10 +211,10 @@ Checkout his awesome apps at www.invenktion.it</target>
         <trans-unit translate="yes" id="Resx/FeedbackMessage1" xml:space="preserve">
           <source>Sorry to hear you didn't want to rate this app.
 
-Tell us about your experience or suggest how we can make it even better.</source>
+Tell us about your experience or suggest how we can make it even better :)</source>
           <target state="new">Sorry to hear you didn't want to rate this app.
 
-Tell us about your experience or suggest how we can make it even better.</target>
+Tell us about your experience or suggest how we can make it even better :)</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackBody" xml:space="preserve">
           <source>[Your feedback here]

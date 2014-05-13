@@ -28,6 +28,7 @@ namespace EasyPaint.Settings
         #region global app settings
         public static string AppVersion;
         public static string AppName;
+        public static string SupportEmailAddress = "centapp@hotmail.com";
 
         public static string IAPItem_FullTraining_ProductId { get; set; }
         public static bool IAPItem_FullTraining_ProductLicensed { get; set; }

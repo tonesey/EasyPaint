@@ -203,7 +203,7 @@ namespace EasyPaint.Controls
         private void SetupSecondMessage()
         {
             this.Title = string.Format(LocalizedResources.RatingTitle, AppSettings.AppName.ToUpper());
-            this.Message = string.Format(LocalizedResources.RatingMessage2, AppSettings.AppName.ToUpper()); 
+            this.Message = string.Format(LocalizedResources.RatingMessage2, AppSettings.AppName.ToUpper());
             this.YesText = LocalizedResources.RatingYes;
             this.NoText = LocalizedResources.RatingNo;
         }
@@ -270,24 +270,19 @@ namespace EasyPaint.Controls
 
         private void Feedback()
         {
-            // Application version
-            var asm = System.Reflection.Assembly.GetExecutingAssembly();
-            var parts = asm.FullName.Split(',');
-            var version = parts[1].Split('=')[1];
-
             // Body text including hardware, firmware and software info
             string body = string.Format(LocalizedResources.FeedbackBody,
                 DeviceStatus.DeviceName,
                 DeviceStatus.DeviceManufacturer,
                 DeviceStatus.DeviceFirmwareVersion,
                 DeviceStatus.DeviceHardwareVersion,
-                version);
+                AppSettings.AppVersion);
 
             // Email task
-            var email = new EmailComposeTask();
-            email.To = LocalizedResources.FeedbackTo;
-            email.Subject = LocalizedResources.FeedbackSubject;
-            email.Body = body;
+            var email = new EmailComposeTask { 
+                To = AppSettings.SupportEmailAddress, 
+                Subject = string.Format(LocalizedResources.FeedbackOrCommentText, AppSettings.AppName), 
+                Body = body };
 
             email.Show();
         }
