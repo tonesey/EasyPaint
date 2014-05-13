@@ -406,4 +406,36 @@ Would you like to send an email to report it?</value>
   <data name="PainterPageRecord" xml:space="preserve">
     <value>record:</value>
   </data>
+  <data name="FeedbackBody" xml:space="preserve">
+    <value>[Your feedback here]
+
+
+---------------------------------
+Device Name: {0}
+Device Manufacturer: {1}
+Device Firmware Version: {2}
+Device Hardware Version: {3}
+Application Version: {4}
+---------------------------------</value>
+  </data>
+  <data name="FeedbackMessage1" xml:space="preserve">
+    <value>Sorry to hear you didn't want to rate this app.
+
+Tell us about your experience or suggest how we can make it even better.</value>
+  </data>
+  <data name="FeedbackNo" xml:space="preserve">
+    <value>no thanks</value>
+  </data>
+  <data name="FeedbackSubject" xml:space="preserve">
+    <value>The Color Hunter Customer Feedback </value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Can we make it better?</value>
+  </data>
+  <data name="FeedbackTo" xml:space="preserve">
+    <value>centapp@hotmail.com</value>
+  </data>
+  <data name="FeedbackYes" xml:space="preserve">
+    <value>give feedback</value>
+  </data>
 </root>

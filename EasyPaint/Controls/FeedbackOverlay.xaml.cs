@@ -208,6 +208,14 @@ namespace EasyPaint.Controls
             this.NoText = LocalizedResources.RatingNo;
         }
 
+        private void SetupFeedbackMessage()
+        {
+            this.Title = LocalizedResources.FeedbackTitle;
+            this.Message = LocalizedResources.FeedbackMessage1;
+            this.YesText = LocalizedResources.FeedbackYes;
+            this.NoText = LocalizedResources.FeedbackNo;
+        }
+
         private void noButton_Click(object sender, RoutedEventArgs e)
         {
             this.OnNoClick();
@@ -217,11 +225,29 @@ namespace EasyPaint.Controls
         {
             if (FeedbackOverlay.GetEnableAnimation(this))
                 this.hideContent.Begin();
+            else
+                this.ShowFeedback();
         }
 
         private void hideContent_Completed(object sender, EventArgs e)
         {
             this.SetVisibility(false);
+        }
+
+        private void ShowFeedback()
+        {
+            if (FeedbackHelper.Default.State == FeedbackState.FirstReview)
+            {
+                this.SetupFeedbackMessage();
+                FeedbackHelper.Default.State = FeedbackState.Feedback;
+
+                if (FeedbackOverlay.GetEnableAnimation(this))
+                    this.showContent.Begin();
+            }
+            else
+            {
+                this.SetVisibility(false);
+            }
         }
 
         private void yesButton_Click(object sender, RoutedEventArgs e)
@@ -236,6 +262,34 @@ namespace EasyPaint.Controls
             {
                 this.Review();
             }
+            else if (FeedbackHelper.Default.State == FeedbackState.Feedback)
+            {
+                this.Feedback();
+            }
+        }
+
+        private void Feedback()
+        {
+            // Application version
+            var asm = System.Reflection.Assembly.GetExecutingAssembly();
+            var parts = asm.FullName.Split(',');
+            var version = parts[1].Split('=')[1];
+
+            // Body text including hardware, firmware and software info
+            string body = string.Format(LocalizedResources.FeedbackBody,
+                DeviceStatus.DeviceName,
+                DeviceStatus.DeviceManufacturer,
+                DeviceStatus.DeviceFirmwareVersion,
+                DeviceStatus.DeviceHardwareVersion,
+                version);
+
+            // Email task
+            var email = new EmailComposeTask();
+            email.To = LocalizedResources.FeedbackTo;
+            email.Subject = LocalizedResources.FeedbackSubject;
+            email.Body = body;
+
+            email.Show();
         }
 
         private void Review()

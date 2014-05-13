@@ -196,6 +196,56 @@ Checkout his awesome apps at www.invenktion.it</target>
           <source>record:</source>
           <target state="signed-off">record:</target>
         </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackYes" xml:space="preserve">
+          <source>give feedback</source>
+          <target state="new">give feedback</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackTo" xml:space="preserve">
+          <source>centapp@hotmail.com</source>
+          <target state="new">centapp@hotmail.com</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackTitle" xml:space="preserve">
+          <source>Can we make it better?</source>
+          <target state="new">Can we make it better?</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackSubject" xml:space="preserve">
+          <source>The Color Hunter Customer Feedback </source>
+          <target state="new">The Color Hunter Customer Feedback </target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackNo" xml:space="preserve">
+          <source>no thanks</source>
+          <target state="new">no thanks</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackMessage1" xml:space="preserve">
+          <source>Sorry to hear you didn't want to rate this app.
+
+Tell us about your experience or suggest how we can make it even better.</source>
+          <target state="new">Sorry to hear you didn't want to rate this app.
+
+Tell us about your experience or suggest how we can make it even better.</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/FeedbackBody" xml:space="preserve">
+          <source>[Your feedback here]
+
+
+---------------------------------
+Device Name: {0}
+Device Manufacturer: {1}
+Device Firmware Version: {2}
+Device Hardware Version: {3}
+Application Version: {4}
+---------------------------------</source>
+          <target state="new">[Your feedback here]
+
+
+---------------------------------
+Device Name: {0}
+Device Manufacturer: {1}
+Device Firmware Version: {2}
+Device Hardware Version: {3}
+Application Version: {4}
+---------------------------------</target>
+        </trans-unit>
         <trans-unit translate="yes" id="Resx/PainterPageCurrentScore" xml:space="preserve">
           <source>score:</source>
           <target state="signed-off">score:</target>
