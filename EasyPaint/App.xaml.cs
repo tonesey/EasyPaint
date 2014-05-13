@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using BugSense;
 using BugSense.Core.Model;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Marketplace;
 using Microsoft.Phone.Shell;
 using EasyPaint.ViewModel;
 using System.Windows.Resources;
@@ -113,6 +114,9 @@ namespace EasyPaint
             InitializePhoneApplication();
 
             BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "3913d686");
+            // BugSenseHandler.Instance.HandleWhileDebugging = true;
+
+            //TESTEXCEPTION();
 
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
@@ -136,6 +140,47 @@ namespace EasyPaint
 
             SetupMockIAP();
         }
+
+        //private static async Task TESTEXCEPTION()
+        //{
+        //    Exception ex = null;
+        //    LimitedCrashExtraDataList extrasExtraDataList = null;
+        //    try
+        //    {
+        //        throw new NullReferenceException("test");
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        ex = exception;
+        //        extrasExtraDataList = new LimitedCrashExtraDataList
+        //                                  {
+        //                                      new CrashExtraData("TestApp1", "Send Exception Message1"),
+        //                                      new CrashExtraData("TestApp2", "Send Exception Message2")
+        //                                  };
+        //    }
+
+        //    BugSenseResponseResult sendResult = await BugSenseHandler.Instance.SendExceptionAsync(ex, extrasExtraDataList);
+        //}        //private static async Task TESTEXCEPTION()
+        //{
+
+        //    Exception ex = null;
+        //    LimitedCrashExtraDataList extrasExtraDataList = null;
+        //    try
+        //    {
+        //        throw new NullReferenceException("test");
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        ex = exception;
+        //        extrasExtraDataList = new LimitedCrashExtraDataList
+        //                                  {
+        //                                      new CrashExtraData("TestApp1", "Send Exception Message1"),
+        //                                      new CrashExtraData("TestApp2", "Send Exception Message2")
+        //                                  };
+        //    }
+
+        //    BugSenseResponseResult sendResult = await BugSenseHandler.Instance.SendExceptionAsync(ex, extrasExtraDataList);
+        //}
 
         private void SetupMockIAP()
         {
@@ -210,6 +255,7 @@ namespace EasyPaint
 
         private void InitApp()
         {
+            CheckTrialState();
             AppSettings.LoadAppSettings();
             //FeedbackHelper.Default.Launching(!AppSettings.FreePlayingMode);
             FeedbackHelper.Default.Launching(true); //TBD - forza il caricamento del RateMyApp - dopo il lancio abilitare solo se l'app è in modalità "free" ?
@@ -299,7 +345,7 @@ namespace EasyPaint
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
-            //BugSenseHandler.Instance.CloseSession();
+            BugSenseHandler.Instance.CloseSession();
         }
 
         // Code to execute if a navigation fails
@@ -432,7 +478,8 @@ namespace EasyPaint
                 //});
             }
 
-            if (AppSettings.ExternalMusicAllowed == null) {
+            if (AppSettings.ExternalMusicAllowed == null)
+            {
                 // non è ancora stato chiesto all'utente se interrompere la musica di sottofondo o meno, il gioco ha il controllo
                 return true;
             }
@@ -482,6 +529,8 @@ namespace EasyPaint
             {
                 return;
             }
+
+            //throw new NullReferenceException("test exception");
 
             //GlobalMediaElement.Pause();
 
@@ -538,7 +587,6 @@ namespace EasyPaint
 
         void GlobalMediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
-
         }
 
         void GlobalMediaElement_MediaFailed(object sender, ExceptionRoutedEventArgs e)
@@ -561,6 +609,34 @@ namespace EasyPaint
         }
         #endregion
 
+        #region trial management
+        private bool _isTrial = true;
+        public bool IsTrial
+        {
+            get { return _isTrial; }
+            private set
+            {
+                _isTrial = value;
+            }
+        }
+
+        private void DetermineIsTrial()
+        {
+#if TRIAL
+            //return true if debugging with trial enabled (DebugTrial configuration is active)
+            IsTrial = true;
+#else
+            var license = new LicenseInformation();
+            IsTrial = license.IsTrial();
+#endif
+        }
+
+        private void CheckTrialState()
+        {
+            DetermineIsTrial();
+        }
+
+        #endregion
 
 
 
