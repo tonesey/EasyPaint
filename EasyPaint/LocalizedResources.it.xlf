@@ -211,9 +211,7 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
           <source>Sorry to hear you didn't want to rate this app.
 
 Tell us about your experience or suggest how we can make it even better :)</source>
-          <target state="signed-off">Ci dispiace se non voti l'app :(
-
-Vuoi darci un consiglio su come migliorarla? :)</target>
+          <target state="translated">Vuoi darci un consiglio su come migliorare ? :)</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackBody" xml:space="preserve">
           <source>[Your feedback here]

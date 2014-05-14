@@ -26,7 +26,7 @@ namespace EasyPaint.Controls
         public static void SetEnableAnimation(FeedbackOverlay element, bool value)
         {
             element.SetValue(EnableAnimationProperty, value);
-        }
+        }       
 
         public static bool GetEnableAnimation(FeedbackOverlay element)
         {
@@ -211,7 +211,8 @@ namespace EasyPaint.Controls
         private void SetupFeedbackMessage()
         {
             this.Title = LocalizedResources.FeedbackTitle;
-            this.Message = LocalizedResources.FeedbackMessage1;
+            //this.Message = LocalizedResources.FeedbackMessage1;
+            this.Message = "";
             this.YesText = LocalizedResources.FeedbackYes;
             this.NoText = LocalizedResources.FeedbackNo;
         }
@@ -231,7 +232,8 @@ namespace EasyPaint.Controls
 
         private void hideContent_Completed(object sender, EventArgs e)
         {
-            this.SetVisibility(false);
+           // this.SetVisibility(false);
+            this.ShowFeedback();
         }
 
         private void ShowFeedback()
