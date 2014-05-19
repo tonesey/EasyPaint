@@ -233,11 +233,11 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Draw and unlock as many animals as you can to see more items here... or download FULL TRAINING PACK to see them all now!.
+        ///   Looks up a localized string similar to full.
         /// </summary>
-        public static string GalleryPage_InfoText_NotPurchased {
+        public static string FullVersion {
             get {
-                return ResourceManager.GetString("GalleryPage_InfoText_NotPurchased", resourceCulture);
+                return ResourceManager.GetString("FullVersion", resourceCulture);
             }
         }
         
@@ -837,15 +837,6 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry but continent &apos;{0}&apos; is available only into full licensed app, do you want to buy?.
-        /// </summary>
-        public static string NeedPaidAppQuestion {
-            get {
-                return ResourceManager.GetString("NeedPaidAppQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to score:.
         /// </summary>
         public static string PainterPageCurrentScore {
@@ -927,6 +918,33 @@ namespace EasyPaint {
         public static string TotalScore {
             get {
                 return ResourceManager.GetString("TotalScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry but you need full version to play with all items, do you want to get it?.
+        /// </summary>
+        public static string Trial_ArcadeGameLimitation {
+            get {
+                return ResourceManager.GetString("Trial_ArcadeGameLimitation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry but gallery is available only into full version, do you want to get it?.
+        /// </summary>
+        public static string Trial_GalleryAvailableOnlyIntoFullVersion {
+            get {
+                return ResourceManager.GetString("Trial_GalleryAvailableOnlyIntoFullVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to trial.
+        /// </summary>
+        public static string TrialVersion {
+            get {
+                return ResourceManager.GetString("TrialVersion", resourceCulture);
             }
         }
         

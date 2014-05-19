@@ -1,4 +1,5 @@
-﻿using EasyPaint.Data;
+﻿using System.Windows;
+using EasyPaint.Data;
 using EasyPaint.Helpers;
 using EasyPaint.Messages;
 using EasyPaint.Model;
@@ -12,7 +13,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Phone.Tasks;
 using Telerik.Windows.Controls;
+using Wp8Shared.UserControls;
+
 
 namespace EasyPaint.ViewModel
 {
@@ -63,27 +67,28 @@ namespace EasyPaint.ViewModel
             }
         }
 
-        private bool _fullTrainingPackAvailable = false;
-        public bool FullTrainingPackAvailable
-        {
-            get
-            {
-                return _fullTrainingPackAvailable;
-            }
-            set
-            {
-                _fullTrainingPackAvailable = value;
-                OnPropertyChanged("FullTrainingPackAvailable");
-                OnPropertyChanged("InfoFieldContent");
-            }
-        }
+        //private bool _fullTrainingPackAvailable = false;
+        //public bool FullTrainingPackAvailable
+        //{
+        //    get
+        //    {
+        //        return _fullTrainingPackAvailable;
+        //    }
+        //    set
+        //    {
+        //        _fullTrainingPackAvailable = value;
+        //        OnPropertyChanged("FullTrainingPackAvailable");
+        //        OnPropertyChanged("InfoFieldContent");
+        //    }
+        //}
 
         public string InfoFieldContent
         {
             get
             {
-                return FullTrainingPackAvailable ? LocalizedResources.GalleryPage_InfoText_Purchased : LocalizedResources.GalleryPage_InfoText_NotPurchased;
+                //return FullTrainingPackAvailable ? LocalizedResources.GalleryPage_InfoText_Purchased : LocalizedResources.GalleryPage_InfoText_NotPurchased;
                 //return LocalizedResources.GalleryPage_InfoText_NotPurchased;
+                return LocalizedResources.GalleryPage_InfoText_Purchased;
             }
         }
 
@@ -107,34 +112,34 @@ namespace EasyPaint.ViewModel
 
             ItemSelectedCommand = new RelayCommand(() => NavigateToSelectedItemCommand());
             GotoHomepageCommand = new RelayCommand(() => GotoHomepage());
-            GetAllItemsTrainingPackCommand = new RelayCommand(() => GetAllItemsTrainingPack());
+            //GetAllItemsTrainingPackCommand = new RelayCommand(() => GetAllItemsTrainingPack());
         }
 
         private void InitGalleryItems()
         {
             Items = new ObservableCollection<ItemViewModel>();
-            if (!AppSettings.IAPItem_FullTraining_ProductLicensed)
-            {
-                //visualizzazione solo animali sbloccati
-                foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
-                {
-                    Items.Add(new ItemViewModel(item));
-                }
-            }
-            else
-            {
-                //visualizzazione di tutti gli animali
-                foreach (var item in _groups.SelectMany(g => g.Items))
-                {
-                    Items.Add(new ItemViewModel(item));
-                }
-            }
 
-            ////visualizzazione solo animali sbloccati
-            //foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
+            //if (!AppSettings.IAPItem_FullTraining_ProductLicensed)
             //{
-            //    Items.Add(new ItemViewModel(item));
+            //    //visualizzazione solo animali sbloccati
+            //    foreach (var item in _groups.SelectMany(g => g.Items).Where(it => !it.IsLocked))
+            //    {
+            //        Items.Add(new ItemViewModel(item));
+            //    }
             //}
+            //else
+            //{
+            //    //visualizzazione di tutti gli animali
+            //    foreach (var item in _groups.SelectMany(g => g.Items))
+            //    {
+            //        Items.Add(new ItemViewModel(item));
+            //    }
+            //}
+
+            foreach (var item in _groups.SelectMany(g => g.Items))
+            {
+                Items.Add(new ItemViewModel(item));
+            }
 
             var listDs = new LoopingListDataSource(Items.Count());
             listDs.ItemNeeded -= _listDs_ItemNeeded;
@@ -189,38 +194,58 @@ namespace EasyPaint.ViewModel
 
         private object NavigateToSelectedItemCommand()
         {
+            if (((App)Application.Current).IsTrial)
+            {
+                MessagingHelper.GetInstance().CurrentDispatcher.BeginInvoke(() => MyMsgbox.Show(CurrentPage,
+                                                                                                MsgboxMode.YesNo,
+                                                                                                LocalizedResources.Trial_GalleryAvailableOnlyIntoFullVersion,
+                                                                                                result =>
+                                                                                                {
+                                                                                                    switch (result)
+                                                                                                    {
+                                                                                                        case MsgboxResponse.Yes:
+                                                                                                            var marketplaceDetailTask = new MarketplaceDetailTask { ContentIdentifier = null };
+                                                                                                            marketplaceDetailTask.Show();
+                                                                                                            break;
+                                                                                                        case MsgboxResponse.No:
+                                                                                                            break;
+                                                                                                    }
+                                                                                                }));
+                return null; //need to restart app
+            }
+
             ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Painter);
             return null;
         }
 
-        private async Task GetAllItemsTrainingPack()
-        {
-            string res = null;
-            try
-            {
-#if DEBUG
-                res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, false);
-#else
-                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, true);
-#endif
-            }
-            catch (Exception)
-            {
-                //capita anche se l'utente fa "Annulla" sull'acquisto
-                res = null;
-            }
-            if (res == null)
-            {
-                //acquisto KO
-                return;
-            }
-            else
-            {
-                //acquisto OK
-                FullTrainingPackAvailable = true;
-                AppSettings.IAPItem_FullTraining_ProductLicensed = true;
-                InitGalleryItems();
-            }
-        }
+        //        private async Task GetAllItemsTrainingPack()
+        //        {
+        //            string res = null;
+        //            try
+        //            {
+        //#if DEBUG
+        //                res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, false);
+        //#else
+        //                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IAPItem_FullTraining_ProductId, true);
+        //#endif
+        //            }
+        //            catch (Exception)
+        //            {
+        //                //capita anche se l'utente fa "Annulla" sull'acquisto
+        //                res = null;
+        //            }
+        //            if (res == null)
+        //            {
+        //                //acquisto KO
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                //acquisto OK
+        //                FullTrainingPackAvailable = true;
+        //                AppSettings.IAPItem_FullTraining_ProductLicensed = true;
+        //                InitGalleryItems();
+        //            }
+        //        }
     }
 }

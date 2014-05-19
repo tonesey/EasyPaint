@@ -23,6 +23,7 @@ using System.Globalization;
 using System.Threading;
 using EasyPaint.ViewModel;
 using System.Reflection;
+using Microsoft.Phone.Tasks;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System.Windows.Controls.Primitives;
@@ -340,7 +341,7 @@ namespace EasyPaint.View
 
         private void InitPage()
         {
-           
+
             (Application.Current as App).PlayBackgroundMusic(App.TrackType.StandardBackground);
             _drawing = true;
             _drawingboard.IsEnabled = true;
@@ -419,7 +420,7 @@ namespace EasyPaint.View
 
                 ItemName2.Visibility = Visibility.Visible;
 
-               // ItemName1.Text = currentItem.LocalizedName;
+                // ItemName1.Text = currentItem.LocalizedName;
                 ItemName2.Text = currentItem.LatinName;
 
                 //if (currentItem.IsLocked)
@@ -666,8 +667,30 @@ namespace EasyPaint.View
                             //livello completato
                             var curEl = GetUserSelectedItem();
                             curEl.SetScore(_popupChild.GetItemTotalScore());
-                            
+
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);
+                            int unlockedItemsIngroup = ViewModelLocator.ItemSelectorViewModelStatic.GetUnlockedItemsCount();
+
+                            if (App.Current.IsTrial && unlockedItemsIngroup > 2)
+                            {
+                                MessagingHelper.GetInstance().CurrentDispatcher.BeginInvoke(() => MyMsgbox.Show(this,
+                                                                                                                MsgboxMode.YesNo,
+                                                                                                                LocalizedResources.Trial_ArcadeGameLimitation,
+                                                                                                                result =>
+                                                                                                                {
+                                                                                                                    switch (result)
+                                                                                                                    {
+                                                                                                                        case MsgboxResponse.Yes:
+                                                                                                                            var marketplaceDetailTask = new MarketplaceDetailTask { ContentIdentifier = null };
+                                                                                                                            marketplaceDetailTask.Show();
+                                                                                                                            break;
+                                                                                                                        case MsgboxResponse.No:
+                                                                                                                            break;
+                                                                                                                    }
+                                                                                                                }));
+                                return; //need to restart app
+                            }
+
                             if (nextEl.ParentGroupId == curEl.ParentGroupId)
                             {
                                 if (nextEl != null)

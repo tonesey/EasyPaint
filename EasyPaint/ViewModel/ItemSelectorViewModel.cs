@@ -83,5 +83,9 @@ namespace EasyPaint.ViewModel
             Items = g.Items;
         }
 
+        internal int GetUnlockedItemsCount()
+        {
+            return Items.Count(it => !it.IsLocked);
+        }
     }
 }

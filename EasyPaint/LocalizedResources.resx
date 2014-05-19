@@ -338,9 +338,6 @@ Be accurate, be precise but... be FAST!</value>
   <data name="ButtonStartGalleryText" xml:space="preserve">
     <value>gallery</value>
   </data>
-  <data name="GalleryPage_InfoText_NotPurchased" xml:space="preserve">
-    <value>Draw and unlock as many animals as you can to see more items here... or download FULL TRAINING PACK to see them all now!</value>
-  </data>
   <data name="item_cammello" xml:space="preserve">
     <value>camel</value>
   </data>
@@ -385,9 +382,6 @@ Would you like to send an email to report it?</value>
   <data name="GroupCompleted" xml:space="preserve">
     <value>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</value>
   </data>
-  <data name="NeedPaidAppQuestion" xml:space="preserve">
-    <value>Sorry but continent '{0}' is available only into full licensed app, do you want to buy?</value>
-  </data>
   <data name="GalleryPage_InfoText_Purchased" xml:space="preserve">
     <value>Train yourself colouring all animals!</value>
   </data>
@@ -431,5 +425,17 @@ Tell us about your experience or suggest how we can make it even better :)</valu
   </data>
   <data name="FeedbackYes" xml:space="preserve">
     <value>give feedback</value>
+  </data>
+  <data name="FullVersion" xml:space="preserve">
+    <value>full</value>
+  </data>
+  <data name="Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve">
+    <value>Sorry but gallery is available only into full version, do you want to get it?</value>
+  </data>
+  <data name="TrialVersion" xml:space="preserve">
+    <value>trial</value>
+  </data>
+  <data name="Trial_ArcadeGameLimitation" xml:space="preserve">
+    <value>Sorry but you need full version to play with all items, do you want to get it?</value>
   </data>
 </root>
