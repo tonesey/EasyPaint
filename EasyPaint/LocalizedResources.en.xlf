@@ -201,8 +201,8 @@ Checkout his awesome apps at www.invenktion.it</target>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">trial</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve">
-          <source>Sorry but gallery is available only into full version, do you want to get it?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Sorry but gallery is available only into full version, do you want to get it?</target>
+          <source>Sorry but gallery pictures are available only into full version, do you want to get it?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Sorry but gallery is available only into full version, do you want to get it?</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FullVersion" xml:space="preserve">
           <source>full</source>

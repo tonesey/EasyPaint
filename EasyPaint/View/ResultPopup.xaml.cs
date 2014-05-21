@@ -9,6 +9,7 @@ using EasyPaint.ViewModel;
 using System.Windows.Media.Animation;
 using EasyPaint.Helpers;
 using System.Windows.Controls;
+using Wp8Shared.Helpers;
 
 
 namespace EasyPaint.View
@@ -156,24 +157,40 @@ namespace EasyPaint.View
                 for (int i = 0; i <= value; i += increment)
                 {
                     if (_cancellationPending) return;
-                    Dispatcher.BeginInvoke(() =>
+                    //Dispatcher.BeginInvoke(() =>
+                    //{
+                    //    switch (scoreType)
+                    //    {
+                    //        case ScoreType.Percentage:
+                    //            Percentage = i;
+                    //            break;
+                    //        case ScoreType.DrawScore:
+                    //            UserScoreDrawValue = i;
+                    //            break;
+                    //        case ScoreType.TimeScore:
+                    //            UserScoreTimeValue = i;
+                    //            break;
+                    //        case ScoreType.TotalScore:
+                    //            TotalScore = i;
+                    //            break;
+                    //    }
+                    //});
+
+                    switch (scoreType)
                     {
-                        switch (scoreType)
-                        {
-                            case ScoreType.Percentage:
-                                Percentage = i;
-                                break;
-                            case ScoreType.DrawScore:
-                                UserScoreDrawValue = i;
-                                break;
-                            case ScoreType.TimeScore:
-                                UserScoreTimeValue = i;
-                                break;
-                            case ScoreType.TotalScore:
-                                TotalScore = i;
-                                break;
-                        }
-                    });
+                        case ScoreType.Percentage:
+                            Percentage = i;
+                            break;
+                        case ScoreType.DrawScore:
+                            UserScoreDrawValue = i;
+                            break;
+                        case ScoreType.TimeScore:
+                            UserScoreTimeValue = i;
+                            break;
+                        case ScoreType.TotalScore:
+                            TotalScore = i;
+                            break;
+                    }
 
                     int soundInterval = 0;
                     switch (scoreType)
@@ -354,7 +371,11 @@ namespace EasyPaint.View
             PropertyChangedEventHandler handler = PropertyChanged;
             if (null != handler)
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                Dispatcher.BeginInvoke(() =>
+                {
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                });
+               
             }
         }
 

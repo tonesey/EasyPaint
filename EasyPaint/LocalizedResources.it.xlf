@@ -200,8 +200,8 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Trial</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve">
-          <source>Sorry but gallery is available only into full version, do you want to get it?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Scusa ma la galleria è disponibile solo in versione completa, si desidera farlo?</target>
+          <source>Sorry but gallery pictures are available only into full version, do you want to get it?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Scusa ma la galleria è disponibile solo in versione completa, si desidera farlo?</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FullVersion" xml:space="preserve">
           <source>full</source>

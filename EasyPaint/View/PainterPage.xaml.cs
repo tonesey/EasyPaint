@@ -685,6 +685,7 @@ namespace EasyPaint.View
                                                                                                                             marketplaceDetailTask.Show();
                                                                                                                             break;
                                                                                                                         case MsgboxResponse.No:
+                                                                                                                            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_GroupSeletor);
                                                                                                                             break;
                                                                                                                     }
                                                                                                                 }));

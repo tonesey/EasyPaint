@@ -393,8 +393,8 @@ Would you like to send an email to report it?</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">ensayo</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve">
-          <source>Sorry but gallery is available only into full version, do you want to get it?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Lo siento, pero la galería está disponible solamente en la versión completa, ¿quieres hacerlo?</target>
+          <source>Sorry but gallery pictures are available only into full version, do you want to get it?</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Lo siento, pero la galería está disponible solamente en la versión completa, ¿quieres hacerlo?</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FullVersion" xml:space="preserve">
           <source>full</source>

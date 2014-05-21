@@ -430,7 +430,7 @@ Tell us about your experience or suggest how we can make it even better :)</valu
     <value>full</value>
   </data>
   <data name="Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve">
-    <value>Sorry but gallery is available only into full version, do you want to get it?</value>
+    <value>Sorry but gallery pictures are available only into full version, do you want to get it?</value>
   </data>
   <data name="TrialVersion" xml:space="preserve">
     <value>trial</value>

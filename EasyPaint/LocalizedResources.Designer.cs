@@ -931,7 +931,7 @@ namespace EasyPaint {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry but gallery is available only into full version, do you want to get it?.
+        ///   Looks up a localized string similar to Sorry but gallery pictures are available only into full version, do you want to get it?.
         /// </summary>
         public static string Trial_GalleryAvailableOnlyIntoFullVersion {
             get {

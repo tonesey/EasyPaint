@@ -379,4 +379,15 @@ Why not give us a 5 star rating to show your appreciation?</value>
 
 Showing us some love on the store helps us to continue to work on the app and make things even better!</value>
   </data>
-<data name="GalleryPage_InfoText_Purchased" xml:space="preserve"><value>Train yourself colouring all animals!</value></data><data name="GroupCompleted" xml:space="preserve"><value>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</value></data><data name="TotalScore" xml:space="preserve"><value>total:</value></data><data name="PainterPageRecord" xml:space="preserve"><value>record:</value></data><data name="PainterPageCurrentScore" xml:space="preserve"><value>score:</value></data><data name="TimeScore" xml:space="preserve"><value>time bonus:</value></data><data name="DrawScore" xml:space="preserve"><value>score:</value></data></root>
+<data name="GalleryPage_InfoText_Purchased" xml:space="preserve"><value>Train yourself colouring all animals!</value></data><data name="GroupCompleted" xml:space="preserve"><value>CONGRATULATIONS! All animals of continent {0} completed! Now let's discover {1}!</value></data><data name="TotalScore" xml:space="preserve"><value>total:</value></data><data name="PainterPageRecord" xml:space="preserve"><value>record:</value></data><data name="PainterPageCurrentScore" xml:space="preserve"><value>score:</value></data><data name="TimeScore" xml:space="preserve"><value>time bonus:</value></data><data name="DrawScore" xml:space="preserve"><value>score:</value></data><data name="FeedbackYes" xml:space="preserve"><value>give feedback</value></data><data name="Trial_ArcadeGameLimitation" xml:space="preserve"><value>Sorry but you need full version to play with all items, do you want to get it?</value></data><data name="TrialVersion" xml:space="preserve"><value>trial</value></data><data name="Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve"><value>Sorry but gallery is available only into full version, do you want to get it?</value><comment></comment></data><data name="FullVersion" xml:space="preserve"><value>full</value></data><data name="FeedbackTitle" xml:space="preserve"><value>Can we make it better?</value></data><data name="FeedbackNo" xml:space="preserve"><value>no thanks</value></data><data name="FeedbackMessage1" xml:space="preserve"><value>Sorry to hear you didn't want to rate this app.
+
+Tell us about your experience or suggest how we can make it even better:)</value></data><data name="FeedbackBody" xml:space="preserve"><value>[Your feedback here]
+
+
+---------------------------------
+Device Name: {0}
+Device Manufacturer: {1}
+Device Firmware Version: {2}
+Device Hardware Version: {3i
+Application Version: {4i
+---------------------------------</value></data></root>

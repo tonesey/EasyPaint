@@ -385,4 +385,4 @@ Produttore: {1}
 Firmware del dispositivo: {2}
 Hardware del dispositivo: {3}
 Versione applicazione: {4}
----------------------------------</value></data></root>
+---------------------------------</value></data><data name="Trial_ArcadeGameLimitation" xml:space="preserve"><value>Mi dispiace ma bisogno completa versione per giocare con tutti gli elementi, si desidera farlo?</value></data><data name="TrialVersion" xml:space="preserve"><value>Trial</value></data><data name="Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve"><value>Scusa ma la galleria è disponibile solo in versione completa, si desidera farlo?</value><comment></comment></data><data name="FullVersion" xml:space="preserve"><value>completo</value></data></root>
