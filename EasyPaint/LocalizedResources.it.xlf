@@ -193,19 +193,19 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/Trial_ArcadeGameLimitation" xml:space="preserve">
           <source>Sorry but you need full version to play with all items, do you want to get it?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Mi dispiace ma bisogno completa versione per giocare con tutti gli elementi, si desidera farlo?</target>
+          <target state="signed-off">Per poter colorare tutti i disegni è necessario acquistare la versione completa... La vuoi?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/TrialVersion" xml:space="preserve">
           <source>trial</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Trial</target>
+          <target state="signed-off">prova</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve">
           <source>Sorry but gallery pictures are available only into full version, do you want to get it?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Scusa ma la galleria è disponibile solo in versione completa, si desidera farlo?</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="signed-off">Per poter colorare gli animali in modalità galleria è necessario acquistare la versione completa... La vuoi?</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FullVersion" xml:space="preserve">
           <source>full</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">completo</target>
+          <target state="signed-off">completa</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackTitle" xml:space="preserve">
           <source>Can we make it better?</source>
@@ -219,7 +219,7 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
           <source>Sorry to hear you didn't want to rate this app.
 
 Tell us about your experience or suggest how we can make it even better :)</source>
-          <target state="translated">Vuoi darci un consiglio su come migliorare ? :)</target>
+          <target state="signed-off">Vuoi darci un consiglio su come migliorare ? :)</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/FeedbackBody" xml:space="preserve">
           <source>[Your feedback here]
