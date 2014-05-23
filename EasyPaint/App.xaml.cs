@@ -138,7 +138,7 @@ namespace EasyPaint
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
-            SetupMockIAP();
+            //SetupMockIAP();
         }
 
         //private static async Task TESTEXCEPTION()
@@ -182,51 +182,51 @@ namespace EasyPaint
         //    BugSenseResponseResult sendResult = await BugSenseHandler.Instance.SendExceptionAsync(ex, extrasExtraDataList);
         //}
 
-        private void SetupMockIAP()
-        {
-#if DEBUG
-            MockIAPLib.MockIAP.Init();
-            MockIAPLib.MockIAP.RunInMockMode(true);
-            MockIAPLib.MockIAP.ClearCache();
-            MockIAPLib.MockIAP.SetListingInformation(1, "en-us", "A description", "1", "TestApp");
-            //// Add some more items manually.
-            MockIAPLib.ProductListing p1 = new MockIAPLib.ProductListing
-            {
-                Name = "Full Training Pack",
-                ProductId = Constants.IAPItem_FullTraining,
-                ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
-                Keywords = new string[] { "image" },
-                Description = "Full Training Pack description",
-                FormattedPrice = "1.99",
-                Tag = string.Empty
-            };
-            MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_FullTraining, p1);
+//        private void SetupMockIAP()
+//        {
+//#if DEBUG
+//            MockIAPLib.MockIAP.Init();
+//            MockIAPLib.MockIAP.RunInMockMode(true);
+//            MockIAPLib.MockIAP.ClearCache();
+//            MockIAPLib.MockIAP.SetListingInformation(1, "en-us", "A description", "1", "TestApp");
+//            //// Add some more items manually.
+//            MockIAPLib.ProductListing p1 = new MockIAPLib.ProductListing
+//            {
+//                Name = "Full Training Pack",
+//                ProductId = Constants.IAPItem_FullTraining,
+//                ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+//                Keywords = new string[] { "image" },
+//                Description = "Full Training Pack description",
+//                FormattedPrice = "1.99",
+//                Tag = string.Empty
+//            };
+//            MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_FullTraining, p1);
 
-            //MockIAPLib.ProductListing p2 = new MockIAPLib.ProductListing
-            //{
-            //    Name = "Continents Unlocker",
-            //    ProductId = Constants.IAPItem_ContinentsUnlocker,
-            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
-            //    Keywords = new string[] { "image" },
-            //    Description = "Continents Unlocker description",
-            //    FormattedPrice = "1.99",
-            //    Tag = string.Empty
-            //};
-            //MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_ContinentsUnlocker, p2);
-#endif
+//            //MockIAPLib.ProductListing p2 = new MockIAPLib.ProductListing
+//            //{
+//            //    Name = "Continents Unlocker",
+//            //    ProductId = Constants.IAPItem_ContinentsUnlocker,
+//            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+//            //    Keywords = new string[] { "image" },
+//            //    Description = "Continents Unlocker description",
+//            //    FormattedPrice = "1.99",
+//            //    Tag = string.Empty
+//            //};
+//            //MockIAPLib.MockIAP.AddProductListing(Constants.IAPItem_ContinentsUnlocker, p2);
+//#endif
 
-            //ProductListing p = new ProductListing
-            //{
-            //    Name = "img.2",
-            //    ImageUri = new Uri("/Res/Image/2.jpg", UriKind.Relative),
-            //    ProductId = "img.2",
-            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
-            //    Keywords = new string[] { "image" },
-            //    Description = "An image",
-            //    FormattedPrice = "1.0",
-            //    Tag = string.Empty
-            //};
-        }
+//            //ProductListing p = new ProductListing
+//            //{
+//            //    Name = "img.2",
+//            //    ImageUri = new Uri("/Res/Image/2.jpg", UriKind.Relative),
+//            //    ProductId = "img.2",
+//            //    ProductType = Windows.ApplicationModel.Store.ProductType.Durable,
+//            //    Keywords = new string[] { "image" },
+//            //    Description = "An image",
+//            //    FormattedPrice = "1.0",
+//            //    Tag = string.Empty
+//            //};
+//        }
 
 
         // Code to execute when the application is launching (eg, from Start)
@@ -324,6 +324,7 @@ namespace EasyPaint
             else
             {
                 //must have been a chooser that did not tombstone or a quick back. 
+                CheckTrialState();
             }
 
             if (string.IsNullOrEmpty(_currentTrack))

@@ -177,15 +177,15 @@ namespace EasyPaint.View
 
         private async void ImageTitle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-#if DEBUG
-            MyMsgbox.Show(this, MsgboxMode.YesNo, "acquisto?", async response =>
-            {
-                //string receipt = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
-                string res = null;
-                //res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync("testitem", false);
-                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync("testitem", false);
-            });
-#endif
+//#if DEBUG
+//            MyMsgbox.Show(this, MsgboxMode.YesNo, "acquisto?", async response =>
+//            {
+//                //string receipt = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync(AppSettings.IapCompleteGameProductId, false);
+//                string res = null;
+//                //res = await MockIAPLib.CurrentApp.RequestProductPurchaseAsync("testitem", false);
+//                res = await Windows.ApplicationModel.Store.CurrentApp.RequestProductPurchaseAsync("testitem", false);
+//            });
+//#endif
         }
     }
 }

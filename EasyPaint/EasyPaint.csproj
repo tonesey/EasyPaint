@@ -202,7 +202,6 @@
     <Compile Include="Converters\BoolToVisibilityConverterInverted.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignData.cs" />
-    <Compile Include="Helpers\IAPHelper.cs" />
     <Compile Include="Helpers\LittleWatson.cs" />
     <Compile Include="Helpers\MessagingHelper.cs" />
     <Compile Include="Helpers\ResolutionHelper.cs" />

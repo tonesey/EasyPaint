@@ -93,92 +93,92 @@ namespace EasyPaint.Settings
             AppVersion = string.Format("{0}.{1}.{2}", ver.Major, ver.Minor, ver.Build);
             AppName = appEl.Attribute("Title").Value;
 
-            await CheckIAPLicenseInfosAsync();
+            //await CheckIAPLicenseInfosAsync();
         }
 
-        private static async Task CheckIAPLicenseInfosAsync()
-        {
-            try
-            {
-#if DEBUG
-#if UNLOCKED
-                IAPItem_FullTraining_ProductLicensed = true;
-                //IAPItem_ContinentsUnlocker_ProductLicensed = true;
-#else
+//        private static async Task CheckIAPLicenseInfosAsync()
+//        {
+//            try
+//            {
+//#if DEBUG
+//#if UNLOCKED
+//                IAPItem_FullTraining_ProductLicensed = true;
+//                //IAPItem_ContinentsUnlocker_ProductLicensed = true;
+//#else
 
-                try
-                {
-                    if (MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_FullTraining))
-                    {
-                        IAPItem_FullTraining_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
-                    }
-                }
-                catch (Exception)
-                {
-                }
+//                try
+//                {
+//                    if (MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_FullTraining))
+//                    {
+//                        IAPItem_FullTraining_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
+//                    }
+//                }
+//                catch (Exception)
+//                {
+//                }
 
-                //try
-                //{
-                //    if (MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_ContinentsUnlocker))
-                //    {
-                //        IAPItem_ContinentsUnlocker_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
-                //    }
-                //}
-                //catch (Exception)
-                //{
-                //}
-#endif
-#else
-                try
-                {
-                    if (Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_FullTraining))
-                    {
-                        IAPItem_FullTraining_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
-                    }
-                }
-                catch (Exception)
-                {
-                }
+//                //try
+//                //{
+//                //    if (MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_ContinentsUnlocker))
+//                //    {
+//                //        IAPItem_ContinentsUnlocker_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
+//                //    }
+//                //}
+//                //catch (Exception)
+//                //{
+//                //}
+//#endif
+//#else
+//                try
+//                {
+//                    if (Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_FullTraining))
+//                    {
+//                        IAPItem_FullTraining_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
+//                    }
+//                }
+//                catch (Exception)
+//                {
+//                }
 
-                //try
-                //{
-                //    if (Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_ContinentsUnlocker))
-                //    {
-                //        IAPItem_ContinentsUnlocker_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
-                //    }
-                //}
-                //catch (Exception)
-                //{
-                //}
-#endif
-                if (!IAPItem_FullTraining_ProductLicensed)
-                {
-#if DEBUG
-                    MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
-#else
-                    Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
-#endif
-                    //try
-                    //{
-                    //    IAPItem_ContinentsUnlocker_ProductId = li.ProductListings[Constants.IAPItem_ContinentsUnlocker].ProductId;
-                    //}
-                    //catch (Exception)
-                    //{
-                    //}
+//                //try
+//                //{
+//                //    if (Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_ContinentsUnlocker))
+//                //    {
+//                //        IAPItem_ContinentsUnlocker_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
+//                //    }
+//                //}
+//                //catch (Exception)
+//                //{
+//                //}
+//#endif
+//                if (!IAPItem_FullTraining_ProductLicensed)
+//                {
+//#if DEBUG
+//                    MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
+//#else
+//                    Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
+//#endif
+//                    //try
+//                    //{
+//                    //    IAPItem_ContinentsUnlocker_ProductId = li.ProductListings[Constants.IAPItem_ContinentsUnlocker].ProductId;
+//                    //}
+//                    //catch (Exception)
+//                    //{
+//                    //}
 
-                    try
-                    {
-                        IAPItem_FullTraining_ProductId = li.ProductListings[Constants.IAPItem_FullTraining].ProductId;
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
+//                    try
+//                    {
+//                        IAPItem_FullTraining_ProductId = li.ProductListings[Constants.IAPItem_FullTraining].ProductId;
+//                    }
+//                    catch (Exception)
+//                    {
+//                    }
+//                }
+//            }
+//            catch (Exception)
+//            {
+//            }
+//        }
 
         //public static async Task SaveSettings(bool rebuildData)
         public static void SaveSettings(bool rebuildData)
