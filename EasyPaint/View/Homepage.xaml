@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ctrl="clr-namespace:EasyPaint.Controls"
+    xmlns:adduplex="clr-namespace:AdDuplex;assembly=AdDuplex.WindowsPhone"
     xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP8" 
     mc:Ignorable="d" d:DesignWidth="768" d:DesignHeight="480"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -139,6 +140,9 @@
 
         <!-- Feedback overlay -->
         <ctrl:FeedbackOverlay Grid.RowSpan="4" Grid.ColumnSpan="3" EnableAnimation="True" />
+
+        <adduplex:AdControl Name="AdControl" Margin="-10,0,0,0" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" x:Name="adDuplexAd" AppId="107331"/>
+
     </Grid>
 
 </phone:PhoneApplicationPage>
