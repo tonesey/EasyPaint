@@ -177,7 +177,7 @@ Grazie a Marco Uberti: visitate il sito www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/GalleryPage_InfoText_Purchased" xml:space="preserve">
           <source>Train yourself colouring all animals!</source>
-          <target state="signed-off">Allenati colorantdo tutti gli animali del mondo!</target>
+          <target state="translated">Allenati colorando tutti gli animali del mondo!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/TotalScore" xml:space="preserve">
           <source>total:</source>

@@ -6,7 +6,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" x:Class="EasyPaint.Controls.FeedbackOverlay"
     mc:Ignorable="d"
     Visibility="Collapsed"
-    d:DesignHeight="480" d:DesignWidth="480" phone:PhoneApplicationPage.Orientation="Landscape">
+    d:DesignHeight="480" d:DesignWidth="480">
 
     <UserControl.Resources>
         <Storyboard x:Name="showContent">
