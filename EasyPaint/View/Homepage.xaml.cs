@@ -68,6 +68,8 @@ namespace EasyPaint.View
                 AnimateBackground();
             }
 
+            AdControl.Visibility = ((App)Application.Current).IsTrial ? Visibility.Visible : Visibility.Collapsed;
+
 //            MyMsgbox.Show(this, MsgboxMode.YesNo, string.Format(LocalizedResources.NeedPaidAppQuestion, "test"), result1 =>
 //            {
 //                switch (result1)
