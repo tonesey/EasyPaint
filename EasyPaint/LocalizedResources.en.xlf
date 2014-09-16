@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="en" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.1.4" build-num="4">
+  <file datatype="xml" source-language="en-US" target-language="en" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.1.5" build-num="5">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.2.1212.0" tool-company="Microsoft" />
     </header>
@@ -195,6 +195,22 @@ Checkout his awesome apps at www.invenktion.it</target>
         <trans-unit translate="yes" id="Resx/Trial_ArcadeGameLimitation" xml:space="preserve">
           <source>Sorry but you need full version to play with all items, do you want to get it?</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Sorry but you need full version to play with all items, do you want to get it?</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/LevelSelectionHeader" xml:space="preserve">
+          <source>select game difficulty</source>
+          <target state="new">select game difficulty</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonLevelMediumText" xml:space="preserve">
+          <source>medium</source>
+          <target state="new">medium</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonLevelHardText" xml:space="preserve">
+          <source>hard</source>
+          <target state="new">hard</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Resx/ButtonLevelEasyText" xml:space="preserve">
+          <source>easy</source>
+          <target state="new">easy</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/TrialVersion" xml:space="preserve">
           <source>trial</source>

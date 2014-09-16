@@ -29,7 +29,6 @@ namespace EasyPaint.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
-
         #region views uris
         public static readonly Uri View_Painter = new Uri("/View/PainterPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_Gallery = new Uri("/View/GalleryPage.xaml", UriKind.RelativeOrAbsolute);
@@ -38,6 +37,7 @@ namespace EasyPaint.ViewModel
         public static readonly Uri View_ItemSeletor = new Uri("/View/ItemSelectorPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_Credits = new Uri("/View/CreditsPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_Help = new Uri("/View/HelpPage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_GameLevel = new Uri("/View/LevelSelectionPage.xaml", UriKind.RelativeOrAbsolute);
         #endregion
 
         static ViewModelLocator()
@@ -56,6 +56,7 @@ namespace EasyPaint.ViewModel
             SimpleIoc.Default.Register<INavigationService, NavigationHelper>();
 
             SimpleIoc.Default.Register<HomePageViewModel>();
+            SimpleIoc.Default.Register<LevelSelectorViewModel>();
             SimpleIoc.Default.Register<GroupSelectorViewModel>();
             SimpleIoc.Default.Register<GalleryViewModel>();
             SimpleIoc.Default.Register<ItemSelectorViewModel>();
@@ -76,6 +77,30 @@ namespace EasyPaint.ViewModel
                 return _NavigationServiceStatic;
             }
         }
+
+        #region game level selector
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]
+        public LevelSelectorViewModel LevelSelectorViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<LevelSelectorViewModel>();
+            }
+        }
+
+        private static LevelSelectorViewModel _LevelSelectorViewModelStatic;
+        public static LevelSelectorViewModel LevelSelectorViewModelStatic
+        {
+            get
+            {
+                if (_LevelSelectorViewModelStatic == null)
+                {
+                    return _LevelSelectorViewModelStatic = ServiceLocator.Current.GetInstance<LevelSelectorViewModel>();
+                }
+                return _LevelSelectorViewModelStatic;
+            }
+        }
+        #endregion
 
         #region homepage
         private static HomePageViewModel _HomepageViewModelStatic;

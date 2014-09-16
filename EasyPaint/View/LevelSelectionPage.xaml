@@ -1,0 +1,144 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="EasyPaint.View.LevelSelectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    xmlns:design="clr-namespace:EasyPaint.Design"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerikPrimitivesLoopingList="clr-namespace:Telerik.Windows.Controls.LoopingList;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP8" 
+    mc:Ignorable="d" d:DesignWidth="768" d:DesignHeight="480"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    shell:SystemTray.IsVisible="False">
+
+    <!--<phone:PhoneApplicationPage.Resources>
+        <design:DesignData x:Key="DesignDataContext" ListId="Item" CurrentGroupId="1"/>
+    </phone:PhoneApplicationPage.Resources>-->
+
+    <UserControl.DataContext>
+        <Binding Path="LevelSelectorViewModel" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/EasyPaint;component/Assets/lres/bkg/groups_bkg1.jpg"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="30" 
+                Margin="10"
+                Opacity="1" 
+                Grid.Column="0" Grid.ColumnSpan="3" 
+                Grid.Row="0" Grid.RowSpan="3" 
+                RenderTransformOrigin="0.5,0.5">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFCBCDAC" Offset="0"/>
+                    <GradientStop Color="#7FFFFFFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.RenderTransform>
+                <CompositeTransform Rotation="0"/>
+            </Border.RenderTransform>
+
+            <StackPanel Orientation="Vertical" Margin="0,20,0,91">
+
+                <TextBlock Opacity="1" Name="TextBlockBasicHelpTitle" Style="{StaticResource ButtonTextBlockStyle1}" 
+                               Text="{Binding Path=LocalizedResX.LevelSelectionHeader, Source={StaticResource LocalizedStrings}}" 
+                               Foreground="Green" HorizontalAlignment="Center"/>
+                
+                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="0.25"/>
+                    </Button.RenderTransform>
+                    <Button.Content>
+                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Text="{Binding Path=LocalizedResX.ButtonLevelEasyText, Source={StaticResource LocalizedStrings}}">
+                        </TextBlock>
+                    </Button.Content>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding SetLevelEasyCommand, Mode=OneWay}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="0"/>
+                    </Button.RenderTransform>
+                    <Button.Content>
+                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Text="{Binding Path=LocalizedResX.ButtonLevelMediumText, Source={StaticResource LocalizedStrings}}">
+                        </TextBlock>
+                    </Button.Content>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding SetLevelMediumCommand, Mode=OneWay}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="0"/>
+                    </Button.RenderTransform>
+                    <Button.Content>
+                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                           Text="{Binding Path=LocalizedResX.ButtonLevelHardText, Source={StaticResource LocalizedStrings}}">
+                        </TextBlock>
+                    </Button.Content>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding SetLevelHardCommand, Mode=OneWay}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <Image x:Name="ImageExplorerSubject" Margin="0" 
+               Grid.Column="0" Grid.ColumnSpan="2"
+               Grid.Row="3" Grid.RowSpan="5"  
+               Opacity="1"
+               Source="/EasyPaint;component/Assets/lres/bkg/explorer_horizontal.png" 
+               Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+        </Image>
+
+        <Image Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Height="100" 
+               Grid.RowSpan="2" Stretch="Fill" 
+               Source="../Assets/buttons/nav_left_green.png">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Tap">
+                    <GalaSoft_MvvmLight_Command:EventToCommand x:Name="GoToHomepage" 
+                                                               Command="{Binding GotoHomepageCommand, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
+    

@@ -150,6 +150,9 @@
     <Reference Include="BugSense-WP8">
       <HintPath>..\..\Wp8Shared\packages\BugSense.WP8.3.6.5.0\lib\wp8\BugSense-WP8.dll</HintPath>
     </Reference>
+    <Reference Include="FlurryWP8SDK">
+      <HintPath>..\..\Wp8Shared\packages\FlurryForWindowsPhone8.1.2\lib\wp8\FlurryWP8SDK.dll</HintPath>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight.Extras.WP8">
       <HintPath>..\..\Wp8Shared\packages\MvvmLightLibs.4.2.30.0\lib\wp8\GalaSoft.MvvmLight.Extras.WP8.dll</HintPath>
     </Reference>
@@ -231,6 +234,7 @@
     <Compile Include="Model\MyColor.cs" />
     <Compile Include="Model\UI\PictureLoopingItem.cs" />
     <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="ViewModel\LevelSelectorViewModel.cs" />
     <Compile Include="ViewModel\GalleryViewModel.cs" />
     <Compile Include="ViewModel\HelpViewModel.cs" />
     <Compile Include="ViewModel\CreditsViewModel.cs" />
@@ -242,6 +246,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="View\LevelSelectionPage.xaml.cs">
+      <DependentUpon>LevelSelectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GalleryPage.xaml.cs">
       <DependentUpon>GalleryPage.xaml</DependentUpon>
     </Compile>
@@ -279,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Controls\FeedbackOverlay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LevelSelectionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -439,7 +450,6 @@
     <EmbeddedResource Include="Audio\wav\click.wav" />
     <EmbeddedResource Include="Audio\wav\fmbass.wav" />
     <EmbeddedResource Include="Audio\wav\alarm.wav" />
-    <Content Include="BugSense\BugSense - SDK License Agreement.txt" />
     <Content Include="README_FIRST.txt" />
     <Content Include="TileWide.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />

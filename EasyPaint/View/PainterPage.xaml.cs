@@ -666,6 +666,7 @@ namespace EasyPaint.View
                         case GameMode.Arcade:
                             //livello completato
                             var curEl = GetUserSelectedItem();
+                            FlurryWP8SDK.Api.LogEvent("new element selected: " + curEl.LocalizedDescr);
                             curEl.SetScore(_popupChild.GetItemTotalScore());
 
                             var nextEl = ViewModelLocator.GroupSelectorViewModelStatic.GetNextItem(curEl);

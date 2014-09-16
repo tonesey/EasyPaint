@@ -79,6 +79,33 @@ namespace EasyPaint {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to easy.
+        /// </summary>
+        public static string ButtonLevelEasyText {
+            get {
+                return ResourceManager.GetString("ButtonLevelEasyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hard.
+        /// </summary>
+        public static string ButtonLevelHardText {
+            get {
+                return ResourceManager.GetString("ButtonLevelHardText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to medium.
+        /// </summary>
+        public static string ButtonLevelMediumText {
+            get {
+                return ResourceManager.GetString("ButtonLevelMediumText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to settings.
         /// </summary>
         public static string ButtonSettingsText {
@@ -788,6 +815,15 @@ namespace EasyPaint {
         public static string item_zebra {
             get {
                 return ResourceManager.GetString("item_zebra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select game difficulty.
+        /// </summary>
+        public static string LevelSelectionHeader {
+            get {
+                return ResourceManager.GetString("LevelSelectionHeader", resourceCulture);
             }
         }
         

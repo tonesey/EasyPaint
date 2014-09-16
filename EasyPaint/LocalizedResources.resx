@@ -438,4 +438,16 @@ Tell us about your experience or suggest how we can make it even better :)</valu
   <data name="Trial_ArcadeGameLimitation" xml:space="preserve">
     <value>Sorry but you need full version to play with all items, do you want to get it?</value>
   </data>
+  <data name="ButtonLevelEasyText" xml:space="preserve">
+    <value>easy</value>
+  </data>
+  <data name="ButtonLevelHardText" xml:space="preserve">
+    <value>hard</value>
+  </data>
+  <data name="ButtonLevelMediumText" xml:space="preserve">
+    <value>medium</value>
+  </data>
+  <data name="LevelSelectionHeader" xml:space="preserve">
+    <value>select game difficulty</value>
+  </data>
 </root>

@@ -11,8 +11,18 @@ using Wp8Shared.Helpers;
 
 namespace EasyPaint.Settings
 {
+
+    public enum GameLevel
+    {
+        Easy,
+        Medium,
+        Hard
+    }
+
     class AppSettings
     {
+
+        
         public static string AppRes = "lres";
 
         public static bool IsDataLoading { get; set; }
@@ -34,6 +44,7 @@ namespace EasyPaint.Settings
         public static bool IAPItem_FullTraining_ProductLicensed { get; set; }
 
         public static bool AlreadyAskedRating { get; set; }
+        public static GameLevel GameLevel { get; set; }
 
         //public static string IAPItem_ContinentsUnlocker_ProductId { get; set; }
         //public static bool IAPItem_ContinentsUnlocker_ProductLicensed { get; set; }
@@ -56,6 +67,7 @@ namespace EasyPaint.Settings
         public AppSettings()
         {
             ExternalMusicAllowed = null;
+            GameLevel = GameLevel.Easy;
         }
 
         //public async static Task LoadAppSettingsAsync()

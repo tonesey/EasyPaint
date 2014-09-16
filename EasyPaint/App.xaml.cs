@@ -113,8 +113,8 @@ namespace EasyPaint
             // Phone-specific initialization
             InitializePhoneApplication();
 
-            BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "3913d686");
-            // BugSenseHandler.Instance.HandleWhileDebugging = true;
+            //BugSenseHandler.Instance.InitAndStartSession(new ExceptionManager(Current), RootFrame, "3913d686");
+            //  eHandler.Instance.HandleWhileDebugging = true;
 
             //TESTEXCEPTION();
 
@@ -233,6 +233,15 @@ namespace EasyPaint
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+
+            try
+            {
+                FlurryWP8SDK.Api.StartSession("ND7N664Z68W5J5PN33S2");
+            }
+            catch (Exception)
+            {
+            }
+
             InitApp();
             //InitApp().Wait(); 
             //KO: The await inside your asynchronous method is trying to come back to the UI thread.
@@ -316,6 +325,15 @@ namespace EasyPaint
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+
+            try
+            {
+                FlurryWP8SDK.Api.StartSession("ND7N664Z68W5J5PN33S2");
+            }
+            catch (Exception)
+            {
+            }
+
             if (_wasApplicationTerminated)
             {
                 // real tombstone, new App instance   
@@ -346,7 +364,7 @@ namespace EasyPaint
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
-            BugSenseHandler.Instance.CloseSession();
+            //BugSenseHandler.Instance.CloseSession();
         }
 
         // Code to execute if a navigation fails
