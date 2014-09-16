@@ -60,14 +60,14 @@ namespace EasyPaint.Helpers
                     //string userScoreDebug = "canguro colore.png-true-0-0;clamidosauro colori.png-false-50-100;coccodrillo colore.png-false-10-45";
                     //StorageHelper.StoreSetting(AppSettings.UserScoreKey, userScoreDebug, true);
                     //AppSettings.LoadSettings();
-                    StorageHelper.StoreSetting(AppSettings.UserScoreKey, "", true);
+                    StorageHelper.StoreSetting(AppSettings.UserScoreKey_HARD, "", true);
                     AppSettings.LoadUserSettings();
                 }
 #endif
                 #region userscore setting reading
-                var userScoreValue = AppSettings.UserScoreValue;
+                var userScoreValue = AppSettings.UserScoreValue_HARD;
                 Dictionary<string, string[]> _userScore = new Dictionary<string, string[]>();
-                string userScore = AppSettings.UserScoreValue;
+                string userScore = AppSettings.UserScoreValue_HARD;
                 if (!string.IsNullOrEmpty(userScore))
                 {
                     string[] spl = userScore.Split(';');

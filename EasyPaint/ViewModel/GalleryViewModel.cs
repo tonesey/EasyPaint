@@ -204,7 +204,7 @@ namespace EasyPaint.ViewModel
                                                                                                     switch (result)
                                                                                                     {
                                                                                                         case MsgboxResponse.Yes:
-                                                                                                            var marketplaceDetailTask = new MarketplaceDetailTask { ContentIdentifier = null };
+                                                                                                            var marketplaceDetailTask = new MarketplaceDetailTask { ContentIdentifier = AppSettings.AppGuid };
                                                                                                             marketplaceDetailTask.Show();
                                                                                                             break;
                                                                                                         case MsgboxResponse.No:

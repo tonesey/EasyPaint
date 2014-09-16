@@ -5,6 +5,7 @@ using EasyPaint.Settings;
 using EasyPaint.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System;
@@ -50,6 +51,10 @@ namespace EasyPaint.View
 
         void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
+
+            //var marketplaceDetailTask = new MarketplaceDetailTask { ContentIdentifier =  };
+            //marketplaceDetailTask.Show();
+
             AppViewModel.CurrentPage = this;
             foreach (JournalEntry item in NavigationService.BackStack.Reverse())
             {
@@ -68,7 +73,7 @@ namespace EasyPaint.View
                 AnimateBackground();
             }
 
-            AdControl.Visibility = ((App)Application.Current).IsTrial ? Visibility.Visible : Visibility.Collapsed;
+            //AdControl.Visibility = ((App)Application.Current).IsTrial ? Visibility.Visible : Visibility.Collapsed;
 
 //            MyMsgbox.Show(this, MsgboxMode.YesNo, string.Format(LocalizedResources.NeedPaidAppQuestion, "test"), result1 =>
 //            {

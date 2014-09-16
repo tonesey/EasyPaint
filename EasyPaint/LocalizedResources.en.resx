@@ -390,4 +390,4 @@ Device Manufacturer: {1}
 Device Firmware Version: {2}
 Device Hardware Version: {3i
 Application Version: {4i
----------------------------------</value></data></root>
+---------------------------------</value></data><data name="LevelSelectionHeader" xml:space="preserve"><value>select game difficulty</value></data><data name="ButtonLevelMediumText" xml:space="preserve"><value>medium</value></data><data name="ButtonLevelHardText" xml:space="preserve"><value>hard</value></data><data name="ButtonLevelEasyText" xml:space="preserve"><value>easy</value></data></root>

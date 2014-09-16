@@ -39,7 +39,7 @@ namespace EasyPaint.ViewModel
                     return 0;
                 }
 
-                return -85;
+                return -100;
             }
         }
 

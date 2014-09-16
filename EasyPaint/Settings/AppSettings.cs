@@ -21,18 +21,34 @@ namespace EasyPaint.Settings
 
     class AppSettings
     {
-
+        public const string AppGuid = "c2e057e9-1b3c-4a13-b722-ad744c5d7ddf";
         
         public static string AppRes = "lres";
 
         public static bool IsDataLoading { get; set; }
 
         #region user settings
-        public const string UserScoreKey = "USER_SCORE";
-        public static string UserScoreValue = string.Empty;
 
-        public const string RecordScoreKey = "RECORD_SCORE";
-        public static long RecordScoreValue = 0;
+        //HARD
+        public const string UserScoreKey_HARD = "USER_SCORE"; //USER_SCORE maintenied for backward compatibility
+        public static string UserScoreValue_HARD = string.Empty;
+
+        public const string RecordScoreKey_HARD = "RECORD_SCORE"; //RECORD_SCORE maintenied for backward compatibility
+        public static long RecordScoreValue_HARD = 0;
+
+        //MEDIUM
+        public const string UserScoreKey_MEDIUM = "USER_SCORE_MEDIUM";
+        public static string UserScoreValue_MEDIUM = string.Empty;
+
+        public const string RecordScoreKey_MEDIUM = "RECORD_SCORE_MEDIUM";
+        public static long RecordScoreValue_MEDIUM = 0;
+
+        //EASY
+        public const string UserScoreKey_EASY = "USER_SCORE_EASY";
+        public static string UserScoreValue_EASY = string.Empty;
+
+        public const string RecordScoreKey_EASY = "RECORD_SCORE_EASY";
+        public static long RecordScoreValue_EASY = 0;
         #endregion
 
         #region global app settings
@@ -70,15 +86,6 @@ namespace EasyPaint.Settings
             GameLevel = GameLevel.Easy;
         }
 
-        //public async static Task LoadAppSettingsAsync()
-        //{
-        //    if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
-        //    {
-        //        await LoadAppAttributesAsync();
-        //        LoadUserSettings();
-        //    }
-        //}
-
         public static void LoadAppSettings()
         {
             if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
@@ -93,8 +100,14 @@ namespace EasyPaint.Settings
         public static void LoadUserSettings()
         {
             //user settings
-            UserScoreValue = StorageHelper.GetSetting<string>(UserScoreKey);
-            RecordScoreValue = StorageHelper.GetSetting<long>(RecordScoreKey, 0);
+            UserScoreValue_HARD = StorageHelper.GetSetting<string>(UserScoreKey_HARD);
+            RecordScoreValue_HARD = StorageHelper.GetSetting<long>(RecordScoreKey_HARD, 0);
+
+            UserScoreValue_MEDIUM = StorageHelper.GetSetting<string>(UserScoreKey_MEDIUM);
+            RecordScoreValue_MEDIUM = StorageHelper.GetSetting<long>(RecordScoreKey_MEDIUM, 0);
+
+            UserScoreValue_EASY = StorageHelper.GetSetting<string>(UserScoreKey_EASY);
+            RecordScoreValue_EASY = StorageHelper.GetSetting<long>(RecordScoreKey_EASY, 0);
         }
 
         private static async Task LoadAppAttributesAsync()
@@ -107,90 +120,6 @@ namespace EasyPaint.Settings
 
             //await CheckIAPLicenseInfosAsync();
         }
-
-//        private static async Task CheckIAPLicenseInfosAsync()
-//        {
-//            try
-//            {
-//#if DEBUG
-//#if UNLOCKED
-//                IAPItem_FullTraining_ProductLicensed = true;
-//                //IAPItem_ContinentsUnlocker_ProductLicensed = true;
-//#else
-
-//                try
-//                {
-//                    if (MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_FullTraining))
-//                    {
-//                        IAPItem_FullTraining_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
-//                    }
-//                }
-//                catch (Exception)
-//                {
-//                }
-
-//                //try
-//                //{
-//                //    if (MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_ContinentsUnlocker))
-//                //    {
-//                //        IAPItem_ContinentsUnlocker_ProductLicensed = MockIAPLib.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
-//                //    }
-//                //}
-//                //catch (Exception)
-//                //{
-//                //}
-//#endif
-//#else
-//                try
-//                {
-//                    if (Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_FullTraining))
-//                    {
-//                        IAPItem_FullTraining_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_FullTraining].IsActive;
-//                    }
-//                }
-//                catch (Exception)
-//                {
-//                }
-
-//                //try
-//                //{
-//                //    if (Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses.ContainsKey(Constants.IAPItem_ContinentsUnlocker))
-//                //    {
-//                //        IAPItem_ContinentsUnlocker_ProductLicensed = Windows.ApplicationModel.Store.CurrentApp.LicenseInformation.ProductLicenses[Constants.IAPItem_ContinentsUnlocker].IsActive;
-//                //    }
-//                //}
-//                //catch (Exception)
-//                //{
-//                //}
-//#endif
-//                if (!IAPItem_FullTraining_ProductLicensed)
-//                {
-//#if DEBUG
-//                    MockIAPLib.ListingInformation li = await MockIAPLib.CurrentApp.LoadListingInformationAsync(); ;
-//#else
-//                    Windows.ApplicationModel.Store.ListingInformation li = await Windows.ApplicationModel.Store.CurrentApp.LoadListingInformationAsync(); ;
-//#endif
-//                    //try
-//                    //{
-//                    //    IAPItem_ContinentsUnlocker_ProductId = li.ProductListings[Constants.IAPItem_ContinentsUnlocker].ProductId;
-//                    //}
-//                    //catch (Exception)
-//                    //{
-//                    //}
-
-//                    try
-//                    {
-//                        IAPItem_FullTraining_ProductId = li.ProductListings[Constants.IAPItem_FullTraining].ProductId;
-//                    }
-//                    catch (Exception)
-//                    {
-//                    }
-//                }
-//            }
-//            catch (Exception)
-//            {
-//            }
-//        }
 
         //public static async Task SaveSettings(bool rebuildData)
         public static void SaveSettings(bool rebuildData)
@@ -207,18 +136,51 @@ namespace EasyPaint.Settings
 
             if (rebuildData)
             {
-                UserScoreValue = AppDataManager.GetInstance().GetUserScoreStrValue();
+                var pointsVal = AppDataManager.GetInstance().GetUserScoreStrValue();
+                switch (AppSettings.GameLevel)
+                {
+                    case GameLevel.Easy:
+                        UserScoreValue_EASY = pointsVal;
+                        StorageHelper.StoreSetting(UserScoreKey_EASY, UserScoreValue_EASY, true);
+                        break;
+                    case GameLevel.Medium:
+                        UserScoreValue_MEDIUM = pointsVal;
+                        StorageHelper.StoreSetting(UserScoreKey_MEDIUM, UserScoreValue_MEDIUM, true);
+                        break;
+                    case GameLevel.Hard:
+                        UserScoreValue_HARD = pointsVal;
+                        StorageHelper.StoreSetting(UserScoreKey_HARD, UserScoreValue_HARD, true);
+                        break;
+                }
             }
-
-            StorageHelper.StoreSetting(UserScoreKey, UserScoreValue, true);
 
             long totalPoints = AppDataManager.GetInstance().GetTotalPoints();
-            if (totalPoints > RecordScoreValue)
+
+            switch (AppSettings.GameLevel)
             {
-                RecordScoreValue = totalPoints;
-                StorageHelper.StoreSetting(RecordScoreKey, RecordScoreValue, true);
+                case GameLevel.Easy:
+                    if (totalPoints > RecordScoreValue_EASY)
+                    {
+                        RecordScoreValue_EASY = totalPoints;
+                        StorageHelper.StoreSetting(RecordScoreKey_EASY, RecordScoreValue_EASY, true);
+                    }
+                    break;
+                case GameLevel.Medium:
+                    if (totalPoints > RecordScoreValue_MEDIUM)
+                    {
+                        RecordScoreValue_MEDIUM = totalPoints;
+                        StorageHelper.StoreSetting(RecordScoreKey_MEDIUM, RecordScoreValue_MEDIUM, true);
+                    }
+                    break;
+                case GameLevel.Hard:
+                    if (totalPoints > RecordScoreValue_HARD)
+                    {
+                        RecordScoreValue_HARD = totalPoints;
+                        StorageHelper.StoreSetting(RecordScoreKey_HARD, RecordScoreValue_HARD, true);
+                    }
+                    break;
             }
-            
+
             // StorageHelper.StoreSetting(SoundOnKey, SoundOnValue, true);
         }
 

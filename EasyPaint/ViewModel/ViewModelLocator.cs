@@ -37,7 +37,7 @@ namespace EasyPaint.ViewModel
         public static readonly Uri View_ItemSeletor = new Uri("/View/ItemSelectorPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_Credits = new Uri("/View/CreditsPage.xaml", UriKind.RelativeOrAbsolute);
         public static readonly Uri View_Help = new Uri("/View/HelpPage.xaml", UriKind.RelativeOrAbsolute);
-        public static readonly Uri View_GameLevel = new Uri("/View/LevelSelectionPage.xaml", UriKind.RelativeOrAbsolute);
+        public static readonly Uri View_GameLevelSelector = new Uri("/View/LevelSelectionPage.xaml", UriKind.RelativeOrAbsolute);
         #endregion
 
         static ViewModelLocator()

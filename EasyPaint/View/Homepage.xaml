@@ -142,7 +142,7 @@
         <ctrl:FeedbackOverlay Grid.RowSpan="4" Grid.ColumnSpan="3" EnableAnimation="True" />
 
 
-        <!--<adduplex:AdControl Name="AdControl" Margin="-10,0,0,0" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" x:Name="adDuplexAd" AppId="107331"/>-->
+        <!--<adduplex:AdControl Name="AdControl" Margin="-10,0,0,0" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" AppId="107331"/>-->
 
 
     </Grid>

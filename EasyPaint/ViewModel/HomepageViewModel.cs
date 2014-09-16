@@ -88,7 +88,8 @@ namespace EasyPaint.ViewModel
             switch (gameMode)
             {
                 case GameMode.Arcade:
-                    ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_GroupSeletor);
+                   // ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_GroupSeletor);
+                    ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_GameLevelSelector);
                     break;
                 case GameMode.Gallery:
                     ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Gallery);

@@ -38,7 +38,7 @@ namespace EasyPaint.View
 {
     public partial class PainterPage : PhoneApplicationPage
     {
-        const int TotalTime = 30;
+       // const int TotalTime = 30;
 
         // Constructor
         SimzzDev.DrawingBoard _drawingboard = null;
@@ -78,7 +78,7 @@ namespace EasyPaint.View
 
             //ItemName1.Visibility = Visibility.Visible;
             ScoreStackPanel.Visibility = Visibility.Visible;
-            ItemName2.Visibility = Visibility.Visible;
+            //ItemName2.Visibility = Visibility.Visible;
             BorderPalette.Visibility = Visibility.Collapsed;
             BorderTools.Visibility = Visibility.Collapsed;
 
@@ -233,7 +233,9 @@ namespace EasyPaint.View
         {
             BorderCountDownSmall.Visibility = System.Windows.Visibility.Visible;
             _gameInProgress = true;
-            _curAvailableTimeValue = TotalTime;
+            _curAvailableTimeValue = GetAvailableTime();
+
+
             TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
 
             _storyboardSmallCountDownAnimationHandler = (s, e) =>
@@ -372,7 +374,7 @@ namespace EasyPaint.View
             //#endif
 
             BorderPalette.Visibility = Visibility.Collapsed;
-            TextBlockCountDownSmall.Text = TotalTime.ToString();
+            TextBlockCountDownSmall.Text = GetAvailableTime().ToString();
             GridPainter.Visibility = System.Windows.Visibility.Visible;
 
             StopTimer();
@@ -394,6 +396,7 @@ namespace EasyPaint.View
             _drawingboard.SetBoundary();
 
             ImageMain.Visibility = System.Windows.Visibility.Visible;
+            ImageThumb.Visibility = System.Windows.Visibility.Visible;
             InkPresenterElement.Visibility = System.Windows.Visibility.Visible;
             ImageOverlay.Visibility = System.Windows.Visibility.Visible;
 
@@ -404,6 +407,7 @@ namespace EasyPaint.View
             if (currentItem != null)
             {
                 ImageMain.Source = new BitmapImage(currentItem.ImageSource);
+                ImageThumb.Source = new BitmapImage(currentItem.ImageSource);
 
                 //ItemName1.Visibility = Visibility.Visible;
 
@@ -418,10 +422,10 @@ namespace EasyPaint.View
                 }
                 UpdateScores();
 
-                ItemName2.Visibility = Visibility.Visible;
 
                 // ItemName1.Text = currentItem.LocalizedName;
-                ItemName2.Text = currentItem.LatinName;
+                //ItemName2.Visibility = Visibility.Visible;
+                //ItemName2.Text = currentItem.LatinName;
 
                 //if (currentItem.IsLocked)
                 //{
@@ -443,10 +447,44 @@ namespace EasyPaint.View
             }
         }
 
+        private int GetAvailableTime()
+        {
+            int value = 0;
+            switch (AppSettings.GameLevel)
+            {
+                case GameLevel.Easy:
+                    value = 60;
+                    break;
+                case GameLevel.Medium:
+                    value = 40;
+                    break;
+                case GameLevel.Hard:
+                    value = 30;
+                    break;
+                default:
+                    break;
+            }
+            return value;
+        }
+
         private void UpdateScores()
         {
             TextBlockScoreValue.Text = AppDataManager.GetInstance().GetTotalPoints().ToString();
-            TextBlockRecordValue.Text = AppSettings.RecordScoreValue.ToString();
+            //TextBlockRecordValue.Text = AppSettings.RecordScoreValue_HARD.ToString();
+
+            switch (AppSettings.GameLevel)
+            {
+                case GameLevel.Easy:
+                    TextBlockRecordValue.Text = AppSettings.RecordScoreValue_EASY.ToString();
+                    break;
+                case GameLevel.Medium:
+                    TextBlockRecordValue.Text = AppSettings.RecordScoreValue_MEDIUM.ToString();
+                    break;
+                case GameLevel.Hard:
+                    TextBlockRecordValue.Text = AppSettings.RecordScoreValue_HARD.ToString();
+                    break;
+            }
+
         }
 
         private static ItemViewModel GetUserSelectedItem()
@@ -598,6 +636,7 @@ namespace EasyPaint.View
 
             ImageOverlay.Visibility = System.Windows.Visibility.Collapsed;
             ImageMain.Visibility = System.Windows.Visibility.Collapsed;
+            ImageThumb.Visibility = System.Windows.Visibility.Collapsed;
 
             userDrawnPicture.Blit(new Rect(0, 0, userDrawnPicture.PixelWidth, userDrawnPicture.PixelHeight),
                                   _reducedColorsLineArtPicture,
@@ -682,7 +721,7 @@ namespace EasyPaint.View
                                                                                                                     switch (result)
                                                                                                                     {
                                                                                                                         case MsgboxResponse.Yes:
-                                                                                                                            var marketplaceDetailTask = new MarketplaceDetailTask { ContentIdentifier = null };
+                                                                                                                            var marketplaceDetailTask = new MarketplaceDetailTask { ContentIdentifier = AppSettings.AppGuid };
                                                                                                                             marketplaceDetailTask.Show();
                                                                                                                             break;
                                                                                                                         case MsgboxResponse.No:
@@ -819,6 +858,16 @@ namespace EasyPaint.View
             {
                 ZoomImage.Source = new BitmapImage(new Uri("../Assets/buttons/lock.png", UriKind.RelativeOrAbsolute));
             }
+
+        }
+
+        private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
+        {
+
+        }
+
+        private void AdControl_AdRefreshed(object sender, EventArgs e)
+        {
 
         }
 

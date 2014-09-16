@@ -47,7 +47,7 @@
         </Grid.RowDefinitions>
 
         <Border CornerRadius="30" 
-                Margin="10"
+                Margin="150,10,150,-30"
                 Opacity="1" 
                 Grid.Column="0" Grid.ColumnSpan="3" 
                 Grid.Row="0" Grid.RowSpan="3" 
@@ -62,18 +62,18 @@
                 <CompositeTransform Rotation="0"/>
             </Border.RenderTransform>
 
-            <StackPanel Orientation="Vertical" Margin="0,20,0,91">
+            <StackPanel Orientation="Vertical" Margin="0,20,0,-20">
 
                 <TextBlock Opacity="1" Name="TextBlockBasicHelpTitle" Style="{StaticResource ButtonTextBlockStyle1}" 
                                Text="{Binding Path=LocalizedResX.LevelSelectionHeader, Source={StaticResource LocalizedStrings}}" 
                                Foreground="Green" HorizontalAlignment="Center"/>
                 
-                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="350" >
                     <Button.RenderTransform>
-                        <CompositeTransform Rotation="0.25"/>
+                        <CompositeTransform Rotation="3.264"/>
                     </Button.RenderTransform>
                     <Button.Content>
-                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}" Foreground="Green"
                            Text="{Binding Path=LocalizedResX.ButtonLevelEasyText, Source={StaticResource LocalizedStrings}}">
                         </TextBlock>
                     </Button.Content>
@@ -84,12 +84,12 @@
                     </i:Interaction.Triggers>
                 </Button>
 
-                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="350" >
                     <Button.RenderTransform>
-                        <CompositeTransform Rotation="0"/>
+                        <CompositeTransform Rotation="-1.745"/>
                     </Button.RenderTransform>
                     <Button.Content>
-                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"  Foreground="#FFFF5D00"
                            Text="{Binding Path=LocalizedResX.ButtonLevelMediumText, Source={StaticResource LocalizedStrings}}">
                         </TextBlock>
                     </Button.Content>
@@ -100,12 +100,12 @@
                     </i:Interaction.Triggers>
                 </Button>
 
-                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="Auto" >
+                <Button Visibility="Visible" RenderTransformOrigin="0.5,0.5" Style="{StaticResource ButtonStyle1}"  UseLayoutRounding="False" d:LayoutRounding="Auto" Height="Auto" Margin="20,0" Width="350"  >
                     <Button.RenderTransform>
-                        <CompositeTransform Rotation="0"/>
+                        <CompositeTransform Rotation="3.401"/>
                     </Button.RenderTransform>
                     <Button.Content>
-                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}"
+                        <TextBlock Grid.Column="1" Style="{StaticResource ButtonTextBlockStyle1}" Foreground="Red"
                            Text="{Binding Path=LocalizedResX.ButtonLevelHardText, Source={StaticResource LocalizedStrings}}">
                         </TextBlock>
                     </Button.Content>

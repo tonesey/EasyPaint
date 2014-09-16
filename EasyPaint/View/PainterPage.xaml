@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage 
+﻿<phone:PhoneApplicationPage xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"  
     x:Class="EasyPaint.View.PainterPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -19,7 +19,7 @@
 
     <UserControl.Resources>
         <Storyboard x:Key="StoryboardSubjectFadeout">
-            <DoubleAnimation From="1" To="0.5" Duration="0:0:1.5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ImageMain">
+            <DoubleAnimation From="1" To="0.2" Duration="0:0:1.5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ImageMain">
                 <DoubleAnimation.EasingFunction>
                     <BounceEase EasingMode="EaseIn" Bounces="10"/>
                 </DoubleAnimation.EasingFunction>
@@ -60,7 +60,7 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="eraserBtn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="stopTimeBtn">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-220">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <ElasticEase EasingMode="EaseOut"/>
@@ -72,7 +72,7 @@
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="penSizeChange">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="eraserBtn">
                 <EasingDoubleKeyFrame KeyTime="0:0:0" Value="-303">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <ElasticEase EasingMode="EaseOut"/>
@@ -84,7 +84,7 @@
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="stopTimeBtn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="penSizeChange">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-380">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseOut"/>
@@ -109,6 +109,7 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+
         <Storyboard x:Name="StoryboardSmallCountDown">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="BorderCountDownSmall">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1">
@@ -189,18 +190,34 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="79*"></ColumnDefinition>
-                <ColumnDefinition Width="565*"></ColumnDefinition>
-                <ColumnDefinition Width="80*"></ColumnDefinition>
+                <ColumnDefinition Width="130*"></ColumnDefinition>
+                <ColumnDefinition Width="581*"></ColumnDefinition>
+                <ColumnDefinition Width="89*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Border x:Name="BorderTools" CornerRadius="10" BorderThickness="2"  Grid.Column="2"  Margin="0,10,0,0">
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                    <Button Name="stopTimeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="stopTimeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
+                        <Button.RenderTransform>
+                            <CompositeTransform TranslateY="{Binding ToolBoxItem1TranslateY}"/>
+                        </Button.RenderTransform>
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                                <GradientStop Color="Gainsboro" Offset="0.1"/>
+                                <GradientStop Color="White" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Grid>
+                            <Image Source="../Assets/buttons/btn_yes.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
+                        </Grid>
+                    </Button>
+
                     <Button Name="eraserBtn" HorizontalAlignment="Left" Width="80" Height="80" BorderBrush="DarkGray" BorderThickness="2"  Click="eraseBtn_Click" Padding="0" RenderTransformOrigin="0.5,0.5" 
                             Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
-                            <CompositeTransform TranslateY="{Binding ToolBoxItem1TranslateY}"/>
+                            <CompositeTransform TranslateY="{Binding ToolBoxItem2TranslateY}"/>
                         </Button.RenderTransform>
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
@@ -219,7 +236,7 @@
 
                     <Button Name="penSizeChange"  HorizontalAlignment="Left" VerticalContentAlignment="Center"  Width="80" Height="80"  Click="btnPensizeChange_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
-                            <CompositeTransform TranslateY="{Binding ToolBoxItem2TranslateY}"/>
+                            <CompositeTransform TranslateY="{Binding ToolBoxItem3TranslateY}"/>
                         </Button.RenderTransform>
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -241,7 +258,7 @@
 
                     <Button Name="toggleModeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="toggleModeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
                         <Button.RenderTransform>
-                            <CompositeTransform TranslateY="{Binding ToolBoxItem3TranslateY}"/>
+                            <CompositeTransform TranslateY="{Binding ToolBoxItem4TranslateY}"/>
                         </Button.RenderTransform>
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
@@ -254,154 +271,183 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="stopTimeBtn" Visibility="Visible" HorizontalAlignment="Left" Width="80" Height="80" Click="stopTimeBtn_Click" Padding="0" BorderBrush="DarkGray" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource DrawingToolButtonTemplate}">
-                        <Button.RenderTransform>
-                            <CompositeTransform TranslateY="{Binding ToolBoxItem4TranslateY}"/>
-                        </Button.RenderTransform>
-                        <Button.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
-                                <GradientStop Color="Gainsboro" Offset="0.1"/>
-                                <GradientStop Color="White" Offset="0.8"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                        <Grid>
-                            <Image Source="../Assets/buttons/btn_yes.png"  Stretch="Uniform" HorizontalAlignment="Left" Width="40" Opacity="0.9"/>
-                        </Grid>
-                    </Button>
+
                 </StackPanel>
             </Border>
 
-            <Border x:Name="BorderPalette" Visibility="Visible" CornerRadius="10" BorderThickness="2" Grid.Column="0" Margin="0,10,0,0">
+            <Border x:Name="BorderPalette" Visibility="Visible" CornerRadius="10" BorderThickness="2" Grid.Column="0" Margin="0,0,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image x:Name="ImageThumb" CacheMode="BitmapCache" 
+                            Grid.Row="0"
+                    		Visibility="Visible" 
+                    		Width="120" Height="120"  
+                    		Stretch="Fill"  
+                    		HorizontalAlignment="Center" 
+                    		VerticalAlignment="Center" Opacity="1" />
 
-                    <!--<Button Name="pc1_T" Visibility="Collapsed" HorizontalAlignment="Left"   Click="pc1_Click" Padding="0" Background="Red" BorderThickness="0" BorderBrush="DarkGray" RenderTransformOrigin="0.5,0.5">
-                        <Button.RenderTransform>
-                            <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
-                        </Button.RenderTransform>
-                    </Button>-->
+                    <StackPanel Grid.Row="1" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="80">
+                        <Viewbox Tap="pc1_Tap" Name="pc1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+                            <Canvas Width="131" Height="131">
+                                <Path Name="pc1_path" Fill="Red" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
+                            </Canvas>
+                            <Viewbox.RenderTransform>
+                                <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
+                            </Viewbox.RenderTransform>
+                        </Viewbox>
+                        <Viewbox Tap="pc1_Tap" Name="pc2" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+                            <Canvas Width="131" Height="131">
+                                <Path Name="pc2_path" Fill="Green" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
+                            </Canvas>
+                            <Viewbox.RenderTransform>
+                                <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
+                            </Viewbox.RenderTransform>
+                        </Viewbox>
+                        <Viewbox Tap="pc1_Tap" Name="pc3" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+                            <Canvas Width="131" Height="131">
+                                <Path Name="pc3_path" Fill="Blue" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
+                            </Canvas>
+                            <Viewbox.RenderTransform>
+                                <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
+                            </Viewbox.RenderTransform>
+                        </Viewbox>
+                        <Viewbox Tap="pc1_Tap" Name="pc4" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+                            <Canvas Width="131" Height="131">
+                                <Path Name="pc4_path" Fill="#000000" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
+                            </Canvas>
+                            <Viewbox.RenderTransform>
+                                <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
+                            </Viewbox.RenderTransform>
+                        </Viewbox>
+                        <Viewbox Tap="pc1_Tap" Name="pc5" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+                            <Canvas Width="131" Height="131">
+                                <Path Name="pc5_path" Fill="Orange" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
+                            </Canvas>
+                            <Viewbox.RenderTransform>
+                                <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
+                            </Viewbox.RenderTransform>
+                        </Viewbox>
 
-                    <Viewbox Tap="pc1_Tap" Name="pc1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                        <Canvas Width="131" Height="131">
-                            <Path Name="pc1_path" Fill="Red" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
-                        </Canvas>
-                        <Viewbox.RenderTransform>
-                            <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
-                        </Viewbox.RenderTransform>
-                    </Viewbox>
-                    <Viewbox Tap="pc1_Tap" Name="pc2" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                        <Canvas Width="131" Height="131">
-                            <Path Name="pc2_path" Fill="Green" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
-                        </Canvas>
-                        <Viewbox.RenderTransform>
-                            <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
-                        </Viewbox.RenderTransform>
-                    </Viewbox>
-                    <Viewbox Tap="pc1_Tap" Name="pc3" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                        <Canvas Width="131" Height="131">
-                            <Path Name="pc3_path" Fill="Blue" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
-                        </Canvas>
-                        <Viewbox.RenderTransform>
-                            <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
-                        </Viewbox.RenderTransform>
-                    </Viewbox>
-                    <Viewbox Tap="pc1_Tap" Name="pc4" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                        <Canvas Width="131" Height="131">
-                            <Path Name="pc4_path" Fill="#000000" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
-                        </Canvas>
-                        <Viewbox.RenderTransform>
-                            <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
-                        </Viewbox.RenderTransform>
-                    </Viewbox>
-                    <Viewbox Tap="pc1_Tap" Name="pc5" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                        <Canvas Width="131" Height="131">
-                            <Path Name="pc5_path" Fill="Orange" Data="M 21,38 L 23,38 L 23,37 L 25,37 L 25,36 L 27,36 L 27,35 L 29,35 L 29,34 L 30,34 L 30,33 L 31,33 L 31,32 L 33,32 L 33,30 L 34,30 L 34,29 L 35,29 L 35,28 L 36,28 L 36,27 L 37,27 L 37,26 L 38,26 L 38,25 L 39,25 L 39,23 L 40,23 L 40,22 L 41,22 L 41,21 L 43,21 L 43,20 L 45,20 L 45,19 L 47,19 L 47,18 L 48,18 L 48,17 L 50,17 L 50,16 L 65,16 L 65,15 L 69,15 L 69,16 L 72,16 L 72,17 L 76,17 L 76,16 L 78,16 L 78,15 L 79,15 L 79,14 L 81,14 L 81,13 L 82,13 L 82,12 L 83,12 L 83,11 L 89,11 L 89,12 L 91,12 L 91,14 L 92,14 L 92,16 L 100,16 L 100,17 L 101,17 L 101,18 L 102,18 L 102,19 L 103,19 L 103,21 L 104,21 L 104,23 L 106,23 L 106,24 L 111,24 L 111,25 L 112,25 L 112,26 L 113,26 L 113,27 L 114,27 L 114,30 L 115,30 L 115,31 L 114,31 L 114,34 L 113,34 L 113,36 L 112,36 L 112,39 L 111,39 L 111,40 L 113,40 L 113,42 L 114,42 L 114,45 L 115,45 L 115,46 L 114,46 L 114,47 L 115,47 L 115,48 L 117,48 L 117,50 L 118,50 L 118,53 L 119,53 L 119,55 L 118,55 L 118,58 L 117,58 L 117,59 L 116,59 L 116,60 L 115,60 L 115,63 L 114,63 L 114,66 L 113,66 L 113,69 L 112,69 L 112,70 L 111,70 L 111,73 L 110,73 L 110,74 L 109,74 L 109,76 L 108,76 L 108,79 L 109,79 L 109,80 L 110,80 L 110,81 L 111,81 L 111,84 L 112,84 L 112,85 L 111,85 L 111,87 L 110,87 L 110,89 L 109,89 L 109,90 L 108,90 L 108,92 L 107,92 L 107,93 L 106,93 L 106,94 L 105,94 L 105,95 L 104,95 L 104,96 L 103,96 L 103,98 L 102,98 L 102,99 L 101,99 L 101,100 L 100,100 L 100,101 L 99,101 L 99,102 L 96,102 L 96,103 L 93,103 L 93,102 L 91,102 L 91,103 L 90,103 L 90,104 L 88,104 L 88,105 L 87,105 L 87,106 L 86,106 L 86,107 L 85,107 L 85,108 L 84,108 L 84,109 L 81,109 L 81,110 L 77,110 L 77,109 L 75,109 L 75,108 L 73,108 L 73,107 L 71,107 L 71,108 L 70,108 L 70,109 L 69,109 L 69,110 L 68,110 L 68,111 L 67,111 L 67,112 L 66,112 L 66,113 L 65,113 L 65,114 L 63,114 L 63,115 L 60,115 L 60,116 L 59,116 L 59,115 L 57,115 L 57,116 L 56,116 L 56,118 L 55,118 L 55,119 L 54,119 L 54,120 L 50,120 L 50,121 L 49,121 L 49,120 L 47,120 L 47,119 L 45,119 L 45,117 L 44,117 L 44,115 L 43,115 L 43,114 L 41,114 L 41,115 L 40,115 L 40,116 L 36,116 L 36,117 L 35,117 L 35,116 L 33,116 L 33,115 L 31,115 L 31,114 L 26,114 L 26,115 L 25,115 L 25,114 L 23,114 L 23,113 L 21,113 L 21,111 L 20,111 L 20,108 L 19,108 L 19,105 L 20,105 L 20,101 L 21,101 L 21,99 L 20,99 L 20,97 L 19,97 L 19,96 L 17,96 L 17,95 L 15,95 L 15,93 L 14,93 L 14,90 L 13,90 L 13,89 L 14,89 L 14,86 L 15,86 L 15,85 L 16,85 L 16,83 L 17,83 L 17,81 L 18,81 L 18,79 L 19,79 L 19,78 L 20,78 L 20,77 L 17,77 L 17,76 L 15,76 L 15,74 L 14,74 L 14,68 L 15,68 L 15,67 L 16,67 L 16,66 L 17,66 L 17,65 L 18,65 L 18,64 L 19,64 L 19,63 L 20,63 L 20,62 L 21,62 L 21,61 L 22,61 L 22,60 L 23,60 L 23,58 L 22,58 L 22,56 L 21,56 L 21,54 L 22,54 L 22,52 L 21,52 L 21,50 L 20,50 L 20,49 L 19,49 L 19,45 L 18,45 L 18,44 L 19,44 L 19,41 L 20,41 L 20,39 L 21,39 L 21,38 " />
-                        </Canvas>
-                        <Viewbox.RenderTransform>
-                            <CompositeTransform TranslateX="{Binding PaletteItemTranslateX}"/>
-                        </Viewbox.RenderTransform>
-                    </Viewbox>
-
-                </StackPanel>
+                    </StackPanel>
+                </Grid>
             </Border>
 
             <Border Visibility="Visible" x:Name="BorderDrawboard" CornerRadius="1" BorderThickness="0" Grid.Column="1" Margin="0,0,0,0"  VerticalAlignment="Stretch">
-                <StackPanel x:Name="StackPanelDrawboard" 
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center">
+
+                    </StackPanel>
+
+                    <StackPanel x:Name="StackPanelDrawboard" 
+                                Grid.Column="1"
                             Orientation="Vertical" 
                             VerticalAlignment="Center" 
                             HorizontalAlignment="Center"
                             Margin="0,0,0,0" >
 
-                    <!--<TextBlock Name="ItemName1" FontSize="30" Text="Chlamydoselachus anguineus" Foreground="Green" 
+                        <!--<TextBlock Name="ItemName1" FontSize="30" Text="Chlamydoselachus anguineus" Foreground="Green" 
                                HorizontalAlignment="Center" Opacity="0.6" FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                Margin="-50,-38,-50,0" 
                                VerticalAlignment="Top" Tap="ItemName1_Tap"></TextBlock>-->
 
-                    <StackPanel Orientation="Horizontal" Name="ScoreStackPanel" Margin="0,-38,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
-                        <TextBlock Name="TextBlockScoreDescr" FontSize="30" Text="$current score:" 
+                        <StackPanel Orientation="Horizontal" Name="ScoreStackPanel" Margin="0,-38,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <TextBlock Name="TextBlockScoreDescr" FontSize="30" Text="$current score:" 
                                   Foreground="#FF011E3C" 
                                   HorizontalAlignment="Center" Opacity="0.6" 
                                   FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                />
-                        <TextBlock Name="TextBlockScoreValue" FontSize="30" Text="3456" Foreground="Green" 
+                            <TextBlock Name="TextBlockScoreValue" FontSize="30" Text="" Foreground="Green" 
                                HorizontalAlignment="Center" Opacity="0.8" 
                                FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                Margin="20,0,0,0"
                                />
-                        <TextBlock Name="TextBlockRecordDescr" FontSize="30" Text="$record:" Foreground="#FF011E3C" 
+                            <TextBlock Name="TextBlockRecordDescr" FontSize="30" Text="$record:" Foreground="#FF011E3C" 
                                HorizontalAlignment="Center" Opacity="0.6" 
                                FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                     Margin="40,0,0,0"
                                />
-                        <TextBlock Name="TextBlockRecordValue" FontSize="30" Text="12300" Foreground="Green" 
+                            <TextBlock Name="TextBlockRecordValue" FontSize="30" Text="" Foreground="Green" 
                                HorizontalAlignment="Center" Opacity="0.8" 
                                FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                                Margin="20,0,0,0"
                                />
-                    </StackPanel>
+                        </StackPanel>
 
-                    <Grid Name="GridPainter" Visibility="Visible" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        <Grid Name="GridPainter" Visibility="Visible" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" 
                           Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}">
-                        <Grid.Clip>
-                            <RectangleGeometry Rect="-100 0 600 400" />
-                        </Grid.Clip>
+                            <Grid.Clip>
+                                <RectangleGeometry Rect="-100 0 600 400" />
+                            </Grid.Clip>
 
-                        <Grid Name="GridMainContainer" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"
+                            <Grid Name="GridMainContainer" Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"
                               ManipulationStarted="GridMainContainer_ManipulationStarted"
                               ManipulationCompleted="GridMainContainer_ManipulationCompleted"
                               ManipulationDelta="GridMainContainer_ManipulationDelta"
                               RenderTransformOrigin="0.5,0.5">
-                            <Image IsHitTestVisible="False" Name="ImageMain" CacheMode="BitmapCache" 
-                               Visibility="Visible" 
-                               Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  
-                               Stretch="Fill"  HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" Opacity="1"></Image>
-                            <InkPresenter Name="InkPresenterElement" 
+                                <Image IsHitTestVisible="False" Name="ImageMain" CacheMode="BitmapCache" 
+                                       Visibility="Visible" 
+                                       Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  
+                                       Stretch="Fill"  HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" Opacity="1">
+                                </Image>
+                                <InkPresenter Name="InkPresenterElement" 
                                       Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}" 
                                       HorizontalAlignment="Center"  VerticalAlignment="Center" 
                                       Background="Transparent" 
                                       Visibility="Visible" RenderTransformOrigin="0.5,0.5" >
-                                <InkPresenter.RenderTransform>
-                                    <CompositeTransform ScaleX="1" ScaleY="1"/>
-                                </InkPresenter.RenderTransform>
-                            </InkPresenter>
-                            <Image IsHitTestVisible="False" Name="ImageOverlay" CacheMode="BitmapCache" 
+                                    <InkPresenter.RenderTransform>
+                                        <CompositeTransform ScaleX="1" ScaleY="1"/>
+                                    </InkPresenter.RenderTransform>
+                                </InkPresenter>
+                                <Image IsHitTestVisible="False" Name="ImageOverlay" CacheMode="BitmapCache" 
                                    Visibility="Visible" 
                                    Width="{Binding DrawingboardWidth}" Height="{Binding DrawingboardHeigth}"  
                                    Stretch="Fill"  
                                    HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1"
                                    RenderTransformOrigin="0.5,0.5">
-                                <Image.RenderTransform>
-                                    <CompositeTransform ScaleY="1" ScaleX="1"/>
-                                </Image.RenderTransform>
-                            </Image>
+                                    <Image.RenderTransform>
+                                        <CompositeTransform ScaleY="1" ScaleX="1"/>
+                                    </Image.RenderTransform>
+                                </Image>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <TextBlock  Name="ItemName2" FontSize="30" FontStyle="Italic" Text="ClamidgggJJJosauro ABC ABC ABC ABC" 
+
+
+                        <!--<TextBlock  Name="ItemName2" 
+                                Visibility="Collapsed"
+                                FontSize="30" FontStyle="Italic" Text="ClamidgggJJJosauro ABC ABC ABC ABC" 
                                     Foreground="DarkBlue" HorizontalAlignment="Center" Opacity="0.6" 
                                     FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
-                                    Margin="0,0,0,-40" VerticalAlignment="Bottom"></TextBlock>
-                </StackPanel>
+                                    Margin="0,0,0,-40" VerticalAlignment="Bottom">
+
+                       </TextBlock>
+                        -->
+
+                        <UI:AdControl AdUnitId="10861267"  ApplicationId="9e15e1f3-79c4-4785-a3ea-3fe18dd11bb3"
+                                  IsHitTestVisible="False"
+                                  IsAutoCollapseEnabled="True"
+                                  IsAutoRefreshEnabled="True"
+                                  ErrorOccurred="AdControl_ErrorOccurred"
+                                  AdRefreshed="AdControl_AdRefreshed"
+                                  Margin="0,-40,0,-80" 
+                                  Width="480" Height="40" >
+                        </UI:AdControl>
+
+                    </StackPanel>
+                </Grid>
+
+
             </Border>
 
             <TextBlock x:Name="TextBlockCountDownBig" 
@@ -414,11 +460,8 @@
                        VerticalAlignment="Center" 
                        Opacity="0.625"/>
 
-            <!--Foreground="{Binding Text, Converter={StaticResource percentageToColorConverter}, RelativeSource={RelativeSource Self}}"-->
-
             <Border x:Name="BorderCountDownSmall" Grid.Column="2" 
-                    VerticalAlignment="Top"  Margin="0,10,0,0" 
-                    Width="70" Height="70" BorderThickness="0">
+                    VerticalAlignment="Top"  Margin="10,10,9,0" Height="70" BorderThickness="0">
                 <TextBlock x:Name="TextBlockCountDownSmall" 
                        FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
                        FontWeight="Bold"

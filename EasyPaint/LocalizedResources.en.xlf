@@ -198,19 +198,19 @@ Checkout his awesome apps at www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/LevelSelectionHeader" xml:space="preserve">
           <source>select game difficulty</source>
-          <target state="new">select game difficulty</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">select game difficulty</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonLevelMediumText" xml:space="preserve">
           <source>medium</source>
-          <target state="new">medium</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">medium</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonLevelHardText" xml:space="preserve">
           <source>hard</source>
-          <target state="new">hard</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">hard</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/ButtonLevelEasyText" xml:space="preserve">
           <source>easy</source>
-          <target state="new">easy</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">easy</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/TrialVersion" xml:space="preserve">
           <source>trial</source>
@@ -218,8 +218,8 @@ Checkout his awesome apps at www.invenktion.it</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/Trial_GalleryAvailableOnlyIntoFullVersion" xml:space="preserve">
           <source>Sorry but gallery pictures are available only into full version, do you want to get it?</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Sorry but gallery is available only into full version, do you want to get it?</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
-        </trans-unit>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Sorry but gallery is available only into full version, do you want to get it?</target>
+        <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit translate="yes" id="Resx/FullVersion" xml:space="preserve">
           <source>full</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">full</target>

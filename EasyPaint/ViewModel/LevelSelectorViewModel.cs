@@ -49,7 +49,7 @@ namespace EasyPaint.ViewModel
         private object SetGameLevel(GameLevel gameLevel)
         {
             AppSettings.GameLevel = gameLevel;
-            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_Painter);
+            ViewModelLocator.NavigationServiceStatic.NavigateTo(ViewModelLocator.View_GroupSeletor);
             return null;
         }
 
