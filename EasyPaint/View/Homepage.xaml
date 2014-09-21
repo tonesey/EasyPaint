@@ -10,6 +10,7 @@
     xmlns:ctrl="clr-namespace:EasyPaint.Controls"
     xmlns:adduplex="clr-namespace:AdDuplex;assembly=AdDuplex.WindowsPhone"
     xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP8" 
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"  
     mc:Ignorable="d" d:DesignWidth="768" d:DesignHeight="480"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -59,6 +60,19 @@
         <TextBlock x:Name="TextBlockDebug" Text="TEST" Grid.Column="2" Grid.Row="5" FontSize="80" Foreground="Red" TextAlignment="Center">
 
         </TextBlock>
+
+        <UI:AdControl AdUnitId="10861267"  
+                      ApplicationId="9e15e1f3-79c4-4785-a3ea-3fe18dd11bb3"
+                      Grid.Row="5"
+                      HorizontalAlignment="Left"
+                      Margin="40,0,0,0"
+                        Grid.Column="0"
+                        IsHitTestVisible="False"
+                        IsAutoCollapseEnabled="True"
+                        IsAutoRefreshEnabled="True"
+                        Width="480" Height="80" >
+        </UI:AdControl>
+        
         <Button RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle1}" UseLayoutRounding="False"  d:LayoutRounding="Auto" ClickMode="Hover" Height="Auto" Margin="20,0" Width="Auto" >
             <Button.RenderTransform>
                 <CompositeTransform Rotation="2.888"/>
