@@ -458,14 +458,13 @@
                        </TextBlock>
                         -->
 
-                        <!--<UI:AdControl AdUnitId="10861267"  ApplicationId="9e15e1f3-79c4-4785-a3ea-3fe18dd11bb3"
-                                  IsHitTestVisible="False"
-                                  IsAutoCollapseEnabled="True"
-                                  IsAutoRefreshEnabled="True"
-                                  ErrorOccurred="AdControl_ErrorOccurred"
-                                  AdRefreshed="AdControl_AdRefreshed"
-                                  Margin="0,-40,0,-80" 
-                                  Width="480" Height="40" >
+                        <!--<UI:AdControl AdUnitId="10861270"  
+                                      ApplicationId="9e15e1f3-79c4-4785-a3ea-3fe18dd11bb3"
+                                      IsHitTestVisible="False"
+                                      IsAutoCollapseEnabled="True"
+                                      IsAutoRefreshEnabled="True"
+                                      Margin="0,-50,0,-80" 
+                                      Width="320" Height="50" >
                         </UI:AdControl>-->
 
                     </StackPanel>
