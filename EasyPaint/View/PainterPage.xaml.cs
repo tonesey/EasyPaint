@@ -57,10 +57,12 @@ namespace EasyPaint.View
         Storyboard _storyboardShowPalette;
         Storyboard _storyboardColorSelected;
         Storyboard _storyboardSmallCountDownAnimation;
+        Storyboard _storyboardAnimateHelperImage;
 
         EventHandler _storyboardSmallCountDownAnimationHandler;
         EventHandler _storyboardBigCountdownHandler = null;
         EventHandler _storyboardImageFadingAndStartGameHandler = null;
+        EventHandler __storyboardAnimateHelperImageHandler = null;
 
         Popup _popup = null;
         ResultPopup _popupChild = null;
@@ -146,6 +148,7 @@ namespace EasyPaint.View
             _storyboardShowPalette = (Storyboard)Resources["StoryboardShowPalette"];
             _storyboardColorSelected = (Storyboard)Resources["TappedColorSb"];
             _storyboardSmallCountDownAnimation = (Storyboard)Resources["StoryboardCountDownSmallAnimation"];
+            _storyboardAnimateHelperImage = (Storyboard)Resources["StoryBoardAnimateThumb"];
         }
 
         private void StartCountDown()
@@ -187,7 +190,10 @@ namespace EasyPaint.View
                 UnassignImageFadingAndStartGameEventHandler();
                 TextBlockCountDownBig.Visibility = Visibility.Collapsed;
                 _storyboardBigCountdown.Stop();
+
                 EnablePage();
+
+                _storyboardAnimateHelperImage.Begin();
 
                 switch (App.Current.GameMode)
                 {
@@ -234,7 +240,6 @@ namespace EasyPaint.View
             BorderCountDownSmall.Visibility = System.Windows.Visibility.Visible;
             _gameInProgress = true;
             _curAvailableTimeValue = GetAvailableTime();
-
 
             TextBlockCountDownSmall.Text = _curAvailableTimeValue.ToString();
 
@@ -309,6 +314,18 @@ namespace EasyPaint.View
         {
             _storyboardImageFadingAndStartGame.Completed -= _storyboardImageFadingAndStartGameHandler;
         }
+        #endregion
+
+        #region helper image
+        //private void AssignImageFadingAndStartGameEventHandler()
+        //{
+        //    _storyboardImageFadingAndStartGame.Completed += _storyboardImageFadingAndStartGameHandler;
+        //}
+
+        //private void UnassignImageFadingAndStartGameEventHandler()
+        //{
+        //    _storyboardImageFadingAndStartGame.Completed -= _storyboardImageFadingAndStartGameHandler;
+        //}
         #endregion
 
         private void StopTimer()
@@ -861,15 +878,15 @@ namespace EasyPaint.View
 
         }
 
-        private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
-        {
+        //private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void AdControl_AdRefreshed(object sender, EventArgs e)
-        {
+        //private void AdControl_AdRefreshed(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
     }
 }

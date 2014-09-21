@@ -172,9 +172,17 @@
         </Storyboard>
         
         <Storyboard x:Name="StoryBoardAnimateThumb">
-        	<DoubleAnimation Duration="0:0:3" To="200" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="ImageThumb" d:IsOptimized="True"/>
-        	<PointAnimation Duration="0:0:3" To="0.5,0.5" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="ImageThumb" d:IsOptimized="True"/>
-        	<DoubleAnimation Duration="0:0:3" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ImageThumb" d:IsOptimized="True">
+        	<DoubleAnimation Duration="0:0:2" To="130" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.GlobalOffsetY)" Storyboard.TargetName="ImageThumb" d:IsOptimized="True">
+        		<DoubleAnimation.EasingFunction>
+        			<ElasticEase EasingMode="EaseOut"/>
+        		</DoubleAnimation.EasingFunction>
+        	</DoubleAnimation>
+        	<PointAnimation Duration="0:0:2" To="0.5,0.5" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="ImageThumb" d:IsOptimized="True">
+        		<PointAnimation.EasingFunction>
+        			<BounceEase EasingMode="EaseOut"/>
+        		</PointAnimation.EasingFunction>
+        	</PointAnimation>
+        	<DoubleAnimation Duration="0:0:2" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ImageThumb" d:IsOptimized="True">
         		<DoubleAnimation.EasingFunction>
         			<BounceEase EasingMode="EaseOut"/>
         		</DoubleAnimation.EasingFunction>
@@ -301,7 +309,7 @@
                     		<PlaneProjection/>
                     	</Image.Projection>
                         <Image.RenderTransform>
-                            <CompositeTransform TranslateY="-200"/>
+                            <CompositeTransform TranslateY="-130"/>
                         </Image.RenderTransform>
                     </Image>
 
@@ -450,7 +458,7 @@
                        </TextBlock>
                         -->
 
-                        <UI:AdControl AdUnitId="10861267"  ApplicationId="9e15e1f3-79c4-4785-a3ea-3fe18dd11bb3"
+                        <!--<UI:AdControl AdUnitId="10861267"  ApplicationId="9e15e1f3-79c4-4785-a3ea-3fe18dd11bb3"
                                   IsHitTestVisible="False"
                                   IsAutoCollapseEnabled="True"
                                   IsAutoRefreshEnabled="True"
@@ -458,7 +466,7 @@
                                   AdRefreshed="AdControl_AdRefreshed"
                                   Margin="0,-40,0,-80" 
                                   Width="480" Height="40" >
-                        </UI:AdControl>
+                        </UI:AdControl>-->
 
                     </StackPanel>
                 </Grid>

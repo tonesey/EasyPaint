@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="en" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.1.5" build-num="5">
+  <file datatype="xml" source-language="en-US" target-language="en" original="LocalizedResources.resx" tool-id="MultilingualAppToolkit" product-name="EasyPaint" product-version="1.1.6" build-num="6">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.2.1212.0" tool-company="Microsoft" />
     </header>
@@ -327,7 +327,7 @@ Showing us some love on the store helps us to continue to work on the app and ma
         <trans-unit translate="yes" id="Resx/HelpPage_HelpMainText" xml:space="preserve">
           <source>Draw at least 70% of each picture to unlock and access new animals and continents! 
 Be accurate, be precise but... be FAST!</source>
-          <target state="signed-off" state-qualifier="mt-suggestion">Draw at least 70% of each picture to unlock and access new animals and continents! 
+          <target state="translated">Colour at least 70% of each picture to unlock and access new animals and continents! 
 Be accurate, be precise but... be FAST!</target>
         </trans-unit>
         <trans-unit translate="yes" id="Resx/item_scoiattolo" xml:space="preserve">

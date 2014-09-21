@@ -97,7 +97,6 @@
                                Foreground="Green"/>
                 </Grid>
 
-            
                 <TextBlock Margin="0,10,0,0" Opacity="1" Style="{StaticResource ButtonTextBlockStyle1}" 
                                Text="{Binding Path=LocalizedResX.HelpPage_HelpMainText, Source={StaticResource LocalizedStrings}}" 
                                TextWrapping="Wrap"/>
